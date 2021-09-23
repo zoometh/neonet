@@ -4,13 +4,13 @@ This outlines how to propose a change to ***NeoNet***. The purpose of this GitHu
 
 ## Fixing typos
 
-When relevant, you can fix typos, spelling mistakes, or grammatical errors in the documentation (`.Rd` files) directly using the GitHub web interface.  
+When relevant, you can fix typos, spelling mistakes, or grammatical errors in the app and the documentation (`.Rd` files) directly using the GitHub web interface.  
 
 ## Bigger changes
 
 To develop the versatility of the package, we encourage contributions directly related to:
 
-* [Shape analysis](https://zoometh.github.io/iconr/articles/next.html#shape-analysis-1): in incor 0.1.0, graphical units are considered for their centroid, a `POINT`. For the next releases of the package, we would like the possibility to deal with `POLYGON` geometries, in order to process the graphical units with shape analysis (Procrustes analysis, etc.).  
+* **Bayesian modelling** The next planned development concerns the construction of a **chronological model with Bayesian statistics for the different 'PhaseCode' within a single site**. Specifically, this means to integrate [RChronoModel functions](https://cran.r-project.org/web/packages/RChronoModel/index.html) during the calibration process.  
 
 * [Typology](https://zoometh.github.io/iconr/articles/next.html#typology-1): we aim to create a hierarchical vocabulary (ie, structured vocabulary), in the form of a directed graph, to describe both graphical units typology and technology, mostly for Prehistoric and Protohistoric iconography (like [this](https://raw.githubusercontent.com/zoometh/iconr/master/doc/img/typology_gu.png)). To get this thesaurus shared between different users, we need it in in different languages, easily editable, etc.  
 
