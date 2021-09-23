@@ -7,7 +7,7 @@ The ***NeoNet app*** offers a geographical window provided by the Leaflet packag
   
 <center>
   
-![](doc/img/panel_map.png){width=800px}
+![](doc/img/panel_map.png)
   
 </center>
   
@@ -15,7 +15,7 @@ Once selected, the radiocarbon dates can be calibrated on-the-fly, separately or
   
 <center>
   
-![](doc/img/neonet_calib_example.png){width=500px}
+![](doc/img/neonet_calib_example.png)
   
 </center>
   
