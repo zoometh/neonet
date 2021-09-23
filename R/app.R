@@ -14,7 +14,9 @@ library(Bchron)
 library(rcarbon)
 library(bibtex)
 
-source("functions.R")
+print(getwd())
+
+source(paste0(getwd(), "/functions.R"))
 # note: intCal is 'intcal20'
 
 lcul_col <- list(# colors
@@ -43,7 +45,8 @@ gcalib.bin <- 100 # the chronological bin
 
 nsites.14C.cal <- 1000 # max of sites calibrated at the same time, panel calib
 
-c14bibtex.url <- 'references.bib'
+c14bibtex.url <- paste0(dirname(getwd()), "/inst/extdata/references.bib")
+# print(c14bibtex.url)
 bib <- read.bib(c14bibtex.url)
 bib <- sort(bib) # sort
 bibrefs.md <- capture.output(print(bib)) # to Markdown layout
@@ -51,24 +54,26 @@ bibrefs.md <- replace(bibrefs.md, bibrefs.md == "", "<br><br>")
 bibrefs.md <- paste0(bibrefs.md, collapse = '') # separate references
 bibrefs.html <- shiny::markdown(bibrefs.md) # to HTML layout
 
-# mat.life.url <- 'c14_material_life.tsv'
-# material.life.duration <- read.csv(mat.life.url, sep = "\t")
-# short.life <- subset(material.life.duration, life.duration == 'short.life')
-# long.life <- subset(material.life.duration, life.duration == 'long.life')
-# other.life <- material.life.duration[is.na(material.life.duration$life.duration),]
-# family.life <- c(rep("short.life",nrow(short.life)),
-#                  rep("long.life",nrow(long.life)),
-#                  rep("other.life",nrow(other.life)))
-# type.life <- c(short.life$material.type,
-#                long.life$material.type,
-#                other.life$material.type)
-# material.life <- data.frame(family.life=family.life,
-#                             type.life=type.life)
-# short.life <- as.character(material.life[material.life$family.life == "short.life", "type.life"])
-# long.life <- as.character(material.life[material.life$family.life == "long.life", "type.life"])
-# other.life <- as.character(material.life[material.life$family.life == "other.life", "type.life"])
+mat.life.url <- paste0(dirname(getwd()), "/inst/extdata/c14_material_life.tsv")
+material.life.duration <- read.csv(mat.life.url, sep = "\t")
+short.life <- subset(material.life.duration, life.duration == 'short.life')
+long.life <- subset(material.life.duration, life.duration == 'long.life')
+other.life <- material.life.duration[is.na(material.life.duration$life.duration),]
+family.life <- c(rep("short.life",nrow(short.life)),
+                 rep("long.life",nrow(long.life)),
+                 rep("other.life",nrow(other.life)))
+type.life <- c(short.life$material.type,
+               long.life$material.type,
+               other.life$material.type)
+material.life <- data.frame(family.life=family.life,
+                            type.life=type.life)
+short.life <- as.character(material.life[material.life$family.life == "short.life", "type.life"])
+long.life <- as.character(material.life[material.life$family.life == "long.life", "type.life"])
+other.life <- as.character(material.life[material.life$family.life == "other.life", "type.life"])
 
-df.tot <- read.csv("c14_dataset.tsv", sep = "\t", encoding="UTF-8")
+df.tot <- read.csv(paste0(dirname(getwd()), "/inst/extdata/c14_dataset.tsv"),
+                   sep = "\t",
+                   encoding="UTF-8")
 df.tot <- df.tot[df.tot$Period %in% names(lcul_col), ] # only selected periods
 df.tot <- df.tot[!is.na(df.tot$Period), ]
 df.tot$tpq <- as.numeric(df.tot$tpq)
@@ -79,7 +84,7 @@ df.tot <- subset(df.tot, Longitude != 'NA') # without missing coords
 df.tot <- subset(df.tot, Latitude != 'NA')
 df.tot <- df.tot[!(is.na(df.tot$Latitude)) & !(is.na(df.tot$Longitude)),] # rm NA
 df.tot <- df.tot[df.tot$Latitude != 'NA' & df.tot$Longitude != 'NA',] # rm NA
-out.png.name <- 'neonet.png'
+out.png.name <- "neonet.png"
 
 df.tot$locationID <- df.tot$LabCode
 df.tot$secondLocationID <- paste(rownames(df.tot), "_selectedLayer", sep = "")
@@ -94,53 +99,53 @@ df.tot$taq <- as.numeric(df.tot$taq)
 
 # material type
 mat.type.life <- c("short life","long life","others")
-# df.tot$mat.life <- ifelse(df.tot$Material %in%  short.life, "short life",
-#                           ifelse(df.tot$Material %in%  long.life,"long life","others"))
+df.tot$mat.life <- ifelse(df.tot$Material %in%  short.life, "short life",
+                          ifelse(df.tot$Material %in%  long.life,"long life","others"))
 hotcols <- c("Country", "SiteName", "Period", "PhaseCode", # "Culture",
              "Longitude","Latitude",
              "tpq", "taq",
              "LabCode", "C14Age", "C14SD", "Material", "mat.life",
-             "bib", "bib_url", "colors")
+             "bib", "bib_url")
 refcols <- c(hotcols, c("locationID", "secondLocationID"))
 df.tot <- df.tot[ , c(refcols, setdiff(names(df.tot), refcols))]
 df.tot <- df.tot[ , refcols] # exclude other columns
 # replace values
 df.tot[df.tot==""] <- "unknown"
 df.tot$lbl <- NA
-# # labels
-# for (i in seq(1, nrow(df.tot))){
-#   # popup notification
-#   desc <- paste(sep = "<br/>",
-#                 paste0("<b>", df.tot[i,"SiteName"],"</b> / ",
-#                        df.tot[i,"Material"]," (", df.tot[i,"mat.life"],")"),
-#                 paste0("date: ", df.tot[i,"C14Age"], " +/- ", df.tot[i,"C14SD"],
-#                        " BP [", df.tot[i,"LabCode"],"]"),
-#                 paste0("tpq/taq: ", df.tot[i,"tpq"], " to ", df.tot[i,"taq"],
-#                        " cal BC"),
-#                 paste0("<span style='color: ", df.tot[i,"colors"],";'><b>", df.tot[i,"Period"], "</b></span>  ",
-#                 #paste0("period: ", df.tot[i,"Period"],
-#                        " <b>|</b> PhaseCode: <i>", df.tot[i,"PhaseCode"],
-#                        "</i> <br/>"))
-#   if(grepl("^http", df.tot[i,"bib_url"])){
-#     # for href, if exist
-#     desc <- paste0(desc, 'ref: <a href=', shQuote(paste0(df.tot[i, 'bib_url'])),
-#                    "\ target=\"_blank\"", ">", df.tot[i, 'bib'], "</a>")
-#   } else {desc <- paste0(desc, "ref: ", df.tot[i, "bib"])}
-#   df.tot[i, "lbl"]  <- desc
-# }
+# labels
+for (i in seq(1, nrow(df.tot))){
+  # popup notification
+  desc <- paste(sep = "<br/>",
+                paste0("<b>", df.tot[i,"SiteName"],"</b> / ",
+                       df.tot[i,"Material"]," (", df.tot[i,"mat.life"],")"),
+                paste0("date: ", df.tot[i,"C14Age"], " +/- ", df.tot[i,"C14SD"],
+                       " BP [", df.tot[i,"LabCode"],"]"),
+                paste0("tpq/taq: ", df.tot[i,"tpq"], " to ", df.tot[i,"taq"],
+                       " cal BC"),
+                paste0("<span style='color: ", df.tot[i,"colors"],";'><b>", df.tot[i,"Period"], "</b></span>  ",
+                #paste0("period: ", df.tot[i,"Period"],
+                       " <b>|</b> PhaseCode: <i>", df.tot[i,"PhaseCode"],
+                       "</i> <br/>"))
+  if(grepl("^http", df.tot[i,"bib_url"])){
+    # for href, if exist
+    desc <- paste0(desc, 'ref: <a href=', shQuote(paste0(df.tot[i, 'bib_url'])),
+                   "\ target=\"_blank\"", ">", df.tot[i, 'bib'], "</a>")
+  } else {desc <- paste0(desc, "ref: ", df.tot[i, "bib"])}
+  df.tot[i, "lbl"]  <- desc
+}
 df.tot$idf <- seq(1, nrow(df.tot))
 # colors
 Periods <- as.factor(unique(df.tot$Period))
 # restrict on recorded period
-# lcul_col <- lcul_col[names(lcul_col) %in% unique(df.tot$Period)]
-# myColors <- c()
-# for (i in names(lcul_col)){
-#   myColors <- c(myColors, as.character(lcul_col[i]))
-# }
-# # df.tot$colors <- NA
-# for (i in seq(1:nrow(df.tot))){
-#   df.tot[i,"colors"] <- toupper(as.character(lcul_col[df.tot[i, "Period"]]))
-# }
+lcul_col <- lcul_col[names(lcul_col) %in% unique(df.tot$Period)]
+myColors <- c()
+for (i in names(lcul_col)){
+  myColors <- c(myColors, as.character(lcul_col[i]))
+}
+# df.tot$colors <- NA
+for (i in seq(1:nrow(df.tot))){
+  df.tot[i,"colors"] <- toupper(as.character(lcul_col[df.tot[i, "Period"]]))
+}
 # labels
 for (i in seq(1, nrow(df.tot))){
   # popup notification
@@ -169,9 +174,10 @@ df.tot.sp <- SpatialPointsDataFrame(coords = xy,
                                     data = df.tot,
                                     proj4string = CRS("+proj=longlat +datum=WGS84"))
 tit <- HTML(paste0('NEONET ',
-                   'Radiocarbon dates by Location, Chronology and Material Life Duration'))
-b64 <- base64enc::dataURI(file = "neonet.png", 
-                          mime = "image/png") # load image
+                   'Radiocarbon dates by Location, Chronology and Material Life Duration (dev. vers.)'))
+neonet.logo.path <- paste0(dirname(getwd()), "/doc/img/neonet.png")
+# print(neonet.logo.path)
+b64 <- base64enc::dataURI(file = neonet.logo.path) # load image
 data.credits <- HTML(paste0(' <b> Data gathering: </b>',
                             '<ul>',
                             '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-9315-3625")), "\ target=\"_blank\"",
@@ -185,7 +191,7 @@ data.credits <- HTML(paste0(' <b> Data gathering: </b>',
                             '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-1642-548X")), "\ target=\"_blank\"",
                             '> F. Xavier Oms</a>: oms@ub.edu, </li>',
                             '</ul>'))
-
+print("neonet.logo.path")
 # website for documentation
 webpage.app <- "http://shinyserver.cfs.unipi.it:3838/neonet/index.html"
 app.page <- paste0('<a href=',shQuote(webpage.app),"\ target=\"_blank\"",'>http://shinyserver.cfs.unipi.it:3838/neonet/index.html</a>')
@@ -207,11 +213,6 @@ app.website <- HTML(paste0(' <b> Documentation: </b> ',
                            '<li>', app.page,
                            '</li>',
                            '</ul>'))
-# app.devsite <- HTML(paste0(' <b> App dev: </b> ',
-#                            '<ul>',
-#                            '<li>', app.dev,
-#                            '</li>',
-#                            '</ul>'))
 all.credits <- paste0(app.website, "<br>",
                       app.credits, "<br>",
                       data.credits, "<br>",
@@ -414,7 +415,7 @@ server <- function(input, output, session) {
       style = "bootstrap",
       class = "compact",
       width = "100%",
-      editable = F, # TODO: F
+      editable = F,
       callback = JS("table.on('click.dt', 'td', function() {
                                Shiny.onInputChange('click', Math.random());
                 });"),
@@ -567,16 +568,6 @@ server <- function(input, output, session) {
     # legende.per <- legende.per[order(match(legende.per, names(lcul_col)))]
     legende.per <- names(lcul_col)[names(lcul_col) %in% legende.per] # existing periods, ordered
     legende <- lcul_col[legende.per] # filter
-    # legende <- unique(filteredData()@data[c("Period", "colors")])
-    # legende <- legende[legende$colors %in% as.character(lcul_col), ]
-    # legende <- legende[legende$Period %in% names(lcul_col), ]
-    # legende_ord <- legende[match(names(lcul_col), legende$Period),] # réordonne sur liste Didier
-    # legende_ord <- legende_ord[!is.na(legende_ord$colors), ]
-    # legende_ord <- legende_ord[!is.na(legende_ord$Period), ]
-    # legende_ord <- legende_ord[complete.cases(legende_ord), ]
-    # row.names(legende_ord) <- 1:nrow(legende_ord)
-    # print(legende.per)
-    # print(legende)
     if (nrow(filteredData()) > 0) {
       df_colors <-  data.frame(color = filteredData()@data$colors,
                                material = filteredData()@data$Material,
@@ -591,19 +582,7 @@ server <- function(input, output, session) {
         clearMarkers() %>%
         addLayersControl(
           baseGroups = c('OSM', 'Ortho')) %>%
-        # addLabelOnlyMarkers(0,
-        #                     45.5,
-        #                     label=paste(as.character(legende), collapse = ","), #paste(legende_ord$colors[4], legende_ord$Period[4]),
-        #                     labelOptions = labelOptions(noHide = T, direction = 'top', textOnly = T, textsize = "15px"))  %>%
-        # addLabelOnlyMarkers(0,
-        #                     45,
-        #                     label=paste(names(legende), collapse = ","), #paste(legende_ord$colors[5], legende_ord$Period[5]),
-        #                     labelOptions = labelOptions(noHide = T, direction = 'top', textOnly = T, textsize = "15px"))  %>%
         addLegend("bottomleft",
-                  # colors = legende_ord$colors, # not working, disordered
-                  # labels= legende_ord$Period, # not working, disordered
-                  # colors = as.vector(legende_ord$colors), # not working, disordered
-                  # labels = as.vector(legende_ord$Period), # not working, disordered
                   colors = as.character(legende),
                   labels = names(legende),
                   title = "Periods",
@@ -623,7 +602,6 @@ server <- function(input, output, session) {
                            popup = ~lbl,
                            clusterId  = "grouped",
                            fillColor = ~colors,
-                           # fillColor = df_colors$color,
                            color = "black",
                            opacity = 0.7,
                            fillOpacity = 0.7,
@@ -702,7 +680,7 @@ server <- function(input, output, session) {
     # threshold of n
     if(nrow(some_14C) < nsites.14C.cal){
       output$rdpd <- renderImage({
-        # TODO: show message "Wait"
+        # TODO: loading message
         # A temp file to save the output.
         # This file will be removed later by renderImage
         outfile <- tempfile(fileext = '.png')

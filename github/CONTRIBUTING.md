@@ -2,11 +2,15 @@
 
 This outlines how to propose a change to ***NeoNet***. The purpose of this GitHub repository is to gather contributions in order to improve the quality of the RShiny application and develop new functionalities, in a FAIR Science perspective.
 
-## Fixing typos
+## Fixing typos, code writing
 
-When relevant, you can fix typos, spelling mistakes, or grammatical errors in the app and the documentation (`.Rd` files) directly using the GitHub web interface.  
+You can fix typos, spelling mistakes, or grammatical errors in the app directly using the GitHub web interface.  
 
-## Bigger changes
+## Small changes
+
+* During the on-the-fly calibration process, that can last a long time, a "loading" message should be plotted.
+
+## Big changes
 
 To develop the versatility of the package, we encourage contributions directly related to:
 
