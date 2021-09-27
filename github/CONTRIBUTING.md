@@ -1,23 +1,18 @@
 # Contributing to ***NeoNet***
 
-This outlines how to propose a change to ***NeoNet***. The purpose of this GitHub repository is to gather contributions in order to improve the quality of the RShiny application and develop new functionalities, in a FAIR Science perspective.
+This outlines how to propose a change to ***NeoNet***. The purpose of this GitHub repository is to gather contributions in order to improve the dataset, the RShiny app, in a FAIR Science perspective.
 
-## Fixing typos, code writing
+## Contribute to the **NeoNet dataset** and **NeoNet app**
 
-You can fix typos, spelling mistakes, or grammatical errors in the app directly using the GitHub web interface.  
+* The current dataset is expected to the extended to the Middle and Southern European Atlantic watershed. See the [web tutorial](https://zoometh.github.io/neonet/). New unit test functions are needed to control the dataset before its processing
 
-## Small changes
+* You can fix typos, spelling mistakes, or grammatical errors in the app directly using the GitHub web interface.  
 
 * During the on-the-fly calibration process, that can last a long time, a "loading" message should be plotted.
 
-## Big changes
+* We expect to integrate the Bayesian modeling of [PhaseCode](#mf.phasecode) during the calibration process ([**calib** panel](#panel.calib)) with [RChronoModel](https://cran.r-project.org/web/packages/RChronoModel/index.html) functions 
 
-To develop the versatility of the package, we encourage contributions directly related to:
-
-* **Bayesian modelling** The next planned development concerns the construction of a **chronological model with Bayesian statistics for the different 'PhaseCode' within a single site**. Specifically, this means to integrate [RChronoModel functions](https://cran.r-project.org/web/packages/RChronoModel/index.html) during the calibration process.  
-
-If you want to make a bigger change, it's a good idea to first file an issue and make sure someone from the team agrees that it's needed. If you've found a bug, please file an issue that illustrates the bug with a minimal 
-[reprex](https://www.tidyverse.org/help/#reprex) (this will also help you write a unit test, if needed).
+If you want to make a bigger change, or if you've found a bug, it's a good idea to first [file an issue](https://github.com/zoometh/neonet/blob/main/github/ISSUE_TEMPLATE.md), where possible, using  [reprex](https://www.tidyverse.org/help/#reprex).
 
 ### Pull request process
 
