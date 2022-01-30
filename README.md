@@ -1,7 +1,7 @@
 # ***NeoNet*** app <br> development version <img src="doc/img/neonet.png" width='150px' align="right"/>
 > Thomas Huet, Niccolo Mazzucco, Miriam Cubas Morera, Juan Gibaja, and F. Xavier Oms
 
-***NeoNet app*** is a R Shiny app for mapping radiocarbon dates (C14) from Late Mesolithic/Early Neolithic transition in the North Central-Western Mediterranean watershed. The app offers a mobile geographical window and different other tools for selection of dates by location, by chronology, and by the quality of dates. 
+***NeoNet app*** is an R Shiny app for mapping radiocarbon dates (C14) of the Late Mesolithic/Early Neolithic transition in the North Central-Western Mediterranean watershed. The app offers a mobile geographical window and different other tools for the selection of dates by location, by chronology, and by the quality of dates. 
   
 The <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank">stable version of the <b>NeoNet app</b></a> is hosted online by the [University of Pisa](https://www.unipi.it/index.php/english). This GitHub repository host:  
 
