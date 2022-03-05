@@ -1,0 +1,92 @@
+---
+title: "Checks"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(openxlsx)
+data.path <- "C:/Rprojects/neonet/data/"
+data.name <- "140_id00140_doc_elencoc14.xlsx"
+data.idf <- paste0(data.path, data.name)
+data.df <- read.xlsx(data.idf)
+
+legend.n.tot <- function(x){
+  text <- paste0("<span style='color:green'><b>", x,"</b></span>")
+  return(text)
+}
+
+legend.n.disp <- function(x){
+  text <- paste0("<span style='color:red'><b>", x,"</b></span>")
+  return(text)
+}
+
+legend.var <- function(n.disp.records, n.tot.rec){
+  text <- paste0("<span style='color:red'><b>", n.disp.records,"</b></span>", 
+                 "/",
+                 "<span style='color:green'><b>", n.tot.rec,"</b></span>")
+  return(text)
+}
+```
+
+This Rmd document identify correct records (`OK`) and ones with issues (`KO`).  
+
+**Correctness of records is checked by studied variable**. In <span style='color:red'><b>red</b></span>, the number of available records for this variable. In <span style='color:green'><b>green</b></span>, the total number of records in the original dataset, e.g. `r legend.var(2455, 2500)`. The difference between these two numbers is number of missing data for this studied variable.  
+
+
+## Summary
+
+```{r Summary, echo=FALSE, warning = FALSE, message = FALSE}
+#The identifier (`idf`) of the individuals is the LabCode columns by default
+n.tot.rec <- nrow(data.df)
+n.tot.var <- ncol(data.df)
+```
+
+The total number of records in the original dataset is `r legend.n.tot(n.tot.rec)`. These records are described by `r n.tot.var` variables:
+
+```{r SummaryVar, echo=FALSE, warning = FALSE, message = FALSE}
+library(knitr)
+library(kableExtra)
+data.df <- as.data.frame(sapply(data.df, function(x) trimws(x)))   # rm leading/trailing spaces
+data.df.classes <- sapply(data.df, class)
+kable(data.df.classes)
+```
+
+
+## Coordinates
+
+
+```{r coordinates, echo=FALSE, warning = FALSE, message = FALSE}
+library(dplyr)
+library(leaflet)
+# working copy
+df.coord <- data.df
+# convert to appropriate type
+df.coord$Longitude <- as.numeric(df.coord$Longitude)
+df.coord$Latitude <- as.numeric(df.coord$Latitude)
+### collect KO dates
+## NA data
+# Long
+df.coord.long.ko <- df.coord[is.na(data.df$Longitude), ]
+df.coord.long.ko.idf <- df.coord.long.ko$LabCode
+# Lat
+df.coord.lat.ko <- df.coord[is.na(data.df$Latitude), ]
+df.coord.lat.ko.idf <- df.coord.lat.ko$LabCode
+# Long or Lat
+df.coord.ko <- df.coord[(is.na(df.coord$Longitude) | is.na(df.coord$Latitude)), ]
+### collect OK dates
+df.coord.ok <- df.coord[(!is.na(df.coord$Longitude) & !is.na(df.coord$Latitude)), ]
+n.disp.records <- n.tot.rec - nrow(df.coord.ko)
+legend.var.txt <- legend.var(n.disp.records, n.tot.rec)
+leaflet(width = "80%", height = "600px") %>%
+  addTiles(group = 'OSM') %>%
+  addControl(legend.var.txt, 
+             position = "bottomright") %>%
+  addProviderTiles(providers$Esri.WorldImagery, group='Esri.WorldImagery') %>%
+  addMarkers(df.coord.ok$Longitude,
+             df.coord.ok$Latitude,
+             label = df.coord.ok$SiteName) %>%
+  addLayersControl(
+    baseGroups = c('OSM', 'Esri.WorldImagery')) %>%
+  addScaleBar(position = "bottomleft")
+```

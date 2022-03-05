@@ -1,8 +1,9 @@
 library(rcarbon)
 
-source("R/plot_stackSPD.R") # adapted from radiocarbon::plot_stackSPD.R to fetch the selected colors
+source("R/plot_stackSPD.R") # adapted from rcarbon::plot.stackCalSPD.R to fetch the selected colors
 c14.db.url <- 'http://mappaproject.arch.unipi.it/mod/files/140_id00140_doc_elencoc14.tsv'
-c14 <- read.table(c14.db.url, sep = "\t", header = TRUE, stringsAsFactors = F)
+c14.db.url <- 'C:/Users/Thomas Huet/Desktop/140_id00140_doc_elencoc14_rvTH.tsv'
+c14 <- read.table(c14.db.url, sep = "\t", header = TRUE, stringsAsFactors = F, quote="")
 shown.per <- c("EM", "MM", "LM", "EN", "MN", "LN", "others")
 shown.per.colors <- c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B", "#FF8D1B", "#FFC04D", "#808080")
 unshown.per <- c("LMEN", "MNLN", "n/a", "UM", "UM ou EM ?", "EM ?", "UN")

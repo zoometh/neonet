@@ -38,6 +38,24 @@ Once selected, the radiocarbon dates can be calibrated on-the-fly, separately or
   
 </center>
 
+## Citation
+
+The NeoNet dataset has been published in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/) under this BibTex reference:
+
+```
+@article{Huet22,
+  author = {Huet, Thomas and Cubas, Miriam and Gibaja, Juan .F. and Oms, F. Xavier and Mazzucco, Niccolo},
+  title = {NeoNet Dataset. Radiocarbon Dates for the Late Mesolithic/Early Neolithic Transition in the North Central-Western Mediterranean Basin},
+  journal = {Journal of Open Archaeology Data},
+  year = {2022},
+  volume = {10},
+  number = {3},
+  pages = {1-8},
+  doi={10.5334/joad.87},
+}
+```
+
+
 ## Contacts
 
 * [Thomas Huet](mailto:thomashuet7@gmail.com)
