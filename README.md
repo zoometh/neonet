@@ -57,18 +57,17 @@ The NeoNet dataset has been published in the [Journal of Open Archaeology Data](
 
 ## Futur work
 
-We plan to publish the southwestern Atlantic counterpart of the NeoNet dataset, improving some functionalities of the NeoNet app:
+We plan to publish the southwestern Atlantic counterpart of the NeoNet dataset, improving some functionalities of the app:
 
 * download button for the selected dataset
 
 * set *tpq* and *taq* limits for the SPDs
   
+<p align="center">
+  <img width="500" src="doc/img/watersheds.png">
+</p>
 <center>
-  
-![](doc/img/watersheds.png)
-  
-</center>
-  
+
 ## Contacts
 
 * [Thomas Huet](mailto:thomashuet7@gmail.com)
