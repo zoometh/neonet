@@ -62,13 +62,13 @@ We plan to publish the southwestern Atlantic counterpart of the NeoNet dataset, 
 * download button for the selected dataset
 
 * set *tpq* and *taq* limits for the SPDs
-
+  
 <center>
   
 ![](doc/img/watersheds.png)
   
 </center>
-
+  
 ## Contacts
 
 * [Thomas Huet](mailto:thomashuet7@gmail.com)
