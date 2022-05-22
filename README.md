@@ -54,7 +54,7 @@ We plan to publish the southwestern Atlantic counterpart of the NeoNet dataset, 
 * set *tpq* and *taq* limits for the SPDs
   
 <p align="center">
-  <img width="500" src="doc/img/watersheds.png">
+  <img width="500" src="doc/img/watersheds.png"><br>
   <a href="https://zoometh.github.io/neonet/doc/img/neonet_atl.html" target="_blank">map NeoNet atlantique</a>
 </p>
 <center>
