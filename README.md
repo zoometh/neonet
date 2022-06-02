@@ -1,27 +1,31 @@
-# ***NeoNet*** Rshiny app <br> development version <img src="doc/img/neonet.png" width='150px' align="right"/>
-> Thomas Huet, Niccolo Mazzucco, Miriam Cubas Morera, Juan Gibaja and F. Xavier Oms
+# ***NeoNet*** app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
+> [Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk), [Niccolò Mazzucco](mailto:niccolo.mazzucco@unipi.it), [Miriam Cubas Morera](mailto:mcubas.morera@gmail.com), [Juan Gibaja](mailto:jfgibaja@gmail.com), [F. Xavier Oms](mailto:oms@ub.edu), [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com), [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com), [Gregor Marchand](mailto:gregor.marchand@univ-rennes1.fr)
 
-***NeoNet app*** is an R Shiny app for mapping radiocarbon dates (C14) of the Late Mesolithic/Early Neolithic transition in the North Central-Western Mediterranean watershed. The app offers a mobile geographical window and different other tools for the selection of dates by location, by chronology, and by the quality of dates. 
+The ***NeoNet app*** is an R Shiny application for mapping radiocarbon (C14) dates from the Late Mesolithic/Early Neolithic transition in the North-Central Mediterranean and European South Atlantic river basin. The application offers a mobile geographic window for date selection by location, various filters on chronology and date quality, a calibration window, and other tools to create a user-friendly interface supported by a curated dataset of radiocarbon dates and archaeological contexts. 
 
-## Stable version
+## *NeoNet Mediterranean* stable version
 
-The <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank">stable version of the <b>NeoNet app</b></a> is hosted online by the [University of Pisa](https://www.unipi.it/index.php/english). 
+The NeoNet app **stable version** focus on the north-central Mediterranean river basin. The app is hosted online on the server of the University of Pisa: <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank">http://shinyserver.cfs.unipi.it:3838/C14/</a>. This NeoNet app uses the this [published](https://github.com/zoometh/neonet#citation) radiocarbon dataset:<a href="https://doi.org/10.13131/archelogicadata-yb11-yb66" target="_blank">https://doi.org/10.13131/archelogicadata-yb11-yb66</a>
+ 
 
 ### Overview
+> Further explanations can be found in the [web tutorial] (https://zoometh.github.io/neonet/)
   
-  
+The region of interest (ROI) is the North-Western Mediterranean river basin.
+
 ![](doc/img/panel_map.png)
   
+The time span from is focused on the Late Mesolithic/Early Neolithic transition, i.e. the last hunter-gatherers (HG) and the first farmers (EF).
   
 ![](doc/img/neonet_calib_spd.png)
   
-Once selected, the radiocarbon dates can be calibrated on-the-fly, separately or grouped by layers, sites, periods, and the seriated summed probability densities (SPD) plots of these dates can be downloaded. See the [web tutorial](https://zoometh.github.io/neonet/).
-  
+The NeoNet web app allows you to select radiocarbon dates on the map and calibrate them on the fly. Each date can be displayed separately or grouped with other dates by layers, sites and periods. Dates are presented ordered on their summed probability densities (SPDs) averages. These graphs can be downloaded. 
+
 ![](doc/img/neonet_calib_example.png)
   
-## Citation
+### Citation
 
-The NeoNet dataset has been published in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/) under this BibTex reference:
+The NeoNet Mediteranean dataset has been published in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/) under this BibTex reference:
 
 ```
 @article{Huet22,
@@ -35,9 +39,11 @@ The NeoNet dataset has been published in the [Journal of Open Archaeology Data](
   doi={10.5334/joad.87},
 }
 ```
-## Development version
+## *NeoNet Atlantic* development version
 
- This GitHub repository host the development version of the app, with:
+We aim to continue the development of the dataset by encompassing the <a href="https://zoometh.github.io/neonet/doc/img/neonet_atl.html" target="_blank">European South Atlantic river basin</a>. New functionalities will be added to the app (download button for the selected dataset, possibility to set *tpq* and *taq* limits for the SPDs, etc.)
+  
+This GitHub aims to gather collaborations for the future version of the app, with:
  
 * R computer scripts: [R/](https://github.com/zoometh/neonet/tree/main/R) folder
 
@@ -47,36 +53,9 @@ The NeoNet dataset has been published in the [Journal of Open Archaeology Data](
 
 * BibTex references: [inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder
 
+---
 
-To contribute to the development version of the app, or the dataset, check the [contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md) and the [relevant license](https://github.com/zoometh/neonet/blob/master/LICENSE)
+If you want to contribute to the development version of the app, or the dataset, check the [contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md) and the [relevant license](https://github.com/zoometh/neonet/blob/master/LICENSE)
 
 
-
-## Futur work
-
-We plan to publish the southwestern Atlantic counterpart of the NeoNet dataset, improving some functionalities of the app:
-
-* download button for the selected dataset
-
-* set *tpq* and *taq* limits for the SPDs
-  
-<p align="center">
-  <img width="500" src="doc/img/watersheds.png"><br>
-  <a href="https://zoometh.github.io/neonet/doc/img/neonet_atl.html" target="_blank">map NeoNet atlantique</a>
-</p>
-<center>
-
-## Contacts
-
-* [Thomas Huet](mailto:thomashuet7@gmail.com)
-
-* [Niccolo Mazzucco](mailto:niccolo.mazzucco@unipi.it)
-
-* [Miriam Cubas Morera](mailto:mcubas.morera@gmail.com)
-
-* [Juan Gibaja](jfgibaja@gmail.com)
-
-* [F. Xavier Oms](oms@ub.edu)
-
-* [António Faustino Carvalho](a.faustino.carvalho@gmail.com)
   
