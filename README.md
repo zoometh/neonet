@@ -9,7 +9,7 @@ The NeoNet app **stable version** focus on the north-central Mediterranean river
  
 
 ### Overview
-> <sub><sup>Further explanations can be found in the [web tutorial] (https://zoometh.github.io/neonet/)</sup></sub>
+> <sub>Further explanations can be found in the [web tutorial](https://zoometh.github.io/neonet/)</sub>
   
 The region of interest (ROI) is the North-Western Mediterranean river basin.
 
