@@ -2,21 +2,12 @@
 > Thomas Huet, Niccolo Mazzucco, Miriam Cubas Morera, Juan Gibaja and F. Xavier Oms
 
 ***NeoNet app*** is an R Shiny app for mapping radiocarbon dates (C14) of the Late Mesolithic/Early Neolithic transition in the North Central-Western Mediterranean watershed. The app offers a mobile geographical window and different other tools for the selection of dates by location, by chronology, and by the quality of dates. 
-  
-The <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank">stable version of the <b>NeoNet app</b></a> is hosted online by the [University of Pisa](https://www.unipi.it/index.php/english). This GitHub repository host:  
 
-* the development version of the app is ([R/](https://github.com/zoometh/neonet/tree/main/R) folder)
+## Stable version
 
-* a sample dataset (n = 100 dates) ([inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder)
+The <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank">stable version of the <b>NeoNet app</b></a> is hosted online by the [University of Pisa](https://www.unipi.it/index.php/english). 
 
-* a correspondance table ([inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder)
-
-* BibTex references ([inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder)
-
-
-To contribute to the development version of the app, or the dataset, check the [contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md) and the [relevant license](https://github.com/zoometh/neonet/blob/master/LICENSE)
-
-## Overview
+### Overview
   
   
 ![](doc/img/panel_map.png)
@@ -44,6 +35,22 @@ The NeoNet dataset has been published in the [Journal of Open Archaeology Data](
   doi={10.5334/joad.87},
 }
 ```
+## Development version
+
+ This GitHub repository host the development version of the app, with:
+ 
+* R computer scripts: [R/](https://github.com/zoometh/neonet/tree/main/R) folder
+
+* a sample dataset (n = 100 dates): [inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder
+
+* a correspondance table: [inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder
+
+* BibTex references: [inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder
+
+
+To contribute to the development version of the app, or the dataset, check the [contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md) and the [relevant license](https://github.com/zoometh/neonet/blob/master/LICENSE)
+
+
 
 ## Futur work
 
