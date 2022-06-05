@@ -467,7 +467,7 @@ When the DOI is lacking, the bibliographical reference should be include into th
   Material life duration are read from the GitHub  [c14_material_life.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_material_life.tsv) file. The two fields show the material type (column 1) and the material life duration (column 2), for example: 
   
 ```{r material.life, echo=FALSE, message=FALSE, fig.align="center", fig.fullwidth=TRUE, fig.cap="First rows of the material life duration equivalences"}
-c14mater.url <- 'https://raw.github.com/zoometh/neonet/master/inst/extdata/id00140_doc_thesaurus.tsv'
+c14mater.url <- 'https://raw.github.com/zoometh/neonet/master/inst/extdata/140_id00140_doc_thesaurus.tsv'
 c14mater <- read.csv(c14mater.url, sep = "\t")
 kable(head(c14mater),"html") %>%
   kable_styling(full_width = FALSE, position = "center", font_size=12)
