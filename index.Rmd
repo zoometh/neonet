@@ -51,7 +51,7 @@ path.img <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/"
 # map
 #path.img <- paste0(getwd(), "/doc/imgs/") # parent dir
 # panel.map <- image_read("../docs/imgs/panel_map.png")
-ws.roi <- paste0(path.img, "ws_roi.png")
+ws.roi <- paste0(path.img, "ws_med.png")
 panel.map <- paste0(path.img, "panel_map.png")
 panel.map.coords <- paste0(path.img, "panel_map_coords.png")
 panel.map.select <- paste0(path.img, "panel_map_select.png")
@@ -65,16 +65,17 @@ panel.infos.idx <- paste0(path.img, "panel_infos_idx.png")
 panel.biblio.idx <- paste0(path.img, "panel_biblio_idx.png")
 app.neonet.db.c14 <- paste0(path.img, "app_neonet_db_c14.png")
 
-data.c14 <- read.csv(paste0(getwd(), "/inst/extdata/c14_dataset.tsv"), sep = "\t")
+data.c14 <- read.csv(paste0(getwd(), "/inst/extdata/140_140_id00140_doc_elencoc14.tsv"), sep = "\t")
 # data.c14 <- data.c14[!is.na(data.c14$inTime) & !is.na(data.c14$inSpace), ]
 tot.nb <- nrow(data.c14)
 
-ws_roi <- readOGR("C:/Users/supernova/Dropbox/My PC (supernova-pc)/Documents/neonet/doc/data/wsh_roi.shp")
-df_ws_roi = data.frame(ws_roi)
-sp_ws_roi = SpatialPolygonsDataFrame(ws_roi, df_ws_roi)
-ws_roi_atl <- readOGR("C:/Users/supernova/Dropbox/My PC (supernova-pc)/Documents/neonet/doc/data/wsh_atl.shp")
-df_ws_roi_atl = data.frame(ws_roi_atl)
-sp_ws_roi_atl = SpatialPolygonsDataFrame(ws_roi_atl, df_ws_roi_atl)
+ws_med <- readOGR(paste0(getwd(), "/doc/data/wsh_med.shp"))
+df_ws_med = data.frame(ws_med)
+sp_ws_med = SpatialPolygonsDataFrame(ws_med, df_ws_med)
+
+ws_atl <- readOGR(paste0(getwd(), "/doc/data/wsh_atl.shp"))
+df_ws_atl = data.frame(ws_atl)
+sp_ws_atl = SpatialPolygonsDataFrame(ws_atl, df_ws_atl)
 
 
 # panel.map.coords <- image_read("../docs/imgs/panel_map_coords.png")
@@ -107,13 +108,13 @@ caption {
 ```
   
 
-```{r previewroi, screenshot.force = TRUE, echo=F, warning= F, fig.align='center', fig.cap="Preview of the current [NeoNet C14 dates dataset](#panel.data), in red, covering the Late Mesolithic/Early Neolithic transition of the North Central-Western Mediterranean watershed"}
+```{r previewroi, echo=F, warning= F, fig.align='center', fig.cap="Preview of the current [NeoNet C14 dates dataset](#panel.data), in red, covering the Late Mesolithic/Early Neolithic transition of the North Central-Western Mediterranean watershed"}
 # leaflet(width = "60%", height = "400px") %>%
 leaflet() %>%
   # setView(lng = -111.846061, lat = 36.115847, zoom = 12) %>%
   addProviderTiles(providers$Stamen.TerrainBackground, group='Terrain') %>%
   # addTiles(group = 'OSM') %>%
-  addPolygons(data = sp_ws_roi,
+  addPolygons(data = sp_ws_med,
               color = "red",
               # fillColor = 'red',
               fillOpacity = 0,
@@ -431,7 +432,7 @@ kable(df.bib,"html",escape = F) %>%
   kable_styling(full_width = FALSE, position = "center", font_size=12)
 ```
 
-When the DOI is lacking, the bibliographical reference should be include into the BibTex document [references.bib](https://raw.githubusercontent.com/zoometh/C14/master/shinyapp/references_france.bib) with the name of the first author and the two last digits of the year:
+When the DOI is lacking, the bibliographical reference should be include into the BibTex document [id00140_doc_reference.bib](https://raw.githubusercontent.com/zoometh/C14/master/shinyapp/references_france.bib) with the name of the first author and the two last digits of the year:
 
 ```{r test_label, wrapper=TRUE, eval=FALSE, echo=TRUE}
 @book{Guilaine93,
@@ -466,7 +467,7 @@ When the DOI is lacking, the bibliographical reference should be include into th
   Material life duration are read from the GitHub  [c14_material_life.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_material_life.tsv) file. The two fields show the material type (column 1) and the material life duration (column 2), for example: 
   
 ```{r material.life, echo=FALSE, message=FALSE, fig.align="center", fig.fullwidth=TRUE, fig.cap="First rows of the material life duration equivalences"}
-c14mater.url <- 'https://raw.github.com/zoometh/neonet/master/inst/extdata/c14_material_life.tsv'
+c14mater.url <- 'https://raw.github.com/zoometh/neonet/master/inst/extdata/id00140_doc_thesaurus.tsv'
 c14mater <- read.csv(c14mater.url, sep = "\t")
 kable(head(c14mater),"html") %>%
   kable_styling(full_width = FALSE, position = "center", font_size=12)
@@ -488,14 +489,14 @@ In the NeoNet app, this dataset is rendered with the ([DT package](https://cran.
 ## 4. **biblio** panel {#panel.biblio}
 ![](`r panel.biblio.idx`){width=25%}
   
-Bibliographical references are recorded in [references.bib](https://github.com/zoometh/neonet/blob/main/inst/extdata/references.bib) file. If only exist a BibTeX key, and no DOI, this file results of the join between the *bib_url* field of the C14 spreadsheet and the *references.bib*.
+Bibliographical references are recorded in [id00140_doc_reference.bib](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_reference.bib) file. If only exist a BibTeX key, and no DOI, this file results of the join between the *bib_url* field of the C14 spreadsheet and the *id00140_doc_reference.bib*.
   
 ```{r panel-biblio, echo=FALSE, message=FALSE, fig.align="center", fig.fullwidth=TRUE}
-# references.url <- 'https://raw.github.com/zoometh/neonet/master/inst/extdata/references.bib'
+# references.url <- 'https://raw.github.com/zoometh/neonet/master/inst/extdata/id00140_doc_reference.bib'
 # bib <- read.bib(references.url)
 # print(bib[4], style = "Bibtex")
 # library(utils)
-URL <- "https://raw.github.com/zoometh/neonet/master/inst/extdata/references.bib"
+URL <- "https://raw.github.com/zoometh/neonet/master/inst/extdata/id00140_doc_reference.bib"
 download.file(url = URL, destfile = basename(URL))
 bib <- read.bib(basename(URL))
 print(bib[1:2], style = "Bibtex")
@@ -561,19 +562,19 @@ kable(C14data.Pendimoun[sample(nrow(C14data.Pendimoun), 5), ], "html",
 
 
 
-```{r previewroiatl, screenshot.force = TRUE, echo=F, warning= F, fig.align='center', fig.cap="Preview of the future NeoNet dataset, in blue, covering the Middle and Southern European Atlantic watershed"}
+```{r previewroiatl, echo=F, warning= F, fig.align='center', fig.cap="Preview of the future NeoNet dataset, in blue, covering the Middle and Southern European Atlantic watershed"}
 # leaflet(width = "60%", height = "400px") %>%
 leaflet() %>%
   # setView(lng = -111.846061, lat = 36.115847, zoom = 12) %>%
   addProviderTiles(providers$Stamen.TerrainBackground, group='Terrain') %>%
   # addTiles(group = 'OSM') %>%
-  addPolygons(data = sp_ws_roi,
+  addPolygons(data = sp_ws_med,
               color = "red",
               # fillColor = 'red',
               fillOpacity = 0,
               opacity = .7,
               weight = 4) %>%
-    addPolygons(data = sp_ws_roi_atl,
+    addPolygons(data = sp_ws_atl,
               color = "blue",
               # fillColor = 'red',
               fillOpacity = 0,

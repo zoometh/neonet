@@ -41,7 +41,7 @@ The NeoNet Mediteranean dataset has been published in the [Journal of Open Archa
 ```
 ## *NeoNet Atlantic* development version
 
-We aim to continue the development of the dataset by encompassing the <a href="https://zoometh.github.io/neonet/doc/img/neonet_atl.html" target="_blank">European South Atlantic river basin</a>. New functionalities will be added to the app (download button for the selected dataset, possibility to set *tpq* and *taq* limits for the SPDs, etc.)
+The region of interest (ROI) is the <a href="https://zoometh.github.io/neonet/doc/img/neonet_atl.html" target="_blank">European South Atlantic river basin</a>. New functionalities will be added to the app (download button for the selected dataset, possibility to set *tpq* and *taq* limits for the SPDs, etc.)
   
 This GitHub aims to gather collaborations for the future version of the app, with:
  
