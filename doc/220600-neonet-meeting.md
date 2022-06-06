@@ -31,9 +31,9 @@ source("map.R", echo = FALSE)
 
 ![](img/RStudiocloud_map.png)
 
-5. Enlarge the map size clicking on Zoom (🔍) below the **Viewer** tab
+5. Enlarge the map size clicking on Zoom (🔎) below the **Viewer** tab
 
-## Task
+## Tasks
 *However tasks are participatives*
 
 * Niccolo:
