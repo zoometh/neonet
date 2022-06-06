@@ -1,6 +1,6 @@
 
-## Resources
 
+## Resources
 ### NeoNet atlantic
 
 * dataset:
@@ -25,12 +25,12 @@ After editing the Google Sheet, see the results on a map
 
 ![](img/RStudiocloud_opn.png)
 
-3. In the console window (down-left, in <span style="color:green"><b>green</b></span>), run: 
+3. In the console window (bottom-left, in <span style="color:green"><b>green</b></span>), run: 
 ```
 source("map.R", echo = FALSE)
 ```   
 
-4. To see the computed map, select the **Viewer** panel in the graphical output window (down-right, in <span style="color:yellow"><b>yellow</b></span>)
+4. To see the computed map, select the **Viewer** panel in the graphical output window (bottom-right, in <span style="color:yellow"><b>yellow</b></span>)
 
 ![](img/RStudiocloud_map.png)
 
