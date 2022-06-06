@@ -9,18 +9,29 @@ https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4Jy
 https://drive.google.com/file/d/1etzPAp8dL7HFpkMKlATbw3BvauxbaBWE/view?usp=sharing
 
 
-### map
+### interactive map
 
-Log In https://rstudio.cloud/
+After editing the Google Sheet, see the results on a map
+
+1. Log In https://rstudio.cloud/
 
     - Email: neonet.radiocarbon@gmail.com
     - Password: neonet-radi0c@rbon
 
-Select the project **map**
+2. Open the project **map**
 
-(see also: https://zoometh.github.io/neonet/doc/img/neonet_atl.html)
+![](img/RStudiocloud_opn.png)
 
+3. In the console window (down-left, in <span style="color:green"><b>green</b></span>), run: 
+```
+source("map.R", echo = FALSE)
+```   
 
+4. To see the computed map, select the **Viewer** tab in the graphical output window (down-right, in <span style="color:yellow"><b>yellow</b></span>)
+
+![](img/RStudiocloud_map.png)
+
+5. Enlarge the map size clicking on Zoom (🔍) below the **Viewer** tab
 
 ## Task
 *However tasks are participatives*
