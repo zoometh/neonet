@@ -1,5 +1,5 @@
 #' Create a leaflet interactive distribution map 
-#' @name plotly_surface_3d
+#' @name report_map
 #' @description To report the distribution of the radiocarbon dates, creates a leaflet interactive map from a Google Sheet sorted by BDs (MED, BDA, etc.)
 #'
 #' @param map.name the name of the output map and the name of the saved file (if export.plot is TRUE). By default "map".
@@ -11,7 +11,7 @@
 #'
 #' @examples
 #'
-#' report_map()
+#' report_map(map.name = "neonet_atl")
 #'
 #' @export
 library(googlesheets4)

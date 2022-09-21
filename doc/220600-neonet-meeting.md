@@ -50,7 +50,8 @@ http://shinyserver.cfs.unipi.it:3838/C14/
 * JOAD article:
 https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87/
 
-## Tasks (proposal)
+## 220600
+> Tasks (proposal)
 
 * Niccolo:
     - Overall standardization
@@ -69,3 +70,5 @@ https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87/
 
 * Antonio & Ana:
     - Portugal dataset & bibliographical references
+    
+## 220900
