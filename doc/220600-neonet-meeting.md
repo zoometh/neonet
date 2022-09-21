@@ -12,6 +12,23 @@ https://drive.google.com/file/d/1etzPAp8dL7HFpkMKlATbw3BvauxbaBWE/view?usp=shari
 * thesaurus:
 https://docs.google.com/spreadsheets/d/1cTj7c6W2anZ7-j2isivZ0xW4SlO3TB4fexwXRvaRSQ0/edit?usp=sharing
 
+### Other ressources
+
+* Current distribution map
+https://zoometh.github.io/neonet/results/neonet_atl
+
+* GitHub of the app:
+https://github.com/zoometh/neonet
+
+* Tutorial of the app & dataset:
+https://zoometh.github.io/neonet/
+
+* App:
+http://shinyserver.cfs.unipi.it:3838/C14/
+
+* JOAD article:
+https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87/
+
 ### Interactive map
 
 After editing the Google Sheet, see the results on a map
@@ -36,20 +53,6 @@ source("map.R", echo = FALSE)
 
 5. Enlarge the map size clicking on Zoom (🔎) below the **Viewer** panel
 
-### Other ressources
-
-* GitHub of the app:
-https://github.com/zoometh/neonet
-
-* Tutorial of the app & dataset:
-https://zoometh.github.io/neonet/
-
-* App:
-http://shinyserver.cfs.unipi.it:3838/C14/
-
-* JOAD article:
-https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87/
-
 ## 220600
 > Tasks (proposal)
 
@@ -72,3 +75,4 @@ https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87/
     - Portugal dataset & bibliographical references
     
 ## 220900
+
