@@ -11,7 +11,7 @@
 #'
 #' @examples
 #'
-#' report_map(map.name = "neonet_atl", export.plot = F)
+#' report_map(map.name = "neonet_atl", export.plot = T)
 #'
 #' @export
 library(googlesheets4)
@@ -26,12 +26,15 @@ report_map <- function(map.name = "map",
                        export.plot = T,
                        dirOut = "C:/Rprojects/neonet/results/"){
   # gg.url <- "https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4JyLEA/edit?usp=sharing"
-  db.atl <- read_sheet(data.path)
+  db.atl <- googlesheets4::read_sheet(data.path)
+  roi.layer <- DescTools::SplitPath(roi)$filename
+  ws_roi.shp <- sf::st_read(dsn = dirname(roi), layer = roi.layer)
+  ws_roi.shp.sp <- as(ws_roi.shp, "Spatial")
   
   n.BDs <- length(unique(db.atl$BD))
-  brewer.pal(n.BDs,"Set1")
+  # RColorBrewer::brewer.pal(n.BDs,"Set1")
   df.colors <- data.frame(BD = unique(db.atl$BD),
-                          color = brewer.pal(n.BDs, "Set1"))
+                          color = RColorBrewer::brewer.pal(n.BDs, "Set1"))
   db.atl <- merge(db.atl, df.colors, by = "BD", all.x = T)
   db.atl$lbl <- paste0("<b>", db.atl$SiteName," - ", db.atl$LabCode, "</b><br>",
                        db.atl$C14BP, " +/- ", db.atl$C14SD, "<br>",
@@ -40,6 +43,9 @@ report_map <- function(map.name = "map",
   neo.map <- leaflet(data = db.atl) %>%
     addProviderTiles(providers$"Esri.WorldImagery", group = "Ortho") %>%
     addProviderTiles(providers$"OpenStreetMap", group = "OSM") %>%
+    addPolygons(data = ws_roi.shp.sp,
+                color = "blue",
+                fillOpacity = 0) %>%
     # addTiles(group = 'OSM') %>%
     addCircleMarkers(layerId = ~LabCode, 
                      lng = ~Longitude,
