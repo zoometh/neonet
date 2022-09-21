@@ -11,7 +11,7 @@
 #'
 #' @examples
 #'
-#' report_map(map.name = "neonet_atl")
+#' report_map(map.name = "neonet_atl", export.plot = F)
 #'
 #' @export
 library(googlesheets4)
@@ -22,6 +22,7 @@ library(leaflet)
 
 report_map <- function(map.name = "map",
                        data.path = "https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4JyLEA/edit?usp=sharing",
+                       roi = "C:/Rprojects/neonet/doc/data/wsh_atl.shp",
                        export.plot = T,
                        dirOut = "C:/Rprojects/neonet/results/"){
   # gg.url <- "https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4JyLEA/edit?usp=sharing"
