@@ -4,3 +4,4 @@
 .Ruserdata
 inst/extdata/_*..tsv\$
 inst/extdata/*..xlsx\$
+results/
