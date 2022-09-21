@@ -1,24 +1,19 @@
-#' Create a plotly interactive distribution map 
+#' Create a leaflet interactive distribution map 
 #' @name plotly_surface_3d
-#' @description To report the distribution of the radiocarbon dates, creates a Plotly interactive map from a Google Sheet sorted by BDs (MED, BDA, etc.)
+#' @description To report the distribution of the radiocarbon dates, creates a leaflet interactive map from a Google Sheet sorted by BDs (MED, BDA, etc.)
 #'
-#' @param xyz a dataframe with X, Y, and Z columns for the surface
-#' @param scale the scale of the axis (mm, cm, etc.)
-#' @param marker a dataframe with X, Y, and Z columns of additional points. NA by default
-#' @param size.markers,color.markers,opacity.markers grahical parameters
-#' @param export.plot if TRUE export, if FALSE display
-#' @param xyz.name name of the output plot. Only useful when export.plot is TRUE
+#' @param map.name the name of the output map and the name of the saved file (if export.plot is TRUE). By default "map".
+#' @param data.path path to the dataset. By default, the shared Google Sheet
+#' @param export.plot if TRUE export (by default), if FALSE display
 #' @param dirOut name of the output folder. Only useful when export.plot is TRUE
 #'
-#' @return A dataframe
+#' @return A leaflet interactive map for the radiocarbon dates
 #'
 #' @examples
 #'
-#' xyz <- read_dat()
-#' plotly_surface_3d(xyz, export.plot = FALSE)
+#' report_map()
 #'
 #' @export
-
 library(googlesheets4)
 library(RColorBrewer)
 library(leaflet)
@@ -27,7 +22,8 @@ library(leaflet)
 
 report_map <- function(map.name = "map",
                        data.path = "https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4JyLEA/edit?usp=sharing",
-                       dirOut = paste0(system.file(package = "eamenaR"), "/results/")){
+                       export.plot = T,
+                       dirOut = "C:/Rprojects/neonet/results/"){
   # gg.url <- "https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4JyLEA/edit?usp=sharing"
   db.atl <- read_sheet(data.path)
   
@@ -64,5 +60,9 @@ report_map <- function(map.name = "map",
       baseGroups = c("Ortho", "OSM"),
       position = "topleft"
     )
-  htmlwidgets::saveWidget(neo.map, )
+  if(export.plot){
+    htmlwidgets::saveWidget(neo.map, paste0(dirOut, map.name, ".html"))
+  } else {
+    neo.map
+  }
 }
