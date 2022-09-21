@@ -14,8 +14,8 @@
 #' report_map(map.name = "neonet_atl", export.plot = T)
 #'
 #' @export
-library(googlesheets4)
-library(RColorBrewer)
+# library(googlesheets4)
+# library(RColorBrewer)
 library(leaflet)
 
 # gs4_deauth();gs4_auth()
@@ -37,7 +37,7 @@ report_map <- function(map.name = "map",
                           color = RColorBrewer::brewer.pal(n.BDs, "Set1"))
   db.atl <- merge(db.atl, df.colors, by = "BD", all.x = T)
   db.atl$lbl <- paste0("<b>", db.atl$SiteName," - ", db.atl$LabCode, "</b><br>",
-                       db.atl$C14BP, " +/- ", db.atl$C14SD, "<br>",
+                       db.atl$C14Age, " +/- ", db.atl$C14SD, "<br>",
                        db.atl$Period," - ",  db.atl$PhaseCode, "<br>",
                        "<b>", db.atl$BD,"</b>")
   neo.map <- leaflet(data = db.atl) %>%
