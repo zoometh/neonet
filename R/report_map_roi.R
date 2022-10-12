@@ -1,6 +1,6 @@
 #' Create a map with the ROI delimitation
 #' @name report_map_roi
-#' @description The shapefile 
+#' @description Create a 'vignette' map 
 #'
 #' @param map.name the name of the output map and the name of the saved file (if export.plot is TRUE). By default "map_roi".
 #' @param background the path to the SHP background.
@@ -15,8 +15,8 @@
 #' report_map_roi(roi = "C:/Rprojects/neonet/doc/data/wsh_atl.shp")
 #'
 #' @export
-library(sf)
-library(ggplot2)
+# library(sf)
+# library(ggplot2)
 
 report_map_roi <- function(map.name = "map_roi",
                            background = "C:/Rprojects/neonet/doc/data/admin_background.shp",

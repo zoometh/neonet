@@ -11,12 +11,12 @@
 #'
 #' @examples
 #'
-#' report_map(map.name = "neonet_atl", export.plot = T)
+#' report_map(map.name = "neonet_atl", export.plot = F)
 #'
 #' @export
 # library(googlesheets4)
 # library(RColorBrewer)
-library(leaflet)
+# library(leaflet)
 
 # gs4_deauth();gs4_auth()
 
@@ -40,30 +40,30 @@ report_map <- function(map.name = "map",
                        db.atl$C14Age, " +/- ", db.atl$C14SD, "<br>",
                        db.atl$Period," - ",  db.atl$PhaseCode, "<br>",
                        "<b>", db.atl$BD,"</b>")
-  neo.map <- leaflet(data = db.atl) %>%
-    addProviderTiles(providers$"Esri.WorldImagery", group = "Ortho") %>%
-    addProviderTiles(providers$"OpenStreetMap", group = "OSM") %>%
-    addPolygons(data = ws_roi.shp.sp,
-                color = "blue",
-                fillOpacity = 0) %>%
+  neo.map <- leaflet::leaflet(data = db.atl) %>%
+    leaflet::addProviderTiles(leaflet::providers$"Esri.WorldImagery", group = "Ortho") %>%
+    leaflet::addProviderTiles(leaflet::providers$"OpenStreetMap", group = "OSM") %>%
+    leaflet::addPolygons(data = ws_roi.shp.sp,
+                         color = "blue",
+                         fillOpacity = 0) %>%
     # addTiles(group = 'OSM') %>%
-    addCircleMarkers(layerId = ~LabCode, 
-                     lng = ~Longitude,
-                     lat = ~Latitude,
-                     weight = 1,
-                     radius = 3,
-                     popup = ~lbl,
-                     label = ~SiteName,
-                     fillColor = ~color,
-                     fillOpacity = .2,
-                     color = ~color,
-                     opacity = .8) %>%
-    addLegend("bottomright", 
-              colors = df.colors$color, 
-              labels = df.colors$BD,
-              title = "BDs",
-              opacity = 1) %>%
-    addLayersControl(
+    leaflet::addCircleMarkers(layerId = ~LabCode, 
+                              lng = ~Longitude,
+                              lat = ~Latitude,
+                              weight = 1,
+                              radius = 3,
+                              popup = ~lbl,
+                              label = ~SiteName,
+                              fillColor = ~color,
+                              fillOpacity = .2,
+                              color = ~color,
+                              opacity = .8) %>%
+    leaflet::addLegend("bottomright", 
+                       colors = df.colors$color, 
+                       labels = df.colors$BD,
+                       title = "BDs",
+                       opacity = 1) %>%
+    leaflet::addLayersControl(
       baseGroups = c("Ortho", "OSM"),
       position = "topleft"
     )
