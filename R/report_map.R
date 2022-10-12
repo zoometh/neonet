@@ -11,7 +11,7 @@
 #'
 #' @examples
 #'
-#' report_map(map.name = "neonet_atl", export.plot = F)
+#' report_map(map.name = "neonet_atl", export.plot = T)
 #'
 #' @export
 # library(googlesheets4)
@@ -36,10 +36,10 @@ report_map <- function(map.name = "map",
   df.colors <- data.frame(BD = unique(db.atl$BD),
                           color = RColorBrewer::brewer.pal(n.BDs, "Set1"))
   db.atl <- merge(db.atl, df.colors, by = "BD", all.x = T)
-  db.atl$lbl <- paste0("<b>", db.atl$SiteName," - ", db.atl$LabCode, "</b><br>",
-                       db.atl$C14Age, " +/- ", db.atl$C14SD, "<br>",
-                       db.atl$Period," - ",  db.atl$PhaseCode, "<br>",
-                       "<b>", db.atl$BD,"</b>")
+  db.atl$lbl <- paste0("<b>", db.atl$SiteName,"</b> [", db.atl$LabCode, "]<br>",
+                       "C14Age: <b>", db.atl$C14Age, " +/- ", db.atl$C14SD, "</b><br>",
+                       "Period: <b>", db.atl$Period,"</b> - PhaseCode:",  db.atl$PhaseCode, "<br>",
+                       "source BD: <b>", db.atl$BD,"</b>")
   neo.map <- leaflet::leaflet(data = db.atl) %>%
     leaflet::addProviderTiles(leaflet::providers$"Esri.WorldImagery", group = "Ortho") %>%
     leaflet::addProviderTiles(leaflet::providers$"OpenStreetMap", group = "OSM") %>%
