@@ -11,7 +11,7 @@
 #'
 #' @examples
 #'
-#' report_map(map.name = "neonet_atl", export.plot = T)
+#' report_map(map.name = "neonet_atl", export.plot = F)
 #'
 #' @export
 # library(googlesheets4)
