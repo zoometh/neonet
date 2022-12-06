@@ -18,6 +18,8 @@ output:
     toc_float:
       collapsed: false
       smooth_scroll: false
+    includes:
+      in_header: "favicon.html" 
 # output:
 #   html_document: 
 #     number_sections: yes
