@@ -3,7 +3,7 @@ title: |
   | **NeoNet app** and **dataset** <br>
   <span style='font-size: 20px'> Mapping radiocarbon dates from Late Mesolithic/Early Neolithic transition</style>
 pagetitle: "NeoNet app and dataset"
-author: "<span style='font-size: 15px'>Thomas Huet, Niccolo Mazzucco, Miriam Cubas, J. Francisco Gibaja, F. Xavier Oms, António Faustino Carvalho, Ana Catarina Basilio, and Gregor Marchand</style>"
+author: "<span style='font-size: 15px'>Thomas Huet, Niccolo Mazzucco, Miriam Cubas, J. Francisco Gibaja, F. Xavier Oms, António Faustino Carvalho, Ana Catarina Basilio, and Vincent Ard</style>"
 # date: "11/12/2020"
 header-includes:
   - \usepackage{float}u
