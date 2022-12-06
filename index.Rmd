@@ -640,7 +640,7 @@ Currently, the NeoNet database and app received the contributions of the [NeoNet
 + [F. Xavier Oms](mailto:oms@ub.edu)
 + [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com)
 + [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com)
-+ [Gregor Marchand](mailto:gregor.marchand@univ-rennes1.fr)  
++ [Vincent Ard](mailto:vincent.ard@cnrs.fr)  
 
 The NeoNet Mediteranean dataset has been published in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/) under this BibTex reference:
 
