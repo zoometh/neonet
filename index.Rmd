@@ -594,7 +594,7 @@ Follow the above recommendations
 
 ## Verifying data
 
-NeoNet brings together many of the dates already published. The most frequent work is to check the quality and standardise the archaeological information. here are a workflow that can save you time:
+NeoNet brings together many of the dates already published. The most frequent work is to check the quality and standardise the archaeological information. Here is a workflow that can save you time:
 
 * retrieve the archaeological information of a given date
 
