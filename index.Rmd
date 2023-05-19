@@ -3,7 +3,7 @@ title: |
   | **NeoNet app** and **dataset** <br>
   <span style='font-size: 20px'> Mapping radiocarbon dates from Late Mesolithic/Early Neolithic transition</style>
 pagetitle: "NeoNet app and dataset"
-author: "<span style='font-size: 15px'>Thomas Huet, Niccolo Mazzucco, Miriam Cubas, J. Francisco Gibaja, F. Xavier Oms, António Faustino Carvalho, Ana Catarina Basilio, and Vincent Ard</style>"
+author: "<span style='font-size: 15px'>Thomas Huet, Niccolo Mazzucco, Miriam Cubas, J. Francisco Gibaja, F. Xavier Oms, António Faustino Carvalho, Ana Catarina Basilio</style>"
 # date: "11/12/2020"
 header-includes:
   - \usepackage{float}u
@@ -66,6 +66,8 @@ panel.calib.example <-  paste0(path.img, "neonet_calib_example.png")
 panel.infos.idx <- paste0(path.img, "panel_infos_idx.png")
 panel.biblio.idx <- paste0(path.img, "panel_biblio_idx.png")
 app.neonet.db.c14 <- paste0(path.img, "app_neonet_db_c14.png")
+google_scholar <- paste0(path.img, "google_scholar.png")
+google_scholar_cite <- paste0(path.img, "google_scholar_cite.png")
 
 data.c14 <- read.csv(paste0(getwd(), "/inst/extdata/140_140_id00140_doc_elencoc14.tsv"), sep = "\t")
 tot.nb <- nrow(data.c14)
@@ -531,7 +533,7 @@ kable(df.samp[ , c("bib", "bib_url")], "html", row.names = FALSE) %>%
 Add the DOI value to the field. The DOI value starts with "`10`"
 
 * the DOI doesn't exists:
-The complete bibliographical reference has to be included into the BIB document (eg., [id00140_doc_reference.bib](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_reference.bib)). In the BIB file, the bibliographical reference keyis the name of the first author and the two last digits of the year (eg., **Guilaine93**):
+The complete bibliographical reference has to be included into the BIB document (eg., [id00140_doc_reference.bib](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_reference.bib)). In the BIB file, the bibliographical reference keyis the name of the first author and the two last digits of the year (eg., `Guilaine93`):
 
 ```
 @book{Guilaine93,
@@ -583,6 +585,44 @@ In the app, this BibTex file is rendered in HTML with an APA citation format (fi
 ![](`r panel.infos.idx`){width=25%}
 
 Infos & credits
+
+# **Adding** and **verifying** data
+
+## Adding data
+
+Follow the above recommendations
+
+## Verifying data
+
+NeoNet brings together many of the dates already published. The most frequent work is to check the quality and standardise the archaeological information. here are a workflow that can save you time:
+
+* retrieve the archaeological information of a given date
+
+- type the LabCode number of a date in Google Scholar, ex: `"OxA-14449"` (with the quotes)
+
+<center> ![](`r google_scholar`){width=75%} </center>
+
+* retrieve the bibtex or DOI of the date publication (cf. [bib](#mf.bib_url))
+
+- click on `Cite` (red square) and then on `BibTeX` (green square) buttons
+
+<center> ![](`r google_scholar_cite`){width=75%} </center>
+
+Then you can copy the bib reference as plain text and paste it in a file (any notepad, Word, Excel, etc.)
+
+```
+@article{moore2007project,
+  title={Project “Early farming in Dalmatia”: Danilo Bitinj 2004-2005 (Preliminary results)},
+  author={Moore, Andrew and Men{\dj}u{\v{s}}i{\'c}, Marko and Smith, Jennifer and Podrug, Emil},
+  journal={Vjesnik arheolo{\v{s}}kog muzeja u Zagrebu},
+  volume={40},
+  number={1},
+  pages={15--24},
+  year={2007},
+  publisher={Arheolo{\v{s}}ki muzej u Zagrebu}
+}
+```
+
 
 # **Developments**
 
@@ -642,7 +682,6 @@ Currently, the NeoNet database and app received the contributions of the [NeoNet
 + [F. Xavier Oms](mailto:oms@ub.edu)
 + [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com)
 + [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com)
-+ [Vincent Ard](mailto:vincent.ard@cnrs.fr)  
 
 The NeoNet Mediteranean dataset has been published in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/) under this BibTex reference:
 
