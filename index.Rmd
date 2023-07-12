@@ -3,7 +3,7 @@ title: |
   | **NeoNet app** and **dataset** <br>
   <span style='font-size: 20px'> Mapping radiocarbon dates from Late Mesolithic/Early Neolithic transition</style>
 pagetitle: "NeoNet app and dataset"
-author: "<span style='font-size: 15px'>Thomas Huet, Niccolo Mazzucco, Miriam Cubas, J. Francisco Gibaja, F. Xavier Oms, António Faustino Carvalho, Ana Catarina Basilio</style>"
+author: "<span style='font-size: 15px'>Thomas Huet, Niccolo Mazzucco, Miriam Cubas, J. Francisco Gibaja, F. Xavier Oms, António Faustino Carvalho, Ana Catarina Basilio and Elías López-Romero González de la Aleja</style>"
 # date: "11/12/2020"
 header-includes:
   - \usepackage{float}u
@@ -294,7 +294,7 @@ As said, the default basemap of the app is OSM. It offers a well documented base
 + relatively to the duration of their material (short to long-life material)
 + below a maximum accepted threshold for the standard deviations (SD) for the dates
 
-### calibrate one or various dates {#panel.map.calib}
+### calibrate dates {#panel.map.calib}
 
 The dates displayed in the [table of the **map panel**](#panel.map) will be calibrate when one of them has been clicked.
 
@@ -682,6 +682,7 @@ Currently, the NeoNet database and app received the contributions of the [NeoNet
 + [F. Xavier Oms](mailto:oms@ub.edu)
 + [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com)
 + [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com)
++ [Elías López-Romero González de la Aleja](elias.lopez-romero@iam.csic.es)
 
 The NeoNet Mediteranean dataset has been published in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/) under this BibTex reference:
 
