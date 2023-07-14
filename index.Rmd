@@ -382,7 +382,7 @@ At first, these data were recorded in an Excel-like spreadsheet in order to faci
   - **C14SD**: standard deviation (SD) of the radiocarbon date
 * [**LabCode**](#mf.labcode): the unique identifier of the radiocarbon date
 * [**Material**](#bd.material): a value from the [**material.life**](#bd.material) spreadsheet 
-* [**MaterialSpecies**]((#bd.materialspec): a specification of the field **Material**
+* [**MaterialSpecies**](#bd.materialspec): a specification of the field **Material**
 * **tpq**: *terminus post quem* in calibrated BC
 * **taq**: *terminus ante quem* in calibrated BC
 * [bibliographical references (**two fields**)](#mf.bib_all)
