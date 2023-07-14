@@ -15,15 +15,16 @@
 #'
 #' @examples
 #'
+#' # Default map plot (Google Sheet)
 #' report_map(map.name = "neonet_atl", export.plot = F)
+#' 
+#' # Export a map with data coming from an XLSX dataset
+#' report_map(export.plot = T, 
+#'            ggsheet = F,
+#'            data.path = "C:/Users/Thomas Huet/Downloads/NeoNet_atl_ELR.xlsx",
+#' )
 #'
 #' @export
-# library(googlesheets4)
-# library(RColorBrewer)
-# library(leaflet)
-
-# gs4_deauth();gs4_auth()
-
 report_map <- function(map.name = "neonet_atl",
                        ggsheet = TRUE,
                        data.path = "https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4JyLEA/edit?usp=sharing",
@@ -32,6 +33,7 @@ report_map <- function(map.name = "neonet_atl",
                        export.plot = T,
                        dirOut = "C:/Rprojects/neonet/results/",
                        verbose = TRUE){
+  # gs4_deauth();gs4_auth()
   # gg.url <- "https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4JyLEA/edit?usp=sharing"
   `%>%` <- dplyr::`%>%` # used to not load dplyr
   if(ggsheet){
@@ -95,8 +97,4 @@ report_map <- function(map.name = "neonet_atl",
   }
 }
 
-report_map(export.plot = T, 
-           #dirOut = "C:/Users/Thomas Huet/Desktop/NeoNet/",
-           ggsheet = F,
-           data.path = "C:/Users/Thomas Huet/Downloads/NeoNet_atl_ELR.xlsx",
-           )
+
