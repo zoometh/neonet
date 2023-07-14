@@ -48,7 +48,9 @@ report_map <- function(map.name = "neonet_atl",
   n.BDs <- length(unique(df.dates$BD))
   # RColorBrewer::brewer.pal(n.BDs,"Set1")
   df.colors <- data.frame(BD = unique(df.dates$BD),
-                          color = RColorBrewer::brewer.pal(n.BDs, "Dark2"))
+                          color = c("blue", "red", "orange", "pink", "violet", "yellow")[1:n.BDs]
+                          # color = RColorBrewer::brewer.pal(n.BDs, "Dark2")
+                          )
   df.dates <- merge(df.dates, df.colors, by = "BD", all.x = T)
   df.dates$lbl <- paste0("<b>", df.dates$SiteName,"</b> [", df.dates$LabCode, "]<br>",
                        "C14Age: <b>", df.dates$C14Age, " +/- ", df.dates$C14SD, "</b><br>",
@@ -59,8 +61,8 @@ report_map <- function(map.name = "neonet_atl",
   neo.map <- leaflet::leaflet(data = df.dates) %>%
     leaflet::addProviderTiles(leaflet::providers$"Esri.WorldImagery", group = "Ortho") %>%
     leaflet::addProviderTiles(leaflet::providers$"OpenStreetMap", group = "OSM") %>%
-    leaflet::addProviderTiles(leaflet::providers$"Stamen.Terrain", group = "Terrain") %>%
-    # leaflet::addProviderTiles(leaflet::providers$"Stamen.Terrain.Background", group = "Terrain-Bck") %>%
+    leaflet::addProviderTiles(leaflet::providers$"Stamen.TerrainBackground", group = "Terrain") %>%
+    # leaflet::addProviderTiles(leaflet::providers$"Thunderforest.Outdoors", group = "Default") %>%
     leaflet::addPolygons(data = ws_roi.shp.sp,
                          color = "blue",
                          fillOpacity = 0) %>%
@@ -73,9 +75,9 @@ report_map <- function(map.name = "neonet_atl",
                               popup = ~lbl,
                               label = ~SiteName,
                               fillColor = ~color,
-                              fillOpacity = .2,
+                              fillOpacity = .3,
                               color = ~color,
-                              opacity = .8) %>%
+                              opacity = 1) %>%
     leaflet::addLegend("bottomright", 
                        colors = df.colors$color, 
                        labels = df.colors$BD,
@@ -96,5 +98,11 @@ report_map <- function(map.name = "neonet_atl",
     neo.map
   }
 }
+
+# Export a map with data coming from an XLSX dataset
+report_map(export.plot = T,
+           ggsheet = F,
+           data.path = "C:/Users/Thomas Huet/Downloads/NeoNet_atl_ELR.xlsx",
+)
 
 
