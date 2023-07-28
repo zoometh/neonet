@@ -98,11 +98,3 @@ report_map <- function(map.name = "neonet_atl",
     neo.map
   }
 }
-
-# Export a map with data coming from an XLSX dataset
-report_map(export.plot = T,
-           ggsheet = F,
-           data.path = "C:/Users/Thomas Huet/Downloads/NeoNet_atl_ELR.xlsx",
-)
-
-
