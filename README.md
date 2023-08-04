@@ -17,7 +17,7 @@ The time span from is focused on the Late Mesolithic/Early Neolithic transition,
   
 ![](doc/img/neonet_calib_spd.png)
 
-Conventional period colors are listes [here](https://github.com/zoometh/neonet/blob/main/inst/extdata/periods.tsv).
+Conventional period colors are listed [here](https://github.com/zoometh/neonet/blob/main/inst/extdata/periods.tsv).
   
 The NeoNet web app allows you to select radiocarbon dates on the map and calibrate them on the fly. Each date can be displayed separately or grouped with other dates by layers, sites and periods. Dates are presented ordered on their summed probability densities (SPDs) averages. These graphs can be downloaded. 
 
