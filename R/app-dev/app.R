@@ -27,10 +27,12 @@ if(loc){
 }
 
 
+source(paste0(source.path, "functions.R")) # source("functions.R")
+# c14bibtex.url <- paste0(source.path, 'references.bib')
+# df.tot <- read.csv(paste0(source.path, "c14_dataset.tsv"), sep = "\t", encoding = "UTF-8")
+c14bibtex.url <- paste0(source.path, 'references_med_x_atl.bib')
+df.tot <- read.csv(paste0(source.path, "c14_dataset_med_x_atl.tsv"), sep = "\t", encoding = "UTF-8")
 
-
-# source("functions.R")
-source(paste0(source.path, "functions.R"))
 # print("FLAG")
 
 # note: intCal is 'intcal20'
@@ -61,32 +63,34 @@ gcalib.bin <- 100 # the chronological bin
 
 nsites.14C.cal <- 1000 # max of sites calibrated at the same time, panel calib
 
-c14bibtex.url <- paste0(source.path, 'references.bib')
-bib <- read.bib(c14bibtex.url)
+bib <- bibtex::read.bib(c14bibtex.url)
 bib <- sort(bib) # sort
 bibrefs.md <- capture.output(print(bib)) # to Markdown layout
 bibrefs.md <- replace(bibrefs.md, bibrefs.md == "", "<br><br>") 
 bibrefs.md <- paste0(bibrefs.md, collapse = '') # separate references
 bibrefs.html <- shiny::markdown(bibrefs.md) # to HTML layout
 
-# mat.life.url <- 'c14_material_life.tsv'
-# material.life.duration <- read.csv(mat.life.url, sep = "\t")
-# short.life <- subset(material.life.duration, life.duration == 'short.life')
-# long.life <- subset(material.life.duration, life.duration == 'long.life')
-# other.life <- material.life.duration[is.na(material.life.duration$life.duration),]
-# family.life <- c(rep("short.life",nrow(short.life)),
-#                  rep("long.life",nrow(long.life)),
-#                  rep("other.life",nrow(other.life)))
-# type.life <- c(short.life$material.type,
-#                long.life$material.type,
-#                other.life$material.type)
-# material.life <- data.frame(family.life=family.life,
-#                             type.life=type.life)
-# short.life <- as.character(material.life[material.life$family.life == "short.life", "type.life"])
-# long.life <- as.character(material.life[material.life$family.life == "long.life", "type.life"])
-# other.life <- as.character(material.life[material.life$family.life == "other.life", "type.life"])
+ref.mat.life <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_id00140_doc_thesaurus.tsv"
+ref.mat.life <- read.csv(ref.mat.life, sep = "\t")
+# 3 types
+short.life <- subset(ref.mat.life, life.duration == 'short.life')
+long.life <- subset(ref.mat.life, life.duration == 'long.life')
+other.life <- ref.mat.life[is.na(ref.mat.life$life.duration),]
+# dataframe
+family.life <- c(rep("short.life", nrow(short.life)),
+                 rep("long.life", nrow(long.life)),
+                 rep("other.life", nrow(other.life)))
+type.life <- c(short.life$material.type,
+               long.life$material.type,
+               other.life$material.type)
+material.life <- data.frame(family.life = family.life,
+                            type.life = type.life)
+short.life <- as.character(material.life[material.life$family.life == "short.life", "type.life"])
+long.life <- as.character(material.life[material.life$family.life == "long.life", "type.life"])
+other.life <- as.character(material.life[material.life$family.life == "other.life", "type.life"])
+df.tot$mat.life <- ifelse(df.tot$Material %in%  short.life, "short life",
+                          ifelse(df.tot$Material %in%  long.life,"long life","others"))
 
-df.tot <- read.csv(paste0(source.path, "c14_dataset.tsv"), sep = "\t", encoding="UTF-8")
 df.tot <- df.tot[df.tot$Period %in% names(lcul_col), ] # only selected periods
 df.tot <- df.tot[!is.na(df.tot$Period), ]
 df.tot$tpq <- as.numeric(df.tot$tpq)
@@ -111,7 +115,7 @@ df.tot$tpq <- as.numeric(df.tot$tpq)
 df.tot$taq <- as.numeric(df.tot$taq)
 
 # material type
-mat.type.life <- c("short life","long life","others")
+mat.type.life <- c("short life", "long life", "others")
 # df.tot$mat.life <- ifelse(df.tot$Material %in%  short.life, "short life",
 #                           ifelse(df.tot$Material %in%  long.life,"long life","others"))
 hotcols <- c("Country", "SiteName", "Period", "PhaseCode", # "Culture",
@@ -120,7 +124,11 @@ hotcols <- c("Country", "SiteName", "Period", "PhaseCode", # "Culture",
              "LabCode", "C14Age", "C14SD", "Material", "mat.life",
              "bib", "bib_url", "colors")
 refcols <- c(hotcols, c("locationID", "secondLocationID"))
-df.tot <- df.tot[ , c(refcols, setdiff(names(df.tot), refcols))]
+# diffxx <- setdiff(names(df.tot), refcols)
+# diffyy <- setdiff(refcols, names(df.tot))
+# print(diffxx)
+# print(diffyy)
+# df.tot <- df.tot[ , c(refcols, )]
 df.tot <- df.tot[ , refcols] # exclude other columns
 # replace values
 df.tot[df.tot==""] <- "unknown"
