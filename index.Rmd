@@ -3,7 +3,7 @@ title: |
   | **NeoNet app** and **dataset** <br>
   <span style='font-size: 20px'> Mapping radiocarbon dates from Late Mesolithic/Early Neolithic transition</style>
 pagetitle: "NeoNet app and dataset"
-author: "<span style='font-size: 15px'>Thomas Huet, Niccolo Mazzucco, Miriam Cubas, J. Francisco Gibaja, F. Xavier Oms, António Faustino Carvalho, Ana Catarina Basilio and Elías López-Romero González de la Aleja</style>"
+author: "<span style='font-size: 15px'>Thomas Huet, Niccolo Mazzucco, Miriam Cubas, J. Francisco Gibaja, F. Xavier Oms, António Faustino Carvalho, Ana Catarina Basilio and Elías López-Romero</style>"
 # date: "11/12/2020"
 header-includes:
   - \usepackage{float}u
@@ -516,21 +516,10 @@ Either a DOI or a unique BibTeX key. We favor the DOI as a unique bibliographica
 df.samp <- data.c14[sample(nrow(data.c14), 6), ]
 kable(df.samp[ , c("bib", "bib_url")], "html", row.names = FALSE) %>%
   kable_styling(full_width = FALSE, position = "center", font_size = 12)
-# 
-# df.bib <- data.frame(tpq = c("-6086", "..."),
-#                      taq = c("-5923", "..."),
-#                      select = c("VRAI", "..."),
-#                      RedNeo = c("1", "..."),
-#                      bib = c("Binder et al. 2018",
-#                              "..."),
-#                      bib_url = c("<b>https://doi.org/10.4312/dp.44.4</b>","..."),
-#                      stringsAsFactors = F)
-# kable(df.bib,"html",escape = F) %>%
-#   kable_styling(full_width = FALSE, position = "center", font_size=12)
 ```
 
 * the DOI exists:
-Add the DOI value to the field. The DOI value starts with "`10`"
+Add the complete DOI to the field: `https://10.1016/j.jaa.2016.01.007`
 
 * the DOI doesn't exists:
 The complete bibliographical reference has to be included into the BIB document (eg., [id00140_doc_reference.bib](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_reference.bib)). In the BIB file, the bibliographical reference keyis the name of the first author and the two last digits of the year (eg., `Guilaine93`):

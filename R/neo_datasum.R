@@ -1,0 +1,63 @@
+#' @name neo_datasum
+#'
+#' @description summarise dataset: spatial and chronological extend, n dates, etc.
+#'
+#' @param df.c14 the original XLSX with neonet columns (SiteName, Period, etc.) with with checked values (see: neo_subset)
+#' @param verbose if TRUE (default) then display different messages.
+#'
+#' @return A plot or a file
+#'
+#' @examples
+#'
+#'
+#'
+#' @export
+neo_datasum <- function(df.c14,
+                        col.used = c("SiteName", "Period", "PhaseCode",
+                                     "LabCode", "C14Age", "C14SD",
+                                     "Material", "MaterialSpecies",
+                                     "tpq", "taq",
+                                     "bib", "bib_url",
+                                     "Longitude", "Latitude", "Country"),
+                        verbose = TRUE){
+  missing.values <- c("", "n/a", NA)
+  # num_cells_with_values <- sum(df.c14 %in% missing.values, na.rm = TRUE)
+  # df.c14[df.c14 %in% missing.values, ] <- NA
+  df.c14[df.c14 == "n/a"] <- NA
+  df.c14[df.c14 == ""] <- NA
+  linfos <- list()
+  n.dates <- nrow(df.c14) # number of dates
+  n.sites <- length(unique(df.c14$SiteName)) # number of dates
+  geo.extent <- list(N = max(df.c14$Latitude), # NSEW extent
+                     S = min(df.c14$Latitude),
+                     E = max(df.c14$Longitude),
+                     W = min(df.c14$Longitude))
+  time.extent <- list(tpq = min(df.c14$tpq),
+                      taq = max(df.c14$taq))
+  # missing
+  nb.missing <- sum(is.na(df.c14[ , col.used]))
+  nb.values <- nrow(df.c14) * length(col.used)
+  perc.missing <- nb.missing/nb.values
+  perc.missing <- paste0(as.character(
+    as.integer((nb.missing/nb.values)*100)), "%")
+
+  df.c14$context <- paste0(df.c14$SiteName,"-",df.c14$PhaseCode)
+  n.context <- length(unique(df.c14$context))
+  n.missing.context <- nrow(df.c14[df.c14$PhaseCode %in% missing.values, ])
+  perc.missing.context <- paste0(as.character(
+    as.integer((n.missing.context/nrow(df.c14))*100)), "%")
+  n.missing.material <- nrow(df.c14[df.c14$Material %in% missing.values, ])
+  perc.missing.material <- paste0(as.character(
+    as.integer((n.missing.material/nrow(df.c14))*100)), "%")
+
+  linfos <- c(linfos,
+              n.dates = n.dates,
+              n.sites = n.sites,
+              n.context = n.context,
+              geo.extent = geo.extent,
+              time.extent = time.extent,
+              perc.missing = perc.missing,
+              perc.missing.context = perc.missing.context,
+              perc.missing.material = perc.missing.material)
+  return(str(linfos))
+}

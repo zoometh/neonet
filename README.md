@@ -43,19 +43,25 @@ The NeoNet Mediteranean dataset has been published in the [Journal of Open Archa
 
 The region of interest (ROI) is the <a href="hhttps://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson" target="_blank">European South Atlantic river basin</a>. New functionalities will be added to the app (download button for the selected dataset, possibility to set *tpq* and *taq* limits for the SPDs, etc.)
   
-This GitHub aims to gather collaborations for the future version of the app, with:
- 
-* R computer scripts: [R/](https://github.com/zoometh/neonet/tree/main/R) folder
-
-* a sample dataset (n = 100 dates): [inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder
-
-* a correspondance table: [inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder
-
-* BibTex references: [inst/extdata/](https://github.com/zoometh/neonet/tree/main/inst/extdata) folder
-
 ---
 
 Further explanations can be found in the [web tutorial](https://zoometh.github.io/neonet/). If you want to contribute to the development version of the app, or the dataset, check the [contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md) and the [relevant license](https://github.com/zoometh/neonet/blob/master/LICENSE)
+
+---
+
+## ***NeoNet*** package
+
+The R package is under development, with:
+ 
+* R functions: [R/](https://github.com/zoometh/neonet/tree/main/R) folder
+
+* Dates: [140_140_id00140_doc_elencoc14.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/140_140_id00140_doc_elencoc14.tsv) folder
+
+* Material life duration mapping table: [140_id00140_doc_thesaurus.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/140_id00140_doc_thesaurus.tsv)
+
+* BibTex references: [id00140_doc_reference.bib](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_reference.bib)
+
+
 
 
   
