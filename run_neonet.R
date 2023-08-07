@@ -7,6 +7,7 @@ source("R/neo_merge.R")
 source("R/neo_html.R")
 source("R/neo_datamiss.R")
 source("R/neo_datasum.R")
+source("R/neo_doi.R")
 
 # new dataset, atl
 # c14
@@ -20,6 +21,8 @@ df.c14 <- neo_subset(df.c14,
                      rm.Spatial = FALSE,
                      rm.Period = FALSE)
 df.c14 <- neo_calib(df.c14)
+neo_doi(df.c14,
+        df.c14.pub = "C:/Rprojects/neonet/inst/extdata/140_140_id00140_doc_elencoc14.tsv")
 # df.c14 <- neo_bib(df.c14, df.bib)
 neo_datamiss(df.c14)
 neo_datasum(df.c14)

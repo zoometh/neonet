@@ -17,7 +17,7 @@ library(Bchron)
 library(rcarbon)
 library(bibtex)
 
-srv <- FALSE
+srv <- TRUE
 loc <- !srv
 if(srv){
   source.path <- "/srv/shiny-server/C14/"
@@ -200,32 +200,48 @@ b64 <- base64enc::dataURI(file = "neonet.png",
                           mime = "image/png") # load image
 data.credits <- HTML(paste0(' <b> Data gathering: </b>',
                             '<ul>',
-                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-9315-3625")), "\ target=\"_blank\"",
+                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-9315-3625")), 
+                            "\ target=\"_blank\"",
                             '> Niccolo Mazzucco </a>: niccolo.mazzucco@unipi.it </li>',
-                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-1112-6122")), "\ target=\"_blank\"",
+                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-1112-6122")), 
+                            "\ target=\"_blank\"",
                             '> Thomas Huet </a>: thomashuet7@gmail.com </li>',
-                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-2386-8473")), "\ target=\"_blank\"",
+                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-2386-8473")), 
+                            "\ target=\"_blank\"",
                             '> Miriam Cubas Morera </a>: mcubas.morera@gmail.com, </li>',
-                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-0830-3570")), "\ target=\"_blank\"",
+                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-0830-3570")), 
+                            "\ target=\"_blank\"",
                             '> Juan Gibaja </a>: jfgibaja@gmail.com, </li>',
-                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-1642-548X")), "\ target=\"_blank\"",
+                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-1642-548X")), 
+                            "\ target=\"_blank\"",
                             '> F. Xavier Oms</a>: oms@ub.edu, </li>',
+                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0001-6149-8883")), 
+                            "\ target=\"_blank\"",
+                            '> António Faustino Carvalho</a>: a.faustino.carvalho@gmail.com, </li>',
+                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0001-7999-3831")), 
+                            "\ target=\"_blank\"",
+                            '> Ana Catarina Basilio</a>: catarinasbasilio@gmail.com, </li>',
+                            '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-7177-632X")), 
+                            "\ target=\"_blank\"",
+                            '> Elías López-Romero</a>: elias.lopez-romero@iam.csic.es, </li>',
                             '</ul>'))
 
 # website for documentation
 webpage.app <- "https://zoometh.github.io/neonet/"
-app.page <- paste0('<a href=',shQuote(webpage.app),"\ target=\"_blank\"",'>https://zoometh.github.io/neonet/</a>')
+app.page <- paste0('<a href=', shQuote(webpage.app),"\ target=\"_blank\"",'>https://zoometh.github.io/neonet/</a>')
 # GitHub repo
 devpage.app <- "https://github.com/zoometh/neonet#readme"
-app.dev <- paste0('<a href=',shQuote(devpage.app),"\ target=\"_blank\"",'>https://github.com/zoometh/neonet</a>')
+app.dev <- paste0('<a href=', shQuote(devpage.app),"\ target=\"_blank\"",'>https://github.com/zoometh/neonet</a>')
 # credits
 app.redneo <- HTML(paste0('<a href=', shQuote(paste0("https://redneonet.com")), "\ target=\"_blank\"",
                           '><b> Red NeoNet group website </b></a><br>'))
 app.credits <- HTML(paste0(' <b> App developments </b> ', app.dev,' <b>:</b>',
                            '<ul>',
-                           '<li> <a href=',shQuote(paste0("https://orcid.org/0000-0002-1112-6122")),"\ target=\"_blank\"",
+                           '<li> <a href=',shQuote(paste0("https://orcid.org/0000-0002-1112-6122")),
+                           "\ target=\"_blank\"",
                            '> Thomas Huet </a>: thomashuet7@gmail.com </li>',
-                           '<li> <a href=',shQuote(paste0("https://orcid.org/0000-0002-9315-3625")),"\ target=\"_blank\"",
+                           '<li> <a href=',shQuote(paste0("https://orcid.org/0000-0002-9315-3625")),
+                           "\ target=\"_blank\"",
                            '> Niccolo Mazzucco </a>: niccolo.mazzucco@unipi.it </li>',
                            '</ul>'))
 app.website <- HTML(paste0(' <b> Documentation: </b> ',
