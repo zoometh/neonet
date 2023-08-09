@@ -61,18 +61,7 @@ The R package is under development, with:
 
 * BibTex references: [id00140_doc_reference.bib](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_reference.bib)
 
-### Create a SPD plot
 
-```R
-library(rcarbon)
-
-source("R/neo_spd.R")
-source("R/neo_spdplot.R")
-
-neo_spd()
-```
-
-The `neo_spd()` calls the `neo_spdplo()` adapted from `rcarbon::plot.stackCalSPD.R` to fetch the conventional periods colors
 
 
 ### Data preparation
@@ -138,18 +127,23 @@ write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
             row.names = FALSE)
 ```
 
-### Plotting the merged dataset
+### Create a SPD plot
 
-Plot the SPD of the two datasets
+Plot the SPD of the two datasets, once `df.c14` calculated
 
 ```R
+library(rcarbon)
+
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+
 neo_spd(df.c14 = df.c14)
 ```
 
 ![](doc/img/neonet_med_x_atl_spd.png)
 
 
-
+The `neo_spd()` calls the `neo_spdplo()` adapted from `rcarbon::plot.stackCalSPD.R` to fetch the conventional periods colors
 
 
   
