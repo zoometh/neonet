@@ -25,6 +25,7 @@
 neo_spd <- function(df.c14 = NA,
                     df.url = 'https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_140_id00140_doc_elencoc14.tsv',
                     ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
+                    shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
                     ref.c14age = c(9500, 5000),
                     export = FALSE,
                     verbose = TRUE){
@@ -86,16 +87,16 @@ neo_spd <- function(df.c14 = NA,
   if(verbose){
     print("Plot")
   }
-  plot.stackCalSPD(spd.c14,
-                   type = 'stacked',
-                   calendar = "BCAD",
-                   cex.lab = .7,
-                   cex.axis = .7,
-                   legend.arg = list(cex = .7,
-                                     pt.cex = .7,
-                                     title = 'Periods'),
-                   colpal = colpal,
-                   verbose = FALSE
+  neo_spdplot(spd.c14,
+              type = 'stacked',
+              calendar = "BCAD",
+              cex.lab = .7,
+              cex.axis = .7,
+              legend.arg = list(cex = .7,
+                                pt.cex = .7,
+                                title = 'Periods'),
+              colpal = colpal,
+              verbose = FALSE
   )
   if(export){
     dev.off()
@@ -105,4 +106,6 @@ neo_spd <- function(df.c14 = NA,
 # library(rcarbon)
 # source("R/plot_stackSPD.R") # adapted from rcarbon::plot.stackCalSPD.R to fetch the selected colors
 # neo_spd()
+
+neo_spd(df.c14 = df.c14) # df.url = "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv")
 

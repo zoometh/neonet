@@ -8,6 +8,8 @@ source("R/neo_html.R")
 source("R/neo_datamiss.R")
 source("R/neo_datasum.R")
 source("R/neo_doi.R")
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
 
 # new dataset, atl
 # c14
@@ -26,6 +28,7 @@ neo_doi(df.c14,
 # df.c14 <- neo_bib(df.c14, df.bib)
 neo_datamiss(df.c14)
 neo_datasum(df.c14)
+
 # for the app, a merge
 df.c14 <- neo_merge(df.c14 = df.c14, 
                     data.bib = data.bib, 

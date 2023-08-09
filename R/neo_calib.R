@@ -15,12 +15,12 @@
 #'
 #'
 #' @export
-neo_calib <- function(df.c14,
-                     intCal = 'intcal20',
-                     Present = 1950,
-                     ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
-                     verbose = TRUE,
-                     verbose.freq = 50){
+neo_calib <- function(df.c14 = NA,
+                      intCal = 'intcal20',
+                      Present = 1950,
+                      ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
+                      verbose = TRUE,
+                      verbose.freq = 50){
   # calculate tpq/taq
   df.c14$taq <- df.c14$tpq <- df.c14$colors <- NA
   if(verbose){print("Run date calibration")}

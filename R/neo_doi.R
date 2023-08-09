@@ -40,7 +40,7 @@ neo_doi <- function(df.c14 = NA,
   }
   df.c14 <- df.c14[ , colnames(df.c14.pub)]
   write.table(df.c14, paste0(outDir, out.df.c14.topub),
-              sep = "\t",
+              sep = "\t", 
               row.names = FALSE)
   if(verbose){
     print(paste0(out.df.c14.topub, " has been exported in: ", outDir))
