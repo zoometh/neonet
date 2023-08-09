@@ -15,7 +15,7 @@ The region of interest (ROI) is the North-Western Mediterranean river basin.
   
 The time span from is focused on the Late Mesolithic/Early Neolithic transition, i.e. the last hunter-gatherers (HG) and the first farmers (EF).
   
-![](doc/img/neonet_med.png)
+![](doc/img/neonet_med_spd.png)
 
 Conventional period colors are listed [here](https://github.com/zoometh/neonet/blob/main/inst/extdata/periods.tsv).
   
