@@ -46,9 +46,14 @@ neo_datasum <- function(df.c14,
   n.missing.context <- nrow(df.c14[df.c14$PhaseCode %in% missing.values, ])
   perc.missing.context <- paste0(as.character(
     as.integer((n.missing.context/nrow(df.c14))*100)), "%")
+  
   n.missing.material <- nrow(df.c14[df.c14$Material %in% missing.values, ])
   perc.missing.material <- paste0(as.character(
     as.integer((n.missing.material/nrow(df.c14))*100)), "%")
+  
+  n.missing.materialspecies <- nrow(df.c14[df.c14$MaterialSpecies %in% missing.values, ])
+  perc.missing.materialspecies <- paste0(as.character(
+    as.integer((n.missing.materialspecies/nrow(df.c14))*100)), "%")
 
   linfos <- c(linfos,
               n.dates = n.dates,
@@ -58,6 +63,7 @@ neo_datasum <- function(df.c14,
               time.extent = time.extent,
               perc.missing = perc.missing,
               perc.missing.context = perc.missing.context,
-              perc.missing.material = perc.missing.material)
+              perc.missing.material = perc.missing.material,
+              perc.missing.materialspecies = perc.missing.materialspecies)
   return(str(linfos))
 }

@@ -30,6 +30,7 @@ neo_spd <- function(df.c14 = NA,
                     export = FALSE,
                     verbose = TRUE){
   # c14.db.url <- 'http://mappaproject.arch.unipi.it/mod/files/140_id00140_doc_elencoc14.tsv'
+  `%>%` <- dplyr::`%>%` # used to not load dplyr
   if(is.na(df.c14)){
     if(verbose){print("Read data from URL")}
     c14 <- read.table(df.url, sep = "\t", header = TRUE, stringsAsFactors = F, quote="")
@@ -42,42 +43,45 @@ neo_spd <- function(df.c14 = NA,
   periods.colors.selected <- periods.colors[periods.colors$period %in% shown.per, c("period", "color")]
   periods.colors.selected <- rbind(periods.colors.selected, c("others", "#808080"))
   # fetch not listed periods (others)
-  df.other.periods <- c14[!(c14$Period %in% shown.per), ]
-  unshown.per <- unique(df.other.periods$Period)
+  unshown.per <- unique(c14[!(c14$Period %in% shown.per), "Period"])
   if(verbose){
-    print("These periods will be gathered into 'other'")
+    print("These periods will be gathered into 'other'\n")
     cat(unshown.per, sep = ", ")
   }
-  df.c14.others <- within(c14, Period[Period %in% unshown.per] <- 'others')
-  df.c14.others <- merge(df.c14.others, periods.colors.selected, by.x = "Period", by.y = "period", all.x = T)
-  df.c14.others$colors <- NULL # rm previous colors
-  df.c14.others <- df.c14.others[!is.na(df.c14.others$C14Age), ]
-  # sample
-  # df.c14.others <- df.c14.others[sample(seq(1, nrow(df.c14.others), 20)), ]
-  
-  periods.colors.plotted <- periods.colors.selected[periods.colors.selected$period %in% unique(df.c14.others$Period), "period"]
-  periods.colors.plotted.all <- periods.colors[periods.colors$period %in% periods.colors.plotted, c("period", "color")]
-  colpal <- periods.colors.plotted.all$color
+  c14 <- within(c14, Period[Period %in% unshown.per] <- 'others')
+  unique(c14$Period)
+  c14 <- merge(c14, periods.colors.selected, by.x = "Period", by.y = "period", all.x = T)
+  c14$colors <- NULL # rm previous colors
+  # reference colors in order
+  # periods.colors.plotted <- periods.colors.selected[periods.colors.selected$period %in% unique(c14$Period), "period"]
+  # periods.colors.plotted.all <- periods.colors[periods.colors$period %in% periods.colors.plotted, c("period", "color")]
+  # colpal <- periods.colors.plotted.all$color
+  colpal <- periods.colors.selected$color
   if(verbose){
-    print("These periods will be plotted with these colors")
+    print("These periods will be plotted with these colors\n")
     cat(periods.colors.plotted, sep = ", ")
     cat(colpal, sep = ", ")
   }
+  c14 <- c14 %>% dplyr::arrange(factor(Period, levels = periods.colors.selected$period))
+  
+  
+  # c14 <- c14[match(periods.colors.selected$period, c14$Period),]
   
   # df.c14.others <- df.c14.others[match(df.c14.others$Period, periods.colors.plotted),]
-  
-  df.c14.others <- dplyr::left_join(data.frame(Period = periods.colors.plotted), df.c14.others, by = "Period")
+  # names(periods.colors.selected)[names(periods.colors.selected) == 'Period'] <- 'period'
+  # xxx <- merge(c14, periods.colors.selected, by = "Period", all.x = TRUE)
+  # df.c14.others <- dplyr::left_join(data.frame(Period = periods.colors.selected), c14, by = "Period")
   if(verbose){
     print("Calibration")
   }
-  bins <- rcarbon::binPrep(df.c14.others$SiteName,
-                           df.c14.others$C14Age,
+  bins <- rcarbon::binPrep(c14$SiteName,
+                           c14$C14Age,
                            h = 50)
-  x <- rcarbon::calibrate(df.c14.others$C14Age,
-                          df.c14.others$C14SD,
+  x <- rcarbon::calibrate(c14$C14Age,
+                          c14$C14SD,
                           normalised = FALSE)
   spd.c14 <- rcarbon::stackspd(x = x,
-                               group = df.c14.others$Period,
+                               group = c14$Period,
                                timeRange = c(ref.c14age[1], ref.c14age[2]),
                                bins = bins,
                                runm = 50)
@@ -107,5 +111,5 @@ neo_spd <- function(df.c14 = NA,
 # source("R/plot_stackSPD.R") # adapted from rcarbon::plot.stackCalSPD.R to fetch the selected colors
 # neo_spd()
 
-neo_spd(df.c14 = df.c14) # df.url = "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv")
+# df.url = "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv")
 

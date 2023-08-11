@@ -26,7 +26,7 @@ neo_spdplot <- function (x, type = "stacked", calendar = "BP", spdnormalised = F
     }
   }
   else if (calendar == "BCAD") {
-    plotyears <- BPtoBCAD(x$metadata$timeRange[1]:x$metadata$timeRange[2])
+    plotyears <- rcarbon::BPtoBCAD(x$metadata$timeRange[1]:x$metadata$timeRange[2])
     xlabel <- "Years BC/AD"
     if (all(range(plotyears) < 0)) {
       xlabel <- "Years BC"

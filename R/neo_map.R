@@ -1,8 +1,8 @@
-#' Create a leaflet interactive distribution map 
+#' Creates a map of the research area
 #' 
 #' @name neo_map
 #' 
-#' @description distribution of the radiocarbon dates within a selected ROI. It creates a leaflet interactive map from a Google Sheet sorted by BDs (MED, BDA, etc.)
+#' @description map 
 #'
 #' @param map.name name of the output map and the name of the saved file (if export.plot is TRUE). Default "NeoNet_atl".
 #' @param ggsheet if TRUE (Default), will read a Google Sheet. If FALSE, will read a standalone file (XLSX)
@@ -15,14 +15,6 @@
 #'
 #' @examples
 #'
-#' # Default map plot (Google Sheet)
-#' neo_map(map.name = "neonet_atl", export.plot = F)
-#' 
-#' # Export a map with data coming from an XLSX dataset
-#' neo_map(export.plot = T, 
-#'            ggsheet = F,
-#'            df.c14 = "C:/Users/Thomas Huet/Downloads/NeoNet_atl_ELR.xlsx",
-#' )
 #'
 #' @export
 neo_map <- function(map.name = "neonet_atl",
@@ -32,6 +24,7 @@ neo_map <- function(map.name = "neonet_atl",
                     ref.spat = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/wsh_atl.geojson",
                     category = "BD",
                     title = "NeoNet atl",
+                    plot.other.ws = FALSE,
                     export.plot = T,
                     dirOut = "C:/Rprojects/neonet/results/",
                     verbose = TRUE){
@@ -44,55 +37,24 @@ neo_map <- function(map.name = "neonet_atl",
     df.dates <- df.c14
   }
   roi.layer <- DescTools::SplitPath(ref.spat)$filename
-  ws_roi.shp <- sf::st_read(ref.spat, quiet = TRUE)
-  # ws_roi.shp.sp <- as(ws_roi.shp, "Spatial")
-  # colors
-  n.BDs <- length(unique(df.dates[[category]]))
-  # RColorBrewer::brewer.pal(n.BDs,"Set1")
-  df.colors <- data.frame(category = unique(df.dates[[category]]),
-                          color = c("blue", "red", "orange", "pink", "violet", "yellow")[1 : n.BDs]
-                          # color = RColorBrewer::brewer.pal(n.BDs, "Dark2")
-  )
-  df.dates <- merge(df.dates, df.colors, by.x = category, by.y = "category", all.x = T)
-  df.dates$lbl <- paste0("<b>", df.dates$SiteName,"</b> [", df.dates$LabCode, "]<br>",
-                         "C14Age: <b>", df.dates$C14Age, " +/- ", df.dates$C14SD, "</b><br>",
-                         "Period: <b>", df.dates$Period,"</b> - PhaseCode:",  df.dates$PhaseCode, "<br>",
-                         "source: <b>", df.dates[[category]],"</b>")
-  map.title <- paste0("<a href='https://github.com/zoometh/neonet'>", title,"</a><br>", 
-                      "Nb of radiocarbon dates: ", as.character(nrow(df.dates)))
-  neo.map <- leaflet::leaflet(data = df.dates) %>%
-    leaflet::addProviderTiles(leaflet::providers$"Esri.WorldImagery", group = "Ortho") %>%
-    leaflet::addProviderTiles(leaflet::providers$"OpenStreetMap", group = "OSM") %>%
-    leaflet::addProviderTiles(leaflet::providers$"Stamen.TerrainBackground", group = "Terrain") %>%
-    # leaflet::addProviderTiles(leaflet::providers$"Thunderforest.Outdoors", group = "Default") %>%
-    leaflet::addPolygons(data = ws_roi.shp,
-                         color = "blue",
-                         fillOpacity = 0) %>%
-    # addTiles(group = 'OSM') %>%
-    leaflet::addCircleMarkers(layerId = ~LabCode, 
-                              lng = ~Longitude,
-                              lat = ~Latitude,
-                              weight = 1,
-                              radius = 3,
-                              popup = ~lbl,
-                              label = ~SiteName,
-                              fillColor = ~color,
-                              fillOpacity = .3,
-                              color = ~color,
-                              opacity = 1) %>%
-    leaflet::addLegend("bottomright", 
-                       colors = df.colors$color, 
-                       labels = df.colors$category,
-                       title = category,
-                       opacity = 1) %>%
-    leaflet::addLayersControl(
-      baseGroups = c("Terrain", "OSM", "Ortho"),
-      position = "topleft"
-    ) %>%
-    leaflet::addControl(map.title,
-                        position = "topright")
+  ws.roi <- sf::st_read(ref.spat, quiet = TRUE)
+  if(plot.other.ws){
+    ws.roi.other <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/wsh_med.geojson", quiet = TRUE)
+  }
+  world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+  neo.map <- ggplot2::ggplot(world) +
+    ggplot2::geom_sf(fill = '#e9e9e9') +
+    ggplot2::geom_sf(data = ws.roi, fill = '#707070', inherit.aes = FALSE, color = NA)
+  if(plot.other.ws){
+    neo.map <- neo.map +
+      ggplot2::geom_sf(data = ws.roi.other, fill = '#9a9a9a', inherit.aes = FALSE, color = NA)
+  }
+  neo.map <- neo.map +
+    ggplot2::coord_sf(xlim = c(sf::st_bbox(ws.roi)[1], sf::st_bbox(ws.roi)[3]),
+                      ylim = c(sf::st_bbox(ws.roi)[2], sf::st_bbox(ws.roi)[4])) +
+    ggplot2::theme_bw()
   if(export.plot){
-    htmlwidgets::saveWidget(neo.map, paste0(dirOut, map.name, ".html"))
+    ggplot2::ggsave(neo.map, paste0(dirOut, map.name, ".jpg"))
     if(verbose){
       print(paste0(map.name, " has been saved into: ", dirOut))
     }
