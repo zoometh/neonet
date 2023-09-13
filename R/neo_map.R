@@ -22,8 +22,7 @@ neo_map <- function(map.name = "neonet_atl",
                     gg.url = "https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4JyLEA/edit?usp=sharing",
                     # ref.spat = "C:/Rprojects/neonet/doc/data/wsh_atl.shp",
                     ref.spat = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/wsh_atl.geojson",
-                    category = "BD",
-                    title = "NeoNet atl",
+                    buff = 0.5,
                     plot.other.ws = FALSE,
                     export.plot = T,
                     dirOut = "C:/Rprojects/neonet/results/",
@@ -43,15 +42,15 @@ neo_map <- function(map.name = "neonet_atl",
   }
   world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
   neo.map <- ggplot2::ggplot(world) +
-    ggplot2::geom_sf(fill = '#e9e9e9') +
-    ggplot2::geom_sf(data = ws.roi, fill = '#707070', inherit.aes = FALSE, color = NA)
+    ggplot2::geom_sf(fill = '#f0f0f0') +
+    ggplot2::geom_sf(data = ws.roi, fill = '#636363', inherit.aes = FALSE, color = NA)
   if(plot.other.ws){
     neo.map <- neo.map +
-      ggplot2::geom_sf(data = ws.roi.other, fill = '#9a9a9a', inherit.aes = FALSE, color = NA)
+      ggplot2::geom_sf(data = ws.roi.other, fill = '#bdbdbd', inherit.aes = FALSE, color = NA)
   }
   neo.map <- neo.map +
-    ggplot2::coord_sf(xlim = c(sf::st_bbox(ws.roi)[1], sf::st_bbox(ws.roi)[3]),
-                      ylim = c(sf::st_bbox(ws.roi)[2], sf::st_bbox(ws.roi)[4])) +
+    ggplot2::coord_sf(xlim = c(sf::st_bbox(ws.roi)[1] - buff, sf::st_bbox(ws.roi)[3] + buff),
+                      ylim = c(sf::st_bbox(ws.roi)[2] - buff, sf::st_bbox(ws.roi)[4] + buff)) +
     ggplot2::theme_bw()
   if(export.plot){
     ggplot2::ggsave(neo.map, paste0(dirOut, map.name, ".jpg"))
@@ -63,4 +62,4 @@ neo_map <- function(map.name = "neonet_atl",
   }
 }
 
-neo_map(df.c14 = df.c14, map.name = "neonet_atl", export.plot = F)
+neo_map(df.c14 = df.c14, map.name = "neonet_atl", plot.other.ws = T, export.plot = F)

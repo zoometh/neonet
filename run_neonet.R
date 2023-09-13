@@ -23,11 +23,13 @@ df.c14 <- neo_subset(df.c14,
                      rm.Spatial = FALSE,
                      rm.Period = FALSE)
 df.c14 <- neo_calib(df.c14)
-neo_doi(df.c14,
-        df.c14.pub = "C:/Rprojects/neonet/inst/extdata/140_140_id00140_doc_elencoc14.tsv")
-# df.c14 <- neo_bib(df.c14, df.bib)
+df.c14 <- neo_doi(df.c14,
+                  df.c14.pub = "C:/Rprojects/neonet/inst/extdata/140_140_id00140_doc_elencoc14.tsv",
+                  export = F)
+# df.c14.bib <- neo_bib(df.c14, df.bib)
 neo_datamiss(df.c14)
 neo_datasum(df.c14)
+neo_spd(df.c14)
 
 # for the app, a merge
 df.c14 <- neo_merge(df.c14 = df.c14, 
@@ -39,3 +41,5 @@ df.c14 <- neo_html(df.c14)
 write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
             sep = "\t",
             row.names = FALSE)
+
+###

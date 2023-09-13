@@ -304,6 +304,14 @@ The dates displayed in the [table of the **map panel**](#panel.map) will be cali
 
 </center>
 
+### export dates {#panel.map.export}
+
+Export selected dates by clicking the download button
+
+![Export selected dates](doc/img/panel_map_export.png)
+
+Dates will be exported as a GeoJSON file that can be analysed in a GIS
+
 
 ## 2. **calib** panel {#panel.calib}
 ![](`r panel.calib.idx`){width=25%}

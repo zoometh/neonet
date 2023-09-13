@@ -19,8 +19,11 @@ neo_datasum <- function(df.c14,
                                      "tpq", "taq",
                                      "bib", "bib_url",
                                      "Longitude", "Latitude", "Country"),
+                        missing.values = c("", "n/a", NA),
+                        ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                         verbose = TRUE){
-  missing.values <- c("", "n/a", NA)
+  periods.colors <- read.csv(ref.period, sep = "\t")
+  ordered.periods <- periods.colors$period
   # num_cells_with_values <- sum(df.c14 %in% missing.values, na.rm = TRUE)
   # df.c14[df.c14 %in% missing.values, ] <- NA
   df.c14[df.c14 == "n/a"] <- NA
@@ -54,6 +57,11 @@ neo_datasum <- function(df.c14,
   n.missing.materialspecies <- nrow(df.c14[df.c14$MaterialSpecies %in% missing.values, ])
   perc.missing.materialspecies <- paste0(as.character(
     as.integer((n.missing.materialspecies/nrow(df.c14))*100)), "%")
+  
+  df.per <- as.data.frame(table(df.c14$Period))
+  names(df.per)[names(df.per) == 'Var1'] <- 'Period'
+  # setdiff(df.per$Var1, ordered.periods)
+  df.per <- df.per[match(ordered.periods, df.per$Period), ]
 
   linfos <- c(linfos,
               n.dates = n.dates,
@@ -65,5 +73,6 @@ neo_datasum <- function(df.c14,
               perc.missing.context = perc.missing.context,
               perc.missing.material = perc.missing.material,
               perc.missing.materialspecies = perc.missing.materialspecies)
-  return(str(linfos))
+  print(str(linfos))
+  print(df.per)
 }

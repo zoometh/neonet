@@ -15,6 +15,7 @@
 #' @export
 neo_doi <- function(df.c14 = NA,
                     df.c14.pub = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_140_id00140_doc_elencoc14.tsv",
+                    export = TRUE,
                     out.df.c14.topub = "c14_dataset_atl.tsv",
                     outDir = "C:/Rprojects/neonet/inst/extdata/",
                     verbose = TRUE){
@@ -39,10 +40,15 @@ neo_doi <- function(df.c14 = NA,
     print("Order columns")
   }
   df.c14 <- df.c14[ , colnames(df.c14.pub)]
-  write.table(df.c14, paste0(outDir, out.df.c14.topub),
-              sep = "\t", 
-              row.names = FALSE)
-  if(verbose){
-    print(paste0(out.df.c14.topub, " has been exported in: ", outDir))
+  if(export){
+    write.table(df.c14, paste0(outDir, out.df.c14.topub),
+                sep = "\t", 
+                row.names = FALSE)
+    if(verbose){
+      print(paste0(out.df.c14.topub, " has been exported in: ", outDir))
+    }
+  } else {
+    return(df.c14)
   }
+
 }

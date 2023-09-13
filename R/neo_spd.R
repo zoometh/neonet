@@ -49,9 +49,10 @@ neo_spd <- function(df.c14 = NA,
     cat(unshown.per, sep = ", ")
   }
   c14 <- within(c14, Period[Period %in% unshown.per] <- 'others')
-  unique(c14$Period)
   c14 <- merge(c14, periods.colors.selected, by.x = "Period", by.y = "period", all.x = T)
   c14$colors <- NULL # rm previous colors
+  unique(c14$Period)
+  unique(c14$color)
   # reference colors in order
   # periods.colors.plotted <- periods.colors.selected[periods.colors.selected$period %in% unique(c14$Period), "period"]
   # periods.colors.plotted.all <- periods.colors[periods.colors$period %in% periods.colors.plotted, c("period", "color")]
