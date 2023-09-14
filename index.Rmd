@@ -44,6 +44,7 @@ library(magick)
 library(leaflet)
 library(shiny)
 library(rgdal)
+library(sf)
 library(bibtex)
 library(png)
 
@@ -60,6 +61,7 @@ panel.map.select <- paste0(path.img, "panel_map_select.png")
 panel.map.shape <- paste0(path.img, "panel_map_shape.png")
 panel.calib <- paste0(path.img, "panel_calib.png")
 panel.map.idx <- paste0(path.img, "panel_map_idx.png")
+panel.map.export <- paste0(path.img, "panel_map_export.png")
 panel.calib.idx <- paste0(path.img, "panel_calib_idx.png")
 panel.data.idx <- paste0(path.img, "panel_data_idx.png")
 panel.calib.example <-  paste0(path.img, "neonet_calib_example.png")
@@ -78,13 +80,15 @@ bib <- read.bib(basename(bib.URL))
 # c14mater.url <- 'https://raw.github.com/zoometh/neonet/master/inst/extdata/140_id00140_doc_thesaurus.tsv'
 # c14mater <- read.csv(c14mater.url, sep = "\t")
 
-ws_med <- readOGR(paste0(getwd(), "/doc/data/wsh_med.shp"))
-df_ws_med = data.frame(ws_med)
-sp_ws_med = SpatialPolygonsDataFrame(ws_med, df_ws_med)
+# ws_med <- readOGR(paste0(getwd(), "/doc/data/wsh_med.geojson"))
+ws_med <- st_read(paste0(getwd(), "/doc/data/wsh_med.geojson"))
+# df_ws_med = data.frame(ws_med)
+# sp_ws_med = SpatialPolygonsDataFrame(ws_med, df_ws_med)
 
-ws_atl <- readOGR(paste0(getwd(), "/doc/data/wsh_atl.shp"))
-df_ws_atl = data.frame(ws_atl)
-sp_ws_atl = SpatialPolygonsDataFrame(ws_atl, df_ws_atl)
+# ws_atl <- readOGR(paste0(getwd(), "/doc/data/wsh_atl.geojson"))
+ws_atl <- st_read(paste0(getwd(), "/doc/data/wsh_atl.geojson"))
+# df_ws_atl = data.frame(ws_atl)
+# sp_ws_atl = SpatialPolygonsDataFrame(ws_atl, df_ws_atl)
 
 download.file(url = panel.map, 
               destfile = basename(panel.map),
@@ -126,7 +130,7 @@ leaflet(width = "80%", height = "500px") %>%
   # setView(lng = -111.846061, lat = 36.115847, zoom = 12) %>%
   addProviderTiles(providers$Stamen.TerrainBackground, group='Terrain') %>%
   # addTiles(group = 'OSM') %>%
-  addPolygons(data = sp_ws_med,
+  addPolygons(data = ws_med,
               color = "red",
               # fillColor = 'red',
               fillOpacity = 0,
@@ -308,7 +312,12 @@ The dates displayed in the [table of the **map panel**](#panel.map) will be cali
 
 Export selected dates by clicking the download button
 
-![Export selected dates](doc/img/panel_map_export.png)
+
+<center>
+
+![Export selected date](`r panel.map.export`){width=250px}
+
+</center>
 
 Dates will be exported as a GeoJSON file that can be analysed in a GIS
 
@@ -631,13 +640,13 @@ leaflet(width = "80%", height = "500px") %>%
   # setView(lng = -111.846061, lat = 36.115847, zoom = 12) %>%
   addProviderTiles(providers$Stamen.TerrainBackground, group='Terrain') %>%
   # addTiles(group = 'OSM') %>%
-  addPolygons(data = sp_ws_med,
+  addPolygons(data = ws_med,
               color = "red",
               # fillColor = 'red',
               fillOpacity = 0,
               opacity = .7,
               weight = 4) %>%
-  addPolygons(data = sp_ws_atl,
+  addPolygons(data = ws_atl,
               color = "blue",
               # fillColor = 'red',
               fillOpacity = 0,
@@ -665,7 +674,7 @@ NeoNet workgroup, and NeoNet app, aim to facilitate contributions in a perspecti
 - <input type="checkbox" checked> publish the **dataset** in an Open Data repository to get a DOI </input>
 - <input type="checkbox" checked> submit the **dataset** in a data paper ([JOAD](https://openarchaeologydata.metajnl.com/)) </input>
 - <input type="checkbox" checked> open the **app** to new contributions </input>
-- <input type="checkbox" unchecked> create a connector to the **dataset** with the [c14bazAAR getter function](https://github.com/ropensci/c14bazAAR) </input>
+- <input type="checkbox" checked> create a `get_neonet()` connector to the **dataset** with the [c14bazAAR getter function](https://github.com/ropensci/c14bazAAR) </input>
 - <input type="checkbox" unchecked> publish the **app** source code in an Open digital humanities paper (ex: [JOSS](https://joss.theoj.org/)) </input>
 
 #  **Credits**

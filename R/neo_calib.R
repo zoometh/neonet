@@ -22,7 +22,7 @@ neo_calib <- function(df.c14 = NA,
                       verbose = TRUE,
                       verbose.freq = 50){
   # calculate tpq/taq
-  df.c14$taq <- df.c14$tpq <- df.c14$colors <- NA
+  df.c14$taq <- df.c14$tpq <- df.c14$median <- df.c14$colors <- NA
   if(verbose){print("Run date calibration")}
   for (i in 1:nrow(df.c14)){
     if(verbose){
@@ -34,6 +34,10 @@ neo_calib <- function(df.c14 = NA,
                                      ageSds = df.c14[i, "C14SD"],
                                      calCurves = intCal,
                                      ids = 'Date1')
+    # median
+    age_samples <- Bchron::sampleAges(ages1)
+    med <- as.numeric(apply(age_samples, 2, quantile, probs = c(0.95)))
+    df.c14[i, "median"] <- -(med - Present)
     df.c14[i, "tpq"] <- -(min(ages1$Date1$ageGrid) - Present)
     df.c14[i, "taq"] <- -(max(ages1$Date1$ageGrid) - Present)
   }
