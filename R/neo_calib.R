@@ -1,6 +1,6 @@
 #' @name neo_calib
 #'
-#' @description calculate tpq / taq
+#' @description calculate tpq / taq and the median
 #'
 #' @param df.c14 the original XLSX with neonet columns (SiteName, Period, etc.) with with checked values (see: neo_subset)
 #' @param intCal calibration curve

@@ -1,3 +1,31 @@
+
+df <- data.frame(arr_lon = sf::st_coordinates(df.dates.min$geometry)[,1],
+                 arr_lat = sf::st_coordinates(df.dates.min$geometry)[,2], 
+                 EMISSIONS_KGCO2EQ = df.dates.min$median)
+
+library(tidyverse)
+library(interp)
+
+interpolated <- interp(df$arr_lon, 
+                       df$arr_lat, 
+                       df$EMISSIONS_KGCO2EQ, 
+                       duplicate = "mean",    #you have duplicated values
+                       output = "grid")
+
+#convert this to a long form dataframe
+interp_df <- expand_grid(i = seq_along(interpolated$x), 
+                         j = seq_along(interpolated$y)) %>% 
+  mutate(lon = interpolated$x[i],
+         lat = interpolated$y[j],
+         emissions = map2_dbl(i, j, ~interpolated$z[.x,.y])) %>% 
+  select(-i, -j)
+
+#then you can use this in your plot
+ggplot()+
+  # geom_point(data = df, aes(x = dep_lon, y = dep_lat), col = "red") +
+  geom_point(data = df, aes(x = arr_lon, y = arr_lat), col = "blue") +
+  geom_contour(data = interp_df, aes(x = lon, y = lat, z = emissions)) 
+
 # install necessary packages
 # install.packages( c( "shiny", "leaflet", "mapview" ) )
 
