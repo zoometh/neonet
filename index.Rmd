@@ -19,7 +19,7 @@ output:
       collapsed: false
       smooth_scroll: false
     includes:
-      in_header: "favicon.html" 
+      in_header: "doc/img/favicon.html" 
 # output:
 #   html_document: 
 #     number_sections: yes
