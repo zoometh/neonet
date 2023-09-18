@@ -1,3 +1,6 @@
+
+NeoNet is a framework for working on the Late Mesolithic/Early Neolithic transition. It is composed of the [NeoNet interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-) and the [R package NeoNet](https://github.com/zoometh/neonet#neonet-package)
+
 # ***NeoNet*** app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk), [Niccolò Mazzucco](mailto:niccolo.mazzucco@unipi.it), [Miriam Cubas Morera](mailto:mcubas.morera@gmail.com), [Juan Gibaja](mailto:jfgibaja@gmail.com), [F. Xavier Oms](mailto:oms@ub.edu), [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com), [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com), [Elías López-Romero](elias.lopez-romero@iam.csic.es)</sub>
 
@@ -49,7 +52,8 @@ Further explanations can be found in the [web tutorial](https://zoometh.github.i
 
 ---
 
-## ***NeoNet*** package
+## ***NeoNet*** package <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='150px' align="right"/>
+> <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk)</sub>
 
 The R package is under development, with:
  
@@ -60,8 +64,6 @@ The R package is under development, with:
 * Material life duration mapping table: [140_id00140_doc_thesaurus.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/140_id00140_doc_thesaurus.tsv)
 
 * BibTex references: [id00140_doc_reference.bib](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_reference.bib)
-
-
 
 
 ### Data preparation
