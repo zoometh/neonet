@@ -6,6 +6,7 @@
 #' @param selected.neo the Period on which the isochrons will be calculated. Used to subset `df.c14`. the Default: EN.
 #' @param max.sd the maximum of accepted SD. Dates with an higher value will be removed. Choose NA to not subset. Default: 100. 
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
+#' @param time.interv time interval between two isochrons, in years. Default: 250.
 #' @param map.longest.size the longest size of the output map (height or width) in cm. The smallest size will be calculated from it. Only useful if if export = TRUE. Default: 15
 #' @param verbose if TRUE (default) then display different messages.
 #'
@@ -19,13 +20,16 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
                        selected.neo = c("EN"),
                        max.sd = 100,
                        calibrate = TRUE,
+                       time.interv = 250,
                        export = TRUE,
                        outDir = "C:/Rprojects/neonet/results/",
                        mapname = NA,
                        map.longest.size = 15,
                        verbose = TRUE){
   
-  # library(tidyverse)
+  
+}
+# library(tidyverse)
   # library(interp)
   `%>%` <- dplyr::`%>%` # used to not load dplyr
   df.dates <- sf::st_read(df.c14, quiet = T)
@@ -70,12 +74,12 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
                    longitude = Xs,
                    latitude = Ys, 
                    median = df.dates.min$median)
-  contour_levels <- seq(min(df$median), max(df$median), by = 250)
+  contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
   # TODO: handle duplicated
   # duplicated(df[ , c("longitude", "latitude")])
-  interpolated <- interp::interp(df$longitude, 
-                                 df$latitude, 
-                                 df$median, 
+  interpolated <- interp::interp(x = df$longitude, 
+                                 y = df$latitude, 
+                                 z = df$median, 
                                  duplicate = "mean",    #you have duplicated values
                                  output = "grid")
   #convert this to a long form dataframe
@@ -83,8 +87,9 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
                                   j = seq_along(interpolated$y)) %>% 
     dplyr::mutate(lon = interpolated$x[i],
                   lat = interpolated$y[j],
-                  date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x,.y])) %>% 
+                  date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %>% 
     dplyr::select(-i, -j)
+  
   # map
   buff <- .1
   bbox <- c(left = min(Xs) - buff, 
@@ -103,14 +108,18 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
                                        ),
                           breaks = contour_levels) +
     metR::geom_text_contour(data = interp_df,
-                            binwidth = 250,
-                            ggplot2::aes(x = lon, y = lat, z = date.med),
+                            binwidth = time.interv,
+                            ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
+                            stroke = .15,
                             size = 2) +
     ggplot2::geom_point(data = df, 
-                        ggplot2::aes(x = longitude, y = latitude), col = "blue") +
+                        ggplot2::aes(x = longitude, y = latitude), 
+                        col = "black") +
     ggrepel::geom_text_repel(data = df, 
                              ggplot2::aes(x = longitude, y = latitude, label = idf),
                              size = 2,
+                             segment.alpha = .3,
+                             segment.size = .3,
                              max.overlaps = Inf) +
     ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
   if(export){
@@ -139,5 +148,3 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
     }
   }
   shell.exec(outFile)
-}
-
