@@ -315,11 +315,11 @@ Export selected dates by clicking the download button
 
 <center>
 
-![Export selected date](`r panel.map.export`){width=250px}
+![Export selected dates](`r panel.map.export`){width=250px}
 
 </center>
 
-Dates will be exported as a GeoJSON file that can be analysed in a GIS
+Dates will be exported as a GeoJSON file that can be analysed in a GIS or used in the NeoNet R package
 
 
 ## 2. **calib** panel {#panel.calib}
