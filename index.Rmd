@@ -319,7 +319,7 @@ Export selected dates by clicking the download button
 
 </center>
 
-Dates will be exported as a GeoJSON file that can be analysed in a GIS or used in the NeoNet R package
+Dates will be exported as a GeoJSON file that can be analysed in a GIS or used in the [NeoNet R package](https://github.com/zoometh/neonet#neonet-package)
 
 
 ## 2. **calib** panel {#panel.calib}
