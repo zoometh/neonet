@@ -184,7 +184,9 @@ Interactive dataframe: ```neo_leapfrog(DT = T)```<br>
 
 ## Neonet-strati
 
-NeoNet-strati is an [online R Shiny interactive app](https://trainingidn.shinyapps.io/neonet-strati/) to record the stratigraphy of the NeoNet dataset archaeological sites (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix)). 
+NeoNet-strati is an [online R Shiny interactive app](https://trainingidn.shinyapps.io/neonet-strati/) to record the stratigraphy of the NeoNet dataset archaeological sites (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix)). The app is composed of an editable dataframe,"Site Startigraphy", and the complete dataset "All sites" (second tab panel).
+
+### Worflow
 
 ```mermaid
 flowchart TD
@@ -197,8 +199,6 @@ flowchart TD
     classDef neonetshiny fill:#71e37c;
 ```
 https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv
-
-The app is composed of an editable dataframe,"Site Startigraphy", and the complete dataset "All sites" (second tab panel)[^1].
 
 ### Site Startigraphy panel
 
@@ -254,6 +254,3 @@ For example, "Roc du Dourgne" relationships are:
 |MC-782  |        |LM     |Layer 7   |   5770|   170|
 
 Pressing the CSV button (top-left) will export the "Roc du Dourgne" data in a CSV file. The latter will be named after the site name and current date, for example: "Roc du Dourgne_2023-07-30.csv"
-
-
-[^1]: <http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv>
