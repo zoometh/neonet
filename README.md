@@ -238,8 +238,6 @@ flowchart TD
     classDef neonetfunct fill:#e3c071;
     classDef neonetshiny fill:#71e37c;
 ```
-https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv
-
 ### App interface
 
 The app is composed by different panels: a site to be recorded ([Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet#all-sites-panel)).
