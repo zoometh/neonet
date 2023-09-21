@@ -184,7 +184,7 @@ Interactive dataframe: ```neo_leapfrog(DT = T)```<br>
 
 ## Neonet-strati
 
-NeoNet-strati is an online R Shiny interactive app to record the stratigraphy of NeoNet's archaeological sites in an editable dataframe (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix)). 
+NeoNet-strati is an online R Shiny interactive app to record the stratigraphy of NeoNet's archaeological sites in an editable dataframe based on `LabCode` identifiers. 
 
 <p align="center">
 <a href="https://trainingidn.shinyapps.io/neonet-strati" target="_blank"><b>NeoNet-strati app</b></a> 
@@ -195,18 +195,18 @@ A site name is copied from [All sites panel](https://github.com/zoometh/neonet#a
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne.png"
-" width="800">
+" width="700">
   <br>
-    <em>Panel "Site Stratigraphy" editable dataframe. "Roc du Dourgne" site, ordered on the "Period" column</em>
+    <em>"Roc du Dourgne" site sorted on its "PhaseCode"</em>
 </p>
 
-The startigraphical relationships, using "LabCode", can be added into the "After" column, and thereafter exported in CSV
+The stratigraphical relations can be added into the "After" column, and thereafter exported in CSV
 
 <p align="center">
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne-after.png"
 " width="1100">
   <br>
-    <em>"Roc du Dourgne" stratgraphical relationships (column "After") using LabCode identifiers, ordered on the "LabCode" column</em>
+    <em>"Roc du Dourgne" stratgraphical relationships (column "After") after edition</em>
 </p>
 
 For example, "Roc du Dourgne" relationships are:
@@ -222,7 +222,9 @@ For example, "Roc du Dourgne" relationships are:
 |MC-781  |        |EN     |C6        |   5000|   170|
 |MC-782  |        |LM     |Layer 7   |   5770|   170|
 
-Pressing the CSV button (top-left) will export the "Roc du Dourgne" data in a CSV file. The latter will be named after the site name and current date, for example: "Roc du Dourgne_2023-07-30.csv"
+The first row indicates that: "*the layer containing radiocarbon date MC-1101 comes after the layer containing radiocarbon date MC-1102*". 
+
+Save the changes by downloading the dataset pressing the button (top-left) as a CSV file that can be read by the `neo_strati()` function (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix))
 
 ### Worflow
 
