@@ -184,7 +184,11 @@ Interactive dataframe: ```neo_leapfrog(DT = T)```<br>
 
 ## Neonet-strati
 
-NeoNet-strati is an [online R Shiny interactive app](https://trainingidn.shinyapps.io/neonet-strati/) to record the stratigraphy of the NeoNet dataset archaeological sites (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix)). The app is composed of an editable dataframe,"Site Startigraphy", and the complete dataset "All sites" (second tab panel).
+NeoNet-strati is an online R Shiny interactive app to record the stratigraphy of NeoNet's archaeological sites (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix)). The app is composed of an editable dataframe ([Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet#all-sites-panel)).
+
+<p align="center">
+<a href="https://trainingidn.shinyapps.io/neonet-strati" target="_blank"><b>NeoNet-strati app</b></a> 
+</p>
 
 ### Worflow
 
