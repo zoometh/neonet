@@ -1,5 +1,5 @@
 
-# ***NeoNet***
+# NeoNet
 
 NeoNet is a framework for working on the Late Mesolithic/Early Neolithic transition. It is composed of the [NeoNet interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-) and the [R package NeoNet](https://github.com/zoometh/neonet#neonet-package)
 
@@ -7,16 +7,16 @@ NeoNet is a framework for working on the Late Mesolithic/Early Neolithic transit
 
 Further explanations can be found in the [web document](https://zoometh.github.io/neonet/). If you want to contribute to the development version of the app, or the dataset, check the [contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md) and the [relevant license](https://github.com/zoometh/neonet/blob/master/LICENSE)
 
-## ***NeoNet*** app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
+## NeoNet app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk), [Niccolò Mazzucco](mailto:niccolo.mazzucco@unipi.it), [Miriam Cubas Morera](mailto:mcubas.morera@gmail.com), [Juan Gibaja](mailto:jfgibaja@gmail.com), [F. Xavier Oms](mailto:oms@ub.edu), [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com), [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com), [Elías López-Romero](elias.lopez-romero@iam.csic.es)</sub>
 
-***NeoNet app*** is an R Shiny application for mapping radiocarbon (C14) dates from the Late Mesolithic/Early Neolithic transition in the North-Central Mediterranean and European South Atlantic river basin (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">loc</a>). The application offers a mobile geographic window for date selection by location, various filters on chronology and date quality, a calibration window, and other tools to create a user-friendly interface supported by a curated dataset of radiocarbon dates and archaeological contexts. NeoNet app is hosted on the server of the University of Pisa. This NeoNet app uses this radiocarbon dataset: <a href="https://doi.org/10.13131/archelogicadata-yb11-yb66" target="_blank">https://doi.org/10.13131/archelogicadata-yb11-yb66</a> published as a data paper in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87).
+NeoNet app is an R Shiny application for mapping radiocarbon (C14) dates from the Late Mesolithic/Early Neolithic transition in the North-Central Mediterranean and European South Atlantic river basin (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">loc</a>). The application offers a mobile geographic window for date selection by location, various filters on chronology and date quality, a calibration window, and other tools to create a user-friendly interface supported by a curated dataset of radiocarbon dates and archaeological contexts. NeoNet app is hosted on the server of the University of Pisa. This NeoNet app uses this radiocarbon dataset: <a href="https://doi.org/10.13131/archelogicadata-yb11-yb66" target="_blank">https://doi.org/10.13131/archelogicadata-yb11-yb66</a> published as a data paper in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87).
 
 <p align="center">
 <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank"><b>NeoNet app</b></a> 
 </p>
    
-## ***NeoNet*** package <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
+## NeoNet package <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk)</sub>
 
 The `neonet` R package is under development. It enables the handling of radiocarbon dates sourced from the dataset or exported from the Shiny app.
@@ -64,7 +64,7 @@ Calculating basic statistics: missing data
 neo_datamiss(df.c14)
 ```
 
-### Merging the dataset with the NeoNet Med one
+#### Merging datasets
 
 Prepare the dataset for the Shiny application by merging it with NeoNet Med, calculating materil life duration, and HTML popup layouts
 
@@ -84,7 +84,7 @@ write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
             row.names = FALSE)
 ```
 
-### Create a SPD plot
+### SPD plot
 
 Plot the SPD of the two datasets, once `df.c14` calculated
 
@@ -103,7 +103,7 @@ neo_spd(df.c14 = df.c14)
 The `neo_spd()` calls the `neo_spdplo()` adapted from `rcarbon::plot.stackCalSPD.R` to fetch the conventional periods colors
 
 
-### Calculate isochrones
+### Isochrones
 
 Create a map with isochrone contour to model the spread of Neolithic
 
@@ -197,7 +197,7 @@ For example, "Roc du Dourgne" relationships are:
 
 Pressing the CSV button (top-left) will export the "Roc du Dourgne" data in a CSV file. The latter will be named after the site name and current date, for example: "Roc du Dourgne_2023-07-30.csv"
 
-#### Model the stratigraphic relationships
+#### Harris Matrix
 
 The output CSV file can be read by the `neo_strat()` function
 
