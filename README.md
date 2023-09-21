@@ -90,7 +90,9 @@ neo_spd(df.c14 = df.c14)
 ```
 
 <p align="center">
-![](doc/img/neonet_med_x_atl_spd.png)
+  
+![](doc/img/neonet_med_x_atl_spd.png)  
+
 </p>
 
 
