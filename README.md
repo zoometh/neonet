@@ -90,15 +90,15 @@ neo_spd(df.c14 = df.c14)
 ```
 
 <p align="center">
-  
-![](doc/img/neonet_med_x_atl_spd.png)  
-
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/neonet_med_x_atl_spd.png"
+" width="700">
+  <br>
+    <em>NeoNet dataset SPD with default period colors</em>
 </p>
 
 
-
-
-The `neo_spd()` calls the `neo_spdplo()` adapted from `rcarbon::plot.stackCalSPD.R` to fetch the conventional periods colors
+The `neo_spd()` calls the `neo_spdplo()` adapted from `rcarbon::plot.stackCalSPD.R` to fetch NeoNet default period colors.
 
 
 ### Isochrones
@@ -152,7 +152,7 @@ Gives:
     <em>"Roc du Dourgne" stratgraphical relationships using LabCode identifiers, ordered on the "LabCode" column</em>
 </p>
 
-Changing the `outLabel` to `Period` allows to color on periods using the default hexadecimal color  attributed to each period (see the chapter "Period" in the [NeoNet web tutorial](https://zoometh.github.io/neonet/#3_data_panel))
+Changing the `outLabel` to `Period` allows to color on periods using the default period colors (see the [web document](https://zoometh.github.io/neonet/#3_data_panel))
 
 ```R
 neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
