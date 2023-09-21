@@ -98,7 +98,7 @@ neo_spd(df.c14 = df.c14)
 </p>
 
 
-The `neo_spd()` calls the `neo_spdplo()` adapted from `rcarbon::plot.stackCalSPD.R` to fetch NeoNet default period colors.
+`neo_spd()` calls `neo_spdplo()`, adapted from `rcarbon::plot.stackCalSPD.R`, to fetch NeoNet default period colors.
 
 
 ### Isochrones
