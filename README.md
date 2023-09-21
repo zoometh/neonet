@@ -23,9 +23,7 @@ The `neonet` R package is under development. It enables the handling of radiocar
 
 ### Data preparation
 
-Running these `neo_*()` functions on a new XLSX dataset.
-
-Sourcing functions
+Starting by running these `neo_*()` functions to manage a new XLSX dataset. Sourcing functions:
 
 ```R
 source("R/neo_subset.R")
@@ -39,14 +37,14 @@ source("R/neo_datasum.R")
 source("R/neo_doi.R")
 ```
 
-Read the dataset
+Read the new dataset and bibliographic file
 
 ```R
 data.c14 <- paste0(getwd(), "/inst/extdata/", "NeoNet_atl_ELR (1).xlsx")
 df.bib <- paste0(getwd(), "/inst/extdata/", "NeoNet_atl_ELR.bib")
 ```
 
-Cleaning the dataset and making it conform to the NeoNet published dataset
+Cleaning the dataset and making it conform to the published <a href="https://doi.org/10.13131/archelogicadata-yb11-yb66" target="_blank">NeoNet dataset</a>
 
 ```R
 df.c14 <- openxlsx::read.xlsx(data.c14)
@@ -58,13 +56,11 @@ df.c14 <- neo_calib(df.c14)
 neo_doi(df.c14)
 ```
 
-Calculating basic statistics: missing data
+Calculate basic statistics: missing data
 
 ```R
 neo_datamiss(df.c14)
 ```
-
-#### Merging datasets
 
 Prepare the dataset for the Shiny application by merging it with NeoNet Med, calculating materil life duration, and HTML popup layouts
 
@@ -122,84 +118,9 @@ The output is a map with isochrones calculated on the median of calibrated Early
 
 ![](results/2023-09-15_neonet.png)
 
-### Stratigraphy
+### Harris Matrix
 
-Build the [stratigraphy](https://github.com/historical-time/caa23/tree/main/neonet#stratigraphy) of NeoNet archaeological sites
-
-To reconstruct site stratigraphies we will use Harris matrices.
-
-```mermaid
-flowchart TD
-    A[NeoNet dataset] --is read by--> B{{<a href='https://trainingidn.shinyapps.io/neonet-strati'>neonet-strati</a>}}:::neonetshiny;
-    B --edit<br>site stratigraphy--> B;
-    B --export<br>site stratigraphy<br>file--> C[<a href='https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv'>Roc du Dourgne_2023-07-30.csv</a>];
-    C --is read by--> D{{<a href='https://github.com/historical-time/caa23/blob/main/neonet/functions/neo_strat.R'>neonet_strat</a>}}:::neonetfunct;
-    D --export --> E[maps<br>charts<br>listings<br>...];
-    classDef neonetfunct fill:#e3c071;
-    classDef neonetshiny fill:#71e37c;
-```
-https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv
-
-"neonet-strati" is an  Shiny interactive app, while `neonet_strat` is a R function.
-
-#### neonet-strati
-
-neonet-strati is an [online R Shiny interactive app](https://trainingidn.shinyapps.io/neonet-strati/). It is composed of an editable dataframe,"Site Startigraphy" (first tab panel), and the complete dataset "All sites"  (second tab panel)[^1]. 
-
-The first tab panel, "Site Startigraphy", samples a site from the NeoNet dataset and allow to edit its stratigraphical relationships.
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site.png"
-" width="700">
-  <br>
-    <em>Panel "Site Stratigraphy" editable dataframe. By default the app opens on "Pokrovnik"</em>
-</p>
-
-The second tab panel, "All sites", the whole dataset. A specific site can be selected in the selection search bar (top-right). Then the Site Name can be copied from the SiteName column (highlighted in blue)
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-allsite-dourgne.png"
-" width="1100">
-  <br>
-    <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
-</p>
-
-And copied into the bar "select a site name", in the tab panel "Site Stratigraphy"
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne.png"
-" width="800">
-  <br>
-    <em>Panel "Site Stratigraphy" editable dataframe. "Roc du Dourgne" site, ordered on the "Period" column</em>
-</p>
-
-The startigraphical relationships, using "LabCode", can be added into the "After" column, and thereafter exported in CSV
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne-after.png"
-" width="1100">
-  <br>
-    <em>"Roc du Dourgne" stratgraphical relationships (column "After") using LabCode identifiers, ordered on the "LabCode" column</em>
-</p>
-
-For example, "Roc du Dourgne" relationships are:
-
-|LabCode |After   |Period |PhaseCode | C14Age| C14SD|
-|:-------|:-------|:------|:---------|------:|-----:|
-|MC-1101 |MC-1102 |EN     |C5        |   5050|   100|
-|MC-1102 |MC-1103 |EN     |C5        |   6170|   100|
-|MC-1103 |MC-1105 |EN     |C6        |   5100|    80|
-|MC-1104 |MC-1105 |EN     |C6        |   6470|   100|
-|MC-1105 |MC-1107 |EN     |C6        |   5550|    80|
-|MC-1107 |        |LM     |C7        |   6850|   100|
-|MC-781  |        |EN     |C6        |   5000|   170|
-|MC-782  |        |LM     |Layer 7   |   5770|   170|
-
-Pressing the CSV button (top-left) will export the "Roc du Dourgne" data in a CSV file. The latter will be named after the site name and current date, for example: "Roc du Dourgne_2023-07-30.csv"
-
-#### Harris Matrix
-
-The output CSV file can be read by the `neo_strat()` function
+The output CSV file exported by [NeoNet-starti](https://github.com/zoometh/neonet#neonet-strati) can be read by the `neo_strat()` function
 
 ```R
 neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
@@ -260,6 +181,80 @@ Interactive dataframe: ```neo_leapfrog(DT = T)```<br>
 </p>
 
     - merge Harris matrices with the same [Culture](https://zoometh.github.io/neonet/#3_data_panel)[^1] between different sites 
+
+## Neonet-strati
+
+Build the [stratigraphy](https://github.com/historical-time/caa23/tree/main/neonet#stratigraphy) of NeoNet archaeological sites 
+
+To reconstruct site stratigraphies we will use Harris matrices.
+
+```mermaid
+flowchart TD
+    A[NeoNet dataset] --is read by--> B{{<a href='https://trainingidn.shinyapps.io/neonet-strati'>neonet-strati</a>}}:::neonetshiny;
+    B --edit<br>site stratigraphy--> B;
+    B --export<br>site stratigraphy<br>file--> C[<a href='https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv'>Roc du Dourgne_2023-07-30.csv</a>];
+    C --is read by--> D{{<a href='https://github.com/historical-time/caa23/blob/main/neonet/functions/neo_strat.R'>neonet_strat</a>}}:::neonetfunct;
+    D --export --> E[maps<br>charts<br>listings<br>...];
+    classDef neonetfunct fill:#e3c071;
+    classDef neonetshiny fill:#71e37c;
+```
+https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv
+
+"neonet-strati" is an  Shiny interactive app, while `neonet_strat` is a R function.
+
+
+neonet-strati is an [online R Shiny interactive app](https://trainingidn.shinyapps.io/neonet-strati/). It is composed of an editable dataframe,"Site Startigraphy" (first tab panel), and the complete dataset "All sites"  (second tab panel)[^1]. 
+
+The first tab panel, "Site Startigraphy", samples a site from the NeoNet dataset and allow to edit its stratigraphical relationships.
+
+<p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site.png"
+" width="700">
+  <br>
+    <em>Panel "Site Stratigraphy" editable dataframe. By default the app opens on "Pokrovnik"</em>
+</p>
+
+The second tab panel, "All sites", the whole dataset. A specific site can be selected in the selection search bar (top-right). Then the Site Name can be copied from the SiteName column (highlighted in blue)
+
+<p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-allsite-dourgne.png"
+" width="1100">
+  <br>
+    <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
+</p>
+
+And copied into the bar "select a site name", in the tab panel "Site Stratigraphy"
+
+<p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne.png"
+" width="800">
+  <br>
+    <em>Panel "Site Stratigraphy" editable dataframe. "Roc du Dourgne" site, ordered on the "Period" column</em>
+</p>
+
+The startigraphical relationships, using "LabCode", can be added into the "After" column, and thereafter exported in CSV
+
+<p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne-after.png"
+" width="1100">
+  <br>
+    <em>"Roc du Dourgne" stratgraphical relationships (column "After") using LabCode identifiers, ordered on the "LabCode" column</em>
+</p>
+
+For example, "Roc du Dourgne" relationships are:
+
+|LabCode |After   |Period |PhaseCode | C14Age| C14SD|
+|:-------|:-------|:------|:---------|------:|-----:|
+|MC-1101 |MC-1102 |EN     |C5        |   5050|   100|
+|MC-1102 |MC-1103 |EN     |C5        |   6170|   100|
+|MC-1103 |MC-1105 |EN     |C6        |   5100|    80|
+|MC-1104 |MC-1105 |EN     |C6        |   6470|   100|
+|MC-1105 |MC-1107 |EN     |C6        |   5550|    80|
+|MC-1107 |        |LM     |C7        |   6850|   100|
+|MC-781  |        |EN     |C6        |   5000|   170|
+|MC-782  |        |LM     |Layer 7   |   5770|   170|
+
+Pressing the CSV button (top-left) will export the "Roc du Dourgne" data in a CSV file. The latter will be named after the site name and current date, for example: "Roc du Dourgne_2023-07-30.csv"
 
 
 [^1]: <http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv>
