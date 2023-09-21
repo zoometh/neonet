@@ -19,7 +19,7 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14) dates from th
 ## NeoNet package <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk)</sub>
 
-The `neonet` R package is under development. It enables the handling of radiocarbon dates sourced from the dataset or exported from the Shiny app.
+The `neonet` R package is under development. It enables the handling of radiocarbon dates sourced from the dataset or exported from the Shiny app: [SPD](https://github.com/zoometh/neonet#spd-plot), [isochrones](https://github.com/zoometh/neonet#isochrones).
 
 ### Data preparation
 
