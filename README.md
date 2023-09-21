@@ -19,7 +19,7 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14) dates from th
 ## NeoNet package <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk)</sub>
 
-The `neonet` R package is under development. It enables the handling of radiocarbon dates sourced from the dataset or exported from the Shiny app: [SPD](https://github.com/zoometh/neonet#spd-plot), [isochrones](https://github.com/zoometh/neonet#isochrones).
+The `neonet` R package is under development. It enables the handling of radiocarbon dates sourced from the dataset or exported from the Shiny app: [SPD](https://github.com/zoometh/neonet#spd-plot), [isochrones](https://github.com/zoometh/neonet#isochrones), [Harris matrices](https://github.com/zoometh/neonet#harris-matrix), etc.
 
 ### Data preparation
 
@@ -184,9 +184,7 @@ Interactive dataframe: ```neo_leapfrog(DT = T)```<br>
 
 ## Neonet-strati
 
-Build the [stratigraphy](https://github.com/historical-time/caa23/tree/main/neonet#stratigraphy) of NeoNet archaeological sites 
-
-To reconstruct site stratigraphies we will use Harris matrices.
+NeoNet-strati is an [online R Shiny interactive app](https://trainingidn.shinyapps.io/neonet-strati/) to record the stratigraphy of the NeoNet dataset archaeological sites (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix)). 
 
 ```mermaid
 flowchart TD
@@ -200,10 +198,9 @@ flowchart TD
 ```
 https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv
 
-"neonet-strati" is an  Shiny interactive app, while `neonet_strat` is a R function.
+The app is composed of an editable dataframe,"Site Startigraphy", and the complete dataset "All sites" (second tab panel)[^1].
 
-
-neonet-strati is an [online R Shiny interactive app](https://trainingidn.shinyapps.io/neonet-strati/). It is composed of an editable dataframe,"Site Startigraphy" (first tab panel), and the complete dataset "All sites"  (second tab panel)[^1]. 
+### Site Startigraphy panel
 
 The first tab panel, "Site Startigraphy", samples a site from the NeoNet dataset and allow to edit its stratigraphical relationships.
 
@@ -213,6 +210,8 @@ The first tab panel, "Site Startigraphy", samples a site from the NeoNet dataset
   <br>
     <em>Panel "Site Stratigraphy" editable dataframe. By default the app opens on "Pokrovnik"</em>
 </p>
+
+### All sites panel
 
 The second tab panel, "All sites", the whole dataset. A specific site can be selected in the selection search bar (top-right). Then the Site Name can be copied from the SiteName column (highlighted in blue)
 
