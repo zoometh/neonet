@@ -1,126 +1,13 @@
+# NeoNet stratigraphy
+> Creating Bayesian modelling for radiocarbon dates and stratigraphy of the **NeoNet** dataset
 
-# ***NeoNet***
+NeoNet [online app](http://shinyserver.cfs.unipi.it:3838/C14/) (see also [GitHub](https://github.com/zoometh/neonet)) dynamically maps radiocarbon dates of the Mesolithic/Neolithic transition, and records other contextual information (stratigraphic units, cultural periods, etc.). We bringing new developments for analysis of radiocarbon dates:
 
-NeoNet is a framework for working on the Late Mesolithic/Early Neolithic transition. It is composed of the [NeoNet interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-) and the [R package NeoNet](https://github.com/zoometh/neonet#neonet-package)
+1. build the [stratigraphy](https://github.com/historical-time/caa23/tree/main/neonet#stratigraphy) of these archaeological sites;
 
----
+2. merged [cultural periods](https://github.com/historical-time/caa23/tree/main/neonet#cultural-periods) from the https://devr.cepam.cnrs.fr/shinyapps/leap/ application with this model;
 
-Further explanations can be found in the [web document](https://zoometh.github.io/neonet/). If you want to contribute to the development version of the app, or the dataset, check the [contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md) and the [relevant license](https://github.com/zoometh/neonet/blob/master/LICENSE)
-
-## ***NeoNet*** app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
-> <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk), [Niccolò Mazzucco](mailto:niccolo.mazzucco@unipi.it), [Miriam Cubas Morera](mailto:mcubas.morera@gmail.com), [Juan Gibaja](mailto:jfgibaja@gmail.com), [F. Xavier Oms](mailto:oms@ub.edu), [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com), [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com), [Elías López-Romero](elias.lopez-romero@iam.csic.es)</sub>
-
-***NeoNet app*** is an R Shiny application for mapping radiocarbon (C14) dates from the Late Mesolithic/Early Neolithic transition in the North-Central Mediterranean and European South Atlantic river basin (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">loc</a>). The application offers a mobile geographic window for date selection by location, various filters on chronology and date quality, a calibration window, and other tools to create a user-friendly interface supported by a curated dataset of radiocarbon dates and archaeological contexts. NeoNet app is hosted on the server of the University of Pisa: <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank">http://shinyserver.cfs.unipi.it:3838/C14/</a>. This NeoNet app uses this radiocarbon dataset: <a href="https://doi.org/10.13131/archelogicadata-yb11-yb66" target="_blank">https://doi.org/10.13131/archelogicadata-yb11-yb66</a> published as a data paper in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87).
-   
-## ***NeoNet*** package <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
-> <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk)</sub>
-
-The `neonet` R package is under development. It enables the handling of radiocarbon dates sourced from the dataset or exported from the Shiny app.
-
-### Data preparation
-
-Running these `neo_*()` functions on a new XLSX dataset.
-
-Sourcing functions
-
-```R
-source("R/neo_subset.R")
-source("R/neo_bib.R")
-source("R/neo_matlife.R")
-source("R/neo_calib.R")
-source("R/neo_merge.R")
-source("R/neo_html.R")
-source("R/neo_datamiss.R")
-source("R/neo_datasum.R")
-source("R/neo_doi.R")
-```
-
-Read the dataset
-
-```R
-data.c14 <- paste0(getwd(), "/inst/extdata/", "NeoNet_atl_ELR (1).xlsx")
-df.bib <- paste0(getwd(), "/inst/extdata/", "NeoNet_atl_ELR.bib")
-```
-
-Cleaning the dataset and making it conform to the NeoNet published dataset
-
-```R
-df.c14 <- openxlsx::read.xlsx(data.c14)
-df.c14 <- neo_subset(df.c14,
-                     rm.C14Age = TRUE,
-                     rm.Spatial = FALSE,
-                     rm.Period = FALSE)
-df.c14 <- neo_calib(df.c14)
-neo_doi(df.c14)
-```
-
-Calculating basic statistics: missing data
-
-```R
-neo_datamiss(df.c14)
-```
-
-### Merging the dataset with the NeoNet Med one
-
-Prepare the dataset for the Shiny application by merging it with NeoNet Med, calculating materil life duration, and HTML popup layouts
-
-```R
-df.c14 <- neo_merge(df.c14 = df.c14, 
-                    data.bib = data.bib, 
-                    merge.bib = F)
-df.c14 <- neo_matlife(df.c14)
-df.c14 <- neo_html(df.c14)
-```
-
-Export the merged dataset
-
-```R
-write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
-            sep = "\t",
-            row.names = FALSE)
-```
-
-### Create a SPD plot
-
-Plot the SPD of the two datasets, once `df.c14` calculated
-
-```R
-library(rcarbon)
-
-source("R/neo_spd.R")
-source("R/neo_spdplot.R")
-
-neo_spd(df.c14 = df.c14)
-```
-
-![](doc/img/neonet_med_x_atl_spd.png)
-
-
-The `neo_spd()` calls the `neo_spdplo()` adapted from `rcarbon::plot.stackCalSPD.R` to fetch the conventional periods colors
-
-
-### Calculate isochrones
-
-Create a map with isochrone contour to model the spread of Neolithic
-
-```R
-library(rcarbon)
-
-source("R/neo_isochr.R")
-source("R/neo_spd.R")
-
-neo_isochr(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.geojson")
-```
-  
-The file [2023-09-15_neonet.geojson](https://github.com/zoometh/neonet/blob/main/results/2023-09-15_neonet.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates))
-
-The output is a map with isochrones calculated on the median of calibrated Early Neolithic (EN) dates
-
-![](results/2023-09-15_neonet.png)
-
-### Stratigraphy
-
-Build the [stratigraphy](https://github.com/historical-time/caa23/tree/main/neonet#stratigraphy) of NeoNet archaeological sites
+## Stratigraphy
 
 To reconstruct site stratigraphies we will use Harris matrices.
 
@@ -138,7 +25,7 @@ https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dour
 
 "neonet-strati" is an  Shiny interactive app, while `neonet_strat` is a R function.
 
-#### neonet-strati
+### neonet-strati
 
 neonet-strati is an [online R Shiny interactive app](https://trainingidn.shinyapps.io/neonet-strati/). It is composed of an editable dataframe,"Site Startigraphy" (first tab panel), and the complete dataset "All sites"  (second tab panel)[^1]. 
 
@@ -193,7 +80,7 @@ For example, "Roc du Dourgne" relationships are:
 
 Pressing the CSV button (top-left) will export the "Roc du Dourgne" data in a CSV file. The latter will be named after the site name and current date, for example: "Roc du Dourgne_2023-07-30.csv"
 
-#### Model the stratigraphic relationships
+### Model the stratigraphic relationships
 
 The output CSV file can be read by the `neo_strat()` function
 
@@ -244,7 +131,7 @@ The ongoing developments concern:
     - merge Harris matrices with the same [Period](https://zoometh.github.io/neonet/#mf.period) between different sites, culures, periods, etc.
     - process the radiocarbon dates and stratigraphic relationships to perform **Bayesian modelling** on-the-fly;
 
-### Cultural Periods
+## Cultural Periods
 
 Using [neo_leapfrog()](https://github.com/historical-time/caa23/blob/main/neonet/functions/neo_leapfrog.R) function to merge dataframe from NeoNet and Leapfrog on common C14 LabCode values: <https://historical-time.github.io/caa23/neonet/results/NN_and_LF.html>
 

@@ -1,3 +1,171 @@
+## Editable datatable
+
+# site.to.edit <- "Pokrovnik"
+
+d1 <- df.site.to.edit # this df has been created by neo_strat_edit.R
+
+cwd <- dirname(rstudioapi::getActiveDocumentContext()$path)
+# rstudioapi::jobRunScript(path = paste0(cwd, "/editabledata_test.R"), importEnv = TRUE)
+source(paste0(cwd, "/neo_strat.R"))
+
+ui <- shiny::fluidPage(
+  shiny::titlePanel("NeoNet - stratigraphical relationships"),
+  h3(site.to.edit),
+  mainPanel(
+    tabsetPanel(
+      id = 'dataset',
+      tabPanel("data", #"Sample Bank",
+               
+               DT::dataTableOutput("site.data"),
+               # br(),
+               # actionButton("viewBtn","View"),
+               # br(),
+               # actionButton("saveBtn","Save"),
+               br(),
+               plotOutput("gg.strati")
+      ))))
+
+server <- function(input, output) {
+  
+  
+  output$site.data <- DT::renderDataTable(
+    DT::datatable(
+      d1,
+      selection = 'none',
+      editable = TRUE,
+      rownames = TRUE,
+      extensions = 'Buttons',
+      width = "100%",
+      options = list(
+        searching = TRUE,
+        # fixedColumns = TRUE,
+        # autoWidth = TRUE,
+        # ordering = TRUE,
+        lengthMenu = list(c('50', '100', '200', -1),
+                          c('50', '100', '200', 'All')),
+        paging = TRUE,
+        dom = 'Bfrtip',
+        buttons = list(
+          list(extend = "csv", title = site.to.edit)
+        )
+        # buttons = c('csv')
+      ),
+      class = "display"
+    )
+  )
+  
+  
+  observeEvent(input$site.data_cell_edit, {
+    d1[input$site.data_cell_edit$row,input$site.data_cell_edit$col] <<- input$site.data_cell_edit$value
+  })
+  
+  
+  # view_fun <- eventReactive(input$viewBtn,{
+  #   if(is.null(input$saveBtn)||input$saveBtn==0)
+  #   {
+  #     returnValue()
+  #   }
+  #   else
+  #   {
+  #     DT::datatable(d1, selection = 'none')
+  #   }
+  #
+  # })
+  # observeEvent(input$saveBtn,{
+  #   outData <- paste0(site.to.edit, ".csv")
+  #   write.csv(d1, outData)
+  # })
+  
+  output$gg.strati <- renderPlot({
+    neo_strat(smp.sitename = site.to.edit)
+  })
+  
+  # output$updated.df <- DT::renderDataTable({
+  #   view_fun()
+  # }
+  # )
+}
+
+shinyApp(ui, server)
+
+
+#######################
+
+library(dplyr)
+
+
+# df <- read.table("http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv", sep = "\t", header = T, quote = "")
+df <- read.table("140_140_id00140_doc_elencoc14.tsv", sep = "\t", header = T, quote = "")
+
+
+mysite <- "Pokrovnik"
+
+df.sample <- df[df$SiteName == mysite, ]
+
+col.names <- c("SiteName", "Period", "PhaseCode", "LabCode", "C14Age", "C14SD", "Material", "MaterialSpecies")
+
+df.sample <- df.sample[ , col.names]
+
+df.sample$After <- NA
+
+
+###############################
+
+
+# reset if TRUE
+from.scratch <- T
+
+if(from.scratch){
+  
+  lcul_col <- list(# colors
+    EM = "#0000CF", # BLUE
+    MM = "#1D1DFF", #
+    LM = "#3737FF", #
+    LMEN = "#6A6AFF", #
+    UM = "#8484FF", #
+    EN = "#FF1B1B", # RED
+    EMN = "#FF541B", #
+    MN = "#FF8D1B", #
+    LN = "#FFC04D", #
+    UN = "#E7E700" # NEO UNDEF.
+  )
+  
+  df.colors.per <- as.data.frame((stack(lcul_col)))
+  df.colors.per$name <- c("Early Mesolithic",
+                          "Middle Mesolithic",
+                          "Late Mesolithic",
+                          "Late Mesolithic/Early Neolithic",
+                          "Undefined Mesolithic",
+                          "Early Neolithic",
+                          "Early/Middle Neolithic",
+                          "Middle Neolithic",
+                          "Late Neolithic",
+                          "Undefined Neolithic")
+  names(df.colors.per)[names(df.colors.per) == 'ind'] <- 'period'
+  names(df.colors.per)[names(df.colors.per) == 'values'] <- 'color'
+  names(df.colors.per)[names(df.colors.per) == 'name'] <- 'period_full_name'
+  df.colors.per <- df.colors.per[ , c(2, 3, 1)]
+  write.table(df.colors.per, "C:/Rprojects/neonet/doc/img/periods.tsv", sep = "\t", row.names = F)
+} else {
+  # TODO: read a TSV dataframe
+  # pass
+  df.colors.per <- read.table("https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/periods.tsv", header = T)
+}
+
+
+df.colors.per[ , c(3)] <- kableExtra::cell_spec(df.colors.per[, c(3)], color = df.colors.per$color)
+dt <- knitr::kable(df.colors.per, format = "html",
+                   row.names = F,
+                   booktabs = T,
+                   escape = F,
+                   align = "l") %>%
+  kableExtra::kable_styling(full_width = FALSE,
+                            position = "center",
+                            font_size = 20)
+
+readr::write_file(dt, "C:/Rprojects/neonet/doc/img/periods.html")
+
+################
 
 df <- data.frame(arr_lon = sf::st_coordinates(df.dates.min$geometry)[,1],
                  arr_lat = sf::st_coordinates(df.dates.min$geometry)[,2], 
