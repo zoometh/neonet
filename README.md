@@ -89,7 +89,11 @@ source("R/neo_spdplot.R")
 neo_spd(df.c14 = df.c14)
 ```
 
+<p align="center">
 ![](doc/img/neonet_med_x_atl_spd.png)
+</p>
+
+
 
 
 The `neo_spd()` calls the `neo_spdplo()` adapted from `rcarbon::plot.stackCalSPD.R` to fetch the conventional periods colors
@@ -244,7 +248,7 @@ Plot a selected site in an editable table to record its stratigraphical relation
 
 #### All sites panel
 
-Show the complete NeoNet dataset. A site can be selected by searching it in the selection search bar (top-right) and copying its name (`Site Name` column). Here Pokrovnik, highlighted in blue.
+Show the complete NeoNet dataset. A site can be selected by searching it in the selection search bar (top-right) and copying its name (`Site Name` column). Here Roc du Dourgne, highlighted in blue.
 
 <p align="center">
 <br>
