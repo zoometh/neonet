@@ -1,3 +1,15 @@
+source("R/neo_subset.R")
+source("R/neo_bib.R")
+source("R/neo_matlife.R")
+source("R/neo_calib.R")
+source("R/neo_merge.R")
+source("R/neo_html.R")
+source("R/neo_datamiss.R")
+source("R/neo_datasum.R")
+source("R/neo_doi.R")
+
+
+
 ## Editable datatable
 
 # site.to.edit <- "Pokrovnik"

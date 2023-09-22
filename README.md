@@ -122,32 +122,26 @@ The output is a map with isochrones calculated on the median of calibrated Early
 
 ### Harris Matrix
 
-The output CSV file exported by [NeoNet-starti](https://github.com/zoometh/neonet#neonet-strati) can be read by the `neo_strat()` function
+The output CSV file exported by [NeoNet-starti](https://github.com/zoometh/neonet#neonet-strati) can be read by the `neo_strat()` function. For example, ploting the `C14Age` and the `PhaseCode`.
 
 ```R
 neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
           outLabel = c("C14Age"))
-```
-Gives:
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-c14age.png"
-" width="500">
-  <br>
-    <em>"Roc du Dourgne" stratgraphical relationships using LabCode identifiers, ordered on the "LabCode" column</em>
-</p>
-
-And
-
-```R
 neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
           outLabel = c("PhaseCode"))
 ```
 Gives:
 
 <p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-c14age.png"
+" width="400">
+  <br>
+    <em>"Roc du Dourgne" stratgraphical relationships using LabCode identifiers, ordered on the "LabCode" column</em>
+</p>
+
+<p align="center">
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-phasecode.png"
-" width="500">
+" width="400">
   <br>
     <em>"Roc du Dourgne" stratgraphical relationships using LabCode identifiers, ordered on the "LabCode" column</em>
 </p>
@@ -169,11 +163,9 @@ Gives:
 
 ### Cultural Periods
 
-Using [neo_leapfrog()](https://github.com/historical-time/caa23/blob/main/neonet/functions/neo_leapfrog.R) function to merge dataframe from NeoNet and Leapfrog on common C14 LabCode values: <https://historical-time.github.io/caa23/neonet/results/NN_and_LF.html>
+Using `neo_leapfrog(DT = T)` to merge dataframe from NeoNet and Leapfrog on common C14 LabCode values: <https://historical-time.github.io/caa23/neonet/results/NN_and_LF.html>
 
-<p>
-
-Interactive dataframe: ```neo_leapfrog(DT = T)```<br>
+<p align="center">
 <img src="https://github.com/historical-time/caa23/blob/main/neonet/results/NN_and_LF.gif" width="800"><br>
 <em>Screen capture of [NN_and_LF.html](https://historical-time.github.io/caa23/neonet/results/NN_and_LF.html)</em>
 </p>

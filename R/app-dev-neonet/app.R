@@ -8,6 +8,7 @@ library(leaflet.extras2)
 library(raster)
 library(rgeos)
 library(sp)
+library(sf)
 library(DT)
 library(htmlwidgets)
 library(dplyr)
@@ -16,27 +17,30 @@ library(grDevices)
 library(Bchron)
 library(rcarbon)
 library(bibtex)
-library(mapview)
 
-library(rgee)
-library(sf)
+# # merged Med + Atl
+# dataset <- "c14_dataset_med_x_atl.tsv"
+# bibliog <- 'references_med_x_atl.bib'
 
+# new Med
+dataset <- "NeoNet_Med_v2.tsv"
+bibliog <- 'id00140_doc_reference.bib'
 
-srv <- FALSE
+srv <- TRUE
 loc <- !srv
 if(srv){
   source.path <- "/srv/shiny-server/C14dev/"
   source(paste0(source.path, "functions.R")) # source("functions.R")
-  c14bibtex.url <- paste0(source.path, 'references_med_x_atl.bib')
-  df.tot <- read.csv(paste0(source.path, "c14_dataset_med_x_atl.tsv"), sep = "\t", encoding = "UTF-8")
+  c14bibtex.url <- paste0(source.path, bibliog)
+  df.tot <- read.csv(paste0(source.path, dataset), sep = "\t", encoding = "UTF-8")
 }
 if(loc){
   source.path <- paste0(dirname(rstudioapi::getSourceEditorContext()$path), "/") # paste0(getwd(), "/R/app-dev/")
   source(paste0(source.path, "functions.R")) # source("functions.R")
   # c14bibtex.url <- paste0(source.path, 'references.bib')
   # df.tot <- read.csv(paste0(source.path, "c14_dataset.tsv"), sep = "\t", encoding = "UTF-8")
-  c14bibtex.url <- paste0(source.path, 'references_med_x_atl.bib')
-  df.tot <- read.csv(paste0(source.path, "c14_dataset_med_x_atl.tsv"), sep = "\t", encoding = "UTF-8")
+  c14bibtex.url <- paste0(source.path, bibliog)
+  df.tot <- read.csv(paste0(source.path, dataset), sep = "\t", encoding = "UTF-8")
 }
 
 
@@ -102,6 +106,11 @@ df.tot$mat.life <- ifelse(df.tot$Material %in%  short.life, "short life",
 
 df.tot <- df.tot[df.tot$Period %in% names(lcul_col), ] # only selected periods
 df.tot <- df.tot[!is.na(df.tot$Period), ]
+# colors
+df.colors <- data.frame(Period = names(lcul_col),
+                        colors = as.character(lcul_col))
+df.tot <- merge(df.tot, df.colors, by = "Period", all.x = T)
+
 df.tot$tpq <- as.numeric(df.tot$tpq)
 df.tot$taq <- as.numeric(df.tot$taq)
 df.tot$Longitude <- as.numeric(df.tot$Longitude)
@@ -130,8 +139,7 @@ mat.type.life <- c("short life", "long life", "others")
 hotcols <- c("Country", "SiteName", "Period", "PhaseCode", # "Culture",
              "Longitude","Latitude",
              "tpq", "taq",
-             "LabCode", "C14Age", "C14SD", 
-             "Material", "mat.life",
+             "LabCode", "C14Age", "C14SD", "Material", "mat.life",
              "bib", "bib_url", "colors")
 refcols <- c(hotcols, c("locationID", "secondLocationID"))
 # diffxx <- setdiff(names(df.tot), refcols)
@@ -206,8 +214,16 @@ df.tot.sp <- SpatialPointsDataFrame(coords = xy,
                                     proj4string = CRS("+proj=longlat +datum=WGS84"))
 tit <- HTML(paste0('NEONET ',
                    'Radiocarbon dates by Location, Chronology and Material Life Duration'))
-b64 <- base64enc::dataURI(file = "neonet.png", 
-                          mime = "image/png") # load image
+
+if(srv){
+  b64 <- base64enc::dataURI(file = "neonet.png", 
+                            mime = "image/png") # load image
+}
+if(loc){
+  b64 <- base64enc::dataURI(file = paste0(source.path, "neonet.png"), 
+                            mime = paste0(source.path, "image/png")) # load image
+}
+
 data.credits <- HTML(paste0(' <b> Data gathering: </b>',
                             '<ul>',
                             '<li> <a href=', shQuote(paste0("https://orcid.org/0000-0002-9315-3625")), 
@@ -338,7 +354,6 @@ ui <- navbarPage(tit,
                               column(12,
                                      leafletOutput("map", width = "100%", 
                                                    height = 900),
-                                     
                                      # tpq taq slider
                                      absolutePanel(bottom = 10, left = 150,
                                                    sliderInput("range", 
@@ -354,9 +369,7 @@ ui <- navbarPage(tit,
                                                                   label = "group C14 on map",
                                                                   status = "default",
                                                                   width = "120px"),
-                                                   # downloadButton('download',"Download the data"),
-                                                   
-                                                   downloadButton('dwnld_map', 
+                                                   downloadButton('dwnld_dates', 
                                                                   label = "selected dates")
                                      ),
                                      ## selection on material type and sd
@@ -496,8 +509,7 @@ server <- function(input, output, session) {
   output$calib.presentation <- renderUI({
     # TODO: loading message
     HTML(paste0(" in the <b>map panel</b>, click on a site to get its C14 calibration ",
-                "and those of all sites within the region of interest (", 
-                intCal," calibration curve, limited to <b><font color= green >",
+                "and those of all sites within the region of interest (", intCal," calibration curve, limited to <b><font color= green >",
                 nsites.14C.cal," dates</font></b>) | ",
                 "<b>check/uncheck</b> by dates, by site and/or stratigraphical layer and/or period, all C14 to (un)group dates | ",
                 "<b>download</b> the plot with the button"))
@@ -581,7 +593,7 @@ server <- function(input, output, session) {
         ndat <- paste0("<font color= green >", as.character(ndat), "</font>")
       }
       nsite <- length(unique(sel.data$SiteName))
-      as.character(c(ndat, nsite))
+      as.character(c(ndat,nsite))
     }
   })
   # filtered data on ROI, tpq/taq, periods, etc.
@@ -597,8 +609,6 @@ server <- function(input, output, session) {
     dyna.df_ <- df.tot.sp[tpq.taq.val & cult.select & mat.select & dat.sds,]
     dyna.df_
   })
-  
-  
   output$map <- renderLeaflet({
     # non dynamic
     leaflet(df.tot.sp) %>%
@@ -620,16 +630,6 @@ server <- function(input, output, session) {
                 }"
       )
   })
-  # user.created.map <- reactive({
-  #   # call the foundational Leaflet map
-  #   foundational.map() %>%
-  #     # store the view based on UI
-  #     setView(lng = input$map_center$lng, 
-  #             lat = input$map_center$lat,
-  #             zoom = input$map_zoom
-  #     )
-  # })
-  
   # clicked coords
   output$out <- renderText({
     if(!is.null(input$hover_coordinates)) {
@@ -637,7 +637,7 @@ server <- function(input, output, session) {
     }
   })
   output$nb.dat <- renderUI({
-    HTML(paste0("   Dataset within the region of interest (ROI) and the selected parameters: ",
+    HTML(paste0("&nbsp;&nbsp; Dataset within the region of interest (ROI) and the selected parameters: ",
                 "<b>", data_count()[2], "</b> sites, ",
                 "<b>", data_count()[1], "</b> dates "))
   })
@@ -876,11 +876,6 @@ server <- function(input, output, session) {
                device = device,
                limitsize = FALSE)
       })
-    
-    
-    
-    
-    
   })
   # - - - - - - - - - - - - - - - - - - - - - - -
   # list to store the selections for tracking
@@ -917,91 +912,21 @@ server <- function(input, output, session) {
     bibrefs.html
   })
   
-   # create the output file name
-  # and specify how the download button will take
-  # a screenshot - using the mapview::mapshot() function
-  # and save as a PDF
-  output$dwnld_map <- downloadHandler(
+  output$dwnld_dates <- downloadHandler(
     filename = function(){paste0(Sys.Date(), "_neonet.geojson")}, 
     content = function(fname){
       data.out <- df.tot
-      data.out <- data.out[ , !(colnames(data.out) %in% c("lbl", "idf", "colors", "locationID", "secondLocationID"))] 
+      data.out <- data.out[ , !(colnames(data.out) %in% c("lbl", "idf", "locationID", "secondLocationID"))] 
       if (is.null(input$map_bounds)) {data.out} else {
         bounds <- input$map_bounds
         data.out <- in_bounding_box(data.out, df.tot$Latitude, df.tot$Longitude,
-                        df.tot$tpq, df.tot$taq, df.tot$C14SD, bounds)
+                                    df.tot$tpq, df.tot$taq, df.tot$C14SD, bounds)
       }
       data.out.spat <- st_as_sf(data.out, coords = c("Longitude", "Latitude"), crs = 4326)
       # print(nrow(data.out))
       st_write(data.out.spat, fname)
     }
   )
-  # output$dwnld_map <- downloadHandler(
-  #   filename = paste0( Sys.Date()
-  #                      , "_customLeafletmap"
-  #                      , ".pdf"
-  #   )
-  #   
-  #   , content = function(file) {
-  #     mapshot( x = proxy.sites#user.created.map()
-  #              , file = file
-  #              , cliprect = "viewport" # the clipping rectangle matches the height & width from the viewing port
-  #              , selfcontained = FALSE # when this was not specified, the function for produced a PDF of two pages: one of the leaflet map, the other a blank page.
-  #     )
-  #   } # end of content() function
-  # ) # end of downloadHandler() function
-  
-# } # end of server
-  
-  
-  # # TODO: download map button
-  # # R/R output$map ; proxy.sites
-  # # output$dwnld_map <- downloadHandler(
-  # #   filename = "map.png",
-  # #   content = function(file) {
-  # #     mapview::mapshot(input[["map"]], file = file)
-  # #   })
-  # output$dwnld_map <- downloadHandler(
-  #   filename = paste0("C:/Rprojects/neonet/results/temp_map.html"),
-  #   content = function(file) {
-  #     # content = function(filename) {
-  #     foundational.map <- leaflet(df.tot.sp) %>%
-  #       addTiles() %>%
-  #       addMapPane("sites_", zIndex = 420) %>%
-  #       fitBounds(~min(Longitude),
-  #                 ~min(Latitude),
-  #                 ~max(Longitude),
-  #                 ~max(Latitude)) %>%
-  #       # get coords
-  #       onRender(
-  #         "function(el,x){
-  #                   this.on('click', function(e) {
-  #                       var lat = e.latlng.lat;
-  #                       var lng = e.latlng.lng;
-  #                       var coord = [lng, lat];
-  #                       Shiny.onInputChange('hover_coordinates', coord)
-  #                   });
-  #               }"
-  #       )
-  #     # saveWidget(foundational.map, "C:/Rprojects/neonet/results/temp_map.html", 
-  #     #            selfcontained = FALSE)
-  #     # webshot::webshot(x = "C:/Rprojects/neonet/results/temp_map.html",
-  #     #                  # x = user.created.map(), 
-  #     #                  file = "C:/Rprojects/neonet/results/temp_map.pdf",
-  #     #                  # file = paste0(Sys.Date(), "_customLeafletmap", ".pdf"),
-  #     #                  cliprect = "viewport",
-  #     #                  selfcontained = FALSE # 
-  #     # )
-  #     ## 'leaflet' objects (image above)
-  #     # m <- leaflet() %>% addTiles()
-  #     mapview::mapshot(foundational.map, file = "C:/Rprojects/neonet/results/Rplot.png")
-  #     
-  #     # ## 'mapview' objects (image below)
-  #     # m2 <- mapview(breweries91)
-  #     # mapshot(m2, file = "~/breweries.png")
-  #   } # end of content() function
-  # ) # end of downloadHandler() function
-  
   
 }
 
