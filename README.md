@@ -15,7 +15,12 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14). The applicat
 ## NeoNet functions <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk)</sub>
 
-The `neonet` R package is under development. It enables the handling of radiocarbon dates sourced from the dataset or exported from the Shiny app: [SPD](https://github.com/zoometh/neonet#spd-plot), [isochrones](https://github.com/zoometh/neonet#isochrones), etc., and to build [Harris matrices](https://github.com/zoometh/neonet#harris-matrix) using the [NeoNet-strati app](https://github.com/zoometh/neonet#neonet-strati).
+NeoNet functions enable the handling of radiocarbon dates sourced from the dataset or exported from the [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-). Current functions cover:
+
+* [data management](https://github.com/zoometh/neonet#data-preparation)
+* [SPD](https://github.com/zoometh/neonet#spd-plot)
+* [isochrones](https://github.com/zoometh/neonet#isochrones)
+* [Harris matrices](https://github.com/zoometh/neonet#harris-matrix) using the [NeoNet-strati app](https://github.com/zoometh/neonet#neonet-strati).
 
 ### Data preparation
 
@@ -78,7 +83,7 @@ write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
 
 ### SPD plot
 
-Plot the SPD of the two datasets, once `df.c14` calculated. The function `neo_spd()` calls `neo_spdplot()`. The latter has been adapted from `rcarbon::plot.stackCalSPD.R`, to fetch NeoNet default period colors.
+Plot the summed probabilty densities (SPD) of the two datasets, once `df.c14` calculated. The function `neo_spd()` calls `neo_spdplot()`. The latter has been adapted from `rcarbon::plot.stackCalSPD.R`, to fetch NeoNet default period colors.
 
 ```R
 library(rcarbon)
