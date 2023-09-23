@@ -1,7 +1,7 @@
 
 # NeoNet
 
-NeoNet serves as a framework for researching the transition between the Late Mesolithic and Early Neolithic periods. It is composed of the [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-) and the [R package](https://github.com/zoometh/neonet#neonet-package)
+NeoNet serves as a framework for researching the transition between the Late Mesolithic and Early Neolithic periods. It is composed of the [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-) and the [R package](https://github.com/zoometh/neonet#neonet-functions)
 
 ## NeoNet app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk), [Niccolò Mazzucco](mailto:niccolo.mazzucco@unipi.it), [Miriam Cubas Morera](mailto:mcubas.morera@gmail.com), [Juan Gibaja](mailto:jfgibaja@gmail.com), [F. Xavier Oms](mailto:oms@ub.edu), [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com), [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com), [Elías López-Romero](elias.lopez-romero@iam.csic.es)</sub>
@@ -12,7 +12,7 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14) dates from th
 <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank"><b>NeoNet app</b></a> 
 </p>
    
-## NeoNet package <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
+## NeoNet functions <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk)</sub>
 
 The `neonet` R package is under development. It enables the handling of radiocarbon dates sourced from the dataset or exported from the Shiny app: [SPD](https://github.com/zoometh/neonet#spd-plot), [isochrones](https://github.com/zoometh/neonet#isochrones), etc., and to build [Harris matrices](https://github.com/zoometh/neonet#harris-matrix) using the [NeoNet-strati app](https://github.com/zoometh/neonet#neonet-strati).
