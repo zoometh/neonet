@@ -111,7 +111,7 @@ library(rcarbon)
 source("R/neo_isochr.R")
 source("R/neo_spd.R")
 
-neo_isochr(df.c14 = "C:/Rprojects/neonet/results/2023-09-23-neonet-data.geojson")
+neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson")
 ```
   
 The file [2023-09-23-neonet-data.geojson](https://github.com/zoometh/neonet/blob/main/results/2023-09-23-neonet-data.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates)). This dataset can be curated in a GIS before using the `neo_isochr()` function.

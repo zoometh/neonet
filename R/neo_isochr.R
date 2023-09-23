@@ -38,8 +38,9 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
   # library(interp)
   `%>%` <- dplyr::`%>%` # used to not load dplyr
   df.dates <- sf::st_read(df.c14, quiet = T)
+  nb.dates.tot <- nrow(df.dates)
   if(verbose){
-    print(paste0("Original GeoJSON file: ", nrow(df.dates), " dates"))
+    print(paste0("Original GeoJSON file: ", nb.dates.tot, " dates"))
   }
   # subset on periods
   df.dates <- df.dates[df.dates$Period %in% selected.neo, ]
@@ -113,6 +114,7 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
   if(is.na(mapname)){
     mapname <- DescTools::SplitPath(df.c14)$filename
   }
+  tit <- paste0(mapname, " (", nrow(df), " dates used / ", nb.dates.tot, ")")
   # map
   buff <- .1
   bbox <- c(left = min(Xs) - buff, 
@@ -130,7 +132,7 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
                                     maptype = "terrain-background")
   map <- ggmap::ggmap(stamenbck, darken = c(.2, "white")) + 
     # TODO: add bbox on map to show the studied area
-    ggplot2::ggtitle(mapname) +
+    ggplot2::ggtitle(tit) +
     ggplot2::geom_contour(data = interp_df, 
                           ggplot2::aes(x = lon, y = lat, z = date.med, 
                                        # color = ..level..
