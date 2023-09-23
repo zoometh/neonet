@@ -67,7 +67,7 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
     dplyr::slice_min(median)
   if(verbose){
     print(paste0("Minimal medians by site selected: ",
-                 nrow(df.dates), " dates"))
+                 nrow(df.dates.min), " dates"))
   }
   # to sf
   df.dates.min$geometry <- sf::st_as_text(df.dates.min$geometry)
