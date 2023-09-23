@@ -29,7 +29,7 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
                     ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                     shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
                     ref.c14age = c(9500, 5000),
-                    mapname = "SPD",
+                    mapname = NA,
                     export = FALSE,
                     outDir = "C:/Rprojects/neonet/results/",
                     verbose = TRUE){
@@ -94,14 +94,18 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
                                bins = bins,
                                runm = 50)
   if(export){
-    tit <- paste0(mapname, " (", nrow(df), " dates used / ", nb.dates.tot, ")")
-    png('SPDneonet.png', height = 11, width = 17, units="cm", res = 600)
+    if(is.na(mapname)){
+      mapname <- DescTools::SplitPath(df.c14)$filename
+    }
+    outFile <- paste0(outDir, mapname, "-spd.png")
+    png(outFile, height = 11, width = 17, units="cm", res = 600)
   }
   if(verbose){
     print("Plot")
   }
   periods <- unique(c14$Period)
   periods.colors <- periods.colors.selected[periods.colors.selected$period %in% periods, "color"]
+  tit <- paste0(mapname, " (", nrow(c14), " dates used)")
   neo_spdplot(spd.c14,
               type = 'stacked',
               calendar = "BCAD",
@@ -110,6 +114,7 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
               legend.arg = list(cex = .7,
                                 pt.cex = .7,
                                 title = 'Periods'),
+              spd.title = tit,
               # colpal = colpal,
               # periods = periods,
               # ref.period = ref.period,
@@ -129,4 +134,4 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
 # df.url = "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv")
 
 neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
-        export = T, )
+        export = T)

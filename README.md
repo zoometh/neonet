@@ -78,7 +78,7 @@ write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
 
 ### SPD plot
 
-Plot the SPD of the two datasets, once `df.c14` calculated
+Plot the SPD of the two datasets, once `df.c14` calculated. The function `neo_spd()` calls `neo_spdplot()`. The latter has been adapted from `rcarbon::plot.stackCalSPD.R`, to fetch NeoNet default period colors.
 
 ```R
 library(rcarbon)
@@ -98,8 +98,20 @@ neo_spd(df.c14 = df.c14)
 </p>
 
 
-`neo_spd()` calls `neo_spdplo()`, adapted from `rcarbon::plot.stackCalSPD.R`, to fetch NeoNet default period colors.
+`neo_spd()` can be run on a GeoJSON file exported from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates). For example [2023-09-23-neonet-data.geojson](https://github.com/zoometh/neonet/blob/main/results/2023-09-23-neonet-data.geojson), see also: [isochrones](https://github.com/zoometh/neonet#isochrones)
 
+```R
+neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
+        export = T)
+```
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23-spd.png"
+" width="700">
+  <br>
+    <em>Output SPD from the `2023-09-23-neonet-data.geojson` file after removing aberrant dates, and dates having an SD > 100 in QGIS</em>
+</p>
 
 ### Isochrones
 
@@ -112,7 +124,6 @@ source("R/neo_isochr.R")
 source("R/neo_spd.R")
 
 neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson", 
-           max.sd = 40,
            show.lbl = FALSE)
 ```
   
@@ -122,7 +133,7 @@ The output is a map with isochrones calculated on the median of calibrated Early
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23-isochr.png"
 " width="700">
   <br>
     <em>Output map from the `2023-09-23-neonet-data.geojson` file after removing aberrant dates, and dates having an SD > 100 in QGIS</em>

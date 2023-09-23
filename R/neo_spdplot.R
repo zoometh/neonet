@@ -4,6 +4,7 @@ neo_spdplot <- function (x,
                          yaxt = "s", gapFactor = 0.2, col.fill = NA, col.line = NA, 
                          lwd.obs = 1, lty.obs = 1, cex.lab = 1, cex.axis = cex.lab, 
                          legend = TRUE, legend.arg = NULL, ylab = NA, ymargin = 1.1, 
+                         spd.title = "",
                          periods.colors = c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B", "#FF8D1B", "#FFC04D", "#808080"),
                          # ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                          # shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
@@ -237,8 +238,9 @@ neo_spdplot <- function (x,
                                                        1]][2] + gap + abs(diff(ylim)))
     }
     plot(0, 0, xlim = xlim, ylim = c(min(unlist(YLIMs)), 
-                                     max(unlist(YLIMs)) + gap), type = "l", ylab = ylab, 
-         xlab = xlabel, axes = F, cex.lab = cex.lab)
+                                     max(unlist(YLIMs)) + gap), 
+         type = "l", ylab = ylab, 
+         xlab = xlabel, axes = F, cex.lab = cex.lab, main = spd.title)
     for (i in 1:nsets) {
       tmpYlim = YLIMs[[i]]
       axis(2, at = c(tmpYlim[1], median(tmpYlim), max(tmpYlim)), 

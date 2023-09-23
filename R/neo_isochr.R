@@ -1,9 +1,8 @@
 #' @name neo_isochr
 #'
-#' @description create isochrones contours by interpolation of calibrated radiocarbon dates
+#' @description create isochrones contours by interpolation of calibrated radiocarbon dates. Select the date with the minimum median in each site.
 #'
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
-#' @param selected.neo the Period on which the isochrones will be calculated. Used to subset `df.c14`. the Default: EN.
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
 #' @param time.interv time interval between two isochrones, in years. Default: 250.
 #' @param coloramp the name of the coloramp to use on contour. For example: "Reds" (default), "Blues", etc. 
@@ -22,7 +21,7 @@
 #'
 #' @export
 neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
-                       selected.neo = c("EN"),
+                       # selected.neo = c("EN"),
                        # max.sd = 100,
                        calibrate = TRUE,
                        time.interv = 250,
@@ -41,13 +40,13 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   if(verbose){
     print(paste0("Original GeoJSON file: ", nb.dates.tot, " dates"))
   }
-  # subset on periods
-  df.dates <- df.dates[df.dates$Period %in% selected.neo, ]
-  if(verbose){
-    print(paste0("After subset of Periods on '", 
-                 paste0(selected.neo, collapse = ", "),"': ",
-                 nrow(df.dates), " dates to model"))
-  }
+  # # subset on periods
+  # df.dates <- df.dates[df.dates$Period %in% selected.neo, ]
+  # if(verbose){
+  #   print(paste0("After subset of Periods on '", 
+  #                paste0(selected.neo, collapse = ", "),"': ",
+  #                nrow(df.dates), " dates to model"))
+  # }
   # # subset on SD
   # if(!is.na(max.sd)){
   #   df.dates <- df.dates[df.dates$C14SD < max.sd, ]
@@ -113,7 +112,10 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   if(is.na(mapname)){
     mapname <- DescTools::SplitPath(df.c14)$filename
   }
-  tit <- paste0(mapname, " (", nrow(df), " dates used / ", nb.dates.tot, ")")
+  # tit
+  periods <- paste0(unique(df.dates$Period), collapse = " ")
+  tit <- paste0("Isochrones of ", periods)
+  subtit <- paste0(mapname, " (", nrow(df), " dates used / ", nb.dates.tot, ")")
   # map
   buff <- .1
   bbox <- c(left = min(Xs) - buff, 
@@ -131,7 +133,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                                     maptype = "terrain-background")
   map <- ggmap::ggmap(stamenbck, darken = c(.2, "white")) + 
     # TODO: add bbox on map to show the studied area
-    ggplot2::ggtitle(tit) +
+    # ggplot2::ggtitle(tit) +
     ggplot2::geom_contour(data = interp_df, 
                           ggplot2::aes(x = lon, y = lat, z = date.med, 
                                        # color = ..level..
@@ -150,8 +152,10 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                         col = "black",
                         size = 1) +
     ggplot2::scale_color_gradientn(colours = rev(myPalette),
-                                   name = "Cal BC")
-    # ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
+                                   name = "Cal BC") +
+    ggplot2::labs(title = tit,
+                  subtitle = subtit)
+  # ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
   if(show.lbl){
     map <- map +
       ggrepel::geom_text_repel(data = df, 
@@ -163,7 +167,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   }
   if(export){
     # print(paste0("After subset on Periods ", paste0(select.periods, collapse = ", "),": ", nrow(df.dates), " dates"))
-    outFile <- paste0(outDir, mapname, ".png")
+    outFile <- paste0(outDir, mapname, "-isochr.png")
     # calculate the right proportion of the output map by calculating the ration w/h of the bbox
     map.width.size <- bbox[["right"]] - bbox[["left"]]
     map.height.size <- bbox[["top"]] - bbox[["bottom"]]
