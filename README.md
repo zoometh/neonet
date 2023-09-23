@@ -111,16 +111,23 @@ library(rcarbon)
 source("R/neo_isochr.R")
 source("R/neo_spd.R")
 
-neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson")
+neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson", 
+           max.sd = 40,
+           show.lbl = FALSE)
 ```
   
-The file [2023-09-23-neonet-data.geojson](https://github.com/zoometh/neonet/blob/main/results/2023-09-23-neonet-data.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates)). This dataset can be curated in a GIS before using the `neo_isochr()` function.
-
-
+The file [2023-09-23-neonet-data.geojson](https://github.com/zoometh/neonet/blob/main/results/2023-09-23-neonet-data.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates)). This dataset can be curated in a GIS before using the `neo_isochr()` function. The function offers new filters (max SD threshold, etc.)
 
 The output is a map with isochrones calculated on the median of calibrated Early Neolithic (EN) dates. 
 
-![](results/2023-09-15_neonet.png)
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/neonet-data-2023-09-23.png"
+" width="700">
+  <br>
+    <em>Output map from the `2023-09-23-neonet-data.geojson` file after the deletion of the aberrant date LTL-19033A (Monte Frigone 2) in QGIS</em>
+</p>
+
 
 ### Harris Matrix
 
