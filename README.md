@@ -103,7 +103,7 @@ neo_spd(df.c14 = df.c14)
 
 ### Isochrones
 
-Create a map with isochrone contour to model the spread of Neolithic
+Create a map with isochrone contours to model the spread of Neolithic
 
 ```R
 library(rcarbon)
@@ -111,12 +111,14 @@ library(rcarbon)
 source("R/neo_isochr.R")
 source("R/neo_spd.R")
 
-neo_isochr(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.geojson")
+neo_isochr(df.c14 = "C:/Rprojects/neonet/results/2023-09-23-neonet-data.geojson")
 ```
   
-The file [2023-09-15_neonet.geojson](https://github.com/zoometh/neonet/blob/main/results/2023-09-15_neonet.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates))
+The file [2023-09-23-neonet-data.geojson](https://github.com/zoometh/neonet/blob/main/results/2023-09-23-neonet-data.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates)). This dataset can be curated in a GIS before using the `neo_isochr()` function.
 
-The output is a map with isochrones calculated on the median of calibrated Early Neolithic (EN) dates
+
+
+The output is a map with isochrones calculated on the median of calibrated Early Neolithic (EN) dates. 
 
 ![](results/2023-09-15_neonet.png)
 

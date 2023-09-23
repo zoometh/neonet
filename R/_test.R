@@ -1,3 +1,20 @@
+
+
+
+##
+
+library(rcarbon)
+
+source("R/neo_isochr.R")
+source("R/neo_spd.R")
+
+neo_isochr(df.c14 = "C:/Rprojects/neonet/results/neonet-data-2023-09-23.geojson", 
+           max.sd = 40,
+           show.lbl = F,
+           export = TRUE)
+
+##
+
 source("R/neo_subset.R")
 source("R/neo_bib.R")
 source("R/neo_matlife.R")
@@ -8,6 +25,17 @@ source("R/neo_datamiss.R")
 source("R/neo_datasum.R")
 source("R/neo_doi.R")
 
+
+c14.file <- "NeoNet_Med_v2.tsv"
+df.c14 <- read.csv2(paste0("C:/Rprojects/neonet/R/app-dev-neonet/", c14.file), sep = "\t")
+neo_datamiss(df.c14, main = c14.file)
+df.c14 <- neo_subset(df.c14, rm.Spatial = T,
+                     ref.spat = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/wsh_med.geojson")
+
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+
+neo_spd(df.c14 = df.c14)
 
 
 ## Editable datatable

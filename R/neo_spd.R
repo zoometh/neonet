@@ -31,7 +31,7 @@ neo_spd <- function(df.c14 = NA,
                     verbose = TRUE){
   # c14.db.url <- 'http://mappaproject.arch.unipi.it/mod/files/140_id00140_doc_elencoc14.tsv'
   `%>%` <- dplyr::`%>%` # used to not load dplyr
-  if(is.na(df.c14)){
+  if(class(df.c14) != "data.frame"){
     if(verbose){print("Read data from URL")}
     c14 <- read.table(df.url, sep = "\t", header = TRUE, stringsAsFactors = F, quote="")
   } else {
@@ -54,7 +54,7 @@ neo_spd <- function(df.c14 = NA,
   unique(c14$Period)
   unique(c14$color)
   # reference colors in order
-  # periods.colors.plotted <- periods.colors.selected[periods.colors.selected$period %in% unique(c14$Period), "period"]
+  periods.colors.plotted <- periods.colors.selected[periods.colors.selected$period %in% unique(c14$Period), "period"]
   # periods.colors.plotted.all <- periods.colors[periods.colors$period %in% periods.colors.plotted, c("period", "color")]
   # colpal <- periods.colors.plotted.all$color
   colpal <- periods.colors.selected$color

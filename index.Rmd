@@ -310,16 +310,16 @@ The dates displayed in the [table of the **map panel**](#panel.map) will be cali
 
 ### export dates {#panel.map.export}
 
-Export selected dates by clicking the top left download button
+Export selected dates, sorted by sites' country and names, by clicking the download button (top left)
 
 
 <center>
 
-![Export selected dates](`r panel.map.export`){width=250px}
+![Export selected dates](`r panel.map.export`){width=350px}
 
 </center>
 
-Dates will be exported as a GeoJSON file that can be analysed in a GIS or used in the [NeoNet R package](https://github.com/zoometh/neonet#neonet-package)
+Dates will be exported as a GeoJSON file, with a unique id (`idf_nn`). The file can be curated and analysed in a GIS or using the [NeoNet package](https://github.com/zoometh/neonet) ([isochrones](https://github.com/zoometh/neonet#isochrones), etc.)
 
 
 ## 2. **calib** panel {#panel.calib}

@@ -329,7 +329,7 @@ f.gcalib <- function(some_14C, clicked_site, C14.grouped){
                scales = "free_y", 
                switch = "both",
                labeller = labeller(means = supp.labs)) +
-    geom_text(data=a.label,
+    geom_text(data = a.label,
               size = gcalib.lbl.sz,
               aes(x = means,
                   y = -Inf,
@@ -337,9 +337,9 @@ f.gcalib <- function(some_14C, clicked_site, C14.grouped){
                   colour = color,
                   vjust = -0.1,
                   fontface = ifelse(clicked, "bold", "plain"))) +
-    geom_line(data=dat.cumul,
+    geom_line(data = dat.cumul,
               aes(datations, densites, colour = color),
-              size=gcalib.gline.sz) +
+              linewidth = gcalib.gline.sz) +
     scale_color_identity() +
     xlab("cal BC") + 
     ylab("densities") +

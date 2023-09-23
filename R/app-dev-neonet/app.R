@@ -23,10 +23,9 @@ library(bibtex)
 # bibliog <- 'references_med_x_atl.bib'
 
 # new Med
-dataset <- "NeoNet_Med_v2.tsv"
 bibliog <- 'id00140_doc_reference.bib'
 
-srv <- TRUE
+srv <- F
 loc <- !srv
 if(srv){
   source.path <- "/srv/shiny-server/C14dev/"
@@ -35,6 +34,7 @@ if(srv){
   df.tot <- read.csv(paste0(source.path, dataset), sep = "\t", encoding = "UTF-8")
 }
 if(loc){
+  dataset <- "NeoNet_Med_v2.tsv"
   source.path <- paste0(dirname(rstudioapi::getSourceEditorContext()$path), "/") # paste0(getwd(), "/R/app-dev/")
   source(paste0(source.path, "functions.R")) # source("functions.R")
   # c14bibtex.url <- paste0(source.path, 'references.bib')
@@ -103,13 +103,12 @@ long.life <- as.character(material.life[material.life$family.life == "long.life"
 other.life <- as.character(material.life[material.life$family.life == "other.life", "type.life"])
 df.tot$mat.life <- ifelse(df.tot$Material %in%  short.life, "short life",
                           ifelse(df.tot$Material %in%  long.life,"long life","others"))
-
-df.tot <- df.tot[df.tot$Period %in% names(lcul_col), ] # only selected periods
-df.tot <- df.tot[!is.na(df.tot$Period), ]
 # colors
 df.colors <- data.frame(Period = names(lcul_col),
                         colors = as.character(lcul_col))
 df.tot <- merge(df.tot, df.colors, by = "Period", all.x = T)
+df.tot <- df.tot[df.tot$Period %in% names(lcul_col), ] # only selected periods
+df.tot <- df.tot[!is.na(df.tot$Period), ]
 
 df.tot$tpq <- as.numeric(df.tot$tpq)
 df.tot$taq <- as.numeric(df.tot$taq)
@@ -253,15 +252,19 @@ data.credits <- HTML(paste0(' <b> Data gathering: </b>',
                             '</ul>'))
 
 # website for documentation
-webpage.app <- "https://zoometh.github.io/neonet/"
-app.page <- paste0('<a href=', shQuote(webpage.app),"\ target=\"_blank\"",'>https://zoometh.github.io/neonet/</a>')
+webdoc <- "https://zoometh.github.io/neonet/"
+neonet.readme <- "https://zoometh.github.io/neonet/"
+app.page <- paste0('<a href=', shQuote(webdoc),"\ target=\"_blank\"",'>webdoc</a>')
+neonet.pkg <- paste0('<a href=', shQuote(neonet.readme),"\ target=\"_blank\"",'>GitHub package</a>')
+# app.page <- paste0('<a href=', "webdoc","\ target=\"_blank\"",'>https://zoometh.github.io/neonet/</a>')
+# neonet.pkg <- paste0('<a href=', "GitHub","\ target=\"_blank\"",'>https://github.com/zoometh/neonet</a>')
 # GitHub repo
 devpage.app <- "https://github.com/zoometh/neonet#readme"
 app.dev <- paste0('<a href=', shQuote(devpage.app),"\ target=\"_blank\"",'>https://github.com/zoometh/neonet</a>')
 # credits
 app.redneo <- HTML(paste0('<a href=', shQuote(paste0("https://redneonet.com")), "\ target=\"_blank\"",
                           '><b> Red NeoNet group website </b></a><br>'))
-app.credits <- HTML(paste0(' <b> App developments </b> ', app.dev,' <b>:</b>',
+app.credits <- HTML(paste0(' <b> App developments:',
                            '<ul>',
                            '<li> <a href=',shQuote(paste0("https://orcid.org/0000-0002-1112-6122")),
                            "\ target=\"_blank\"",
@@ -273,22 +276,22 @@ app.credits <- HTML(paste0(' <b> App developments </b> ', app.dev,' <b>:</b>',
 app.website <- HTML(paste0(' <b> Documentation: </b> ',
                            '<ul>',
                            '<li>', app.page, '</li>',
-                           '<li>', paste0("move the <b> window map </b>  to select dates by location |", 
-                                          " move the <b> tpq/taq slider </b> to selected sites within ‘standard’ cal BC duration ",
-                                          "(calibration with the <a href='https://rdrr.io/cran/Bchron/man/BchronCalibrate.html'>BchronCalibrate</a> ", 
-                                          "function and the '", intCal, "' calibration curve) <br/>",
-                                          " draw <b> polygon or rectangle </b> to subset dates by a smaller area than the ROI |",
-                                          " check/uncheck <b> material buttons </b> to show/hide sites by type of life duration material |",
-                                          " check/uncheck <b> periods buttons </b> to show/hide sites by Periods |",
-                                          " <b> click </b> on sites to get informations | <b> click </b> on the map to get long/lat coordinates <br/>"), 
-                           '</li>',
+                           '<li>', neonet.pkg, '</li>',
                            '</ul>'))
 # app.devsite <- HTML(paste0(' <b> App dev: </b> ',
 #                            '<ul>',
 #                            '<li>', app.dev,
 #                            '</li>',
 #                            '</ul>'))
-all.credits <- paste0(app.website, "<br>",
+all.credits <- paste0(HTML(paste0("move the <b> window map </b>  to select dates by location |", 
+                                  " move the <b> tpq/taq slider </b> to selected sites within ‘standard’ cal BC duration ",
+                                  "(calibration with the <a href='https://rdrr.io/cran/Bchron/man/BchronCalibrate.html'>BchronCalibrate</a> ", 
+                                  "function and the '", intCal, "' calibration curve) <br/>",
+                                  " draw <b> polygon or rectangle </b> to subset dates by a smaller area than the ROI |",
+                                  " check/uncheck <b> material buttons </b> to show/hide sites by type of life duration material |",
+                                  " check/uncheck <b> periods buttons </b> to show/hide sites by Periods |",
+                                  " <b> click </b> on sites to get informations | <b> click </b> on the map to get long/lat coordinates <br/>")), "<br>",
+                      app.website, "<br>",
                       app.credits, "<br>",
                       data.credits, "<br>",
                       app.redneo
@@ -514,8 +517,9 @@ server <- function(input, output, session) {
                 "<b>check/uncheck</b> by dates, by site and/or stratigraphical layer and/or period, all C14 to (un)group dates | ",
                 "<b>download</b> the plot with the button"))
   })
+  
   output$hot <- DT::renderDataTable({
-    # the big table in 'data' 
+    # the large table in 'data'
     datatable(
       df.tot[ , hotcols],
       rownames = FALSE,
@@ -523,10 +527,35 @@ server <- function(input, output, session) {
       editable = FALSE,
       options = list(
         scrollX = TRUE,
+        lengthMenu = list(c(50, 100, 250), c('50', '100', '250')),
         pageLength = 100
       )
     )
   })
+  
+  # output$hot <- renderDT(DT::datatable(
+  #   df.tot[ , hotcols],
+  #   rownames = FALSE,
+  #   extensions = 'Buttons',
+  #   options = list(
+  #     dom = 'Bfrtip',
+  #     lengthMenu = list(c(100, 200, -1), c('100', '200', 'All')),
+  #     pageLength = 100,
+  #     # width = "100%",
+  #     # autoWidth = TRUE,
+  #     # scrollX = T,
+  #     buttons = list(
+  #       list(
+  #         extend = "collection",
+  #         text = 'Show All',
+  #         action = DT::JS("function ( e, dt, node, config ) {
+  #                                   dt.page.len(-1);
+  #                                   dt.ajax.reload();
+  #                               }")))
+  #   ))
+  # )
+  # 
+  
   # dynamic table below the map, 'map' tab
   in_bounding_box <- function(data.f, lat, long, tpq, taq, sds, bounds) {
     # filter sites on coordinates, chrono & type of material
@@ -913,10 +942,15 @@ server <- function(input, output, session) {
   })
   
   output$dwnld_dates <- downloadHandler(
-    filename = function(){paste0(Sys.Date(), "_neonet.geojson")}, 
+    filename = function(){paste0("neonet-data-", Sys.Date(), ".geojson")}, 
     content = function(fname){
       data.out <- df.tot
       data.out <- data.out[ , !(colnames(data.out) %in% c("lbl", "idf", "locationID", "secondLocationID"))] 
+      # sort by country and site names
+      data.out <- dplyr::arrange(data.out , Country, SiteName)
+      # data.out <- data.out[with(data.out, order("Country", "SiteName")), ]
+      data.out[["idf_nn"]] <- 1:nrow(data.out)
+      # View(data.out)
       if (is.null(input$map_bounds)) {data.out} else {
         bounds <- input$map_bounds
         data.out <- in_bounding_box(data.out, df.tot$Latitude, df.tot$Longitude,
@@ -927,7 +961,6 @@ server <- function(input, output, session) {
       st_write(data.out.spat, fname)
     }
   )
-  
 }
 
 # run
