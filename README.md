@@ -122,7 +122,7 @@ The output is a map with isochrones calculated on the median of calibrated Early
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/neonet-data-2023-09-23.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.png"
 " width="700">
   <br>
     <em>Output map from the `2023-09-23-neonet-data.geojson` file after the deletion of the aberrant date LTL-19033A (Monte Frigone 2) in QGIS</em>
