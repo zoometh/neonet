@@ -4,7 +4,6 @@
 #'
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
 #' @param selected.neo the Period on which the isochrones will be calculated. Used to subset `df.c14`. the Default: EN.
-#' @param max.sd the maximum of accepted SD. Dates with an higher value will be removed. Choose NA to not subset. Default: 100. 
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
 #' @param time.interv time interval between two isochrones, in years. Default: 250.
 #' @param coloramp the name of the coloramp to use on contour. For example: "Reds" (default), "Blues", etc. 
@@ -22,9 +21,9 @@
 #'
 #'
 #' @export
-neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.geojson",
+neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
                        selected.neo = c("EN"),
-                       max.sd = 100,
+                       # max.sd = 100,
                        calibrate = TRUE,
                        time.interv = 250,
                        mapname = NA,
@@ -49,15 +48,15 @@ neo_isochr <- function(df.c14 = "C:/Rprojects/neonet/results/2023-09-15_neonet.g
                  paste0(selected.neo, collapse = ", "),"': ",
                  nrow(df.dates), " dates to model"))
   }
-  # subset on SD
-  if(!is.na(max.sd)){
-    df.dates <- df.dates[df.dates$C14SD < max.sd, ]
-    if(verbose){
-      print(paste0("After subset of SD on < ", 
-                   max.sd,": ",
-                   nrow(df.dates), " dates to calibrate and model"))
-    }
-  }
+  # # subset on SD
+  # if(!is.na(max.sd)){
+  #   df.dates <- df.dates[df.dates$C14SD < max.sd, ]
+  #   if(verbose){
+  #     print(paste0("After subset of SD on < ", 
+  #                  max.sd,": ",
+  #                  nrow(df.dates), " dates to calibrate and model"))
+  #   }
+  # }
   if(calibrate){
     df.dates <- neo_calib(as.data.frame(df.dates))
   }

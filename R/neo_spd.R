@@ -1,58 +1,65 @@
 #' @name neo_spd
 #' 
-#' @description SPD on dataset
+#' @description SPD on a dataset
 #'
-#' @param df.c14 the original XLSX with neonet columns (SiteName, Period, etc.)
-#' @param df.url the URL of a TSV dataset
+#' @param df.c14 the dataset with NeoNet columns (SiteName, Period, etc.). Can be: a TSV file, or a data.frame, or a GeoJSON. Default: NeoNet med dataset
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return Plot
 #'
 #' @examples
-#'
-#'
-#' # Plot the DOI
+#' 
 #' library(rcarbon)
 #' source("R/neo_spdplot.R") # adapted from rcarbon::plot.stackCalSPD.R to fetch the selected colors
+#'
+#' # Plot NeoNet Med dataset
 #' neo_spd()
 #'
-#' # plot a dataframe
+#' # Plot a dataframe
 #' neo_spd(df.c14 = df.c14)
 #'
+#' Plot a GeoJSON downloaded from the NeoNet app
+#' neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson")
+#' 
 #' @export
 
-neo_spd <- function(df.c14 = NA,
-                    df.url = 'https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_140_id00140_doc_elencoc14.tsv',
+neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv',
+                    # df.url = 'https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_140_id00140_doc_elencoc14.tsv',
                     ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                     shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
                     ref.c14age = c(9500, 5000),
+                    mapname = "SPD",
                     export = FALSE,
+                    outDir = "C:/Rprojects/neonet/results/",
                     verbose = TRUE){
   # c14.db.url <- 'http://mappaproject.arch.unipi.it/mod/files/140_id00140_doc_elencoc14.tsv'
   `%>%` <- dplyr::`%>%` # used to not load dplyr
-  if(class(df.c14) != "data.frame"){
-    if(verbose){print("Read data from URL")}
-    c14 <- read.table(df.url, sep = "\t", header = TRUE, stringsAsFactors = F, quote="")
-  } else {
+  if(class(df.c14) == "data.frame"){
     c14 <- df.c14
+  } 
+  if(DescTools::SplitPath(df.c14)$extension == "geojson"){
+    c14 <- sf::st_read(df.c14, quiet = T)
   }
+  if(DescTools::SplitPath(df.c14)$extension == "tsv"){
+    c14 <- read.table(df.c14, sep = "\t", header = TRUE, stringsAsFactors = F, quote="")
+  } 
   # periods
   if(verbose){print("Read period colors")}
   periods.colors <- read.csv(ref.period, sep = "\t")
   periods.colors.selected <- periods.colors[periods.colors$period %in% shown.per, c("period", "color")]
   periods.colors.selected <- rbind(periods.colors.selected, c("others", "#808080"))
   # fetch not listed periods (others)
-  unshown.per <- unique(c14[!(c14$Period %in% shown.per), "Period"])
-  if(verbose){
-    print("These periods will be gathered into 'other'\n")
+  unshown.per <- as.character(unlist(unique(c14[!(c14$Period %in% shown.per), "Period"])))
+  if(verbose & length(unshown.per) > 0){
+    print("These periods will be gathered into 'other':")
     cat(unshown.per, sep = ", ")
   }
   c14 <- within(c14, Period[Period %in% unshown.per] <- 'others')
   c14 <- merge(c14, periods.colors.selected, by.x = "Period", by.y = "period", all.x = T)
   c14$colors <- NULL # rm previous colors
-  unique(c14$Period)
-  unique(c14$color)
+  # unique(c14$Period)
+  # unique(c14$color)
   # reference colors in order
   periods.colors.plotted <- periods.colors.selected[periods.colors.selected$period %in% unique(c14$Period), "period"]
   # periods.colors.plotted.all <- periods.colors[periods.colors$period %in% periods.colors.plotted, c("period", "color")]
@@ -87,11 +94,14 @@ neo_spd <- function(df.c14 = NA,
                                bins = bins,
                                runm = 50)
   if(export){
+    tit <- paste0(mapname, " (", nrow(df), " dates used / ", nb.dates.tot, ")")
     png('SPDneonet.png', height = 11, width = 17, units="cm", res = 600)
   }
   if(verbose){
     print("Plot")
   }
+  periods <- unique(c14$Period)
+  periods.colors <- periods.colors.selected[periods.colors.selected$period %in% periods, "color"]
   neo_spdplot(spd.c14,
               type = 'stacked',
               calendar = "BCAD",
@@ -100,7 +110,11 @@ neo_spd <- function(df.c14 = NA,
               legend.arg = list(cex = .7,
                                 pt.cex = .7,
                                 title = 'Periods'),
-              colpal = colpal,
+              # colpal = colpal,
+              # periods = periods,
+              # ref.period = ref.period,
+              periods.colors = periods.colors,
+              shown.per = shown.per,
               verbose = FALSE
   )
   if(export){
@@ -114,3 +128,5 @@ neo_spd <- function(df.c14 = NA,
 
 # df.url = "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv")
 
+neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
+        export = T, )

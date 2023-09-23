@@ -1,11 +1,15 @@
-neo_spdplot <- function (x, type = "stacked", calendar = "BP", spdnormalised = FALSE, 
-                              rescale = FALSE, runm = NA, xlim = NA, ylim = NA, xaxt = "s", 
-                              yaxt = "s", gapFactor = 0.2, col.fill = NA, col.line = NA, 
-                              lwd.obs = 1, lty.obs = 1, cex.lab = 1, cex.axis = cex.lab, 
-                              legend = TRUE, legend.arg = NULL, ylab = NA, ymargin = 1.1, 
-                              colpal = c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B",
-                                         "#FF8D1B", "#FFC04D", "#808080"), 
-                              ...) 
+neo_spdplot <- function (x, 
+                         type = "stacked", calendar = "BP", spdnormalised = FALSE, 
+                         rescale = FALSE, runm = NA, xlim = NA, ylim = NA, xaxt = "s", 
+                         yaxt = "s", gapFactor = 0.2, col.fill = NA, col.line = NA, 
+                         lwd.obs = 1, lty.obs = 1, cex.lab = 1, cex.axis = cex.lab, 
+                         legend = TRUE, legend.arg = NULL, ylab = NA, ymargin = 1.1, 
+                         periods.colors = c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B", "#FF8D1B", "#FFC04D", "#808080"),
+                         # ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
+                         # shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
+                         # colpal = c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B",
+                         #            "#FF8D1B", "#FFC04D", "#808080"), 
+                         ...) 
 {
   # adapted from the function plot.stackCalSPD {rcarbon} R package
   if (!"stackCalSPD" %in% class(x)) {
@@ -70,23 +74,30 @@ neo_spdplot <- function (x, type = "stacked", calendar = "BP", spdnormalised = F
     PrDens = apply(PrDens, 2, reScale)
   }
   if (any(is.na(col.fill))) {
-    if (nsets <= 8) {
-      col.fill = colpal[1:nsets]
-    }
-    if (nsets > 8) {
-      col.fill = sample(colors(), size = nsets, replace = TRUE)
-      warning("Color sequence randomised due to a large number of SPDs (>8). Consider selecting an appropriate color sequence manually")
-    }
+    col.line <- col.fill <- periods.colors
+    # periods.colors <- read.csv(ref.period, sep = "\t")
+    # periods.colors.selected <- periods.colors[periods.colors$period %in% shown.per, c("period", "color")]
+    # col.fill <- periods.colors.selected[periods.colors.selected$period %in% periods, "color"]
+    # col.line <- periods.colors.selected[periods.colors.selected$period %in% periods, "color"]
+    # colpal <- periods.colors$color
+    # col.fill <- colpal[1:nsets]
+    # if (nsets <= 8) {
+    #   col.fill = colpal[1:nsets]
+    # }
+    # if (nsets > 8) {
+    #   col.fill = sample(colors(), size = nsets, replace = TRUE)
+    #   warning("Color sequence randomised due to a large number of SPDs (>8). Consider selecting an appropriate color sequence manually")
+    # }
   }
-  if (any(is.na(col.line))) {
-    if (nsets <= 8) {
-      col.line = colpal[1:nsets]
-    }
-    if (nsets > 8) {
-      col.line = sample(colors(), size = nsets, replace = TRUE)
-      warning("Color sequence randomised due to a large number of SPDs (>8). Consider selecting an appropriate color sequence manually")
-    }
-  }
+  # if (any(is.na(col.line))) {
+  #   if (nsets <= 8) {
+  #     col.line = colpal[1:nsets]
+  #   }
+  #   if (nsets > 8) {
+  #     col.line = sample(colors(), size = nsets, replace = TRUE)
+  #     warning("Color sequence randomised due to a large number of SPDs (>8). Consider selecting an appropriate color sequence manually")
+  #   }
+  # }
   if (any(is.na(lwd.obs))) {
     lwd.obs = rep(1, nsets)
   }
