@@ -30,7 +30,7 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
                     shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
                     ref.c14age = c(9500, 5000),
                     mapname = NA,
-                    export = FALSE,
+                    export = TRUE,
                     outDir = "C:/Rprojects/neonet/results/",
                     verbose = TRUE){
   # c14.db.url <- 'http://mappaproject.arch.unipi.it/mod/files/140_id00140_doc_elencoc14.tsv'
@@ -98,7 +98,8 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
     if(is.na(mapname)){
       mapname <- DescTools::SplitPath(df.c14)$filename
     }
-    outFile <- paste0(outDir, mapname, "-spd.png")
+    mapfile <- paste0(mapname, "-spd.png")
+    outFile <- paste0(outDir, mapfile)
     png(outFile, height = 11, width = 17, units="cm", res = 600)
   }
   if(verbose){
@@ -125,6 +126,9 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
   )
   if(export){
     dev.off()
+    if(verbose){
+      print(paste0("The SPD plot '", mapfile, "' has been exported to: '", outDir, "'"))
+    }
   }
 }
 
