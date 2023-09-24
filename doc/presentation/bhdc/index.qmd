@@ -25,4 +25,4 @@ format:
     width: 1200
 ---
 
-## readthedocs {data-background-iframe="https://bhdc.earth/", background-interactive="true"}
+## readthedocs {data-background-iframe="https://bhdc.earth/" background-interactive="true"}
