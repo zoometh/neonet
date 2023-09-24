@@ -1,0 +1,28 @@
+---
+title: "NeoNet app"
+subtitle: "modelling radiocarbon modelling of the Late Mesolithic - Early Neolithic transition in South-Central and South-Western Europe"
+author: "Thomas Huet (University of Oxford, EAMENA project)"
+title-slide-attributes:
+    data-background-image: "https://raw.githubusercontent.com/zoometh/thomashuet/master/teach/stats/images/stat-fa-camel-2.png"
+    data-background-size: "20%"
+    data-background-opacity: "0.2"
+format:
+  revealjs: 
+    css: https://zoometh.github.io/thomashuet/css/quarto.css
+    code-fold: true
+    code-summary: "<small>Code</small>"
+    slide-number: true
+    # chalkboard: true
+    scrollable: true
+    preview-links: auto
+    reference-location: document
+    footnotes-hover: true
+    # self-contained: true
+    # embed-resources: true
+    logo: https://raw.githubusercontent.com/zoometh/thomashuet/master/teach/stats/images/inst-uni-oxford_.png
+    footer: "<em>Big Historical Data Conference</em> <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/inst-asm-cnrs.png' style='height: 35px;vertical-align: middle;'> Université Paul-Valéry, Feb 2023 - Thomas Huet"
+    margin: 0
+    width: 1200
+---
+
+## readthedocs {data-background-iframe="https://bhdc.earth/", background-interactive="true"}

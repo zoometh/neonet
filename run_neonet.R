@@ -21,24 +21,29 @@ df.c14 <- openxlsx::read.xlsx(data.c14)
 df.c14 <- neo_subset(df.c14,
                      rm.C14Age = TRUE,
                      rm.Spatial = FALSE,
-                     rm.Period = FALSE)
+                     rm.Period = TRUE)
 df.c14 <- neo_calib(df.c14)
-df.c14 <- neo_doi(df.c14,
-                  df.c14.pub = "C:/Rprojects/neonet/inst/extdata/140_140_id00140_doc_elencoc14.tsv",
-                  export = F)
+df.c14a <- neo_std(df.c14,
+                  out.df.c14.topub = "c14_dataset_atl_4.tsv")
+# df.c14 <- neo_std(df.c14,
+#                   df.c14.pub = "C:/Rprojects/neonet/inst/extdata/140_140_id00140_doc_elencoc14.tsv",
+#                   export = F)
 # df.c14.bib <- neo_bib(df.c14, df.bib)
-neo_datamiss(df.c14)
-neo_datasum(df.c14)
-neo_spd(df.c14)
+neo_datamiss(df.c14a)
+neo_datasum(df.c14a)
+neo_spd(df.c14a, mapname = "SPD")
 
 # for the app, a merge
-df.c14 <- neo_merge(df.c14 = df.c14, 
-                    data.bib = data.bib, 
-                    merge.bib = F)
+df.c14 <- neo_merge(df.c14 = "C:/Rprojects/neonet/R/app-dev-neonet/c14_dataset_atl.tsv", 
+                    df.c14.pub = "C:/Rprojects/neonet/R/app-dev-neonet/NeoNet_Med_v2.tsv",
+                    merge.bib = F,
+                    write.c14 = T,
+                    out.c14.merged.nme = "c14_dataset_med_x_atl_2.tsv")
 df.c14 <- neo_matlife(df.c14)
 df.c14 <- neo_html(df.c14)
 # df.c14$bib <- as.character(df.c14$bib)
-write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
+write.table(df.c14, 
+            file = "C:/Rprojects/neonet/R/app-dev-neonet/c14_dataset_med_x_atl.tsv",
             sep = "\t",
             row.names = FALSE)
 

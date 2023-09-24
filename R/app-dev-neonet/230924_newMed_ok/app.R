@@ -18,17 +18,14 @@ library(Bchron)
 library(rcarbon)
 library(bibtex)
 
-# merged new Med + Atl
-dataset <- "c14_dataset_med_x_atl_2.tsv"
-bibliog <- 'references_med_x_atl.bib'
-
-# Atl
+# merged Med + Atl
+# dataset <- "c14_dataset_med_x_atl.tsv"
 # dataset <- "c14_dataset_atl.tsv"
-# bibliog <- 'NeoNet_atl_ELR.bib'
+# bibliog <- 'references_med_x_atl.bib'
 
 # # new Med
-# bibliog <- 'id00140_doc_reference.bib'
-# dataset <- "NeoNet_Med_v2.tsv"
+bibliog <- 'id00140_doc_reference.bib'
+dataset <- "NeoNet_Med_v2.tsv"
 # 
 # OK <- read.csv(paste0(source.path, "NeoNet_Med_v2.tsv"), sep = "\t", encoding = "UTF-8")
 # pasOK <- read.csv(paste0(source.path, "c14_dataset_med_x_atl.tsv"), sep = "\t", encoding = "UTF-8")
@@ -527,42 +524,42 @@ server <- function(input, output, session) {
                 "<b>download</b> the plot with the button"))
   })
   
-  output$hot <- DT::renderDataTable({
-    # the large table in 'data'
-    datatable(
-      df.tot[ , hotcols],
-      rownames = FALSE,
-      width = "100%",
-      editable = FALSE,
-      options = list(
-        scrollX = TRUE,
-        lengthMenu = list(c(50, 100, 250), c('50', '100', '250')),
-        pageLength = 100
-      )
-    )
-  })
+  # output$hot <- DT::renderDataTable({
+  #   # the large table in 'data'
+  #   datatable(
+  #     df.tot[ , hotcols],
+  #     rownames = FALSE,
+  #     width = "100%",
+  #     editable = FALSE,
+  #     options = list(
+  #       scrollX = TRUE,
+  #       lengthMenu = list(c(50, 100, 250), c('50', '100', '250')),
+  #       pageLength = 100
+  #     )
+  #   )
+  # })
   
-  # output$hot <- renderDT(DT::datatable(
-  #   df.tot[ , hotcols],
-  #   rownames = FALSE,
-  #   extensions = 'Buttons',
-  #   options = list(
-  #     dom = 'Bfrtip',
-  #     lengthMenu = list(c(100, 200, -1), c('100', '200', 'All')),
-  #     pageLength = 100,
-  #     # width = "100%",
-  #     # autoWidth = TRUE,
-  #     # scrollX = T,
-  #     buttons = list(
-  #       list(
-  #         extend = "collection",
-  #         text = 'Show All',
-  #         action = DT::JS("function ( e, dt, node, config ) {
-  #                                   dt.page.len(-1);
-  #                                   dt.ajax.reload();
-  #                               }")))
-  #   ))
-  # )
+  output$hot <- renderDT(DT::datatable(
+    df.tot[ , hotcols],
+    rownames = FALSE,
+    extensions = 'Buttons',
+    options = list(
+      dom = 'Bfrtip',
+      lengthMenu = list(c(100, 200, -1), c('100', '200', 'All')),
+      pageLength = 100,
+      # width = "100%",
+      # autoWidth = TRUE,
+      # scrollX = T,
+      buttons = list(
+        list(
+          extend = "collection",
+          text = 'Show All',
+          action = DT::JS("function ( e, dt, node, config ) {
+                                    dt.page.len(-1);
+                                    dt.ajax.reload();
+                                }")))
+    ))
+  )
   # 
   
   # dynamic table below the map, 'map' tab

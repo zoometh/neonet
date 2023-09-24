@@ -2,9 +2,10 @@
 #'
 #' @description merge published and unpublished datasets for the NeoNet app
 #'
-#' @param df.c14 the new original dataset
-#' @param df.c14.pub the already published dataset (ex: NeoNet med)
-#' @param data.bib the original .bib file path with BibTex references
+#' @param df.c14 the new dataset in a TSV format
+#' @param df.c14.pub the already published dataset (ex: NeoNet med) to merge with the new dataset.
+#' @param data.bib the original .bib file path with BibTex references.
+#' @param data.bib.pub the already published bibliographical reference list.
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return 
@@ -15,7 +16,7 @@
 #'
 #' @export
 neo_merge <- function(df.c14 = NA,
-                      df.c14.pub = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_140_id00140_doc_elencoc14.tsv",
+                      df.c14.pub = "http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv",
                       data.bib = NA,
                       data.bib.pub = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/id00140_doc_reference.bib",
                       merge.c14 = TRUE,
@@ -24,24 +25,30 @@ neo_merge <- function(df.c14 = NA,
                       write.bib = FALSE,
                       out.c14.merged.nme = "c14_dataset_med_x_atl.tsv",
                       out.bib.merged.nme = "references_med_x_atl.bib",
-                      outDir = "C:/Rprojects/neonet/R/app-dev",
+                      outDir = "C:/Rprojects/neonet/R/app-dev-neonet",
                       verbose = TRUE){
   if(merge.c14){
     if(verbose){
       print("Merge new and publised c14 datasets")
     }
+    # new dataset
+    df.c14 <- read.csv(df.c14, sep = "\t",
+                       fileEncoding = "UTF-8")
     # old dataset
-    df.c14.pub <- read.csv(df.c14.pub, sep = "\t")
+    df.c14.pub <- read.csv(df.c14.pub, sep = "\t",
+                           fileEncoding = "UTF-8")
     setdiff(colnames(df.c14.pub), colnames(df.c14)) # OK
     # rm non usefull col
-    supp.col <- setdiff(colnames(df.c14), colnames(df.c14.pub))
-    df.c14[ , supp.col] <- NULL
+    supp.col.a <- setdiff(colnames(df.c14), colnames(df.c14.pub))
+    supp.col.b <- setdiff(colnames(df.c14.pub), colnames(df.c14))
+    df.c14[ , supp.col.a] <- NULL
+    df.c14.pub[ , supp.col.b] <- NULL
     df.c14.2 <- rbind(df.c14, df.c14.pub)
   }
   if(write.c14){
     write.table(df.c14.2, paste0(outDir, "/", out.c14.merged.nme),
-                sep = "\t",
-                row.names = FALSE)
+                sep = "\t", row.names = FALSE,
+                fileEncoding = "UTF-8")
     if(verbose){
       print(paste0("the file '", out.c14.merged.nme, "' has been exported to: ", outDir))
     }

@@ -8,7 +8,7 @@ library(rcarbon)
 source("R/neo_isochr.R")
 source("R/neo_spd.R")
 
-neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson", 
+neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson", 
            show.lbl = FALSE)
 
 ##

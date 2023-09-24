@@ -37,13 +37,14 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
   `%>%` <- dplyr::`%>%` # used to not load dplyr
   if(class(df.c14) == "data.frame"){
     c14 <- df.c14
-  } 
-  if(DescTools::SplitPath(df.c14)$extension == "geojson"){
-    c14 <- sf::st_read(df.c14, quiet = T)
+  } else {
+    if(DescTools::SplitPath(df.c14)$extension == "geojson"){
+      c14 <- sf::st_read(df.c14, quiet = T)
+    }
+    if(DescTools::SplitPath(df.c14)$extension == "tsv"){
+      c14 <- read.table(df.c14, sep = "\t", header = TRUE, stringsAsFactors = F, quote="")
+    } 
   }
-  if(DescTools::SplitPath(df.c14)$extension == "tsv"){
-    c14 <- read.table(df.c14, sep = "\t", header = TRUE, stringsAsFactors = F, quote="")
-  } 
   # periods
   if(verbose){print("Read period colors")}
   periods.colors <- read.csv(ref.period, sep = "\t")
@@ -133,5 +134,4 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
 
 # df.url = "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv")
 
-neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
-        export = T)
+
