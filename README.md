@@ -103,10 +103,10 @@ neo_spd(df.c14 = df.c14)
 </p>
 
 
-`neo_spd()` can be run on a GeoJSON file exported from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates). For example [2023-09-24-neonet-data.geojson](https://github.com/zoometh/neonet/blob/main/results/2023-09-24-neonet-data.geojson), see also: [isochrones](https://github.com/zoometh/neonet#isochrones)
+`neo_spd()` can be run on a GeoJSON file exported from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates). For example [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson), see also: [isochrones](https://github.com/zoometh/neonet#isochrones)
 
 ```R
-neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
+neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson",
         export = T)
 ```
 
@@ -128,18 +128,18 @@ library(rcarbon)
 source("R/neo_isochr.R")
 source("R/neo_spd.R")
 
-neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson", 
+neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson", 
            show.lbl = FALSE)
 ```
   
-The file [2023-09-24-neonet-data.geojson](https://github.com/zoometh/neonet/blob/main/results/2023-09-24-neonet-data.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates)). This GeoJSON file can be curated in a GIS (ex: removing aberrant dates) before running the following functions (`neo_isochr`, `neo_spd`, etc.).
+The file [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates)). This GeoJSON file can be curated in a GIS (ex: removing aberrant dates) before running the following functions (`neo_isochr`, `neo_spd`, etc.).
 
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24-app.png"
 " width="700">
   <br>
-    <em>Screen capture of the `2023-09-24-neonet-data.geojson` file for Early Neolithic (EN) dates only having a SD ≤ 50, and calBC interval between -7000 and -3000</em>
+    <em>Screen capture of the NeoNet app before exporting the `neonet-data-2023-09-24.geojson` file: Early Neolithic (EN) dates only having a SD ≤ 50, and calBC interval between -7000 and -3000</em>
 </p>
 
 The output is a map with isochrones calculated on the median of calibrated dates. 
@@ -149,7 +149,7 @@ The output is a map with isochrones calculated on the median of calibrated dates
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24-isochr.png"
 " width="700">
   <br>
-    <em>Output map from the `2023-09-23-neonet-data.geojson`</em>
+    <em>Output map from the `neonet-data-2023-09-24.geojson`</em>
 </p>
 
 

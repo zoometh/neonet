@@ -35,7 +35,7 @@ bibliog <- 'references_med_x_atl.bib'
 # setdiff(colnames(OK), colnames(pasOK))
 # setdiff(colnames(pasOK), colnames(OK))
 
-srv <- F
+srv <- T
 loc <- !srv
 if(srv){
   source.path <- "/srv/shiny-server/C14dev/"
