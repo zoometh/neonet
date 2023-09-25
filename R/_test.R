@@ -2,15 +2,17 @@
 
 
 ##
-
-library(rcarbon)
-
+source("R/neo_calib.R")
 source("R/neo_isochr.R")
 source("R/neo_spd.R")
+source("R/neo_spdplot.R")
 
-neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson", 
+c14data <- "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson"
+neo_isochr(df.c14 = c14data, 
+           outDir = "C:/Rprojects/neonet/results/",
            show.lbl = FALSE)
-neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson")
+neo_spd(df.c14 = c14data,
+        outDir = "C:/Rprojects/neonet/results/")
 
 ##
 

@@ -20,7 +20,7 @@ format:
     # self-contained: true
     # embed-resources: true
     logo: https://raw.githubusercontent.com/zoometh/thomashuet/master/teach/stats/images/inst-uni-oxford_.png
-    footer: "<em>Big Historical Data Conference</em> <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/inst-asm-cnrs.png' style='height: 35px;vertical-align: middle;'> Université Paul-Valéry, Feb 2023 - Thomas Huet"
+    footer: "<em>Big Historical Data Conference</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/bhdc_avatar.png' style='height: 35px;vertical-align: middle;'> <https://bhdc.earth/> Université Paul-Valéry, Feb 2023 - Thomas Huet"
     margin: 0
     width: 1200
 ---
