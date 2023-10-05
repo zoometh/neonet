@@ -4,6 +4,9 @@
 #'
 #' @param df.c14 the dataset with NeoNet columns (SiteName, Period, etc.). Can be: a TSV file, or a data.frame, or a GeoJSON. Default: NeoNet med dataset
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
+#' @param export.plot if TRUE export (by default), if FALSE display
+#' @param dirOut name of the output folder. Only useful when `export.plot` is TRUE
+#' @param width,height dimension of the output map, if exported.
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return Plot
@@ -28,10 +31,12 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
                     # df.url = 'https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_140_id00140_doc_elencoc14.tsv',
                     ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                     shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
-                    ref.c14age = c(9500, 5000),
-                    mapname = NA,
+                    ref.c14age = c(10000, 5000),
+                    plotname = NA,
                     export = TRUE,
                     outDir = "C:/Rprojects/neonet/results/",
+                    width = 9,
+                    height = 11,
                     verbose = TRUE){
   # c14.db.url <- 'http://mappaproject.arch.unipi.it/mod/files/140_id00140_doc_elencoc14.tsv'
   `%>%` <- dplyr::`%>%` # used to not load dplyr
@@ -83,6 +88,8 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
   if(verbose){
     print("Calibration")
   }
+  c14$C14Age <- as.numeric(c14$C14Age)
+  c14$C14SD <- as.numeric(c14$C14SD)
   bins <- rcarbon::binPrep(c14$SiteName,
                            c14$C14Age,
                            h = 50)
@@ -95,19 +102,20 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
                                bins = bins,
                                runm = 50)
   if(export){
-    if(is.na(mapname)){
-      mapname <- DescTools::SplitPath(df.c14)$filename
+    if(is.na(plotname)){
+      # plotname <- DescTools::SplitPath(df.c14)$filename
+      plotname <- "spd"
     }
-    mapfile <- paste0(mapname, "-spd.png")
-    outFile <- paste0(outDir, mapfile)
-    png(outFile, height = 11, width = 17, units="cm", res = 600)
+    plotfile <- paste0(plotname, "-spd.png")
+    outFile <- paste0(outDir, plotfile)
+    png(outFile, height = height, width = width, units = "cm", res = 300)
   }
   if(verbose){
     print("Plot")
   }
   periods <- unique(c14$Period)
   periods.colors <- periods.colors.selected[periods.colors.selected$period %in% periods, "color"]
-  tit <- paste0(mapname, " (", nrow(c14), " dates used)")
+  tit <- paste0(plotname, " (", nrow(c14), " dates used)")
   neo_spdplot(spd.c14,
               type = 'stacked',
               calendar = "BCAD",
@@ -127,7 +135,7 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
   if(export){
     dev.off()
     if(verbose){
-      print(paste0("The SPD plot '", mapfile, "' has been exported to: '", outDir, "'"))
+      print(paste0("The SPD plot '", plotfile, "' has been exported to: '", outDir, "'"))
     }
   }
 }

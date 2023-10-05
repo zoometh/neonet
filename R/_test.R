@@ -1,7 +1,25 @@
 
+# C:\Rprojects\neonet\R\app-dev-neonet\
+# 
+# uniq.refs <- neo_bib(df.c14, data.bib)
+# 
+# https://api.nakala.fr/embed/10.34847/nkl.fbd6t845/567ee0f670e867f078763e88dcd942492a4396da
+# 
+
+source("R/neo_datamiss.R")
+source("R/neo_datasum.R")
 
 
-##
+df.bib <- bibtex::read.bib("C:/Rprojects/neonet/inst/extdata/atl/id00164_doc_reference.bib")
+df.c14 <- read.csv2("C:/Rprojects/neonet/inst/extdata/atl/id00164_doc_elencoc14.tsv", sep = "\t")
+neo_datasum(df.c14)
+neo_spd(df.c14 = df.c14, export = T, width = 14, height = 12,
+        outDir = "C:/Rprojects/neonet/results/")
+neo_datamiss(df.c14)
+
+
+id00164_doc_elencoc14
+
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 source("R/neo_spd.R")
@@ -11,8 +29,15 @@ c14data <- "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet
 neo_isochr(df.c14 = c14data, 
            outDir = "C:/Rprojects/neonet/results/",
            show.lbl = FALSE)
-neo_spd(df.c14 = c14data,
-        outDir = "C:/Rprojects/neonet/results/")
+
+
+# library(Bchron)
+# ages1 = BchronCalibrate(ages=10000,
+#                         ageSds=10,
+#                         calCurves='intcal20',
+#                         ids='Date-1')
+# a=summary(ages1)
+
 
 ##
 
@@ -22,8 +47,7 @@ source("R/neo_matlife.R")
 source("R/neo_calib.R")
 source("R/neo_merge.R")
 source("R/neo_html.R")
-source("R/neo_datamiss.R")
-source("R/neo_datasum.R")
+
 source("R/neo_doi.R")
 
 
@@ -256,7 +280,7 @@ server <- function(input, output, session) {
     
     leaflet() %>% # create a leaflet map widget
       addTiles()
-      # addTiles( urlTemplate = "https://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png" ) # specify provider tile and type
+    # addTiles( urlTemplate = "https://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png" ) # specify provider tile and type
     
   }) # end of foundational.map()
   

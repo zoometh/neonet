@@ -26,15 +26,15 @@ neo_datasum <- function(df.c14,
   ordered.periods <- periods.colors$period
   # num_cells_with_values <- sum(df.c14 %in% missing.values, na.rm = TRUE)
   # df.c14[df.c14 %in% missing.values, ] <- NA
-  df.c14[df.c14 == "n/a"] <- NA
-  df.c14[df.c14 == ""] <- NA
+  df.c14[df.c14 %in% c("n/a", "n/d", "")] <- NA
   linfos <- list()
   n.dates <- nrow(df.c14) # number of dates
   n.sites <- length(unique(df.c14$SiteName)) # number of dates
-  geo.extent <- list(N = max(df.c14$Latitude), # NSEW extent
-                     S = min(df.c14$Latitude),
-                     E = max(df.c14$Longitude),
-                     W = min(df.c14$Longitude))
+  geo.extent <- list(N = max(as.numeric(df.c14$Latitude)), # NSEW extent
+                     S = min(as.numeric(df.c14$Latitude)),
+                     E = max(as.numeric(df.c14$Longitude)),
+                     W = min(as.numeric(df.c14$Longitude))
+                     )
   time.extent <- list(tpq = min(df.c14$tpq),
                       taq = max(df.c14$taq))
   # missing
@@ -62,11 +62,14 @@ neo_datasum <- function(df.c14,
   names(df.per)[names(df.per) == 'Var1'] <- 'Period'
   # setdiff(df.per$Var1, ordered.periods)
   df.per <- df.per[match(ordered.periods, df.per$Period), ]
+  
+  n.bib <- length(unique(df.c14$bib_url))
 
   linfos <- c(linfos,
               n.dates = n.dates,
               n.sites = n.sites,
               n.context = n.context,
+              n.bib = n.bib,
               geo.extent = geo.extent,
               time.extent = time.extent,
               perc.missing = perc.missing,

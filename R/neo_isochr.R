@@ -3,9 +3,10 @@
 #' @description create isochrones contours by interpolation of calibrated radiocarbon dates. Select the date with the minimum median in each site.
 #'
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
+#' @selected.per the period selected. Default "EN".
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
 #' @param time.interv time interval between two isochrones, in years. Default: 250.
-#' @param coloramp the name of the coloramp to use on contour. For example: "Reds" (default), "Blues", etc. 
+#' @param coloramp the name of the coloramps to use on contour, for the Neolithic dates and Paleolithic dates. Default: c("Reds", "Blues"). 
 #' @param show.lbl show the sites identifiers (default: TRUE)
 #' @param map.longest.size the longest size of the output map (height or width) in cm. The smallest size will be calculated from it. Only useful if if export = TRUE. Default: 15
 #' @param verbose if TRUE (default) then display different messages.
@@ -21,12 +22,13 @@
 #'
 #' @export
 neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
-                       # selected.neo = c("EN"),
+                       selected.per = c("EN"),
                        # max.sd = 100,
                        calibrate = TRUE,
                        time.interv = 250,
                        mapname = NA,
-                       coloramp = "Reds",
+                       zoom = 5,
+                       coloramp = c("Reds", "Blues"),
                        show.lbl = TRUE,
                        export = TRUE,
                        outDir = "C:/Rprojects/neonet/results/",
@@ -35,18 +37,21 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   # library(tidyverse)
   # library(interp)
   `%>%` <- dplyr::`%>%` # used to not load dplyr
+  # check which periods have been selected
+  neolithic <- selected.per %in% c("EN", "EMN", "MN", "LN", "UN")
+  paleolithic <- !neolithic
   df.dates <- sf::st_read(df.c14, quiet = T)
   nb.dates.tot <- nrow(df.dates)
   if(verbose){
     print(paste0("Original GeoJSON file: ", nb.dates.tot, " dates"))
   }
-  # # subset on periods
-  # df.dates <- df.dates[df.dates$Period %in% selected.neo, ]
-  # if(verbose){
-  #   print(paste0("After subset of Periods on '", 
-  #                paste0(selected.neo, collapse = ", "),"': ",
-  #                nrow(df.dates), " dates to model"))
-  # }
+  # subset on periods
+  df.dates <- df.dates[df.dates$Period %in% selected.per, ]
+  if(verbose){
+    print(paste0("After subset of Periods on '",
+                 paste0(selected.per, collapse = ", "),"': ",
+                 nrow(df.dates), " dates to model"))
+  }
   # # subset on SD
   # if(!is.na(max.sd)){
   #   df.dates <- df.dates[df.dates$C14SD < max.sd, ]
@@ -56,15 +61,24 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   #                  nrow(df.dates), " dates to calibrate and model"))
   #   }
   # }
+  # Early Neolithic (EN): Select the row with the minimum median in each site
+  # not.EN <- rownames(df.dates[df.dates$Period != "EN", ])
+  # rownames(df.dates[not.EN, ]) <- NULL
+  # df.dates <- df.dates[df.dates$Period == "EN", ]
   if(calibrate){
     df.dates <- neo_calib(as.data.frame(df.dates))
   }
-  # Select the row with the minimum median in each site
-  df.dates.min <- df.dates %>% 
-    dplyr::group_by(SiteName) %>% 
-    dplyr::slice_min(median)
+  if(neolithic){
+    df.dates.min <- df.dates %>% 
+      dplyr::group_by(SiteName) %>% 
+      dplyr::slice_min(median)
+  } else {
+    df.dates.min <- df.dates %>% 
+      dplyr::group_by(SiteName) %>% 
+      dplyr::slice_max(median)
+  }
   if(verbose){
-    print(paste0("Minimal medians by site selected: ",
+    print(paste0("Medians of calibrated dates by site selected: ",
                  nrow(df.dates.min), " dates"))
   }
   # to sf
@@ -107,14 +121,22 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     dplyr::select(-i, -j)
   # colors
   nb.contours <- length(contour_levels)
-  myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp))(nb.contours)
+  if(neolithic){
+    myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours)
+  } else {
+    myPalette <- rev(colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours))
+  }
   # title/filename
   if(is.na(mapname)){
     mapname <- DescTools::SplitPath(df.c14)$filename
   }
   # tit
   periods <- paste0(unique(df.dates$Period), collapse = " ")
-  tit <- paste0("Isochrones of ", periods)
+  if(neolithic){
+    tit <- paste("Isochrones of the earliest", periods, "dates")
+  } else {
+    tit <- paste("Isochrones of the latest", periods, "dates")
+  }
   subtit <- paste0(mapname, " (", nrow(df), " dates used / ", nb.dates.tot, ")")
   # map
   buff <- .1
@@ -122,14 +144,16 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
             bottom = min(Ys) - buff, 
             right = max(Xs) + buff, 
             top = max(Ys) + buff)
-  # calculate autozoom
-  autozoom <- rosm:::tile.raster.autozoom(
-    rosm::extract_bbox(
-      matrix(bbox, ncol = 2, byrow = TRUE)),
-    epsg = 4326)
+  if(is.na(zoom)){
+    # calculate autozoom
+    zoom <- rosm:::tile.raster.autozoom(
+      rosm::extract_bbox(
+        matrix(bbox, ncol = 2, byrow = TRUE)),
+      epsg = 4326)
+  } 
   # map
   stamenbck <- ggmap::get_stamenmap(bbox, 
-                                    zoom = autozoom,
+                                    zoom = zoom,
                                     maptype = "terrain-background")
   map <- ggmap::ggmap(stamenbck, darken = c(.2, "white")) + 
     # TODO: add bbox on map to show the studied area
@@ -167,7 +191,11 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   }
   if(export){
     # print(paste0("After subset on Periods ", paste0(select.periods, collapse = ", "),": ", nrow(df.dates), " dates"))
-    outFile <- paste0(outDir, mapname, "-isochr.png")
+    if(neolithic){
+      outFile <- paste0(outDir, mapname, "-neolithic-isochr.png")
+    } else {
+      outFile <- paste0(outDir, mapname, "-paleolithic-isochr.png")
+    }
     # calculate the right proportion of the output map by calculating the ration w/h of the bbox
     map.width.size <- bbox[["right"]] - bbox[["left"]]
     map.height.size <- bbox[["top"]] - bbox[["bottom"]]
@@ -184,7 +212,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     }
     
     if(verbose){
-      print(paste0("Map '", mapname,"' has been exported to '", outDir, "'"))
+      print(paste0("Map '", outFile,"' has been exported to '", outDir, "'"))
     }
   } else {
     print(map)

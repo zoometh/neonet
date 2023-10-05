@@ -22,18 +22,21 @@ neo_datamiss <- function(df.c14 = NA,
                                       "tpq", "taq",
                                       "bib", "bib_url",
                                       "Longitude", "Latitude", "Country"),
-                         export = FALSE,
-                         outDir = paste0(getwd(), "/neonet/publi/"),
+                         export = TRUE,
+                         outDir = "C:/Rprojects/neonet/results/",
+                         width = 11,
+                         height = 9,
                          outFile = "missing_info.jpg"
 ){
   # dataframe of missing data
 
-  # df.tot <- read.csv(paste0(c14.path, "shinyapp/c14_dataset.tsv"), sep = "\t")
-  df.c14[df.c14 == "n/a"] <- NA
+  # # df.tot <- read.csv(paste0(c14.path, "shinyapp/c14_dataset.tsv"), sep = "\t")
+  # df.c14[df.c14 == "n/a"] <- NA
+  df.c14[df.c14 %in% c("n/a", "n/d", "")] <- NA
   df.c14 <- df.c14[ , col.used]
   if(export){
     jpeg(paste0(outDir, outFile),
-         width = 12, height = 12, units="cm", res = 300)
+         width = width, height = height, units = "cm", res = 300)
   }
   ylabels <- sort(c(ylabels, nrow(df.c14)))
   Amelia::missmap(df.c14,
@@ -50,6 +53,9 @@ neo_datamiss <- function(df.c14 = NA,
                   margins = c(5, 2))
   if(export){
     dev.off()
+    if(verbose){
+      print(paste0("The plot missing data'", outFile, "' has been exported to: '", outDir, "'"))
+    }
   }
   # ggsave(filename = "docs/publication/missing_info.png", g.miss, width = 17, units = "cm")
 }

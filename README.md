@@ -26,7 +26,9 @@ NeoNet functions enable the handling of radiocarbon dates sourced from the datas
 * [isochrones](https://github.com/zoometh/neonet#isochrones)
 * [Harris matrices](https://github.com/zoometh/neonet#harris-matrix) using the [NeoNet-strati app](https://github.com/zoometh/neonet#neonet-strati).
 
-### Data preparation
+### Data
+
+#### Data preparation
 
 Starting by running these `neo_*()` functions to manage a new XLSX dataset. Sourcing functions:
 
@@ -61,12 +63,6 @@ df.c14 <- neo_calib(df.c14)
 neo_doi(df.c14)
 ```
 
-Calculate basic statistics: missing data
-
-```R
-neo_datamiss(df.c14)
-```
-
 Prepare the dataset for the Shiny application by merging it with NeoNet Med, calculating materil life duration, and HTML popup layouts
 
 ```R
@@ -83,6 +79,27 @@ Export the merged dataset
 write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
             sep = "\t",
             row.names = FALSE)
+```
+
+
+#### Data report
+
+Calculate basic statistics
+
+```R
+neo_datasum(df.c14)
+```
+
+Calculate basic statistics: missing data
+
+```R
+neo_datamiss(df.c14)
+```
+
+Spatial extent
+
+```R
+
 ```
 
 ### SPD plot
@@ -124,18 +141,8 @@ neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/
 
 ### Isochrones
 
-Create a map with isochrone contours to model the spread of Neolithic
+Create a map with isochrone contours to model the spread of Neolithic. 
 
-```R
-library(rcarbon)
-
-source("R/neo_isochr.R")
-source("R/neo_spd.R")
-
-neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson", 
-           show.lbl = FALSE)
-```
-  
 The file [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/#export_dates)). This GeoJSON file can be curated in a GIS (ex: removing aberrant dates) before running the following functions (`neo_isochr`, `neo_spd`, etc.).
 
 <p align="center">
@@ -143,10 +150,21 @@ The file [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24-app.png"
 " width="700">
   <br>
-    <em>Screen capture of the NeoNet app before exporting the `neonet-data-2023-09-24.geojson` file: Early Neolithic (EN) dates only having a SD ≤ 50, and calBC interval between -7000 and -3000</em>
+    <em>Screen capture of the NeoNet app before the export of the `neonet-data-2023-09-24.geojson` file: Early Neolithic (EN) dates only having a SD ≤ 50, and calBC interval between -7000 and -3000</em>
 </p>
 
-The output is a map with isochrones calculated on the median of calibrated dates. 
+The output is a map with isochrones calculated on the median of calibrated dates.
+
+```R
+library(rcarbon)
+
+source("R/neo_isochr.R")
+source("R/neo_spd.R")
+source("R/neo_calib.R")
+
+neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson", 
+           show.lbl = FALSE)
+```
 
 <p align="center">
 <br>

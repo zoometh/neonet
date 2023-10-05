@@ -26,9 +26,10 @@ source("R/neo_spd.R")
 source("R/neo_spdplot.R")
 
 # the GeoJSON file
-c14data <- "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson"
+c14data <- "C:/Users/Thomas Huet/Downloads/neonet-data-2023-09-25.geojson"
 # create a map with isochrones
 neo_isochr(df.c14 = c14data, 
+           time.interv = 100,
            outDir = "C:/Rprojects/neonet/results/",
            show.lbl = FALSE)
 # create a SPD
