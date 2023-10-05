@@ -12,9 +12,9 @@ td <- tempdir()
 myc14data <- paste0(td, "/output.geojson")
 AOI_France_E_W <- drive_download("1_AOI_France_E-W.geojson", path = myc14data, overwrite = T)
 
-
-neo_isochr(df.c14 = myc14data)
-shell.exec(myc14data)
+myc14data <- "https://raw.githubusercontent.com/zoometh/neonet/main/results/1_AOI_France_E-W.geojson"
+neo_isochr(df.c14 = myc14data, mapname = "France_EW")
+neo_isochr(df.c14 = myc14data, mapname = "France_EW", selected.per = c("LM"))
 
 # example: C:\Users\Thomas Huet\AppData\Local\Temp\RtmpOq0fVQ
 

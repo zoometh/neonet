@@ -124,7 +124,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   if(neolithic){
     myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours)
   } else {
-    myPalette <- rev(colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours))
+    myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours)
   }
   # title/filename
   if(is.na(mapname)){
