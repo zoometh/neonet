@@ -174,6 +174,23 @@ neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/resul
     <em>Output map from the `neonet-data-2023-09-24.geojson`</em>
 </p>
 
+The same function can be used symetrically: instead of plotting the earliest dates of the Neolithic, one can also plot the latest dates of the Paleolithic
+
+```R
+myc14data <- "https://raw.githubusercontent.com/zoometh/neonet/main/results/1_AOI_France_E-W.geojson"
+neo_isochr(df.c14 = myc14data, mapname = "France_EW")
+neo_isochr(df.c14 = myc14data, mapname = "France_EW", selected.per = c("LM"))
+```
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/France_EW-neolithic-isochr.png"
+" width="700">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/France_EW-paleolithic-isochr.png"
+" width="700">
+  <br>
+    <em>Output maps from the `1_AOI_France_E-W.geojson`: earliest Neolithic dates and latest Paleolithic dates</em>
+</p>
 
 ### Harris Matrix
 
