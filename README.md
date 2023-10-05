@@ -174,6 +174,8 @@ neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/resul
     <em>Output map from the `neonet-data-2023-09-24.geojson`</em>
 </p>
 
+#### Earliest Neolithic and Latest Paleolithic
+
 The same function can be used symetrically: instead of plotting the earliest dates of the Neolithic, one can also plot the latest dates of the Paleolithic
 
 ```R
