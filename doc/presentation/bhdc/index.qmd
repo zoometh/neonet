@@ -28,4 +28,6 @@ format:
 ## readthedocs {data-background-iframe="https://bhdc.earth/" background-interactive="true"}
 
 
-## NeoNet app {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev2/" background-interactive="true"}
+## NeoNet app {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14" background-interactive="true"}
+
+## Leafrog app {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/leapfrog/" background-interactive="true"}

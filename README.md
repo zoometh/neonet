@@ -16,9 +16,18 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14). The applicat
 <a href="http://shinyserver.cfs.unipi.it:3838/C14dev2/" target="_blank">NeoNet app <em>dev</em></a> 
 </p>
 
-   
+### TODO
+
+- On export action (download button), export metadata:
+  + geographical windows
+  + max SD
+  + selected periods
+  + dataset (Med, Atl) DOI
+  + timestamp
+  + bibliographical reference
+
 ## NeoNet functions <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
->
+
 
 NeoNet functions enable the handling of radiocarbon dates sourced from the dataset or exported from the [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-). Current functions cover:
 
@@ -97,11 +106,13 @@ Calculate basic statistics: missing data
 neo_datamiss(df.c14)
 ```
 
-Spatial extent
-
-```R
-
-```
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/figure3.jpg"
+" width="700">
+  <br>
+    <em>Missing data (empty cells)</em>
+</p>
 
 ### SPD plot
 

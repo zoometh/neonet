@@ -71,9 +71,10 @@ app.neonet.db.c14 <- paste0(path.img, "app_neonet_db_c14.png")
 google_scholar <- paste0(path.img, "google_scholar.png")
 google_scholar_cite <- paste0(path.img, "google_scholar_cite.png")
 
-data.c14 <- read.csv(paste0(getwd(), "/inst/extdata/140_140_id00140_doc_elencoc14.tsv"), sep = "\t")
-tot.nb <- nrow(data.c14)
-c14mater <- read.csv(paste0(getwd(), "/inst/extdata/140_id00140_doc_thesaurus.tsv"), sep = "\t")
+data.c14.Med <- read.csv(paste0(getwd(), "/inst/extdata/id00140_doc_elencoc14.tsv"), sep = "\t")
+tot.nb <- nrow(data.c14.Med)
+data.c14.Atl <- read.csv(paste0(getwd(), "/inst/extdata/id00164_doc_elencoc14.tsv"), sep = "\t")
+c14mater <- read.csv(paste0(getwd(), "/inst/extdata/id00140_doc_thesaurus.tsv"), sep = "\t")
 bib.URL <- "https://raw.github.com/zoometh/neonet/master/inst/extdata/id00140_doc_reference.bib"
 download.file(url = bib.URL, destfile = basename(bib.URL))
 bib <- read.bib(basename(bib.URL))
@@ -89,6 +90,8 @@ ws_med <- st_read(paste0(getwd(), "/doc/data/wsh_med.geojson"))
 ws_atl <- st_read(paste0(getwd(), "/doc/data/wsh_atl.geojson"))
 # df_ws_atl = data.frame(ws_atl)
 # sp_ws_atl = SpatialPolygonsDataFrame(ws_atl, df_ws_atl)
+
+ws_chan <- st_read(paste0(getwd(), "/doc/data/wsh_chan.geojson"))
 
 download.file(url = panel.map, 
               destfile = basename(panel.map),
@@ -124,29 +127,52 @@ color: grey;
 ```
 
 
-```{r previewroi, echo=F, warning= F, fig.align='center', fig.cap="Preview of the published [NeoNet C14 dates dataset](#panel.data), in red, covering the Late Mesolithic/Early Neolithic transition of the North Central-Western Mediterranean watershed"}
+```{r previewroi, echo=F, warning= F, fig.align='center', fig.cap="Preview of NeoNet Med and NeoNet Atl dates for the Late Mesolithic/Early Neolithic transition of the North Central-Western Mediterranean and Southern European Atlantic river basins, with the area of the English Channel riverbasin"}
 # leaflet(width = "60%", height = "400px") %>%
 leaflet(width = "80%", height = "500px") %>%
   # setView(lng = -111.846061, lat = 36.115847, zoom = 12) %>%
   addProviderTiles(providers$Stamen.TerrainBackground, group='Terrain') %>%
   # addTiles(group = 'OSM') %>%
   addPolygons(data = ws_med,
-              color = "red",
+              color = "brown",
               # fillColor = 'red',
               fillOpacity = 0,
               opacity = .7,
               weight = 4) %>%
-  addCircleMarkers(data = data.c14, 
+  addCircleMarkers(data = data.c14.Med, 
                    layerId = ~LabCode, 
                    lng = ~Longitude,
                    lat = ~Latitude,
                    weight = 1,
                    radius = 2,
                    popup = ~SiteName,
-                   fillColor = "red",
-                   color = "red",
+                   fillColor = "brown",
+                   color = "brown",
                    opacity = 0.7,
-                   fillOpacity = 0.5)
+                   fillOpacity = 0.5) %>%
+    addPolygons(data = ws_atl,
+              color = "purple",
+              # fillColor = 'red',
+              fillOpacity = 0,
+              opacity = .7,
+              weight = 4) %>%
+    addCircleMarkers(data = data.c14.Atl, 
+                   layerId = ~LabCode, 
+                   lng = ~Longitude,
+                   lat = ~Latitude,
+                   weight = 1,
+                   radius = 2,
+                   popup = ~SiteName,
+                   fillColor = "purple",
+                   color = "purple",
+                   opacity = 0.7,
+                   fillOpacity = 0.5) %>%
+      addPolygons(data = ws_chan,
+              color = "orange",
+              # fillColor = 'red',
+              fillOpacity = 0,
+              opacity = .7,
+              weight = 4)
 ```
 
 
@@ -381,7 +407,7 @@ The plot area (Fig. \@ref(fig:panel-calib), <span style="color:orange"><u>orange
 The complete dataset from the GitHub  [140_140_id00140_doc_elencoc14.tsv](https://github.com/zoometh/C14/blob/main/neonet/140_140_id00140_doc_elencoc14.tsv) file (ie, [NeoNet dataset v.1](http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv)). Today, the dataset counts <span style="color: grey;">`r tot.nb`</span> dates:
 
 ```{r panel-data, echo=FALSE, message=FALSE, fig.align="center", fig.fullwidth=TRUE}
-kable(data.c14[sample(nrow(data.c14), 6), ],"html",row.names = F,
+kable(data.c14.Med[sample(nrow(data.c14.Med), 6), ],"html",row.names = F,
       caption = "Dates sample") %>%
   kable_styling(full_width = FALSE, position = "center", font_size = 11)
 ```
@@ -456,7 +482,7 @@ By default a different hexadecimal color is attributed to each period
 The PhaseCode field provides information about the archaeological context of a given date within a site. In most cases, it corresponds to an archaeological layer or structure. It is useful for [**layer/structure C14 grouping**](#panel.calib.group).
 
 ```{r PhaseCode, echo=FALSE}
-df.samp <- data.c14[sample(nrow(data.c14), 6), ]
+df.samp <- data.c14.Med[sample(nrow(data.c14.Med), 6), ]
 kable(df.samp$PhaseCode, "html", col.names = "PhaseCode") %>%
   kable_styling(full_width = FALSE, position = "center", font_size = 12)
 ```
@@ -468,7 +494,7 @@ At the site scale, these field values need to be homogeneized (for example: `C.5
 LabCode (i.e., laboratory code) should be unique. Their conventional syntax is '*AbrevLab*-*number*', respecting the case letters (upper case and lower case). For example:
 
 ```{r LabCode, echo=FALSE}
-df.samp <- data.c14[sample(nrow(data.c14), 6), ]
+df.samp <- data.c14.Med[sample(nrow(data.c14.Med), 6), ]
 kable(df.samp$LabCode, "html", col.names = "LabCode") %>%
   kable_styling(full_width = FALSE, position = "center", font_size = 12)
 ```
@@ -480,7 +506,7 @@ See also the [list of laboratories](http://radiocarbon.webhost.uits.arizona.edu/
 Conventional radiocarbon uncalibrated date (**C14Age**) and standard deviation error (**C14SD**). These two fields are used to calibrated the radiocarbon dates and calculate the **tpq** (*terminus post quem*) and **taq** (*terminus ante quem*).
 
 ```{r date.radiocarb, echo=FALSE, message=FALSE, fig.align="center", fig.fullwidth=TRUE, fig.cap="Sample of the uncalibrated radiocarbon dates"}
-df.samp <- data.c14[sample(nrow(data.c14), 6), ]
+df.samp <- data.c14.Med[sample(nrow(data.c14.Med), 6), ]
 kable(df.samp[ , c("C14Age", "C14SD")], "html", row.names = FALSE) %>%
   kable_styling(full_width = FALSE, position = "center", font_size = 12)
 ```
@@ -498,8 +524,8 @@ kable(c14mater.samp, "html", row.names = FALSE) %>%
 Among these values, the published NeoNet dataset uses uniquely these ones:
 
 ```{r material.life.neonet, echo=FALSE, message=FALSE, fig.align="center", fig.fullwidth=TRUE, fig.cap="Sample of the material life duration equivalences"}
-in.neonet <- sort(unique(data.c14$Material))
-df.samp <- data.c14[sample(nrow(data.c14), 6), ]
+in.neonet <- sort(unique(data.c14.Med$Material))
+df.samp <- data.c14.Med[sample(nrow(data.c14.Med), 6), ]
 kable(in.neonet, "html", row.names = FALSE, col.names = c("Material")) %>%
   kable_styling(full_width = FALSE, position = "center", font_size = 12)
 ```
@@ -530,7 +556,7 @@ The plain text that will be plot for each radiocarbon date under the bibliograph
 Either a DOI or a unique BibTeX key. We favor the DOI as a unique bibliographical reference. The values of this field should be unique for a single publication (e.g. the BibTeX keys `Delibrias82` and `Delibrias82a`). For example: 
 
 ```{r bib_url, echo=FALSE}
-df.samp <- data.c14[sample(nrow(data.c14), 6), ]
+df.samp <- data.c14.Med[sample(nrow(data.c14.Med), 6), ]
 kable(df.samp[ , c("bib", "bib_url")], "html", row.names = FALSE) %>%
   kable_styling(full_width = FALSE, position = "center", font_size = 12)
 ```
@@ -630,52 +656,6 @@ Then you can copy the bib reference as plain text and paste it in a file (any no
 ```
 
 
-# **Developments**
-
-The NeoNet dataset will be extended to the European South Atlantic river basin (ie. Portugal, western Spain, and southwest France)
-
-```{r previewroiatl, echo=F, warning= F, fig.align='center', fig.cap="Preview of the future NeoNet dataset, in blue, covering the Middle and Southern European Atlantic watershed"}
-# leaflet(width = "60%", height = "400px") %>%
-leaflet(width = "80%", height = "500px") %>%
-  # setView(lng = -111.846061, lat = 36.115847, zoom = 12) %>%
-  addProviderTiles(providers$Stamen.TerrainBackground, group='Terrain') %>%
-  # addTiles(group = 'OSM') %>%
-  addPolygons(data = ws_med,
-              color = "red",
-              # fillColor = 'red',
-              fillOpacity = 0,
-              opacity = .7,
-              weight = 4) %>%
-  addPolygons(data = ws_atl,
-              color = "blue",
-              # fillColor = 'red',
-              fillOpacity = 0,
-              opacity = .7,
-              weight = 2) %>%
-  addCircleMarkers(data = data.c14, 
-                   layerId = ~LabCode, 
-                   lng = ~Longitude,
-                   lat = ~Latitude,
-                   weight = 1,
-                   radius = 3,
-                   popup = ~SiteName,
-                   fillColor = "red",
-                   color = "red",
-                   opacity = 0.7,
-                   fillOpacity = 0.5)
-```
-
-
-## Milestones {#particip}
-
-NeoNet workgroup, and NeoNet app, aim to facilitate contributions in a perspective of  [FAIR](https://www.go-fair.org/fair-principles/) Science. In practical terms, we have planned to:
-
-- <input type="checkbox" checked> host the **app** and **dataset** on an institutional web server </input>
-- <input type="checkbox" checked> publish the **dataset** in an Open Data repository to get a DOI </input>
-- <input type="checkbox" checked> submit the **dataset** in a data paper ([JOAD](https://openarchaeologydata.metajnl.com/)) </input>
-- <input type="checkbox" checked> open the **app** to new contributions </input>
-- <input type="checkbox" checked> create a `get_neonet()` connector to the **dataset** with the [c14bazAAR getter function](https://github.com/ropensci/c14bazAAR) </input>
-- <input type="checkbox" unchecked> publish the **app** source code in an Open digital humanities paper (ex: [JOSS](https://joss.theoj.org/)) </input>
 
 #  **Credits**
 
@@ -688,7 +668,7 @@ Currently, the NeoNet database and app received the contributions of the [NeoNet
 + [F. Xavier Oms](mailto:oms@ub.edu)
 + [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com)
 + [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com)
-+ [Elías López-Romero González de la Aleja](elias.lopez-romero@iam.csic.es)
++ [Elías López-Romero](elias.lopez-romero@iam.csic.es)
 
 The NeoNet Mediteranean dataset has been published in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/) under this BibTex reference:
 

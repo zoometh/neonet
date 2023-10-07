@@ -7,7 +7,7 @@
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
 #' @param time.interv time interval between two isochrones, in years. Default: 250.
 #' @param coloramp the name of the coloramps to use on contour, for the Neolithic dates and Paleolithic dates. Default: c("Reds", "Blues"). 
-#' @param show.lbl show the sites identifiers (default: TRUE)
+#' @param lbl.dates show the sites identifiers (default: TRUE)
 #' @param map.longest.size the longest size of the output map (height or width) in cm. The smallest size will be calculated from it. Only useful if if export = TRUE. Default: 15
 #' @param verbose if TRUE (default) then display different messages.
 #'
@@ -26,10 +26,13 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        # max.sd = 100,
                        calibrate = TRUE,
                        time.interv = 250,
-                       mapname = NA,
-                       zoom = 5,
+                       time.line.size = 1,
+                       bck.alpha = .2,
+                       zoom = NA,
+                       lbl.dates = TRUE,
+                       lbl.time.interv = TRUE,
                        coloramp = c("Reds", "Blues"),
-                       show.lbl = TRUE,
+                       mapname = NA,
                        export = TRUE,
                        outDir = "C:/Rprojects/neonet/results/",
                        map.longest.size = 15,
@@ -110,9 +113,9 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   interpolated <- interp::interp(x = df$longitude, 
                                  y = df$latitude, 
                                  z = df$median, 
-                                 duplicate = "mean",    #you have duplicated values
+                                 duplicate = "mean", # duplicated values
                                  output = "grid")
-  #convert this to a long form dataframe
+  # convert this to a long form dataframe
   interp_df <- tidyr::expand_grid(i = seq_along(interpolated$x), 
                                   j = seq_along(interpolated$y)) %>% 
     dplyr::mutate(lon = interpolated$x[i],
@@ -152,35 +155,37 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
       epsg = 4326)
   } 
   # map
-  stamenbck <- ggmap::get_stamenmap(bbox, 
-                                    zoom = zoom,
-                                    maptype = "terrain-background")
-  map <- ggmap::ggmap(stamenbck, darken = c(.2, "white")) + 
-    # TODO: add bbox on map to show the studied area
+  
+  # see: https://stackoverflow.com/questions/77235892/ggmap-and-get-stamenmap-return-an-error-when-plotting-a-region/77251262
+  for(i in seq(zoom, 1)){
+    print(paste(" - try zoom: ", zoom))
+    stamenbck <- tryCatch(ggmap::get_stamenmap(bbox, 
+                                               zoom = zoom,
+                                               maptype = "terrain-background"), error = function(e) NULL)
+    zoom <- zoom - 1
+    if (!is.null(stamenbck)) {
+      print(zoom)
+      break
+    }
+  }
+  # stamenbck <- ggmap::get_stamenmap(bbox, 
+  #                                   zoom = zoom,
+  #                                   maptype = "terrain")
+  map <- ggmap::ggmap(stamenbck, darken = c(bck.alpha, "white")) + 
     # ggplot2::ggtitle(tit) +
     ggplot2::geom_contour(data = interp_df, 
                           ggplot2::aes(x = lon, y = lat, z = date.med, 
                                        # color = ..level..
                                        color = ggplot2::after_stat(level)
                           ),
+                          linewidth = time.line.size,
                           breaks = contour_levels) +
-    metR::geom_text_contour(data = interp_df,
-                            binwidth = time.interv,
-                            ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
-                            skip = 0,
-                            rotate = TRUE,
-                            stroke = .25,
-                            size = 2.5) +
-    ggplot2::geom_point(data = df, 
-                        ggplot2::aes(x = longitude, y = latitude), 
-                        col = "black",
-                        size = 1) +
     ggplot2::scale_color_gradientn(colours = rev(myPalette),
                                    name = "Cal BC") +
     ggplot2::labs(title = tit,
                   subtitle = subtit)
   # ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
-  if(show.lbl){
+  if(lbl.dates){
     map <- map +
       ggrepel::geom_text_repel(data = df, 
                                ggplot2::aes(x = longitude, y = latitude, label = idf),
@@ -189,6 +194,21 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                                segment.size = .3,
                                max.overlaps = Inf)
   }
+  if(lbl.time.interv){
+    map <- map +
+      metR::geom_text_contour(data = interp_df,
+                              binwidth = time.interv,
+                              ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
+                              skip = 0,
+                              rotate = TRUE,
+                              stroke = .2,
+                              size = 2.5)
+  }
+  map <- map +
+    ggplot2::geom_point(data = df, 
+                        ggplot2::aes(x = longitude, y = latitude), 
+                        col = "black",
+                        size = 1)
   if(export){
     # print(paste0("After subset on Periods ", paste0(select.periods, collapse = ", "),": ", nrow(df.dates), " dates"))
     if(neolithic){
@@ -218,3 +238,10 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     print(map)
   }
 }
+
+# library(rcarbon)
+# source("R/neo_spd.R")
+# source("R/neo_calib.R")
+# myc14data <- "C:/Rprojects/neonet/doc/presentation/bhdc/data/neonet-data-2023-10-07.geojson"
+# neo_isochr(df.c14 = myc14data, lbl.time.interv = FALSE, selected.per = ("LM"),
+#            bck.alpha = .3, time.line.size = 1, export = T, outDir = myc14data <- "C:/Rprojects/neonet/doc/presentation/bhdc/data/")

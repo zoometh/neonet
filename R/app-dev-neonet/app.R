@@ -35,7 +35,7 @@ bibliog <- 'references_med_x_atl.bib'
 # setdiff(colnames(OK), colnames(pasOK))
 # setdiff(colnames(pasOK), colnames(OK))
 
-srv <- T
+srv <- F
 loc <- !srv
 if(srv){
   source.path <- "/srv/shiny-server/C14dev/"
@@ -705,6 +705,7 @@ server <- function(input, output, session) {
                                   data = filteredData()) %>%
         addTiles(group = 'OSM') %>%
         addProviderTiles(providers$Esri.WorldImagery, group='Ortho') %>%
+        addProviderTiles(providers$Thunderforest.Landscape, group='Landscape') %>%
         addWMS(group = "Clim",
                baseUrl = "http://54.155.109.226:8080/geoserver/ows",
                layers = "Beck_KG_V1_present_0p0083",
@@ -718,7 +719,7 @@ server <- function(input, output, session) {
         clearShapes() %>%
         clearMarkers() %>%
         addLayersControl(
-          baseGroups = c('OSM', 'Ortho', 'Clim')) %>%
+          baseGroups = c('OSM', 'Ortho', 'Landscape', 'Clim')) %>%
         # baseGroups = c('OSM', 'Ortho', 'Clim')) %>%
         # addLabelOnlyMarkers(0,
         #                     45.5,
