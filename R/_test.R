@@ -11,8 +11,11 @@ source("R/neo_datasum.R")
 
 
 df.bib <- bibtex::read.bib("C:/Rprojects/neonet/inst/extdata/atl/id00164_doc_reference.bib")
-df.c14 <- read.csv2("C:/Rprojects/neonet/inst/extdata/atl/id00164_doc_elencoc14.tsv", sep = "\t")
+df.c14 <- read.csv2("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t")
 neo_datasum(df.c14)
+
+
+
 neo_spd(df.c14 = df.c14, export = T, width = 14, height = 12,
         outDir = "C:/Rprojects/neonet/results/")
 neo_datamiss(df.c14)

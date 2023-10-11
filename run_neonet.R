@@ -7,7 +7,7 @@ source("R/neo_merge.R")
 source("R/neo_html.R")
 source("R/neo_datamiss.R")
 source("R/neo_datasum.R")
-source("R/neo_doi.R")
+# source("R/neo_doi.R")
 source("R/neo_spd.R")
 source("R/neo_spdplot.R")
 
