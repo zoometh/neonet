@@ -15,7 +15,7 @@
 neo_datasum <- function(df.c14,
                         info = c("stats", "maps"),
                         roi = "C:/Rprojects/neonet/doc/data/wsh_atl.geojson", # TO change
-                        # roi2 = "C:/Rprojects/neonet/doc/data/wsh_med.geojson", # TO change
+                        # roi = "C:/Rprojects/neonet/doc/data/wsh_med.geojson", # TO change
                         col.used = c("SiteName", "Period", "PhaseCode",
                                      "LabCode", "C14Age", "C14SD",
                                      "Material", "MaterialSpecies",
@@ -88,9 +88,10 @@ neo_datasum <- function(df.c14,
     print(df.per)
   }
   if("maps" %in% info){
-    df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t")
+    # df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t")
+    df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/140_140_id00140_doc_elencoc14 (4).tsv", sep = "\t")
     # /!\ this site belongs to Med
-    df.c14 <-  df.c14[df.c14$SiteName != "Cueva de Murcielagos de Albunol", ]
+    # df.c14 <-  df.c14[df.c14$SiteName != "Cueva de Murcielagos de Albunol", ]
     periods.colors <- read.csv(ref.period, sep = "\t")
     periods.colors.selected <- periods.colors[periods.colors$period %in% shown.per, c("period", "color")]
     periods.colors.selected <- rbind(periods.colors.selected, c("others", "#808080"))
@@ -111,14 +112,19 @@ neo_datasum <- function(df.c14,
     roi.sf <- sf::st_read(roi)
     Xs <- df.c14$Longitude <- as.numeric(df.c14$Longitude)
     Ys <- df.c14$Latitude <- as.numeric(df.c14$Latitude)
-    buff <- .4
+    buff <- .5
     bbox <- c(left = min(Xs) - buff, 
               bottom = min(Ys) - buff, 
               right = max(Xs) + buff, 
               top = max(Ys) + buff)
-    bas.leg <- data.frame (xmin = 1, xmax = 2.5, ymin = 36, ymax = 37)
-    mid.leg <- data.frame (xmin = 1, xmax = 2.5, ymin = 37.5, ymax = 38.5)
-    top.leg <- data.frame (xmin = 1, xmax = 2.5, ymin = 39, ymax = 40)
+    # # Atl
+    # bas.leg <- data.frame (xmin = 1, xmax = 2.5, ymin = 36, ymax = 37)
+    # mid.leg <- data.frame (xmin = 1, xmax = 2.5, ymin = 37.5, ymax = 38.5)
+    # top.leg <- data.frame (xmin = 1, xmax = 2.5, ymin = 39, ymax = 40)
+    # Med
+    bas.leg <- data.frame (xmin = -5, xmax = -3.5, ymin = 44.5, ymax = 45.5)
+    mid.leg <- data.frame (xmin = -5, xmax = -3.5, ymin = 46, ymax = 47)
+    top.leg <- data.frame (xmin = -5, xmax = -3.5, ymin = 47.5, ymax = 48.5)
     a.size <- 3
     a.alpha <- .5
     
@@ -209,9 +215,14 @@ neo_datasum <- function(df.c14,
       lg[[length(lg)+1]] <- map
     }
     margin <- ggplot2::theme(plot.margin = ggplot2::unit(c(.2, -.1, .2, -.1), "cm"))
+    # # Atl
+    # ggplot2::ggsave(file = "C:/Rprojects/neonet/results/_by_periods.png", 
+    #                 gridExtra::arrangeGrob(grobs = lapply(lg, "+", margin), ncol = 2),
+    #                 height = 18, width = 8)
+    # Med
     ggplot2::ggsave(file = "C:/Rprojects/neonet/results/_by_periods.png", 
                     gridExtra::arrangeGrob(grobs = lapply(lg, "+", margin), ncol = 2),
-                    height = 18, width = 8)
+                    height = 14, width = 11)
   }
 }
 

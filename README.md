@@ -4,6 +4,15 @@
 
 NeoNet serves as a framework to investigate the transition between the Late Mesolithic and Early Neolithic periods, in the North-Central Mediterranean and European South Atlantic river basin (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">loc</a>), by offering curated datasets and management tools: an [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-) and [R functions](https://github.com/zoometh/neonet#neonet-functions)
 
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_datasum_by_periods.png"
+" width="700">
+  <br>
+    <em>The NeoNet Med dataset filtered by periods</em>
+</p>
+
+
 ## NeoNet app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
 
 
