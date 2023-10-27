@@ -348,3 +348,9 @@ Show the complete NeoNet dataset. A site can be selected by searching it in the 
 * NeoNet app [web document](https://zoometh.github.io/neonet/)
 * [Contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md)
 * [NeoNet package license](https://github.com/zoometh/neonet/blob/master/LICENSE)
+
+### Communication
+
+* Big Historical Data Conference
+  - Shiny server (with the app embeded): http://shinyserver.cfs.unipi.it:3838/neonet/bhdc
+  - GitHub (without the app embeded): https://zoometh.github.io/neonet/doc/presentation/bhdc
