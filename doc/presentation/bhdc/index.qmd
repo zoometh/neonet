@@ -230,7 +230,7 @@ Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
 
 ::: {.column width="50%"}
 
-![](img/github-neonet-functions.png){width="700" style='horizontal-align: middle;'}
+![](img/github-neonet-functions-1.png){width="700" style='horizontal-align: middle;'}
 
 :::
 
