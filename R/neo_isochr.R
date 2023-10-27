@@ -30,7 +30,9 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        bck.alpha = .2,
                        zoom = NA,
                        lbl.dates = TRUE,
+                       lbl.dates.size = 2,
                        lbl.time.interv = TRUE,
+                       lbl.time.interv.size = 3,
                        coloramp = c("Reds", "Blues"),
                        mapname = NA,
                        export = TRUE,
@@ -192,7 +194,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     map <- map +
       ggrepel::geom_text_repel(data = df, 
                                ggplot2::aes(x = longitude, y = latitude, label = idf),
-                               size = 2,
+                               size = lbl.dates.size,
                                segment.alpha = .3,
                                segment.size = .3,
                                max.overlaps = Inf)
@@ -205,7 +207,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                               skip = 0,
                               rotate = TRUE,
                               stroke = .2,
-                              size = 2.5)
+                              size = lbl.time.interv.size)
   }
   map <- map +
     ggplot2::geom_point(data = df, 

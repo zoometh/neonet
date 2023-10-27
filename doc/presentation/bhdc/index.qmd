@@ -62,7 +62,7 @@ NB: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
 
 ## {}
 
-![](img/chalkboard.png){.fragment width="900"}
+![](img/chalkboard.png){width="900"}
 
 ::: {.notes}
 ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological layers, and ca. 800 sites. Documented by ca. 600 different bibliographical references
@@ -71,7 +71,7 @@ ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological laye
 
 ## {}
 
-![](img/open-data-joad.png){.fragment width="900"}
+![](img/open-data-joad.png){width="800"}
 
 
 ::: {.notes}
@@ -80,7 +80,7 @@ The first part of this dataset, covering the North Central-Western Mediterranean
 
 ## {}
 
-![](img/watersheds-ortho.png){.fragment width="1000"}
+![](img/watersheds-ortho.png){width="1000"}
 
 ::: {.notes}
 This published dataset is shown in red. It has been completed by the Southern European Atlantic Basin (in blue).
@@ -91,7 +91,7 @@ The decision to divide the research area into distinct watersheds is based on tw
 ## {}
 
 <div class="row">
-<div class="column33">![](img/watersheds-climate.png){width=1000px}
+![](img/watersheds-climate.png){width=1000px}
 <div class="captiontext">Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, *Nature Scientific Data*</div>
 </div>
 
@@ -103,7 +103,7 @@ For example one can study the influence of climates for the spread of Neolithic.
 
 ## {}
 
-![](img/donzere-gis.png){.fragment width="1000"}
+![](img/donzere-gis.png){width="1000"}
 
 ::: {.notes}
 The Defile de Donzere is a narrow pass of the Rhone valley between Alps (east) and Massif central (west) and Mediterranean climate (south: Csa  Temperate, dry summer, hot summer) continental (north: Cfb  Temperate, no dry season, warm summer )
@@ -112,7 +112,7 @@ The Defile de Donzere is a narrow pass of the Rhone valley between Alps (east) a
 ## {}
 
 <div class="row">
-<div class="column33">![](img/donzere-view.png){width=1000px}
+![](img/donzere-view.png){width=1000px}
 <div class="captiontext">Google Earth</div>
 </div>
 
@@ -123,7 +123,7 @@ View of the Defile and the Rhone river, from the South
 
 ## {}
 
-![](img/donzere-app-north-and-south.png){.fragment width="800"}
+![](img/donzere-app-north-and-south.png){width="900"}
 
 ::: {.notes}
 A selection window can be draw around the Defile, and dates be subset to only get those of LM and EN, with SD < 130. Once done, the dataset counts 70 sites and 353 dates. The latter can be calibrate on the fly by selectiong one of them and opening the calib panel.
@@ -131,7 +131,7 @@ A selection window can be draw around the Defile, and dates be subset to only ge
 
 ## {}
 
-![](img/donzere-app-north-and-south-calib-1.png){.fragment width="800"}
+![](img/donzere-app-north-and-south-calib-1.png){width="900"}
 
 ::: {.notes}
 Dates can be aggregated and seriated by periods, sites and period, archaeological layer (PhaseCode), or plotted individually. Here by periods
@@ -141,7 +141,7 @@ Dates can be aggregated and seriated by periods, sites and period, archaeologica
 
 ## {}
 
-![](img/donzere-app-north-and-south-calib.png){.fragment width="900"}
+![](img/donzere-app-north-and-south-calib.png){width="900"}
 
 ::: {.notes}
 Here by sites and period. And the graphics can be exported 
@@ -151,7 +151,7 @@ Export the plot
 
 ## {}
 
-![](img/donzere-app-north-and-south.png){.fragment width="900"}
+![](img/donzere-app-north-and-south.png){width="900"}
 
 ::: {.notes}
 The selected aera and the selected dates can also be exported, both in GeoJSON files
@@ -159,7 +159,7 @@ The selected aera and the selected dates can also be exported, both in GeoJSON f
 
 ## {}
 
-![](img/donzere-gis-dates.png){.fragment width="700"}
+![](img/donzere-gis-dates.png){width="700"}
 
 ::: {.notes}
 These files can be curated and subset in a GIS.
@@ -174,9 +174,9 @@ Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
 
 ## {}
 
-<img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png' style='height: 40px;vertical-align: middle;'><img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png' style='height: 40px;vertical-align: middle;'> <https://github.com/zoometh/neonet>
+<img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png' style='height: 40px;vertical-align: middle;'><img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png' style='height: 50px;vertical-align: middle;'> <https://github.com/zoometh/neonet>
 
-![](img/github-neonet-functions.png){.fragment width="700"}
+![](img/github-neonet-functions.png){width="700"}
 
 
 ::: {.notes}
@@ -191,7 +191,7 @@ df.c14 <- paste0(getwd(), "/doc/presentation/bhdc/img/neonet-data-2023-10-22.geo
 neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)
 ```
 
-![](img/donzere_isochrn-neolithic-isochr.png){.fragment width="700"}
+![](img/donzere_EN-neolithic-isochr.png){width="700"}
 
 ::: {.notes}
 For example, the neo_isochr() function creates isochrones contours by interpolation of calibrated radiocarbon dates using, for EN, the minimum median in each site (that is to say the earliest EN) and, for LM, the maximum median in each site (that is to say the latest LM) 
@@ -204,22 +204,20 @@ For example, the neo_isochr() function creates isochrones contours by interpolat
 ::: {.column width="50%"}
 
 ```{.r}
-df.c14 <- paste0(getwd(), "/doc/presentation/bhdc/img/neonet-data-2023-10-22.geojson")
 neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)
 ```
 
-![](img/donzere_isochrn-neolithic-isochr.png){.fragment width="500"}
+![](img/donzere_EN-neolithic-isochr.png){width="700"}
 
 :::
 
 ::: {.column width="50%"}
 
 ```{.r}
-df.c14 <- paste0(getwd(), "/doc/presentation/bhdc/img/neonet-data-2023-10-22.geojson")
 neo_isochr(df.c14 = df.c14, selected.per = "LM", lbl.dates = TRUE, lbl.time.interv = TRUE)
 ```
 
-![](img/donzere_isochrn-neolithic-isochr.png){.fragment width="500"}
+![](img/donzere_LM-neolithic-isochr.png){width="700"}
 
 :::
 
@@ -231,9 +229,9 @@ Reciprocally, for LM, the maximum median in each site (that is to say the latest
 
 ## {}
 
-<img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png' style='height: 40px;vertical-align: middle;'><img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/c14bazaar-logo.png' style='height: 40px;vertical-align: middle;'> <https://github.com/ropensci/c14bazAAR>
+<img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png' style='height: 40px;vertical-align: middle;'><img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/c14bazaar-logo.png' style='height: 50px;vertical-align: middle;'> <https://github.com/ropensci/c14bazAAR>
 
-![](img/github-c14bazAAR-dbs.png){.fragment width="700"}
+![](img/github-c14bazAAR-dbs.png){width="700"}
 
 
 ::: {.notes}
@@ -243,7 +241,7 @@ Among other radiocaborn datasets, Neonet can be harvested by a getter function f
 
 ## Conclusion
 
-* App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition
+* App <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png' style='height: 50px;vertical-align: middle;'> and curated dataset of radiocarbon dates for the Mesolithic (<span style="color:blue"><b>LM</b></span>) / Neolithic (<span style="color:red"><b>EN</b></span>) transition
 * Open Data + Open Source + Open Access ➡️ Open Science
 * Highly scalable, reusable and analyzable ➡️ Reproductibality
 

@@ -6,12 +6,15 @@ source("R/neo_calib.R")
 
 mydir <-  paste0(getwd(), "/doc/presentation/bhdc/img/")
 df.c14 <- paste0(mydir, "neonet-data-2023-10-22.geojson")
-neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE, outDir = mydir, mapname = "donzere",
-           export = TRUE)
+neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE, 
+           lbl.time.interv.size = 4, lbl.dates.size = 3, 
+           outDir = mydir, mapname = "donzere_EN", export = TRUE)
 
 mydir <-  paste0(getwd(), "/doc/presentation/bhdc/img/")
 df.c14 <- paste0(mydir, "neonet-data-2023-10-22.geojson")
-neo_isochr(df.c14 = df.c14, selected.per = "LM", lbl.dates = TRUE, lbl.time.interv = TRUE, outDir = mydir, mapname = "donzere_LM",
+neo_isochr(df.c14 = df.c14, selected.per = "LM", lbl.dates = TRUE, lbl.time.interv = TRUE, 
+           lbl.time.interv.size = 4, lbl.dates.size = 3,
+           outDir = mydir, mapname = "donzere_LM",
            export = TRUE)
 
 ###

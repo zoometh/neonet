@@ -36,6 +36,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="https://zoometh.github.io/thomashuet/css/quarto.css">
@@ -335,7 +400,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="img/chalkboard.png" data-background-opacity="0.5" data-background-size="90%" class="quarto-title-block center">
+<section id="title-slide" data-background-image="img/chalkboard.png" data-background-opacity="0.3" data-background-size="90%" class="quarto-title-block center">
   <h1 class="title">NeoNet app</h1>
   <p class="subtitle">Modelling radiocarbon modelling of the Late Mesolithic - Early Neolithic transition in South-Central and South-Western Europe</p>
 
@@ -407,11 +472,10 @@ Elías López-Romero
 </div>
 
 </section>
-<section id="section" class="slide level2">
+<section id="section" class="slide level2" data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" data-background-interactive="true">
 <h2></h2>
-<p><img data-src="img/chalkboard.png" class="fragment" width="1000"></p>
 <aside class="notes">
-<p>nb of dates, us, etc.</p>
+<p>NeoNet app is an opensource R Shiny interactive web app which facilitates the selection of dates by providing selection tools for spatial information, chronology, and date accuracy. The map interface offers a mobile and multi-scalar window to study the dynamic of last hunter-gathers / early farmers frontiers. The dataset tend to gather all radiocarbon dates related to the last hunter-gathers / first farmers transition NB: Global view / clustered / ortho ; Explode cluster / ungroup / OSM</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -424,10 +488,11 @@ Elías López-Romero
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-1" class="slide level2" data-background-iframe="https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87" data-background-interactive="true">
+<section id="section-1" class="slide level2">
 <h2></h2>
+<p><img data-src="img/chalkboard.png" class="fragment" width="900"></p>
 <aside class="notes">
-<p>Open Data</p>
+<p>ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological layers, and ca. 800 sites. Documented by ca. 600 different bibliographical references</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -442,9 +507,26 @@ Elías López-Romero
 </section>
 <section id="section-2" class="slide level2">
 <h2></h2>
+<p><img data-src="img/open-data-joad.png" class="fragment" width="900"></p>
+<aside class="notes">
+<p>The first part of this dataset, covering the North Central-Western Mediterranean Basin, has been publish in the <em>Journal of Open Archaeological Data</em> 1-year ago.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
 <p><img data-src="img/watersheds-ortho.png" class="fragment" width="1000"></p>
 <aside class="notes">
-<p>The spatial extent are two watersheds hierachical decomposition</p>
+<p>This published dataset is shown in red. It has been completed by the Southern European Atlantic Basin (in blue). The decision to divide the research area into distinct watersheds is based on two primary factors. First, it allows for the hierarchical decomposition of river basins into interconnected and nested units. Second, watersheds are crucial as spatial analysis units, facilitating mathematical modeling by incorporating concepts like catchment area, thalweg (shortest path), and natural boundaries.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -457,11 +539,17 @@ Elías López-Romero
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-3" class="slide level2" data-transition="fade" data-transition-speed="fast">
+<section id="section-4" class="slide level2">
 <h2></h2>
-<p><img data-src="img/watersheds-climate.png" class="fragment" width="1000"></p>
+<div class="row">
+<div class="column33">
+<img data-src="img/watersheds-climate.png" width="1000">
+<div class="captiontext">
+Beck et al.&nbsp;2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, <em>Nature Scientific Data</em>
+</div>
+</div>
 <aside class="notes">
-<p>For example study of EN vs LM between to climate classes.</p>
+<p>For example one can study the influence of climates for the spread of Neolithic. The basemap is the Koppen climate classification (actual)</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -473,29 +561,12 @@ Elías López-Romero
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="section-4" class="slide level2" data-transition="fade" data-transition-speed="fast">
+</div></section>
+<section id="section-5" class="slide level2">
 <h2></h2>
 <p><img data-src="img/donzere-gis.png" class="fragment" width="1000"></p>
 <aside class="notes">
-<p>Defile de Donzere a pass of the Rhone valley between Alps (east) and Massif central (west) and Mediterranean climate (south) continenatle (north)</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="section-5" class="slide level2">
-<h2></h2>
-<p><img data-src="img/donzere-view.png" class="fragment" width="1000"></p>
-<aside class="notes">
-<p>View of the Defile from the south</p>
+<p>The Defile de Donzere is a narrow pass of the Rhone valley between Alps (east) and Massif central (west) and Mediterranean climate (south: Csa Temperate, dry summer, hot summer) continental (north: Cfb Temperate, no dry season, warm summer )</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -510,9 +581,15 @@ Elías López-Romero
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
-<p><img data-src="img/donzere-app-north-and-south.png" class="fragment" width="1000"></p>
+<div class="row">
+<div class="column33">
+<img data-src="img/donzere-view.png" width="1000">
+<div class="captiontext">
+Google Earth
+</div>
+</div>
 <aside class="notes">
-<p>Calibrate on the fly</p>
+<p>View of the Defile and the Rhone river, from the South</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -524,12 +601,12 @@ Elías López-Romero
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
+</div></section>
 <section id="section-7" class="slide level2">
 <h2></h2>
-<p><img data-src="img/donzere-app-north-and-south-calib-1.png" class="fragment" width="1000"></p>
+<p><img data-src="img/donzere-app-north-and-south.png" class="fragment" width="800"></p>
 <aside class="notes">
-<p>Gropu and seriated by periods, layer and periods, etc. Export the plot</p>
+<p>A selection window can be draw around the Defile, and dates be subset to only get those of LM and EN, with SD &lt; 130. Once done, the dataset counts 70 sites and 353 dates. The latter can be calibrate on the fly by selectiong one of them and opening the calib panel.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -542,11 +619,11 @@ Elías López-Romero
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-8" class="slide level2" data-transition="fade" data-transition-speed="fast">
+<section id="section-8" class="slide level2">
 <h2></h2>
-<p><img data-src="img/donzere-app-north-and-south-calib.png" class="fragment" width="1000"></p>
+<p><img data-src="img/donzere-app-north-and-south-calib-1.png" class="fragment" width="800"></p>
 <aside class="notes">
-<p>Gropu and seriated by periods, layer and periods, etc. Export the plot</p>
+<p>Dates can be aggregated and seriated by periods, sites and period, archaeological layer (PhaseCode), or plotted individually. Here by periods</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -559,11 +636,11 @@ Elías López-Romero
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-9" class="slide level2" data-transition="fade" data-transition-speed="fast">
+<section id="section-9" class="slide level2">
 <h2></h2>
-<p><img data-src="img/donzere-app-north-and-south-calib.png" class="fragment" width="1000"></p>
+<p><img data-src="img/donzere-app-north-and-south-calib.png" class="fragment" width="900"></p>
 <aside class="notes">
-<p>Gropu and seriated by periods, layer and periods, etc. Export the plot</p>
+<p>Here by sites and period. And the graphics can be exported Export the plot</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -578,9 +655,9 @@ Elías López-Romero
 </section>
 <section id="section-10" class="slide level2">
 <h2></h2>
-<p><img data-src="img/donzere-app-north-and-south.png" class="fragment" width="1000"></p>
+<p><img data-src="img/donzere-app-north-and-south.png" class="fragment" width="900"></p>
 <aside class="notes">
-<p>Export dates and selection.</p>
+<p>The selected aera and the selected dates can also be exported, both in GeoJSON files</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -595,9 +672,9 @@ Elías López-Romero
 </section>
 <section id="section-11" class="slide level2">
 <h2></h2>
-<p><img data-src="img/donzere-gis-dates.png" class="fragment" width="1000"></p>
+<p><img data-src="img/donzere-gis-dates.png" class="fragment" width="700"></p>
 <aside class="notes">
-<p>GeoJSON files. dates can be subset in a GIS rm: Grotte de Camprafaud, lyer 20,Gif-3077 Abri de la Font-des-Pigeons, Escalon C5-F5-C6F6, KN-182 Petites Baties, sect. 4, Beta-103872 Mas Neuf, Erl-11802 Pontcharaud 2, c.3, Ly-7625 Clos de Poujol, c.&nbsp;Sn-Sn1, Ly-2138 (OxA)</p>
+<p>These files can be curated and subset in a GIS. rm: Grotte de Camprafaud, lyer 20,Gif-3077 Abri de la Font-des-Pigeons, Escalon C5-F5-C6F6, KN-182 Petites Baties, sect. 4, Beta-103872 Mas Neuf, Erl-11802 Pontcharaud 2, c.3, Ly-7625 Clos de Poujol, c.&nbsp;Sn-Sn1, Ly-2138 (OxA)</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -612,10 +689,10 @@ Elías López-Romero
 </section>
 <section id="section-12" class="slide level2">
 <h2></h2>
-<p><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"> <a href="https://github.com/zoometh/neonet" class="uri">https://github.com/zoometh/neonet</a></p>
-<p><img data-src="img/github-neonet-functions.png" class="fragment" width="1000"></p>
+<p><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 40px;vertical-align: middle;"> <a href="https://github.com/zoometh/neonet" class="uri">https://github.com/zoometh/neonet</a></p>
+<p><img data-src="img/github-neonet-functions.png" class="fragment" width="700"></p>
 <aside class="notes">
-<p>neonet offers different functions to model data</p>
+<p>The Shiny app comes with a serie of functions to model data</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -630,11 +707,11 @@ Elías López-Romero
 </section>
 <section id="section-13" class="slide level2">
 <h2></h2>
-<pre><code>df.c14 &lt;- paste0(getwd(), "/doc/presentation/bhdc/img/neonet-data-2023-10-22.geojson")
-neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)</code></pre>
-<p><img data-src="img/donzere_isochrn-neolithic-isochr.png" class="fragment" width="1000"></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>df.c14 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">"/doc/presentation/bhdc/img/neonet-data-2023-10-22.geojson"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">neo_isochr</span>(<span class="at">df.c14 =</span> df.c14, <span class="at">lbl.dates =</span> <span class="cn">TRUE</span>, <span class="at">lbl.time.interv =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="img/donzere_isochrn-neolithic-isochr.png" class="fragment" width="700"></p>
 <aside class="notes">
-<p>the isochones function</p>
+<p>For example, the neo_isochr() function creates isochrones contours by interpolation of calibrated radiocarbon dates using, for EN, the minimum median in each site (that is to say the earliest EN) and, for LM, the maximum median in each site (that is to say the latest LM)</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -649,9 +726,37 @@ neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)</code></pr
 </section>
 <section id="section-14" class="slide level2">
 <h2></h2>
-<p><img data-src="img/github-c14bazAAR-dbs.png" class="fragment" width="1000"></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>df.c14 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">"/doc/presentation/bhdc/img/neonet-data-2023-10-22.geojson"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">neo_isochr</span>(<span class="at">df.c14 =</span> df.c14, <span class="at">lbl.dates =</span> <span class="cn">TRUE</span>, <span class="at">lbl.time.interv =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="img/donzere_isochrn-neolithic-isochr.png" class="fragment" width="500"></p>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>df.c14 <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">"/doc/presentation/bhdc/img/neonet-data-2023-10-22.geojson"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">neo_isochr</span>(<span class="at">df.c14 =</span> df.c14, <span class="at">selected.per =</span> <span class="st">"LM"</span>, <span class="at">lbl.dates =</span> <span class="cn">TRUE</span>, <span class="at">lbl.time.interv =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="img/donzere_isochrn-neolithic-isochr.png" class="fragment" width="500"></p>
+</div>
+</div>
 <aside class="notes">
-<p>Among other datasets, Neonet can be harvested with the C14bazaar</p>
+<p>Reciprocally, for LM, the maximum median in each site (that is to say the latest LM) is selected</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-15" class="slide level2">
+<h2></h2>
+<p><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/c14bazaar-logo.png" style="height: 40px;vertical-align: middle;"> <a href="https://github.com/ropensci/c14bazAAR" class="uri">https://github.com/ropensci/c14bazAAR</a></p>
+<p><img data-src="img/github-c14bazAAR-dbs.png" class="fragment" width="700"></p>
+<aside class="notes">
+<p>Among other radiocaborn datasets, Neonet can be harvested by a getter function from the C14bazaar package</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -689,22 +794,6 @@ neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)</code></pr
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-15" class="slide level2" data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" data-background-interactive="true">
-<h2></h2>
-<aside class="notes">
-<p>Global view / clustered / ortho Explode cluster / ungroup / OSM</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
 <section id="neonet-app" class="slide level2" data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14" data-background-interactive="true">
 <h2>NeoNet app</h2>
 </section>
@@ -712,7 +801,7 @@ neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)</code></pr
 <h2>Leafrog app</h2>
 <p><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/teach/stats/images/inst-uni-oxford_.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><em>Big Historical Data Conference</em> <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/bhdc_avatar.png" style="height: 35px;vertical-align: middle;"> <a href="https://bhdc.earth/" class="uri">https://bhdc.earth/</a> 2023</p>
+<p><em>Big Historical Data Conference</em> <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/bhdc_avatar.png" style="height: 35px;vertical-align: middle;"> <a href="https://bhdc.earth/" class="uri">https://bhdc.earth/</a> 22-25 November 2023, Jena (Germany)</p>
 </div>
 </section>
     </div>
