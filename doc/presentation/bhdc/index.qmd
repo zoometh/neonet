@@ -61,6 +61,8 @@ NB: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
 
 ## {}
 
+The NeoNet Atl dataset
+
 ```{r}
 library(dplyr)
 library(DT)
@@ -240,10 +242,10 @@ Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
 neo_spd(df.c14 = df.c14)
 ```
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png){width="700" style='horizontal-align: middle;'}
+![](img/figure2.png){width="700" style='horizontal-align: middle;'}
 
 ```{.r}
-neo_spd(inData = "Roc du Dourgne_2023-07-30.csv")
+neo_strat(inData = "Roc du Dourgne_2023-07-30.csv")
 ```
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-period.png){width="500" style='horizontal-align: middle;'}
@@ -254,7 +256,7 @@ neo_spd(inData = "Roc du Dourgne_2023-07-30.csv")
 ::::
 
 ::: {.notes}
-The Shiny app comes with a serie of functions to model data
+The Shiny app comes with a serie of functions to model data such as SPD plot or Harris Matrices
 :::
 
 
@@ -304,7 +306,22 @@ Reciprocally, for LM, the maximum median in each site (that is to say the latest
 
 <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png' style='height: 40px;vertical-align: middle;'><img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/c14bazaar-logo.png' style='height: 50px;vertical-align: middle;'> <span class= smalltext><https://github.com/ropensci/c14bazAAR></span>
 
+:::: {.columns}
+
+::: {.column width="40%"}
+
+![](img/github-c14bazaar-functions-1.png){width="700" style='horizontal-align: middle;'}
+
+:::
+
+::: {.column width="60%"}
+
 ![](img/github-c14bazAAR-dbs.png){width="700" style='horizontal-align: middle;'}
+
+:::
+
+::::
+
 
 
 ::: {.notes}
@@ -324,10 +341,3 @@ Among other radiocaborn datasets, Neonet can be harvested by a getter function f
 * Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility
 :::
 
-
-
-
-
-## NeoNet app {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14" background-interactive="true"}
-
-## Leafrog app {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/leapfrog/" background-interactive="true"}
