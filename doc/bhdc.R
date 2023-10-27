@@ -17,6 +17,10 @@
 # install.packages("metR")
 
 
+df.c14 <- paste0(getwd(), "/doc/presentation/bhdc/img/neonet-data-2023-10-22.geojson")
+neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)
+
+
 # change the paths when needed 
 
 # source needed funtion

@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+"name": "filefefce54da6480",
+"features": [
+{ "type": "Feature", "properties": { "ID": 71961 }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 2.702191, 43.078697 ], [ 2.702191, 45.899354 ], [ 6.415277, 45.899354 ], [ 6.415277, 43.078697 ], [ 2.702191, 43.078697 ] ] ] } }
+]
+}

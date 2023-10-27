@@ -19,6 +19,7 @@ library(rcarbon)
 library(bibtex)
 
 # merged new Med + Atl
+source.path <- "/srv/shiny-server/C14dev/"
 dataset <- "c14_dataset_med_x_atl_2.tsv"
 bibliog <- 'references_med_x_atl.bib'
 
@@ -38,7 +39,6 @@ bibliog <- 'references_med_x_atl.bib'
 srv <- F
 loc <- !srv
 if(srv){
-  source.path <- "/srv/shiny-server/C14dev/"
   source(paste0(source.path, "functions.R")) # source("functions.R")
   c14bibtex.url <- paste0(source.path, bibliog)
   df.tot <- read.csv(paste0(source.path, dataset), sep = "\t", encoding = "UTF-8")
@@ -92,7 +92,8 @@ bibrefs.md <- replace(bibrefs.md, bibrefs.md == "", "<br><br>")
 bibrefs.md <- paste0(bibrefs.md, collapse = '') # separate references
 bibrefs.html <- shiny::markdown(bibrefs.md) # to HTML layout
 
-ref.mat.life <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_id00140_doc_thesaurus.tsv"
+# ref.mat.life <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_id00140_doc_thesaurus.tsv"
+ref.mat.life <- "c14_material_life.tsv"
 ref.mat.life <- read.csv(ref.mat.life, sep = "\t")
 # 3 types
 short.life <- subset(ref.mat.life, life.duration == 'short.life')
@@ -378,11 +379,15 @@ ui <- navbarPage(tit,
                                      # a radio button
                                      absolutePanel(top = 50, left = 80,
                                                    materialSwitch(inputId = "hover",
-                                                                  label = "group C14 on map",
+                                                                  label = "group C14",
                                                                   status = "default",
                                                                   width = "120px"),
+                                                   p("selection"),
                                                    downloadButton('dwnld_dates', 
-                                                                  label = "selected dates")
+                                                                  label = "dates",
+                                                                  width = "120px"),
+                                                   downloadButton('dwnld_selectshape', 
+                                                                  label = "area")
                                      ),
                                      ## selection on material type and sd
                                      # type of material (short,...,long life)
@@ -705,7 +710,6 @@ server <- function(input, output, session) {
                                   data = filteredData()) %>%
         addTiles(group = 'OSM') %>%
         addProviderTiles(providers$Esri.WorldImagery, group='Ortho') %>%
-        addProviderTiles(providers$Thunderforest.Landscape, group='Landscape') %>%
         addWMS(group = "Clim",
                baseUrl = "http://54.155.109.226:8080/geoserver/ows",
                layers = "Beck_KG_V1_present_0p0083",
@@ -719,7 +723,7 @@ server <- function(input, output, session) {
         clearShapes() %>%
         clearMarkers() %>%
         addLayersControl(
-          baseGroups = c('OSM', 'Ortho', 'Landscape', 'Clim')) %>%
+          baseGroups = c('OSM', 'Ortho', 'Clim')) %>%
         # baseGroups = c('OSM', 'Ortho', 'Clim')) %>%
         # addLabelOnlyMarkers(0,
         #                     45.5,
@@ -892,6 +896,7 @@ server <- function(input, output, session) {
           deleteFile = TRUE)
       }
     })
+    # calib/export/download
     output$dwnld_calib <- downloadHandler(
       filename = out.png.name,
       content = function(file) {
@@ -950,14 +955,14 @@ server <- function(input, output, session) {
     # bibliographical references
     bibrefs.html
   })
-  
+  # dates/export/download
   output$dwnld_dates <- downloadHandler(
     filename = function(){paste0("neonet-data-", Sys.Date(), ".geojson")}, 
     content = function(fname){
       data.out <- df.tot
       data.out <- data.out[ , !(colnames(data.out) %in% c("lbl", "idf", "locationID", "secondLocationID"))] 
       # sort by country and site names
-      data.out <- dplyr::arrange(data.out , Country, SiteName)
+      data.out <- dplyr::arrange(data.out, Country, SiteName)
       # data.out <- data.out[with(data.out, order("Country", "SiteName")), ]
       data.out[["idf_nn"]] <- 1:nrow(data.out)
       # View(data.out)
@@ -969,6 +974,41 @@ server <- function(input, output, session) {
       data.out.spat <- st_as_sf(data.out, coords = c("Longitude", "Latitude"), crs = 4326)
       # print(nrow(data.out))
       st_write(data.out.spat, fname)
+    }
+  )
+  output$dwnld_selectshape <- downloadHandler(
+    filename = function(){paste0("neonet-data-", Sys.Date(), "-select-aera.geojson")}, 
+    content = function(fname){
+      selectionShape <- input$map_draw_new_feature
+      # if no selection shapes, will return the whole window
+      if(length(selectionShape) == 0){
+        selectionShape <- input$map_bounds
+        lon <- c(selectionShape$east, selectionShape$west)
+        lat <- c(selectionShape$south, selectionShape$north)
+        window.sf <- data.frame(lon, lat)
+        polygon_sf <- window.sf %>% 
+          sf::st_as_sf(coords = c("lon", "lat"), 
+                       crs = 4326) %>% 
+          sf::st_bbox() %>% 
+          sf::st_as_sfc()
+      } else {
+        coords <- selectionShape$geometry$coordinates[[1]]
+        ageom <- c()
+        # get coordinates
+        for(i in 1:length(coords)){
+          x <- coords[[i]][[1]]
+          y <- coords[[i]][[2]]
+          ageom <- c(ageom, x, y)
+        }
+        ageom.matrix <- matrix(ageom, ncol = 2, byrow = TRUE)
+        polygon_sf <- sf::st_polygon(list(ageom.matrix))
+        polygon_sf <- sf::st_sfc(polygon_sf, crs = 4326)
+        polygon_sf <- sf::st_as_sf(polygon_sf)
+        # add selection ID
+        polygon_sf <- merge(polygon_sf, data.frame(ID = selectionShape$properties$"_leaflet_id"))
+        # print(nrow(data.out))
+      }
+      st_write(polygon_sf, fname)
     }
   )
 }

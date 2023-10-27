@@ -1,3 +1,22 @@
+library(rcarbon)
+
+source("R/neo_isochr.R")
+source("R/neo_spd.R")
+source("R/neo_calib.R")
+
+mydir <-  paste0(getwd(), "/doc/presentation/bhdc/img/")
+df.c14 <- paste0(mydir, "neonet-data-2023-10-22.geojson")
+neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE, outDir = mydir, mapname = "donzere",
+           export = TRUE)
+
+mydir <-  paste0(getwd(), "/doc/presentation/bhdc/img/")
+df.c14 <- paste0(mydir, "neonet-data-2023-10-22.geojson")
+neo_isochr(df.c14 = df.c14, selected.per = "LM", lbl.dates = TRUE, lbl.time.interv = TRUE, outDir = mydir, mapname = "donzere_LM",
+           export = TRUE)
+
+###
+
+
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 source("R/neo_subset.R")
 source("R/neo_bib.R")
@@ -10,6 +29,10 @@ source("R/neo_datasum.R")
 # source("R/neo_doi.R")
 source("R/neo_spd.R")
 source("R/neo_spdplot.R")
+
+
+df.c14 <- read.csv2("R/app-dev-neonet2/c14_dataset_med_x_atl_2.tsv", sep = "\t")
+neo_datasum(df.c14 = df.c14, info = "stats", export = F)
 
 # new dataset, atl
 # c14

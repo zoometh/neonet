@@ -1,6 +1,6 @@
 #' @name neo_isochr
 #'
-#' @description create isochrones contours by interpolation of calibrated radiocarbon dates. Select the date with the minimum median in each site.
+#' @description creates isochrones contours by interpolation of calibrated radiocarbon dates. Select the date with the minimum median in each site.
 #'
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
 #' @selected.per the period selected. Default "EN".
@@ -159,9 +159,12 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   # see: https://stackoverflow.com/questions/77235892/ggmap-and-get-stamenmap-return-an-error-when-plotting-a-region/77251262
   for(i in seq(zoom, 1)){
     print(paste(" - try zoom: ", zoom))
-    stamenbck <- tryCatch(ggmap::get_stamenmap(bbox, 
+    stamenbck <- tryCatch(ggmap::get_stadiamap(bbox, 
                                                zoom = zoom,
-                                               maptype = "terrain-background"), error = function(e) NULL)
+                                               maptype = "stamen_terrain_background"), error = function(e) NULL)
+    # stamenbck <- tryCatch(ggmap::get_stamenmap(bbox, 
+    #                                            zoom = zoom,
+    #                                            maptype = "terrain-background"), error = function(e) NULL)
     zoom <- zoom - 1
     if (!is.null(stamenbck)) {
       print(zoom)

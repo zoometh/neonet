@@ -9,7 +9,7 @@
 #'
 #' @examples
 #'
-#'
+#' neo_datasum(info = "stats", export = F)
 #'
 #' @export
 neo_datasum <- function(df.c14,
