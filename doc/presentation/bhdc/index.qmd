@@ -30,9 +30,9 @@ title-slide-attributes:
     data-background-image: "img/chalkboard.png"
     data-background-size: "90%"
     data-background-opacity: "0.3"
-css: https://zoometh.github.io/thomashuet/css/quarto.css 
 format:
   revealjs: 
+    css: https://zoometh.github.io/thomashuet/css/quarto.css
     auto-stretch: false
     code-fold: true
     code-summary: "<small>Code</small>"
@@ -46,11 +46,11 @@ format:
     footnotes-hover: true
     # self-contained: true
     # embed-resources: true
-    logo: https://raw.githubusercontent.com/zoometh/thomashuet/master/teach/stats/images/inst-uni-oxford_.png
+    logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
     footer: "<em>Big Historical Data Conference</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/bhdc_avatar.png' style='height: 35px;vertical-align: middle;'> <https://bhdc.earth/> 22-25 November 2023, Jena (Germany)"
     margin: 0
-    width: 1200
 ---
+
 
 ## {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" background-interactive="true"}
 
@@ -59,22 +59,42 @@ NeoNet app is an opensource R Shiny interactive web app which facilitates the se
 NB: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
 :::
 
-
 ## {}
 
-<div class="row">
-![](img/chalkboard.png){width="900"}
-</div>
+```{r}
+library(dplyr)
+library(DT)
+neonet_med <- "https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MMb1a4a927461fdd822e923821b8d92371/content"
+df.c14 <- read.csv2(neonet_med, sep = "\t", encoding = "UTF-8")
+font.size <- "8pt"
+df.c14[,!names(df.c14) %in% c("tpq", "taq")] %>% 
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(5, 10, 50, -1), 
+                        c('5', '10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
+        "}")
+    ) 
+  )
+```
 
 
 ::: {.notes}
 ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological layers, and ca. 800 sites. Documented by ca. 600 different bibliographical references
+<div class="img">
+![](img/chalkboard.png){width="300" style='horizontal-align: middle;'}
+</div>
 :::
 
 
 ## {}
 
-<div class="row">
+<div class="img">
 ![](img/open-data-joad.png){width="800"}
 </div>
 
@@ -84,7 +104,7 @@ The first part of this dataset, covering the North Central-Western Mediterranean
 
 ## {}
 
-<div class="row">
+<div class="img">
 ![](img/watersheds-ortho.png){width="1100"}
 </div>
 
@@ -96,10 +116,11 @@ The decision to divide the research area into distinct watersheds is based on tw
 
 ## {}
 
-<div class="row">
-![Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, *Nature Scientific Data*](img/watersheds-climate.png){width=1000px}
+<div class="img">
+![](img/watersheds-climate.png){width=1000px}
 </div>
-
+<div class="captiontext">Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, Nature Scientific Data
+</div>
 
 ::: {.notes}
 For example one can study the influence of climates for the spread of Neolithic. The basemap is the Koppen climate classification (actual)
@@ -108,8 +129,10 @@ For example one can study the influence of climates for the spread of Neolithic.
 
 ## {}
 
-<div class="row">
+<div class="img">
 ![](img/donzere-gis.png){width="1000"}
+</div>
+<div class="captiontext">Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, Nature Scientific Data
 </div>
 
 ::: {.notes}
@@ -118,9 +141,9 @@ The Defile de Donzere is a narrow pass of the Rhone valley between Alps (east) a
 
 ## {}
 
-<div class="row">
-![Google Earth](img/donzere-view.png){width=1000px}
-</div>
+<div class="img">
+![](img/donzere-view.png){width=1000px}
+<div class="captiontext">Google Earth</div>
 
 
 ::: {.notes}
@@ -165,7 +188,28 @@ The selected aera and the selected dates can also be exported, both in GeoJSON f
 
 ## {}
 
-![](img/donzere-gis-dates.png){width="600"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+In the app
+
+![](img/donzere-gis-dates-sub.png){width="600" style='horizontal-align: middle;'}
+
+
+:::
+
+::: {.column width="50%"}
+
+In a GIS
+
+![](img/donzere-gis-dates.png){width="600" style='horizontal-align: middle;'}
+
+:::
+
+
+::::
 
 ::: {.notes}
 These files can be curated and subset in a GIS.
@@ -180,10 +224,34 @@ Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
 
 ## {}
 
-<img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png' style='height: 40px;vertical-align: middle;'><img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png' style='height: 50px;vertical-align: middle;'> <https://github.com/zoometh/neonet>
+<img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png' style='height: 40px;vertical-align: middle;'><img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png' style='height: 50px;vertical-align: middle;'> <span class= smalltext><https://github.com/zoometh/neonet> </span>
 
-![](img/github-neonet-functions.png){width="700"}
+:::: {.columns}
 
+::: {.column width="50%"}
+
+![](img/github-neonet-functions.png){width="700" style='horizontal-align: middle;'}
+
+:::
+
+::: {.column width="50%"}
+
+```{.r}
+neo_spd(df.c14 = df.c14)
+```
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png){width="700" style='horizontal-align: middle;'}
+
+```{.r}
+neo_spd(inData = "Roc du Dourgne_2023-07-30.csv")
+```
+
+![](https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-period.png){width="700" style='horizontal-align: middle;'}
+
+
+:::
+
+::::
 
 ::: {.notes}
 The Shiny app comes with a serie of functions to model data
@@ -193,11 +261,10 @@ The Shiny app comes with a serie of functions to model data
 ## {}
 
 ```{.r}
-df.c14 <- paste0(getwd(), "/doc/presentation/bhdc/img/neonet-data-2023-10-22.geojson")
-neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)
+neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson")
 ```
 
-![](img/donzere_EN-neolithic-isochr.png){width="700"}
+![](img/donzere_EN-neolithic-isochr.png){width="550" style='horizontal-align: middle;'}
 
 ::: {.notes}
 For example, the neo_isochr() function creates isochrones contours by interpolation of calibrated radiocarbon dates using, for EN, the minimum median in each site (that is to say the earliest EN) and, for LM, the maximum median in each site (that is to say the latest LM) 
@@ -207,23 +274,23 @@ For example, the neo_isochr() function creates isochrones contours by interpolat
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 
 ```{.r}
-neo_isochr(df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)
+neo_isochr(df.c14)
 ```
 
-![](img/donzere_EN-neolithic-isochr.png){width="700"}
+![](img/donzere_EN-neolithic-isochr.png){width="800"}
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 
 ```{.r}
-neo_isochr(df.c14, selected.per = "LM", lbl.dates = TRUE, lbl.time.interv = TRUE)
+neo_isochr(df.c14, selected.per = "LM")
 ```
 
-![](img/donzere_LM-paleolithic-isochr.png){width="700"}
+![](img/donzere_LM-paleolithic-isochr.png){width="800"}
 
 :::
 
@@ -235,9 +302,9 @@ Reciprocally, for LM, the maximum median in each site (that is to say the latest
 
 ## {}
 
-<img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png' style='height: 40px;vertical-align: middle;'><img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/c14bazaar-logo.png' style='height: 50px;vertical-align: middle;'> <https://github.com/ropensci/c14bazAAR>
+<img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png' style='height: 40px;vertical-align: middle;'><img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/c14bazaar-logo.png' style='height: 50px;vertical-align: middle;'> <span class= smalltext><https://github.com/ropensci/c14bazAAR></span>
 
-![](img/github-c14bazAAR-dbs.png){width="700"}
+![](img/github-c14bazAAR-dbs.png){width="700" style='horizontal-align: middle;'}
 
 
 ::: {.notes}
@@ -247,7 +314,7 @@ Among other radiocaborn datasets, Neonet can be harvested by a getter function f
 
 ## Conclusion
 
-* App <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png' style='height: 50px;vertical-align: middle;'> and curated dataset of radiocarbon dates for the Mesolithic (<span style="color:blue"><b>LM</b></span>) / Neolithic (<span style="color:red"><b>EN</b></span>) transition
+* App and curated dataset of radiocarbon dates for the Mesolithic (<span style="color:blue"><b>LM</b></span>) / Neolithic (<span style="color:red"><b>EN</b></span>) transition
 * Open Data + Open Source + Open Access ➡️ **Open Science**
 * Highly scalable, reusable and analyzable ➡️ **Reproducibility**
 
