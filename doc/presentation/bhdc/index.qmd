@@ -30,7 +30,7 @@ title-slide-attributes:
     data-background-image: "img/chalkboard.png"
     data-background-size: "90%"
     data-background-opacity: "0.3"
-css: https://zoometh.github.io/thomashuet/css/demo.scss 
+css: https://zoometh.github.io/thomashuet/css/quarto.css 
 format:
   revealjs: 
     auto-stretch: false
@@ -62,7 +62,10 @@ NB: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
 
 ## {}
 
+<div class="row">
 ![](img/chalkboard.png){width="900"}
+</div>
+
 
 ::: {.notes}
 ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological layers, and ca. 800 sites. Documented by ca. 600 different bibliographical references
@@ -207,7 +210,7 @@ For example, the neo_isochr() function creates isochrones contours by interpolat
 ::: {.column width="50%"}
 
 ```{.r}
-neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)
+neo_isochr(df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)
 ```
 
 ![](img/donzere_EN-neolithic-isochr.png){width="700"}
@@ -217,10 +220,10 @@ neo_isochr(df.c14 = df.c14, lbl.dates = TRUE, lbl.time.interv = TRUE)
 ::: {.column width="50%"}
 
 ```{.r}
-neo_isochr(df.c14 = df.c14, selected.per = "LM", lbl.dates = TRUE, lbl.time.interv = TRUE)
+neo_isochr(df.c14, selected.per = "LM", lbl.dates = TRUE, lbl.time.interv = TRUE)
 ```
 
-![](img/donzere_LM-neolithic-isochr.png){width="700"}
+![](img/donzere_LM-paleolithic-isochr.png){width="700"}
 
 :::
 
@@ -245,8 +248,8 @@ Among other radiocaborn datasets, Neonet can be harvested by a getter function f
 ## Conclusion
 
 * App <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png' style='height: 50px;vertical-align: middle;'> and curated dataset of radiocarbon dates for the Mesolithic (<span style="color:blue"><b>LM</b></span>) / Neolithic (<span style="color:red"><b>EN</b></span>) transition
-* Open Data + Open Source + Open Access ➡️ Open Science
-* Highly scalable, reusable and analyzable ➡️ Reproductibality
+* Open Data + Open Source + Open Access ➡️ **Open Science**
+* Highly scalable, reusable and analyzable ➡️ **Reproducibility**
 
 ::: {.notes}
 * Neonet offers an App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition
