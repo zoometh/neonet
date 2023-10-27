@@ -71,8 +71,9 @@ ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological laye
 
 ## {}
 
+<div class="row">
 ![](img/open-data-joad.png){width="800"}
-
+</div>
 
 ::: {.notes}
 The first part of this dataset, covering the North Central-Western Mediterranean Basin, has been publish in the *Journal of Open Archaeological Data* 1-year ago.
@@ -80,7 +81,9 @@ The first part of this dataset, covering the North Central-Western Mediterranean
 
 ## {}
 
-![](img/watersheds-ortho.png){width="1000"}
+<div class="row">
+![](img/watersheds-ortho.png){width="1100"}
+</div>
 
 ::: {.notes}
 This published dataset is shown in red. It has been completed by the Southern European Atlantic Basin (in blue).
@@ -102,7 +105,9 @@ For example one can study the influence of climates for the spread of Neolithic.
 
 ## {}
 
+<div class="row">
 ![](img/donzere-gis.png){width="1000"}
+</div>
 
 ::: {.notes}
 The Defile de Donzere is a narrow pass of the Rhone valley between Alps (east) and Massif central (west) and Mediterranean climate (south: Csa  Temperate, dry summer, hot summer) continental (north: Cfb  Temperate, no dry season, warm summer )
@@ -157,7 +162,7 @@ The selected aera and the selected dates can also be exported, both in GeoJSON f
 
 ## {}
 
-![](img/donzere-gis-dates.png){width="700"}
+![](img/donzere-gis-dates.png){width="600"}
 
 ::: {.notes}
 These files can be curated and subset in a GIS.
