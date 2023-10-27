@@ -246,7 +246,7 @@ neo_spd(df.c14 = df.c14)
 neo_spd(inData = "Roc du Dourgne_2023-07-30.csv")
 ```
 
-![](https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-period.png){width="700" style='horizontal-align: middle;'}
+![](https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-period.png){width="500" style='horizontal-align: middle;'}
 
 
 :::
