@@ -30,7 +30,7 @@ title-slide-attributes:
     data-background-image: "img/chalkboard.png"
     data-background-size: "90%"
     data-background-opacity: "0.3"
-css: https://zoometh.github.io/thomashuet/css/quarto.css
+css: https://zoometh.github.io/thomashuet/css/demo.scss 
 format:
   revealjs: 
     auto-stretch: false
@@ -91,8 +91,7 @@ The decision to divide the research area into distinct watersheds is based on tw
 ## {}
 
 <div class="row">
-![](img/watersheds-climate.png){width=1000px}
-<div class="captiontext">Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, *Nature Scientific Data*</div>
+![Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, *Nature Scientific Data*](img/watersheds-climate.png){width=1000px}
 </div>
 
 
@@ -112,8 +111,7 @@ The Defile de Donzere is a narrow pass of the Rhone valley between Alps (east) a
 ## {}
 
 <div class="row">
-![](img/donzere-view.png){width=1000px}
-<div class="captiontext">Google Earth</div>
+![Google Earth](img/donzere-view.png){width=1000px}
 </div>
 
 
