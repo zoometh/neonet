@@ -202,7 +202,7 @@ Export the plot
 
 <div class="img"><center>
 ![](img/donzere-app-north-and-south.png){width="900"}
-</div>
+</center></div>
 
 
 ::: {.notes}
@@ -264,32 +264,45 @@ Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
 
 :::: {.columns}
 
-::: {.column width="40%"}
+::: {.column width="30%"}
 
 ![](img/github-neonet-functions-1.png){width="700" style='horizontal-align: middle;'}
 
 :::
 
-::: {.column width="60%"}
+::: {.column width="70%"}
 
 ```{.r}
 neo_spd(df.c14 = df.c14)
 ```
 
+<div class="img"><center>
 ![](img/figure2.png){width="700" style='horizontal-align: middle;'}
+</center></div>
 
 ```{.r}
 neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson")
 ```
 
-![](img/donzere_EN-neolithic-isochr.png){width="550" style='horizontal-align: middle;'}
+<div class="img"><center>
+![](img/donzere_EN-neolithic-isochr.png){width="450" style='horizontal-align: middle;'}
+</center></div>
 
+```{.r}
+neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson", selected.per = "LM")
+```
+
+<div class="img"><center>
+![](img/donzere_LM-paleolithic-isochr.png){width="450" style='horizontal-align: middle;'}
+</center></div>
 
 ```{.r}
 neo_strat(inData = "Roc du Dourgne_2023-07-30.csv")
 ```
 
-![](https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-period.png){width="500" style='horizontal-align: middle;'}
+<div class="img"><center>
+![](https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-period.png){width="450" style='horizontal-align: middle;'}
+</center></div>
 
 
 :::
@@ -306,13 +319,13 @@ The Shiny app comes with a serie of functions to model data such as SPD plot or 
 
 :::: {.columns}
 
-::: {.column width="40%"}
+::: {.column width="30%"}
 
 ![](img/github-c14bazaar-functions-1.png){width="700" style='horizontal-align: middle;'}
 
 :::
 
-::: {.column width="60%"}
+::: {.column width="70%"}
 
 ![](img/github-c14bazAAR-dbs.png){width="700" style='horizontal-align: middle;'}
 
@@ -329,13 +342,18 @@ Among other radiocaborn datasets, Neonet can be harvested by a getter function f
 
 ## Conclusion
 
-* App and curated dataset of radiocarbon dates for the Mesolithic (<span style="color:blue"><b>LM</b></span>) / Neolithic (<span style="color:red"><b>EN</b></span>) transition
+* App and dataset of 14C dates for the **Mesolithic / Neolithic transition**
 * Open Data, Open Source, Open Access ➡️ **Open Science**
 * Scalable, incrementable, reusable, analyzable ➡️ **Reproducibility**
+
+*Perspectives*
+
+* Extension of the dataset to another river basin
+* Build sites' Harris matrices to perform Bayesian analysis on-the-fly
 
 ::: {.notes}
 * Neonet offers an App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition
 * The dataset is OD, the app and management functions are OSrc and OA. Compliant with OSci
-* Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility
+* Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility and robust assumptions
 :::
 
