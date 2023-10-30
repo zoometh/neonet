@@ -1,6 +1,6 @@
 ---
 title: "NeoNet app"
-subtitle: "Radiocarbon modelling the Late Mesolithic/Early Neolithic transition in South-Central and South-Western Europe"
+subtitle: "Radiocarbon modelling for the Late Mesolithic/Early Neolithic transition in South-Central and South-Western Europe"
 author:
   - name: Thomas Huet
     affiliation: 
@@ -75,8 +75,8 @@ df.c14[,!names(df.c14) %in% c("tpq", "taq")] %>%
     width = "100%",
     rownames = FALSE,
     options=list(
-      lengthMenu = list(c(5, 10, 50, -1), 
-                        c('5', '10', '50', 'All')),
+      lengthMenu = list(c(10, 50, -1), 
+                        c('10', '50', 'All')),
       paging = T,
       initComplete = htmlwidgets::JS(
         "function(settings, json) {",
@@ -311,7 +311,7 @@ neo_strat(inData = "Roc du Dourgne_2023-07-30.csv")
 ::::
 
 ::: {.notes}
-The Shiny app comes with a serie of functions to model data such as SPD plot or Harris Matrices. For example, the neo_isochr() function creates isochrones contours by interpolation of calibrated radiocarbon dates using, for EN, the minimum median in each site (that is to say the earliest EN) and, for LM, the maximum median in each site (that is to say the latest LM)
+The Shiny app comes with documentation and others functions to calculate SPDs, isochrones and Harrix matrices among other things.
 :::
 
 ## {}
@@ -337,7 +337,7 @@ The Shiny app comes with a serie of functions to model data such as SPD plot or 
 
 
 ::: {.notes}
-Among other radiocaborn datasets, Neonet can be harvested by a getter function from the C14bazaar package
+Finally, NeoNet is one among many radiocaborn datasets. That's why we prepared a getter function, in the C14bazaar package, for the dataset to be harvested.
 :::
 
 
@@ -349,8 +349,8 @@ Among other radiocaborn datasets, Neonet can be harvested by a getter function f
 
 **Perspectives**
 
-* Extension of the dataset to river basins
-* Build sites' Harris matrices to perform Bayesian analysis on-the-fly
+* Extension of the dataset to other river basins
+* Build sites' Harris matrices and run Bayesian analysis on-the-fly
 
 ::: {.notes}
 * Neonet offers an App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition
