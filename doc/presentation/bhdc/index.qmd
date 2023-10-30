@@ -99,6 +99,10 @@ ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological laye
 Open Data
 
 <div class="img">
+![](img/neo_datasum_by_periods_samp.png){width="800"}
+</div>
+
+<div class="img">
 ![](img/open-data-joad.png){width="800"}
 </div>
 
@@ -190,26 +194,29 @@ Export the plot
 The selected aera and the selected dates can also be exported, both in GeoJSON files
 :::
 
-## 
+## {}
 
 ```{r}
 library(sf)
 library(dplyr)
 library(leaflet)
-geojson_data <- st_read("your_geojson_file.geojson")
-leaflet() %>%
-  addProviderTiles("Esri.WorldImagery") %>%
-  addPolygons(data = geojson_data,
-              color = "blue",  # Change color as needed
-              weight = 2)       # Change weight as needed
+geojson_data <- st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/presentation/bhdc/data/neonet-data-2023-10-22-select-aera.geojson")
+leaflet(geojson_data) %>%
+  addTiles() %>% 
+  addPolygons()       # Change weight as needed
 ```
 
 
+```{r}
+library(sf)
+library(dplyr)
+library(leaflet)
+geojson_data <- st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/presentation/bhdc/data/neonet-data-2023-10-22.geojson")
+leaflet(geojson_data) %>%
+  addTiles() %>% 
+  addCircleMarkers()       # Change weight as needed
+```
 
-## {data-background-iframe="https://gist.github.com/zoometh/486ccf582e36472120018e595c4ceaa7#file-neonet-data-2023-10-22-select-aera-geojson" background-interactive="true"}
-
-
-## {data-background-iframe="https://gist.github.com/zoometh/f16f33ed1d7173eac7e028edd80939bf#file-neonet-data-2023-10-22-geojson" background-interactive="true"}
 
 
 ## {}
@@ -269,6 +276,13 @@ neo_spd(df.c14 = df.c14)
 ![](img/figure2.png){width="700" style='horizontal-align: middle;'}
 
 ```{.r}
+neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson")
+```
+
+![](img/donzere_EN-neolithic-isochr.png){width="550" style='horizontal-align: middle;'}
+
+
+```{.r}
 neo_strat(inData = "Roc du Dourgne_2023-07-30.csv")
 ```
 
@@ -280,50 +294,7 @@ neo_strat(inData = "Roc du Dourgne_2023-07-30.csv")
 ::::
 
 ::: {.notes}
-The Shiny app comes with a serie of functions to model data such as SPD plot or Harris Matrices
-:::
-
-
-## {}
-
-```{.r}
-neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson")
-```
-
-![](img/donzere_EN-neolithic-isochr.png){width="550" style='horizontal-align: middle;'}
-
-::: {.notes}
-For example, the neo_isochr() function creates isochrones contours by interpolation of calibrated radiocarbon dates using, for EN, the minimum median in each site (that is to say the earliest EN) and, for LM, the maximum median in each site (that is to say the latest LM) 
-:::
-
-## {}
-
-:::: {.columns}
-
-::: {.column width="40%"}
-
-```{.r}
-neo_isochr(df.c14)
-```
-
-![](img/donzere_EN-neolithic-isochr.png){width="800"}
-
-:::
-
-::: {.column width="60%"}
-
-```{.r}
-neo_isochr(df.c14, selected.per = "LM")
-```
-
-![](img/donzere_LM-paleolithic-isochr.png){width="800"}
-
-:::
-
-::::
-
-::: {.notes}
-Reciprocally, for LM, the maximum median in each site (that is to say the latest LM) is selected
+The Shiny app comes with a serie of functions to model data such as SPD plot or Harris Matrices. For example, the neo_isochr() function creates isochrones contours by interpolation of calibrated radiocarbon dates using, for EN, the minimum median in each site (that is to say the earliest EN) and, for LM, the maximum median in each site (that is to say the latest LM)
 :::
 
 ## {}
