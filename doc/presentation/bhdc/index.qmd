@@ -1,6 +1,6 @@
 ---
 title: "NeoNet app"
-subtitle: "Modelling radiocarbon modelling of the Late Mesolithic - Early Neolithic transition in South-Central and South-Western Europe"
+subtitle: "Radiocarbon modelling the Late Mesolithic/Early Neolithic transition in South-Central and South-Western Europe"
 author:
   - name: Thomas Huet
     affiliation: 
@@ -289,7 +289,8 @@ neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson")
 </center></div>
 
 ```{.r}
-neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson", selected.per = "LM")
+neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson", 
+           selected.per = "LM")
 ```
 
 <div class="img"><center>
@@ -346,9 +347,9 @@ Among other radiocaborn datasets, Neonet can be harvested by a getter function f
 * Open Data, Open Source, Open Access ➡️ **Open Science**
 * Scalable, incrementable, reusable, analyzable ➡️ **Reproducibility**
 
-*Perspectives*
+**Perspectives**
 
-* Extension of the dataset to another river basin
+* Extension of the dataset to river basins
 * Build sites' Harris matrices to perform Bayesian analysis on-the-fly
 
 ::: {.notes}
