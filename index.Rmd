@@ -334,14 +334,14 @@ The dates displayed in the [table of the **map panel**](#panel.map) will be cali
 
 </center>
 
-### export dates {#panel.map.export}
+### export selected dates and aera {#panel.map.export}
 
-Export selected dates, sorted by sites' country and names, by clicking the download button (top left)
+Export selected dates and area sorted by clicking the download buttons (top left)
 
 
 <center>
 
-![Export selected dates](`r panel.map.export`){width=350px}
+![Export selected dates and aera](`r panel.map.export`){width=450px}
 
 </center>
 
@@ -686,6 +686,7 @@ doi={10.5334/joad.87},
 ```
 
 The development version of the app is on GitHub: [zoometh/neonet](https://github.com/zoometh/neonet) where you can check the [contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md) and the [relevant license](https://github.com/zoometh/neonet/blob/master/LICENSE). 
+
 
 # **Acknowledgement**
 

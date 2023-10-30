@@ -265,7 +265,7 @@ data.credits <- HTML(paste0(' <b> Data gathering: </b>',
 webdoc <- "https://zoometh.github.io/neonet/"
 neonet.readme <- "https://zoometh.github.io/neonet/"
 app.page <- paste0('<a href=', shQuote(webdoc),"\ target=\"_blank\"",'>webdoc</a>')
-neonet.pkg <- paste0('<a href=', shQuote(neonet.readme),"\ target=\"_blank\"",'>GitHub package</a>')
+neonet.pkg <- paste0('<a href=', shQuote(neonet.readme),"\ target=\"_blank\"",'>GitHub</a>')
 # app.page <- paste0('<a href=', "webdoc","\ target=\"_blank\"",'>https://zoometh.github.io/neonet/</a>')
 # neonet.pkg <- paste0('<a href=', "GitHub","\ target=\"_blank\"",'>https://github.com/zoometh/neonet</a>')
 # GitHub repo
