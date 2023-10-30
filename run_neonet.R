@@ -19,8 +19,6 @@ neo_isochr(df.c14 = df.c14, selected.per = "LM", lbl.dates = TRUE, lbl.time.inte
 
 ###
 
-neonet_med <- "https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MMb1a4a927461fdd822e923821b8d92371/content"
-home <- read.csv2(neonet_med, sep = "\t")
 
 
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))

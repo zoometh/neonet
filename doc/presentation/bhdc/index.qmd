@@ -5,21 +5,21 @@ author:
   - name: Thomas Huet
     affiliation: 
       - id: uo
-        name: University of Oxford
+        name: <span style="font-size:16pt">University of Oxford</span>
   - name: Niccolò Mazzucco
-    affiliation: Università di Pisa
+    affiliation: <span style="font-size:16pt">Università di Pisa</span>
   - name: Miriam Cubas Morera
-    affiliation: Universidad de Alcalá
+    affiliation: <span style="font-size:16pt">Universidad de Alcalá</span>
   - name: Juan F. Gibaja
     affiliation: 
       - id: csic
-        name: Consejo Superior de Investigaciones Científicas
+        name: <span style="font-size:16pt">Consejo Superior de Investigaciones Científicas</span>
   - name: F. Xavier Oms
-    affiliation: Universitat de Barcelona
+    affiliation: <span style="font-size:16pt">Universitat de Barcelona</span>
   - name: António Faustino Carvalho
     affiliation: 
       - id: ua
-        name: University of Algarve
+        name: <span style="font-size:16pt">Universidade do Algarve</span>
   - name: Ana Catarina Basílio
     affiliation: 
       - ref: ua
@@ -96,6 +96,8 @@ ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological laye
 
 ## {}
 
+Open Data
+
 <div class="img">
 ![](img/open-data-joad.png){width="800"}
 </div>
@@ -144,7 +146,7 @@ The Defile de Donzere is a narrow pass of the Rhone valley between Alps (east) a
 ## {}
 
 <div class="img">
-![](img/donzere-view.png){width=1000px}
+![](img/donzere-view.png){width=1100px}
 <div class="captiontext">Google Earth</div>
 
 
@@ -157,7 +159,7 @@ View of the Defile and the Rhone river, from the South
 ![](img/donzere-app-north-and-south.png){width="900"}
 
 ::: {.notes}
-A selection window can be draw around the Defile, and dates be subset to only get those of LM and EN, with SD < 130. Once done, the dataset counts 70 sites and 353 dates. The latter can be calibrate on the fly by selectiong one of them and opening the calib panel.
+A selection window can be draw around the Defile, and dates be subset to only get those of LM and EN, with SD < 130. Once done, the dataset counts 70 sites and 353 dates. The latter can be calibrate on the fly by selecting one of them and opening the calib panel.
 :::
 
 ## {}
@@ -187,6 +189,28 @@ Export the plot
 ::: {.notes}
 The selected aera and the selected dates can also be exported, both in GeoJSON files
 :::
+
+## 
+
+```{r}
+library(sf)
+library(dplyr)
+library(leaflet)
+geojson_data <- st_read("your_geojson_file.geojson")
+leaflet() %>%
+  addProviderTiles("Esri.WorldImagery") %>%
+  addPolygons(data = geojson_data,
+              color = "blue",  # Change color as needed
+              weight = 2)       # Change weight as needed
+```
+
+
+
+## {data-background-iframe="https://gist.github.com/zoometh/486ccf582e36472120018e595c4ceaa7#file-neonet-data-2023-10-22-select-aera-geojson" background-interactive="true"}
+
+
+## {data-background-iframe="https://gist.github.com/zoometh/f16f33ed1d7173eac7e028edd80939bf#file-neonet-data-2023-10-22-geojson" background-interactive="true"}
+
 
 ## {}
 
@@ -332,8 +356,8 @@ Among other radiocaborn datasets, Neonet can be harvested by a getter function f
 ## Conclusion
 
 * App and curated dataset of radiocarbon dates for the Mesolithic (<span style="color:blue"><b>LM</b></span>) / Neolithic (<span style="color:red"><b>EN</b></span>) transition
-* Open Data + Open Source + Open Access ➡️ **Open Science**
-* Highly scalable, reusable and analyzable ➡️ **Reproducibility**
+* Open Data, Open Source, Open Access ➡️ **Open Science**
+* Scalable, incrementable, reusable, analyzable ➡️ **Reproducibility**
 
 ::: {.notes}
 * Neonet offers an App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition
