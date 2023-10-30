@@ -34,7 +34,7 @@ format:
   revealjs: 
     css: https://zoometh.github.io/thomashuet/css/quarto.css
     auto-stretch: false
-    code-fold: true
+    code-fold: false
     code-summary: "<small>Code</small>"
     slide-number: true
     chalkboard:
@@ -49,6 +49,7 @@ format:
     logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
     footer: "<em>Big Historical Data Conference</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/bhdc_avatar.png' style='height: 35px;vertical-align: middle;'> <https://bhdc.earth/> 22-25 November 2023, Jena (Germany)"
     margin: 0
+    width: 1200
 ---
 
 
@@ -96,18 +97,21 @@ ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological laye
 
 ## {}
 
-Open Data
-
 <div class="img">
-![](img/neo_datasum_by_periods_samp.png){width="800"}
+![](img/neo_datasum_by_periods_samp.png){height="220"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png){height="250"}
+</div>
+<div class="captiontext">Spatial distribution of the two main periods (<span style="color:blue"><b>LM</b></span> and <span style="color:red"><b>EN</b></span>) with the SPD of the whole NeoNet Med dataset (same colors)
 </div>
 
-<div class="img">
-![](img/open-data-joad.png){width="800"}
+<div class="img"><center>
+![](img/open-data-joad.png){width="600"}
+</center></div>
+<div class="captiontext">Publication of the corresponding data paper 
 </div>
 
 ::: {.notes}
-The first part of this dataset, covering the North Central-Western Mediterranean Basin, has been publish in the *Journal of Open Archaeological Data* 1-year ago.
+The first part of this dataset, the NeoNet Med, covering the North Central-Western Mediterranean Basin, has been publish in the *Journal of Open Archaeological Data* 1-year ago. The data collection is there described in terms of steps, quality control, metadata, potential reuse, etc.
 :::
 
 ## {}
@@ -144,23 +148,26 @@ For example one can study the influence of climates for the spread of Neolithic.
 </div>
 
 ::: {.notes}
-The Defile de Donzere is a narrow pass of the Rhone valley between Alps (east) and Massif central (west) and Mediterranean climate (south: Csa  Temperate, dry summer, hot summer) continental (north: Cfb  Temperate, no dry season, warm summer )
+The Défilé de Donzère is a narrow pass of the Rhone valley between Alps (east) and Massif central (west) and Mediterranean climate (south: Csa  Temperate, dry summer, hot summer) continental (north: Cfb  Temperate, no dry season, warm summer )
 :::
 
 ## {}
 
 <div class="img">
-![](img/donzere-view.png){width=1100px}
-<div class="captiontext">Google Earth</div>
+![](img/donzere-view.png){width=1200px}
+<div class="captiontext">View of the Défilé de Donzère and the Rhône river, from the South in Google Earth</div>
 
 
 ::: {.notes}
-View of the Defile and the Rhone river, from the South
+View of the Défilé de Donzère and the Rhône river, from the South
 :::
 
 ## {}
 
+<div class="img"><center>
 ![](img/donzere-app-north-and-south.png){width="900"}
+</div>
+
 
 ::: {.notes}
 A selection window can be draw around the Defile, and dates be subset to only get those of LM and EN, with SD < 130. Once done, the dataset counts 70 sites and 353 dates. The latter can be calibrate on the fly by selecting one of them and opening the calib panel.
@@ -168,7 +175,9 @@ A selection window can be draw around the Defile, and dates be subset to only ge
 
 ## {}
 
+<div class="img"><center>
 ![](img/donzere-app-north-and-south-calib-1.png){width="900"}
+</div>
 
 ::: {.notes}
 Dates can be aggregated and seriated by periods, sites and period, archaeological layer (PhaseCode), or plotted individually. Here by periods
@@ -178,7 +187,9 @@ Dates can be aggregated and seriated by periods, sites and period, archaeologica
 
 ## {}
 
+<div class="img"><center>
 ![](img/donzere-app-north-and-south-calib.png){width="900"}
+</center></div>
 
 ::: {.notes}
 Here by sites and period. And the graphics can be exported 
@@ -188,7 +199,11 @@ Export the plot
 
 ## {}
 
+
+<div class="img"><center>
 ![](img/donzere-app-north-and-south.png){width="900"}
+</div>
+
 
 ::: {.notes}
 The selected aera and the selected dates can also be exported, both in GeoJSON files
@@ -197,55 +212,43 @@ The selected aera and the selected dates can also be exported, both in GeoJSON f
 ## {}
 
 ```{r}
-library(sf)
-library(dplyr)
-library(leaflet)
-geojson_data <- st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/presentation/bhdc/data/neonet-data-2023-10-22-select-aera.geojson")
-leaflet(geojson_data) %>%
-  addTiles() %>% 
-  addPolygons()       # Change weight as needed
+library(sf) ; library(dplyr) ; library(leaflet)
+dirIn <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/presentation/bhdc/data/"
 ```
-
-
-```{r}
-library(sf)
-library(dplyr)
-library(leaflet)
-geojson_data <- st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/presentation/bhdc/data/neonet-data-2023-10-22.geojson")
-leaflet(geojson_data) %>%
-  addTiles() %>% 
-  addCircleMarkers()       # Change weight as needed
-```
-
-
-
-## {}
-
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-In the app
+<span class= smalltext>`neonet-data-2023-10-22-select-aera.geojson`</span>
 
-![](img/donzere-gis-dates-sub.png){width="600" style='horizontal-align: middle;'}
-
+```{r}
+df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
+leaflet(df, width = "500px") %>%
+  addTiles() %>% 
+  addPolygons()       # Change weight as needed
+```
 
 :::
 
 ::: {.column width="50%"}
 
-In a GIS
+<span class= smalltext>`neonet-data-2023-10-22.geojson`</span>
 
-![](img/donzere-gis-dates.png){width="600" style='horizontal-align: middle;'}
+```{r}
+df <- st_read(paste0(dirIn, "neonet-data-2023-10-22.geojson"),  quiet = T)
+leaflet(df, width = "500px") %>%
+  addTiles() %>% 
+  addCircleMarkers()       # Change weight as needed
+```
 
 :::
 
-
 ::::
 
+
 ::: {.notes}
-These files can be curated and subset in a GIS.
+These files can be curated and subset in a GIS or any other app.
 rm: 
 Grotte de Camprafaud, lyer 20,Gif-3077
 Abri de la Font-des-Pigeons, Escalon C5-F5-C6F6, KN-182
@@ -261,13 +264,13 @@ Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
 
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 
 ![](img/github-neonet-functions-1.png){width="700" style='horizontal-align: middle;'}
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 
 ```{.r}
 neo_spd(df.c14 = df.c14)
