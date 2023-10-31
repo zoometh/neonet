@@ -273,6 +273,17 @@ Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
 ::: {.column width="70%"}
 
 ```{.r}
+neo_datasum(df.c14, 
+            info = c("maps"),
+            roi = "https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson")
+```
+
+<div class="img"><center>
+![](https://raw.githubusercontent.com/zoometh/neonet/main/results/figure1.png){width="400" style='horizontal-align: middle;'}
+</center></div>
+
+
+```{.r}
 neo_spd(df.c14 = df.c14)
 ```
 
