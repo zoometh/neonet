@@ -1,4 +1,4 @@
-#' Editable datatable to record stratigraphic relationships
+#' Editable datatable to record stratigraphic relationships (Shiny app embeded)
 #'
 #' @name neo_strat_edit
 #'

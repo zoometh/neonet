@@ -56,8 +56,8 @@ format:
 ## {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" background-interactive="true"}
 
 ::: {.notes}
-NeoNet app is an opensource R Shiny interactive web app which facilitates the selection of dates by providing selection tools for spatial information, chronology, and date accuracy. The map interface offers a mobile and multi-scalar window to study the dynamic of last hunter-gathers / early farmers frontiers. The dataset tend to gather all radiocarbon dates related to the last hunter-gathers / first farmers transition
-NB: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
+NeoNet app is an opensource R Shiny interactive web app which facilitates the study of radiocarbon dates by providing selection tools for spatial information, chronology, and date accuracy. The map interface offers a mobile and multi-scalar window to study the dynamic of last hunter-gathers / early farmers frontiers <br>
+NB: prepare the map: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
 :::
 
 ## {}
@@ -88,10 +88,7 @@ df.c14[,!names(df.c14) %in% c("tpq", "taq")] %>%
 
 
 ::: {.notes}
-ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological layers, and ca. 800 sites. Documented by ca. 600 different bibliographical references
-<div class="img">
-![](img/chalkboard.png){width="300" style='horizontal-align: middle;'}
-</div>
+NeoNet is presently split into two datasets: NeoNet Med, dedicated to the Mediterranean, and NeoNet Atl, focusing on the Atlantic region. These datasets have been assembled by experts specializing in each of these geographic areas. Together, they encompass approximately 4,000 radiocarbon dates belonging to around 3,000 distinct archaeological layers and approximately 800 sites. These dates and archaeological contexts are supported by roughly 600 different bibliographical references.
 :::
 
 
@@ -111,7 +108,7 @@ ca. 4,000 radiocarbon dates, coming from ca. 3,000 different archaeological laye
 </div>
 
 ::: {.notes}
-The first part of this dataset, the NeoNet Med, covering the North Central-Western Mediterranean Basin, has been publish in the *Journal of Open Archaeological Data* 1-year ago. The data collection is there described in terms of steps, quality control, metadata, potential reuse, etc.
+NeoNet Med, which encompasses the North Central-Western Mediterranean Basin, was the initial dataset to be made available to the public. Our data paper, published in the *Journal of Open Archaeological Data*, offers a comprehensive account of the data collection process, including steps, quality control, metadata, and other essential details. Additionally, it provides valuable insights into how the dataset can be effectively reused for various purposes.
 :::
 
 ## {}
@@ -121,8 +118,10 @@ The first part of this dataset, the NeoNet Med, covering the North Central-Weste
 </div>
 
 ::: {.notes}
-This published dataset is shown in red. It has been completed by the Southern European Atlantic Basin (in blue).
-The decision to divide the research area into distinct watersheds is based on two primary factors. First, it allows for the hierarchical decomposition of river basins into interconnected and nested units. Second, watersheds are crucial as spatial analysis units, facilitating mathematical modeling by incorporating concepts like catchment area, thalweg (shortest path), and natural boundaries.
+NeoNet spatial coverage is depicted in red. It has been completed by the Southern European Atlantic Basin (in blue).
+The decision to partition the research area into separate river basins is rooted in two main considerations:
+1. Firstly, it permits the systematic breakdown, or hierachical decomposition, of river basins into interconnected and nested components.
+2. Secondly, watersheds hold significant importance as spatial analysis units, enabling mathematical modeling that integrates key concepts such as catchment area, thalweg (shortest path), and natural boundaries.
 
 :::
 
@@ -135,7 +134,7 @@ The decision to divide the research area into distinct watersheds is based on tw
 </div>
 
 ::: {.notes}
-For example one can study the influence of climates for the spread of Neolithic. The basemap is the Koppen climate classification (actual)
+As an example, the application incorporates the current Koppen climate classification as a base map. This feature enables users to filter the dataset by different climate regions and delve into how these climates might have played a role in shaping the Neolithic expansion.
 :::
 
 
@@ -148,7 +147,7 @@ For example one can study the influence of climates for the spread of Neolithic.
 </div>
 
 ::: {.notes}
-The Défilé de Donzère is a narrow pass of the Rhone valley between Alps (east) and Massif central (west) and Mediterranean climate (south: Csa  Temperate, dry summer, hot summer) continental (north: Cfb  Temperate, no dry season, warm summer )
+For example, the Défilé de Donzère is a narrow pass in the Rhone valley that runs from North to South, situated between the Alps in the east and the Massif Central in the west. This region experiences a Mediterranean climate in the south (`Csa` - Temperate, dry summer, hot summer) and a continental climate in the north (`Cfb` - Temperate, no dry season, warm summer).
 :::
 
 ## {}
@@ -170,7 +169,7 @@ View of the Défilé de Donzère and the Rhône river, from the South
 
 
 ::: {.notes}
-A selection window can be draw around the Defile, and dates be subset to only get those of LM and EN, with SD < 130. Once done, the dataset counts 70 sites and 353 dates. The latter can be calibrate on the fly by selecting one of them and opening the calib panel.
+You can create a selection window around the Défilé, specifically choosing dates from the Late Mesolithic (LM) and Early Neolithic (EN) periods, with a standard deviation (SD) of less than 130. Upon completing this process, the dataset will contain 70 sites and 353 dates. Moreover, these dates can be calibrated on the fly by selecting one of them and accessing the calib (calibration) panel.
 :::
 
 ## {}
@@ -192,7 +191,7 @@ Dates can be aggregated and seriated by periods, sites and period, archaeologica
 </center></div>
 
 ::: {.notes}
-Here by sites and period. And the graphics can be exported 
+Here by sites and period. Graphics can be exported using a download button
 Export the plot
 :::
 
@@ -206,7 +205,7 @@ Export the plot
 
 
 ::: {.notes}
-The selected aera and the selected dates can also be exported, both in GeoJSON files
+The selected area and the selected dates can also be exported, both in GeoJSON files, using two other export buttons on the top left of the map panel
 :::
 
 ## {}
@@ -248,14 +247,14 @@ leaflet(df, width = "500px") %>%
 
 
 ::: {.notes}
-These files can be curated and subset in a GIS or any other app.
-rm: 
-Grotte de Camprafaud, lyer 20,Gif-3077
-Abri de la Font-des-Pigeons, Escalon C5-F5-C6F6, KN-182
-Petites Baties, sect. 4, Beta-103872
-Mas Neuf, Erl-11802
-Pontcharaud 2, c.3, Ly-7625
-Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
+These files can undergo a secondary curation and subsetting process in a GIS or any other appropriate application <br>
+Date that have been removed: 
+- Grotte de Camprafaud, lyer 20,Gif-3077
+- Abri de la Font-des-Pigeons, Escalon C5-F5-C6F6, KN-182
+- Petites Baties, sect. 4, Beta-103872
+- Mas Neuf, Erl-11802
+- Pontcharaud 2, c.3, Ly-7625
+- Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
 :::
 
 ## {}
@@ -279,7 +278,7 @@ neo_datasum(df.c14,
 ```
 
 <div class="img"><center>
-![](https://raw.githubusercontent.com/zoometh/neonet/main/results/figure1.png){width="400" style='horizontal-align: middle;'}
+![](https://raw.githubusercontent.com/zoometh/neonet/main/results/atl_test.png){width="700" style='horizontal-align: middle;'}
 </center></div>
 
 
@@ -322,7 +321,7 @@ neo_strat(inData = "Roc du Dourgne_2023-07-30.csv")
 ::::
 
 ::: {.notes}
-The Shiny app comes with documentation and others functions to calculate SPDs, isochrones and Harrix matrices among other things.
+The Shiny app also comes with documentation and others functions to calculate SPDs, isochrones and Harrix matrices among other things.
 :::
 
 ## {}
@@ -348,7 +347,7 @@ The Shiny app comes with documentation and others functions to calculate SPDs, i
 
 
 ::: {.notes}
-Finally, NeoNet is one among many radiocaborn datasets. That's why we prepared a getter function, in the C14bazaar package, for the dataset to be harvested.
+In conclusion, we acknowledge that NeoNet is just one of the numerous radiocarbon datasets as radiocarbon modeling is a well-explored field. This is precisely why we have developed a *getter* function within the C14bazaar package for the dataset's to be harvestable, and we remain committed to enhancing data and data sample re-usability.
 :::
 
 
@@ -366,6 +365,6 @@ Finally, NeoNet is one among many radiocaborn datasets. That's why we prepared a
 ::: {.notes}
 * Neonet offers an App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition
 * The dataset is OD, the app and management functions are OSrc and OA. Compliant with OSci
-* Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility and robust assumptions
+* Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility and robust assumptions.
 :::
 
