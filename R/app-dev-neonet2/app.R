@@ -50,6 +50,8 @@ if(loc){
   # df.tot <- read.csv(paste0(source.path, "c14_dataset.tsv"), sep = "\t", encoding = "UTF-8")
   c14bibtex.url <- paste0(source.path, bibliog)
   df.tot <- read.csv(paste0(source.path, dataset), sep = "\t", encoding = "UTF-8")
+  # sample 
+  df.tot <- df.tot[c(1:100), ]
 }
 
 
@@ -979,7 +981,12 @@ server <- function(input, output, session) {
   output$dwnld_selectshape <- downloadHandler(
     filename = function(){paste0("neonet-data-", Sys.Date(), "-select-aera.geojson")}, 
     content = function(fname){
+      
       selectionShape <- input$map_draw_new_feature
+      # TEST on several selectionShapes XXX
+      # selectionShape <- input$map_draw_all_features
+      # print(selectionShape[['features']][[2]]$geometry$coordinates[[1]])
+      
       # if no selection shapes, will return the whole window
       if(length(selectionShape) == 0){
         selectionShape <- input$map_bounds
@@ -992,6 +999,7 @@ server <- function(input, output, session) {
           sf::st_bbox() %>% 
           sf::st_as_sfc()
       } else {
+        # TODO export all shapes
         coords <- selectionShape$geometry$coordinates[[1]]
         ageom <- c()
         # get coordinates
