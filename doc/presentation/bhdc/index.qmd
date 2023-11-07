@@ -370,17 +370,18 @@ In conclusion, we acknowledge that NeoNet is just one of the numerous radiocarbo
 
 ## Credits
 
-* "Tools, Techniques and Specialists: the keys to understand the Mesolithic-Neolithic transition in Mediterranean Europe" (PID2020-112513RB-I00) financiado/a por MCIN/AEI/ 10.13039/501100011033
 
-* "Origen, desarrollo y consolidación del neolítico en el ámbito Mediterráneo “RED2018-102382-T)" Redes de Investigación, 2020-2021
+* <span class= smalltext>"Tools, Techniques and Specialists: the keys to understand the Mesolithic-Neolithic transition in Mediterranean Europe" (PID2020-112513RB-I00) financiado/a por MCIN/AEI/ 10.13039/501100011033 </span>
 
-* Conexiones en el Sur de la Península durante el Neolítico (RED2022-134436-T)
+* <span class= smalltext>"Origen, desarrollo y consolidación del neolítico en el ámbito Mediterráneo (RED2018-102382-T)" Redes de Investigación, 2020-2021</span>
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-gobierno-de-espana.png){height="250"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-agencia-investigacion.png){height="250"}
+* <span class= smalltext>Conexiones en el Sur de la Península durante el Neolítico (RED2022-134436-T)</span>
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-csic.png){height="250"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-gobierno-de-espana.png){height="80"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-agencia-investigacion.png){height="80"}
 
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-csic.png){height="80"}
+</p>
 
 
 
