@@ -389,6 +389,12 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 
 ## Perspectives
 
+<center>
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/panel_map_export_todo.png)
+
+</center>
+
 * Enhancing data and data re-usability
 * Extension of the dataset to other river basins
 * Build sites' Harris matrices and run Bayesian with this *prior* information
@@ -396,6 +402,7 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 ::: {.notes}
 Perspectives are many:
 
+* We need IT development to allow to study different geographical windows at the same time (here at the South and the North of the Defile)
 * FAIRability can still be improved
 * Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility and robust assumptions.
 * We would like to construct the Harris matrices of different site and run Bayesian statistics to better the modeling
