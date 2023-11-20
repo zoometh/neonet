@@ -26,6 +26,7 @@ neo_datasum <- function(df.c14,
                         ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                         ncol = 2,
                         export = TRUE,
+                        dirOut = "C:/Rprojects/neonet/results/",
                         fileOut = NA,
                         verbose = TRUE){
   # df.c14 <- read.csv2("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t") ; roi = "C:/Rprojects/neonet/doc/data/wsh_atl.geojson"
@@ -274,7 +275,7 @@ neo_datasum <- function(df.c14,
       if(is.na(fileOut)){
         fileOut <- "_by_periods.png"
       }
-      ggplot2::ggsave(file = paste0("C:/Rprojects/neonet/results/", fileOut), 
+      ggplot2::ggsave(file = paste0(dirOut, fileOut), 
                       gridExtra::arrangeGrob(grobs = lapply(lg, "+", margin), ncol = ncol),
                       height = 14, width = 11)
     } 
@@ -287,9 +288,10 @@ neo_datasum <- function(df.c14,
 #             roi = "C:/Rprojects/neonet/doc/data/wsh_med.geojson",
 #             export = F)
 
-# df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t")
-# neo_datasum(df.c14, info = c("maps"),
-#             roi = "C:/Rprojects/neonet/doc/data/wsh_atl.geojson",
-#             ncol = 3,
-#             export = T,
-#             fileOut = "atl_test.png")
+df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t")
+neo_datasum(df.c14, info = c("maps"),
+            roi = "C:/Rprojects/neonet/doc/data/wsh_atl.geojson",
+            ncol = 3,
+            export = T,
+            dirOut = "C:/Rprojects/neonet/results/",
+            fileOut = "atl_test1.png")

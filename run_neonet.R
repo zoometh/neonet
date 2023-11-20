@@ -1,3 +1,9 @@
+library(coffee)
+
+strat("block_example", its=1e5, thinning=20, internal.thinning=20)
+
+
+##########
 library(rcarbon)
 
 source("R/neo_isochr.R")

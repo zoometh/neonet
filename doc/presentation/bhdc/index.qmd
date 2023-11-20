@@ -27,8 +27,8 @@ author:
     affiliation:
       - ref: csic
 title-slide-attributes:
-    data-background-image: "img/chalkboard.png"
-    data-background-size: "90%"
+    data-background-image: "img/watersheds-ortho.png"
+    data-background-size: "100%"
     data-background-opacity: "0.3"
 format:
   revealjs: 
@@ -46,18 +46,33 @@ format:
     footnotes-hover: true
     # self-contained: true
     # embed-resources: true
-    logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
+    logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/watersheds-ortho.png
     footer: "<em>Big Historical Data Conference</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/bhdc_avatar.png' style='height: 35px;vertical-align: middle;'> <https://bhdc.earth/> 22-25 November 2023, Jena (Germany)"
     margin: 0
     width: 1200
 ---
 
+::: {.notes}
+Radiocarbon dates are among the most common and widely shared archaeological data across regional specificities. Accompanied by archaeological contexts, these dates are often utilized to develop large-scale models of human activities and to categorize cultural groups over time and space. The NeoNet project brings together several archaeologists from different geographic areas, focusing on the transition between the last hunter-gatherers and the early farmers. As part of this project, we have compiled and curated a substantial dataset of radiocarbon dates, which can be accessed through an R Shiny online app, the NeoNet app. Today, we want to explain how our method tackles research questions and follows the FAIR principles.
+
+:::
 
 ## {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" background-interactive="true"}
 
 ::: {.notes}
-NeoNet app is an opensource R Shiny interactive web app which facilitates the study of radiocarbon dates by providing selection tools for spatial information, chronology, and date accuracy. The map interface offers a mobile and multi-scalar window to study the dynamic of last hunter-gathers / early farmers frontiers <br>
+NeoNet app is an opensource R Shiny interactive web app which facilitates their study by providing selection tools for spatial information, chronology, and date accuracy. The map interface offers a mobile and multi-scalar window to study the dynamic of last hunter-gathers / early farmers frontiers <br>
 NB: prepare the map: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
+:::
+
+
+## {}
+
+<div class="img">
+![](img/watersheds-ortho.png){width="1100"}
+</div>
+
+::: {.notes}
+To facilitate dataset curation, it has been divided into two parts based on river basins: NeoNet Atl, focusing on the Atlantic region (in blue), and NeoNet Med, dedicated to the central northern Mediterranean (in red). The decision to partition by river basins is grounded in two primary considerations: it allows for the systematic breakdown, or hierarchical decomposition, of river basins into interconnected and nested components; watersheds are crucial as spatial analysis units, facilitating mathematical modeling that incorporates key concepts such as catchment area, thalweg (shortest path), and natural boundaries.
 :::
 
 ## {}
@@ -88,42 +103,47 @@ df.c14[,!names(df.c14) %in% c("tpq", "taq")] %>%
 
 
 ::: {.notes}
-NeoNet is presently split into two datasets: NeoNet Med, dedicated to the Mediterranean, and NeoNet Atl, focusing on the Atlantic region. These datasets have been assembled by experts specializing in each of these geographic areas. Together, they encompass approximately 4,000 radiocarbon dates belonging to around 3,000 distinct archaeological layers and approximately 800 sites. These dates and archaeological contexts are supported by roughly 600 different bibliographical references.
+*Kervouric*. These datasets have been limited to essential radiocarbon date information: the date, period, location, archaeological unit, type of material dated, and bibliographical references. NeoNet Atl and Med include approximately 4,000 radiocarbon dates from around 3,000 distinct archaeological layers, along with about 800 sites mentioned in bibliographical references. These dates and archaeological contexts are backed by roughly 600 different bibliographical sources.
 :::
 
 
-## {}
+## Atl
 
-<div class="img">
-![](img/neo_datasum_by_periods_samp.png){height="220"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png){height="250"}
+<div class="row">
+
+<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/atl_test1.png)
+<div class="captiontext">Summed probability densities (SPD)</div>
 </div>
-<div class="captiontext">Spatial distribution of the two main periods (<span style="color:blue"><b>LM</b></span> and <span style="color:red"><b>EN</b></span>) with the SPD of the whole NeoNet Med dataset (same colors)
+<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/figure1.png){height="700"}
+<div class="captiontext">Distribution of dates by periods</div>
 </div>
 
-<div class="img"><center>
-![](img/open-data-joad.png){width="600"}
-</center></div>
-<div class="captiontext">Publication of the corresponding data paper 
 </div>
 
 ::: {.notes}
-NeoNet Med, which encompasses the North Central-Western Mediterranean Basin, was the initial dataset to be made available to the public. Our data paper, published in the *Journal of Open Archaeological Data*, offers a comprehensive account of the data collection process, including steps, quality control, metadata, and other essential details. Additionally, it provides valuable insights into how the dataset can be effectively reused for various purposes.
+NeoNet Atl
 :::
 
-## {}
 
-<div class="img">
-![](img/watersheds-ortho.png){width="1100"}
+
+## Med
+
+<div class="row">
+
+<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png)
+<div class="captiontext">Summed probability densities (SPD)</div>
+</div>
+<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/neo_datasum_by_periods.png){height="700"}
+<div class="captiontext">Distribution of dates by periods</div>
+</div>
 </div>
 
-::: {.notes}
-NeoNet spatial coverage is depicted in red. It has been completed by the Southern European Atlantic Basin (in blue).
-The decision to partition the research area into separate river basins is rooted in two main considerations:
-1. Firstly, it permits the systematic breakdown, or hierachical decomposition, of river basins into interconnected and nested components.
-2. Secondly, watersheds hold significant importance as spatial analysis units, enabling mathematical modeling that integrates key concepts such as catchment area, thalweg (shortest path), and natural boundaries.
 
+::: {.notes}
+NeoNet Med, which encompasses the North Central-Western Mediterranean Basin, has been published in the *Journal of Open Archaeological Data*. The data paper offers a comprehensive account of the data collection process, including steps, quality control, metadata, and other essential details. Additionally, it provides valuable insights into how the dataset can be effectively reused for various purposes.
 :::
+
+
 
 ## {}
 
@@ -169,7 +189,7 @@ View of the Défilé de Donzère and the Rhône river, from the South
 
 
 ::: {.notes}
-You can create a selection window around the Défilé, specifically choosing dates from the Late Mesolithic (LM) and Early Neolithic (EN) periods, with a standard deviation (SD) of less than 130. Upon completing this process, the dataset will contain 70 sites and 353 dates. Moreover, these dates can be calibrated on the fly by selecting one of them and accessing the calib (calibration) panel.
+An user create a selection window around the Défilé, specifically choosing dates from the Late Mesolithic (LM) and Early Neolithic (EN) periods, with a standard deviation (SD) of less than 130. Applying these filters, the dataset will contain 70 sites and 353 dates. These dates can be calibrated on the fly by selecting one of them and accessing the calib (calibration) panel.
 :::
 
 ## {}
@@ -179,7 +199,7 @@ You can create a selection window around the Défilé, specifically choosing dat
 </div>
 
 ::: {.notes}
-Dates can be aggregated and seriated by periods, sites and period, archaeological layer (PhaseCode), or plotted individually. Here by periods
+Dates can be aggregated and seriated by periods (here), sites and period, archaeological layer (PhaseCode), or plotted individually
 :::
 
 
@@ -205,7 +225,7 @@ Export the plot
 
 
 ::: {.notes}
-The selected area and the selected dates can also be exported, both in GeoJSON files, using two other export buttons on the top left of the map panel
+Returning in the map panel The selected area and the selected dates can also be exported, both in GeoJSON files, using two other export buttons on the top left of the map panel
 :::
 
 ## {}
@@ -347,7 +367,7 @@ The Shiny app also comes with documentation and others functions to calculate SP
 
 
 ::: {.notes}
-In conclusion, we acknowledge that NeoNet is just one of the numerous radiocarbon datasets as radiocarbon modeling is a well-explored field. This is precisely why we have developed a *getter* function within the C14bazaar package for the dataset's to be harvestable, and we remain committed to enhancing data and data sample re-usability.
+NeoNet is one of the numerous radiocarbon datasets. That's why we have developed a *getter* function within the C14bazaar package for the dataset's to be harvestable.
 :::
 
 
@@ -359,13 +379,18 @@ In conclusion, we acknowledge that NeoNet is just one of the numerous radiocarbo
 
 **Perspectives**
 
+* Enhancing data and data re-usability
 * Extension of the dataset to other river basins
-* Build sites' Harris matrices and run Bayesian analysis on-the-fly
+* Build sites' Harris matrices
+* Run Bayesian analysis on-the-fly
 
 ::: {.notes}
 * Neonet offers an App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition
 * The dataset is OD, the app and management functions are OSrc and OA. Compliant with OSci
+* FAIRability can still be improved
 * Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility and robust assumptions.
+* We would like to contruct the Harris matrices of different site and
+* run Bayesian statistics to better the modeling
 :::
 
 ## Credits
@@ -377,10 +402,7 @@ In conclusion, we acknowledge that NeoNet is just one of the numerous radiocarbo
 
 * <span class= smalltext>Conexiones en el Sur de la Península durante el Neolítico (RED2022-134436-T)</span>
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-gobierno-de-espana.png){height="80"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-agencia-investigacion.png){height="80"}
-
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-csic.png){height="80"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-gobierno-de-espana.png){height="80"} ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-agencia-investigacion.png){height="80"} ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-csic.png){height="80"}
 </p>
 
 
