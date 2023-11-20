@@ -27,7 +27,7 @@ author:
     affiliation:
       - ref: csic
 title-slide-attributes:
-    data-background-image: "img/watersheds-ortho.png"
+    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/img/app_neonet_map_ortho_clust"
     data-background-size: "100%"
     data-background-opacity: "0.3"
 format:
@@ -46,7 +46,7 @@ format:
     footnotes-hover: true
     # self-contained: true
     # embed-resources: true
-    logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/watersheds-ortho.png
+    logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
     footer: "<em>Big Historical Data Conference</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/bhdc_avatar.png' style='height: 35px;vertical-align: middle;'> <https://bhdc.earth/> 22-25 November 2023, Jena (Germany)"
     margin: 0
     width: 1200
@@ -72,7 +72,7 @@ NB: prepare the map: Global view / clustered / ortho ; Explode cluster / ungroup
 </div>
 
 ::: {.notes}
-To facilitate dataset curation, it has been divided into two parts based on river basins: NeoNet Atl, focusing on the Atlantic region (in blue), and NeoNet Med, dedicated to the central northern Mediterranean (in red). The decision to partition by river basins is grounded in two primary considerations: it allows for the systematic breakdown, or hierarchical decomposition, of river basins into interconnected and nested components; watersheds are crucial as spatial analysis units, facilitating mathematical modeling that incorporates key concepts such as catchment area, thalweg (shortest path), and natural boundaries.
+To facilitate dataset curation, it has been divided into two parts based on river basins: NeoNet Atl, focusing on the Atlantic region (in blue), and NeoNet Med, dedicated to the North Central-Western Mediterranean Basin (in red). The decision to partition by river basins is grounded in two primary considerations: it allows for the systematic breakdown, or hierarchical decomposition, of river basins into interconnected and nested components; watersheds are crucial as spatial analysis units, facilitating mathematical modeling that incorporates key concepts such as catchment area, thalweg (shortest path), and natural boundaries.
 :::
 
 ## {}
@@ -108,28 +108,28 @@ df.c14[,!names(df.c14) %in% c("tpq", "taq")] %>%
 
 
 ## Atl
+`id00164_doc_elencoc14.tsv`
 
 <div class="row">
-
-<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/atl_test1.png)
+<div class="column50">![](img/figure2.png)
 <div class="captiontext">Summed probability densities (SPD)</div>
 </div>
-<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/figure1.png){height="700"}
+<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/atl_test1.png){height="700"}
 <div class="captiontext">Distribution of dates by periods</div>
 </div>
 
 </div>
 
 ::: {.notes}
-NeoNet Atl
+NeoNet Atl. We are in the process of publishing this dataset as a data paper, and it will be deposited on a university server.
 :::
 
 
 
 ## Med
+`id00140_doc_elencoc14.tsv`
 
 <div class="row">
-
 <div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png)
 <div class="captiontext">Summed probability densities (SPD)</div>
 </div>
@@ -140,7 +140,7 @@ NeoNet Atl
 
 
 ::: {.notes}
-NeoNet Med, which encompasses the North Central-Western Mediterranean Basin, has been published in the *Journal of Open Archaeological Data*. The data paper offers a comprehensive account of the data collection process, including steps, quality control, metadata, and other essential details. Additionally, it provides valuable insights into how the dataset can be effectively reused for various purposes.
+NeoNet Med has been published in the *Journal of Open Archaeological Data*. The data paper offers a comprehensive account of the data collection process, including steps, quality control, metadata, and other essential details. Additionally, it provides valuable insights into how the dataset can be effectively reused for various purposes.
 :::
 
 
@@ -150,11 +150,13 @@ NeoNet Med, which encompasses the North Central-Western Mediterranean Basin, has
 <div class="img">
 ![](img/watersheds-climate.png){width=1000px}
 </div>
-<div class="captiontext">Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, Nature Scientific Data
+<div class="captiontext">Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, Nature Scientific Data[^1]
 </div>
 
+[^1]: My note
+
 ::: {.notes}
-As an example, the application incorporates the current Koppen climate classification as a base map. This feature enables users to filter the dataset by different climate regions and delve into how these climates might have played a role in shaping the Neolithic expansion.
+I'd like to demonstrate how the app functions with an example: examining the influence of climates on the Neolithic expansion and the potential impact of varying ecological barriers on the spread of farming. The app includes the current Koppen Climate Classification as a basemap.
 :::
 
 
@@ -167,18 +169,18 @@ As an example, the application incorporates the current Koppen climate classific
 </div>
 
 ::: {.notes}
-For example, the Défilé de Donzère is a narrow pass in the Rhone valley that runs from North to South, situated between the Alps in the east and the Massif Central in the west. This region experiences a Mediterranean climate in the south (`Csa` - Temperate, dry summer, hot summer) and a continental climate in the north (`Cfb` - Temperate, no dry season, warm summer).
+For instance, the Défilé de Donzère is a narrow pass in the Rhone valley, extending from North to South, located between the Alps in the east and the Massif Central in the west. In this area, the southern part has a Mediterranean climate (`Csa` - Temperate, dry and hot summer), while the northern part experiences a continental climate (`Cfb` - Temperate, no dry season, warm summer).
 :::
 
 ## {}
 
 <div class="img">
 ![](img/donzere-view.png){width=1200px}
-<div class="captiontext">View of the Défilé de Donzère and the Rhône river, from the South in Google Earth</div>
+<div class="captiontext">View of Défilé de Donzère and the Rhône River from the south on Google Earth./div>
 
 
 ::: {.notes}
-View of the Défilé de Donzère and the Rhône river, from the South
+View from the South of the Défilé de Donzère and the Rhône river
 :::
 
 ## {}
@@ -199,7 +201,7 @@ An user create a selection window around the Défilé, specifically choosing dat
 </div>
 
 ::: {.notes}
-Dates can be aggregated and seriated by periods (here), sites and period, archaeological layer (PhaseCode), or plotted individually
+Dates can be aggregated and seriated by periods (shown here), sites and periods, archaeological layer (PhaseCode), or plotted individually. However, a large number of dates will overwhelm the R Shiny server and may result in an error in this panel. This is one of the limitations of R for managing big data.
 :::
 
 
@@ -225,7 +227,7 @@ Export the plot
 
 
 ::: {.notes}
-Returning in the map panel The selected area and the selected dates can also be exported, both in GeoJSON files, using two other export buttons on the top left of the map panel
+Returning in the map panel. The selected area and the selected dates can also be exported, both in GeoJSON files, using two other export buttons on the top left of the map panel
 :::
 
 ## {}
@@ -239,7 +241,7 @@ dirIn <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/presentation
 
 ::: {.column width="50%"}
 
-<span class= smalltext>`neonet-data-2023-10-22-select-aera.geojson`</span>
+<span class= smalltext><sup>`neonet-data-2023-10-22-select-aera.geojson`</sup></span>
 
 ```{r}
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
@@ -252,7 +254,7 @@ leaflet(df, width = "500px") %>%
 
 ::: {.column width="50%"}
 
-<span class= smalltext>`neonet-data-2023-10-22.geojson`</span>
+<span class= smalltext><sup>`neonet-data-2023-10-22.geojson`</sup></span>
 
 ```{r}
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22.geojson"),  quiet = T)
@@ -267,7 +269,7 @@ leaflet(df, width = "500px") %>%
 
 
 ::: {.notes}
-These files can undergo a secondary curation and subsetting process in a GIS or any other appropriate application <br>
+Here it's a leaflet view of these exported file. The latter can undergo a secondary curation and subsetting process in a GIS or any other appropriate application <br>
 Date that have been removed: 
 - Grotte de Camprafaud, lyer 20,Gif-3077
 - Abri de la Font-des-Pigeons, Escalon C5-F5-C6F6, KN-182
@@ -298,7 +300,7 @@ neo_datasum(df.c14,
 ```
 
 <div class="img"><center>
-![](https://raw.githubusercontent.com/zoometh/neonet/main/results/atl_test.png){width="700" style='horizontal-align: middle;'}
+![](https://raw.githubusercontent.com/zoometh/neonet/main/results/atl_test.png){width="500" style='horizontal-align: middle;'}
 </center></div>
 
 
@@ -307,7 +309,7 @@ neo_spd(df.c14 = df.c14)
 ```
 
 <div class="img"><center>
-![](img/figure2.png){width="700" style='horizontal-align: middle;'}
+![](img/figure2.png){width="500" style='horizontal-align: middle;'}
 </center></div>
 
 ```{.r}
@@ -315,7 +317,7 @@ neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson")
 ```
 
 <div class="img"><center>
-![](img/donzere_EN-neolithic-isochr.png){width="450" style='horizontal-align: middle;'}
+![](img/donzere_EN-neolithic-isochr.png){width="600" style='horizontal-align: middle;'}
 </center></div>
 
 ```{.r}
@@ -324,7 +326,7 @@ neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson",
 ```
 
 <div class="img"><center>
-![](img/donzere_LM-paleolithic-isochr.png){width="450" style='horizontal-align: middle;'}
+![](img/donzere_LM-paleolithic-isochr.png){width="600" style='horizontal-align: middle;'}
 </center></div>
 
 ```{.r}
@@ -341,7 +343,11 @@ neo_strat(inData = "Roc du Dourgne_2023-07-30.csv")
 ::::
 
 ::: {.notes}
-The Shiny app also comes with documentation and others functions to calculate SPDs, isochrones and Harrix matrices among other things.
+The Shiny app also includes documentation and other functions for calculating various features, including:
+
+* SPDs (Summed Probability Distributions)
+* Isochrones (considered an effective way to visually represent the diffusion in time and space within a single non-animated map)
+* Harrix matrices
 :::
 
 ## {}
@@ -365,32 +371,34 @@ The Shiny app also comes with documentation and others functions to calculate SP
 ::::
 
 
-
 ::: {.notes}
-NeoNet is one of the numerous radiocarbon datasets. That's why we have developed a *getter* function within the C14bazaar package for the dataset's to be harvestable.
+NeoNet is one of the numerous existing radiocarbon datasets. That's why we have developed a *getter* function within the C14bazaar package for the dataset's to be harvestable.
 :::
 
 
 ## Conclusion
 
-* App and dataset of 14C dates for the **Mesolithic / Neolithic transition**
+* App and dataset of 14C dates for the **Mesolithic / Neolithic transition** in **South-Central and South-Western Europe**
 * Open Data, Open Source, Open Access ➡️ **Open Science**
 * Scalable, incrementable, reusable, analyzable ➡️ **Reproducibility**
 
-**Perspectives**
+::: {.notes}
+* Neonet offers an App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition, currently in South-Central and South-Western Europe
+* The dataset is OD, the app and management functions are OSrc and OA. Compliant with OSci
+:::
+
+## Perspectives
 
 * Enhancing data and data re-usability
 * Extension of the dataset to other river basins
-* Build sites' Harris matrices
-* Run Bayesian analysis on-the-fly
+* Build sites' Harris matrices and run Bayesian with this *prior* information
 
 ::: {.notes}
-* Neonet offers an App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition
-* The dataset is OD, the app and management functions are OSrc and OA. Compliant with OSci
+Perspectives are many:
+
 * FAIRability can still be improved
 * Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility and robust assumptions.
-* We would like to contruct the Harris matrices of different site and
-* run Bayesian statistics to better the modeling
+* We would like to construct the Harris matrices of different site and run Bayesian statistics to better the modeling
 :::
 
 ## Credits
