@@ -288,10 +288,10 @@ neo_datasum <- function(df.c14,
 #             roi = "C:/Rprojects/neonet/doc/data/wsh_med.geojson",
 #             export = F)
 
-df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t")
-neo_datasum(df.c14, info = c("maps"),
-            roi = "C:/Rprojects/neonet/doc/data/wsh_atl.geojson",
-            ncol = 3,
-            export = T,
-            dirOut = "C:/Rprojects/neonet/results/",
-            fileOut = "atl_test1.png")
+# df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t")
+# neo_datasum(df.c14, info = c("maps"),
+#             roi = "C:/Rprojects/neonet/doc/data/wsh_atl.geojson",
+#             ncol = 3,
+#             export = T,
+#             dirOut = "C:/Rprojects/neonet/results/",
+#             fileOut = "atl_test1.png")

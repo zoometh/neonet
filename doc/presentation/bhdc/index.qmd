@@ -27,9 +27,10 @@ author:
     affiliation:
       - ref: csic
 title-slide-attributes:
-    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/img/app_neonet_map_ortho_clust"
-    data-background-size: "100%"
-    data-background-opacity: "0.3"
+    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/app_neonet_map_ortho_clust.png"
+    data-background-size: "110%"
+    data-background-opacity: "0.2"
+    data-notes: Some speaker notes
 format:
   revealjs: 
     css: https://zoometh.github.io/thomashuet/css/quarto.css
@@ -54,7 +55,6 @@ format:
 
 ::: {.notes}
 Radiocarbon dates are among the most common and widely shared archaeological data across regional specificities. Accompanied by archaeological contexts, these dates are often utilized to develop large-scale models of human activities and to categorize cultural groups over time and space. The NeoNet project brings together several archaeologists from different geographic areas, focusing on the transition between the last hunter-gatherers and the early farmers. As part of this project, we have compiled and curated a substantial dataset of radiocarbon dates, which can be accessed through an R Shiny online app, the NeoNet app. Today, we want to explain how our method tackles research questions and follows the FAIR principles.
-
 :::
 
 ## {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" background-interactive="true"}
@@ -108,10 +108,10 @@ df.c14[,!names(df.c14) %in% c("tpq", "taq")] %>%
 
 
 ## Atl
-`id00164_doc_elencoc14.tsv`
 
 <div class="row">
-<div class="column50">![](img/figure2.png)
+<div class="column50"><sup>`id00164_doc_elencoc14.tsv`</sup><br>
+![](img/figure2.png)
 <div class="captiontext">Summed probability densities (SPD)</div>
 </div>
 <div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/atl_test1.png){height="700"}
@@ -127,10 +127,10 @@ NeoNet Atl. We are in the process of publishing this dataset as a data paper, an
 
 
 ## Med
-`id00140_doc_elencoc14.tsv`
 
 <div class="row">
-<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png)
+<div class="column50"><sup>`id00140_doc_elencoc14.tsv`</sup><br>
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png)
 <div class="captiontext">Summed probability densities (SPD)</div>
 </div>
 <div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/neo_datasum_by_periods.png){height="700"}
@@ -150,13 +150,13 @@ NeoNet Med has been published in the *Journal of Open Archaeological Data*. The 
 <div class="img">
 ![](img/watersheds-climate.png){width=1000px}
 </div>
-<div class="captiontext">Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, Nature Scientific Data[^1]
+<div class="captiontext">Koppen Climate Classification[^1].
 </div>
 
-[^1]: My note
+[^1]: Beck et al. 2018, *Present and future Köppen-Geiger climate classification maps at 1-km resolution*, Nature Scientific Data.
 
 ::: {.notes}
-I'd like to demonstrate how the app functions with an example: examining the influence of climates on the Neolithic expansion and the potential impact of varying ecological barriers on the spread of farming. The app includes the current Koppen Climate Classification as a basemap.
+We would like to demonstrate how the app works using an example: examining the influence of climates on the Neolithic expansion and the potential impact of varying ecological barriers on the spread of farming. The app includes the current Koppen Climate Classification as a basemap.
 :::
 
 
@@ -165,18 +165,19 @@ I'd like to demonstrate how the app functions with an example: examining the inf
 <div class="img">
 ![](img/donzere-gis.png){width="1000"}
 </div>
-<div class="captiontext">Beck et al. 2018, Present and future Köppen-Geiger climate classification maps at 1-km resolution, Nature Scientific Data
+<div class="captiontext">Koppen Climate Classification[^1].
 </div>
 
+
 ::: {.notes}
-For instance, the Défilé de Donzère is a narrow pass in the Rhone valley, extending from North to South, located between the Alps in the east and the Massif Central in the west. In this area, the southern part has a Mediterranean climate (`Csa` - Temperate, dry and hot summer), while the northern part experiences a continental climate (`Cfb` - Temperate, no dry season, warm summer).
+For instance, the Défilé de Donzère is a narrow pass in the Rhone valley, extending from North to South, located between the Alps in the east and the Massif Central in the west. In this area, the southern part has a Mediterranean climate (`Csa` - Temperate, dry and hot summer), while the northern part experiences a continental climate (`Cfb` - Temperate, no dry season, warm summer). It is worth to note also that the Rhone river acted like a cultural frontier during the Late Neolithic.
 :::
 
 ## {}
 
 <div class="img">
 ![](img/donzere-view.png){width=1200px}
-<div class="captiontext">View of Défilé de Donzère and the Rhône River from the south on Google Earth./div>
+<div class="captiontext">View of Défilé de Donzère and the Rhône River from the south on Google Earth.<div>
 
 
 ::: {.notes}
@@ -269,7 +270,7 @@ leaflet(df, width = "500px") %>%
 
 
 ::: {.notes}
-Here it's a leaflet view of these exported file. The latter can undergo a secondary curation and subsetting process in a GIS or any other appropriate application <br>
+Here it's a leaflet view of these exported files. On the left hand side the selection rectangle, on the right hand side the dates. Dates can undergo a secondary curation and subsetting process using a GIS or any other appropriate application <br>
 Date that have been removed: 
 - Grotte de Camprafaud, lyer 20,Gif-3077
 - Abri de la Font-des-Pigeons, Escalon C5-F5-C6F6, KN-182
@@ -293,8 +294,9 @@ Date that have been removed:
 
 ::: {.column width="70%"}
 
+
 ```{.r}
-neo_datasum(df.c14, 
+neo_datasum(df.c14 = df.c14, 
             info = c("maps"),
             roi = "https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson")
 ```
@@ -345,6 +347,7 @@ neo_strat(inData = "Roc du Dourgne_2023-07-30.csv")
 ::: {.notes}
 The Shiny app also includes documentation and other functions for calculating various features, including:
 
+* Spatial distributions
 * SPDs (Summed Probability Distributions)
 * Isochrones (considered an effective way to visually represent the diffusion in time and space within a single non-animated map)
 * Harrix matrices
@@ -383,15 +386,16 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 * Scalable, incrementable, reusable, analyzable ➡️ **Reproducibility**
 
 ::: {.notes}
-* Neonet offers an App and curated dataset of radiocarbon dates for the Mesolithic / Neolithic transition, currently in South-Central and South-Western Europe
+* Neonet offers an app and curated datasets of radiocarbon dates for the Mesolithic / Neolithic transition, currently in South-Central and South-Western Europe
 * The dataset is OD, the app and management functions are OSrc and OA. Compliant with OSci
+* The app allows a multiscalar approach, the partition in river basins makes it easily incrementable, being compliant with OS makes also the framework reusable, and side functions make easier the analysis. These features make, potentially, radiocarbon analysis mostly reproductible. 
 :::
 
 ## Perspectives
 
 <center>
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/panel_map_export_todo.png)
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/panel_map_export_todo.png){width="500" style='horizontal-align: middle;'}
 
 </center>
 
@@ -402,7 +406,7 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 ::: {.notes}
 Perspectives are many:
 
-* We need IT development to allow to study different geographical windows at the same time (here at the South and the North of the Defile)
+* We need IT development to allow to study and contrast different geographical windows at the same time (here at the South and the North of the Defile)
 * FAIRability can still be improved
 * Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility and robust assumptions.
 * We would like to construct the Harris matrices of different site and run Bayesian statistics to better the modeling
