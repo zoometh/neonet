@@ -381,6 +381,10 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 
 ## Conclusion
 
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/panel_map_export_todo.png){width="500" style='horizontal-align: middle;'}
+
+</center>
+
 * App and dataset of 14C dates for the **Mesolithic / Neolithic transition** in **South-Central and South-Western Europe**
 * Open Data, Open Source, Open Access ➡️ **Open Science**
 * Scalable, incrementable, reusable, analyzable ➡️ **Reproducibility**
