@@ -28,9 +28,9 @@ author:
       - ref: csic
 title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/app_neonet_map_ortho_clust.png"
-    data-background-size: "110%"
-    data-background-opacity: "0.2"
-    data-notes: Some speaker notes
+    data-background-size: "100%"
+    data-background-opacity: "0.3"
+    data-notes: Radiocarbon dates stand out as one of the most common and extensively shared archaeological datasets across various specializations. Accompanied by archaeological contexts, these dates play a crucial role in constructing large-scale models of human activities and classifying cultural groups across different periods and regions. The NeoNet project unites archaeologists from diverse geographic areas, with a specific focus on the transition from hunter-gatherer societies to early farming communities. As part of this initiative, we have compiled and meticulously curated a substantial collection of radiocarbon dates, accessible through the NeoNet app—an R Shiny online application. Today, our aim is to elucidate how our methodology addresses research questions and adheres to the FAIR principle.
 format:
   revealjs: 
     css: https://zoometh.github.io/thomashuet/css/quarto.css
@@ -53,14 +53,10 @@ format:
     width: 1200
 ---
 
-::: {.notes}
-Radiocarbon dates are among the most common and widely shared archaeological data across regional specificities. Accompanied by archaeological contexts, these dates are often utilized to develop large-scale models of human activities and to categorize cultural groups over time and space. The NeoNet project brings together several archaeologists from different geographic areas, focusing on the transition between the last hunter-gatherers and the early farmers. As part of this project, we have compiled and curated a substantial dataset of radiocarbon dates, which can be accessed through an R Shiny online app, the NeoNet app. Today, we want to explain how our method tackles research questions and follows the FAIR principles.
-:::
-
 ## {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" background-interactive="true"}
 
 ::: {.notes}
-NeoNet app is an opensource R Shiny interactive web app which facilitates their study by providing selection tools for spatial information, chronology, and date accuracy. The map interface offers a mobile and multi-scalar window to study the dynamic of last hunter-gathers / early farmers frontiers <br>
+The NeoNet app is an open-source R Shiny interactive web application designed to enhance the study of radiocarbon data. It facilitates research by providing selection tools for spatial information, chronology, and date accuracy. The map interface offers a flexible and multi-scalar window, enabling the study of the dynamics of transitions between last hunter-gatherers and early farmers <br>
 NB: prepare the map: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
 :::
 
@@ -120,6 +116,8 @@ df.c14[,!names(df.c14) %in% c("tpq", "taq")] %>%
 
 </div>
 
+
+
 ::: {.notes}
 NeoNet Atl. We are in the process of publishing this dataset as a data paper, and it will be deposited on a university server.
 :::
@@ -140,7 +138,7 @@ NeoNet Atl. We are in the process of publishing this dataset as a data paper, an
 
 
 ::: {.notes}
-NeoNet Med has been published in the *Journal of Open Archaeological Data*. The data paper offers a comprehensive account of the data collection process, including steps, quality control, metadata, and other essential details. Additionally, it provides valuable insights into how the dataset can be effectively reused for various purposes.
+NeoNet Med has been published in the *Journal of Open Archaeological Data*. The data paper offers a comprehensive account of the data collection process, including steps, quality control, metadata, and other essential details. Additionally, it provides insights into how the dataset can be effectively reused.
 :::
 
 
@@ -170,7 +168,7 @@ We would like to demonstrate how the app works using an example: examining the i
 
 
 ::: {.notes}
-For instance, the Défilé de Donzère is a narrow pass in the Rhone valley, extending from North to South, located between the Alps in the east and the Massif Central in the west. In this area, the southern part has a Mediterranean climate (`Csa` - Temperate, dry and hot summer), while the northern part experiences a continental climate (`Cfb` - Temperate, no dry season, warm summer). It is worth to note also that the Rhone river acted like a cultural frontier during the Late Neolithic.
+For instance, the Défilé de Donzère is a narrow pass in the Rhone valley, extending from North to South, located between the Alps in the east and the Massif Central in the west. In this area, the southern part has a Mediterranean climate (`Csa` - Temperate, dry and hot summer), while the northern part experiences a continental climate (`Cfb` - Temperate, no dry season, warm summer). It is worth noting that the Rhône River served as a cultural frontier during the Late Neolithic.
 :::
 
 ## {}
@@ -214,8 +212,7 @@ Dates can be aggregated and seriated by periods (shown here), sites and periods,
 </center></div>
 
 ::: {.notes}
-Here by sites and period. Graphics can be exported using a download button
-Export the plot
+Here by sites and period. Graphics can be exported using a download button.
 :::
 
 
@@ -270,14 +267,7 @@ leaflet(df, width = "500px") %>%
 
 
 ::: {.notes}
-Here it's a leaflet view of these exported files. On the left hand side the selection rectangle, on the right hand side the dates. Dates can undergo a secondary curation and subsetting process using a GIS or any other appropriate application <br>
-Date that have been removed: 
-- Grotte de Camprafaud, lyer 20,Gif-3077
-- Abri de la Font-des-Pigeons, Escalon C5-F5-C6F6, KN-182
-- Petites Baties, sect. 4, Beta-103872
-- Mas Neuf, Erl-11802
-- Pontcharaud 2, c.3, Ly-7625
-- Clos de Poujol, c. Sn-Sn1, Ly-2138 (OxA)
+Here it's a leaflet view of these exported files. On the left hand side the selection rectangle, on the right hand side the dates. Dates can undergo a secondary curation and subsetting process using a GIS or any other appropriate application.
 :::
 
 ## {}
@@ -381,38 +371,36 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 
 ## Conclusion
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/panel_map_export_todo.png){width="500" style='horizontal-align: middle;'}
+<center>
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet-data-2023-09-24-isochr.png){width="600"}
 
 </center>
 
-* App and dataset of 14C dates for the **Mesolithic / Neolithic transition** in **South-Central and South-Western Europe**
-* Open Data, Open Source, Open Access ➡️ **Open Science**
-* Scalable, incrementable, reusable, analyzable ➡️ **Reproducibility**
+* Open Data, Open Source, Open Access
+* Scalable, Incrementable, Reusable, Analyzable
 
 ::: {.notes}
 * Neonet offers an app and curated datasets of radiocarbon dates for the Mesolithic / Neolithic transition, currently in South-Central and South-Western Europe
 * The dataset is OD, the app and management functions are OSrc and OA. Compliant with OSci
-* The app allows a multiscalar approach, the partition in river basins makes it easily incrementable, being compliant with OS makes also the framework reusable, and side functions make easier the analysis. These features make, potentially, radiocarbon analysis mostly reproductible. 
+* The app allows a multiscalar approach, the partition in river basins makes it easily incrementable, being compliant with OS makes also the framework reusable, and side functions make easier the analysis. These features collectively enhance the potential reproducibility of radiocarbon analysis, contributing to the development of consensual assumptions about the temporal dynamics of the spread of farming
 :::
 
 ## Perspectives
 
 <center>
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/panel_map_export_todo.png){width="500" style='horizontal-align: middle;'}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/panel_map_export_todo.png){width="600" style='horizontal-align: middle;'}
 
 </center>
 
-* Enhancing data and data re-usability
-* Extension of the dataset to other river basins
-* Build sites' Harris matrices and run Bayesian with this *prior* information
+* Extending, enhancing data and data re-usability
+* Build sites' Harris matrices and run Bayesian with *prior* information
 
 ::: {.notes}
 Perspectives are many:
 
-* We need IT development to allow to study and contrast different geographical windows at the same time (here at the South and the North of the Defile)
-* FAIRability can still be improved
-* Watersheds partition is highly modular (hierarchical decomposition) and interactivity offer a great mean for reproductibility and robust assumptions.
+* Watersheds partition is highly modular (hierarchical decomposition) and makes easy the extension of the dataset to other river basins. We need IT development to offer the option of different geographical windows at the same time (here at the South and the North of the Defile). That will allow to contrast different areas. FAIRability can still be improved: even curated and standardised, the NeoNet dataset certainly still contains error. Managing feedback from users would be a plos.
 * We would like to construct the Harris matrices of different site and run Bayesian statistics to better the modeling
 :::
 
