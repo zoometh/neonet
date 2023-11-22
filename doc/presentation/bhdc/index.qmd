@@ -30,7 +30,7 @@ title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/app_neonet_map_ortho_clust.png"
     data-background-size: "100%"
     data-background-opacity: "0.3"
-    data-notes: Radiocarbon dates stand out as one of the most common and extensively shared archaeological datasets across various specializations. Accompanied by archaeological contexts, these dates play a crucial role in constructing large-scale models of human activities and classifying cultural groups across different periods and regions. The NeoNet project unites archaeologists from diverse geographic areas, with a specific focus on the transition from hunter-gatherer societies to early farming communities. As part of this initiative, we have compiled and meticulously curated a substantial collection of radiocarbon dates, accessible through the NeoNet app—an R Shiny online application. Today, our aim is to elucidate how our methodology addresses research questions and adheres to the FAIR principle.
+    data-notes: Radiocarbon dates are one of the most shared archaeological data. Accompanied by archaeological contexts, these absolute dates play a crucial role in constructing large-scale models of human activities and classifying cultural groups across different periods and regions. The NeoNet project unites archaeologists from diverse geographic areas, with a specific focus on the transition from hunter-gatherer societies to early farming communities. As part of this initiative, we have compiled and meticulously curated a substantial collection of radiocarbon dates, accessible through the NeoNet app—an R Shiny online application. Today, our aim is to elucidate how our methodology addresses research questions and adheres to the FAIR principle.
 format:
   revealjs: 
     css: https://zoometh.github.io/thomashuet/css/quarto.css
@@ -59,19 +59,29 @@ format:
 The NeoNet app is an open-source R Shiny interactive web application designed to enhance the study of radiocarbon data. It facilitates research by providing selection tools for spatial information, chronology, and date accuracy. The map interface offers a flexible and multi-scalar window, enabling the study of the dynamics of transitions between last hunter-gatherers and early farmers <br> NB: prepare the map: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
 :::
 
-## 
+## {}
 
 ::: img
-![](img/watersheds-ortho.png){width="1100"}
+![](img/watersheds-rivers.png){width="1100"}
 :::
 
 ::: notes
 To facilitate dataset curation, it has been divided into two parts based on river basins: NeoNet Atl, focusing on the Atlantic region (in blue), and NeoNet Med, dedicated to the North Central-Western Mediterranean Basin (in red). The decision to partition by river basins is grounded in two primary considerations: it allows for the systematic breakdown, or hierarchical decomposition, of river basins into interconnected and nested components; watersheds are crucial as spatial analysis units, facilitating mathematical modeling that incorporates key concepts such as catchment area, thalweg (shortest path), and natural boundaries.
 :::
 
-## 
 
-The NeoNet Atl dataset
+## {}
+
+::: img
+![](img/watersheds-basins.png){width="1100"}
+:::
+
+::: notes
+To facilitate dataset curation, it has been divided into two parts based on river basins: NeoNet Atl, focusing on the Atlantic region (in blue), and NeoNet Med, dedicated to the North Central-Western Mediterranean Basin (in red). The decision to partition by river basins is grounded in two primary considerations: it allows for the systematic breakdown, or hierarchical decomposition, of river basins into interconnected and nested components; watersheds are crucial as spatial analysis units, facilitating mathematical modeling that incorporates key concepts such as catchment area, thalweg (shortest path), and natural boundaries.
+:::
+
+
+## The NeoNet Atl dataset
 
 ```{r}
 library(dplyr)
