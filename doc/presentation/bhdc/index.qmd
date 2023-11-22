@@ -131,7 +131,7 @@ NeoNet Atl. We are in the process of publishing this dataset as a data paper, an
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png)
 <div class="captiontext">Summed probability densities (SPD)</div>
 </div>
-<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/neo_datasum_by_periods.png){height="700"}
+<div class="column50">![](https://raw.githubusercontent.com/zoometh/neonet/master/results/med_test1.png){height="500"}
 <div class="captiontext">Distribution of dates by periods</div>
 </div>
 </div>
@@ -245,7 +245,7 @@ dirIn <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/presentation
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
 leaflet(df, width = "500px") %>%
   addTiles() %>% 
-  addPolygons()       # Change weight as needed
+  addPolygons(popup = ~ID)
 ```
 
 :::
@@ -258,7 +258,7 @@ leaflet(df, width = "500px") %>%
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22.geojson"),  quiet = T)
 leaflet(df, width = "500px") %>%
   addTiles() %>% 
-  addCircleMarkers()       # Change weight as needed
+  addCircleMarkers(popup = ~SiteName)
 ```
 
 :::
