@@ -1,31 +1,4 @@
 
-set_data_path(path_to_nc = "C:/Rprojects/neonet/doc/data/clim/")
-# list_available_datasets()
-download_dataset("Beyer2020")
-
-library(pastclim)
-# extract monthly temperature and precipitation
-tavg_7k <- pastclim::region_slice(
-  time_bp = -7000,
-  bio_variables = c(paste0("temperature_0", 1:9),
-                    paste0("temperature_", 10:12)),
-  dataset = "Beyer2020"
-)
-prec_7k <- pastclim::region_slice(
-  time_bp = -7000,
-  bio_variables = c(paste0("precipitation_0", 1:9),
-                    paste0("precipitation_", 10:12)),
-  dataset = "Beyer2020"
-)
-# create the koeppen classification
-koeppen_7k <- koeppen_geiger(
-  prec = prec_7k,
-  tavg = tavg_7k
-)
-# plot it
-plot(koeppen_7k)
-
-
 ###
 
 library(dplyr)
