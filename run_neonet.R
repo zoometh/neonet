@@ -1,4 +1,57 @@
-library(coffee)
+
+set_data_path(path_to_nc = "C:/Rprojects/neonet/doc/data/clim/")
+# list_available_datasets()
+download_dataset("Beyer2020")
+
+library(pastclim)
+# extract monthly temperature and precipitation
+tavg_7k <- pastclim::region_slice(
+  time_bp = -7000,
+  bio_variables = c(paste0("temperature_0", 1:9),
+                    paste0("temperature_", 10:12)),
+  dataset = "Beyer2020"
+)
+prec_7k <- pastclim::region_slice(
+  time_bp = -7000,
+  bio_variables = c(paste0("precipitation_0", 1:9),
+                    paste0("precipitation_", 10:12)),
+  dataset = "Beyer2020"
+)
+# create the koeppen classification
+koeppen_7k <- koeppen_geiger(
+  prec = prec_7k,
+  tavg = tavg_7k
+)
+# plot it
+plot(koeppen_7k)
+
+
+###
+
+library(dplyr)
+library(DT)
+neonet_med <- "https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MMb1a4a927461fdd822e923821b8d92371/content"
+df.c14 <- read.csv2(neonet_med, sep = "\t", encoding = "UTF-8")
+font.size <- "8pt"
+df.c14[,!names(df.c14) %in% c("tpq", "taq")] %>% 
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(10, 50, -1), 
+                        c('10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
+        "}")
+    ) 
+  )
+
+
+################
+
+ibrary(coffee)
 
 strat("block_example", its=1e5, thinning=20, internal.thinning=20)
 
