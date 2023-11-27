@@ -348,6 +348,19 @@ Show the complete NeoNet dataset. A site can be selected by searching it in the 
     <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
 </p>
 
+## TODO
+
+Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen Climate Classification to the study
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/koppen_-7000.png"
+" width="1100">
+  <br>
+    <em>The Koppen Climate Classification calculated for 7000 BP with the pastclim R package</em>
+</p>
+
+
 ## Documentation
 
 * NeoNet app [web document](https://zoometh.github.io/neonet/)
