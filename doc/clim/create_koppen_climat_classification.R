@@ -1,7 +1,9 @@
+# devtools::install_github("EvolEcolGroup/pastclim", ref="dev")
+
 library(pastclim)
 
 when <- -7000
-outDir <- "C:/Rprojects/neonet/doc/data/clim/"
+outDir <- "C:/Rprojects/neonet/doc/clim/data/"
 set_data_path(path_to_nc = outDir)
 # list_available_datasets()
 # get_vars_for_dataset(dataset = "Beyer2020", annual = FALSE, monthly = TRUE)
@@ -27,6 +29,10 @@ koeppen_7k <- koeppen_geiger(
 # > object.size(koeppen_7k)
 # 1304 bytes
 # plot it
+plotOut = outDir + "7k_koeppen.jpg"
+jpeg(filename = plotOut, width = 1500, height = 600)
 plot(koeppen_7k)
-outFile = paste0(outDir, "koppen_", as.character(when), ".tif")
-writeRaster(koeppen_7k, outFile)
+dev.off()
+
+# outFile = paste0(outDir, "koppen_", as.character(when), ".tif")
+# writeRaster(koeppen_7k, outFile)
