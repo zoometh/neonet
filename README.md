@@ -15,6 +15,18 @@ NeoNet serves as a framework to investigate the transition between the Late Meso
     <em>The NeoNet Med dataset filtered by periods</em>
 </p>
 
+## NeoNet datasets
+
+<div align="center">
+
+| Med 	| Atl 	|
+|------	|-----	|
+| [id00140_doc_elencoc14.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_elencoc14.tsv)     	| [id00164_doc_elencoc14.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00164_doc_elencoc14.tsv)   	|
+| <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson"><img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/wsh_med.png" width="300"></a> | <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson"><img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/wsh_atl.png" width="300"></a> |
+
+</div>
+
+These datasets are harvested by the [c14bazAAR package](https://github.com/ropensci/c14bazAAR), functions `get_c14data("neonet")` and `get_c14data("neonetatl")`
 
 
 ## NeoNet app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
@@ -37,19 +49,6 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14). The applicat
   + dataset (Med, Atl) DOI
   + timestamp
   + bibliographical reference
-
-## NeoNet datasets
-
-<div align="center">
-
-| Med 	| Atl 	|
-|------	|-----	|
-| [id00140_doc_elencoc14.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_elencoc14.tsv)     	| [id00164_doc_elencoc14.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00164_doc_elencoc14.tsv)   	|
-| <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson"><img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/wsh_med.png" width="300"></a> | <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson"><img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/wsh_atl.png" width="300"></a> |
-
-</div>
-
-These datasets are harvested by the [c14bazAAR package](https://github.com/ropensci/c14bazAAR), functions `get_c14data("neonet")` and `get_c14data("neonetatl")`
 
 ## NeoNet functions <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
 
@@ -167,14 +166,6 @@ neo_spd(df.c14 = df.c14)
 neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson",
         export = T)
 ```
-
-<p align="center">
-<br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24-spd.png"
-" width="700">
-  <br>
-    <em>Output SPD from the `2023-09-24-neonet-data.geojson`</em>
-</p>
 
 ### Isochrones
 
