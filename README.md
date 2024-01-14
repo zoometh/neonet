@@ -2,7 +2,10 @@
 # NeoNet
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk), [Niccolò Mazzucco](mailto:niccolo.mazzucco@unipi.it), [Miriam Cubas Morera](mailto:mcubas.morera@gmail.com), [Juan Gibaja](mailto:jfgibaja@gmail.com), [F. Xavier Oms](mailto:oms@ub.edu), [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com), [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com), [Elías López-Romero](elias.lopez-romero@iam.csic.es)</sub>
 
-NeoNet serves as a framework to investigate the transition between the Late Mesolithic and Early Neolithic periods, in the North-Central Mediterranean (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">loc</a>) and European South Atlantic river basin (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson" target="_blank">loc</a>), by offering curated datasets and management tools: an [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-) and [R functions](https://github.com/zoometh/neonet#neonet-functions)
+NeoNet serves as a framework to investigate the transition between the Late Mesolithic and Early Neolithic periods, in the North-Central Mediterranean (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">loc</a>) and European South Atlantic river basin (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson" target="_blank">loc</a>), by offering:
+1. [curated datasets](https://github.com/zoometh/neonet?tab=readme-ov-file#neonet-datasets)
+2. [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-);
+3. [R functions](https://github.com/zoometh/neonet#neonet-functions)
 
 <p align="center">
 <br>
@@ -11,6 +14,7 @@ NeoNet serves as a framework to investigate the transition between the Late Meso
   <br>
     <em>The NeoNet Med dataset filtered by periods</em>
 </p>
+
 
 
 ## NeoNet app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
@@ -39,6 +43,11 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14). The applicat
 | Med 	| Atl 	|
 |------	|-----	|
 | [id00140_doc_elencoc14.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_elencoc14.tsv)     	| [id00164_doc_elencoc14.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00164_doc_elencoc14.tsv)   	|
+
+wsh_med.png
+wsh_atl.png
+
+These datasets are harvested by the [c14bazAAR package](https://github.com/ropensci/c14bazAAR), functions `get_c14data("neonet")` and `get_c14data("neonetatl")`
 
 ## NeoNet functions <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
 

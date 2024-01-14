@@ -27,7 +27,7 @@
 #' 
 #' @export
 
-neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv',
+neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MM54ff3698c0ea78b77469ce6462c2ca36/content",
                     # df.url = 'https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/140_140_id00140_doc_elencoc14.tsv',
                     ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                     shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
@@ -43,12 +43,17 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
   if(class(df.c14) == "data.frame"){
     c14 <- df.c14
   } else {
-    if(DescTools::SplitPath(df.c14)$extension == "geojson"){
-      c14 <- sf::st_read(df.c14, quiet = T)
+    if(!is.na(DescTools::SplitPath(df.c14)$extension)){
+      if(DescTools::SplitPath(df.c14)$extension == "geojson"){
+        c14 <- sf::st_read(df.c14, quiet = T)
+      }
+      if(DescTools::SplitPath(df.c14)$extension == "tsv"){
+        c14 <- read.table(df.c14, sep = "\t", header = TRUE, stringsAsFactors = F, quote = "")
+      } 
     }
-    if(DescTools::SplitPath(df.c14)$extension == "tsv"){
-      c14 <- read.table(df.c14, sep = "\t", header = TRUE, stringsAsFactors = F, quote="")
-    } 
+    if(is.na(DescTools::SplitPath(df.c14)$extension)){
+      c14 <- data.table::fread(df.c14, verbose = F)
+    }
   }
   # periods
   if(verbose){print("Read period colors")}
@@ -63,7 +68,7 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
   }
   c14 <- within(c14, Period[Period %in% unshown.per] <- 'others')
   c14 <- merge(c14, periods.colors.selected, by.x = "Period", by.y = "period", all.x = T)
-  c14$colors <- NULL # rm previous colors
+  # c14$colors <- NULL # rm previous colors
   # unique(c14$Period)
   # unique(c14$color)
   # reference colors in order
@@ -88,6 +93,9 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
   if(verbose){
     print("Calibration")
   }
+  
+  c14$Period <- factor(c14$Period, levels = periods.colors.selected$period)
+  
   c14$C14Age <- as.numeric(c14$C14Age)
   c14$C14SD <- as.numeric(c14$C14SD)
   bins <- rcarbon::binPrep(c14$SiteName,
@@ -145,5 +153,16 @@ neo_spd <- function(df.c14 = 'http://mappaproject.arch.unipi.it/mod/files/140_14
 # neo_spd()
 
 # df.url = "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv")
+
+# neo_spd(df.c14 = "C:/Users/Thomas Huet/Downloads/id00164_doc_elencoc14 (5).tsv")
+neo_spd(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MM54ff3698c0ea78b77469ce6462c2ca36/content", export = F)
+
+# # c14dates <- data.table::fread("https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MM54ff3698c0ea78b77469ce6462c2ca36/content")
+# 
+# spd.c14.ordered <- spd.c14
+# 
+# spd.c14.ordered$spds <-  spd.c14.ordered$spds[order(match(spd.c14.ordered$spds, periods))]
+# 
+# x[order(match(x,y))]
 
 
