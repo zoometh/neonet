@@ -44,7 +44,11 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14). The applicat
 |------	|-----	|
 | [id00140_doc_elencoc14.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00140_doc_elencoc14.tsv)     	| [id00164_doc_elencoc14.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/id00164_doc_elencoc14.tsv)   	|
 
-wsh_med.png
+<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson"><img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/wsh_med.png" width="700"></a>
+
+C:/Rprojects/neonet/
+
+
 wsh_atl.png
 
 These datasets are harvested by the [c14bazAAR package](https://github.com/ropensci/c14bazAAR), functions `get_c14data("neonet")` and `get_c14data("neonetatl")`
