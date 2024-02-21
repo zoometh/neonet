@@ -3,7 +3,8 @@
 library(pastclim)
 
 when <- -7000
-outDir <- "C:/Rprojects/neonet/doc/clim/data/"
+# outDir <- "C:/Rprojects/neonet/doc/clim/data/"
+outDir <- "C:/Rprojects/neonet/doc/data/clim/" #?
 set_data_path(path_to_nc = outDir)
 # list_available_datasets()
 # get_vars_for_dataset(dataset = "Beyer2020", annual = FALSE, monthly = TRUE)
@@ -28,11 +29,30 @@ koeppen_7k <- koeppen_geiger(
 )
 # > object.size(koeppen_7k)
 # 1304 bytes
-# plot it
-plotOut = outDir + "7k_koeppen.jpg"
-jpeg(filename = plotOut, width = 1500, height = 600)
-plot(koeppen_7k)
-dev.off()
+
+library(terra)
+
+# Assuming 'r' is your SpatRaster object
+# Create a SpatRaster object for demonstration; replace this with your actual SpatRaster
+r <- rast(nrows = 100, ncols = 100)
+values(r) <- 1:ncell(r)
+
+# Define the path and name of the output GeoTIFF file
+# output_file <- "path/to/your_output_file.tif"
+output_file <- paste0(outDir, "7k_koeppen.tif")
+
+# Export the SpatRaster to a GeoTIFF file
+writeRaster(koeppen_7k, output_file, overwrite=TRUE)
+
+## dim (ex: width = 3000, height = 1200)
+# long.dim = 6000
+# lat.dim = long.dim / 2.5
+
+## plot it
+# plotOut = paste0(outDir, "7k_koeppen.jpg")
+# jpeg(filename = plotOut, width = long.dim, height = lat.dim)
+# plot(koeppen_7k)
+# dev.off()
 
 # outFile = paste0(outDir, "koppen_", as.character(when), ".tif")
 # writeRaster(koeppen_7k, outFile)

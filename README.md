@@ -350,9 +350,9 @@ Show the complete NeoNet dataset. A site can be selected by searching it in the 
     <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
 </p>
 
-## TODO
+## Future developments
 
-Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen Climate Classification to the study
+Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen Climate Classification (KCC) to the study
 
 <p align="center">
 <br>

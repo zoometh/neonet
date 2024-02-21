@@ -6,7 +6,7 @@ library(leaflet)
 library(leaflet.extras)
 library(leaflet.extras2)
 library(raster)
-library(rgeos)
+# library(rgeos)
 library(sp)
 library(sf)
 library(DT)
@@ -18,27 +18,28 @@ library(Bchron)
 library(rcarbon)
 library(bibtex)
 
+srv <- T
+loc <- !srv
+
 # merged new Med + Atl
-source.path <- "/srv/shiny-server/C14dev/"
 dataset <- "c14_dataset_med_x_atl_2.tsv"
 bibliog <- 'references_med_x_atl.bib'
 
-# Atl
+## Atl
 # dataset <- "c14_dataset_atl.tsv"
 # bibliog <- 'NeoNet_atl_ELR.bib'
-
-# # new Med
+## new Med
 # bibliog <- 'id00140_doc_reference.bib'
 # dataset <- "NeoNet_Med_v2.tsv"
-# 
+##
 # OK <- read.csv(paste0(source.path, "NeoNet_Med_v2.tsv"), sep = "\t", encoding = "UTF-8")
 # pasOK <- read.csv(paste0(source.path, "c14_dataset_med_x_atl.tsv"), sep = "\t", encoding = "UTF-8")
 # setdiff(colnames(OK), colnames(pasOK))
 # setdiff(colnames(pasOK), colnames(OK))
 
-srv <- F
-loc <- !srv
+
 if(srv){
+  source.path <- "/srv/shiny-server/C14dev/"
   source(paste0(source.path, "functions.R")) # source("functions.R")
   c14bibtex.url <- paste0(source.path, bibliog)
   df.tot <- read.csv(paste0(source.path, dataset), sep = "\t", encoding = "UTF-8")
@@ -272,9 +273,12 @@ neonet.pkg <- paste0('<a href=', shQuote(neonet.readme),"\ target=\"_blank\"",'>
 # neonet.pkg <- paste0('<a href=', "GitHub","\ target=\"_blank\"",'>https://github.com/zoometh/neonet</a>')
 # GitHub repo
 devpage.app <- "https://github.com/zoometh/neonet#readme"
-app.dev <- paste0('<a href=', shQuote(devpage.app),"\ target=\"_blank\"",'>https://github.com/zoometh/neonet</a>')
+app.dev <- paste0('<a href=', shQuote(devpage.app), 
+                  "\ target=\"_blank\"",
+                  '>https://github.com/zoometh/neonet</a>')
 # credits
-app.redneo <- HTML(paste0('<a href=', shQuote(paste0("https://redneonet.com")), "\ target=\"_blank\"",
+app.redneo <- HTML(paste0('<a href=', shQuote(paste0("https://redneonet.com")),
+                          "\ target=\"_blank\"",
                           '><b> Red NeoNet group website </b></a><br>'))
 app.credits <- HTML(paste0(' <b> App developments:',
                            '<ul>',
@@ -285,29 +289,74 @@ app.credits <- HTML(paste0(' <b> App developments:',
                            "\ target=\"_blank\"",
                            '> Niccolo Mazzucco </a>: niccolo.mazzucco@unipi.it </li>',
                            '</ul>'))
+pastclim.r <- "https://cran.r-project.org/web/packages/pastclim/index.html"
+pastclim.r <- paste0('Koeppen Climate Classification (except Clim-today): R package <a href=', shQuote(pastclim.r),"\ target=\"_blank\"",'>pastclim</a>')
 app.website <- HTML(paste0(' <b> Documentation: </b> ',
                            '<ul>',
-                           '<li>', app.page, '</li>',
-                           '<li>', neonet.pkg, '</li>',
+                           '<li> Neonet ', app.page, ', ', neonet.pkg, '</li>',
+                           # '<li>', neonet.pkg, '</li>',
+                           '<li>', pastclim.r, '</li>',
                            '</ul>'))
 # app.devsite <- HTML(paste0(' <b> App dev: </b> ',
 #                            '<ul>',
 #                            '<li>', app.dev,
 #                            '</li>',
 #                            '</ul>'))
-all.credits <- paste0(HTML(paste0("move the <b> window map </b>  to select dates by location |", 
-                                  " move the <b> tpq/taq slider </b> to selected sites within ‘standard’ cal BC duration ",
-                                  "(calibration with the <a href='https://rdrr.io/cran/Bchron/man/BchronCalibrate.html'>BchronCalibrate</a> ", 
-                                  "function and the '", intCal, "' calibration curve) <br/>",
-                                  " draw <b> polygon or rectangle </b> to subset dates by a smaller area than the ROI |",
-                                  " check/uncheck <b> material buttons </b> to show/hide sites by type of life duration material |",
-                                  " check/uncheck <b> periods buttons </b> to show/hide sites by Periods |",
-                                  " <b> click </b> on sites to get informations | <b> click </b> on the map to get long/lat coordinates <br/>")), "<br>",
-                      app.website, "<br>",
-                      app.credits, "<br>",
-                      data.credits, "<br>",
-                      app.redneo
-)
+message1 <- paste0("<b>Navigation</b><br>", 
+                   "move the <b> window map </b> to select dates by location |", 
+                   " move the <b> tpq/taq slider </b> to selected sites within ‘standard’ cal BC duration ",
+                   "(calibration with the <a href='https://rdrr.io/cran/Bchron/man/BchronCalibrate.html'>BchronCalibrate</a> ", 
+                   "function and the '", intCal, "' calibration curve) <br/>",
+                   " draw <b> polygon or rectangle </b> to subset dates by a smaller area than the ROI |",
+                   " check/uncheck <b> material buttons </b> to show/hide sites by type of life duration material |",
+                   " check/uncheck <b> periods buttons </b> to show/hide sites by Periods |",
+                   " <b> click </b> on sites to get informations | <b> click </b> on the map to get long/lat coordinates <br/>")
+
+nnn <- "Koppen Climate Classification: <br>
+<ul>
+  <li style='color: #0000FF;'>Af Tropical, rainforest</li>
+  <li style='color: #0078FF;'>Am Tropical, monsoon</li>
+  <li style='color: #46AAF;'>Aw Tropical, savannah</li>
+  <li style='color: #FF0000;'>BWh Arid, desert, hot</li>
+  <li style='color: #FF9696;'>BWk Arid, desert, cold</li>
+  <li style='color: #F5A500;'>BSh Arid, steppe, hot</li>
+  <li style='color: #FFDC64;'>BSk Arid, steppe, cold</li>
+  <li style='color: #FFFF00;'>Csa Temperate, dry summer, hot summer</li>
+  <li style='color: #C8C800;'>Csb Temperate, dry summer, warm summer</li>
+  <li style='color: #969600;'>Csc Temperate, dry summer, cold summer</li>
+  <li style='color: #96FF96;'>Cwa Temperate, dry winter, hot summer</li>
+  <li style='color: #64C864;'>Cwb Temperate, dry winter, warm summer</li>
+  <li style='color: #329632;'>Cwc Temperate, dry winter, cold summer</li>
+  <li style='color: #C8FF50;'>Cfa Temperate, no dry season, hot summer</li>
+  <li style='color: #64FF50;'>Cfb Temperate, no dry season, warm summer</li>
+  <li style='color: #32C800;'>Cfc Temperate, no dry season, cold summer</li>
+  <li style='color: #FF00FF;'>Dsa Cold, dry summer, hot summer</li>
+  <li style='color: #C800C8;'>Dsb Cold, dry summer, warm summer</li>
+  <li style='color: #963296;'>Dsc Cold, dry summer, cold summer</li>
+  <li style='color: #966496;'>Dsd Cold, dry summer, very cold winter</li>
+  <li style='color: #AAAF;'>Dwa Cold, dry winter, hot summer</li>
+  <li style='color: #5A78DC;'>Dwb Cold, dry winter, warm summer</li>
+  <li style='color: #4B50B4;'>Dwc Cold, dry winter, cold summer</li>
+  <li style='color: #320087;'>Dwd Cold, dry winter, very cold winter</li>
+  <li style='color: #00FFFF;'>Dfa Cold, no dry season, hot summer</li>
+  <li style='color: #37C8FF;'>Dfb Cold, no dry season, warm summer</li>
+  <li style='color: #007D7D;'>Dfc Cold, no dry season, cold summer</li>
+  <li style='color: #00465F;'>Dfd Cold, no dry season, very cold winter</li>
+  <li style='color: #B2B2B2;'>ET Polar, tundra</li>
+  <li style='color: #666666;'>EF Polar, frost</li>
+  </ul>
+"
+
+all.credits <- paste0(HTML(message1, "<br>",
+                           app.website, "<br>",
+                           app.credits, "<br>",
+                           data.credits, "<br>",
+                           app.redneo, "<br>",
+                           nnn
+))
+
+
+
 # for the chrono slider
 Mx <- max(df.tot$taq)
 Mn <- min(df.tot$tpq)
@@ -712,38 +761,70 @@ server <- function(input, output, session) {
                                   data = filteredData()) %>%
         addTiles(group = 'OSM') %>%
         addProviderTiles(providers$Esri.WorldImagery, group='Ortho') %>%
-        addWMS(group = "Clim",
+        addWMS(group = "Clim-today",
                baseUrl = "http://54.155.109.226:8080/geoserver/ows",
                layers = "Beck_KG_V1_present_0p0083",
                options = WMSTileOptions(
                  transparent = TRUE,
                  format = "image/png",
                  info_format = "text/html")
-        ) # %>%
+        ) %>%
+        addWMS(group = "Clim-9k",
+               baseUrl = "http://54.155.109.226:8080/geoserver/ows",
+               layers = "koeppen_9k",
+               options = WMSTileOptions(
+                 transparent = TRUE,
+                 format = "image/png",
+                 info_format = "text/html")
+        ) %>%
+        addWMS(group = "Clim-8k",
+               baseUrl = "http://54.155.109.226:8080/geoserver/ows",
+               layers = "koeppen_8k",
+               options = WMSTileOptions(
+                 transparent = TRUE,
+                 format = "image/png",
+                 info_format = "text/html")
+        ) %>%
+        addWMS(group = "Clim-7k",
+               baseUrl = "http://54.155.109.226:8080/geoserver/ows",
+               layers = "koeppen_7k",
+               options = WMSTileOptions(
+                 transparent = TRUE,
+                 format = "image/png",
+                 info_format = "text/html")
+        ) %>%
+        addWMS(group = "Clim-6k",
+               baseUrl = "http://54.155.109.226:8080/geoserver/ows",
+               layers = "koeppen_6k",
+               options = WMSTileOptions(
+                 transparent = TRUE,
+                 format = "image/png",
+                 info_format = "text/html")
+        )
       proxy.sites %>% 
         clearControls() %>%
         clearShapes() %>%
         clearMarkers() %>%
         addLayersControl(
-          baseGroups = c('OSM', 'Ortho', 'Clim')) %>%
-        # baseGroups = c('OSM', 'Ortho', 'Clim')) %>%
-        # addLabelOnlyMarkers(0,
-        #                     45.5,
-        #                     label=paste(as.character(legende), collapse = ","), #paste(legende_ord$colors[4], legende_ord$Period[4]),
-        #                     labelOptions = labelOptions(noHide = T, direction = 'top', textOnly = T, textsize = "15px"))  %>%
-        # addLabelOnlyMarkers(0,
-        #                     45,
-        #                     label=paste(names(legende), collapse = ","), #paste(legende_ord$colors[5], legende_ord$Period[5]),
-        #                     labelOptions = labelOptions(noHide = T, direction = 'top', textOnly = T, textsize = "15px"))  %>%
+          baseGroups = c('OSM', 'Ortho', 'Clim-today', 
+                         'Clim-6k', 'Clim-7k', 'Clim-8k', 'Clim-9k')) %>%
+        
         addLegend("bottomleft",
-                  # colors = legende_ord$colors, # not working, disordered
-                  # labels= legende_ord$Period, # not working, disordered
-                  # colors = as.vector(legende_ord$colors), # not working, disordered
-                  # labels = as.vector(legende_ord$Period), # not working, disordered
                   colors = as.character(legende),
                   labels = names(legende),
                   title = "Periods",
-                  opacity = 1) %>%
+                  opacity = 1
+        ) %>%
+        
+        # addLegendSize(
+        #   values = names(legende),
+        #   color = as.character(legende),
+        #   fillColor = as.character(legende),
+        #   opacity = 1,
+        #   title = 'Depth',
+        #   shape = 'circle',
+        #   orientation = 'horizontal') %>%
+        
         addScaleBar(position = "bottomleft")
       # clustered - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       if(input$hover == TRUE){

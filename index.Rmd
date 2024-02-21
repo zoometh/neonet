@@ -61,6 +61,7 @@ panel.map <- paste0(path.img, "panel_map.png")
 panel.map.coords <- paste0(path.img, "panel_map_coords.png")
 panel.map.select <- paste0(path.img, "panel_map_select.png")
 panel.map.shape <- paste0(path.img, "panel_map_shape.png")
+panel.map.base <- paste0(path.img, "panel_map_clim_past.png")
 panel.calib <- paste0(path.img, "panel_calib.png")
 panel.map.idx <- paste0(path.img, "panel_map_idx.png")
 panel.map.export <- paste0(path.img, "panel_map_export.png")
@@ -286,9 +287,20 @@ The current functions are:
 
 -   Fig. \@ref(fig:panel-map1), [<u>red</u>]{style="color:red"} box, top-left radio button ***group C14 on map***: allows to cluster dates by spatial proximities ([Marker Clusters](http://rstudio.github.io/leaflet/markers.html))
 
--   Fig. \@ref(fig:panel-map1), [<u>pink</u>]{style="color:pink"} box, top-right layer button: allows to change the basemap. By default, the basemap is **OSM**, an [OpenStreetMap general basemap](https://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik), but it can be switch to **Topo**, an [ESRI topographical basemap](https://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery)
+-   Fig. \@ref(fig:panel-map1), [<u>pink</u>]{style="color:pink"} box, top-right layer button: allows to change the [basemap](#panel.map.basemap). 
 
 -   Fig. \@ref(fig:panel-map1), [<u>green</u>]{style="color:green"} box, inline text: reactive count of selected dates and sites. The bottom table is a reactive [DT package](https://cran.r-project.org/web/packages/DT/index.html) datatable listing all the dates within the map extent (ROI) and the optional selection menus (tpq/taq, material life duration, maximum SD, periods, selection shapes)
+
+### basemap {#panel.map.basemap}
+
+By default, the basemap is **OSM**, an [OpenStreetMap general basemap](https://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik), but it can be switch to **Topo**, an [ESRI topographical basemap](https://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery) or others
+
+<center>
+
+![Koppen Climate Classification on Neonet dev version](`r panel.map.base`){width="700px"}
+
+</center>
+
 
 ### select by location {#panel.map.select.loc}
 
