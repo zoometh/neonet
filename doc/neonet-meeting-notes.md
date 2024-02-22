@@ -1,6 +1,48 @@
 
+## Pastclim - NeoNet
+
+?c14bazaar (possible LM EN?)
+
+* NeoNet
+    - same name as a working group NeoNet but different (dates gathering and IT developments)
+        - 8 persons
+    - radiocarbon dates 
+        - divided today on cultural periods, mostly of Late Mesolithic and Early Neolithic
+        - high value to assess change over time
+        - one the most standardised archaeological proxy
+    - online open-source web app (selection by time and spatial windows) offering a high reusability of the dataset and reproductibility of the analysis (export, R functions,c14bazAAAR)
+    - aims:
+        - be able to be accurate possible on the spatio-temporal diffusion process and its geographical scale 
+        - IT: reusability, reproductibility of quantitative analysis (ex: spatial diffusion), OxCal, Open Science
+        - Archaeological: spread of farming a major social shift
+* NeoNet-pastclim collaboration aims
+    - integrated Koppen CC in the dev app 
+    - Koppen: various natural frontiers (ex: CEAB) or corridors have been identified
+    
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/_koppen1.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/_koppen2.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/_koppen3.png" width="500">
+  <br>
+    <em>Possible barriers and "ecological niche"</em>
+</p>
+
+    - proposed collaboration: *Social Interactions in Mediterranean Prehistory, 21-23 October, Barcelona, session: Environment and social interactions – Chairwoman: Eleni Asouti. CoP deadline: 22 Avril*, https://simep2024.com/743-2-2/ 
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24-isochr.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/panel_map_clim_past-1.png" width="500">
+  <br>
+    <em>Do this on that</em>
+</p>
+
+
 
 ## Resources
+
+
 ### NeoNet atlantic
 
 * dataset:
