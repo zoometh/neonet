@@ -18,12 +18,12 @@
 * NeoNet-pastclim collaboration aims
     - integrated Koppen CC in the dev app 
     - Koppen: various natural frontiers (ex: CEAB) or corridors have been identified
-    
+
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/_koppen1.png" width="500">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/_koppen2.png" width="500">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/_koppen3.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/\_koppen1.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/\_koppen2.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/\_koppen3.png" width="500">
   <br>
     <em>Possible barriers and "ecological niche"</em>
 </p>
