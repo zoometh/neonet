@@ -21,9 +21,9 @@
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/\_koppen1.png" width="500">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/\_koppen2.png" width="500">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/\_koppen3.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen1.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen2.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen3.png" width="500">
   <br>
     <em>Possible barriers and "ecological niche"</em>
 </p>
