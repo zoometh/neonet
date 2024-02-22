@@ -21,9 +21,9 @@
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen1.png" width="500">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen2.png" width="500">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen3.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen1.png" width="400">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen2.png" width="400">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen3.png" width="400">
   <br>
     <em>Possible barriers and "ecological niche"</em>
 </p>
@@ -33,7 +33,7 @@ proposed collaboration: *Social Interactions in Mediterranean Prehistory, 21-23 
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24-isochr.png" width="500">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/panel_map_clim_past-1.png" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/panel_map_clim_past-1.png" width="500">
   <br>
     <em>Do this on that</em>
 </p>
