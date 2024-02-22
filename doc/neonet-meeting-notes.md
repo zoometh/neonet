@@ -28,7 +28,7 @@
     <em>Possible barriers and "ecological niche"</em>
 </p>
 
-    - proposed collaboration: *Social Interactions in Mediterranean Prehistory, 21-23 October, Barcelona, session: Environment and social interactions – Chairwoman: Eleni Asouti. CoP deadline: 22 Avril*, https://simep2024.com/743-2-2/ 
+proposed collaboration: *Social Interactions in Mediterranean Prehistory, 21-23 October, Barcelona, session: Environment and social interactions – Chairwoman: Eleni Asouti. CoP deadline: 22 Avril*, https://simep2024.com/743-2-2/ 
 
 <p align="center">
 <br>
