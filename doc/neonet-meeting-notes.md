@@ -1,8 +1,6 @@
 
 ## Pastclim - NeoNet
 
-?c14bazaar (possible LM EN?)
-
 * NeoNet
     - same name as a working group NeoNet but different (dates gathering and IT developments)
         - 8 persons
@@ -25,8 +23,10 @@
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen2.png" width="400">
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen3.png" width="400">
   <br>
-    <em>Possible barriers and "ecological niche"</em>
+    <em>Possible barriers and "ecological niches"</em>
 </p>
+
+### Simep
 
 proposed communication: *Social Interactions in Mediterranean Prehistory, 21-23 October, Barcelona, session: Environment and social interactions – Chairwoman: Eleni Asouti. CoP deadline: 22 Avril*, https://simep2024.com/743-2-2/ 
 
@@ -38,6 +38,25 @@ proposed communication: *Social Interactions in Mediterranean Prehistory, 21-23 
     <em>Do this on that</em>
 </p>
 
+Selected area (region of interest, ROI, see [here](https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/roi.geojson
+)):
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/img/_db_neonet.png" width="700">
+  <br>
+    <em>ROI</em>
+</p>
+
+Retrieve data from these databases in c14bazAAR (`calpal`, `medafricarbon`, `agrichange`, `neonet`, `bda`, `calpal`, `radon`, `katsianis`):
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/img/_db_neonet.png" width="700">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/img/_db_medafricarbon.png" width="700">
+  <br>
+    <em>Sample of selected DBs</em>
+</p>
 
 
 ## Resources
