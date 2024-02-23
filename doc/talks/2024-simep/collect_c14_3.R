@@ -33,10 +33,11 @@ lay <- rbind(c(1, 1, 1, 1, 1, 1, 4, 4, 4, 4),
 # DB not done: kiteeastafrica, nerd, aida,  (no culture)
 # DB done: calpal, medafricarbon, agrichange, neonet, bda, calpal, radon, katsianis
 
-selected.db <- "katsianis"
+selected.db <- "nerd"
 df <- get_c14data(selected.db) # YES period, culture
 # .. and Grob
 top_title <- grid::textGrob(paste("db:", selected.db))
+# colnames(df)
 
 ## filters
 # columns (by default we try 'period')

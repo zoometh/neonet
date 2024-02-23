@@ -15,7 +15,7 @@
         - Archaeological: spread of farming a major social shift
 * NeoNet-pastclim collaboration aims
     - integrated Koppen CC in the dev app 
-    - Koppen: various natural frontiers (ex: CEAB) or corridors have been identified
+    - Koppen: various natural frontiers (ex: Central European-Balkanic Agro-Ecological Barrier, CEBAEB) or corridors have been identified
 
 <p align="center">
 <br>
