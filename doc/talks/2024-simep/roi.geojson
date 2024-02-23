@@ -1,0 +1,39 @@
+{
+	"type": "FeatureCollection",
+	"name": "filef67813ef83cdc",
+	"features": [
+	  {
+		"type": "Feature",
+		"properties": {
+		  "ID": 8224
+		},
+		"geometry": {
+		  "type": "Polygon",
+		  "coordinates": [
+			[
+			  [
+				-15,
+				22.5
+			  ],
+			  [
+				-15,
+				50
+			  ],
+			  [
+				45,
+				50
+			  ],
+			  [
+				45,
+				22.5
+			  ],
+			  [
+				-15,
+				22.5
+			  ]
+			]
+		  ]
+		}
+	  }
+	]
+  }
