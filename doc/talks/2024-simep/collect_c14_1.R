@@ -11,7 +11,7 @@ library(rnaturalearth)
 
 
 present <- 1950
-chr.interval <- c(-12000, -3000)
+chr.interval <- c(-9000, -4000)
 roi <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
                    quiet = TRUE)
 
@@ -72,22 +72,26 @@ distr_chr <- ggplot(df_selected, aes(x = c14age_uncalBC)) +
                  color = "blue", fill = "blue") +
   labs(x = "uncal BC",
        y = "Frequency") +
-  theme_minimal()
-
+  theme_minimal() +
+  theme(
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    axis.text = ggplot2::element_text(size = 6)
+  )
 
 df_spat <- st_as_sf(df_selected, coords = c("lon", "lat"), crs = 4326)
 # df_spat <- st_zm(df_spat)
-buff <- 1
+buff <- .5
 world <- ne_countries(scale = "medium", returnclass = "sf")
 distr_spat <- ggplot2::ggplot(world) +
   # TODO: color scale ramp on column 'c14age_uncalBC'
   ggplot2::geom_sf() +
-  ggplot2::geom_sf(data = df_spat, inherit.aes = FALSE) +
+  ggplot2::geom_sf(data = df_spat, inherit.aes = FALSE, size = 1) +
   ggplot2::coord_sf(xlim = c(sf::st_bbox(df_spat)[1] - buff, sf::st_bbox(df_spat)[3] + buff),
                     ylim = c(sf::st_bbox(df_spat)[2] - buff, sf::st_bbox(df_spat)[4] + buff)) +
   ggplot2::theme_bw() +
-  ggplot2::theme(axis.text = ggplot2::element_text(size = 7)) 
-distr_spat
+  ggplot2::theme(axis.text = ggplot2::element_text(size = 6)) 
+# distr_spat
 
 # ggplot() + 
 #   geom_sf(data = bck_admin.shp) +
@@ -124,19 +128,24 @@ grid.arrange(arrangeGrob(distr_spat, distr_chr, ncol = 1, nrow = 2),
 # grid.draw(combined_plot)
 
 
-lay <- rbind(c(1, 1, 1, 1, 1, 1, 3, 3, 3), 
+lay <- rbind(c(1, 1, 1, 1, 1, 1, 4, 4, 4), 
              c(1, 1, 1, 1, 1, 1, 3, 3, 3), 
              c(1, 1, 1, 1, 1, 1, 3, 3, 3), 
              c(1, 1, 1, 1, 1, 1, 3, 3, 3),
              c(2, 2, 2, 2, 2, 2, 3, 3, 3), 
              c(2, 2, 2, 2, 2, 2, 3, 3, 3))
-top_title <- grid::textGrob(selected.db, gp = grid::gpar(fontface = "bold"))
+top_title <- grid::textGrob(paste("db:", selected.db))
+context_title <- grid::textGrob(paste0("Dates subseted on ",
+                                       paste0(chr.interval, collapse = "/"), " uncal BP \n",
+                                       "map/histogram: ", nrow(df_spat), " dates \n",
+                                       "Everything here is uncal BC"), 
+                                gp = grid::gpar(fontsize = 9),
+                                just="left")
 
-
-grid.arrange(distr_spat, distr_chr, df_groups_grob, 
+grid.arrange(distr_spat, distr_chr, df_groups_grob, context_title,
              layout_matrix = lay,
              top = top_title
              # bottom = bottom_title,
              # left = "Example Layout", right = right_title
-             )
+)
 
