@@ -19,9 +19,9 @@
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen1.png" width="400">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen2.png" width="400">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen3.png" width="400">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen1.png" width="250">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen2.png" width="250">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/_koppen3.png" width="250">
   <br>
     <em>Possible barriers and "ecological niches"</em>
 </p>
