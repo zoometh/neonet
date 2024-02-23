@@ -359,7 +359,7 @@ Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen C
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/clim/koppen_-7000.png"
 " width="1100">
   <br>
-    <em>The Koppen Climate Classification calculated for 7000 BP with the pastclim R package</em>
+    <em>The Koppen Climate Classification calculated for 6000 BP with the pastclim R package</em>
 </p>
 
 
@@ -373,4 +373,4 @@ Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen C
 
 * Big Historical Data Conference
   - Shiny server (with the app embeded): http://shinyserver.cfs.unipi.it:3838/neonet/bhdc
-  - GitHub (without the app embeded): https://zoometh.github.io/neonet/doc/presentation/bhdc
+  - GitHub (without the app embeded): https://zoometh.github.io/neonet/doc/talks/2023-bhdc
