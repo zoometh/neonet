@@ -43,7 +43,7 @@ Selected area (region of interest, ROI, see [here](https://github.com/zoometh/ne
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/_db_neonet.png" width="700">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/roi.png" width="700">
   <br>
     <em>ROI</em>
 </p>
