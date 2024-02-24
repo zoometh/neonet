@@ -350,7 +350,7 @@ Show the complete NeoNet dataset. A site can be selected by searching it in the 
     <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
 </p>
 
-## Future developments
+## Developments
 
 Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen Climate Classification (KCC) to the study
 
@@ -361,19 +361,6 @@ Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen C
   <br>
     <em>The Koppen Climate Classification calculated for 6000 BP with the pastclim R package</em>
 </p>
-
-
-## Documentation
-
-* NeoNet app [web document](https://zoometh.github.io/neonet/)
-* [Contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md)
-* [NeoNet package license](https://github.com/zoometh/neonet/blob/master/LICENSE)
-
-## Communication
-
-* Big Historical Data Conference
-  - Shiny server (with the app embeded): http://shinyserver.cfs.unipi.it:3838/neonet/bhdc
-  - GitHub (without the app embeded): https://zoometh.github.io/neonet/doc/talks/2023-bhdc
 
 ## Koppen
 
@@ -409,3 +396,16 @@ Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen C
 | Dfd        |     28 | Cold, no dry season, very cold winter     | 00465F | ![#00465F](https://placehold.co/15x15/00465F/00465F.png) |
 | ET         |     29 | Polar, tundra                             | B2B2B2 | ![#B2B2B2](https://placehold.co/15x15/B2B2B2/B2B2B2.png) |
 | EF         |     30 | Polar, frost                              | 666666 | ![#666666](https://placehold.co/15x15/666666/666666.png) |
+
+
+## Documentation
+
+* NeoNet app [web document](https://zoometh.github.io/neonet/)
+* [Contribution rules](https://github.com/zoometh/neonet/blob/master/github/CONTRIBUTING.md)
+* [NeoNet package license](https://github.com/zoometh/neonet/blob/master/LICENSE)
+
+## Communication
+
+* Big Historical Data Conference
+  - Shiny server (with the app embeded): http://shinyserver.cfs.unipi.it:3838/neonet/bhdc
+  - GitHub (without the app embeded): https://zoometh.github.io/neonet/doc/talks/2023-bhdc
