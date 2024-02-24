@@ -29,9 +29,9 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        time.line.size = 1,
                        bck.alpha = .2,
                        zoom = NA,
-                       lbl.dates = TRUE,
+                       lbl.dates = FALSE,
                        lbl.dates.size = 2,
-                       lbl.time.interv = TRUE,
+                       lbl.time.interv = FALSE,
                        lbl.time.interv.size = 3,
                        coloramp = c("Reds", "Blues"),
                        mapname = NA,
@@ -45,10 +45,15 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   # check which periods have been selected
   neolithic <- selected.per %in% c("EN", "EMN", "MN", "LN", "UN")
   paleolithic <- !neolithic
-  df.dates <- sf::st_read(df.c14, quiet = T)
+  if(is.character(df.c14)){
+    df.dates <- sf::st_read(df.c14, quiet = T)
+  }
+  if(inherits(df.c14, "sf")){
+    df.dates <- df.c14
+  }
   nb.dates.tot <- nrow(df.dates)
   if(verbose){
-    print(paste0("Original GeoJSON file: ", nb.dates.tot, " dates"))
+    print(paste0("Original file: ", nb.dates.tot, " dates"))
   }
   # subset on periods
   df.dates <- df.dates[df.dates$Period %in% selected.per, ]
@@ -164,9 +169,10 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     stamenbck <- tryCatch(ggmap::get_stadiamap(bbox, 
                                                zoom = zoom,
                                                maptype = "stamen_terrain_background"), error = function(e) NULL)
-    # stamenbck <- tryCatch(ggmap::get_stamenmap(bbox, 
+    # stamenbck <- tryCatch(ggmap::get_stamenmap(bbox,
     #                                            zoom = zoom,
     #                                            maptype = "terrain-background"), error = function(e) NULL)
+    # stamenbck <- ggmap::get_stamenmap(bbox, maptype = "terrain-background")
     zoom <- zoom - 1
     if (!is.null(stamenbck)) {
       print(zoom)
