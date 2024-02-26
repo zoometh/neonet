@@ -24,6 +24,7 @@ neo_calib <- function(df.c14 = NA,
                       verbose = TRUE,
                       verbose.freq = 50){
   # calculate tpq/taq
+  # TODO: is column colors useful?
   df.c14$taq <- df.c14$tpq <- df.c14$median <- df.c14$colors <- NA
   if(verbose){print("Run date calibration")}
   for (i in 1:nrow(df.c14)){

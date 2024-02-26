@@ -1,20 +1,22 @@
 # Creates a serie of Koeppen CC
+# from_to is in BP
 
 # devtools::install_github("EvolEcolGroup/pastclim", ref="dev")
 # library(pastclim)
 # library(terra)
 
-neo_kcc_create <- function(from_to = c(-9000, -8000, -7000, -6000),
+neo_kcc_create <- function(from_to = c(-11000, -10000, -9000, -8000, -7000, -6000),
+                           present = 2000,
                            dataset = "Beyer2020",
                            outDir = "C:/Rprojects/neonet/doc/data/clim/"){
   # outDir <- "C:/Rprojects/neonet/doc/clim/data/"
    #?
-  pastclim::set_data_path(path_to_nc = outDir)
   pastclim::download_dataset(dataset = dataset, annual = FALSE, monthly = TRUE)
   for(i in 1:length(from_to)){
     when <- from_to[i]
-    ky <- paste0(abs(when) / 1000, "k")
-    print(paste("* read:", ky))
+    ky.bp <- paste0(abs(when) / 1000, "k")
+    ky.bc <- abs(when) - present
+    print(paste0("*read: ", ky.bp, " BP (", ky.bc," BC)"))
     # extract monthly temperature and precipitation
     tavg <- pastclim::region_slice(
       time_bp = when,
@@ -33,21 +35,12 @@ neo_kcc_create <- function(from_to = c(-9000, -8000, -7000, -6000),
       prec = prec,
       tavg = tavg
     )
-    output_file <- paste0(outDir, "koeppen_", ky, ".tif")
-    terra::writeRaster(koeppen, output_file, overwrite=TRUE)
+    output_file <- paste0(outDir, "koppen_", ky.bp, ".tif")
+    terra::writeRaster(koeppen, output_file, overwrite = TRUE)
+    print(paste0("  exported: ", output_file))
   }
 }
 
-
-## dim (ex: width = 3000, height = 1200)
-# long.dim = 6000
-# lat.dim = long.dim / 2.5
-
-## plot it
-# plotOut = paste0(outDir, "7k_koeppen.jpg")
-# jpeg(filename = plotOut, width = long.dim, height = lat.dim)
-# plot(koeppen_7k)
-# dev.off()
-
-# outFile = paste0(outDir, "koppen_", as.character(when), ".tif")
-# writeRaster(koeppen_7k, outFile)
+# outDir <- "C:/Rprojects/neonet/doc/data/clim/"
+# pastclim::set_data_path(path_to_nc = outDir)
+# neo_kcc_create()

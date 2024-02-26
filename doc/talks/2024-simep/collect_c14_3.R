@@ -144,6 +144,12 @@ colnames(df.c14)
 #                 lat = lat) %>%
 #   dplyr::select(db_sourcedb, SiteName, LabCode, C14Age, C14SD, db_period, db_culture, Period, lon, lat)
 df.c14 <- neo_calib(df.c14)
-df.c14 <- sf::st_as_sf(df.classes, coords = c("lon", "lat"), crs = 4326)
+df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 # ...
+xxx <- head(df.c14, 50)
+kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+             "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+df_cc <- neo_kcc_get_cc(df.c14 = xxx, kcc.file = kcc.file)
+col.req <- gsub(pattern = ".tif", "", kcc.file)
+neo_kcc_sankey(df_cc, col.req = col.req)
 # df <- read.csv(paste0(root.path, "/medians.csv"))
