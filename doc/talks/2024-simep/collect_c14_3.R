@@ -146,10 +146,18 @@ colnames(df.c14)
 df.c14 <- neo_calib(df.c14)
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 # ...
-xxx <- head(df.c14, 50)
+xxx <- df.c14 %>% 
+  sample_n(250)
+# unique(xxx$Period)
 kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
-             "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
-df_cc <- neo_kcc_get_cc(df.c14 = xxx, kcc.file = kcc.file)
+              "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+df_cc <- neo_kcc_get_cc(df.c14 = df.c14, kcc.file = kcc.file)
 col.req <- gsub(pattern = ".tif", "", kcc.file)
-neo_kcc_sankey(df_cc, col.req = col.req)
+neo_kcc_plotbar(df_cc, 
+                col.req = col.req,
+                selected.per = c("LM", "MM"),
+                outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
+# neo_kcc_sankey(df_cc, col.req = col.req, 
+#                selected.per = c("EN", "MM"), 
+#                outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 # df <- read.csv(paste0(root.path, "/medians.csv"))
