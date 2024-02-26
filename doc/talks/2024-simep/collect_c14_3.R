@@ -26,12 +26,14 @@ fspat <- function(df_selected, roi, outfile){
   ggsave(file = g.out, distr_spat, width = 14, height = 10)
 }
 
-parse_db <- function(l.dbs, df.all, col.req){
+parse_db <- function(l.dbs, df.all, col.req, chr.interval.uncalBC, present = 1950, roi){
+  # collect dates form a list of dbs, creates missing columns (period or culture), filter on chronology (time interval) and spatial location (roi)
+  `%>%` <- dplyr::`%>%` # used to not load dplyr
   for(selected.db in l.dbs){
     # selected.db <- l.dbs[i]
-    # selected.db <- "calpal"
+    # selected.db <- "neonet"
     print(paste0("*read: ", selected.db))
-    df <- get_c14data(selected.db) # YES period, culture
+    df <- c14bazAAR::get_c14data(selected.db) # YES period, culture
     print(paste0("  n = ", nrow(df)))
     # colnames(df)
     ## filters
@@ -47,20 +49,19 @@ parse_db <- function(l.dbs, df.all, col.req){
     }
     df_selected <- df_selected[ , col.req]
     df_selected <- df_selected %>%
-      filter(!(is.na("period") & is.na("culture")))
+      dplyr::filter(!(is.na("period") & is.na("culture")))
+    # head(df_selected)
     df_selected$c14age_uncalBC <- df_selected$c14age - present
     df_selected$c14age_uncalBC <- - df_selected$c14age_uncalBC# data
-    # df_selected <- df_selected[complete.cases(df_selected[col.req]), ]
     # chrono
-    df_selected <- df_selected[df_selected$c14age_uncalBC > chr.interval.uncalBC[1] & df_selected$c14age_uncalBC < chr.interval.uncalBC[2], ]
-    nrow(df_selected)
+    chr.sup <- df_selected$c14age_uncalBC > chr.interval.uncalBC[1]
+    chr.inf <- df_selected$c14age_uncalBC < chr.interval.uncalBC[2]
+    df_selected <- df_selected[chr.sup & chr.inf, ]
     # spatial
     df_selected <- df_selected[!(df_selected$lon == "" & df_selected$lat == ""), ]
     df_selected <- df_selected[!is.na(df_selected$lon) & !is.na(df_selected$lat), ]
-    # df_selected <- df_selected %>%
-    #   filter(!(is.na("lon") & is.na("lat")))
-    df_sf <- st_as_sf(df_selected, coords = c("lon", "lat"), crs = 4326)
-    inside <- st_within(df_sf, roi, sparse = FALSE)
+    df_sf <- sf::st_as_sf(df_selected, coords = c("lon", "lat"), crs = 4326)
+    inside <- sf::st_within(df_sf, roi, sparse = FALSE)
     df_selected <- df_selected[inside, ]
     df_selected <- df_selected[, col.req]
     df.all <- rbind(df.all, df_selected)
@@ -69,23 +70,29 @@ parse_db <- function(l.dbs, df.all, col.req){
 }
 
 fref <- function(df.all.res, outfile = "df_ref_per.xlsx"){
+  # write a reference file used to map external db to periods (class) equal to: ..., LM, EN, ...
   print(unique(df.all.res$sourcedb))
   df.ref.per <- df.all.res[, c("period", "culture")]
   df.ref.per <- df.ref.per[!duplicated(df.ref.per), ]
   openxlsx::write.xlsx(df.ref.per, paste0(root.path, "/", outfile))
 }
 
-frm_duplicates <- function(df.classes){
-  df.classes <- df.classes[!duplicated(df.classes$labnr), ]
-  return(df.classes)
-}
-
 fread_ref <- function(infile = "C:/Rprojects/neonet/doc/talks/2024-simep/df_ref_per.xlsx"){
+  # read the reference file and remove rows with empty class
   df_ref_per <- openxlsx::read.xlsx(infile)
   df_ref_per$class <- toupper(df_ref_per$class)
   df_ref_per <- df_ref_per[!is.na(df_ref_per$class), ]
   return(df_ref_per)
 }
+
+
+frm_duplicates <- function(df.classes){
+  # remove duplicates
+  # TODO: prioritise duplicates according to the db they are coming from (ex: neonet)
+  df.classes <- df.classes[!duplicated(df.classes$labnr), ]
+  return(df.classes)
+}
+
 
 root.path <-"C:/Rprojects/neonet/doc/talks/2024-simep"
 present <- 1950
@@ -96,10 +103,22 @@ roi <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/ta
 # DB not done: kiteeastafrica, nerd, aida,  (no culture)
 # DB done: calpal, medafricarbon, agrichange, neonet, bda, calpal, radon, katsianis
 l.dbs <- c("calpal", "medafricarbon", "agrichange", "neonet", "bda", "calpal", "radon", "katsianis")
-# l.dbs <- c("calpal", "medafricarbon")
+# l.dbs <- c("neonet")
+renaming_vector <- c(
+  sourcedb = "sourcedb",
+  SiteName = "site",
+  LabCode = "labnr",
+  C14Age = "c14age",
+  C14SD = "c14std",
+  db_period = "period.x",
+  db_culture = "culture.x",
+  Period = "class",
+  lon = "lon",
+  lat = "lat"
+)
 col.req <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
 df.all <- setNames(data.frame(matrix(ncol = length(col.req), nrow = 0)), col.req)
-df.all.res <- parse_db(l.dbs, df.all, col.req, outfile = "_db__all.png")
+df.all.res <- parse_db(l.dbs, df.all, col.req, chr.interval.uncalBC, present, roi)
 # fspat(df.all.res, roi, outfile = "_db__all_class.png")
 # fspat(df.all.res, roi, outfile = "_db__all.png")
 df_ref_per <- fread_ref("C:/Rprojects/neonet/doc/talks/2024-simep/df_ref_per.xlsx")
@@ -107,20 +126,24 @@ df_ref_per$period_culture <- paste0(df_ref_per$period, "/", df_ref_per$culture)
 df.all.res$period_culture <- paste0(df.all.res$period, "/", df.all.res$culture)
 df.classes <- merge(df.all.res, df_ref_per, by = "period_culture")
 df.classes <- frm_duplicates(df.classes)
-df.classes$site
-df.classes <- df.classes %>%
-  rename(db_sourcedb = sourcedb,
-         SiteName = site,
-         LabCode = labnr,
-         C14Age = c14age,
-         C14SD = c14std,
-         db_period = period.x,
-         db_culture = culture.x,
-         Period = class,
-         lon = lon,
-         lat = lat) %>%
-  select(db_sourcedb, SiteName, LabCode, C14Age, C14SD, db_period, db_culture, Period, lon, lat)
-
-df.c14 <- st_as_sf(df.classes, coords = c("lon", "lat"), crs = 4326)
+# map colnames to neonet format
+df.c14 <- df.classes %>%
+  dplyr::rename(!!!setNames(renaming_vector, names(renaming_vector))) %>%
+  dplyr::select(names(renaming_vector))
+colnames(df.c14)
+# df.classes <- df.classes %>%
+#   dplyr::rename(db_sourcedb = sourcedb,
+#                 SiteName = site,
+#                 LabCode = labnr,
+#                 C14Age = c14age,
+#                 C14SD = c14std,
+#                 db_period = period.x,
+#                 db_culture = culture.x,
+#                 Period = class,
+#                 lon = lon,
+#                 lat = lat) %>%
+#   dplyr::select(db_sourcedb, SiteName, LabCode, C14Age, C14SD, db_period, db_culture, Period, lon, lat)
+df.c14 <- neo_calib(df.c14)
+df.c14 <- sf::st_as_sf(df.classes, coords = c("lon", "lat"), crs = 4326)
 # ...
-df <- read.csv(paste0(root.path, "/medians.csv"))
+# df <- read.csv(paste0(root.path, "/medians.csv"))

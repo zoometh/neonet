@@ -397,6 +397,17 @@ Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen C
 | ET         |     29 | Polar, tundra                             | B2B2B2 | ![#B2B2B2](https://placehold.co/15x15/B2B2B2/B2B2B2.png) |
 | EF         |     30 | Polar, frost                              | 666666 | ![#666666](https://placehold.co/15x15/666666/666666.png) |
 
+```R
+koppen_codes <- c("Af", "Am", "Aw", "BWh", "BWk", "BSh", "BSk", 
+                  "Csa", "Csb", "Csc", "Cwa", "Cwb", "Cwc", "Cfa", 
+                  "Cfb", "Cfc", "Dsa", "Dsb", "Dsc", "Dsd", "Dwa", 
+                  "Dwb", "Dwc", "Dwd", "Dfa", "Dfb", "Dfc", "Dfd", "ET", "EF")
+hex_colors <- c("#0000FF", "#0078FF", "##46AAFF", "#FF0000", "#FF9696", "#F5A500", "#FFDC64", 
+                          "#FFFF00", "#C8C800", "#969600", "#96FF96", "#64C864", "#329632", "#C8FF50", 
+                          "#64FF50", "#32C800", "#FF00FF", "#C800C8", "#963296", "#966496", "##AAAFFF", 
+                          "#5A78DC", "#4B50B4", "#320087", "#00FFFF", "#37C8FF", "#007D7D", "#00465F", 
+                          "#B2B2B2", "#666666")
+```
 
 ## Documentation
 

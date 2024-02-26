@@ -2,8 +2,9 @@
 #'
 #' @description calculate tpq / taq and the median
 #'
-#' @param df.c14 the original XLSX with neonet columns (SiteName, Period, etc.) with with checked values (see: neo_subset)
+#' @param df.c14 A dataframe. The original XLSX with neonet columns (SiteName, Period, etc.) with with checked values (see: neo_subset)
 #' @param intCal calibration curve
+#' @param ci Confidence interval. Default 0.95 (95%)
 #' @param Present to calibrate from BP (1950).
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param verbose if TRUE (default) then display different messages.
@@ -17,7 +18,8 @@
 #' @export
 neo_calib <- function(df.c14 = NA,
                       intCal = 'intcal20',
-                      Present = 1950,
+                      ci = 0.95,
+                      present = 1950,
                       ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                       verbose = TRUE,
                       verbose.freq = 50){
@@ -36,10 +38,10 @@ neo_calib <- function(df.c14 = NA,
                                      ids = 'Date1')
     # median
     age_samples <- Bchron::sampleAges(ages1)
-    med <- as.numeric(apply(age_samples, 2, quantile, probs = c(0.95)))
-    df.c14[i, "median"] <- -(med - Present)
-    df.c14[i, "tpq"] <- -(min(ages1$Date1$ageGrid) - Present)
-    df.c14[i, "taq"] <- -(max(ages1$Date1$ageGrid) - Present)
+    med <- as.numeric(apply(age_samples, 2, quantile, probs = c(ci)))
+    df.c14[i, "median"] <- -(med - present)
+    df.c14[i, "tpq"] <- -(min(ages1$Date1$ageGrid) - present)
+    df.c14[i, "taq"] <- -(max(ages1$Date1$ageGrid) - present)
   }
   return(df.c14)
 }
