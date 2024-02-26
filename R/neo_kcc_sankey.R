@@ -18,6 +18,10 @@ neo_kcc_sankey(df_cc = NA,
                   "#64FF50", "#32C800", "#FF00FF", "#C800C8", "#963296", "#966496", "#AAAFFF", 
                   "#5A78DC", "#4B50B4", "#320087", "#00FFFF", "#37C8FF", "#007D7D", "#00465F", 
                   "#B2B2B2", "#666666")
+  tempxx <- data.frame(code = koppen_codes,
+                       color = hex_colors)
+  write.table(x = tempxx, file = "C:/Rprojects/neonet/inst/extdata/koppen.tsv", sep =  "\t",
+             row.names = F)
   # koppen_df <- data.frame(code = koppen_codes, hexColor = hex_colors)
   color_vector <- setNames(hex_colors, koppen_codes)
   tit <- paste0("KCC changes in Kyears (n = ", nrow(df), ")")
