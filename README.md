@@ -360,7 +360,7 @@ The app integrates Koppen Climate Classification for 6,000 BP to 10,000 BP creat
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/panel_map_clim_past-1.png"
-" width="700">
+" width="600">
   <br>
     <em>The Koppen Climate Classification calculated for 8,000 BP (8k) with the pastclim R package</em>
 </p>
@@ -369,10 +369,10 @@ KCC are created as GeoTiffs using the pastclim package
 
 | Geotiff image | description |
 |----------|----------|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_11k.png" width="400">|koppen_11k|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_10k.png" width="400">|koppen_10k|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_9k.png" width="400">|koppen_9k|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_8k.png" width="400">|koppen_8k|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_11k.png" width="300">|koppen_11k|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_10k.png" width="300">|koppen_10k|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_9k.png" width="300">|koppen_9k|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_8k.png" width="300">|koppen_8k|
 
 ### Classes
 
@@ -438,9 +438,8 @@ Gives:
     <em>The neonet dataset over the KCC 7k</em>
 </p>
 
-Collect the KCC values (climates) of each date using the `neo_kcc_extract()` function. 
-
 To get dates coming from other databases but mapped to be compliant with the Neonet format and these current functions, use:
+
 ```R
 when <- c(-9000, -4000)
 where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
@@ -498,6 +497,8 @@ Gives:
   <br>
     <em>KCC occupied during the MM and LM</em>
 </p>
+
+The `neo_kcc_extract()` function collects the KCC values (climates) of each date. 
 
 
 ## Documentation
