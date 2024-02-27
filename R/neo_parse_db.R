@@ -52,14 +52,14 @@ neo_parse_db <- function(l.dbs = c("neonet"),
   return(df.all)
 }
 
-when <- c(-9000, -4000)
-where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
-                     quiet = TRUE)
-df <- neo_parse_db(l.dbs = c("bda"), 
-                   col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
-                   chr.interval.uncalBC = when, 
-                   roi = where)
-df.c14 <- neo_map_dbs(df)
-head(df.c14)
+# when <- c(-9000, -4000)
+# where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
+#                      quiet = TRUE)
+# df <- neo_parse_db(l.dbs = c("bda"), 
+#                    col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
+#                    chr.interval.uncalBC = when, 
+#                    roi = where)
+# df.c14 <- neo_map_dbs(df)
+# head(df.c14)
 
 # df.c14 <- neo_map_dbs(df)

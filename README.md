@@ -458,7 +458,16 @@ Gives:
 
 Where the column 'Period' is the NeoNet one (all fields have been renamed to be parsed with the Neonet functions)
 
-The `neo_map_dbs()` function 
+The `neo_map_dbs()` function uses the [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx) as a reference table to map dates coming from the c14bazAAR get functions to the Neonet format (particularly the c14bazAAR `db_period` and `db_culture`)
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/ref_table_per.png"
+" width="800">
+  <br>
+    <em>The neonet dataset over the KCC 7k</em>
+</p>
+
 
 ## Documentation
 

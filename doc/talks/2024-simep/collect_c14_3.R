@@ -40,17 +40,23 @@ fref <- function(df.all.res, outfile = "df_ref_per.xlsx"){
 getwd()
 source("R/neo_vars.R")
 
-root.path <-"C:/Rprojects/neonet/doc/talks/2024-simep"
+## done
+# l.dbs <- c("calpal", "medafricarbon", "agrichange", "neonet", "bda", "calpal", "radon", "katsianis")
+
+root.path <-"C:/Rprojects/neonet/results"
 present <- 1950
-chr.interval.uncalBC <- c(-9000, -4000)
-roi <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
-                   quiet = TRUE)
+when <- c(-9000, -4000)
+where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
+                     quiet = TRUE)
+df <- neo_parse_db(l.dbs = c("bda", "medafricarbon"),
+                   col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
+                   chr.interval.uncalBC = when,
+                   roi = where)
 # dbs
 # DB not done: kiteeastafrica, nerd, aida,  (no culture)
 # DB done: calpal, medafricarbon, agrichange, neonet, bda, calpal, radon, katsianis
-l.dbs <- c("calpal", "medafricarbon", "agrichange", "neonet", "bda", "calpal", "radon", "katsianis")
-# l.dbs <- c("bda")
-df <- neo_parse_db(l.dbs, chr.interval.uncalBC, present, roi)
+# l.dbs <- c("bda", "medafricarbon")
+# df <- neo_parse_db(l.dbs, chr.interval.uncalBC, present, roi)
 # fspat(df.all.res, roi, outfile = "_db__all_class.png")
 # fspat(df.all.res, roi, outfile = "_db__all.png")
 df.c14 <- neo_map_dbs(df)
@@ -69,7 +75,7 @@ col.req <- gsub(pattern = ".tif", "", kcc.file)
 neo_kcc_plotbar(df_cc, 
                 col.req = col.req,
                 selected.per = c("LM", "MM"),
-                outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
+                outDir = "C:/Rprojects/neonet/results/")
 # neo_kcc_sankey(df_cc, col.req = col.req, 
 #                selected.per = c("EN", "MM"), 
 #                outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")

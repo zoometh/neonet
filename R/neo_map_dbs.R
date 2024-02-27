@@ -1,5 +1,5 @@
 neo_map_dbs <- function(df.all.res = NA,
-                        infile = "C:/Rprojects/neonet/doc/talks/2024-simep/df_ref_per.xlsx"){
+                        infile = "C:/Rprojects/neonet/doc/ref_table_per.xlsx"){
   # maps culture and periods from dates coming from different dbs to the Neonet classes (..MM, LM, EN, MN, ...)# These one-to-one equivalence are listed in an XLSX file
   # read the ref tab
   df_ref_per <- openxlsx::read.xlsx(infile)
