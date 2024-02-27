@@ -23,9 +23,12 @@ neo_calib <- function(df.c14 = NA,
                       ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                       verbose = TRUE,
                       verbose.freq = 50){
+  `%>%` <- dplyr::`%>%`
   # calculate tpq/taq
   # TODO: is column colors useful?
   df.c14$taq <- df.c14$tpq <- df.c14$median <- df.c14$colors <- NA
+  df.c14 <- df.c14 %>%
+    dplyr::filter(!is.na("C14Age") & !is.na("C14SD"))
   if(verbose){print("Run date calibration")}
   for (i in 1:nrow(df.c14)){
     if(verbose){

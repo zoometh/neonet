@@ -52,6 +52,8 @@ df <- neo_parse_db(l.dbs = c("bda", "medafricarbon"),
                    col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
                    chr.interval.uncalBC = when,
                    roi = where)
+df.c14 <- neo_map_dbs(df)
+
 # dbs
 # DB not done: kiteeastafrica, nerd, aida,  (no culture)
 # DB done: calpal, medafricarbon, agrichange, neonet, bda, calpal, radon, katsianis
@@ -59,7 +61,6 @@ df <- neo_parse_db(l.dbs = c("bda", "medafricarbon"),
 # df <- neo_parse_db(l.dbs, chr.interval.uncalBC, present, roi)
 # fspat(df.all.res, roi, outfile = "_db__all_class.png")
 # fspat(df.all.res, roi, outfile = "_db__all.png")
-df.c14 <- neo_map_dbs(df)
 # colnames(df.c14)
 df.c14 <- neo_calib(df.c14)
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
