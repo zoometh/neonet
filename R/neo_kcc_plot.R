@@ -1,6 +1,10 @@
-neo_kcc_plot <- function(kcc = "C:/Rprojects/neonet/doc/data/clim/koeppen_7k.tif",
-                         df.c14 = NA){
+neo_kcc_plot <- function(kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+                         df.c14 = NA,
+                         export = FALSE,
+                         fileOut = "map_dates_kcc.png",
+                         pathOut = "C:/Rprojects/neonet/results/"){
   # create a KCC map with dates (df.c14). The latter is a sf dataframe
+  cc.ky <- DescTools::SplitPath(kcc)$filename
   kcc_geo <- terra::rast(kcc)
   # plot(kcc_geo)
   ## colors
@@ -18,16 +22,24 @@ neo_kcc_plot <- function(kcc = "C:/Rprojects/neonet/doc/data/clim/koeppen_7k.tif
   # kcc_geo <- raster::raster(kcc)
   raster_df <- as.data.frame(kcc_geo, xy = TRUE)
   bbox <- sf::st_bbox(df.c14)
-  ggplot2::ggplot() +
+  tit <- paste0("Dates on the KCC ", cc.ky)
+  gout <- ggplot2::ggplot() +
+    ggplot2::ggtitle(tit) +
     ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) + 
     ggplot2::scale_fill_manual(values = color_vector) +  # Map fill colors using color_vector
     ggplot2::geom_sf(data = df.c14, color = "black", size = 0.5) +  # Add the sf object
     ggplot2::coord_sf() +  # Use coordinate system from sf object
     ggplot2::labs(fill = "Climate Code") + # Optional: add a legend title
     ggplot2::coord_sf(xlim = c(bbox$xmin, bbox$xmax), ylim = c(bbox$ymin, bbox$ymax)) +
+    ggplot2::theme_bw() +
     ggplot2::theme(legend.position = "none")
+  ggplot2::ggsave(paste0(pathOut, fileOut), gout, width = 10, height = 6)
 }
 
-# neo_kcc_plot(df.c14 = head(df.c14, 30))
-neo_kcc_plot(df.c14 = df.c14)
+# df <- c14bazAAR::get_c14data("neonet") # YES period, culture
+# df <- sf::st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
+# neo_kcc_plot(df.c14 = df,
+#              kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+#              export = TRUE,
+#              fileOut = "neonet_kcc.png" )
 

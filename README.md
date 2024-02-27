@@ -194,6 +194,8 @@ neo_isochr(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/resul
            show.lbl = FALSE)
 ```
 
+Where `neo_calib()` calculate the cal BC min and max (i.e, calibrates), and the medidan (with 'intcal20' and the [Bchron](https://andrewcparnell.github.io/Bchron/) R package)
+
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24-isochr.png"
@@ -402,7 +404,61 @@ The Koppen Climate Classes are listed [here](https://github.com/zoometh/neonet/b
 
 ### Koppen functions
 
+Koppen functions are designed not only for the Neonet dataset, but also for all radiocarbon dataset respecting the minimum data stracture (site, labcode, x, y, etc.).
+
 The `neo_kcc_plot()` creates a KCC with a layer of dates above
+
+```R
+source("R/neo_vars.R")
+
+df <- c14bazAAR::get_c14data("neonet")
+df <- sf::st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
+neo_kcc_plot(df.c14 = df,
+             kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+             export = TRUE,
+             fileOut = "neonet_kcc.png" )
+```
+
+Gives:
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet_kcc.png"
+" width="800">
+  <br>
+    <em>The neonet dataset over the KCC 7k</em>
+</p>
+
+Collect the KCC values (climates) of each date using the `neo_kcc_extract()` function. 
+
+
+To get dates coming from other databases but mapped to be compliant with the Neonet format and these current functions, use:
+```R
+when <- c(-9000, -4000)
+where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
+                     quiet = TRUE)
+df <- neo_parse_db(l.dbs = c("bda", "medafricarbon"), 
+                   col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
+                   chr.interval.uncalBC = when, 
+                   roi = where)
+df.c14 <- neo_map_dbs(df)
+head(df.c14)
+```
+
+Gives:
+
+| sourcedb | SiteName       | LabCode  | C14Age | C14SD | db_period      | db_culture      | Period | lon      | lat     |
+|----------|----------------|----------|--------|-------|----------------|-----------------|--------|----------|---------|
+| bda      | Mechta el Arbi | Poz-92231| 6600   | 80    | Mésolithique 1 | Capsien ancien  | MM     | 6.130900 | 36.09940|
+| bda      | Mechta el Arbi | Poz-92232| 6250   | 130   | Mésolithique 1 | Capsien ancien  | MM     | 6.130900 | 36.09940|
+| bda      | Mechta el Arbi | Poz-92230| 3500   | 120   | Mésolithique 1 | Capsien ancien  | MM     | 6.130900 | 36.09940|
+| bda      | Kef Zoura D    | UOC-2925 | 7787   | 48    | Mésolithique 1 | Capsien typique | MM     | 7.682121 | 35.04205|
+| bda      | Bortal Fakher  | L-240A   | 6930   | 200   | Mésolithique 1 | Capsien typique | MM     | 8.176087 | 34.35480|
+| bda      | Relilaï (B)    | Gif-1714 | 7760   | 180   | Mésolithique 1 | Capsien typique | MM     | 7.694694 | 35.04480|
+
+Where the column 'Period' is the NeoNet one (all fields have been renamed to be parsed with the Neonet functions)
+
+The `neo_map_dbs()` function 
 
 ## Documentation
 

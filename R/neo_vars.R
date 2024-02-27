@@ -8,3 +8,16 @@ koppen_colors <- c("#0000FF", "#0078FF", "#46AAFF", "#FF0000", "#FF9696", "#F5A5
                    "#5A78DC", "#4B50B4", "#320087", "#00FFFF", "#37C8FF", "#007D7D", "#00465F",
                    "#B2B2B2", "#666666")
 # kcc_colors <- setNames(koppen_colors, koppen_codes)
+
+rename_c14bazAAR <- c(
+  sourcedb = "sourcedb",
+  SiteName = "site",
+  LabCode = "labnr",
+  C14Age = "c14age",
+  C14SD = "c14std",
+  db_period = "period.x",
+  db_culture = "culture.x",
+  Period = "class",
+  lon = "lon",
+  lat = "lat"
+)
