@@ -26,7 +26,12 @@ fspat <- function(df_selected, roi, outfile){
   ggsave(file = g.out, distr_spat, width = 14, height = 10)
 }
 
-parse_db <- function(l.dbs, df.all, col.req, chr.interval.uncalBC, present = 1950, roi){
+parse_db <- function(l.dbs, 
+                     df.all, 
+                     col.req, 
+                     chr.interval.uncalBC, 
+                     present = 1950, 
+                     roi = NA){
   # collect dates form a list of dbs, creates missing columns (period or culture), filter on chronology (time interval) and spatial location (roi)
   `%>%` <- dplyr::`%>%` # used to not load dplyr
   for(selected.db in l.dbs){
@@ -60,9 +65,11 @@ parse_db <- function(l.dbs, df.all, col.req, chr.interval.uncalBC, present = 195
     # spatial
     df_selected <- df_selected[!(df_selected$lon == "" & df_selected$lat == ""), ]
     df_selected <- df_selected[!is.na(df_selected$lon) & !is.na(df_selected$lat), ]
-    df_sf <- sf::st_as_sf(df_selected, coords = c("lon", "lat"), crs = 4326)
-    inside <- sf::st_within(df_sf, roi, sparse = FALSE)
-    df_selected <- df_selected[inside, ]
+    if(!is.na(roi)){
+      df_sf <- sf::st_as_sf(df_selected, coords = c("lon", "lat"), crs = 4326)
+      inside <- sf::st_within(df_sf, roi, sparse = FALSE)
+      df_selected <- df_selected[inside, ]
+    }
     df_selected <- df_selected[, col.req]
     df.all <- rbind(df.all, df_selected)
   }

@@ -350,19 +350,20 @@ Show the complete NeoNet dataset. A site can be selected by searching it in the 
     <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
 </p>
 
-## Developments
+## Koppen
+> KCC, Koppen Climate Classification, Koeppen Climate Classification 
 
-Add the [pastclim](https://github.com/EvolEcolGroup/pastclim) generated Koppen Climate Classification (KCC) to the study
+The app integrates Koppen Climate Classification for 6,000 BP to 10,000 BP created with the R [pastclim](https://github.com/EvolEcolGroup/pastclim) package and hosted on a GeoServer
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koeppen_6k.tif"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/panel_map_clim_past-1.png"
 " width="1100">
   <br>
-    <em>The Koppen Climate Classification calculated for 6000 BP with the pastclim R package</em>
+    <em>The Koppen Climate Classification calculated for 8,000 BP (8k) with the pastclim R package</em>
 </p>
 
-## Koppen
+### Classes
 
 The Koppen Climate Classes are listed [here](https://github.com/zoometh/neonet/blob/main/inst/extdata/koppen.tsv)
 
@@ -399,7 +400,9 @@ The Koppen Climate Classes are listed [here](https://github.com/zoometh/neonet/b
 | ET         |     29 | Polar, tundra                             | B2B2B2 | ![#B2B2B2](https://placehold.co/15x15/B2B2B2/B2B2B2.png) |
 | EF         |     30 | Polar, frost                              | 666666 | ![#666666](https://placehold.co/15x15/666666/666666.png) |
 
+### Koppen functions
 
+The `neo_kcc_plot()` creates a KCC with a layer of dates above
 
 ## Documentation
 

@@ -29,3 +29,5 @@ neo_kcc_plot <- function(kcc = "C:/Rprojects/neonet/doc/data/clim/koeppen_7k.tif
 }
 
 # neo_kcc_plot(df.c14 = head(df.c14, 30))
+neo_kcc_plot(df.c14 = df.c14)
+
