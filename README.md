@@ -360,7 +360,7 @@ The app integrates Koppen Climate Classification for 6,000 BP to 10,000 BP creat
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/panel_map_clim_past-1.png"
-" width="1100">
+" width="800">
   <br>
     <em>The Koppen Climate Classification calculated for 8,000 BP (8k) with the pastclim R package</em>
 </p>
@@ -369,15 +369,9 @@ KCC are created using the pastclim package
 
 | Column 1 | Column 2 | Column 3 |
 |----------|----------|----------|
-|   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_6k.png"
-" width="400"><br>koppen_6k | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.png"
-" width="400"><br>koppen_7k | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.png"
-" width="400"><br>koppen_8k |
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_9k.png"
-" width="400"><br>koppen_9k | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_10k.png"
-" width="400"><br>koppen_10k |  |
+|   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_6k.png" width="400"><br>koppen_6k | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.png" width="400"><br>koppen_7k | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.png" width="400"><br>koppen_8k |
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_9k.png" width="400"><br>koppen_9k | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_10k.png" width="400"><br>koppen_10k |  |
 
-C:\Rprojects\neonet\doc\data\clim
 
 ### Classes
 
