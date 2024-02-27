@@ -432,7 +432,7 @@ Gives:
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet_kcc.png"
-" width="800">
+" width="700">
   <br>
     <em>The neonet dataset over the KCC 7k</em>
 </p>
