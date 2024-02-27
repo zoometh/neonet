@@ -438,7 +438,7 @@ Gives:
     <em>The neonet dataset over the KCC 7k</em>
 </p>
 
-To get dates coming from other databases but mapped to be compliant with the Neonet format and these current functions, use:
+To retrieve dates coming from other databases (with the [c14bazAAR](https://github.com/ropensci/c14bazAAR) R package) and mapped to be compliant with the Neonet format and functions, use:
 
 ```R
 when <- c(-9000, -4000)
@@ -468,8 +468,8 @@ The `neo_map_dbs()` function uses the [ref_table_per.xlsx](https://github.com/zo
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/ref_table_per.png"
-" width="800">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/ref_table_per.png"
+" width="600">
   <br>
     <em>The neonet dataset over the KCC 7k</em>
 </p>
