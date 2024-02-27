@@ -52,13 +52,13 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14). The applicat
 
 ## NeoNet functions <br> <sub><sup>radiocarbon management </sup></sub><img src="doc/img/logo_nn_pkg.png" width='100px' align="right"/>
 
-NeoNet functions enable the handling of radiocarbon dates sourced from the dataset or exported from the [interactive app](#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-). Current functions cover:
+NeoNet functions enable the handling of radiocarbon dates sourced from the dataset or exported from the [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-). Current functions cover:
 
-* [data management](#data-preparation)
-* [SPD](#spd-plot)
-* [isochrones](#isochrones)
-* [Koppen climate classes](#Koppen)
-* [Harris matrices](#harris-matrix) using the [NeoNet-strati app](#neonet-strati).
+* [data management](https://github.com/zoometh/neonet#data-preparation)
+* [SPD](https://github.com/zoometh/neonet#spd-plot)
+* [isochrones](https://github.com/zoometh/neonet#isochrones)
+* [Koppen climate classes](https://github.com/zoometh/neonet#koppen)
+* [Harris matrices](https://github.com/zoometh/neonet#harris-matrix) using the [NeoNet-strati app](https://github.com/zoometh/neonet#neonet-strati).
 
 ### Data
 
