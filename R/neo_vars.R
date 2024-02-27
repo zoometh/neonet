@@ -7,7 +7,7 @@ koppen_colors <- c("#0000FF", "#0078FF", "#46AAFF", "#FF0000", "#FF9696", "#F5A5
                    "#64FF50", "#32C800", "#FF00FF", "#C800C8", "#963296", "#966496", "#AAAFFF",
                    "#5A78DC", "#4B50B4", "#320087", "#00FFFF", "#37C8FF", "#007D7D", "#00465F",
                    "#B2B2B2", "#666666")
-# kcc_colors <- setNames(koppen_colors, koppen_codes)
+kcc_colors <- setNames(koppen_colors, koppen_codes)
 
 rename_c14bazAAR <- c(
   sourcedb = "sourcedb",

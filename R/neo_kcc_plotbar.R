@@ -1,10 +1,11 @@
 neo_kcc_plotbar <- function(df_cc = NA,
-                           col.req = NA,
-                           outDir = NA,
-                           kcc.file = c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
-                                        "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif"),
-                           kcc_colors = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv",
-                           selected.per = NA){
+                            col.req = NA,
+                            kcc.file = c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+                                         "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif"),
+                            kcc_colors = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv",
+                            selected.per = NA,
+                            export = FALSE,
+                            outDir = NA){
   # df_cc_ <- as.data.frame(df_cc)
   df <- sf::st_set_geometry(df_cc, NULL)
   # for(per in selected.per){
@@ -16,7 +17,7 @@ neo_kcc_plotbar <- function(df_cc = NA,
     tidyr::pivot_longer(cols = starts_with("koppen_"), names_to = "koppen_type", values_to = "value") %>%
     dplyr::filter(!is.na(value)) %>%
     dplyr::group_by(koppen_type, value) %>%
-    dplyr::summarise(count = n()) %>%
+    dplyr::summarise(count = dplyr::n()) %>%
     dplyr::ungroup() %>%
     dplyr::group_by(koppen_type) %>%
     dplyr::mutate(percentage = count / sum(count) * 100) %>%
@@ -26,26 +27,26 @@ neo_kcc_plotbar <- function(df_cc = NA,
   kcc <- DescTools::SplitPath(kcc.file)$filename
   df_long$koppen_type <- factor(df_long$koppen_type, levels = kcc)
   df_long <- df_long[order(df_long$koppen_type), ]
-  # Plotting
-  
-  # Assuming 'df' is your dataframe, 'order_vector' is your vector of values, 
-  # and 'column_name' is the name of the column you're reordering by
-  # order_vector <- c("value3", "value1", "value2") # Example values corresponding to 'column_name'
-  # df_reordered <- df[match(order_vector, df$column_name), ]
-  
+  # plot
   period.names <- paste0(selected.per, collapse = "-")
   # TODO: by site?
   tit <- paste0(period.names, " KCC changes in Kyears (n = ", nrow(df), " dates)")
-  gout <- ggplot(df_long, aes(x = koppen_type, y = percentage, fill = factor(value))) +
-    geom_bar(stat = "identity", position = "fill") +
+  gout <- ggplot2::ggplot(df_long, ggplot2::aes(x = koppen_type, y = percentage, fill = factor(value))) +
+    ggplot2::geom_bar(stat = "identity", position = "fill") +
     # scale_y_continuous(labels = scales::percent_format()) +
-    ggplot2::scale_fill_manual(values = kcc_color_map) +
-    labs(x = "Koppen Classification", y = "Percentage", 
-         title = tit) +
-    theme_minimal() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
-  ggsave(filename = paste0(outDir, period.names, "_kcc_stacked.png"),
-         gout,
-         width = 16, height = 12)
+    ggplot2::scale_fill_manual(values = kcc_colors) +
+    ggplot2::labs(x = "Koppen Classification", y = "%", 
+                  title = tit) +
+    ggplot2::theme_minimal() +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
+  fileOut <- paste0(outDir, period.names, "_kcc_stacked.png")
+  if(export){
+  ggplot2::ggsave(filename = fileOut,
+                  gout,
+                  width = 16, height = 12)
+  print(paste0(fileOut, " has been exported"))
+  }
+  else{
+    print(gout)
+  }
 }
-  

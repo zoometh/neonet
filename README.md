@@ -439,7 +439,6 @@ Gives:
 
 Collect the KCC values (climates) of each date using the `neo_kcc_extract()` function. 
 
-
 To get dates coming from other databases but mapped to be compliant with the Neonet format and these current functions, use:
 ```R
 when <- c(-9000, -4000)
@@ -453,7 +452,7 @@ df.c14 <- neo_map_dbs(df)
 head(df.c14)
 ```
 
-Gives:
+Gives a dataframe where all fields have been renamed to be parsed with the Neonet functions, for example 'Period' having `MM` (for Middle Mesolithic) mapped the `bda` period = `Mésolithique 1` and culture = `Capsien ancien` or `Capsien typique`:
 
 | sourcedb | SiteName       | LabCode  | C14Age | C14SD | db_period      | db_culture      | Period | lon      | lat     |
 |----------|----------------|----------|--------|-------|----------------|-----------------|--------|----------|---------|
@@ -464,7 +463,6 @@ Gives:
 | bda      | Bortal Fakher  | L-240A   | 6930   | 200   | Mésolithique 1 | Capsien typique | MM     | 8.176087 | 34.35480|
 | bda      | Relilaï (B)    | Gif-1714 | 7760   | 180   | Mésolithique 1 | Capsien typique | MM     | 7.694694 | 35.04480|
 
-Where the column 'Period' is the NeoNet one (all fields have been renamed to be parsed with the Neonet functions)
 
 The `neo_map_dbs()` function uses the [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx) as a reference table to map dates coming from the c14bazAAR get functions to the Neonet format (particularly the c14bazAAR `db_period` and `db_culture`)
 
@@ -474,6 +472,30 @@ The `neo_map_dbs()` function uses the [ref_table_per.xlsx](https://github.com/zo
 " width="800">
   <br>
     <em>The neonet dataset over the KCC 7k</em>
+</p>
+
+To assess what were the climates classes that where inhabited in the past, during the Late Mesolithic (LM) and Middle Mesolithic (MM) based on previous dates
+
+```R
+df.c14 <- neo_calib(df.c14)
+df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
+kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+              "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+df_cc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
+col.req <- gsub(pattern = ".tif", "", kcc.file)
+neo_kcc_plotbar(df_cc, 
+                col.req = col.req,
+                selected.per = c("LM", "MM"))
+```
+
+Gives:
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/LM-MM_kcc_stacked.png"
+" width="800">
+  <br>
+    <em>KCC occupied during the MM and LM</em>
 </p>
 
 

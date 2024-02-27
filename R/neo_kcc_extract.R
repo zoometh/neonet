@@ -1,7 +1,7 @@
 # extract CC from one or mainy KCC SpatRaster (kcc_file) and a sf dataframe of dates (df.c14)
 # kcc.step is the interval btw KCC. This interval will be divided by two to create discretisation centered around a date. For example KCC 6k = -6000 entails dates from -6500 to -5500 cal BC
 # KCC are always in cal BP with present = 2000
-neo_kcc_get_cc <- function(root.path = "C:/Rprojects/neonet/doc/data/clim/",
+neo_kcc_extract <- function(root.path = "C:/Rprojects/neonet/doc/data/clim/",
                            present = 2000,
                            kcc.file = c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
                                         "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif"),
