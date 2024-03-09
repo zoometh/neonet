@@ -1,0 +1,395 @@
+---
+title: "NeoNet app"
+subtitle: "Radiocarbon modelling for the Late Mesolithic/Early Neolithic transition in South-Central and South-Western Europe"
+author:
+  - name: Thomas Huet
+    affiliation: 
+      - id: uo
+        name: <span style="font-size:16pt">University of Oxford</span>
+  - name: Niccolò Mazzucco
+    affiliation: <span style="font-size:16pt">Università di Pisa</span>
+title-slide-attributes:
+    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/app_neonet_map_ortho_clust.png"
+    data-background-size: "100%"
+    data-background-opacity: "0.3"
+    data-notes: Climate Types.
+format:
+  revealjs: 
+    css: https://zoometh.github.io/thomashuet/css/quarto.css
+    controls: true
+    auto-stretch: false
+    code-fold: false
+    code-summary: "<small>Code</small>"
+    slide-number: true
+    chalkboard:
+      theme: "whiteboard"
+      color: ['rgba(255, 0, 0, 0.3)'] # red
+    scrollable: true
+    preview-links: auto
+    reference-location: document
+    footnotes-hover: true
+    # self-contained: true
+    # embed-resources: true
+    logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
+    footer: "<em>SIMEP</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/bhdc_avatar.png' style='height: 35px;vertical-align: middle;'> <https://bhdc.earth/> 22-25 November 2023, Jena (Germany)"
+    margin: 0
+    width: 1200
+---
+
+##  {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" background-interactive="true"}
+
+::: notes
+The NeoNet app is an open-source R Shiny interactive web application designed to enhance the study of radiocarbon data. It facilitates research by providing selection tools for spatial information, chronology, and date accuracy. The map interface offers a flexible and multi-scalar window, enabling the study of the dynamics of transitions between last hunter-gatherers and early farmers <br> NB: prepare the map: Global view / clustered / ortho ; Explode cluster / ungroup / OSM
+:::
+
+## {}
+
+::: img
+![](img/watersheds-rivers.png){width="1100"}
+:::
+
+::: notes
+To facilitate dataset curation, it has been divided into two parts based on river basins: NeoNet Atl, focusing on the Atlantic region (in blue), and NeoNet Med, dedicated to the North Central-Western Mediterranean Basin (in red). 
+:::
+
+
+## {transition="fade-in slide-out"}
+
+::: img
+![](img/watersheds-basins.png){width="1100"}
+:::
+
+::: notes
+The decision to partition by river basins is grounded in two primary considerations: it allows for the systematic breakdown, or hierarchical decomposition, of river basins into interconnected and nested components; watersheds are crucial as spatial analysis units, facilitating mathematical modeling that incorporates key concepts such as catchment area, thalweg (shortest path), and natural boundaries.
+:::
+
+
+## The NeoNet Atl dataset
+
+```{r}
+library(dplyr)
+library(DT)
+neonet_med <- "https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MMb1a4a927461fdd822e923821b8d92371/content"
+df.c14 <- read.csv2(neonet_med, sep = "\t", encoding = "UTF-8")
+font.size <- "8pt"
+df.c14[,!names(df.c14) %in% c("tpq", "taq")] %>% 
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(10, 50, -1), 
+                        c('10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
+        "}")
+    ) 
+  )
+```
+
+::: notes
+*Kervouric*. These datasets have been limited to essential radiocarbon date information: the date, period, location, archaeological unit, type of material dated, and bibliographical references. NeoNet Atl and Med include approximately 4,000 radiocarbon dates from around 3,000 distinct archaeological layers, along with about 800 sites mentioned in bibliographical references. These dates and archaeological contexts are backed by roughly 600 different bibliographical sources.
+:::
+
+## Atl
+
+::: row
+::: column50
+<sup>`id00164_doc_elencoc14.tsv`</sup><br> ![](img/figure2.png)
+
+::: captiontext
+Summed probability densities (SPD)
+:::
+:::
+
+::: column50
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/atl_test1.png){height="700"}
+
+::: captiontext
+Distribution of dates by periods
+:::
+:::
+:::
+
+::: notes
+NeoNet Atl. We are in the process of publishing this dataset as a data paper, and it will be deposited on a university server.
+:::
+
+## Med
+
+::: row
+::: column50
+<sup>`id00140_doc_elencoc14.tsv`</sup><br> ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png)
+
+::: captiontext
+Summed probability densities (SPD)
+:::
+:::
+
+::: column50
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/med_test1.png){height="500"}
+
+::: captiontext
+Distribution of dates by periods
+:::
+:::
+:::
+
+::: notes
+NeoNet Med has been published in the *Journal of Open Archaeological Data*. The data paper offers a comprehensive account of the data collection process, including steps, quality control, metadata, and other essential details. Additionally, it provides insights into how the dataset can be effectively reused.
+:::
+
+## 
+
+::: img
+![](img/watersheds-climate.png){width="1000px"}
+:::
+
+::: captiontext
+Koppen Climate Classification[^1].
+:::
+
+[^1]: Beck et al. 2018, *Present and future Köppen-Geiger climate classification maps at 1-km resolution*, Nature Scientific Data [legend](https://github.com/eamena-project/eamena-arches-dev/blob/main/data/layouts/koppen_climate_class.md)
+
+::: notes
+We would like to demonstrate how the app works using an example: examining the influence of climates on the Neolithic expansion and the potential impact of varying ecological barriers on the spread of farming. The app includes the current Koppen Climate Classification as a basemap.
+:::
+
+## 
+
+::: img
+![](img/donzere-gis.png){width="1000"}
+:::
+
+::: captiontext
+Koppen Climate Classification[^2].
+:::
+
+[^2]: Beck et al. 2018, *Present and future Köppen-Geiger climate classification maps at 1-km resolution*, Nature Scientific Data.
+
+::: notes
+For instance, the Défilé de Donzère is a narrow pass in the Rhone valley, extending from North to South, located between the Alps in the east and the Massif Central in the west. In this area, the southern part has a Mediterranean climate (`Csa` - Temperate, dry and hot summer), while the northern part experiences a continental climate (`Cfb` - Temperate, no dry season, warm summer). It is worth noting that the Rhône River served as a cultural frontier during the Late Neolithic.
+:::
+
+## 
+
+<div class="img">
+
+![](img/donzere-view.png){width="1200px"}
+
+<div class="captiontext">
+
+View of Défilé de Donzère and the Rhône River from the south on Google Earth.
+
+<div>
+
+::: notes
+View from the South of the Défilé de Donzère and the Rhône river
+:::
+
+## 
+
+<div class="img">
+
+<center>
+
+![](img/donzere-app-north-and-south.png){width="900"}
+
+</div>
+
+::: notes
+An user create a selection window around the Défilé, specifically choosing dates from the Late Mesolithic (LM) and Early Neolithic (EN) periods, with a standard deviation (SD) of less than 130. Applying these filters, the dataset will contain 70 sites and 353 dates. These dates can be calibrated on the fly by selecting one of them and accessing the calib (calibration) panel.
+:::
+
+## 
+
+<div class="img">
+
+<center>
+
+![](img/donzere-app-north-and-south-calib-1.png){width="900"}
+
+</div>
+
+::: notes
+Dates can be aggregated and seriated by periods (shown here), sites and periods, archaeological layer (PhaseCode), or plotted individually. However, a large number of dates will overwhelm the R Shiny server and may result in an error in this panel. This is one of the limitations of R for managing big data.
+:::
+
+## 
+
+::: img
+<center>![](img/donzere-app-north-and-south-calib.png){width="900"}</center>
+:::
+
+::: notes
+Here by sites and period. Graphics can be exported using a download button.
+:::
+
+## 
+
+::: img
+<center>![](img/donzere-app-north-and-south.png){width="900"}</center>
+:::
+
+::: notes
+Returning in the map panel. The selected area and the selected dates can also be exported, both in GeoJSON files, using two other export buttons on the top left of the map panel
+:::
+
+## 
+
+```{r}
+library(sf) ; library(dplyr) ; library(leaflet)
+dirIn <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/presentation/bhdc/data/"
+```
+
+::: columns
+::: {.column width="50%"}
+[<sup>`neonet-data-2023-10-22-select-aera.geojson`</sup>]{.smalltext}
+
+```{r}
+df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
+ID <- as.character(df$ID)
+leaflet(df, width = "500px") %>%
+  addTiles() %>%
+  addPolygons(popup = ID)# "<b>Hello World</b>")
+```
+:::
+
+::: {.column width="50%"}
+[<sup>`neonet-data-2023-10-22.geojson`</sup>]{.smalltext}
+
+```{r}
+df <- st_read(paste0(dirIn, "neonet-data-2023-10-22.geojson"),  quiet = T)
+leaflet(df, width = "500px") %>%
+  addTiles() %>% 
+  addCircleMarkers(popup = ~SiteName)
+```
+:::
+:::
+
+::: notes
+Here it's a leaflet view of these exported files. On the left hand side the selection rectangle, on the right hand side the dates. Dates can undergo a secondary curation and subsetting process using a GIS or any other appropriate application.
+:::
+
+## 
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/zoometh/neonet>]{.smalltext}
+
+::: columns
+::: {.column width="30%"}
+![](img/github-neonet-functions-1.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="70%"}
+``` r
+neo_datasum(df.c14 = df.c14, 
+            info = c("maps"),
+            roi = "https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson")
+```
+
+::: img
+<center>![](https://raw.githubusercontent.com/zoometh/neonet/main/results/atl_test.png){width="500" style="horizontal-align: middle;"}</center>
+:::
+
+``` r
+neo_spd(df.c14 = df.c14)
+```
+
+::: img
+<center>![](img/figure2.png){width="500" style="horizontal-align: middle;"}</center>
+:::
+
+``` r
+neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson")
+```
+
+::: img
+<center>![](img/donzere_EN-neolithic-isochr.png){width="600" style="horizontal-align: middle;"}</center>
+:::
+
+``` r
+neo_isochr(df.c14 = "neonet-data-2023-10-22.geojson", 
+           selected.per = "LM")
+```
+
+::: img
+<center>![](img/donzere_LM-paleolithic-isochr.png){width="600" style="horizontal-align: middle;"}</center>
+:::
+
+``` r
+neo_strat(inData = "Roc du Dourgne_2023-07-30.csv")
+```
+
+::: img
+<center>![](https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-period.png){width="450" style="horizontal-align: middle;"}</center>
+:::
+:::
+:::
+
+::: notes
+The Shiny app also includes documentation and other functions for calculating various features, including:
+
+-   Spatial distributions
+-   SPDs (Summed Probability Distributions)
+-   Isochrones (considered an effective way to visually represent the diffusion in time and space within a single non-animated map)
+-   Harrix matrices
+:::
+
+## 
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/c14bazaar-logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}
+
+::: columns
+::: {.column width="30%"}
+![](img/github-c14bazaar-functions-1.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="70%"}
+![](img/github-c14bazAAR-dbs.png){width="700" style="horizontal-align: middle;"}
+:::
+:::
+
+::: notes
+NeoNet is one of the numerous existing radiocarbon datasets. That's why we have developed a *getter* function within the C14bazaar package for the dataset's to be harvestable.
+:::
+
+## Conclusion
+
+<center>![](https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet-data-2023-09-24-isochr.png){width="600"}</center>
+
+-   Open Data, Open Source, Open Access
+-   Scalable, Incrementable, Reusable, Analyzable
+
+::: notes
+-   Neonet offers an app and curated datasets of radiocarbon dates for the Mesolithic / Neolithic transition, currently in South-Central and South-Western Europe
+-   The dataset is OD, the app and management functions are OSrc and OA. Compliant with OSci
+-   The app allows a multiscalar approach, the partition in river basins makes it easily incrementable, being compliant with OS makes also the framework reusable, and side functions make easier the analysis. These features collectively enhance the potential reproducibility of radiocarbon analysis, contributing to the development of consensual assumptions about the temporal dynamics of the spread of farming
+:::
+
+## Perspectives
+
+<center>![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/panel_map_export_todo.png){width="600" style="horizontal-align: middle;"}</center>
+
+-   Extending, enhancing data and data re-usability
+-   Build sites' Harris matrices and run Bayesian with *prior* information
+
+::: notes
+Perspectives are many:
+
+-   Watersheds partition is highly modular (hierarchical decomposition) and makes easy the extension of the dataset to other river basins. We need IT development to offer the option of different geographical windows at the same time (here at the South and the North of the Defile). That will allow to contrast different areas. FAIRability can still be improved: even curated and standardised, the NeoNet dataset certainly still contains error. Managing feedback from users would be a plos.
+-   We would like to construct the Harris matrices of different site and run Bayesian statistics to better the modeling
+:::
+
+## Credits
+
+-   ["Tools, Techniques and Specialists: the keys to understand the Mesolithic-Neolithic transition in Mediterranean Europe" (PID2020-112513RB-I00) financiado/a por MCIN/AEI/ 10.13039/501100011033]{.smalltext}
+
+-   ["Origen, desarrollo y consolidación del neolítico en el ámbito Mediterráneo (RED2018-102382-T)" Redes de Investigación, 2020-2021]{.smalltext}
+
+-   [Conexiones en el Sur de la Península durante el Neolítico (RED2022-134436-T)]{.smalltext}
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-gobierno-de-espana.png){height="80"} ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-agencia-investigacion.png){height="80"} ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/inst-csic.png){height="80"}
+
+</p>
+

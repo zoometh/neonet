@@ -378,7 +378,7 @@ KCC are created as GeoTiffs using the pastclim package
 
 The Koppen Climate Classes are listed [here](https://github.com/zoometh/neonet/blob/main/inst/extdata/koppen.tsv)
 
-| KoppenCode |   list | values                                    | hexa   | color                                                    |
+| code |   num | value                                    | hexa color   | color                                                    |
 |------------|-------:|:------------------------------------------|:-------|:---------------------------------------------------------|
 | Af         |      1 | Tropical, rainforest                      | 0000FF | ![#0000FF](https://placehold.co/15x15/0000FF/0000FF.png) |
 | Am         |      2 | Tropical, monsoon                         | 0078FF | ![#0078FF](https://placehold.co/15x15/0078FF/0078FF.png) |
@@ -418,7 +418,7 @@ Koppen functions are designed not only for the Neonet dataset, but also for all 
 The `neo_kcc_plot()` creates a KCC with a layer of dates above
 
 ```R
-source("R/neo_vars.R")
+source("R/config.R") # default variables: column names mapping, colors, etc.
 
 df <- c14bazAAR::get_c14data("neonet")
 df <- sf::st_as_sf(df, coords = c("lon", "lat"), crs = 4326)

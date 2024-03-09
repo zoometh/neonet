@@ -1,12 +1,29 @@
-# extract CC from one or mainy KCC SpatRaster (kcc_file) and a sf dataframe of dates (df.c14)
-# kcc.step is the interval btw KCC. This interval will be divided by two to create discretisation centered around a date. For example KCC 6k = -6000 entails dates from -6500 to -5500 cal BC
-# KCC are always in cal BP with present = 2000
-neo_kcc_extract <- function(root.path = "C:/Rprojects/neonet/doc/data/clim/",
-                           present = 2000,
-                           kcc.file = c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
-                                        "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif"),
-                           kcc.step = 1000,
-                           df.c14 = NA){
+#' @name neo_kcc_extract
+#'
+#' @description Extract Koppen Climate Classes (KCC) from one or different KCC SpatRaster (`kcc_file`) using the median calibrated date form a `sf` dataframe of dates (`df.c14`). For example KCC 6k (i.e. -6000) entails dates having their medians between -6500 and -5500 calBC.
+#' 
+#' @param df.c14 A `sf` dataframe of dates.
+#' @param present KCC are always in cal BP with present = 2000.
+#' @param root.path The path to the `kcc.file` parent folder.
+#' @param kcc.file Koppen Climate Classes (KCC) SpatRaster (i.e. GeoTiffs) generated with the `xxx()` function.
+#' @param kcc.step The time interval btw KCC. This interval will be divided by two to create discretisation centered around a date. Default: 1000
+#' @param ref.period period referenced in NeoNet (and colors). A TSV file.
+#' @param verbose if TRUE (default) then display different messages.
+#'
+#' @return
+#'
+#' @examples
+#'
+#'
+#'
+#' @export
+neo_kcc_extract <- function(df.c14 = NA,
+                            present = 2000,
+                            root.path = "C:/Rprojects/neonet/doc/data/clim/",
+                            kcc.file = c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+                                         "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif"),
+                            kcc.step = 1000,
+                            verbose = TRUE){
   # 
   for(ky in kcc.file){
     # ky <- kcc.file[3]
@@ -19,11 +36,15 @@ neo_kcc_extract <- function(root.path = "C:/Rprojects/neonet/doc/data/clim/",
     cc.ky.int.bc <- cc.ky.int.bp + present
     cc.ky.int.interval <- c(cc.ky.int.bc - (kcc.step)/2, 
                             cc.ky.int.bc + (kcc.step)/2)
-    print(paste0("  sample calibrated dates having their median within ",
-                 cc.ky.int.interval[1], " and ", cc.ky.int.interval[2], " (BC)"))
+    if(verbose){
+      print(paste0("  sample calibrated dates having their median within ",
+                   cc.ky.int.interval[1], " and ", cc.ky.int.interval[2], " (BC)"))
+    }
     df.c14.exist.in.ky <- subset(df.c14, median >= cc.ky.int.interval[1] & median <= cc.ky.int.interval[2])
     head(df.c14.exist.in.ky)
-    print(paste0("  nb of dates/kcc: ", nrow(df.c14.exist.in.ky)))
+    if(verbose){
+      print(paste0("  nb of dates/kcc: ", nrow(df.c14.exist.in.ky)))
+    }
     kcc_geo <- terra::rast(kcc)
     sf.c14.exist.in.ky <- sf::st_as_sf(df.c14.exist.in.ky, coords = c("lon", "lat"), crs = 4326)
     df_cc <- terra::extract(kcc_geo, sf.c14.exist.in.ky)
@@ -40,9 +61,3 @@ neo_kcc_extract <- function(root.path = "C:/Rprojects/neonet/doc/data/clim/",
   }
   return(df.c14)
 }
-
-
-
-
-
-# kcc = "C:/Rprojects/neonet/doc/data/clim/koeppen_7k.tif"

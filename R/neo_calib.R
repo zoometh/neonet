@@ -1,11 +1,11 @@
 #' @name neo_calib
 #'
-#' @description calculate tpq / taq and the median
+#' @description Calibrate the radiocarbon dates, calculate tpq / taq and the median
 #'
 #' @param df.c14 A dataframe. The original XLSX with neonet columns (SiteName, Period, etc.) with with checked values (see: neo_subset)
 #' @param intCal calibration curve
 #' @param ci Confidence interval. Default 0.95 (95%)
-#' @param Present to calibrate from BP (1950).
+#' @param present to calibrate from BP (1950).
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param verbose if TRUE (default) then display different messages.
 #'
@@ -28,7 +28,8 @@ neo_calib <- function(df.c14 = NA,
   # TODO: is column colors useful?
   df.c14$taq <- df.c14$tpq <- df.c14$median <- df.c14$colors <- NA
   df.c14 <- df.c14 %>%
-    dplyr::filter(!is.na("C14Age") & !is.na("C14SD"))
+    dplyr::filter(!is.na("C14Age") & !is.na("C14SD")) %>%
+    dplyr::filter(C14Age != '' & C14SD != '')
   if(verbose){print("Run date calibration")}
   for (i in 1:nrow(df.c14)){
     if(verbose){
@@ -39,7 +40,8 @@ neo_calib <- function(df.c14 = NA,
     ages1 <- Bchron::BchronCalibrate(ages = df.c14[i, "C14Age"],
                                      ageSds = df.c14[i, "C14SD"],
                                      calCurves = intCal,
-                                     ids = 'Date1')
+                                     ids = 'Date1',
+                                     allowOutside = TRUE)
     # median
     age_samples <- Bchron::sampleAges(ages1)
     med <- as.numeric(apply(age_samples, 2, quantile, probs = c(ci)))

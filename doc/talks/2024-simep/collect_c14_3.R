@@ -38,21 +38,27 @@ fref <- function(df.all.res, outfile = "df_ref_per.xlsx"){
 }
 
 getwd()
-source("R/neo_vars.R")
+source("R/config.R")
 
 ## done
 # l.dbs <- c("calpal", "medafricarbon", "agrichange", "neonet", "bda", "calpal", "radon", "katsianis")
 
 root.path <-"C:/Rprojects/neonet/results"
+where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
+what.db <- c("calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
+# "neonet" gives a timeout
 present <- 1950
 when <- c(-9000, -4000)
-where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
+where <- sf::st_read(where.roi,
                      quiet = TRUE)
-df <- neo_parse_db(l.dbs = c("bda", "medafricarbon"),
-                   col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
-                   chr.interval.uncalBC = when,
-                   roi = where)
-df.c14 <- neo_map_dbs(df)
+col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
+source("R/neo_parse_db.R")
+df <- neo_parse_dbs(l.dbs = what.db, #what.db, # c("bda", "medafricarbon"),
+                    col.c14baz = col.c14baz,
+                    chr.interval.uncalBC = when,
+                    roi = where)
+source("R/neo_align_dbs.R")
+df.c14 <- neo_align_dbs(df)
 
 # dbs
 # DB not done: kiteeastafrica, nerd, aida,  (no culture)
@@ -62,21 +68,49 @@ df.c14 <- neo_map_dbs(df)
 # fspat(df.all.res, roi, outfile = "_db__all_class.png")
 # fspat(df.all.res, roi, outfile = "_db__all.png")
 # colnames(df.c14)
+source("R/neo_calib.R")
 df.c14 <- neo_calib(df.c14)
-df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 
-# ...
-xxx <- df.c14 %>% 
-  sample_n(250)
+#### shortcut: load the 'df14_simep.csv' file
+# samp_df <- paste0(root.path, "/df14_simep.csv")
+# write.csv(df.c14, samp_df, row.names = FALSE)
+# samp_df <- read.csv(samp_df)
+# df.c14 <- samp_df
+# #############################
+
+df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 # unique(xxx$Period)
 kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
               "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
 df_cc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
 col.req <- gsub(pattern = ".tif", "", kcc.file)
-neo_kcc_plotbar(df_cc, 
-                col.req = col.req,
-                selected.per = c("LM", "MM"),
-                outDir = "C:/Rprojects/neonet/results/")
+source("R/neo_kcc_plotbar.R")
+Meso <- neo_kcc_plotbar(df_cc = df_cc, 
+                        col.req = col.req,
+                        selected.per = c("LM", "MM"),
+                        title = "Mesolithic")
+Neo <- neo_kcc_plotbar(df_cc = df_cc, 
+                       col.req = col.req,
+                       selected.per = c("EN", "MN"),
+                       title = "Neolithic")
+# gridExtra::grid.arrange(Meso, Neo, ncol = 1)
+source("R/neo_kcc_legend.R")
+# to get only existing KCC
+selected.kcc <- na.omit(unique(unlist(df[, col.req]))) 
+selected.kcc <- factor(selected.kcc, levels = unique(selected.kcc))
+kcc.legend <- neo_kcc_legend(selected.kcc = selected.kcc, 
+                             long.legend = TRUE)
+lay <- rbind(c(1, 1, 1, 1, 1, 1, 3, 3), 
+             c(1, 1, 1, 1, 1, 1, 3, 3), 
+             c(1, 1, 1, 1, 1, 1, 3, 3), 
+             c(2, 2, 2, 2, 2, 2, 3, 3),
+             c(2, 2, 2, 2, 2, 2, 3, 3), 
+             c(2, 2, 2, 2, 2, 2, 3, 3))
+g <- gridExtra::grid.arrange(Meso, Neo, kcc.legend,
+                             layout_matrix = lay)
+g.out <- paste0(root.path, "/kcc_meso_neo.png")
+ggplot2::ggsave(file = g.out, g, width = 14, height = 10)
+
 # neo_kcc_sankey(df_cc, col.req = col.req, 
 #                selected.per = c("EN", "MM"), 
 #                outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
