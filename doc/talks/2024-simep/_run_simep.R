@@ -132,3 +132,17 @@ ggplot2::ggsave(file = g.out, g, width = 14, height = 10)
 #                selected.per = c("EN", "MM"), 
 #                outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 # df <- read.csv(paste0(root.path, "/medians.csv"))
+
+library(rcarbon)
+
+source("R/neo_spdplot.R")
+source("R/neo_spd.R")
+
+neo_spd(df.c14 = head(df.c14, 10),
+        ref.c14age = c(10000, 5000),
+        shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"))
+
+neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson",
+        export = F)
+
+samp <- head(df.c14, 10)

@@ -2,7 +2,7 @@
 #' 
 #' @description SPD on a dataset
 #'
-#' @param df.c14 the dataset with NeoNet columns (SiteName, Period, etc.). Can be: a TSV file, or a data.frame, or a GeoJSON. Default: NeoNet med dataset
+#' @param df.c14 the dataset with NeoNet columns (SiteName, Period, etc.). Can be: a TSV file, or a data.frame, or a GeoJSON, or an sf object. Default: NeoNet med dataset
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param export.plot if TRUE export (by default), if FALSE display
 #' @param dirOut name of the output folder. Only useful when `export.plot` is TRUE
@@ -40,21 +40,48 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
                     verbose = TRUE){
   # c14.db.url <- 'http://mappaproject.arch.unipi.it/mod/files/140_id00140_doc_elencoc14.tsv'
   `%>%` <- dplyr::`%>%` # used to not load dplyr
-  if(class(df.c14) == "data.frame"){
+  
+  
+  # data <- df.c14 %>%
+  #   mutate(category = case_when(
+  #     is.data.frame()           ~ "dataframe",
+  #     inherits("sf")   ~ "sf",
+  #     TRUE                   ~ "Low" # Default case
+  #   ))
+  # 
+  
+  
+  if(is.data.frame(df.c14)){
+    if(verbose){
+      print("Read a dataframe")
+    }
     c14 <- df.c14
-  } else {
-    if(!is.na(DescTools::SplitPath(df.c14)$extension)){
-      if(DescTools::SplitPath(df.c14)$extension == "geojson"){
-        c14 <- sf::st_read(df.c14, quiet = T)
+  } 
+  if(inherits(df.c14, "sf")){
+    if(verbose){
+      print("Read an sf object")
+    }
+    c14 <- sf::st_set_geometry(df.c14, NULL)
+  } else if(!is.na(DescTools::SplitPath(df.c14)$extension)){
+    if(DescTools::SplitPath(df.c14)$extension == "geojson"){
+      if(verbose){
+        print("Read an a GeoJson file")
       }
-      if(DescTools::SplitPath(df.c14)$extension == "tsv"){
-        c14 <- read.table(df.c14, sep = "\t", header = TRUE, stringsAsFactors = F, quote = "")
-      } 
+      c14 <- sf::st_read(df.c14, quiet = T)
     }
-    if(is.na(DescTools::SplitPath(df.c14)$extension)){
-      c14 <- data.table::fread(df.c14, verbose = F)
-    }
+    if(DescTools::SplitPath(df.c14)$extension == "tsv"){
+      if(verbose){
+        print("Read an a TSV file")
+      }
+      c14 <- read.table(df.c14, sep = "\t", header = TRUE, stringsAsFactors = F, quote = "")
+    } 
   }
+  # if(is.na(DescTools::SplitPath(df.c14)$extension)){
+  #   if(verbose){
+  #     print("Read a ?? ")
+  #   }
+  #   c14 <- data.table::fread(df.c14, verbose = F)
+  # }
   # periods
   if(verbose){print("Read period colors")}
   periods.colors <- read.csv(ref.period, sep = "\t")
@@ -68,6 +95,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
   }
   c14 <- within(c14, Period[Period %in% unshown.per] <- 'others')
   c14 <- merge(c14, periods.colors.selected, by.x = "Period", by.y = "period", all.x = T)
+  
   # c14$colors <- NULL # rm previous colors
   # unique(c14$Period)
   # unique(c14$color)
@@ -82,7 +110,9 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
     cat(colpal, sep = ", ")
   }
   c14 <- c14 %>% dplyr::arrange(factor(Period, levels = periods.colors.selected$period))
-  
+  c14$Period <- factor(c14$Period, levels = periods.colors.selected$period)
+  c14$C14Age <- as.numeric(c14$C14Age)
+  c14$C14SD <- as.numeric(c14$C14SD)
   
   # c14 <- c14[match(periods.colors.selected$period, c14$Period),]
   
@@ -94,21 +124,26 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
     print("Calibration")
   }
   
-  c14$Period <- factor(c14$Period, levels = periods.colors.selected$period)
+  c14.cal <- head(c14, 30)
   
-  c14$C14Age <- as.numeric(c14$C14Age)
-  c14$C14SD <- as.numeric(c14$C14SD)
-  bins <- rcarbon::binPrep(c14$SiteName,
-                           c14$C14Age,
+  bins <- rcarbon::binPrep(c14.cal$SiteName,
+                           c14.cal$C14Age,
                            h = 50)
-  x <- rcarbon::calibrate(c14$C14Age,
-                          c14$C14SD,
+  x <- rcarbon::calibrate(c14.cal$C14Age,
+                          c14.cal$C14SD,
                           normalised = FALSE)
   spd.c14 <- rcarbon::stackspd(x = x,
-                               group = c14$Period,
+                               group = c14.cal$Period,
                                timeRange = c(ref.c14age[1], ref.c14age[2]),
                                bins = bins,
                                runm = 50)
+  # data(emedyd)
+  # emedyd.samp <- head(emedyd, 100)
+  # x = calibrate(x=emedyd.samp$CRA, errors=emedyd.samp$Error,normalised=FALSE)
+  # bins = binPrep(sites=emedyd.samp$SiteName, ages=emedyd.samp$CRA,h=50)
+  # res = stackspd(x=x,timeRange=c(16000,8000),bins=bins,group=emedyd.samp$Region)
+  
+  
   if(export){
     if(is.na(plotname)){
       # plotname <- DescTools::SplitPath(df.c14)$filename
@@ -155,7 +190,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
 # df.url = "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv")
 
 # neo_spd(df.c14 = "C:/Users/Thomas Huet/Downloads/id00164_doc_elencoc14 (5).tsv")
-neo_spd(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MM54ff3698c0ea78b77469ce6462c2ca36/content", export = F)
+# neo_spd(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MM54ff3698c0ea78b77469ce6462c2ca36/content", export = F)
 
 # # c14dates <- data.table::fread("https://digitallib.unipi.it/fedora/objects/mag:2627/datastreams/MM54ff3698c0ea78b77469ce6462c2ca36/content")
 # 

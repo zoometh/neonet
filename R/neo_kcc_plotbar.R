@@ -30,6 +30,7 @@ neo_kcc_plotbar <- function(df_cc = NA,
                             # kcc_colors = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv",
                             colname.period = "Period",
                             selected.per = NA,
+                            present = 2000,
                             title = NA,
                             legend.show = FALSE,
                             export = FALSE,
@@ -61,8 +62,9 @@ neo_kcc_plotbar <- function(df_cc = NA,
   # TODO: by site?
   tit <- paste0(period.names)
   used.periods <- paste0(selected.per, collapse = ", ")
-  caption <- paste("Koppen Climate Classes changes in Ka",
-                    "(used periods:", used.periods, "| n =", nrow(df), "dates)")
+  caption <- paste("Koppen Climate Classes in ka BP",
+                   "| BP =", present, 
+                    "| periods:", used.periods, "| n =", nrow(df), "dates)")
   gout <- ggplot2::ggplot(df_long, ggplot2::aes(x = koppen_type, y = percentage, fill = factor(value))) +
     ggplot2::geom_bar(stat = "identity", position = "fill") +
     # scale_y_continuous(labels = scales::percent_format()) +
@@ -71,8 +73,7 @@ neo_kcc_plotbar <- function(df_cc = NA,
                   y = "%", 
                   title = title,
                   caption = caption) +
-    ggplot2::theme_minimal() +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
+    ggplot2::theme_minimal()
   if(!legend.show){
     gout <- gout +
       ggplot2::theme(legend.position = "none",
