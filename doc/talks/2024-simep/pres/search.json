@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html#hg-and-ef",
+    "href": "index.html#hg-and-ef",
+    "title": "Climates during the spread of farming in Mediterranean",
+    "section": "HG and EF",
+    "text": "HG and EF"
+  },
+  {
+    "objectID": "index.html#radiocarbon-data",
+    "href": "index.html#radiocarbon-data",
+    "title": "Climates during the spread of farming in Mediterranean",
+    "section": "Radiocarbon data",
+    "text": "Radiocarbon data\n https://github.com/ropensci/c14bazAAR\n\n\n\n\n\n\n\n\nNeoNet is one of the numerous existing radiocarbon datasets. That’s why we have developed a getter function within the C14bazaar package for the dataset’s to be harvestable."
+  },
+  {
+    "objectID": "index.html#climate-data",
+    "href": "index.html#climate-data",
+    "title": "Climates during the spread of farming in Mediterranean",
+    "section": "Climate data",
+    "text": "Climate data\n https://github.com/EvolEcolGroup/pastclim\n\nTODO"
+  },
+  {
+    "objectID": "index.html#climates-by-radiocarbon-dates",
+    "href": "index.html#climates-by-radiocarbon-dates",
+    "title": "Climates during the spread of farming in Mediterranean",
+    "section": "Climates by radiocarbon dates",
+    "text": "Climates by radiocarbon dates\n\nExtract KCCOther panel\n\n\n\nExtract the Koppen Classification Classes (KCC) by dates \nThe selected KCC map is the one … \n\n\nExtract on the radiocarbon date median"
+  },
+  {
+    "objectID": "index.html#evolution-of-archaeological-sites-climates",
+    "href": "index.html#evolution-of-archaeological-sites-climates",
+    "title": "Climates during the spread of farming in Mediterranean",
+    "section": "Evolution of archaeological sites climates",
+    "text": "Evolution of archaeological sites climates\n\nSPDPlotbar"
+  },
+  {
+    "objectID": "index.html#productible-methods",
+    "href": "index.html#productible-methods",
+    "title": "Climates during the spread of farming in Mediterranean",
+    "section": " productible methods",
+    "text": "productible methods"
+  }
+]
