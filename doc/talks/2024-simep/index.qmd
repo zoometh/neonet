@@ -1,6 +1,6 @@
 ---
-title: "Climates of the last Hunter-Gatherers and first Early Farmers in Mediterranean"
-subtitle: "Climate and radiocarbon modelling for the Late Mesolithic/Early Neolithic transition in Mediterranea through <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r' style='height: 40px;vertical-align: middle;'/> productible means"
+title: "Climates during the spread of farming in Mediterranean "
+subtitle: "Evolution of Koppen climates classes last Hunter-Gatherers and Early Farmers archaeological sites through reproductible methods"
 author:
   - name: Thomas Huet
     affiliation: 
@@ -8,8 +8,8 @@ author:
         name: <span style="font-size:16pt">University of Oxford</span>
 title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc.png"
-    data-background-size: "100%"
-    data-background-opacity: "0.3"
+    data-background-size: "95%"
+    data-background-opacity: "0.4"
     data-notes: Climate Types.
 format:
   revealjs: 
@@ -28,17 +28,17 @@ format:
     footnotes-hover: true
     # self-contained: true
     # embed-resources: true
-    logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<em>Social Interactions in Mediterranean Prehistory</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/2024-simep/img/simep-logo.png' style='height: 35px;vertical-align: middle;'> <https://simep2024.com/> 21-23 October 2024, Barcelona (Spain)"
+    # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
+    footer: "<em>Social Interactions in Mediterranean Prehistory</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/simep-logo.png' style='height: 50px;vertical-align: middle;'> <https://simep2024.com/> 21-23 October 2024, Barcelona (Spain)"
     margin: 0
     width: 1200
 ---
 
-# Introduction
+# Introduction {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
 
 ## HG and EF
 
-# Materials and Methods
+# Materials and Methods {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
 
 ## Radiocarbon datasets
 
@@ -85,13 +85,19 @@ Extract on the radiocarbon date median
 :::
 
 
-## Results
+# Results {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/results/kcc_meso_neo.png)
 
-![]("https://raw.githubusercontent.com/zoometh/neonet/master/results/Neolithic KCC-spd.png")
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Neolithic-KCC-spd.png)
 
 
-![]("https://raw.githubusercontent.com/zoometh/neonet/master/results/Mesolithic KCC-spd.png")
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Mesolithic-KCC-spd.png)
+
+# Discussion {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
+
+## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
+
+# Conclusion {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
 
 

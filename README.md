@@ -415,17 +415,17 @@ The Koppen Climate Classes are listed [here](https://github.com/zoometh/neonet/b
 
 Koppen functions are designed not only for the Neonet dataset, but also for all radiocarbon dataset respecting the minimum data stracture (site, labcode, x, y, etc.).
 
-The `neo_kcc_plot()` creates a KCC with a layer of dates above
+The `neo_kcc_map()` creates a KCC map with a layer of dates above
 
 ```R
 source("R/config.R") # default variables: column names mapping, colors, etc.
 
 df <- c14bazAAR::get_c14data("neonet")
 df <- sf::st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
-neo_kcc_plot(df.c14 = df,
-             kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
-             export = TRUE,
-             fileOut = "neonet_kcc.png" )
+neo_kcc_map(df.c14 = df,
+            kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+            export = TRUE,
+            fileOut = "neonet_kcc.png" )
 ```
 
 Gives:

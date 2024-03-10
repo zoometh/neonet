@@ -141,10 +141,10 @@ library(rcarbon)
 source("R/neo_spdplot.R")
 source("R/neo_spd.R")
 
-df_cc.neo <- df_cc[df_cc$Period %in% c("LM", "MM"), ]
+df_cc.meso <- df_cc[df_cc$Period %in% c("LM", "MM"), ]
 # df_cc.neo <- head(df_cc.neo, 50)
 
-neo_spd(df.c14 = df_cc.neo,
+neo_spd(df.c14 = df_cc.meso,
         title = "Mesolithic | LM, MM",
         # time.round = 1000,
         time.span = c(13000, 6500),
@@ -152,7 +152,7 @@ neo_spd(df.c14 = df_cc.neo,
         # shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
         color.on = "kcc",
         export = TRUE,
-        outFile = "Neolithic KCC",
+        outFile = "Mesolithic KCC",
         outDir = "C:/Rprojects/neonet/results/",
         width = 18, height = 13,
         )
