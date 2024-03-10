@@ -87,5 +87,11 @@ Extract on the radiocarbon date median
 
 ## Results
 
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/kcc_meso_neo.png)
+
+![]("https://raw.githubusercontent.com/zoometh/neonet/master/results/Neolithic KCC-spd.png")
+
+
+![]("https://raw.githubusercontent.com/zoometh/neonet/master/results/Mesolithic KCC-spd.png")
 
 

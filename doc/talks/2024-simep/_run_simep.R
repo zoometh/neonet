@@ -141,11 +141,11 @@ library(rcarbon)
 source("R/neo_spdplot.R")
 source("R/neo_spd.R")
 
-df_cc.neo <- df_cc[df_cc$Period %in% c("EN", "MN"), ]
+df_cc.neo <- df_cc[df_cc$Period %in% c("LM", "MM"), ]
 # df_cc.neo <- head(df_cc.neo, 50)
 
 neo_spd(df.c14 = df_cc.neo,
-        title = "Neolithic | EN, MN",
+        title = "Mesolithic | LM, MM",
         # time.round = 1000,
         time.span = c(13000, 6500),
         calendar = 'BP',
