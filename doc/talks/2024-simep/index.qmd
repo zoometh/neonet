@@ -66,6 +66,17 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 ## Climates by radiocarbon dates
 
 
+::: {.panel-tabset}
+
+### Extract KCC
+
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png)
+
+
+### Other
+
+:::
 
 
 ## Results
