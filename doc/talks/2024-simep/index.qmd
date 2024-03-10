@@ -29,18 +29,18 @@ format:
     # self-contained: true
     # embed-resources: true
     logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<em>SIMEP</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/bhdc_avatar.png' style='height: 35px;vertical-align: middle;'> <https://bhdc.earth/> 22-25 November 2023, Jena (Germany)"
+    footer: "<em>Social Interactions in Mediterranean Prehistory</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/2024-simep/img/simep-logo.png' style='height: 35px;vertical-align: middle;'> <https://simep2024.com/> 21-23 October 2024, Barcelona (Spain)"
     margin: 0
     width: 1200
 ---
 
-## Introduction
+# Introduction
 
-## Methods
+## HG and EF
 
-::: {.panel-tabset}
+# Materials and Methods
 
-### {}
+## Radiocarbon datasets
 
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}
 
@@ -54,15 +54,21 @@ format:
 :::
 :::
 
-### Other panel
-
-
-:::
-
 ::: notes
 NeoNet is one of the numerous existing radiocarbon datasets. That's why we have developed a *getter* function within the C14bazaar package for the dataset's to be harvestable.
 :::
 
+## Past climate data
+
+> TODO
+
+
+## Climates by radiocarbon dates
+
+
+
+
+## Results
 
 ##  {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" background-interactive="true"}
 
