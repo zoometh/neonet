@@ -7,8 +7,8 @@ author:
       - id: uo
         name: <span style="font-size:16pt">University of Oxford</span>
 title-slide-attributes:
-    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc.png"
-    data-background-size: "95%"
+    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"
+    data-background-size: "120%"
     data-background-opacity: "0.4"
     data-notes: Climate Types.
 format:
@@ -34,23 +34,23 @@ format:
     width: 1200
 ---
 
-# Introduction {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
+# Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
 ## HG and EF
 
-# Materials and Methods {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
+# Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
-## Radiocarbon datasets
+## Radiocarbon data
 
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}
 
 ::: columns
 ::: {.column width="30%"}
-![](img/github-c14bazaar-functions-1.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/github-c14bazaar-functions-1.png){width="700" style="horizontal-align: middle;"}
 :::
 
 ::: {.column width="70%"}
-![](img/github-c14bazAAR-dbs.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/github-c14bazAAR-dbs.png){width="700" style="horizontal-align: middle;"}
 :::
 :::
 
@@ -58,7 +58,9 @@ format:
 NeoNet is one of the numerous existing radiocarbon datasets. That's why we have developed a *getter* function within the C14bazaar package for the dataset's to be harvestable.
 :::
 
-## Past climate data
+## Climate data
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
 
 > TODO
 
@@ -80,24 +82,32 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 Extract on the radiocarbon date median
 :::
 
-### Other
+### Other panel
 
 :::
 
 
-# Results {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
+# Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/results/kcc_meso_neo.png)
+## Evolution of archaeological sites climates
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Neolithic-KCC-spd.png)
+::: {.panel-tabset}
 
+### SPD
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Mesolithic-KCC-spd.png)
 
-# Discussion {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Neolithic-KCC-spd.png)
+
+### Plotbar
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/kcc_meso_neo.png)
+:::
+
+# Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
 
-# Conclusion {background-image="https://raw.githubusercontent.com/eamena-project/eamena-arches-dev/master/www/23889489303_b3df7d8cef_o.jpg"}
+# Conclusion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
 
