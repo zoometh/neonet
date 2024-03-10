@@ -1,15 +1,13 @@
 ---
-title: "NeoNet app"
-subtitle: "Radiocarbon modelling for the Late Mesolithic/Early Neolithic transition in South-Central and South-Western Europe"
+title: "Climates of the last Hunter-Gatherers and first Early Farmers in Mediterranean"
+subtitle: "Climate and radiocarbon modelling for the Late Mesolithic/Early Neolithic transition in Mediterranea through <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r' style='height: 40px;vertical-align: middle;'/> productible means"
 author:
   - name: Thomas Huet
     affiliation: 
       - id: uo
         name: <span style="font-size:16pt">University of Oxford</span>
-  - name: Niccolò Mazzucco
-    affiliation: <span style="font-size:16pt">Università di Pisa</span>
 title-slide-attributes:
-    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/app_neonet_map_ortho_clust.png"
+    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc.png"
     data-background-size: "100%"
     data-background-opacity: "0.3"
     data-notes: Climate Types.
@@ -35,6 +33,36 @@ format:
     margin: 0
     width: 1200
 ---
+
+## Introduction
+
+## Methods
+
+::: {.panel-tabset}
+
+### {}
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/presentation/bhdc/img/c14bazaar-logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}
+
+::: columns
+::: {.column width="30%"}
+![](img/github-c14bazaar-functions-1.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="70%"}
+![](img/github-c14bazAAR-dbs.png){width="700" style="horizontal-align: middle;"}
+:::
+:::
+
+### Other panel
+
+
+:::
+
+::: notes
+NeoNet is one of the numerous existing radiocarbon datasets. That's why we have developed a *getter* function within the C14bazaar package for the dataset's to be harvestable.
+:::
+
 
 ##  {data-background-iframe="http://shinyserver.cfs.unipi.it:3838/C14dev" background-interactive="true"}
 

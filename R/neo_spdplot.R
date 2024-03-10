@@ -1,7 +1,14 @@
+# adapted from the function `plot.stackCalSPD()` {rcarbon} R package
 neo_spdplot <- function (x, 
-                         type = "stacked", calendar = "BP", spdnormalised = FALSE, 
-                         rescale = FALSE, runm = NA, xlim = NA, ylim = NA, xaxt = "s", 
-                         yaxt = "s", gapFactor = 0.2, col.fill = NA, col.line = NA, 
+                         type = "stacked", 
+                         calendar = "BP", 
+                         spdnormalised = FALSE, 
+                         rescale = FALSE, 
+                         runm = NA, 
+                         xlim = NA, ylim = NA,
+                         xaxt = "s", yaxt = "s",
+                         gapFactor = 0.2,
+                         col.fill = NA, col.line = NA, 
                          lwd.obs = 1, lty.obs = 1, cex.lab = 1, cex.axis = cex.lab, 
                          legend = TRUE, legend.arg = NULL, ylab = NA, ymargin = 1.1, 
                          spd.title = "",
@@ -12,7 +19,6 @@ neo_spdplot <- function (x,
                          #            "#FF8D1B", "#FFC04D", "#808080"), 
                          ...) 
 {
-  # adapted from the function plot.stackCalSPD {rcarbon} R package
   if (!"stackCalSPD" %in% class(x)) {
     stop("The argument x should be a 'stackCalSPD' class object")
   }
@@ -157,7 +163,7 @@ neo_spdplot <- function (x,
     }
     plot(0, 0, xlim = xlim, ylim = ylim, type = "l", 
          ylab = ylab, xlab = xlabel, xaxt = "n", yaxt = yaxt, 
-         cex.axis = cex.axis, cex.lab = cex.lab)
+         cex.axis = cex.axis, cex.lab = cex.lab, main = spd.title)
     for (i in 2:(nsets + 1)) {
       polygon(c(plotyears, rev(plotyears)), c(PrDens[, 
                                                      i], rev(PrDens[, i - 1])), col = col.fill[i - 

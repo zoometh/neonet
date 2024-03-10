@@ -65,15 +65,17 @@ neo_kcc_plotbar <- function(df_cc = NA,
   caption <- paste("Koppen Climate Classes in ka BP",
                    "| BP =", present, 
                     "| periods:", used.periods, "| n =", nrow(df), "dates)")
-  gout <- ggplot2::ggplot(df_long, ggplot2::aes(x = koppen_type, y = percentage, fill = factor(value))) +
+  gout <- ggplot2::ggplot(df_long, 
+                          ggplot2::aes(x = koppen_type, y = percentage, fill = factor(value))) +
     ggplot2::geom_bar(stat = "identity", position = "fill") +
-    # scale_y_continuous(labels = scales::percent_format()) +
     ggplot2::scale_fill_manual(values = kcc_colors, name = 'classes') +
+    ggplot2::scale_y_continuous(labels = scales::percent_format()) +
     ggplot2::labs(x = "Koppen Classification", 
-                  y = "%", 
+                  # y = "%", 
                   title = title,
                   caption = caption) +
-    ggplot2::theme_minimal()
+    ggplot2::theme_minimal() +
+    ggplot2::theme(axis.title.y = ggplot2::element_blank())
   if(!legend.show){
     gout <- gout +
       ggplot2::theme(legend.position = "none",

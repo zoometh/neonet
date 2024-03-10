@@ -9,8 +9,6 @@ library(gridExtra)
 library(sf)
 library(rnaturalearth)
 
-source("R/neo_vars.R")
-
 fspat <- function(df_selected, roi, outfile){
   ## distribution spat = map
   df_spat <- st_as_sf(df_selected, coords = c("lon", "lat"), crs = 4326)
@@ -70,21 +68,26 @@ df.c14 <- neo_align_dbs(df)
 # colnames(df.c14)
 source("R/neo_calib.R")
 df.c14 <- neo_calib(df.c14)
-
-#### shortcut: load the 'df14_simep.csv' file
-# samp_df <- paste0(root.path, "/df14_simep.csv")
 # write.csv(df.c14, samp_df, row.names = FALSE)
+
+###################################################
+##### shortcut: load the 'df14_simep.csv' file ####
+# samp_df <- paste0(root.path, "/df14_simep.csv")
 # samp_df <- read.csv(samp_df)
+# df.c14 <- samp_df[sample(1:nrow(samp_df), 30), ]
+##           OR
 # df.c14 <- samp_df
-# #############################
+###################################################
 
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
-
 # unique(xxx$Period)
 kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
               "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
-df_cc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
 col.req <- gsub(pattern = ".tif", "", kcc.file)
+
+source("R/neo_kcc_extract.R")
+df_cc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
+
 source("R/neo_kcc_plotbar.R")
 Meso <- neo_kcc_plotbar(df_cc = df_cc, 
                         col.req = col.req,
@@ -99,7 +102,7 @@ Neo <- neo_kcc_plotbar(df_cc = df_cc,
 source("R/neo_kcc_legend.R")
 
 # to get only existing KCC
-selected.kcc <- na.omit(unique(unlist(df[, col.req]))) 
+selected.kcc <- na.omit(unique(unlist(df.c14[, col.req]))) 
 selected.kcc <- factor(selected.kcc, levels = unique(selected.kcc))
 kcc.legend <- neo_kcc_legend(selected.kcc = selected.kcc, 
                              long.legend = TRUE)
@@ -138,11 +141,24 @@ library(rcarbon)
 source("R/neo_spdplot.R")
 source("R/neo_spd.R")
 
-neo_spd(df.c14 = head(df.c14, 10),
-        ref.c14age = c(10000, 5000),
-        shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"))
+df_cc.neo <- df_cc[df_cc$Period %in% c("EN", "MN"), ]
+# df_cc.neo <- head(df_cc.neo, 50)
 
-neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson",
-        export = F)
+neo_spd(df.c14 = df_cc.neo,
+        title = "Neolithic | EN, MN",
+        # time.round = 1000,
+        time.span = c(13000, 6500),
+        calendar = 'BP',
+        # shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
+        color.on = "kcc",
+        export = TRUE,
+        outFile = "Neolithic KCC",
+        outDir = "C:/Rprojects/neonet/results/",
+        width = 18, height = 13,
+        )
+# 
+# neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson",
+#         export = F)
+# 
+# samp <- head(df.c14, 10)
 
-samp <- head(df.c14, 10)
