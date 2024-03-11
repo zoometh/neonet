@@ -171,8 +171,11 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 
+
+# Renove unaccurate dates (optional)
 c14.to.remove <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove.tsv"
 df.to.rm <- read.csv2(c14.to.remove, sep = "\t")
+df.to.rm
 df_filtered <- dplyr::anti_join(df.c14, df.to.rm, 
                                 by = c("sourcedb", "LabCode"))
 
@@ -181,7 +184,7 @@ map.iso <- neo_isochr(df_filtered,
                       calibrate = FALSE,
                       shw.dates = TRUE,
                       lbl.dates = TRUE,
-                      lbl.time.interv = TRUE)
+                      lbl.time.interv = FALSE)
 # map.iso$map
 ggplot2::ggsave(map.iso$map, 
                 filename = paste0(root.path, "/test_isochrones.png"),
@@ -189,14 +192,5 @@ ggplot2::ggsave(map.iso$map,
                 width = 18,
                 height = 14)
 
-neo_spot_date <- function(df = NA,
-                          idf.dates = NA,
-                          id.field = "idf",
-                          fields = c("idf", "sourcedb", "labcode", "site", "median")){
-  # print info of a given date, from its idf. Usefull to remove wrong dates before neo_isochr()
-  dates <- df[df[[id.field]] %in% idf.dates, fields]
-  return(dates)
-}
-
-neo_spot_date(df = map.iso$data, 
-              idf.dates = c(373))
+source("R/neo_find_dates.R")
+neo_find_dates(df = map.iso$data, idf.dates = c(191, 414, 340, 341))
