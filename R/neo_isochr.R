@@ -210,6 +210,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
       ggplot2::geom_point(data = df, 
                           ggplot2::aes(x = longitude, y = latitude), 
                           col = "darkgrey",
+                          alpha = .5,
                           size = 1)
   }
   if(export){

@@ -193,4 +193,4 @@ ggplot2::ggsave(map.iso$map,
                 height = 14)
 
 source("R/neo_find_dates.R")
-neo_find_dates(df = map.iso$data, idf.dates = c(118))
+neo_find_dates(df = map.iso$data, idf.dates = c(116), fields = c("idf", "sourcedb", "labcode", "site", "median", "longitude", "latitude"))
