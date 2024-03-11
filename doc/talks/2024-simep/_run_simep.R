@@ -72,12 +72,12 @@ df.c14 <- neo_calib(df.c14)
 
 ###################################################
 ##### shortcut: load the 'df14_simep.csv' file ####
-root.path <-"C:/Rprojects/neonet/results"
-samp_df <- paste0(root.path, "/df14_simep.csv")
-samp_df <- read.csv(samp_df)
-df.c14 <- samp_df[sample(1:nrow(samp_df), 150), ]
-#           OR
-df.c14 <- samp_df
+# root.path <-"C:/Rprojects/neonet/results"
+# samp_df <- paste0(root.path, "/df14_simep.csv")
+# samp_df <- read.csv(samp_df)
+# df.c14 <- samp_df[sample(1:nrow(samp_df), 150), ]
+# #           OR
+# df.c14 <- samp_df
 ###################################################
 
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
@@ -127,8 +127,8 @@ g <- gridExtra::grid.arrange(Meso, Neo, kcc.legend, g.neo.map,
                              top = paste0("Distribution of radiocarbon dates ", 
                                           "by Koppen classes in the ROI (n = ", 
                                           nrow(df.c14), ")")
-                                         
-                             )
+                             
+)
 g.out <- paste0(root.path, "/kcc_meso_neo.png")
 ggplot2::ggsave(file = g.out, g, width = 14, height = 10)
 
@@ -156,10 +156,31 @@ neo_spd(df.c14 = df_cc.meso,
         outFile = "Mesolithic KCC",
         outDir = "C:/Rprojects/neonet/results/",
         width = 18, height = 13,
-        )
+)
 # 
 # neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson",
 #         export = F)
 # 
 # samp <- head(df.c14, 10)
 
+########### ISOCHRONES
+
+library(rcarbon)
+
+source("R/neo_spd.R")
+source("R/neo_calib.R")
+source("R/neo_isochr.R")
+
+map.iso <- neo_isochr(df.c14, 
+                      calibrate = FALSE,
+                      shw.dates = TRUE,
+                      lbl.dates = TRUE,
+                      lbl.time.interv = TRUE)
+map.iso$map
+ggplot2::ggsave(map.iso$map, 
+                filename = paste0(root.path, "/test_isochrones.png"),
+                device = "png",
+                width = 18,
+                height = 14)
+
+map.iso$data[map.iso$data$idf == 373, "labcode"]

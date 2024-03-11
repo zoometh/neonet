@@ -52,7 +52,7 @@ neo_map <- function(map.name = "map_atl",
   world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
   g.neo.map <- ggplot2::ggplot(world) +
     ggplot2::geom_sf(fill = '#7d7d7d', color = '#7d7d7d') +
-    ggplot2::geom_sf(data = ws.roi, color = 'black', fill = NA, inherit.aes = FALSE) + # color = NA)
+    ggplot2::geom_sf(data = ws.roi, color = 'black', fill = NA, inherit.aes = FALSE)
   if(plot.dates){
     g.neo.map <- g.neo.map +
       ggplot2::geom_sf(data = df.dates, inherit.aes = FALSE)

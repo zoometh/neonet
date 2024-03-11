@@ -27,15 +27,15 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        calibrate = TRUE,
                        time.interv = 250,
                        time.line.size = 1,
-                       buff = .1,
-                       shw.dates = TRUE,
+                       bck.alpha = .2,
+                       zoom = NA,
                        lbl.dates = FALSE,
                        lbl.dates.size = 2,
                        lbl.time.interv = FALSE,
                        lbl.time.interv.size = 3,
                        coloramp = c("Reds", "Blues"),
                        mapname = "Isochrones",
-                       export = FALSE,
+                       export = TRUE,
                        outDir = "C:/Rprojects/neonet/results/",
                        map.longest.size = 15,
                        verbose = TRUE){
@@ -111,18 +111,14 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
       print(paste0("Creates the column new unique IDs"))
     }
     idf_nn <- 1:nrow(df.dates.min)
-    df <- data.frame(sourcedb = df.dates.min$sourcedb,
-                     site = df.dates.min$SiteName,
-                     idf = idf_nn,
-                     labcode = df.dates.min$LabCode,
+    df <- data.frame(site = df.dates.min$SiteName,
+                     idf = idf_nn, # TODO: change once idf_nn exists
                      longitude = Xs,
                      latitude = Ys, 
                      median = df.dates.min$median)
   } else {
-    df <- data.frame(sourcedb = df.dates.min$sourcedb,
-                     site = df.dates.min$SiteName,
-                     idf = df.dates.min$idf_nn,
-                     labcode = df.dates.min$LabCode,
+    df <- data.frame(site = df.dates.min$SiteName,
+                     idf = df.dates.min$idf_nn, # TODO: change once idf_nn exists
                      longitude = Xs,
                      latitude = Ys, 
                      median = df.dates.min$median)
@@ -142,37 +138,56 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                   lat = interpolated$y[j],
                   date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %>% 
     dplyr::select(-i, -j)
-  # colors. rm the lightest colors
+  # colors
   nb.contours <- length(contour_levels)
   if(neolithic){
-    myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours + 5)
+    myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours)
   } else {
-    myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours + 5)
+    myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours)
   }
-  myPalette <- myPalette[-c(1:5)]
   # tit
   periods <- paste0(unique(df.dates$Period), collapse = " ")
   if(neolithic){
-    tit <- paste("Neolithic")
-    capt <- paste0(periods, " | isochrones on the earliest medians | ",
-                   nrow(df), " medians from ", nb.dates.tot, " calibrated dates")
+    tit <- paste("Isochrones of the earliest", periods, "dates")
   } else {
-    tit <- paste("Mesolithic")
-    capt <- paste0(periods, " | isochrones on the latest medians | ",
-                   nrow(df), " medians from ", nb.dates.tot, " calibrated dates")
+    tit <- paste("Isochrones of the latest", periods, "dates")
   }
+  subtit <- paste0(mapname, " (", nrow(df), " dates used / ", nb.dates.tot, ")")
   # map
+  buff <- .1
   bbox <- c(left = min(Xs) - buff, 
             bottom = min(Ys) - buff, 
             right = max(Xs) + buff, 
             top = max(Ys) + buff)
-  world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
-  map <- ggplot2::ggplot(world) +
-    ggplot2::geom_sf(color = 'black') + #fill = '#D3D3D3', 
-    ggplot2::coord_sf(xlim = c(min(Xs) - buff, max(Xs) + buff),
-                      ylim = c(min(Ys) - buff, max(Ys) + buff)) +
-    ggplot2::theme_bw() +
-    ggplot2::theme(axis.text = ggplot2::element_text(size = 7)) +
+  if(is.na(zoom)){
+    # calculate autozoom
+    zoom <- rosm:::tile.raster.autozoom(
+      rosm::extract_bbox(
+        matrix(bbox, ncol = 2, byrow = TRUE)),
+      epsg = 4326)
+  } 
+  # map
+  
+  # see: https://stackoverflow.com/questions/77235892/ggmap-and-get-stamenmap-return-an-error-when-plotting-a-region/77251262
+  for(i in seq(zoom, 1)){
+    print(paste(" - try zoom: ", zoom))
+    stamenbck <- tryCatch(ggmap::get_stadiamap(bbox, 
+                                               zoom = zoom,
+                                               maptype = "stamen_terrain_background"), error = function(e) NULL)
+    # stamenbck <- tryCatch(ggmap::get_stamenmap(bbox,
+    #                                            zoom = zoom,
+    #                                            maptype = "terrain-background"), error = function(e) NULL)
+    # stamenbck <- ggmap::get_stamenmap(bbox, maptype = "terrain-background")
+    zoom <- zoom - 1
+    if (!is.null(stamenbck)) {
+      print(zoom)
+      break
+    }
+  }
+  # stamenbck <- ggmap::get_stamenmap(bbox, 
+  #                                   zoom = zoom,
+  #                                   maptype = "terrain")
+  map <- ggmap::ggmap(stamenbck, darken = c(bck.alpha, "white")) + 
     # ggplot2::ggtitle(tit) +
     ggplot2::geom_contour(data = interp_df, 
                           ggplot2::aes(x = lon, y = lat, z = date.med, 
@@ -184,7 +199,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     ggplot2::scale_color_gradientn(colours = rev(myPalette),
                                    name = "Cal BC") +
     ggplot2::labs(title = tit,
-                  caption = capt)
+                  subtitle = subtit)
   # ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
   if(lbl.dates){
     map <- map +
@@ -205,13 +220,11 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                               stroke = .2,
                               size = lbl.time.interv.size)
   }
-  if(shw.dates){
-    map <- map +
-      ggplot2::geom_point(data = df, 
-                          ggplot2::aes(x = longitude, y = latitude), 
-                          col = "black",
-                          size = 1)
-  }
+  map <- map +
+    ggplot2::geom_point(data = df, 
+                        ggplot2::aes(x = longitude, y = latitude), 
+                        col = "black",
+                        size = 1)
   if(export){
     # print(paste0("After subset on Periods ", paste0(select.periods, collapse = ", "),": ", nrow(df.dates), " dates"))
     if(neolithic){
@@ -238,8 +251,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
       print(paste0("Map '", outFile,"' has been exported to '", outDir, "'"))
     }
   } else {
-    outData <- list(data = df, map = map)
-    return(outData)
+    print(map)
   }
 }
 
