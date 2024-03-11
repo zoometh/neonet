@@ -1,4 +1,4 @@
-# Creates a serie of Koeppen CC
+# Creates a serie of Koeppen CC with the pastclim package
 # from_to is in BP
 
 # devtools::install_github("EvolEcolGroup/pastclim", ref="dev")

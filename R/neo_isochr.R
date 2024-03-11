@@ -26,6 +26,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        # max.sd = 100,
                        calibrate = TRUE,
                        time.interv = 250,
+                       time.susbet = NA,
                        time.line.size = 1,
                        buff = .1,
                        shw.dates = TRUE,
@@ -127,7 +128,13 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                      latitude = Ys, 
                      median = df.dates.min$median)
   }
-  contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
+  if(is.na(time.susbet)){
+    contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
+    print(contour_levels)
+  }
+  if(is.numeric(time.susbet)){
+    contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
+  }
   # TODO: handle duplicated
   # duplicated(df[ , c("longitude", "latitude")])
   interpolated <- interp::interp(x = df$longitude, 

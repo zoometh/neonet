@@ -89,6 +89,12 @@ col.req <- gsub(pattern = ".tif", "", kcc.file)
 source("R/neo_kcc_extract.R")
 df_cc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
 
+source("R/neo_kcc_sankey.R")
+outDir <- neo_kcc_sankey(df_cc, col.req, )
+ggsave(filename = paste0(outDir, period.names, "_kcc.png"),
+       gout,
+       width = 16, height = 12)
+
 source("R/neo_kcc_plotbar.R")
 Meso <- neo_kcc_plotbar(df_cc = df_cc, 
                         col.req = col.req,
@@ -171,7 +177,7 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 
-# Renove unaccurate dates (optional)
+# Remove unaccurate dates (optional)
 c14.to.remove <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove.tsv"
 df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
 df.to.rm
@@ -180,6 +186,7 @@ df_filtered <- dplyr::anti_join(df.c14, df.to.rm,
 
 
 map.iso <- neo_isochr(df_filtered, 
+                      time.line.size = .5,
                       calibrate = FALSE,
                       shw.dates = TRUE,
                       lbl.dates = TRUE,

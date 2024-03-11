@@ -1,6 +1,6 @@
 #' @name neo_spd
 #' 
-#' @description SPD on a dataset
+#' @description SPD on a dataset colored by periods (default) or KCC.
 #'
 #' @param df.c14 the dataset with NeoNet columns (SiteName, Period, etc.). Can be: a TSV file, or a data.frame, or a GeoJSON, or an sf object. Default: NeoNet med dataset
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
