@@ -174,7 +174,7 @@ source("R/neo_isochr.R")
 c14.to.remove <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove.tsv"
 df.to.rm <- read.csv2(c14.to.remove, sep = "\t")
 df_filtered <- dplyr::anti_join(df.c14, df.to.rm, 
-                                by = c("sourcedb", "labcode"))
+                                by = c("sourcedb", "LabCode"))
 
 
 map.iso <- neo_isochr(df.c14, 
