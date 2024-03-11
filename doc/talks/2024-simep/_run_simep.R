@@ -72,11 +72,12 @@ df.c14 <- neo_calib(df.c14)
 
 ###################################################
 ##### shortcut: load the 'df14_simep.csv' file ####
-# samp_df <- paste0(root.path, "/df14_simep.csv")
-# samp_df <- read.csv(samp_df)
-# df.c14 <- samp_df[sample(1:nrow(samp_df), 30), ]
-##           OR
-# df.c14 <- samp_df
+root.path <-"C:/Rprojects/neonet/results"
+samp_df <- paste0(root.path, "/df14_simep.csv")
+samp_df <- read.csv(samp_df)
+df.c14 <- samp_df[sample(1:nrow(samp_df), 150), ]
+#           OR
+df.c14 <- samp_df
 ###################################################
 
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)

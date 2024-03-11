@@ -51,6 +51,9 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   if(inherits(df.c14, "sf")){
     df.dates <- df.c14
   }
+  if(is.data.frame(df.c14)){
+    df.dates <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
+  }
   nb.dates.tot <- nrow(df.dates)
   if(verbose){
     print(paste0("Original file: ", nb.dates.tot, " dates"))
@@ -58,7 +61,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   # subset on periods
   df.dates <- df.dates[df.dates$Period %in% selected.per, ]
   if(verbose){
-    print(paste0("After subset of Periods on '",
+    print(paste0("After subsetting Periods on '",
                  paste0(selected.per, collapse = ", "),"': ",
                  nrow(df.dates), " dates to model"))
   }
