@@ -171,7 +171,6 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 
-
 # Renove unaccurate dates (optional)
 c14.to.remove <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove.tsv"
 df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
@@ -193,4 +192,4 @@ ggplot2::ggsave(map.iso$map,
                 height = 14)
 
 source("R/neo_find_dates.R")
-neo_find_dates(df = map.iso$data, idf.dates = c(116), fields = c("idf", "sourcedb", "labcode", "site", "median", "longitude", "latitude"))
+neo_find_dates(df = map.iso$data, idf.dates = c(146))
