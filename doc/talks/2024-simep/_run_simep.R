@@ -174,7 +174,7 @@ source("R/neo_isochr.R")
 
 # Renove unaccurate dates (optional)
 c14.to.remove <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove.tsv"
-df.to.rm <- read.csv2(c14.to.remove, sep = "\t")
+df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
 df.to.rm
 df_filtered <- dplyr::anti_join(df.c14, df.to.rm, 
                                 by = c("sourcedb", "LabCode"))
@@ -193,4 +193,4 @@ ggplot2::ggsave(map.iso$map,
                 height = 14)
 
 source("R/neo_find_dates.R")
-neo_find_dates(df = map.iso$data, idf.dates = c(191, 414, 340, 341))
+neo_find_dates(df = map.iso$data, idf.dates = c(507, 414, 340, 341))
