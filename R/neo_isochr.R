@@ -1,11 +1,13 @@
 #' @name neo_isochr
 #'
-#' @description creates isochrones contours by interpolation of calibrated radiocarbon dates. Select the date with the minimum median in each site.
+#' @description Creates isochrones contours by interpolation of calibrated radiocarbon dates. Select the date with the minimum median in each site. Need to read config.R to get the `kcc_colors` values
 #'
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
 #' @selected.per the period selected. Default "EN".
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
-#' @param time.interv time interval between two isochrones, in years. Default: 250.
+#' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000).
+#' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff, or a SpatRaster.
+#' @param time.interv Time interval between two isochrones (bins), in years. Default: 250.
 #' @param coloramp the name of the coloramps to use on contour, for the Neolithic dates and Paleolithic dates. Default: c("Reds", "Blues"). 
 #' @param lbl.dates show the sites identifiers (default: TRUE)
 #' @param map.longest.size the longest size of the output map (height or width) in cm. The smallest size will be calculated from it. Only useful if if export = TRUE. Default: 15
@@ -26,7 +28,8 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        # max.sd = 100,
                        calibrate = TRUE,
                        time.interv = 250,
-                       time.susbet = NA,
+                       isochr.subset = NA,
+                       kcc.file = NA,
                        time.line.size = 1,
                        buff = .1,
                        shw.dates = TRUE,
@@ -36,13 +39,9 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        lbl.time.interv.size = 3,
                        coloramp = c("Reds", "Blues"),
                        mapname = "Isochrones",
-                       export = FALSE,
-                       outDir = "C:/Rprojects/neonet/results/",
-                       map.longest.size = 15,
                        verbose = TRUE){
-  # library(tidyverse)
-  # library(interp)
   `%>%` <- dplyr::`%>%` # used to not load dplyr
+  ## dates
   # check which periods have been selected
   neolithic <- selected.per %in% c("EN", "EMN", "MN", "LN", "UN")
   paleolithic <- !neolithic
@@ -128,12 +127,13 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                      latitude = Ys, 
                      median = df.dates.min$median)
   }
-  if(is.na(time.susbet)){
+  # contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
+  if(is.na(isochr.subset)){
     contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
     print(contour_levels)
   }
-  if(is.numeric(time.susbet)){
-    contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
+  if(is.numeric(isochr.subset)){
+    contour_levels <- isochr.subset
   }
   # TODO: handle duplicated
   # duplicated(df[ , c("longitude", "latitude")])
@@ -149,45 +149,107 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                   lat = interpolated$y[j],
                   date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %>% 
     dplyr::select(-i, -j)
+  # rm interpolated results having NA
+  interp_df <- na.omit(interp_df)
   # colors. rm the lightest colors
   nb.contours <- length(contour_levels)
-  if(neolithic){
-    myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours + 5)
+  if(nb.contours > 1){
+    if(neolithic){
+      myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours + 5)
+    } else {
+      myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours + 5)
+    }
+    myPalette <- myPalette[-c(1:5)]
   } else {
-    myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours + 5)
-  }
-  myPalette <- myPalette[-c(1:5)]
-  # tit
-  periods <- paste0(unique(df.dates$Period), collapse = " ")
-  if(neolithic){
-    tit <- paste("Neolithic")
-    capt <- paste0(periods, " | isochrones on the earliest medians | ",
-                   nrow(df), " medians from ", nb.dates.tot, " calibrated dates")
-  } else {
-    tit <- paste("Mesolithic")
-    capt <- paste0(periods, " | isochrones on the latest medians | ",
-                   nrow(df), " medians from ", nb.dates.tot, " calibrated dates")
+    myPalette <- "black"
   }
   # map
   bbox <- c(left = min(Xs) - buff, 
             bottom = min(Ys) - buff, 
             right = max(Xs) + buff, 
             top = max(Ys) + buff)
-  world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
-  map <- ggplot2::ggplot(world) +
-    ggplot2::geom_sf(color = 'black') + #fill = '#D3D3D3', 
+  ## basemap
+  if(is.na(kcc.file)){
+    if(verbose){
+      print(paste0("Will use a neutral basemap (rnaturalearth)"))
+    }
+    world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")}
+  if(is(kcc.file, "SpatRaster")) {
+    if(verbose){
+      print(paste0("Will use a KCC basemap (SpatRaster)"))
+    }
+    # not tested
+    world <- st_as_sf(kcc.file, coords = c("x", "y"), crs = st_crs(kcc.file))
+    orig.file <- terra::sources(kcc.file, nlyr=FALSE, bands=FALSE)
+    kcc.info <- DescTools::SplitPath(orig.file)$filename
+    # world <- st_as_sf(kcc_geo, coords = c("x", "y"), crs = st_crs(kcc_geo))
+  }
+  if(is.character(kcc.file)){
+    if(verbose){
+      print(paste0("Will use a KCC basemap (reading a GeoTiff)"))
+    }
+    kcc_geo <- terra::rast(kcc.file)
+    raster_df <- terra::as.data.frame(kcc_geo, xy = TRUE)
+    kcc.info <- DescTools::SplitPath(kcc.file)$filename
+    # 
+    # raster_df <- terra::as.data.frame(raster, xy = TRUE, na.rm = TRUE)
+    # world <- st_as_sf(raster_df, coords = c("x", "y"), crs = st_crs(raster))
+  }
+  # tit
+  periods <- paste0(unique(df.dates$Period), collapse = " ")
+  if(neolithic){
+    tit <- paste("Neolithic")
+    capt <- paste0(periods, " | isochrones on the earliest medians | ",
+                   nrow(df), " medians from ", nb.dates.tot, " calibrated dates BC\n",
+                   "KCC map: ", kcc.info, " (BP)")
+  } else {
+    tit <- paste("Mesolithic")
+    capt <- paste0(periods, " | isochrones on the latest medians | ",
+                   nrow(df), " medians from ", nb.dates.tot, " calibrated dates BC\n",
+                   "KCC map: ", kcc.info, " (BP)")
+  }
+  # create map
+  if(is.na(kcc.file)){
+    map <- ggplot2::ggplot(world) +
+      ggplot2::geom_sf(color = '#595959', fill = "white")
+  } else {
+    map <- ggplot2::ggplot() +
+      ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) + 
+      ggplot2::scale_fill_manual(values = kcc_colors)
+  }
+  # 
+  # gout <- ggplot2::ggplot() +
+  #   ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) + 
+  #   ggplot2::scale_fill_manual(values = kcc_colors) +  # Map fill colors using color_vector
+  #   # ggplot2::geom_sf(data = df.c14, color = "black", size = 0.5) +  # Add the sf object
+  #   # ggplot2::coord_sf() +  # Use coordinate system from sf object
+  #   ggplot2::labs(fill = "Climate Code") + # Optional: add a legend title
+  #   ggplot2::coord_sf(xlim = c(min(Xs) - buff, max(Xs) + buff),
+  #                     ylim = c(min(Ys) - buff, max(Ys) + buff)) +
+  #   # ggplot2::coord_sf(xlim = c(roi$xmin, roi$xmax), ylim = c(roi$ymin, roi$ymax)) +
+  #   ggplot2::theme_bw() +
+  #   ggplot2::theme(legend.position = "none")
+  
+  map <- map +
     ggplot2::coord_sf(xlim = c(min(Xs) - buff, max(Xs) + buff),
                       ylim = c(min(Ys) - buff, max(Ys) + buff)) +
     ggplot2::theme_bw() +
     ggplot2::theme(axis.text = ggplot2::element_text(size = 7)) +
-    # ggplot2::ggtitle(tit) +
     ggplot2::geom_contour(data = interp_df, 
                           ggplot2::aes(x = lon, y = lat, z = date.med, 
                                        # color = ..level..
                                        color = ggplot2::after_stat(level)
                           ),
-                          linewidth = time.line.size,
-                          breaks = contour_levels) +
+                          # breaks = contour_levels,
+                          breaks = contour_levels,
+                          linewidth = time.line.size) +
+    # ggplot2::geom_contour(data = interp_df, 
+    #                       ggplot2::aes(x = lon, y = lat, z = date.med, 
+    #                                    # color = ..level..
+    #                                    color = ggplot2::after_stat(level)
+    #                       ),
+    #                       linewidth = time.line.size,
+    #                       breaks = contour_levels) +
     ggplot2::scale_color_gradientn(colours = rev(myPalette),
                                    name = "Cal BC") +
     ggplot2::labs(title = tit,
@@ -203,14 +265,31 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                                max.overlaps = Inf)
   }
   if(lbl.time.interv){
-    map <- map +
-      metR::geom_text_contour(data = interp_df,
-                              binwidth = time.interv,
-                              ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
-                              skip = 0,
-                              rotate = TRUE,
-                              stroke = .2,
-                              size = lbl.time.interv.size)
+    if(is.na(isochr.subset)){
+      # all contours
+      map <- map +
+        metR::geom_text_contour(data = interp_df,
+                                binwidth = time.interv,
+                                ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
+                                skip = 0,
+                                rotate = TRUE,
+                                stroke = .2,
+                                size = lbl.time.interv.size)
+    } else {
+      # only one selected contour
+      contour_data <- ggplot2::ggplot_build(ggplot2::ggplot(interp_df, ggplot2::aes(x = lon, y = lat, z = date.med)) + 
+                                              ggplot2::geom_contour(breaks = isochr.subset))$data[[1]]
+      # one label by countour
+      contour_data_lbl <- contour_data %>%
+        dplyr::group_by(group) %>%
+        dplyr::slice(1) %>%
+        dplyr::ungroup()
+      map <- map + 
+        ggplot2::geom_contour(data = interp_df, ggplot2::aes(x = lon, y = lat, z = date.med), 
+                              breaks = desired_level, colour = "black") +
+        ggplot2::geom_text(data = contour_data_lbl, ggplot2::aes(x = x, y = y, label = sprintf("%.0f", level)),
+                           size = 3, colour = "black")
+    }
   }
   if(shw.dates){
     map <- map +
@@ -220,35 +299,10 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                           alpha = .5,
                           size = 1)
   }
-  if(export){
-    # print(paste0("After subset on Periods ", paste0(select.periods, collapse = ", "),": ", nrow(df.dates), " dates"))
-    if(neolithic){
-      outFile <- paste0(outDir, mapname, "-neolithic-isochr.png")
-    } else {
-      outFile <- paste0(outDir, mapname, "-paleolithic-isochr.png")
-    }
-    # calculate the right proportion of the output map by calculating the ration w/h of the bbox
-    map.width.size <- bbox[["right"]] - bbox[["left"]]
-    map.height.size <- bbox[["top"]] - bbox[["bottom"]]
-    w_h.ratio <- round( map.width.size / map.height.size, 1)
-    if(w_h.ratio > 1){
-      # width larger than height
-      ggplot2::ggsave(map, filename = outFile, device = "png",
-                      width = map.longest.size,
-                      height = map.longest.size / w_h.ratio)
-    } else {
-      ggplot2::ggsave(map, filename = outFile, device = "png",
-                      width = map.longest.size / w_h.ratio,
-                      height = map.longest.size)
-    }
-    
-    if(verbose){
-      print(paste0("Map '", outFile,"' has been exported to '", outDir, "'"))
-    }
-  } else {
-    outData <- list(data = df, map = map)
-    return(outData)
-  }
+  map <- map +
+    ggplot2::theme(legend.position = "none")
+  outData <- list(data = df, map = map)
+  return(outData)
 }
 
 # library(rcarbon)

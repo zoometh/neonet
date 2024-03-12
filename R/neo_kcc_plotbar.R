@@ -9,8 +9,6 @@
 #' @param kcc_colors .
 #' @param colname.period The name of the `df_cc` dataframe column of the periods
 #' @param selected.per Selected periods.
-#' @param export .
-#' @param outDir .
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return
@@ -32,9 +30,7 @@ neo_kcc_plotbar <- function(df_cc = NA,
                             selected.per = NA,
                             present = 2000,
                             title = NA,
-                            legend.show = FALSE,
-                            export = FALSE,
-                            outDir = NA){
+                            legend.show = FALSE){
   # df_cc_ <- as.data.frame(df_cc)
   source("R/config.R")
   df <- sf::st_set_geometry(df_cc, NULL)
@@ -64,31 +60,25 @@ neo_kcc_plotbar <- function(df_cc = NA,
   used.periods <- paste0(selected.per, collapse = ", ")
   caption <- paste("Koppen Climate Classes in ka BP",
                    "| BP =", present, 
-                    "| periods:", used.periods, "| n =", nrow(df), "dates)")
+                   "| periods:", used.periods, "| n =", nrow(df), "dates)")
+  kcc_colors.sub <- kcc_colors[names(kcc_colors) %in% unique(df_long$value)]
+  df_long <- na.omit(df_long)
   gout <- ggplot2::ggplot(df_long, 
                           ggplot2::aes(x = koppen_type, y = percentage, fill = factor(value))) +
     ggplot2::geom_bar(stat = "identity", position = "fill") +
-    ggplot2::scale_fill_manual(values = kcc_colors, name = 'classes') +
+    ggplot2::scale_fill_manual(values = kcc_colors.sub, name = 'classes') +
     ggplot2::scale_y_continuous(labels = scales::percent_format()) +
-    ggplot2::labs(x = "Koppen Classification", 
+    ggplot2::labs(# x = "Koppen Classification", 
                   # y = "%", 
                   title = title,
                   caption = caption) +
     ggplot2::theme_minimal() +
-    ggplot2::theme(axis.title.y = ggplot2::element_blank())
+    ggplot2::theme(axis.title.y = ggplot2::element_blank(),
+                   axis.title.x = ggplot2::element_blank())
   if(!legend.show){
     gout <- gout +
       ggplot2::theme(legend.position = "none",
                      axis.title.x = ggplot2::element_blank())
   }
-  if(export){
-    fileOut <- paste0(outDir, period.names, "_kcc_stacked.png")
-    ggplot2::ggsave(filename = fileOut,
-                    gout,
-                    width = 14, height = 10)
-    print(paste0(fileOut, " has been exported"))
-  }
-  else{
-    return(gout)
-  }
+  return(gout)
 }

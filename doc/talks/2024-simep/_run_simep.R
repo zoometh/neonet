@@ -106,9 +106,8 @@ Neo <- neo_kcc_plotbar(df_cc = df_cc,
                        selected.per = c("EN", "MN"),
                        title = "Neolithic")
 # gridExtra::grid.arrange(Meso, Neo, ncol = 1)
-source("R/neo_kcc_legend.R")
 
-# to get only existing KCC
+source("R/neo_kcc_legend.R")
 selected.kcc <- na.omit(unique(unlist(df.c14[, col.req]))) 
 selected.kcc <- factor(selected.kcc, levels = unique(selected.kcc))
 kcc.legend <- neo_kcc_legend(selected.kcc = selected.kcc, 
@@ -173,6 +172,7 @@ neo_spd(df.c14 = df_cc.meso,
 
 library(rcarbon)
 
+source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
@@ -185,18 +185,58 @@ df_filtered <- dplyr::anti_join(df.c14, df.to.rm,
                                 by = c("sourcedb", "LabCode"))
 
 
-map.iso <- neo_isochr(df_filtered, 
+map.iso <- neo_isochr(df.c14 = df_filtered, 
                       time.line.size = .5,
                       calibrate = FALSE,
                       shw.dates = TRUE,
                       lbl.dates = TRUE,
                       lbl.time.interv = FALSE)
-# map.iso$map
-ggplot2::ggsave(map.iso$map, 
-                filename = paste0(root.path, "/test_isochrones.png"),
-                device = "png",
-                width = 18,
-                height = 14)
 
 source("R/neo_find_dates.R")
 neo_find_dates(df = map.iso$data, idf.dates = c(146))
+
+#######################
+#### Pioneer front ####
+#######################
+source("R/config.R")
+source("R/neo_spd.R")
+source("R/neo_calib.R")
+source("R/neo_isochr.R")
+isochr.8k <- neo_isochr(df.c14 = df_filtered, 
+                        isochr.subset = -6500,
+                        kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
+                        time.line.size = .5,
+                        calibrate = FALSE,
+                        shw.dates = FALSE,
+                        lbl.dates = FALSE,
+                        lbl.time.interv = TRUE)
+
+source("R/neo_kcc_plotbar.R")
+plotbar.neo <- neo_kcc_plotbar(df_cc = df_cc, 
+                               kcc.file = c("koppen_8k.tif", "koppen_9k.tif"),
+                               col.req = col.req,
+                               selected.per = c("EN"),
+                               title = "Neolithic: transition btw 7,000 and 6,000 BC",
+                               legend.show = FALSE)
+
+source("R/neo_kcc_legend.R")
+df <- as.data.frame(df_cc)
+selected.kcc <- na.omit(unique(unlist(df[, c("koppen_8k", "koppen_9k")]))) 
+selected.kcc <- factor(selected.kcc, levels = unique(selected.kcc))
+kcc.legend <- neo_kcc_legend(selected.kcc = selected.kcc, 
+                             long.legend = TRUE)
+
+lay <- rbind(c(1, 1, 1, 1, 1), 
+             c(1, 1, 1, 1, 1), 
+             c(1, 1, 1, 1, 1), 
+             c(1, 1, 1, 1, 1),
+             c(2, 2, 2, 3, 3), 
+             c(2, 2, 2, 3, 3),
+             c(2, 2, 2, 3, 3))
+g <- gridExtra::grid.arrange(isochr.8k$map, plotbar.neo, kcc.legend,
+                             layout_matrix = lay,
+                             top = paste0("Spread of farming pionner front in 6,500 cal BC")
+                             
+)
+g.out <- paste0(root.path, "/kcc_meso_neo2.png")
+ggplot2::ggsave(file = g.out, g, width = 12, height = 12)

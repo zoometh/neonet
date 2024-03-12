@@ -1,6 +1,6 @@
 #' @name neo_kcc_legend
 #'
-#' @description Grab the legend of KCC
+#' @description Grab the legend of KCC. to get only existing KCC
 #'
 #' @param selected.kcc A vector (factor) of KCC to be selected.
 #' @param kcc_df A dataframe for the long legend. Useful when `long.legend` is TRUE.
