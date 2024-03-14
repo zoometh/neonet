@@ -355,15 +355,33 @@ Show the complete NeoNet dataset. A site can be selected by searching it in the 
 ## Koppen
 > KCC, Koppen Climate Classification, Koeppen Climate Classification 
 
-The app integrates Koppen Climate Classification for 6,000 BP to 10,000 BP created with the R [pastclim](https://github.com/EvolEcolGroup/pastclim) package and hosted on a GeoServer
+The app integrates Koppen Climate Classification (KCC) for 6,000 BP to 10,000 BP created with the R [pastclim](https://github.com/EvolEcolGroup/pastclim) package and the `neo_kcc_create()` function.
 
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/panel_map_clim_past-1.png"
 " width="600">
   <br>
-    <em>The Koppen Climate Classification calculated for 8,000 BP (8k) with the pastclim R package</em>
+    <em>The Koppen Climate Classification calculated for 8,000 BP (8k) with the pastclim R package and hosted on a GeoServer </em>
 </p>
+
+Neonet functions help to blend pastclim KCC and radiocarbon dates.
+
+```R
+# install the packages pastclim and terra
+devtools::install_github("EvolEcolGroup/pastclim", ref="dev")
+library(pastclim)
+library(terra)
+
+# set paths and create maps
+outDir <- "C:/Rprojects/neonet/doc/data/clim/"
+pastclim::set_data_path(path_to_nc = outDir)
+
+source("R/neo_kcc_create.R")
+neo_kcc_create()
+```
+
+Creates these KCC GeoTiffs:
 
 KCC are created as GeoTiffs using the pastclim package
 
@@ -373,6 +391,7 @@ KCC are created as GeoTiffs using the pastclim package
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_10k.png" width="300">|koppen_10k|
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_9k.png" width="300">|koppen_9k|
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_8k.png" width="300">|koppen_8k|
+
 
 ### Classes
 
@@ -438,21 +457,44 @@ Gives:
     <em>The neonet dataset over the KCC 7k</em>
 </p>
 
-To retrieve dates coming from other databases (with the [c14bazAAR](https://github.com/ropensci/c14bazAAR) R package) and mapped to be compliant with the Neonet format and functions, use:
+To retrieve dates coming from other databases (with the [c14bazAAR](https://github.com/ropensci/c14bazAAR) R package) and mapped to be compliant with the Neonet format and functions, using `neo_dbs_parse()`, a mapping table (XLSX) created with `neo_dbs_create_ref()`, and `neo_dbs_align()`:
 
 ```R
 when <- c(-9000, -4000)
 where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
                      quiet = TRUE)
-df <- neo_parse_db(l.dbs = c("bda", "medafricarbon"), 
-                   col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
-                   chr.interval.uncalBC = when, 
-                   roi = where)
-df.c14 <- neo_map_dbs(df)
+
+# collect the dates form different DBs, standardize the cultural period layout, filter on 'when' and 'where'
+df <- neo_dbs_parse(l.dbs = c("bda", "medafricarbon"), 
+                    col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
+                    chr.interval.uncalBC = when, 
+                    roi = where)
+
+# create the mapping file
+neo_dbs_create_ref(df.all.res = df,
+                   root.path = "C:/Rprojects/neonet/results",
+                   outFile = "df_ref_per.xlsx")
+```
+
+This mapping file [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx) is a reference table to map cultural assessment coming from external DBs, collected throug c14bazAAR, to the Neonet one (..., LM, EN, ...) format. This XLSX file has to be updated manually by specialists. 
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/ref_table_per.png"
+" width="600">
+  <br>
+    <em>The neonet dataset over the KCC 7k</em>
+</p>
+
+The `neo_dbs_align()` function reuses this mapping table. 
+
+```R
+df.c14 <- neo_dbs_align(df,
+                        mapping.file = "C:/Rprojects/neonet/doc/ref_table_per.xlsx")
 head(df.c14)
 ```
 
-Gives a dataframe where all fields have been renamed to be parsed with the Neonet functions, for example 'Period' having `MM` (for Middle Mesolithic) mapped the `bda` period = `Mésolithique 1` and culture = `Capsien ancien` or `Capsien typique`:
+Gives a dataframe where all fields have been renamed to be parsed with the Neonet functions. Among this mapping the column 'Period' with, for example, `MM`  Middle Mesolithic) maps the `bda` period = `Mésolithique 1` and culture = `Capsien ancien` or `Capsien typique`:
 
 | sourcedb | SiteName       | LabCode  | C14Age | C14SD | db_period      | db_culture      | Period | lon      | lat     |
 |----------|----------------|----------|--------|-------|----------------|-----------------|--------|----------|---------|
@@ -462,17 +504,6 @@ Gives a dataframe where all fields have been renamed to be parsed with the Neone
 | bda      | Kef Zoura D    | UOC-2925 | 7787   | 48    | Mésolithique 1 | Capsien typique | MM     | 7.682121 | 35.04205|
 | bda      | Bortal Fakher  | L-240A   | 6930   | 200   | Mésolithique 1 | Capsien typique | MM     | 8.176087 | 34.35480|
 | bda      | Relilaï (B)    | Gif-1714 | 7760   | 180   | Mésolithique 1 | Capsien typique | MM     | 7.694694 | 35.04480|
-
-
-The `neo_map_dbs()` function uses the [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx) as a reference table to map dates coming from the c14bazAAR get functions to the Neonet format (particularly the c14bazAAR `db_period` and `db_culture`)
-
-<p align="center">
-<br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/ref_table_per.png"
-" width="600">
-  <br>
-    <em>The neonet dataset over the KCC 7k</em>
-</p>
 
 To assess what were the climates classes that where inhabited in the past, during the Late Mesolithic (LM) and Middle Mesolithic (MM) based on previous dates
 

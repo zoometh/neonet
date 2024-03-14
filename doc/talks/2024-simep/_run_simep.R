@@ -1,6 +1,3 @@
-# Browse different DB to collect LM / EN dates
-
-# install.packages("c14bazAAR", repos = c(ropensci = "https://ropensci.r-universe.dev"))
 library(c14bazAAR)
 library(dplyr)
 library(ggplot2)
@@ -9,39 +6,13 @@ library(gridExtra)
 library(sf)
 library(rnaturalearth)
 
-fspat <- function(df_selected, roi, outfile){
-  ## distribution spat = map
-  df_spat <- st_as_sf(df_selected, coords = c("lon", "lat"), crs = 4326)
-  buff <- .5
-  world <- ne_countries(scale = "medium", returnclass = "sf")
-  distr_spat <- ggplot2::ggplot(world) +
-    # TODO: color scale ramp on column 'c14age_uncalBC'
-    ggplot2::geom_sf() +
-    ggplot2::geom_sf(data = df_spat, inherit.aes = FALSE, size = 1) +
-    ggplot2::coord_sf(xlim = c(sf::st_bbox(roi)[1] - buff, sf::st_bbox(roi)[3] + buff),
-                      ylim = c(sf::st_bbox(roi)[2] - buff, sf::st_bbox(roi)[4] + buff)) +
-    ggplot2::theme_bw() +
-    ggplot2::theme(axis.text = ggplot2::element_text(size = 6)) 
-  g.out <- paste0("C:/Rprojects/neonet/doc/talks/2024-simep/img/", outfile)
-  ggsave(file = g.out, distr_spat, width = 14, height = 10)
-}
-
-fref <- function(df.all.res, outfile = "df_ref_per.xlsx"){
-  # write a reference file used to map external db to periods (class) equal to: ..., LM, EN, ...
-  print(unique(df.all.res$sourcedb))
-  df.ref.per <- df.all.res[, c("period", "culture")]
-  df.ref.per <- df.ref.per[!duplicated(df.ref.per), ]
-  openxlsx::write.xlsx(df.ref.per, paste0(root.path, "/", outfile))
-  
-}
-
 getwd()
 source("R/config.R")
 
 ## done
 # l.dbs <- c("calpal", "medafricarbon", "agrichange", "neonet", "bda", "calpal", "radon", "katsianis")
 
-root.path <-"C:/Rprojects/neonet/results"
+root.path <- "C:/Rprojects/neonet/results"
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
 what.db <- c("calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
 # "neonet" gives a timeout
@@ -50,13 +21,13 @@ when <- c(-9000, -4000)
 where <- sf::st_read(where.roi,
                      quiet = TRUE)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
-source("R/neo_parse_db.R")
-df <- neo_parse_dbs(l.dbs = what.db, #what.db, # c("bda", "medafricarbon"),
+source("R/neo_dbs_parse.R")
+df <- neo_dbs_parse(l.dbs = what.db, #what.db, # c("bda", "medafricarbon"),
                     col.c14baz = col.c14baz,
                     chr.interval.uncalBC = when,
                     roi = where)
-source("R/neo_align_dbs.R")
-df.c14 <- neo_align_dbs(df)
+source("R/neo_dbs_align.R")
+df.c14 <- neo_dbs_align(df)
 
 # dbs
 # DB not done: kiteeastafrica, nerd, aida,  (no culture)
@@ -105,7 +76,7 @@ Neo <- neo_kcc_plotbar(df_cc = df_cc,
                        col.req = col.req,
                        selected.per = c("EN", "MN"),
                        title = "Neolithic")
-# gridExtra::grid.arrange(Meso, Neo, ncol = 1)
+Neo
 
 source("R/neo_kcc_legend.R")
 selected.kcc <- na.omit(unique(unlist(df.c14[, col.req]))) 
@@ -115,11 +86,13 @@ kcc.legend <- neo_kcc_legend(selected.kcc = selected.kcc,
 
 # map
 source("R/neo_map.R")
+where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
 g.neo.map <- neo_map(df.c14 = df.c14, 
-                     # plot.dates = TRUE,
-                     ref.spat = where.roi, 
-                     buff = 0,
-                     title = "ROI")
+                      plot.dates = TRUE,
+                      ref.spat = where.roi, 
+                      buff = 2.5,
+                      title = "ROI")
+g.neo.map
 
 lay <- rbind(c(1, 1, 1, 1, 1, 3, 3, 3), 
              c(1, 1, 1, 1, 1, 3, 3, 3), 
@@ -207,9 +180,12 @@ isochr.8k <- neo_isochr(df.c14 = df_filtered,
                         kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
                         time.line.size = .5,
                         calibrate = FALSE,
-                        shw.dates = FALSE,
-                        lbl.dates = FALSE,
+                        shw.dates = TRUE,
+                        lbl.dates = TRUE,
                         lbl.time.interv = TRUE)
+# isochr.8k$map
+source("R/neo_find_dates.R")
+neo_find_dates(df = isochr.8k$data, idf.dates = c(170))
 
 source("R/neo_kcc_plotbar.R")
 plotbar.neo <- neo_kcc_plotbar(df_cc = df_cc, 
@@ -238,5 +214,5 @@ g <- gridExtra::grid.arrange(isochr.8k$map, plotbar.neo, kcc.legend,
                              top = paste0("Spread of farming pionner front in 6,500 cal BC")
                              
 )
-g.out <- paste0(root.path, "/kcc_meso_neo2.png")
-ggplot2::ggsave(file = g.out, g, width = 12, height = 12)
+g.out <- paste0(root.path, "/kcc_meso_neo3.png")
+ggplot2::ggsave(file = g.out, g, width = 13, height = 13)

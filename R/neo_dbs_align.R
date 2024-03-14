@@ -1,28 +1,19 @@
-#' @name neo_align_dbs
+#' @name neo_dbs_align
 #'
-#' @description Aligns culture and periods of radiocarbon dates coming from different c14bazAAR dbs to the Neonet classes (..., MM, LM, EN, MN, ...) using a mapping table 
+#' @description Aligns culture and periods of radiocarbon dates coming from different c14bazAAR dbs to the Neonet classes (..., MM, LM, EN, MN, ...) using a mapping table created by the function `neo_dbs_create_ref()`
 #'
 #' @param df.all.res A dataframe created with the `neo_parse_db()` function.
 #' @param mapping.field The name of the LabCode field used to remove duplicates. Default: "labnr". 
-#' @param mapping.file A mapping file with one-to-one correspondences. Default: ref_table_per.xlsx
+#' @param mapping.file A mapping file with one-to-one correspondences. Default: `ref_table_per.xlsx`
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return A dataframe of standardized radiocarbon dates.
 #'
 #' @examples
 #'
-#' what.db <- c("calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis")
-#' when <- c(-9000, -4000)
-#' where <- sf::st_read(where.roi,
-#'                      quiet = TRUE)
-#' col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
-#' df <- neo_parse_db(l.dbs = what.db,
-#'                    col.c14baz = col.c14baz,
-#'                    chr.interval.uncalBC = when,
-#'                    roi = where)
 #'                    
 #' @export
-neo_align_dbs <- function(df.all.res = NA,
+neo_dbs_align <- function(df.all.res = NA,
                           mapping.field = "labnr",
                           mapping.file = "C:/Rprojects/neonet/doc/ref_table_per.xlsx",
                           verbose = TRUE){

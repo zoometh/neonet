@@ -31,10 +31,6 @@ neo_map <- function(map.name = "map_atl",
                     plot.dates = FALSE,
                     plot.other.ws = FALSE,
                     title = NA,
-                    export.plot = FALSE,
-                    dirOut = "C:/Rprojects/neonet/results/",
-                    width = 9,
-                    height = 11,
                     verbose = TRUE){
   # gs4_deauth();gs4_auth()
   # 
@@ -49,9 +45,10 @@ neo_map <- function(map.name = "map_atl",
   if(plot.other.ws){
     ws.roi.other <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/wsh_med.geojson", quiet = TRUE)
   }
-  world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+  world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
   g.neo.map <- ggplot2::ggplot(world) +
-    ggplot2::geom_sf(fill = '#7d7d7d', color = '#7d7d7d') +
+    # ggplot2::geom_sf(fill = '#7d7d7d', color = '#7d7d7d') +
+    ggplot2::geom_sf() +
     ggplot2::geom_sf(data = ws.roi, color = 'black', fill = NA, inherit.aes = FALSE)
   if(plot.dates){
     g.neo.map <- g.neo.map +
@@ -71,14 +68,5 @@ neo_map <- function(map.name = "map_atl",
     ggplot2::theme_bw() +
     ggplot2::theme(axis.text = ggplot2::element_text(size = 7)) 
     # 
-  if(export.plot){
-    # print(paste0(map.name, " has been saved to: ", dirOut))
-    ggplot2::ggsave(paste0(dirOut, map.name, ".jpg"), g.neo.map, 
-                    width = width, height = height, units = "cm")
-    if(verbose){
-      print(paste0(map.name, " has been saved to: ", dirOut))
-    }
-  } else {
-    return(g.neo.map)
-  }
+  return(g.neo.map)
 }

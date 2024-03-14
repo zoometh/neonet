@@ -1,3 +1,5 @@
+# Usefull variables
+
 koppen_codes <- c("Af", "Am", "Aw", "BWh", "BWk", "BSh", "BSk",
                   "Csa", "Csb", "Csc", "Cwa", "Cwb", "Cwc", "Cfa",
                   "Cfb", "Cfc", "Dsa", "Dsb", "Dsc", "Dsd", "Dwa",

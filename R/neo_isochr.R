@@ -8,12 +8,12 @@
 #' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000).
 #' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff, or a SpatRaster.
 #' @param time.interv Time interval between two isochrones (bins), in years. Default: 250.
-#' @param coloramp the name of the coloramps to use on contour, for the Neolithic dates and Paleolithic dates. Default: c("Reds", "Blues"). 
+#' @param coloramp the name of the coloramps to use on contour, for the Neolithic dates and mesolithic dates. Default: c("Reds", "Blues"). 
 #' @param lbl.dates show the sites identifiers (default: TRUE)
 #' @param map.longest.size the longest size of the output map (height or width) in cm. The smallest size will be calculated from it. Only useful if if export = TRUE. Default: 15
 #' @param verbose if TRUE (default) then display different messages.
 #'
-#' @return Export a file
+#' @return A list with ggplot ($map) and a dataframe ($data)
 #'
 #' @examples
 #' 
@@ -44,7 +44,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   ## dates
   # check which periods have been selected
   neolithic <- selected.per %in% c("EN", "EMN", "MN", "LN", "UN")
-  paleolithic <- !neolithic
+  mesolithic <- !neolithic
   if(is.character(df.c14)){
     df.dates <- sf::st_read(df.c14, quiet = T)
     # title/filename
@@ -117,6 +117,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                      labcode = df.dates.min$LabCode,
                      longitude = Xs,
                      latitude = Ys, 
+                     period = df.dates.min$Period,
                      median = df.dates.min$median)
   } else {
     df <- data.frame(sourcedb = df.dates.min$sourcedb,
@@ -125,6 +126,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                      labcode = df.dates.min$LabCode,
                      longitude = Xs,
                      latitude = Ys, 
+                     period = df.dates.min$Period,
                      median = df.dates.min$median)
   }
   # contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
@@ -255,15 +257,6 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     ggplot2::labs(title = tit,
                   caption = capt)
   # ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
-  if(lbl.dates){
-    map <- map +
-      ggrepel::geom_text_repel(data = df, 
-                               ggplot2::aes(x = longitude, y = latitude, label = idf),
-                               size = lbl.dates.size,
-                               segment.alpha = .3,
-                               segment.size = .3,
-                               max.overlaps = Inf)
-  }
   if(lbl.time.interv){
     if(is.na(isochr.subset)){
       # all contours
@@ -286,18 +279,55 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
         dplyr::ungroup()
       map <- map + 
         ggplot2::geom_contour(data = interp_df, ggplot2::aes(x = lon, y = lat, z = date.med), 
-                              breaks = desired_level, colour = "black") +
+                              breaks = isochr.subset, colour = "black") +
         ggplot2::geom_text(data = contour_data_lbl, ggplot2::aes(x = x, y = y, label = sprintf("%.0f", level)),
                            size = 3, colour = "black")
     }
   }
   if(shw.dates){
-    map <- map +
-      ggplot2::geom_point(data = df, 
-                          ggplot2::aes(x = longitude, y = latitude), 
-                          col = "darkgrey",
-                          alpha = .5,
-                          size = 1)
+    if(verbose){
+      print(paste0("Add dates"))
+    }
+    if(is.na(isochr.subset)){
+      map <- map +
+        ggplot2::geom_point(data = df, 
+                            ggplot2::aes(x = longitude, y = latitude), 
+                            col = "black",
+                            alpha = .5,
+                            size = 1)
+      if(lbl.dates){
+        map <- map +
+          ggrepel::geom_text_repel(data = df, 
+                                   ggplot2::aes(x = longitude, y = latitude, label = idf),
+                                   size = lbl.dates.size,
+                                   segment.alpha = .3,
+                                   segment.size = .3,
+                                   max.overlaps = Inf)
+      }
+    } else {
+      if(neolithic){
+        # only plot medians older than 
+        df.isochr.subset <- df[df[["median"]] < isochr.subset, ]
+      }
+      if(mesolithic){
+        df.isochr.subset <- df[df[["median"]] > isochr.subset, ]
+      }
+      map <- map +
+        ggplot2::geom_point(data = df.isochr.subset, 
+                            ggplot2::aes(x = longitude, y = latitude), 
+                            col = "black",
+                            alpha = .5,
+                            size = 1)
+      if(lbl.dates){
+        map <- map +
+          ggrepel::geom_text_repel(data = df.isochr.subset, 
+                                   ggplot2::aes(x = longitude, y = latitude, label = idf),
+                                   size = lbl.dates.size,
+                                   segment.alpha = .3,
+                                   segment.size = .3,
+                                   max.overlaps = Inf)
+      }
+    }
   }
   map <- map +
     ggplot2::theme(legend.position = "none")
