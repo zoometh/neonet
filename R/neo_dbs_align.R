@@ -17,6 +17,7 @@ neo_dbs_align <- function(df.all.res = NA,
                           mapping.field = "labnr",
                           mapping.file = "C:/Rprojects/neonet/doc/ref_table_per.xlsx",
                           verbose = TRUE){
+  `%>%` <- dplyr::`%>%`
   # load the config file
   source("R/config.R")
   # read the ref tab

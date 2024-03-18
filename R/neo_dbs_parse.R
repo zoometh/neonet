@@ -33,12 +33,12 @@ neo_dbs_parse <- function(l.dbs = c("neonet"),
                      col.c14baz)
   for(selected.db in l.dbs){
     # selected.db <- l.dbs[i]
-    # selected.db <- "bda"
+    # selected.db <- "neonet"
     if(verbose){
       print(paste0("*read: ", selected.db))
     }
-    # options(timeout = 300)
-    df <- c14bazAAR::get_c14data(selected.db) # YES period, culture
+    options(timeout = 600)
+    df <- c14bazAAR::get_c14data(selected.db)
     if(verbose){
       print(paste0("  n = ", nrow(df)))
     }

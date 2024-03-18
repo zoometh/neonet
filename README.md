@@ -115,7 +115,6 @@ write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
             row.names = FALSE)
 ```
 
-
 #### Data report
 
 Calculate basic statistics
@@ -137,6 +136,30 @@ neo_datamiss(df.c14)
   <br>
     <em>Missing data (empty cells)</em>
 </p>
+
+#### Data alignment
+
+Parse and align c14bazAAR data with the Neonet layout
+
+```R
+source("R/neo_dbs_parse.R")
+source("R/neo_dbs_align.R")
+
+l.dbs <- c("calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
+col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
+df <- neo_dbs_parse(l.dbs = l.dbs,
+                    col.c14baz = col.c14baz)
+df.c14 <- neo_dbs_align(df)
+```
+
+These other databases suffer issues:
+
+| db name  | Header 2 |
+|----------|----------|
+| 14sea    | No lat / lon information, spatialisation should be done on site name  |
+| neonet   | Timeout, the server URL returns a `ERR_CONNECTION_TIMED_OUT`  |
+| p3k14c   | Cultural information (`culture` and `period`) is largely missing  |
+
 
 ### SPD plot
 

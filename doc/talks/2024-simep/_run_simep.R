@@ -14,7 +14,10 @@ source("R/config.R")
 
 root.path <- "C:/Rprojects/neonet/results"
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
-what.db <- c("calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
+l.dbs <- c("calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
+# xronos
+# l.dbs <- c("p3k14c")
+# l.dbs <- c("bda")
 # "neonet" gives a timeout
 present <- 1950
 when <- c(-9000, -4000)
@@ -22,12 +25,14 @@ where <- sf::st_read(where.roi,
                      quiet = TRUE)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
 source("R/neo_dbs_parse.R")
-df <- neo_dbs_parse(l.dbs = what.db, #what.db, # c("bda", "medafricarbon"),
+df <- neo_dbs_parse(l.dbs = l.dbs, #what.db, # c("bda", "medafricarbon"),
                     col.c14baz = col.c14baz,
                     chr.interval.uncalBC = when,
                     roi = where)
 source("R/neo_dbs_align.R")
 df.c14 <- neo_dbs_align(df)
+
+# remotes::install_github("people3k/p3k14c@2022.06")
 
 # dbs
 # DB not done: kiteeastafrica, nerd, aida,  (no culture)
@@ -45,6 +50,7 @@ df.c14 <- neo_calib(df.c14)
 ##### shortcut: load the 'df14_simep.csv' file ####
 # root.path <-"C:/Rprojects/neonet/results"
 # samp_df <- paste0(root.path, "/df14_simep.csv")
+# samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/results/df14_simep.csv")
 # samp_df <- read.csv(samp_df)
 # df.c14 <- samp_df[sample(1:nrow(samp_df), 150), ]
 # #           OR
@@ -88,10 +94,10 @@ kcc.legend <- neo_kcc_legend(selected.kcc = selected.kcc,
 source("R/neo_map.R")
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
 g.neo.map <- neo_map(df.c14 = df.c14, 
-                      plot.dates = TRUE,
-                      ref.spat = where.roi, 
-                      buff = 2.5,
-                      title = "ROI")
+                     plot.dates = TRUE,
+                     ref.spat = where.roi, 
+                     buff = 2.5,
+                     title = "ROI")
 g.neo.map
 
 lay <- rbind(c(1, 1, 1, 1, 1, 3, 3, 3), 
@@ -157,6 +163,18 @@ df.to.rm
 df_filtered <- dplyr::anti_join(df.c14, df.to.rm, 
                                 by = c("sourcedb", "LabCode"))
 
+fdate <- function(date = NA, columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
+  # return info on a date
+  a.date <- as.character(na.omit(
+    sf::st_set_geometry(df.c14[df.c14$LabCode == date, columns],
+                        NULL)
+  )[1,])
+  cat(paste(a.date, collapse = "\t"), "\n")
+}
+
+fdate(date = "LY-7969")
+
+df <- c14bazAAR::get_c14data("bda")
 
 map.iso <- neo_isochr(df.c14 = df_filtered, 
                       time.line.size = .5,
