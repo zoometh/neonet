@@ -158,8 +158,8 @@ source("R/neo_isochr.R")
 
 frm <- function(c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv"){
   # Remove unaccurate dates (optional)
-  df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
-  df.to.rm
+  df.to.rm1 <- read.table(c14.to.remove, sep = "\t", header = TRUE)
+  df.to.rm1
   df_filtered <- dplyr::anti_join(df.c14, df.to.rm, 
                                   by = c("sourcedb", "LabCode"))
 }
@@ -203,14 +203,14 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr.8k <- neo_isochr(df.c14 = df_filtered, 
-                        isochr.subset = -6500,
+                        isochr.subset = -5500,
                         kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
                         time.line.size = .5,
                         calibrate = FALSE,
                         shw.dates = TRUE,
-                        lbl.dates = TRUE,
+                        lbl.dates = FALSE,
                         lbl.time.interv = TRUE)
-# isochr.8k$map
+isochr.8k$map
 source("R/neo_find_dates.R")
 neo_find_dates(df = isochr.8k$data, idf.dates = c(170))
 
