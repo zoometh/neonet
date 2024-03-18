@@ -1,2 +1,7 @@
 sourcedb	LabCode	SiteName	median	db_period	db_culture	comments
-bda	LY-7969	La Lède-du-Gurp	-7733	Néolithique ancien	NACA	From https://banadora.mom.fr/ only (not internet), marked as 'mediocre' in "bda" 
+bda	LY-7969	La Lède-du-Gurp	-7733	Néolithique ancien	NACA	From https://banadora.mom.fr/ only (not internet), marked as 'mediocre' in 'bda' 
+https://doi.org/10.1007/s10437-021-09425-x
+bda	LY-7695	Kaf Taht El-Ghar (KTG)	-9654	Néolithique ancien	Cardial marocain	refused: https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999
+bda	LY-7287	Kaf Taht El-Ghar (KTG)	-9626	Néolithique ancien	Cardial marocain	refused: https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999
+bda	OZB-653	Piancada	-7339	Néolithique ancien	Sammardenchia	marked as 'mediocre' in 'bda', origin: Improta & Pessina 1999, p. 328
+bda	Alg-40	Travertins/chemin de Kristel/Kristel jardins	-7049	Néolithique ancien	NA oranais	marked as 'mediocre' in 'bda', origin: Improta & Pessina 1999, p. 328
