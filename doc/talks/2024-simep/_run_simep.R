@@ -157,34 +157,42 @@ source("R/neo_calib.R")
 source("R/neo_isochr.R")
 
 # Remove unaccurate dates (optional)
-c14.to.remove <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove.tsv"
+c14.to.remove <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv"
 df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
 df.to.rm
 df_filtered <- dplyr::anti_join(df.c14, df.to.rm, 
                                 by = c("sourcedb", "LabCode"))
 
-fdate <- function(date = NA, columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
-  # return info on a date
+fdate <- function(LabCode = NA, columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
+  # return info on a date from its LabCode
   a.date <- as.character(na.omit(
-    sf::st_set_geometry(df.c14[df.c14$LabCode == date, columns],
+    sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns],
                         NULL)
   )[1,])
   cat(paste(a.date, collapse = "\t"), "\n")
 }
 
-fdate(date = "LY-7969")
+fget.db <- function(db = "bda", LabCode = NA){
+  # Once the LabCode's database origin is sourced, print this LabCode infos
+  df <- c14bazAAR::get_c14data(db)
+  df <- as.data.frame(df[df$labnr == LabCode, ])
+  print(df)
+}
 
-df <- c14bazAAR::get_c14data("bda")
+LabCode = "LY-7969"
+fdate(LabCode = LabCode)
+fget.db(db = "bda", LabCode = LabCode)
 
-map.iso <- neo_isochr(df.c14 = df_filtered, 
-                      time.line.size = .5,
-                      calibrate = FALSE,
-                      shw.dates = TRUE,
-                      lbl.dates = TRUE,
-                      lbl.time.interv = FALSE)
 
 source("R/neo_find_dates.R")
 neo_find_dates(df = map.iso$data, idf.dates = c(146))
+
+# map.iso <- neo_isochr(df.c14 = df_filtered, 
+#                       time.line.size = .5,
+#                       calibrate = FALSE,
+#                       shw.dates = TRUE,
+#                       lbl.dates = TRUE,
+#                       lbl.time.interv = FALSE)
 
 #######################
 #### Pioneer front ####
@@ -234,3 +242,7 @@ g <- gridExtra::grid.arrange(isochr.8k$map, plotbar.neo, kcc.legend,
 )
 g.out <- paste0(root.path, "/kcc_meso_neo3.png")
 ggplot2::ggsave(file = g.out, g, width = 13, height = 13)
+
+
+
+
