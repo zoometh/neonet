@@ -156,12 +156,13 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 
-# Remove unaccurate dates (optional)
-c14.to.remove <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv"
-df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
-df.to.rm
-df_filtered <- dplyr::anti_join(df.c14, df.to.rm, 
-                                by = c("sourcedb", "LabCode"))
+frm <- function(c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv"){
+  # Remove unaccurate dates (optional)
+  df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
+  df.to.rm
+  df_filtered <- dplyr::anti_join(df.c14, df.to.rm, 
+                                  by = c("sourcedb", "LabCode"))
+}
 
 fdate <- function(LabCode = NA, columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
   # return info on a date from its LabCode
