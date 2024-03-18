@@ -172,14 +172,14 @@ fdate <- function(LabCode = NA, columns = c("sourcedb", "LabCode", "SiteName", "
   cat(paste(a.date, collapse = "\t"), "\n")
 }
 
-fget.db <- function(db = "bda", LabCode = NA){
+fget.db <- function(db = NA, LabCode = NA){
   # Once the LabCode's database origin is sourced, print this LabCode infos
   df <- c14bazAAR::get_c14data(db)
   df <- as.data.frame(df[df$labnr == LabCode, ])
   print(df)
 }
 
-LabCode = "LY-7969"
+LabCode = "Alg-40"
 fdate(LabCode = LabCode)
 fget.db(db = "bda", LabCode = LabCode)
 

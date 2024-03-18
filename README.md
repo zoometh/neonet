@@ -160,6 +160,46 @@ These other databases suffer issues:
 | neonet   | Timeout, the server URL returns a `ERR_CONNECTION_TIMED_OUT`  |
 | p3k14c   | Cultural information (`culture` and `period`) is largely missing  |
 
+Foreign dates aggregated though the c14bazAAR can be audited, for example: "Alg-40"
+
+```R
+fdate <- function(LabCode = NA, columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
+  # return info on a date from its LabCode
+  a.date <- as.character(na.omit(
+    sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns],
+                        NULL)
+  )[1,])
+  cat(paste(a.date, collapse = "\t"), "\n")
+}
+
+fget.db <- function(db = NA, LabCode = NA){
+  # Once the LabCode's database origin is sourced, print this LabCode infos
+  df <- c14bazAAR::get_c14data(db)
+  df <- as.data.frame(df[df$labnr == LabCode, ])
+  print(df)
+}
+
+LabCode = "Alg-40"
+fdate(LabCode = LabCode)
+fget.db(db = "bda", LabCode = LabCode)
+```
+
+Gives:
+
+```
+bda	Alg-40	Travertins/chemin de Kristel/Kristel jardins	-7049	Néolithique ancien	NA oranais 
+...
+  sourcedb sourcedb_version method  labnr c14age c14std c13val                                         site  sitetype feature
+1      bda       2020-03-29   <NA> Alg-40   7760    190     NA Travertins/chemin de Kristel/Kristel jardins plein air    <NA>
+              period    culture material species    region country      lat       lon         shortref      comment
+1 Néolithique ancien NA oranais  charbon    <NA> Oran (31) Algérie 35.81884 -0.485631 Camps et al 1973 3 - médiocre
+
+```
+
+
+Erroneous dates can be listed in https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_to_remove2.tsv 
+
+
 
 ### SPD plot
 

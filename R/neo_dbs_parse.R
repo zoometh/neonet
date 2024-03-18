@@ -33,7 +33,7 @@ neo_dbs_parse <- function(l.dbs = c("neonet"),
                      col.c14baz)
   for(selected.db in l.dbs){
     # selected.db <- l.dbs[i]
-    # selected.db <- "neonet"
+    # selected.db <- "bda"
     if(verbose){
       print(paste0("*read: ", selected.db))
     }
