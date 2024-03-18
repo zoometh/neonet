@@ -179,7 +179,7 @@ fget.db <- function(db = NA, LabCode = NA){
   print(df)
 }
 
-LabCode = "Alg-40"
+LabCode = "Arias_2009_x2"
 fdate(LabCode = LabCode)
 fget.db(db = "bda", LabCode = LabCode)
 
