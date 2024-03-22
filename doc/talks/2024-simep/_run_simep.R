@@ -50,7 +50,7 @@ df.c14 <- neo_calib(df.c14)
 ##### shortcut: load the 'df14_simep.csv' file ####
 # root.path <-"C:/Rprojects/neonet/results"
 # samp_df <- paste0(root.path, "/df14_simep.csv")
-# samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/results/df14_simep.csv")
+# samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep.csv")
 # samp_df <- read.csv(samp_df)
 # df.c14 <- samp_df[sample(1:nrow(samp_df), 150), ]
 # #           OR
@@ -156,13 +156,24 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 
-frm <- function(c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv"){
+frm <- function(df.c14 = NA, 
+                c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv",
+                selected.cols = c("sourcedb", "LabCode", "SiteName", "median", "db_period"),
+                verbose = TRUE){
   # Remove unaccurate dates (optional)
-  df.to.rm1 <- read.table(c14.to.remove, sep = "\t", header = TRUE)
-  df.to.rm1
-  df_filtered <- dplyr::anti_join(df.c14, df.to.rm, 
-                                  by = c("sourcedb", "LabCode"))
+  # escape the dates having a "-" as a prefix in their database (i.e. dates with lack of arguments to remove them)
+  df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
+  df.to.rm <- df.to.rm[!grepl("^-", df.to.rm$sourcedb), ]
+  if(verbose){
+    print(paste0(nrow(df.to.rm), " dates to be removed:"))
+    print(df.to.rm[ , selected.cols])
+  }
+  df <- dplyr::anti_join(df.c14, df.to.rm, 
+                         by = c("sourcedb", "LabCode"))
+  return(df)
 }
+
+df_filtered <- frm(df.c14)
 
 fdate <- function(LabCode = NA, columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
   # return info on a date from its LabCode
@@ -203,16 +214,22 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr.8k <- neo_isochr(df.c14 = df_filtered, 
-                        isochr.subset = -5500,
-                        kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
+                        isochr.subset = -8500,
+                        kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                         time.line.size = .5,
                         calibrate = FALSE,
                         shw.dates = TRUE,
-                        lbl.dates = FALSE,
+                        lbl.dates = TRUE,
                         lbl.time.interv = TRUE)
 isochr.8k$map
+
+## check abberant dates
 source("R/neo_find_dates.R")
-neo_find_dates(df = isochr.8k$data, idf.dates = c(170))
+abber.dates <- neo_find_dates(df = isochr.8k$data, idf.dates = c(365))
+# LabCode = "UtC-1830"
+fdate(LabCode = abber.dates$labcode)
+abber.dates
+fget.db(db = dates$sourcedb, LabCode = abber.dates$labcode)
 
 source("R/neo_kcc_plotbar.R")
 plotbar.neo <- neo_kcc_plotbar(df_cc = df_cc, 
