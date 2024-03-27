@@ -17,7 +17,7 @@
 #'
 #' @export
 neo_dbs_rm_date <- function(df.c14 = NA, 
-                            c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv",
+                            c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv",
                             selected.cols = c("sourcedb", "LabCode", "SiteName", "median", "db_period"),
                             escape.pattern = "^-",
                             verbose = TRUE){

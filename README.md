@@ -269,7 +269,7 @@ Gives:
 2 42.47 2.61 van Willigen 2006
 ```
 
-The list of aberrant dates, for example [c14_to_remove2.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_to_remove2.tsv), is used to discard some dates with the `neo_dbs_rm_date()` function
+The list of aberrant dates, for example [c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv), is used to discard some dates with the `neo_dbs_rm_date()` function
 
 ```R
 source("R/neo_dbs_rm_date.R")
@@ -277,7 +277,7 @@ source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14)
 ```
 
-By default, dates having a dash prefix in their `sourcedb` column will be skipped (ex: "-radon")
+By default, dates having a dash prefix in their `sourcedb` column will be skipped (ex: `-radon`)
 
 <p align="center">
 <br>
