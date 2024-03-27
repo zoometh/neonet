@@ -30,7 +30,8 @@ df <- neo_dbs_parse(l.dbs = l.dbs, #what.db, # c("bda", "medafricarbon"),
                     chr.interval.uncalBC = when,
                     roi = where)
 source("R/neo_dbs_align.R")
-df.c14 <- neo_dbs_align(df)
+df.c14 <- neo_dbs_align(df = df,
+                        mapping.file = "C:/Rprojects/neonet/doc/ref_table_per_NM.xlsx")
 
 # remotes::install_github("people3k/p3k14c@2022.06")
 
@@ -156,48 +157,65 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 
-frm <- function(df.c14 = NA, 
-                c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv",
-                selected.cols = c("sourcedb", "LabCode", "SiteName", "median", "db_period"),
-                verbose = TRUE){
-  # Remove unaccurate dates (optional)
-  # escape the dates having a "-" as a prefix in their database (i.e. dates with lack of arguments to remove them)
-  df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
-  df.to.rm <- df.to.rm[!grepl("^-", df.to.rm$sourcedb), ]
-  if(verbose){
-    print(paste0(nrow(df.to.rm), " dates to be removed:"))
-    print(df.to.rm[ , selected.cols])
-  }
-  df <- dplyr::anti_join(df.c14, df.to.rm, 
-                         by = c("sourcedb", "LabCode"))
-  return(df)
-}
+# frm <- function(df.c14 = NA, 
+#                 c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv",
+#                 selected.cols = c("sourcedb", "LabCode", "SiteName", "median", "db_period"),
+#                 verbose = TRUE){
+#   # Remove unaccurate dates (optional)
+#   # escape the dates having a "-" as a prefix in their database (i.e. dates with lack of arguments to remove them)
+#   df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
+#   df.to.rm <- df.to.rm[!grepl("^-", df.to.rm$sourcedb), ]
+#   if(verbose){
+#     print(paste0(nrow(df.to.rm), " dates to be removed:"))
+#     print(df.to.rm[ , selected.cols])
+#   }
+#   df <- dplyr::anti_join(df.c14, df.to.rm, 
+#                          by = c("sourcedb", "LabCode"))
+#   return(df)
+# }
 
-df_filtered <- frm(df.c14)
+source("R/neo_dbs_rm_date.R")
+df_filtered <- neo_dbs_rm_date(df.c14)
+# df_filtered <- frm(df.c14)
 
-fdate <- function(LabCode = NA, columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
-  # return info on a date from its LabCode
-  a.date <- as.character(na.omit(
-    sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns],
-                        NULL)
-  )[1,])
-  cat(paste(a.date, collapse = "\t"), "\n")
-}
+# fdate <- function(LabCode = NA, 
+#                   columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
+#   # return info on a date from its LabCode
+#   if(inherits(df.c14, "sf")){
+#     a.date <- as.character(na.omit(
+#       sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns],
+#                           NULL)
+#     )[1,])
+#   }
+#   if(is.data.frame(df.c14)){
+#     a.date <- as.character(na.omit(
+#       df.c14[df.c14$LabCode == LabCode, columns]
+#     )[1,])
+#   }
+#   cat(paste(a.date, collapse = "\t"), "\n")
+# }
 
-fget.db <- function(db = NA, LabCode = NA){
-  # Once the LabCode's database origin is sourced, print this LabCode infos
-  df <- c14bazAAR::get_c14data(db)
-  df <- as.data.frame(df[df$labnr == LabCode, ])
-  print(df)
-}
-
-LabCode = "Arias_2009_x2"
-fdate(LabCode = LabCode)
-fget.db(db = "bda", LabCode = LabCode)
+# fget.db <- function(db = NA, LabCode = NA){
+#   # Once the LabCode's database origin is sourced, print this LabCode infos
+#   df <- c14bazAAR::get_c14data(db)
+#   df <- as.data.frame(df[df$labnr == LabCode, ])
+#   print(df)
+# }
 
 
-source("R/neo_find_dates.R")
-neo_find_dates(df = map.iso$data, idf.dates = c(146))
+source("R/neo_find_date.R")
+source("R/neo_dbs_info_date.R")
+source("R/neo_dbs_info_date_src.R")
+
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 147)
+abber.date <- neo_dbs_info_date(abber.date$labcode)
+neo_dbs_info_date_src(db = abber.dates$sourcedb, 
+                      LabCode = abber.dates$LabCode)
+
+# df.c14[df.c14$db_period == "Džh 1", ]
+
+
+
 
 # map.iso <- neo_isochr(df.c14 = df_filtered, 
 #                       time.line.size = .5,
@@ -213,19 +231,19 @@ source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
-isochr.8k <- neo_isochr(df.c14 = df_filtered, 
-                        isochr.subset = -8500,
-                        kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
-                        time.line.size = .5,
-                        calibrate = FALSE,
-                        shw.dates = TRUE,
-                        lbl.dates = TRUE,
-                        lbl.time.interv = TRUE)
-isochr.8k$map
+isochr <- neo_isochr(df.c14 = df_filtered, 
+                     isochr.subset = -8000,
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
+                     time.line.size = .5,
+                     calibrate = FALSE,
+                     shw.dates = TRUE,
+                     lbl.dates = TRUE,
+                     lbl.time.interv = TRUE)
+isochr$map
 
 ## check abberant dates
 source("R/neo_find_dates.R")
-abber.dates <- neo_find_dates(df = isochr.8k$data, idf.dates = c(365))
+abber.dates <- neo_find_dates(df = isochr$data, idf.dates = c(365))
 # LabCode = "UtC-1830"
 fdate(LabCode = abber.dates$labcode)
 abber.dates

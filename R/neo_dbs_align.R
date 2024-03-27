@@ -2,7 +2,7 @@
 #'
 #' @description Aligns culture and periods of radiocarbon dates coming from different c14bazAAR dbs to the Neonet classes (..., MM, LM, EN, MN, ...) using a mapping table created by the function `neo_dbs_create_ref()`
 #'
-#' @param df.all.res A dataframe created with the `neo_parse_db()` function.
+#' @param df A dataframe created with the `neo_parse_db()` function.
 #' @param mapping.field The name of the LabCode field used to remove duplicates. Default: "labnr". 
 #' @param mapping.file A mapping file with one-to-one correspondences. Default: `ref_table_per.xlsx`
 #' @param verbose if TRUE (default) then display different messages.
@@ -13,7 +13,7 @@
 #'
 #'                    
 #' @export
-neo_dbs_align <- function(df.all.res = NA,
+neo_dbs_align <- function(df = NA,
                           mapping.field = "labnr",
                           mapping.file = "C:/Rprojects/neonet/doc/ref_table_per.xlsx",
                           verbose = TRUE){
@@ -30,8 +30,8 @@ neo_dbs_align <- function(df.all.res = NA,
                  "having neonet equivalences (column 'class')"))
   }
   df_ref_per$period_culture <- paste0(df_ref_per$period, "/", df_ref_per$culture)
-  df.all.res$period_culture <- paste0(df.all.res$period, "/", df.all.res$culture)
-  df.classes <- merge(df.all.res, df_ref_per, by = "period_culture")
+  df$period_culture <- paste0(df$period, "/", df$culture)
+  df.classes <- merge(df, df_ref_per, by = "period_culture")
   # remove duplicates. TODO: prioritise duplicates according to the db they are coming from (ex: neonet)
   if(verbose){
     print(paste0("  - remove duplicated radiocarbon dates on '", mapping.field, "'"))

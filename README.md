@@ -162,42 +162,92 @@ These other databases suffer issues:
 
 Foreign dates aggregated though the c14bazAAR can be audited, for example: "Alg-40"
 
+
+To retrieve dates coming from other databases (with the [c14bazAAR](https://github.com/ropensci/c14bazAAR) R package) and mapped to be compliant with the Neonet format and functions, using `neo_dbs_parse()`, a mapping table (XLSX) created with `neo_dbs_create_ref()`, and `neo_dbs_align()`:
+
 ```R
-fdate <- function(LabCode = NA, columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
-  # return info on a date from its LabCode
-  a.date <- as.character(na.omit(
-    sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns],
-                        NULL)
-  )[1,])
-  cat(paste(a.date, collapse = "\t"), "\n")
-}
+when <- c(-9000, -4000)
+where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
+                     quiet = TRUE)
 
-fget.db <- function(db = NA, LabCode = NA){
-  # Once the LabCode's database origin is sourced, print this LabCode infos
-  df <- c14bazAAR::get_c14data(db)
-  df <- as.data.frame(df[df$labnr == LabCode, ])
-  print(df)
-}
+# collect the dates form different DBs, standardize the cultural period layout, filter on 'when' and 'where'
+df <- neo_dbs_parse(l.dbs = c("bda", "medafricarbon"), 
+                    col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
+                    chr.interval.uncalBC = when, 
+                    roi = where)
 
-LabCode = "Alg-40"
-fdate(LabCode = LabCode)
-fget.db(db = "bda", LabCode = LabCode)
+# create the mapping file
+neo_dbs_create_ref(df.all.res = df,
+                   root.path = "C:/Rprojects/neonet/results",
+                   outFile = "df_ref_per.xlsx")
+```
+
+This mapping file [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx) is a reference table to map cultural assessment coming from external DBs, collected throug c14bazAAR, to the Neonet one (..., LM, EN, ...) format. This XLSX file has to be updated manually by specialists. 
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/ref_table_per.png"
+" width="600">
+  <br>
+    <em>The neonet dataset over the KCC 7k</em>
+</p>
+
+The `neo_dbs_align()` function reuses this mapping table. 
+
+```R
+df.c14 <- neo_dbs_align(df,
+                        mapping.file = "C:/Rprojects/neonet/doc/ref_table_per.xlsx")
+head(df.c14)
+```
+
+Gives a dataframe where all fields have been renamed to be parsed with the Neonet functions. Among this mapping the column 'Period' with, for example, `MM`  Middle Mesolithic) maps the `bda` period = `Mésolithique 1` and culture = `Capsien ancien` or `Capsien typique`:
+
+| sourcedb | SiteName       | LabCode  | C14Age | C14SD | db_period      | db_culture      | Period | lon      | lat     |
+|----------|----------------|----------|--------|-------|----------------|-----------------|--------|----------|---------|
+| bda      | Mechta el Arbi | Poz-92231| 6600   | 80    | Mésolithique 1 | Capsien ancien  | MM     | 6.130900 | 36.09940|
+| bda      | Mechta el Arbi | Poz-92232| 6250   | 130   | Mésolithique 1 | Capsien ancien  | MM     | 6.130900 | 36.09940|
+| bda      | Mechta el Arbi | Poz-92230| 3500   | 120   | Mésolithique 1 | Capsien ancien  | MM     | 6.130900 | 36.09940|
+| bda      | Kef Zoura D    | UOC-2925 | 7787   | 48    | Mésolithique 1 | Capsien typique | MM     | 7.682121 | 35.04205|
+| bda      | Bortal Fakher  | L-240A   | 6930   | 200   | Mésolithique 1 | Capsien typique | MM     | 8.176087 | 34.35480|
+| bda      | Relilaï (B)    | Gif-1714 | 7760   | 180   | Mésolithique 1 | Capsien typique | MM     | 7.694694 | 35.04480|
+
+To filter abberant dates, a combination of different function allow to retrieve the current information (once mapped to the Neonet layout) of these potential outliers and their original information (from their source database)  
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-1.png"
+" width="600">
+  <br>
+    <em>Here the dates 147, 198 and 367 seem abberant</em>
+</p>
+
+
+```R
+source("R/neo_find_date.R")
+source("R/neo_dbs_info_date.R")
+source("R/neo_dbs_info_date_src.R")
+
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 147)
+abber.date <- neo_dbs_info_date(abber.date$labcode)
+neo_dbs_info_date_src(db = abber.dates$sourcedb, 
+                      LabCode = abber.dates$LabCode)
 ```
 
 Gives:
 
 ```
-bda	Alg-40	Travertins/chemin de Kristel/Kristel jardins	-7049	Néolithique ancien	NA oranais 
+idf sourcedb labcode     site   median period
+147   calpal UBAR-31 Cova 120 -8040.05     EN
 ...
-  sourcedb sourcedb_version method  labnr c14age c14std c13val                                         site  sitetype feature
-1      bda       2020-03-29   <NA> Alg-40   7760    190     NA Travertins/chemin de Kristel/Kristel jardins plein air    <NA>
-              period    culture material species    region country      lat       lon         shortref      comment
-1 Néolithique ancien NA oranais  charbon    <NA> Oran (31) Algérie 35.81884 -0.485631 Camps et al 1973 3 - médiocre
-
+  sourcedb sourcedb_version method   labnr c14age c14std c13val     site sitetype    period    culture material species country
+1     <NA>             <NA>   <NA>    <NA>     NA     NA     NA     <NA>     <NA>      <NA>       <NA>     <NA>    <NA>    <NA>
+2   calpal       2020-08-20    14C UBAR-31   8550    150      0 Cova 120     <NA> Neolithic Epicardial charcoal    <NA>   Spain
+    lat  lon          shortref
+1    NA   NA              <NA>
+2 42.47 2.61 van Willigen 2006
 ```
 
-
-Erroneous dates can be listed in https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_to_remove2.tsv 
+Abberant dates can be listed in https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_to_remove2.tsv 
 
 
 
@@ -519,54 +569,6 @@ Gives:
   <br>
     <em>The neonet dataset over the KCC 7k</em>
 </p>
-
-To retrieve dates coming from other databases (with the [c14bazAAR](https://github.com/ropensci/c14bazAAR) R package) and mapped to be compliant with the Neonet format and functions, using `neo_dbs_parse()`, a mapping table (XLSX) created with `neo_dbs_create_ref()`, and `neo_dbs_align()`:
-
-```R
-when <- c(-9000, -4000)
-where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
-                     quiet = TRUE)
-
-# collect the dates form different DBs, standardize the cultural period layout, filter on 'when' and 'where'
-df <- neo_dbs_parse(l.dbs = c("bda", "medafricarbon"), 
-                    col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
-                    chr.interval.uncalBC = when, 
-                    roi = where)
-
-# create the mapping file
-neo_dbs_create_ref(df.all.res = df,
-                   root.path = "C:/Rprojects/neonet/results",
-                   outFile = "df_ref_per.xlsx")
-```
-
-This mapping file [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx) is a reference table to map cultural assessment coming from external DBs, collected throug c14bazAAR, to the Neonet one (..., LM, EN, ...) format. This XLSX file has to be updated manually by specialists. 
-
-<p align="center">
-<br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/ref_table_per.png"
-" width="600">
-  <br>
-    <em>The neonet dataset over the KCC 7k</em>
-</p>
-
-The `neo_dbs_align()` function reuses this mapping table. 
-
-```R
-df.c14 <- neo_dbs_align(df,
-                        mapping.file = "C:/Rprojects/neonet/doc/ref_table_per.xlsx")
-head(df.c14)
-```
-
-Gives a dataframe where all fields have been renamed to be parsed with the Neonet functions. Among this mapping the column 'Period' with, for example, `MM`  Middle Mesolithic) maps the `bda` period = `Mésolithique 1` and culture = `Capsien ancien` or `Capsien typique`:
-
-| sourcedb | SiteName       | LabCode  | C14Age | C14SD | db_period      | db_culture      | Period | lon      | lat     |
-|----------|----------------|----------|--------|-------|----------------|-----------------|--------|----------|---------|
-| bda      | Mechta el Arbi | Poz-92231| 6600   | 80    | Mésolithique 1 | Capsien ancien  | MM     | 6.130900 | 36.09940|
-| bda      | Mechta el Arbi | Poz-92232| 6250   | 130   | Mésolithique 1 | Capsien ancien  | MM     | 6.130900 | 36.09940|
-| bda      | Mechta el Arbi | Poz-92230| 3500   | 120   | Mésolithique 1 | Capsien ancien  | MM     | 6.130900 | 36.09940|
-| bda      | Kef Zoura D    | UOC-2925 | 7787   | 48    | Mésolithique 1 | Capsien typique | MM     | 7.682121 | 35.04205|
-| bda      | Bortal Fakher  | L-240A   | 6930   | 200   | Mésolithique 1 | Capsien typique | MM     | 8.176087 | 34.35480|
-| bda      | Relilaï (B)    | Gif-1714 | 7760   | 180   | Mésolithique 1 | Capsien typique | MM     | 7.694694 | 35.04480|
 
 To assess what were the climates classes that where inhabited in the past, during the Late Mesolithic (LM) and Middle Mesolithic (MM) based on previous dates
 
