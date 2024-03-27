@@ -202,6 +202,19 @@ df_filtered <- neo_dbs_rm_date(df.c14)
 #   print(df)
 # }
 
+source("R/neo_kcc_map.R")
+kcc.per <- "koppen_6k"
+kcc <- paste0("C:/Rprojects/neonet/doc/data/clim/", kcc.per, ".tif")
+gout <- neo_kcc_map(kcc = kcc,
+                    df.c14 = NA,
+                    roi = where)
+ggsave(paste0("C:/Rprojects/neonet/doc/talks/2024-simep/img/", kcc.per, ".png"),
+       gout,
+       width = 8,
+       height = 5,
+       units = "cm"
+)
+
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
