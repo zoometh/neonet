@@ -211,26 +211,21 @@ Gives a dataframe where all fields have been renamed to be parsed with the Neone
 | bda      | Bortal Fakher  | L-240A   | 6930   | 200   | Mésolithique 1 | Capsien typique | MM     | 8.176087 | 34.35480|
 | bda      | Relilaï (B)    | Gif-1714 | 7760   | 180   | Mésolithique 1 | Capsien typique | MM     | 7.694694 | 35.04480|
 
-To filter abberant dates, a combination of different function allow to retrieve the current information (once mapped to the Neonet layout) of these potential outliers and their original information (from their source database)  
+To filter aberrant dates, a combination of different function allow to retrieve the current information (once mapped to the Neonet layout) of these potential outliers and their original information (from their source database)  
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-1.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-2.png"
 " width="600">
   <br>
-    <em>Here the dates 147, 198 and 367 seem abberant</em>
+    <em>KCC and isochrone for 8000 calBC (10ka BP). Here the dates 147 (circled in red), 198 and 367 seem aberrant</em>
 </p>
 
 
 ```R
 source("R/neo_find_date.R")
-source("R/neo_dbs_info_date.R")
-source("R/neo_dbs_info_date_src.R")
 
 abber.date <- neo_find_date(df = isochr$data, idf.dates = 147)
-abber.date <- neo_dbs_info_date(abber.date$labcode)
-neo_dbs_info_date_src(db = abber.dates$sourcedb, 
-                      LabCode = abber.dates$LabCode)
 ```
 
 Gives:
@@ -238,17 +233,59 @@ Gives:
 ```
 idf sourcedb labcode     site   median period
 147   calpal UBAR-31 Cova 120 -8040.05     EN
-...
+```
+
+Where `147` is the contextual identifier of the date. This date comes from the `calpal` DB. The calibrated radiocarbon date median (`-8040.05`) is really too high for an `EN` period (Early Neolithic). Running the followin functions helps to contextualize the date.
+
+```R
+source("R/neo_dbs_info_date_src.R")
+
+abber.date <- neo_dbs_info_date(abber.date$labcode)
+```
+
+Gives:
+
+```
+     sourcedb LabCode SiteName   median db_period db_culture
+3451   calpal UBAR-31 Cova 120 -8040.05 Neolithic Epicardial
+```
+
+The date `147` (aka `UBAR-31`) is tagged `Neolithic` and `Epicardial` in `calpal`. To have its full record, as it is created using the c14bazAAR package, run:
+
+
+```R
+source("R/neo_dbs_info_date.R")
+
+neo_dbs_info_date_src(db = abber.dates$sourcedb, 
+                      LabCode = abber.dates$LabCode)
+```
+
+Gives:
+
+```
   sourcedb sourcedb_version method   labnr c14age c14std c13val     site sitetype    period    culture material species country
-1     <NA>             <NA>   <NA>    <NA>     NA     NA     NA     <NA>     <NA>      <NA>       <NA>     <NA>    <NA>    <NA>
 2   calpal       2020-08-20    14C UBAR-31   8550    150      0 Cova 120     <NA> Neolithic Epicardial charcoal    <NA>   Spain
     lat  lon          shortref
-1    NA   NA              <NA>
 2 42.47 2.61 van Willigen 2006
 ```
 
-Abberant dates can be listed in https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_to_remove2.tsv 
+The list of aberrant dates, for example [c14_to_remove2.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_to_remove2.tsv), is used to discard some dates with the `neo_dbs_rm_date()` function
 
+```R
+source("R/neo_dbs_rm_date.R")
+
+df_filtered <- neo_dbs_rm_date(df.c14)
+```
+
+By default, dates having a dash prefix in their `sourcedb` column will be skipped (ex: "-radon")
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-3.png"
+" width="600">
+  <br>
+    <em>Screenshot of the 'c14_to_remove2.tsv' table</em>
+</p>
 
 
 ### SPD plot

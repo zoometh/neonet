@@ -24,6 +24,7 @@ neo_dbs_info_date <- function(LabCode = NA,
     df.out <- na.omit(df.c14[df.c14$LabCode == LabCode, columns])[1, ]
     a.date <- as.character(df.out)
   }
-  cat(paste(a.date, collapse = "\t"), "\n")
+  # cat(paste(a.date, collapse = "\t"), "\n")
+  print(df.out)
   return(df.out)
 }

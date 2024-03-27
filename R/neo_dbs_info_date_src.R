@@ -17,5 +17,6 @@ neo_dbs_info_date_src <- function(db = NA,
   
   df <- c14bazAAR::get_c14data(db)
   df <- as.data.frame(df[df$labnr == LabCode, ])
+  df <- df[!is.na(df$labnr), ]
   print(df)
 }
