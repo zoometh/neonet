@@ -6,6 +6,10 @@ author:
     affiliation: 
       - id: uo
         name: <span style="font-size:16pt">University of Oxford</span>
+  - name: Name Surname
+    affiliation: 
+      - id: xx
+        name: <span style="font-size:16pt">Affiliation</span>
 title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"
     data-background-size: "120%"
@@ -38,20 +42,24 @@ format:
 
 ## HG and EF
 
+> TODO
+
 # Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
 ## Radiocarbon data
 
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/zoometh/neonet>]{.smalltext}
 
 ::: columns
-::: {.column width="30%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/github-c14bazaar-functions-1.png){width="700" style="horizontal-align: middle;"}
-:::
 
-::: {.column width="70%"}
+::: {.column width="60%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/github-c14bazAAR-dbs.png){width="700" style="horizontal-align: middle;"}
 :::
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/flowchart.png){width="700" style="horizontal-align: middle;"}
+:::
+
 :::
 
 ::: notes
@@ -85,7 +93,14 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 Extract on the radiocarbon date median
 :::
 
+### Medians
+
+
+
+
 ### Other panel
+
+
 
 :::
 
