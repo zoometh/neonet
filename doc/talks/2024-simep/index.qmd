@@ -96,6 +96,17 @@ Extract on the radiocarbon date median
 ### Medians
 
 
+::: columns
+
+::: {.column width="60%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/github-c14bazAAR-dbs.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/flowchart.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
 
 
 ### Other panel
