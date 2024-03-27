@@ -66,19 +66,22 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
       print("Read an sf object")
     }
     c14 <- sf::st_set_geometry(df.c14, NULL)
-  } else if(!is.na(DescTools::SplitPath(df.c14)$extension)){
-    if(DescTools::SplitPath(df.c14)$extension == "geojson"){
-      if(verbose){
-        print("Read an a GeoJSON file")
+  } 
+  if(is.character(df.c14)){
+    if(!is.na(DescTools::SplitPath(df.c14)$extension)){
+      if(DescTools::SplitPath(df.c14)$extension == "geojson"){
+        if(verbose){
+          print("Read an a GeoJSON file")
+        }
+        c14 <- sf::st_read(df.c14, quiet = T)
       }
-      c14 <- sf::st_read(df.c14, quiet = T)
+      if(DescTools::SplitPath(df.c14)$extension == "tsv"){
+        if(verbose){
+          print("Read an a TSV file")
+        }
+        c14 <- read.table(df.c14, sep = "\t", header = TRUE, stringsAsFactors = F, quote = "")
+      } 
     }
-    if(DescTools::SplitPath(df.c14)$extension == "tsv"){
-      if(verbose){
-        print("Read an a TSV file")
-      }
-      c14 <- read.table(df.c14, sep = "\t", header = TRUE, stringsAsFactors = F, quote = "")
-    } 
   }
   # if(is.na(DescTools::SplitPath(df.c14)$extension)){
   #   if(verbose){
@@ -121,7 +124,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
       dplyr::arrange(factor(Period, levels = periods.colors.selected$period))
     # c14$Period <- factor(c14$Period, levels = periods.colors.selected$period)
     c14[[color.on]] <- factor(c14[[color.on]], levels = periods.colors.plotted)
-    periods <- unique(c14.cal[[color.on]])
+    periods <- unique(c14[[color.on]])
     var.colors <- periods.colors.selected[periods.colors.selected$period %in% periods, "color"]
   }
   if(color.on == "kcc"){
@@ -230,5 +233,4 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
 # spd.c14.ordered$spds <-  spd.c14.ordered$spds[order(match(spd.c14.ordered$spds, periods))]
 # 
 # x[order(match(x,y))]
-
 

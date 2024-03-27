@@ -1,6 +1,6 @@
 ---
-title: "Climates during the spread of farming in Mediterranean "
-subtitle: "Evolution of Koppen climates classes last Hunter-Gatherers and Early Farmers archaeological sites through reproductible methods"
+title: "Climates during the Spread of Farming in Mediterranean "
+subtitle: "Koppen climates classes of last Hunter-Gatherers and early Farmers archaeological sites through reproducible methods"
 author:
   - name: Thomas Huet
     affiliation: 
@@ -48,15 +48,15 @@ format:
 
 ## Radiocarbon data
 
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/zoometh/neonet>]{.smalltext}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/zoometh/neonet>]{.smalltext}
 
 ::: columns
 
-::: {.column width="60%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/github-c14bazAAR-dbs.png){width="700" style="horizontal-align: middle;"}
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/github-c14bazAAR-dbs.png){width="600" style="horizontal-align: middle;"}
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/flowchart.png){width="700" style="horizontal-align: middle;"}
 :::
 
@@ -87,6 +87,72 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc_median.png)
 
 
+<table>
+  <tr>
+    <th>cal BC</th>
+    <th>Koppen Climate Classes</th>
+    <th>New Column</th>
+  </tr>
+  <tr>
+    <td><small>9500</small></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_11k.png" height="250"></td>
+    <td rowspan="3"></td>
+  </tr>
+  <tr>
+    <td><b>9000</b></td>
+  </tr>
+  <tr>
+    <td><small>8500</small></td>
+  </tr>
+  <tr>
+    <td><small>8500</small></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_10k.png" height="250"></td>
+    <td rowspan="3"></td>
+  </tr>
+  <tr>
+    <td><b>8000</b></td>
+  </tr>
+  <tr>
+    <td><small>7500</small></td>
+  </tr>
+  <tr>
+    <td><small>7500</small></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k.png" height="250"></td>
+    <td rowspan="3"></td>
+  </tr>
+  <tr>
+    <td><b>7000</b></td>
+  </tr>
+  <tr>
+    <td><small>6500</small></td>
+  </tr>
+  <tr>
+    <td><small>6500</small></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k.png" height="250"></td>
+    <td rowspan="3"></td>
+  </tr>
+  <tr>
+    <td><b>6000</b></td>
+  </tr>
+  <tr>
+    <td><small>5500</small></td>
+  </tr>
+  <tr>
+    <td><small>5500</small></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_7k.png" height="250"></td>
+    <td rowspan="3"></td>
+  </tr>
+  <tr>
+    <td><b>5000</b></td>
+  </tr>
+  <tr>
+    <td><small>4500</small></td>
+  </tr>
+</table>
+
+
+
+
 ::: notes
 Extract on the radiocarbon date median
 :::
@@ -97,12 +163,12 @@ Extract on the radiocarbon date median
 ::: columns
 
 ::: {.column width="50%"}
-The most ancient <span style="color: blue;">EN</span> date median
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/median-en-baratin.png)
+The most ancient <span style="color: red;">EN</span> date median
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-en-baratin.png)
 :::
 
 ::: {.column width="50%"}
-The most recent <span style="color: red;">LM</span> date median
+The most recent <span style="color: blue;">LM</span> date median
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-lm-montefrignone.png)
 :::
 
