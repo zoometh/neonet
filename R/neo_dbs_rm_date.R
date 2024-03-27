@@ -17,10 +17,10 @@
 #'
 #' @export
 neo_dbs_rm_date <- function(df.c14 = NA, 
-                             c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv",
-                             selected.cols = c("sourcedb", "LabCode", "SiteName", "median", "db_period"),
+                            c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_to_remove2.tsv",
+                            selected.cols = c("sourcedb", "LabCode", "SiteName", "median", "db_period"),
                             escape.pattern = "^-",
-                             verbose = TRUE){
+                            verbose = TRUE){
   df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
   df.to.rm <- df.to.rm[!grepl(escape.pattern, df.to.rm$sourcedb), ]
   if(verbose){

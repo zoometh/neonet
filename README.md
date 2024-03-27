@@ -282,7 +282,7 @@ By default, dates having a dash prefix in their `sourcedb` column will be skippe
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-3.png"
-" width="600">
+" width="800">
   <br>
     <em>Screenshot of the 'c14_to_remove2.tsv' table</em>
 </p>
