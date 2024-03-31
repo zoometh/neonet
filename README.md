@@ -15,6 +15,23 @@ NeoNet serves as a framework to investigate the transition between the Late Meso
     <em>The NeoNet Med dataset filtered by periods</em>
 </p>
 
+Studied periods are listed in the [periods.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/periods.tsv) table:
+
+| period | period_full_name             | color                                                                 |
+|--------|------------------------------|-----------------------------------------------------------------------|
+| EM     | Early Mesolithic             | ![#0000CF](https://placehold.co/15x15/0000CF/0000CF.png)              |
+| MM     | Middle Mesolithic            | ![#1D1DFF](https://placehold.co/15x15/1D1DFF/1D1DFF.png)              |
+| LM     | Late Mesolithic              | ![#3737FF](https://placehold.co/15x15/3737FF/3737FF.png)              |
+| LMEN   | Late Mesolithic/Early Neolithic | ![#6A6AFF](https://placehold.co/15x15/6A6AFF/6A6AFF.png)           |
+| UM     | Undefined Mesolithic         | ![#8484FF](https://placehold.co/15x15/8484FF/8484FF.png)              |
+| EN     | Early Neolithic              | ![#FF1B1B](https://placehold.co/15x15/FF1B1B/FF1B1B.png)              |
+| EMN    | Early/Middle Neolithic       | ![#FF541B](https://placehold.co/15x15/FF541B/FF541B.png)              |
+| MN     | Middle Neolithic             | ![#FF8D1B](https://placehold.co/15x15/FF8D1B/FF8D1B.png)              |
+| LN     | Late Neolithic               | ![#FFC04D](https://placehold.co/15x15/FFC04D/FFC04D.png)              |
+| UN     | Undefined Neolithic          | ![#E7E700](https://placehold.co/15x15/E7E700/E7E700.png)              |
+
+
+
 ## NeoNet datasets
 
 <div align="center">
