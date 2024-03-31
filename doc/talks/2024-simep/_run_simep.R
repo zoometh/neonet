@@ -14,7 +14,7 @@ source("R/config.R")
 
 root.path <- "C:/Rprojects/neonet/results"
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
-l.dbs <- c("calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
+l.dbs <- c("neonet", "calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
 # xronos
 # l.dbs <- c("p3k14c")
 # l.dbs <- c("bda")

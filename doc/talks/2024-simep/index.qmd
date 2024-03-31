@@ -94,7 +94,7 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
     <th>New Column</th>
   </tr>
   <tr>
-    <td><small>9500</small></td>
+    <td class="tabtop-left">9500</td>
     <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_11k.png" height="250"></td>
     <td rowspan="3"></td>
   </tr>
@@ -102,10 +102,10 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
     <td><b>9000</b></td>
   </tr>
   <tr>
-    <td><small>8500</small></td>
+    <td class="tabbottom-left">8500</td>
   </tr>
   <tr>
-    <td><small>8500</small></td>
+    <td class="tabtop-left">8500</td>
     <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_10k.png" height="250"></td>
     <td rowspan="3"></td>
   </tr>
@@ -113,10 +113,10 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
     <td><b>8000</b></td>
   </tr>
   <tr>
-    <td><small>7500</small></td>
+    <td class="tabbottom-left">7500</td>
   </tr>
   <tr>
-    <td><small>7500</small></td>
+    <td class="tabtop-left">7500</td>
     <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k.png" height="250"></td>
     <td rowspan="3"></td>
   </tr>
@@ -124,10 +124,10 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
     <td><b>7000</b></td>
   </tr>
   <tr>
-    <td><small>6500</small></td>
+    <td class="tabbottom-left">6500</td>
   </tr>
   <tr>
-    <td><small>6500</small></td>
+    <td class="tabtop-left">6500</td>
     <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k.png" height="250"></td>
     <td rowspan="3"></td>
   </tr>
@@ -135,10 +135,10 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
     <td><b>6000</b></td>
   </tr>
   <tr>
-    <td><small>5500</small></td>
+    <td class="tabbottom-left">5500</td>
   </tr>
   <tr>
-    <td><small>5500</small></td>
+    <td class="tabtop-left">5500</td>
     <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_7k.png" height="250"></td>
     <td rowspan="3"></td>
   </tr>
@@ -146,7 +146,7 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
     <td><b>5000</b></td>
   </tr>
   <tr>
-    <td><small>4500</small></td>
+    <td class="tabbottom-left">4500</td>
   </tr>
 </table>
 

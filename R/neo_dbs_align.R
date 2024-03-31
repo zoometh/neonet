@@ -1,10 +1,11 @@
 #' @name neo_dbs_align
 #'
-#' @description Aligns culture and periods of radiocarbon dates coming from different c14bazAAR dbs to the Neonet classes (..., MM, LM, EN, MN, ...) using a mapping table created by the function `neo_dbs_create_ref()`
+#' @description Aligns culture and periods of radiocarbon dates coming from different c14bazAAR databases to the Neonet classes (..., MM, LM, EN, MN, ...) using a mapping table created by the function `neo_dbs_create_ref()`. Remove duplicated dates (i.e. dates existing in more than one database)
 #'
 #' @param df A dataframe created with the `neo_parse_db()` function.
 #' @param mapping.field The name of the LabCode field used to remove duplicates. Default: "labnr". 
 #' @param mapping.file A mapping file with one-to-one correspondences. Default: `ref_table_per.xlsx`
+#' @param dates.from.dbs.to.keep Dates coming from these databases will be preferentially kept when the duplicated dates will be removed. Default: c("neonet").
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return A dataframe of standardized radiocarbon dates.
@@ -16,6 +17,7 @@
 neo_dbs_align <- function(df = NA,
                           mapping.field = "labnr",
                           mapping.file = "C:/Rprojects/neonet/doc/ref_table_per.xlsx",
+                          dates.from.dbs.to.keep = c("neonet"),
                           verbose = TRUE){
   `%>%` <- dplyr::`%>%`
   # load the config file
@@ -36,11 +38,21 @@ neo_dbs_align <- function(df = NA,
   if(verbose){
     print(paste0("  - remove duplicated radiocarbon dates on '", mapping.field, "'"))
   }
-  df.classes <- df.classes[!duplicated(df.classes[[mapping.field]]), ]
-  # map colnames to neonet format
+  # df.classes <- df.classes[!duplicated(df.classes[[mapping.field]]), ]
+  # Adding a priority column based on the position in the priority_vector
   df.classes <- df.classes %>%
+    dplyr::mutate(priority = match(sourcedb, dates.from.dbs.to.keep))
+  df.classes$priority[is.na(df.classes$priority)] <- length(dates.from.dbs.to.keep) + 1
+  df.classes <- df.classes %>%
+    dplyr::arrange(priority, labnr) %>%
+    dplyr::distinct(labnr, .keep_all = TRUE) %>%
+    dplyr::select(-priority)  %>%
     dplyr::rename(!!!setNames(rename_c14bazAAR, names(rename_c14bazAAR))) %>%
     dplyr::select(names(rename_c14bazAAR))
+  # # map colnames to neonet format
+  # df.classes <- df.classes %>%
+  #   dplyr::rename(!!!setNames(rename_c14bazAAR, names(rename_c14bazAAR))) %>%
+  #   dplyr::select(names(rename_c14bazAAR))
   if(verbose){
     print(paste0("  - columns have been mapped!"))
     print(paste0("  - n = ", nrow(df.classes), " radiocarbon dates"))
