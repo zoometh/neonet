@@ -104,7 +104,25 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 
 ::: {.panel-tabset}
 
-### Weighted medians
+
+### Dates selection
+
+
+::: columns
+
+::: {.column width="50%"}
+The most recent <span style="color: blue;">LM</span> date median
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-lm-montefrignone.png)
+:::
+
+::: {.column width="50%"}
+The most ancient <span style="color: red;">EN</span> date median
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-en-baratin.png)
+:::
+
+:::
+
+### Dates weighted medians
 
 
 <table>
@@ -170,40 +188,18 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
   </tr>
 </table>
 
-### Extract KCC
+### Dates Koppen Classes
 
-* Extract the Koppen Classification Classes (KCC) by dates
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png)
 
+:::
 
 
 ::: notes
 Extract on the radiocarbon date weighted median
 :::
 
-### Medians
 
-
-::: columns
-
-::: {.column width="50%"}
-The most recent <span style="color: blue;">LM</span> date median
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-lm-montefrignone.png)
-:::
-
-::: {.column width="50%"}
-The most ancient <span style="color: red;">EN</span> date median
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-en-baratin.png)
-:::
-
-:::
-
-
-### Other panel
-
-
-
-:::
 
 
 # Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
