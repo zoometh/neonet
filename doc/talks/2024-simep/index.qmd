@@ -122,7 +122,77 @@ The most ancient <span style="color: red;">EN</span> date median
 
 :::
 
-### Dates weighted medians
+### Dates medians
+
+
+<table>
+  <tr>
+    <th>time span<br><small>cal BC</small></th>
+    <th>KCC map</th>
+    <th>date</th>
+  </tr>
+  <tr>
+    <td class="tabtop-left">7500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
+  </tr>
+  <tr>
+    <td><b>7000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">6500</td>
+  </tr>
+  <tr>
+    <td class="tabtop-left">6500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
+  </tr>
+  <tr>
+    <td><b>6000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">5500</td>
+  </tr>
+</table>
+
+### Dates Koppen Classes
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png)
+
+:::
+
+
+::: notes
+Extract on the radiocarbon date weighted median
+:::
+
+
+
+
+# Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
+
+## Evolution of archaeological sites climates
+
+::: {.panel-tabset}
+
+### SPD
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Mesolithic-KCC-spd.png)
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Neolithic-KCC-spd.png)
+
+### Plotbar
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/kcc_meso_neo.png)
+:::
+
+# Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
+
+## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
+
+# Conclusion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
+
+# NOT SHOW
 
 
 <table>
@@ -187,42 +257,5 @@ The most ancient <span style="color: red;">EN</span> date median
     <td class="tabbottom-left">4500</td>
   </tr>
 </table>
-
-### Dates Koppen Classes
-
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png)
-
-:::
-
-
-::: notes
-Extract on the radiocarbon date weighted median
-:::
-
-
-
-
-# Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
-
-## Evolution of archaeological sites climates
-
-::: {.panel-tabset}
-
-### SPD
-
-![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Mesolithic-KCC-spd.png)
-
-![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Neolithic-KCC-spd.png)
-
-### Plotbar
-
-![](https://raw.githubusercontent.com/zoometh/neonet/master/results/kcc_meso_neo.png)
-:::
-
-# Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
-
-## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
-
-# Conclusion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
 
