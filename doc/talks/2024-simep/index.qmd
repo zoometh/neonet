@@ -104,20 +104,14 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
 
 ::: {.panel-tabset}
 
-### Extract KCC
-
-* Extract the Koppen Classification Classes (KCC) by dates
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png)
-
-* The selected KCC map is the one ...
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc_median.png)
+### Weighted medians
 
 
 <table>
   <tr>
-    <th>cal BC</th>
-    <th>Koppen Climate Classes</th>
-    <th>New Column</th>
+    <th>time span<br><small>cal BC</small></th>
+    <th>raster</th>
+    <th>median</th>
   </tr>
   <tr>
     <td class="tabtop-left">9500</td>
@@ -176,11 +170,15 @@ NeoNet is one of the numerous existing radiocarbon datasets. That's why we have 
   </tr>
 </table>
 
+### Extract KCC
+
+* Extract the Koppen Classification Classes (KCC) by dates
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png)
 
 
 
 ::: notes
-Extract on the radiocarbon date median
+Extract on the radiocarbon date weighted median
 :::
 
 ### Medians
