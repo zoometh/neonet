@@ -193,7 +193,9 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
   if(verbose){
     print("Plot")
   }
-  tit <- paste0(title, " (", nrow(c14.cal), " dates used)")
+  if(!is.na(title)){
+    tit <- paste0(title, " (", nrow(c14.cal), " dates used)")
+  } else {tit <- title}
   neo_spdplot(spd.c14,
               type = 'stacked',
               calendar = calendar,

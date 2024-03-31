@@ -14,7 +14,7 @@ title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"
     data-background-size: "120%"
     data-background-opacity: "0.4"
-    data-notes: Climate Types.
+    data-notes: Climate Types. Focus on the LM/EN transition
 format:
   revealjs: 
     css: https://zoometh.github.io/thomashuet/css/quarto.css
@@ -42,7 +42,23 @@ format:
 
 ## HG and EF
 
-> TODO
+| Header 1 | Header 2 |
+|----------|----------|
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
+
+
+::: notes
+Periods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:
+* Mesolithic: Foragers and Hunter Gatherers Holocene
+  - Early: Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.
+  - Middle: Increased specialization in tool production, territorialisation. New climates: new species.
+  - Late:  Residenciality increase. Circular mobility to access discontinuous resources in time and space
+* Neolithic:
+  - Early: Early farmers. Permanent settlements, soil fertility for  wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.
+  - Middle: Crafware, crops and livestock specialisation. Deforestation. Warm and stable climate.
+  - Late: apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions
+:::
 
 # Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
@@ -161,8 +177,6 @@ Extract on the radiocarbon date median
 
 
 ::: columns
-
-
 
 ::: {.column width="50%"}
 The most recent <span style="color: blue;">LM</span> date median

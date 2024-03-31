@@ -35,11 +35,40 @@ df.c14 <- neo_dbs_align(df = df,
                         mapping.file = "C:/Rprojects/neonet/doc/ref_table_per_NM.xlsx")
 
 
-site.by.per <- df.c14 %>%
-  dplyr::group_by(SiteName, Period) %>%
-  dplyr::summarise(Count = dplyr::n(), .groups = 'drop')
-site.by.per.count <- as.data.frame(table(site.by.per$SiteName))
+f3per <- function(df.c14 = NA){
+  # find sites having different periods represented, for example "EN", "MN", "LN", to illustrate the different moments (respectively: early farmers, long-distance trade, copper industry) or "EM", "MM", "LM". For example "Baume de Montclus" has all the Mesolithic represented, while "Franchthi Cave" has all the Neolithic represented
+  site.by.per <- df.c14 %>%
+    dplyr::group_by(SiteName, Period) %>%
+    dplyr::summarise(Count = dplyr::n(), .groups = 'drop')
+  site.by.per.count <- as.data.frame(table(site.by.per$SiteName))
+  
+  return(site.by.per.count)
+  # to see the period, run, for example:
+  # site.by.per[site.by.per$SiteName == "Franchthi Cave", ]
+}
 
+source("R/neo_calib.R")
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+
+site.by.per.count <- f3per(df.c14)
+# selelct 1 site
+# View(site.by.per.count)
+df.temp <- site.by.per[site.by.per$SiteName == "Baume de Montclus", ]
+df.temp.1 <- df.c14[df.c14$SiteName == "Baume de Montclus" & df.c14$Period %in% c("EM", "MM", "LM"), ]
+# df.temp <- site.by.per[site.by.per$SiteName == "Franchthi Cave", ]
+# df.temp.1 <- df.c14[df.c14$SiteName == "Franchthi Cave" & df.c14$Period %in% c("EN", "MN", "LN"), ]
+df.temp.1 <- df.temp.1[df.temp.1$LabCode != "P-1921", ]
+df.temp.1 <- df.temp.1[!is.na(df.temp.1$LabCode), ]
+df.temp.1 <- neo_calib(df.temp.1, 
+                    verbose.freq = 5)
+neo_spd(df.c14 = df.temp.1, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/", 
+        # outFile = "moments-dbs-neo-Franchti.png",
+        outFile = "moments-dbs-meso-Montclus.png",
+        # time.span = c(10000, 6500),
+        time.span = c(10000, 6500),
+        title = NA,
+        width = 14, height = 11)
 # remotes::install_github("people3k/p3k14c@2022.06")
 
 # dbs
@@ -50,21 +79,15 @@ site.by.per.count <- as.data.frame(table(site.by.per$SiteName))
 # fspat(df.all.res, roi, outfile = "_db__all_class.png")
 # fspat(df.all.res, roi, outfile = "_db__all.png")
 # colnames(df.c14)
-source("R/neo_calib.R")
-df.c14 <- neo_calib(df.c14, 
-                    verbose.freq = 250)
+
 # write.csv(df.c14, samp_df, row.names = FALSE)
+# 
+# # to.plot <- df.c14[df.c14$sourcedb %in% c("neonet", "neonetatl"), ]
+# to.plot <- df.c14[df.c14$Period %in% c("EN", "MN", "LN"), ]
+# 
+# 
+# library(rcarbon)
 
-to.plot <- df.c14[df.c14$sourcedb %in% c("neonet", "neonetatl"), ]
-to.plot <- df.c14[df.c14$Period %in% c("EN", "MN", "LN"), ]
-
-
-library(rcarbon)
-
-source("R/neo_spd.R")
-source("R/neo_spdplot.R")
-
-neo_spd(df.c14 = to.plot)
 
 
 ###################################################
