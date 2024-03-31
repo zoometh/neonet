@@ -54,10 +54,10 @@ source("R/neo_spdplot.R")
 site.by.per.count <- f3per(df.c14)
 # selelct 1 site
 # View(site.by.per.count)
-df.temp <- site.by.per[site.by.per$SiteName == "Baume de Montclus", ]
-df.temp.1 <- df.c14[df.c14$SiteName == "Baume de Montclus" & df.c14$Period %in% c("EM", "MM", "LM"), ]
-# df.temp <- site.by.per[site.by.per$SiteName == "Franchthi Cave", ]
-# df.temp.1 <- df.c14[df.c14$SiteName == "Franchthi Cave" & df.c14$Period %in% c("EN", "MN", "LN"), ]
+# df.temp <- site.by.per[site.by.per$SiteName == "Baume de Montclus", ]
+# df.temp.1 <- df.c14[df.c14$SiteName == "Baume de Montclus" & df.c14$Period %in% c("EM", "MM", "LM"), ]
+df.temp <- site.by.per[site.by.per$SiteName == "Franchthi Cave", ]
+df.temp.1 <- df.c14[df.c14$SiteName == "Franchthi Cave" & df.c14$Period %in% c("EN", "MN", "LN"), ]
 df.temp.1 <- df.temp.1[df.temp.1$LabCode != "P-1921", ]
 df.temp.1 <- df.temp.1[!is.na(df.temp.1$LabCode), ]
 df.temp.1 <- neo_calib(df.temp.1, 
