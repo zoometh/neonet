@@ -162,14 +162,16 @@ Extract on the radiocarbon date median
 
 ::: columns
 
-::: {.column width="50%"}
-The most ancient <span style="color: red;">EN</span> date median
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-en-baratin.png)
-:::
+
 
 ::: {.column width="50%"}
 The most recent <span style="color: blue;">LM</span> date median
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-lm-montefrignone.png)
+:::
+
+::: {.column width="50%"}
+The most ancient <span style="color: red;">EN</span> date median
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-en-baratin.png)
 :::
 
 :::

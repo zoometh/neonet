@@ -15,6 +15,7 @@ source("R/config.R")
 root.path <- "C:/Rprojects/neonet/results"
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
 l.dbs <- c("neonet", "calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
+# l.dbs <- c("radonb") 
 # xronos
 # l.dbs <- c("p3k14c")
 # l.dbs <- c("bda")
@@ -27,11 +28,17 @@ col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "cult
 source("R/neo_dbs_parse.R")
 df <- neo_dbs_parse(l.dbs = l.dbs, #what.db, # c("bda", "medafricarbon"),
                     col.c14baz = col.c14baz,
-                    chr.interval.uncalBC = when,
+                    # chr.interval.uncalBC = when,
                     roi = where)
 source("R/neo_dbs_align.R")
 df.c14 <- neo_dbs_align(df = df,
                         mapping.file = "C:/Rprojects/neonet/doc/ref_table_per_NM.xlsx")
+
+
+site.by.per <- df.c14 %>%
+  dplyr::group_by(SiteName, Period) %>%
+  dplyr::summarise(Count = dplyr::n(), .groups = 'drop')
+site.by.per.count <- as.data.frame(table(site.by.per$SiteName))
 
 # remotes::install_github("people3k/p3k14c@2022.06")
 
@@ -44,14 +51,25 @@ df.c14 <- neo_dbs_align(df = df,
 # fspat(df.all.res, roi, outfile = "_db__all.png")
 # colnames(df.c14)
 source("R/neo_calib.R")
-df.c14 <- neo_calib(df.c14)
+df.c14 <- neo_calib(df.c14, 
+                    verbose.freq = 250)
 # write.csv(df.c14, samp_df, row.names = FALSE)
+
+to.plot <- df.c14[df.c14$sourcedb %in% c("neonet", "neonetatl"), ]
+to.plot <- df.c14[df.c14$Period %in% c("EN", "MN", "LN"), ]
+
+
+library(rcarbon)
+
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+
+neo_spd(df.c14 = to.plot)
+
 
 ###################################################
 ##### shortcut: load the 'df14_simep.csv' file ####
-# root.path <-"C:/Rprojects/neonet/results"
-# samp_df <- paste0(root.path, "/df14_simep.csv")
-# samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep.csv")
+# samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_3.csv")
 # samp_df <- read.csv(samp_df)
 # df.c14 <- samp_df[sample(1:nrow(samp_df), 150), ]
 # #           OR

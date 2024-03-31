@@ -17,7 +17,7 @@
 neo_dbs_align <- function(df = NA,
                           mapping.field = "labnr",
                           mapping.file = "C:/Rprojects/neonet/doc/ref_table_per.xlsx",
-                          dates.from.dbs.to.keep = c("neonet"),
+                          dates.from.dbs.to.keep = c("neonet","neonetatl"),
                           verbose = TRUE){
   `%>%` <- dplyr::`%>%`
   # load the config file
