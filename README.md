@@ -10,7 +10,7 @@ NeoNet serves as a framework to investigate the transition between the Late Meso
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_datasum_by_periods.png"
-" width="600">
+" width="500">
   <br>
     <em>The NeoNet Med dataset filtered by periods</em>
 </p>

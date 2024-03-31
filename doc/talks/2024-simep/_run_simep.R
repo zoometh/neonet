@@ -62,12 +62,18 @@ df.temp.1 <- df.temp.1[df.temp.1$LabCode != "P-1921", ]
 df.temp.1 <- df.temp.1[!is.na(df.temp.1$LabCode), ]
 df.temp.1 <- neo_calib(df.temp.1, 
                     verbose.freq = 5)
-neo_spd(df.c14 = df.temp.1, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/", 
+
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+neo_spd(df.c14 = df.temp.1[2, ], outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/", 
         # outFile = "moments-dbs-neo-Franchti.png",
-        outFile = "moments-dbs-meso-Montclus.png",
+        # outFile = "moments-dbs-meso-Montclus.png",
+        outFile = paste0("aDate-", df.c14$SiteName, "-", df.c14$LabCode, ".png"),
         # time.span = c(10000, 6500),
-        time.span = c(10000, 6500),
-        title = NA,
+        time.span = c(8200, 7500),
+        export = TRUE,
+        title = paste(df.c14$SiteName, "-", df.c14$LabCode),
+        show.median = TRUE,
         width = 14, height = 11)
 # remotes::install_github("people3k/p3k14c@2022.06")
 

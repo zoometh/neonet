@@ -12,6 +12,7 @@
 #' @param title The title of the plot description.
 #' @param export if TRUE export (by default), if FALSE display,
 #' @param color.on The field name to color on (`"Period"` default) or KCC (`"kcc"`).
+#' @param show.median If TRUE, will show the weighted date(s) median in BC
 #' @param fileOut The name of the output file.
 #' @param dirOut name of the output folder. Only useful when `export.plot` is TRUE
 #' @param width,height dimension of the output map, if exported.
@@ -44,6 +45,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
                     time.round = 1000,
                     calendar = "BCAD",
                     color.on = "Period",
+                    show.median = FALSE,
                     title = "SPD",
                     plotname = "spd",
                     export = TRUE,
@@ -181,6 +183,11 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
                                timeRange = c(time.span[1], time.span[2]),
                                bins = bins,
                                runm = 50)
+  if(show.median){
+    # find the weighted median
+    dens <- x$grids$`1`
+    weighted.median <- matrixStats::weightedMedian(x = dens$calBP, w = dens$PrDens)
+  } else {weighted.median <- NA}
   if(export){
     if(is.na(outFile)){
       # plotname <- DescTools::SplitPath(df.c14)$filename
@@ -194,7 +201,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
     print("Plot")
   }
   if(!is.na(title)){
-    tit <- paste0(title, " (", nrow(c14.cal), " dates used)")
+    tit <- paste0(title, " (", nrow(c14.cal), " dates)")
   } else {tit <- title}
   neo_spdplot(spd.c14,
               type = 'stacked',
@@ -210,6 +217,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
               # ref.period = ref.period,
               periods.colors = var.colors, # TODO: change fieldname in neo_spdsubplot() to entail KCC
               # shown.per = shown.per,
+              weighted.median = weighted.median,
               verbose = FALSE)
   if(export){
     dev.off()

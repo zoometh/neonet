@@ -42,22 +42,32 @@ format:
 
 ## HG and EF
 
-| Header 1 | Header 2 |
-|----------|----------|
-| Cell 1   | Cell 2   |
-| Cell 3   | Cell 4   |
+<table style="font-size: 30px;">
+  <tr>
+
+  </tr>
+  <tr>
+    <td>Baume de Montclus<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png"></td>
+    <td>
+      <span style="color:#0000CF">EM Early Mesolithic</span> Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.<br>
+      <span style="color:#1D1DFF">MM Middle Mesolithic</span> Increased specialization in tool production, territorialisation. New climates: new species.<br>
+      <span style="color:#3737FF">LM Late Mesolithic</span> Residenciality increase. Circular mobility to access discontinuous resources in time and space
+    </td>
+  </tr>
+  <tr>
+    <td>Franchti cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png"></td>
+    <td>
+      <span style="color:#FF1B1B">EN Early Neolithic</span> Early farmers. Permanent settlements, soil fertility for  wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.<br>
+      <span style="color:#FF8D1B">MN Middle Neolithic</span> Crafware, crops and livestock specialisation. Deforestation. Warm and stable climate.<br>
+      <span style="color:#FFC04D">LN Late Neolithic</span> Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions
+    </td>
+  </tr>
+</table>
+
 
 
 ::: notes
 Periods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:
-* Mesolithic: Foragers and Hunter Gatherers Holocene
-  - Early: Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.
-  - Middle: Increased specialization in tool production, territorialisation. New climates: new species.
-  - Late:  Residenciality increase. Circular mobility to access discontinuous resources in time and space
-* Neolithic:
-  - Early: Early farmers. Permanent settlements, soil fertility for  wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.
-  - Middle: Crafware, crops and livestock specialisation. Deforestation. Warm and stable climate.
-  - Late: apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions
 :::
 
 # Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}

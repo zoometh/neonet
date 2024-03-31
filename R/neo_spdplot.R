@@ -1,4 +1,4 @@
-# adapted from the function `plot.stackCalSPD()` {rcarbon} R package
+# adapted from the function `plot.stackCalSPD()` {rcarbon} R package. This function is triggered by `neo_spd()`
 neo_spdplot <- function (x, 
                          type = "stacked", 
                          calendar = "BP", 
@@ -13,6 +13,7 @@ neo_spdplot <- function (x,
                          legend = TRUE, legend.arg = NULL, ylab = NA, ymargin = 1.1, 
                          spd.title = "",
                          periods.colors = c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B", "#FF8D1B", "#FFC04D", "#808080"),
+                         weighted.median = NA,
                          # ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                          # shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
                          # colpal = c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B",
@@ -161,6 +162,8 @@ neo_spdplot <- function (x,
     if (is.na(ylab)) {
       ylab = "Summed Probability"
     }
+
+    print(" ------------->  HERE")
     plot(0, 0, xlim = xlim, ylim = ylim, type = "l", 
          ylab = ylab, xlab = xlabel, xaxt = "n", yaxt = yaxt, 
          cex.axis = cex.axis, cex.lab = cex.lab, main = spd.title)
@@ -169,6 +172,15 @@ neo_spdplot <- function (x,
                                                      i], rev(PrDens[, i - 1])), col = col.fill[i - 
                                                                                                  1], lwd = lwd.obs[i - 1], border = col.line[i - 
                                                                                                                                                1], lty = lty.obs[i - 1])
+    }
+    if(!is.na(weighted.median)){
+      # print(" ------------->  THERE")
+      # print(xlim)
+      # add the date(s) weighted median
+      # print(" ------------->  THERE")
+      weighted.medianBC <- weighted.median - 1950
+      print(weighted.medianBC)
+      abline(v = -weighted.medianBC, col = "black", lwd = 2)
     }
     if (legend) {
       if (is.null(legend.arg)) {
