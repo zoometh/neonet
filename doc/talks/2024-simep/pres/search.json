@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "myproject/myproject.html",
+    "href": "myproject/myproject.html",
+    "title": "myproject",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "myproject/myproject.html#quarto",
+    "href": "myproject/myproject.html#quarto",
+    "title": "myproject",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
     "objectID": "index.html#hg-and-ef",
     "href": "index.html#hg-and-ef",
     "title": "Climates during the Spread of Farming in Mediterranean",
@@ -28,20 +42,6 @@
     "text": "Climates by radiocarbon dates\n\nDates selectionDates mediansDates Koppen Classes\n\n\n\n\nThe most recent LM date median \n\nThe most ancient EN date median \n\n\n\n\n\n\n\ntime spancal BC\n\n\nKCC map\n\n\ndate\n\n\n\n\n7500\n\n\n\n\n\n\n\n\n\n\n7000\n\n\n\n\n6500\n\n\n\n\n6500\n\n\n\n\n\n\n\n\n\n\n6000\n\n\n\n\n5500\n\n\n\n\n\n\n\n\n\n\nExtract on the radiocarbon date weighted median"
   },
   {
-    "objectID": "index.html#evolution-of-archaeological-sites-climates",
-    "href": "index.html#evolution-of-archaeological-sites-climates",
-    "title": "Climates during the Spread of Farming in Mediterranean",
-    "section": "Evolution of archaeological sites climates",
-    "text": "Evolution of archaeological sites climates\n\nSPDPlotbar"
-  },
-  {
-    "objectID": "index.html#productible-methods",
-    "href": "index.html#productible-methods",
-    "title": "Climates during the Spread of Farming in Mediterranean",
-    "section": " productible methods",
-    "text": "productible methods"
-  },
-  {
     "objectID": "index.html#overall-evolution",
     "href": "index.html#overall-evolution",
     "title": "Climates during the Spread of Farming in Mediterranean",
@@ -54,6 +54,13 @@
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Spread of farming by time slices",
     "text": "Spread of farming by time slices\n\n8000 BC7000 BC6000 BC5000 BC"
+  },
+  {
+    "objectID": "index.html#productible-methods",
+    "href": "index.html#productible-methods",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": " productible methods",
+    "text": "productible methods"
   },
   {
     "objectID": "index.html#not-show",
