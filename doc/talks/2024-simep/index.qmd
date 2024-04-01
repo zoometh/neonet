@@ -171,19 +171,72 @@ Extract on the radiocarbon date weighted median
 
 # Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
-## Evolution of archaeological sites climates
+## Overall evolution 
+
+Evolution of archaeological sites climates
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/results/kcc_meso_neo.png)
+
+## Spread of farming by time slices
 
 ::: {.panel-tabset}
 
-### SPD
+### 8000 BC
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Mesolithic-KCC-spd.png)
+::: columns
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Neolithic-KCC-spd.png)
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
 
-### Plotbar
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/results/kcc_meso_neo.png)
+:::
+
+### 7000 BC
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_9k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_9k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 6000 BC
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_8k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_8k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 5000 BC
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
+
 :::
 
 # Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}

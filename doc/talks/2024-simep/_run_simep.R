@@ -233,15 +233,15 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -7000,
+                     isochr.subset = -5000,
                      selected.per = "EN",
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                      time.line.size = .5,
                      calibrate = FALSE,
                      shw.dates = TRUE,
                      lbl.dates = FALSE,
                      lbl.time.interv = TRUE)
-ggplot2::ggsave(paste0(root.path, "EN_kcc_9k-iso.png"), isochr$map, 
+ggplot2::ggsave(paste0(root.path, "EN_kcc_7k-iso.png"), isochr$map, 
                 width = 14, height = 10)
 
 
