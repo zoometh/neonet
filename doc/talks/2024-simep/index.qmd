@@ -33,7 +33,7 @@ format:
     # self-contained: true
     # embed-resources: true
     # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<em>Social Interactions in Mediterranean Prehistory</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/simep-logo.png' style='height: 50px;vertical-align: middle;'> <https://simep2024.com/> 21-23 October 2024, Barcelona (Spain)"
+    footer: "<em>Social Interactions in Mediterranean Prehistory</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/simep-logo.png' style='height: 40px;vertical-align: middle;'> <https://simep2024.com/> 21-23 October 2024, Barcelona (Spain)"
     margin: 0
     width: 1200
 ---
