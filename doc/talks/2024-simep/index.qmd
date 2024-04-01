@@ -175,7 +175,7 @@ Extract on the radiocarbon date weighted median
 
 Evolution of archaeological sites climates
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/results/kcc_meso_neo.png)
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png)
 
 ## Spread of farming by time slices
 
