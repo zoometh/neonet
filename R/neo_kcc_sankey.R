@@ -19,21 +19,27 @@ neo_kcc_sankey <- function(df_cc = NA,
                            selected.per = NA,
                            verbose = TRUE){
   # df_cc_ <- as.data.frame(df_cc)
-  df <- sf::st_set_geometry(df_cc, NULL)
+  `%>%` <- dplyr::`%>%`
+  if(inherits(df_cc, "sf")){
+    df <- sf::st_set_geometry(df_cc, NULL)
+  }
   # for(per in selected.per){
   # per <- "LM"
   if(!is.na(selected.per)){
     df <- df[df$Period %in% selected.per, ]
   }
+  if(!all(col.req %in% colnames(df))){
+    stop("Field names in 'col.req' are not present in the dataframe")
+  }
   df <- df[ , which(names(df) %in% col.req)]
   # df <- na.omit(df)
   df.sank <- df %>%
     ggsankey::make_long(colnames(df))
-  df.sank
+  # df.sank
   if(verbose){
     print(paste0("*read KCC colors"))
   }
-  koppen_colors <- read.table(kcc_colors, sep = "\t", header = FALSE)
+  koppen_colors <- read.table(kcc_colors, sep = "\t", header = TRUE)
   kcc_color_map <- setNames(koppen_colors$color, koppen_colors$code)
   period.names <- paste0(selected.per, collapse = "-")
   tit <- paste0(period.names, " KCC changes in Kyears (n = ", nrow(df), ")")
@@ -51,5 +57,8 @@ neo_kcc_sankey <- function(df_cc = NA,
     ggplot2::labs(caption = "@neonet") +
     ggplot2::labs(title = tit) +
     ggplot2::theme_bw()
+  if(verbose){
+    print(paste0("*Sankey plot has been created"))
+  }
   return(gout)
 }

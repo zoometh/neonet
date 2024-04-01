@@ -9,6 +9,8 @@
 #' @param kcc_colors A character named vector of KCC codes as names (ex: 'Af') and colors (ex: `#0000FF`) as values. This vector comes from the `config.R` file.
 #' @param colname.period The name of the `df_cc` dataframe column of the periods. Default: `Period`.
 #' @param selected.per A vector of selected periods to subset the stacked barplot by periods (ex: `c("LM", "MM")`).
+#' @param legend.show Show the KCC legend. Default: FALSE.
+#' @param counts.show Show the sites' count on the stacked plots. Default: TRUE.
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return
@@ -31,6 +33,7 @@ neo_kcc_plotbar <- function(df_cc = NA,
                             present = 2000,
                             title = NA,
                             legend.show = FALSE,
+                            counts.show = TRUE,
                             verbose = TRUE){
   # df_cc_ <- as.data.frame(df_cc)
   `%>%` <- dplyr::`%>%`
@@ -73,18 +76,13 @@ neo_kcc_plotbar <- function(df_cc = NA,
   used.periods <- paste0(selected.per, collapse = ", ")
   caption <- paste("Koppen Climate Classes in ka BP",
                    "| BP =", present, 
-                   "| periods:", used.periods, "| n =", nrow(df), "dates)")
+                   "| periods:", used.periods, "| n =", nrow(df), "dates")
   kcc_colors.sub <- kcc_colors[names(kcc_colors) %in% unique(df_long$value)]
   df_long <- na.omit(df_long)
   gout <- ggplot2::ggplot(df_long, 
                           ggplot2::aes(x = koppen_type, y = percentage, fill = factor(value))) +
     ggplot2::geom_bar(stat = "identity", position = "fill") +
     ggplot2::scale_fill_manual(values = kcc_colors.sub, name = 'classes') +
-    # show count when > n 
-    ggplot2::geom_text(ggplot2::aes(label = ifelse(count > 1, as.character(count), "")), 
-                       position = ggplot2::position_fill(vjust = 0.5), 
-                       size = 2, 
-                       color = "black") +
     ggplot2::scale_y_continuous(labels = scales::percent_format()) +
     ggplot2::labs(# x = "Koppen Classification", 
       # y = "%", 
@@ -93,6 +91,14 @@ neo_kcc_plotbar <- function(df_cc = NA,
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.title.y = ggplot2::element_blank(),
                    axis.title.x = ggplot2::element_blank())
+  if(counts.show){
+    gout <- gout +
+      # show count when > n 
+      ggplot2::geom_text(ggplot2::aes(label = ifelse(count > 1, as.character(count), "")), 
+                         position = ggplot2::position_fill(vjust = 0.5), 
+                         size = 2, 
+                         color = "black")
+  }
   # #################################################################
   # ## try to add jittered points 
   # # normilising
