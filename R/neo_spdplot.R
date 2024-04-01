@@ -14,6 +14,7 @@ neo_spdplot <- function (x,
                          spd.title = "",
                          periods.colors = c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B", "#FF8D1B", "#FFC04D", "#808080"),
                          weighted.median = NA,
+                         x.intercept = NA,
                          # ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                          # shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
                          # colpal = c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B",
@@ -181,6 +182,11 @@ neo_spdplot <- function (x,
       weighted.medianBC <- weighted.median - 1950
       print(weighted.medianBC)
       abline(v = -weighted.medianBC, col = "black", lwd = 2)
+    }
+    if(!is.na(x.intercept)){
+      x.interceptBC <- x.intercept - 1950
+      print(x.interceptBC)
+      abline(v = x.intercept, col = "black", lwd = 2)
     }
     if (legend) {
       if (is.null(legend.arg)) {

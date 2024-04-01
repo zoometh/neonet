@@ -29,6 +29,7 @@ neo_kcc_plotbar <- function(df_cc = NA,
                                          "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif"),
                             # kcc_colors = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv",
                             colname.period = "Period",
+                            ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                             selected.per = NA,
                             present = 2000,
                             title = NA,
@@ -74,9 +75,19 @@ neo_kcc_plotbar <- function(df_cc = NA,
   # TODO: by site?
   tit <- paste0(period.names)
   used.periods <- paste0(selected.per, collapse = ", ")
+  ## caption
+  periods.colors <- read.csv(ref.period, sep = "\t")
+  periods.colors <- periods.colors[periods.colors$period %in% selected.per, ]
+  capt <- c()
+  for(i in 1:nrow(periods.colors)){
+    period <- periods.colors[i, "period"]
+    color <- periods.colors[i, "color"]
+    capt <- c(capt, paste0("<span style='color: ", color, ";'>", period, "</span>"))
+  }
+  capt <- paste0(capt, collapse = ", ")
   caption <- paste("Koppen Climate Classes in ka BP",
                    "| BP =", present, 
-                   "| periods:", used.periods, "| n =", nrow(df), "dates")
+                   "| periods:", capt, "| n =", nrow(df), "dates")
   kcc_colors.sub <- kcc_colors[names(kcc_colors) %in% unique(df_long$value)]
   df_long <- na.omit(df_long)
   gout <- ggplot2::ggplot(df_long, 
@@ -84,17 +95,19 @@ neo_kcc_plotbar <- function(df_cc = NA,
     ggplot2::geom_bar(stat = "identity", position = "fill") +
     ggplot2::scale_fill_manual(values = kcc_colors.sub, name = 'classes') +
     ggplot2::scale_y_continuous(labels = scales::percent_format()) +
-    ggplot2::labs(# x = "Koppen Classification", 
-      # y = "%", 
+    ggplot2::labs(
       title = title,
       caption = caption) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.title.y = ggplot2::element_blank(),
-                   axis.title.x = ggplot2::element_blank())
+                   axis.title.x = ggplot2::element_blank()) +
+    ggplot2::theme(plot.title = ggtext::element_markdown(),
+                  plot.caption = ggtext::element_markdown())
   if(counts.show){
     gout <- gout +
       # show count when > n 
-      ggplot2::geom_text(ggplot2::aes(label = ifelse(count > 1, as.character(count), "")), 
+      ggplot2::geom_text(ggplot2::aes(label = as.character(count)),
+                        #ggplot2::aes(label = ifelse(count > 1, as.character(count), "")), 
                          position = ggplot2::position_fill(vjust = 0.5), 
                          size = 2, 
                          color = "black")

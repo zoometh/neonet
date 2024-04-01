@@ -8,7 +8,9 @@
 #' @param df.c14 Path to the dataset (Google Sheet) or the dataset itself (dataframe, sf). 
 #' @param gg.url The URL to a NeoNet structured Google Sheet dataset, ex: "https://docs.google.com/spreadsheets/d/1q6VdxS_1Pi0fVWfyQzW6VBhjuBY58hymtSLWg4JyLEA/edit?usp=sharing".
 #' @param roi The region of interest, such as a river basin: Atlantic (Default) or Mediterranean
+#' @param selected.per Subset on selected periods.
 #' @param plot.dates Will plot dates. Default: TRUE.
+#' @param dates.size Size of the points (dates)
 #' @param dates.within.roi Plot only dates located inside the ROI. Default: TRUE.
 #' @param width,height dimension of the output map, if exported.
 #'
@@ -27,6 +29,9 @@ neo_map <- function(map.name = "map_atl",
                     roi = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/wsh_atl.geojson",
                     buff = 0.5,
                     plot.dates = TRUE,
+                    dates.size = 1,
+                    ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
+                    selected.per = NA,
                     dates.within.roi = TRUE,
                     title = NA,
                     verbose = TRUE){
@@ -83,23 +88,45 @@ neo_map <- function(map.name = "map_atl",
       )
     df.dates <- points_within_roi
   }
+  if(is.character(selected.per)){
+    df.dates <- df.dates[df.dates$Period %in% selected.per, ]
+    # caption
+    periods.colors <- read.csv(ref.period, sep = "\t")
+    periods.colors <- periods.colors[periods.colors$period %in% selected.per, ]
+    capt <- c()
+    for(i in 1:nrow(periods.colors)){
+      period <- periods.colors[i, "period"]
+      color <- periods.colors[i, "color"]
+      capt <- c(capt, paste0("<span style='color: ", color, ";'>", period, "</span>"))
+    }
+    capt <- paste0(capt, collapse = ", ")
+    caption <- paste("n =", nrow(df.dates), "dates | periods:", capt)
+  }
   world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
   g.neo.map <- ggplot2::ggplot(world) +
     # ggplot2::geom_sf(fill = '#7d7d7d', color = '#7d7d7d') +
     ggplot2::geom_sf() +
-    ggplot2::geom_sf(data = where.roi, color = 'black', fill = NA, inherit.aes = FALSE) 
+    ggplot2::geom_sf(data = where.roi, color = 'black', fill = NA, inherit.aes = FALSE) +
+    ggplot2::theme_bw()
   if(plot.dates){
     g.neo.map <- g.neo.map +
-      ggplot2::geom_sf(data = df.dates, inherit.aes = FALSE)
+      ggplot2::geom_sf(data = df.dates, inherit.aes = FALSE, size = dates.size)
   }
   if(!is.na(title)){
+    # caption <- paste0("n = ", nrow(df.dates), " dates")
     g.neo.map <- g.neo.map +
-      ggplot2::ggtitle(title)
+      ggplot2::labs(
+      title = title,
+      caption = caption) +
+      # ggplot2::theme_minimal() +
+      ggplot2::theme(axis.title.y = ggplot2::element_blank(),
+                     axis.title.x = ggplot2::element_blank()) +
+      ggplot2::theme(plot.title = ggtext::element_markdown(),
+                     plot.caption = ggtext::element_markdown())
   }
   g.neo.map <- g.neo.map +
     ggplot2::coord_sf(xlim = c(sf::st_bbox(ws.roi)[1] - buff, sf::st_bbox(ws.roi)[3] + buff),
                       ylim = c(sf::st_bbox(ws.roi)[2] - buff, sf::st_bbox(ws.roi)[4] + buff)) +
-    ggplot2::theme_bw() +
     ggplot2::theme(axis.text = ggplot2::element_text(size = 7)) 
   return(g.neo.map)
 }

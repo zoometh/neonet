@@ -5,7 +5,7 @@
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
 #' @selected.per the period selected. Default "EN".
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
-#' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000).
+#' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000) in BC.
 #' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff, or a SpatRaster.
 #' @param time.interv Time interval between two isochrones (bins), in years. Default: 250.
 #' @param coloramp the name of the coloramps to use on contour, for the Neolithic dates and mesolithic dates. Default: c("Reds", "Blues"). 
@@ -130,6 +130,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                      median = df.dates.min$median)
   }
   # contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
+  # TODO: do the same on weighted medians
   if(is.na(isochr.subset)){
     contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
     print(contour_levels)
@@ -137,13 +138,49 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   if(is.numeric(isochr.subset)){
     contour_levels <- isochr.subset
   }
+  #############################
   # TODO: handle duplicated
+  #############################
+  #
   # duplicated(df[ , c("longitude", "latitude")])
-  interpolated <- interp::interp(x = df$longitude, 
-                                 y = df$latitude, 
-                                 z = df$median, 
-                                 duplicate = "mean", # duplicated values
-                                 output = "grid")
+  # Assuming 'points' is your dataset
+  # df.1 <- df[!duplicated(df), ]
+  ## to avoid error #######
+  # >   interpolated <- interp::interp(x = df$longitude,
+  #                                    +                                  y = df$latitude,
+  #                                    +                                  z = df$median,
+  #                                    +                                  duplicate = "median", 
+  #                                    +                                  output = "grid")
+  # Error: shull: duplicate points found
+  
+  # df_unique <- df %>%
+  #   dplyr::group_by(longitude, latitude) %>%
+  #   dplyr::summarise(median = median(median), .groups = 'drop')
+  # 
+  # # Now use df_unique with interp
+  # interpolated <- interp::interp(x = df_unique$longitude, 
+  #                                y = df_unique$latitude, 
+  #                                z = df_unique$median, 
+  #                                output = "grid")
+  # 
+  
+  # set.seed(123)  # for reproducibility
+  # df$longitude <- jitter(df$longitude, .001)
+  # df$latitude <- jitter(df$latitude, .001)
+  # df <- df[!duplicated(df[c("longitude", "latitude")]),]
+  ################################################################
+  
+  
+  # interpolated <- interp::interp(x = df$longitude, 
+  #                                y = df$latitude, 
+  #                                z = df$median, 
+  #                                duplicate = "mean", # 'strip' is also not working / duplicated values
+  #                                output = "grid")
+  interpolated <- akima::interp(x = df$longitude, 
+                                y = df$latitude, 
+                                z = df$median, 
+                                duplicate = "mean")
+  
   # convert this to a long form dataframe
   interp_df <- tidyr::expand_grid(i = seq_along(interpolated$x), 
                                   j = seq_along(interpolated$y)) %>% 

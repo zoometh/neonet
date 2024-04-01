@@ -12,7 +12,7 @@ source("R/config.R")
 ## done
 # l.dbs <- c("calpal", "medafricarbon", "agrichange", "neonet", "bda", "calpal", "radon", "katsianis")
 
-root.path <- "C:/Rprojects/neonet/doc/talks/2024-simep/img"
+root.path <- "C:/Rprojects/neonet/doc/talks/2024-simep/img/"
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
 l.dbs <- c("neonet", "calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
 # l.dbs <- c("radonb") 
@@ -78,32 +78,29 @@ ggsave(filename = paste0(outDir, period.names, "_kcc.png"),
        gout,
        width = 16, height = 12)
 
+# KCC
 source("R/neo_kcc_plotbar.R")
 Meso <- neo_kcc_plotbar(df_cc = df_cc, 
                         col.req = col.req,
                         selected.per = c("LM"),
-                        title = "Mesolithic")
-Meso
+                        title = "Late Mesolithic")
 Neo <- neo_kcc_plotbar(df_cc = df_cc, 
                        col.req = col.req,
                        selected.per = c("EN"),
-                       title = "Neolithic")
-Neo
-
+                       title = "Early Neolithic")
 source("R/neo_kcc_legend.R")
 kcc.legend <- neo_kcc_legend(df_cc = df_cc, 
                              long.legend = TRUE)
-
 # map
 source("R/neo_map.R")
-g.neo.map <- neo_map(df.c14 = df.c14, 
+g.neo.map <- neo_map(df.c14 = df_cc, 
                      plot.dates = TRUE,
                      roi = where, 
+                     selected.per = c("LM", "EN"),
                      dates.within.roi = TRUE,
                      buff = 2.5,
                      title = "ROI")
-g.neo.map
-
+# layout & export
 lay <- rbind(c(1, 1, 1, 1, 1, 3, 3, 3), 
              c(1, 1, 1, 1, 1, 3, 3, 3), 
              c(1, 1, 1, 1, 1, 3, 3, 3), 
@@ -129,20 +126,19 @@ library(rcarbon)
 
 source("R/neo_spdplot.R")
 source("R/neo_spd.R")
-
-df_cc.meso <- df_cc[df_cc$Period %in% c("LM", "MM"), ]
-# df_cc.neo <- head(df_cc.neo, 50)
-
-neo_spd(df.c14 = df_cc.meso,
-        title = "Mesolithic | LM, MM",
+# df_cc.meso <- df_cc[df_cc$Period %in% c("LM"), ]
+# # df_cc.neo <- head(df_cc.neo, 50)
+neo_spd(df.c14 = df_cc[df_cc$Period %in% c("EN"), ],
+        title = "Early Neolithic",
         # time.round = 1000,
-        time.span = c(13000, 6500),
+        time.span = c(13000, 6000),
         calendar = 'BP',
         # shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
+        x.intercept = 7000,
         color.on = "kcc",
         export = TRUE,
-        outFile = "Mesolithic KCC",
-        outDir = "C:/Rprojects/neonet/results/",
+        outFile = "EN_kcc_7k",
+        outDir = root.path,
         width = 18, height = 13,
 )
 # 
@@ -237,14 +233,17 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -8000,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
+                     isochr.subset = -7000,
+                     selected.per = "EN",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
                      time.line.size = .5,
                      calibrate = FALSE,
                      shw.dates = TRUE,
-                     lbl.dates = TRUE,
+                     lbl.dates = FALSE,
                      lbl.time.interv = TRUE)
-isochr$map
+ggplot2::ggsave(paste0(root.path, "EN_kcc_9k-iso.png"), isochr$map, 
+                width = 14, height = 10)
+
 
 ## check abberant dates
 source("R/neo_find_dates.R")

@@ -12,7 +12,8 @@
 #' @param title The title of the plot description.
 #' @param export if TRUE export (by default), if FALSE display,
 #' @param color.on The field name to color on (`"Period"` default) or KCC (`"kcc"`).
-#' @param show.median If TRUE, will show the weighted date(s) median in BC
+#' @param show.median If TRUE, will show the weighted date(s) median in BC.
+#' @param x.intercept If not NA, will show an arbitrary vertical line in BP.
 #' @param fileOut The name of the output file.
 #' @param dirOut name of the output folder. Only useful when `export.plot` is TRUE
 #' @param width,height dimension of the output map, if exported.
@@ -46,6 +47,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
                     calendar = "BCAD",
                     color.on = "Period",
                     show.median = FALSE,
+                    x.intercept = NA,
                     title = "SPD",
                     plotname = "spd",
                     export = TRUE,
@@ -218,6 +220,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
               periods.colors = var.colors, # TODO: change fieldname in neo_spdsubplot() to entail KCC
               # shown.per = shown.per,
               weighted.median = weighted.median,
+              x.intercept = x.intercept,
               verbose = FALSE)
   if(export){
     dev.off()

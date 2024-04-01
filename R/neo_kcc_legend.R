@@ -47,7 +47,7 @@ neo_kcc_legend <- function(df_cc = NA,
   # Plot
   gout <- ggplot2::ggplot(climate_df, ggplot2::aes(x = kcc, y = 1, fill = factor(kcc))) + 
     ggplot2::geom_bar(stat = "identity") +
-    ggplot2::scale_fill_manual(values = climate_df$color, name = 'classes') +
+    ggplot2::scale_fill_manual(values = climate_df$color, name = 'Koppen Climates Classes') +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1)) +
     ggplot2::labs(x = NULL, y = NULL) + 
     ggplot2::theme_void()
