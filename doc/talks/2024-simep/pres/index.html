@@ -326,6 +326,15 @@
       margin-right: 0; 
     }
   </style>
+  <script src="site_libs/htmlwidgets-1.6.3/htmlwidgets.js"></script>
+  <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+  <script src="site_libs/datatables-binding-0.30/datatables.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="site_libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+  <script src="site_libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
+  <link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+  <script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -404,11 +413,24 @@ Franchti cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/mast
 <section id="radiocarbon-data" class="slide level2">
 <h2>Radiocarbon data</h2>
 <p><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"> <span class="smalltext"><a href="https://github.com/ropensci/c14bazAAR" class="uri">https://github.com/ropensci/c14bazAAR</a></span><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"> <span class="smalltext"><a href="https://github.com/zoometh/neonet" class="uri">https://github.com/zoometh/neonet</a></span></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/github-c14bazAAR-dbs.png" style="horizontal-align: middle;" width="600"></p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/flowchart.png" style="horizontal-align: middle;" width="700"></p>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Databases</a></li><li><a href="#tabset-1-2">Neonet equivalences</a></li><li><a href="#tabset-1-3">Outlier dates</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/dbs_counts.png" style="horizontal-align: middle;" width="600"></p>
+</div>
+<div id="tabset-1-2">
+<p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/asNeonetClass.png" style="horizontal-align: middle;" width="600"></p>
+</div>
+<div id="tabset-1-3">
+<p><a href="https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv">c14_aberrant_dates.tsv</a></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-9bb4d73f8fe6eca63208" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9bb4d73f8fe6eca63208">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["bda","bda","bda","bda","bda","calpal","-radon","-radon","-radon","radon","-calpal","bda","-radon","calpal","radon","radon","radon","bda","radon"],["LY-7969","LY-7695","LY-7287","OZB-653","Alg-40","UtC-1837","KN-3044/45","UtC-2320","KN-3040","UtC-2322","I-10463","UGAMS-3825 (AA-098)","UtC-1830","UBAR-31","UtC-1830","KN-1395","UtC-1832","LY-6043","UtC-1834"],["La Lède-du-Gurp","Kaf Taht El-Ghar (KTG)","Kaf Taht El-Ghar (KTG)","Piancada","Travertins/chemin de Kristel/Kristel jardins","Klein Denkte","Schwanfeld","Schwanfeld","Schwanfeld","Klein Denkte","Can Ballester","Campu Stefanu","Eitzum 2","Cova 120","Eitzum 2","Königsaue, ehemaliger Gaterslebener See","Eitzum 2","La Lède-du-Gurp","Klein Denkte"],[-7733,-9654,-9626,-7339,-7049,-8251,-7125,-7020,-6941,-8251,-6006,-6592,-8612,-8029,-8614,-8674,-8193,-7123,-7020],["Néolithique ancien","Néolithique ancien","Néolithique ancien","Néolithique ancien","Néolithique ancien","Neolithic?","ältere LBK","älteste LBK","ältere LBK","Neolithic?","Neolithic","Néolithique ancien","älteste LBK","EN","EN","EN","EN","EN","EN"],["NACA","Cardial marocain","Cardial marocain","Sammardenchia","NA oranais","LBK?","Linienbandkeramik","Linienbandkeramik","Linienbandkeramik ","LBK?","Cardial","Ceramica Impressa","Linienbandkeramik","None","Linienbandkeramik ","None","älteste LBK Linienbandkeramik","Néolithique ancien","älteste LBK Linienbandkeramik"],["From https://banadora.mom.fr/ only (not internet), marked as mediocre in bda","refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999","refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999","marked as mediocre in bda, origin: Improta &amp; Pessina 1999, p. 328","marked as mediocre in bda, origin: Camps et al 1973","marked Neolithic? LBK?, origin: Stäuble 1994","origin: Stäuble (1995, 2005), see: https://doi.org/10.1007%2Fs10963-016-9096-x","origin: Stäuble 1995, 234 Tab. 1","see: https://doi.org/10.1016/j.jas.2005.03.021","marked Neolithic? LBK?, see: https://doi.org/10.1017/S003382220003068X","origin: Balsera","marked as mediocre in bda, origin: Cesari et al. 2011 p. 278","the date seems to only exist in radon. ref: Stäuble 1995, 234 Tab. 1","To be confirmed, ref: van Willigen 2006","To be confirmed, ref: Stäuble 1995, 234 Tab. 1","unclear","To be confirmed, ref: Stäuble 1995, 234 Tab. 1","ref: Roussot-Larroque 1995 3 - médiocre","To be confirmed, ref: Stäuble 1995, 234 Tab. 1"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>sourcedb<\/th>\n      <th>LabCode<\/th>\n      <th>SiteName<\/th>\n      <th>median<\/th>\n      <th>db_period<\/th>\n      <th>db_culture<\/th>\n      <th>comments<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":4},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
 </div>
 </div>
 <aside class="notes">
@@ -435,9 +457,9 @@ Franchti cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/mast
 <section id="climates-by-radiocarbon-dates" class="slide level2">
 <h2>Climates by radiocarbon dates</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Dates selection</a></li><li><a href="#tabset-1-2">Dates medians</a></li><li><a href="#tabset-1-3">Dates Koppen Classes</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Dates selection</a></li><li><a href="#tabset-2-2">Dates medians</a></li><li><a href="#tabset-2-3">Dates Koppen Classes</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1">
+<div id="tabset-2-1">
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>The most recent <span style="color: blue;">LM</span> date median <img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-lm-montefrignone.png"></p>
@@ -446,7 +468,7 @@ Franchti cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/mast
 </div>
 </div>
 </div>
-<div id="tabset-1-2">
+<div id="tabset-2-2">
 <table>
 <tbody><tr>
 <th>
@@ -503,7 +525,7 @@ date
 </tr>
 </tbody></table>
 </div>
-<div id="tabset-1-3">
+<div id="tabset-2-3">
 <p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png"></p>
 </div>
 </div>
@@ -535,9 +557,9 @@ date
 <section id="spread-of-farming-by-time-slices" class="slide level2">
 <h2>Spread of farming by time slices</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">8000 BC</a></li><li><a href="#tabset-2-2">7000 BC</a></li><li><a href="#tabset-2-3">6000 BC</a></li><li><a href="#tabset-2-4">5000 BC</a></li></ul>
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">8000 BC</a></li><li><a href="#tabset-3-2">7000 BC</a></li><li><a href="#tabset-3-3">6000 BC</a></li><li><a href="#tabset-3-4">5000 BC</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1">
+<div id="tabset-3-1">
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-spd.png" style="horizontal-align: middle;" width="700"></p>
@@ -546,7 +568,7 @@ date
 </div>
 </div>
 </div>
-<div id="tabset-2-2">
+<div id="tabset-3-2">
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_9k-spd.png" style="horizontal-align: middle;" width="700"></p>
@@ -555,7 +577,7 @@ date
 </div>
 </div>
 </div>
-<div id="tabset-2-3">
+<div id="tabset-3-3">
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_8k-spd.png" style="horizontal-align: middle;" width="700"></p>
@@ -564,7 +586,7 @@ date
 </div>
 </div>
 </div>
-<div id="tabset-2-4">
+<div id="tabset-3-4">
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-spd.png" style="horizontal-align: middle;" width="700"></p>
@@ -709,7 +731,7 @@ median
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p><em>Social Interactions in Mediterranean Prehistory</em> <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/simep-logo.png" style="height: 50px;vertical-align: middle;"> <a href="https://simep2024.com/" class="uri">https://simep2024.com/</a> 21-23 October 2024, Barcelona (Spain)</p>
+<p><em>Social Interactions in Mediterranean Prehistory</em> <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/simep-logo.png" style="height: 40px;vertical-align: middle;"> <a href="https://simep2024.com/" class="uri">https://simep2024.com/</a> 21-23 October 2024, Barcelona (Spain)</p>
 </div>
 </div>
 </section></section>
@@ -925,6 +947,44 @@ median
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

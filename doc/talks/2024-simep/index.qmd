@@ -78,22 +78,18 @@ Periods are quoting moments. We use a conventional division in 3 phases, both fo
 
 ::: {.panel-tabset}
 
-### Workflow
+### Databases
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/flowchart.png){width="700" style="horizontal-align: middle;"}
-
-### dates
-
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/dbs_counts.png){width="600" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/dbs_counts.png){width="600" style="horizontal-align: middle;"}
 
 
 
-### has.a Neonet class
+### Neonet equivalences
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/asNeonetClass.png){width="600" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/asNeonetClass.png){width="600" style="horizontal-align: middle;"}
 
 
-### is.not.in Aberrant dates
+### Outlier dates
 
 [c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)
 
