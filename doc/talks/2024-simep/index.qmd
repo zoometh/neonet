@@ -86,6 +86,8 @@ Periods are quoting moments. We use a conventional division in 3 phases, both fo
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/github-c14bazAAR-dbs.png){width="600" style="horizontal-align: middle;"}
 
+
+
 ### has.a Neonet class
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/asNeonetClass.png){width="600" style="horizontal-align: middle;"}
