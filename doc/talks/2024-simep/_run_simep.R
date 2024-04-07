@@ -52,7 +52,6 @@ df.c14 <- neo_dbs_align(df = df,
 # 
 # library(rcarbon)
 
-table(samp_df$sourcedb)
 
 ###################################################
 ##### shortcut: load the 'df14_simep.csv' file ####
@@ -207,7 +206,7 @@ source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
 source("R/neo_dbs_info_date_src.R")
 
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 670)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 491)
 abber.date <- neo_dbs_info_date(abber.date$labcode)
 neo_dbs_info_date_src(db = abber.date$sourcedb, 
                       LabCode = abber.date$LabCode)
@@ -235,7 +234,7 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -8000,
+                     isochr.subset = -7000,
                      selected.per = "EN",
                      kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                      time.line.size = .5,
@@ -244,9 +243,6 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates = TRUE,
                      lbl.time.interv = TRUE)
 isochr$map
-
-
-
 
 ggplot2::ggsave(paste0(root.path, "EN_kcc_7k-iso.png"), isochr$map, 
                 width = 14, height = 10)
@@ -267,6 +263,12 @@ plotbar.neo <- neo_kcc_plotbar(df_cc = df_cc,
                                selected.per = c("EN"),
                                title = "Neolithic: transition btw 7,000 and 6,000 BC",
                                legend.show = FALSE)
+
+
+source("R/neo_dbs_info_date_count.R")
+dbs.counts <- neo_dbs_info_date_count(df_filtered, where)
+ggplot2::ggsave(paste0(root.path, "dbs_counts.png"), isochr$map, 
+                width = 14, height = 10)
 
 source("R/neo_kcc_legend.R")
 df <- as.data.frame(df_cc)
