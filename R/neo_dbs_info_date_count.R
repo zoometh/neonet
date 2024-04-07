@@ -20,6 +20,7 @@ neo_dbs_info_date_count <- function(df_filtered = NA,
                                     roi = NA,
                                     buff = 5,
                                     n.col = 2,
+                                    lay.width = c(3, 2),
                                     verbose = TRUE){
   
   library(ggplot2)
@@ -126,7 +127,7 @@ neo_dbs_info_date_count <- function(df_filtered = NA,
     c14.map, c14.hist,
     labels = "",
     align = "h",
-    rel_widths = c(3, 1.4)
+    rel_widths = c(lay.width[1], lay.width[2])
   )
   return(p)
 }

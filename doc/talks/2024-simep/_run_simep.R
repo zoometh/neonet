@@ -267,7 +267,7 @@ plotbar.neo <- neo_kcc_plotbar(df_cc = df_cc,
 
 source("R/neo_dbs_info_date_count.R")
 dbs.counts <- neo_dbs_info_date_count(df_filtered, where)
-ggplot2::ggsave(paste0(root.path, "dbs_counts.png"), isochr$map, 
+ggplot2::ggsave(paste0(root.path, "dbs_counts.png"), dbs.counts, 
                 width = 14, height = 10)
 
 source("R/neo_kcc_legend.R")
