@@ -52,7 +52,7 @@ df.c14 <- neo_dbs_align(df = df,
 # 
 # library(rcarbon)
 
-
+table(samp_df$sourcedb)
 
 ###################################################
 ##### shortcut: load the 'df14_simep.csv' file ####
@@ -207,7 +207,7 @@ source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
 source("R/neo_dbs_info_date_src.R")
 
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 205)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 670)
 abber.date <- neo_dbs_info_date(abber.date$labcode)
 neo_dbs_info_date_src(db = abber.date$sourcedb, 
                       LabCode = abber.date$LabCode)
@@ -254,7 +254,7 @@ ggplot2::ggsave(paste0(root.path, "EN_kcc_7k-iso.png"), isochr$map,
 
 ## check abberant dates
 source("R/neo_find_dates.R")
-abber.dates <- neo_find_dates(df = isochr$data, idf.dates = c(365))
+abber.dates <- neo_find_dates(df = isochr$data, idf.dates = c(295))
 # LabCode = "UtC-1830"
 fdate(LabCode = abber.dates$labcode)
 abber.dates
