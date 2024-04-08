@@ -234,6 +234,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      calibrate = FALSE,
                      shw.dates = TRUE,
                      lbl.dates = TRUE,
+                     lbl.dates.size = 2.5,
                      lbl.time.interv = TRUE)
 isochr$map
 
@@ -245,7 +246,7 @@ source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
 source("R/neo_dbs_info_date_src.R")
 
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 558)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 766)
 abber.date <- neo_dbs_info_date(abber.date$labcode)
 neo_dbs_info_date_src(db = abber.date$sourcedb, 
                       LabCode = abber.date$LabCode)
