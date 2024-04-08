@@ -18,14 +18,14 @@
     "href": "index.html#hg-and-ef",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "HG and EF",
-    "text": "HG and EF\n\n\n\n\n\nBaume de Montclus\n\n\nEM Early Mesolithic Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate. MM Middle Mesolithic Increased specialization in tool production, territorialisation. New climates: new species. LM Late Mesolithic Residenciality increase. Circular mobility to access discontinuous resources in time and space\n\n\n\n\nFranchti cave\n\n\nEN Early Neolithic Early farmers. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate. MN Middle Neolithic Crafware, crops and livestock specialisation. Deforestation. Warm and stable climate. LN Late Neolithic Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions\n\n\n\n\nPeriods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:"
+    "text": "HG and EF\n\n\n\n\n\n\nBaume de Montclus\n\n\nEM Early Mesolithic Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.\n\n\n\n\nMM Middle Mesolithic Increased specialization in tool production, territorialisation. New climates: new species.\n\n\n\n\nLM Late Mesolithic Residenciality increase. Circular mobility to access discontinuous resources in time and space.\n\n\n\n\nFranchthi cave\n\n\nEN Early Neolithic Early farmers. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.\n\n\n\n\nMN Middle Neolithic Craftware, crops and livestock specialization. Deforestation. Warm and stable climate.\n\n\n\n\nLN Late Neolithic Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions.\n\n\n\n\nPeriods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:"
   },
   {
     "objectID": "index.html#radiocarbon-data",
     "href": "index.html#radiocarbon-data",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Radiocarbon data",
-    "text": "Radiocarbon data\n https://github.com/ropensci/c14bazAAR https://github.com/zoometh/neonet\n\nDatabasesNeonet equivalencesOutlier dates\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\n\n\n\n\n\n\n\n\nNeoNet is one of the numerous existing radiocarbon datasets. That’s why we have developed a getter function within the C14bazaar package for the dataset’s to be harvestable."
+    "text": "Radiocarbon data\n\nDatabasesNeonet equivalencesOutlier dates\n\n\n\n\n\n\n https://github.com/ropensci/c14bazAAR  https://github.com/zoometh/neonet\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\n\n\n\n\n\n\n\n\nNeoNet is one of the numerous existing radiocarbon datasets. That’s why we have developed a getter function within the C14bazaar package for the dataset’s to be harvestable."
   },
   {
     "objectID": "index.html#climate-data",

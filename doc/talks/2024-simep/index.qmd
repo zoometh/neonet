@@ -44,23 +44,27 @@ format:
 
 <table style="font-size: 30px;">
   <tr>
-
+    <!-- Empty row -->
   </tr>
   <tr>
-    <td>Baume de Montclus<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png"></td>
-    <td>
-      <span style="color:#0000CF">EM Early Mesolithic</span> Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.<br>
-      <span style="color:#1D1DFF">MM Middle Mesolithic</span> Increased specialization in tool production, territorialisation. New climates: new species.<br>
-      <span style="color:#3737FF">LM Late Mesolithic</span> Residenciality increase. Circular mobility to access discontinuous resources in time and space
-    </td>
+    <td rowspan="3">Baume de Montclus<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png"></td>
+    <td><span style="color:#0000CF">EM Early Mesolithic</span> Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.</td>
   </tr>
   <tr>
-    <td>Franchti cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png"></td>
-    <td>
-      <span style="color:#FF1B1B">EN Early Neolithic</span> Early farmers. Permanent settlements, soil fertility for  wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.<br>
-      <span style="color:#FF8D1B">MN Middle Neolithic</span> Crafware, crops and livestock specialisation. Deforestation. Warm and stable climate.<br>
-      <span style="color:#FFC04D">LN Late Neolithic</span> Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions
-    </td>
+    <td><span style="color:#1D1DFF">MM Middle Mesolithic</span> Increased specialization in tool production, territorialisation. New climates: new species.</td>
+  </tr>
+  <tr>
+    <td><span style="color:#3737FF">LM Late Mesolithic</span> Residenciality increase. Circular mobility to access discontinuous resources in time and space.</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Franchthi cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png"></td>
+    <td><span style="color:#FF1B1B">EN Early Neolithic</span> Early farmers. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.</td>
+  </tr>
+  <tr>
+    <td><span style="color:#FF8D1B">MN Middle Neolithic</span> Craftware, crops and livestock specialization. Deforestation. Warm and stable climate.</td>
+  </tr>
+  <tr>
+    <td><span style="color:#FFC04D">LN Late Neolithic</span> Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions.</td>
   </tr>
 </table>
 
@@ -74,19 +78,26 @@ Periods are quoting moments. We use a conventional division in 3 phases, both fo
 
 ## Radiocarbon data
 
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/zoometh/neonet>]{.smalltext}
-
 ::: {.panel-tabset}
 
 ### Databases
 
+::: columns
+::: {.column width="60%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/dbs_counts.png){width="600" style="horizontal-align: middle;"}
+:::
 
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><br><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}<br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/zoometh/neonet>]{.smalltext}
+
+:::
+:::
 
 
 ### Neonet equivalences
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/asNeonetClass.png){width="600" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/asNeonetClass.png){width="700" style="horizontal-align: middle;"}
 
 
 ### Outlier dates
