@@ -229,7 +229,7 @@ source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
                      isochr.subset = -7000,
                      selected.per = "EN",
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
                      time.line.size = .5,
                      calibrate = FALSE,
                      shw.dates = TRUE,
@@ -239,14 +239,14 @@ isochr <- neo_isochr(df.c14 = df_filtered,
 isochr$map
 
 ## To save
-# ggplot2::ggsave(paste0(root.path, "EN_kcc_7k-iso.png"), isochr$map, 
+# ggplot2::ggsave(paste0(root.path, "EN_kcc_10k-iso.png"), isochr$map,
 #                 width = 14, height = 10)
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
 source("R/neo_dbs_info_date_src.R")
 
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 616)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 159)
 abber.date <- neo_dbs_info_date(abber.date$labcode)
 neo_dbs_info_date_src(db = abber.date$sourcedb, 
                       LabCode = abber.date$LabCode)
