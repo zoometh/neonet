@@ -264,7 +264,7 @@ plotbar.neo <- neo_kcc_plotbar(df_cc = df_cc,
                                kcc.file = c("koppen_8k.tif", "koppen_9k.tif"),
                                col.req = col.req,
                                selected.per = c("EN"),
-                               counts.show.size = 4,
+                               counts.show.size = 5,
                                title = "Neolithic: transition btw 7,000 and 6,000 BC",
                                legend.show = FALSE)
 ggplot2::ggsave(paste0(root.path, "EN_kcc_stacked.png"), plotbar.neo, 
