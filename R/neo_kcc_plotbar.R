@@ -35,6 +35,7 @@ neo_kcc_plotbar <- function(df_cc = NA,
                             title = NA,
                             legend.show = FALSE,
                             counts.show = TRUE,
+                            counts.show.size = 2,
                             verbose = TRUE){
   # df_cc_ <- as.data.frame(df_cc)
   `%>%` <- dplyr::`%>%`
@@ -109,7 +110,7 @@ neo_kcc_plotbar <- function(df_cc = NA,
       ggplot2::geom_text(ggplot2::aes(label = as.character(count)),
                         #ggplot2::aes(label = ifelse(count > 1, as.character(count), "")), 
                          position = ggplot2::position_fill(vjust = 0.5), 
-                         size = 2, 
+                         size = counts.show.size, 
                          color = "black")
   }
   # #################################################################

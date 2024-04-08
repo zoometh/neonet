@@ -646,9 +646,9 @@ Gives:
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/EN_kcc_stacked.png"
-" width="800">
+" width="600">
   <br>
-    <em>KCC occupied during the EN between 7,000 and 6,000 BC (9 ka and 8 ka BP)</em>
+    <em>KCC occupied during the EN between 7,000 and 6,000 BC (9 ka and 8 ka BP) with counts of sites belonging to these time slices</em>
 </p>
 
 The `neo_kcc_extract()` function collects the KCC values (climates) of each date. 
