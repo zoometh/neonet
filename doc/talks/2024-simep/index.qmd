@@ -108,7 +108,7 @@ Periods are quoting moments. We use a conventional division in 3 phases, both fo
 library(DT)
 c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv"
 df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
-datatable(df.to.rm)
+datatable(df.to.rm, options = list(width = "700px", pageLength = 10))
 
 ```
 
