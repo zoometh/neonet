@@ -1,5 +1,7 @@
 sourcedb	LabCode	SiteName	median	db_period	db_culture	comments
 bda	LY-7969	La Lède-du-Gurp	-7733	Néolithique ancien	NACA	From https://banadora.mom.fr/ only (not internet), marked as 'mediocre' in 'bda'
+neonetatl	Ly-7969	Lède-du-Gurp	-7733	EN	None	Same as bda
+neonetatl	Ly-6043	Lède-du-Gurp	-7310	EN	None	Same as bda
 bda	LY-7695	Kaf Taht El-Ghar (KTG)	-9654	Néolithique ancien	Cardial marocain	refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999
 bda	LY-7287	Kaf Taht El-Ghar (KTG)	-9626	Néolithique ancien	Cardial marocain	refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999
 bda	OZB-653	Piancada	-7339	Néolithique ancien	Sammardenchia	marked as 'mediocre' in 'bda', origin: Improta & Pessina 1999, p. 328
@@ -19,4 +21,3 @@ radon	UtC-1832	Eitzum 2	-8193	älteste LBK	Linienbandkeramik	To be confirmed, re
 bda	LY-6043	La Lède-du-Gurp	-7123	EN	Néolithique ancien	ref: Roussot-Larroque 1995 3 - médiocre
 radon	UtC-1834	Klein Denkte	-7020	älteste LBK	Linienbandkeramik	To be confirmed, ref: Stäuble 1995, 234 Tab. 1
 radon	KN-3044/45	Schwanfeld	-7085	ältere LBK	Linienbandkeramik	To be confirmed
-neonetatl	Ly-7969	Lède-du-Gurp	-7733	EN	None	Same as bda
