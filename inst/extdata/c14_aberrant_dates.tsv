@@ -1,6 +1,6 @@
 sourcedb	LabCode	SiteName	median	db_period	db_culture	comments
 bda	LY-7969	La Lède-du-Gurp	-7733	Néolithique ancien	NACA	From https://banadora.mom.fr/ only (not internet), marked as 'mediocre' in 'bda'
-neonetatl	Ly-7969	Lède-du-Gurp	-7733	EN	None	Same as bda
+neonetatl	Ly-7969	Lède-du-Gurp	-7733	EN	None	Same as bda, marked as 'mediocre' in 'bda'
 neonetatl	Ly-6043	Lède-du-Gurp	-7310	EN	None	Same as bda
 bda	LY-7695	Kaf Taht El-Ghar (KTG)	-9654	Néolithique ancien	Cardial marocain	refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999
 bda	LY-7287	Kaf Taht El-Ghar (KTG)	-9626	Néolithique ancien	Cardial marocain	refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999
