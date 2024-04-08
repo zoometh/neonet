@@ -633,19 +633,22 @@ kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
               "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
 df_cc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
 col.req <- gsub(pattern = ".tif", "", kcc.file)
-neo_kcc_plotbar(df_cc, 
+neo_kcc_plotbar(df_cc = df_cc, 
+                kcc.file = c("koppen_8k.tif", "koppen_9k.tif"),
                 col.req = col.req,
-                selected.per = c("LM", "MM"))
+                selected.per = c("EN"),
+                title = "Neolithic: transition btw 7,000 and 6,000 BC",
+                legend.show = FALSE)
 ```
 
 Gives:
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/LM-MM_kcc_stacked.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/EN_kcc_stacked.png"
 " width="800">
   <br>
-    <em>KCC occupied during the MM and LM</em>
+    <em>KCC occupied during the EN between 7,000 and 6,000 BC (9 ka and 8 ka BP)</em>
 </p>
 
 The `neo_kcc_extract()` function collects the KCC values (climates) of each date. 
