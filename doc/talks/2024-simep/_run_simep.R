@@ -202,14 +202,7 @@ source("R/neo_isochr.R")
 
 
 
-source("R/neo_find_date.R")
-source("R/neo_dbs_info_date.R")
-source("R/neo_dbs_info_date_src.R")
 
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 491)
-abber.date <- neo_dbs_info_date(abber.date$labcode)
-neo_dbs_info_date_src(db = abber.date$sourcedb, 
-                      LabCode = abber.date$LabCode)
 
 # df.c14[df.c14$db_period == "Džh 1", ]
 
@@ -244,17 +237,26 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.time.interv = TRUE)
 isochr$map
 
-ggplot2::ggsave(paste0(root.path, "EN_kcc_7k-iso.png"), isochr$map, 
-                width = 14, height = 10)
+## To save
+# ggplot2::ggsave(paste0(root.path, "EN_kcc_7k-iso.png"), isochr$map, 
+#                 width = 14, height = 10)
 
+source("R/neo_find_date.R")
+source("R/neo_dbs_info_date.R")
+source("R/neo_dbs_info_date_src.R")
 
-## check abberant dates
-source("R/neo_find_dates.R")
-abber.dates <- neo_find_dates(df = isochr$data, idf.dates = c(295))
-# LabCode = "UtC-1830"
-fdate(LabCode = abber.dates$labcode)
-abber.dates
-fget.db(db = dates$sourcedb, LabCode = abber.dates$labcode)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 558)
+abber.date <- neo_dbs_info_date(abber.date$labcode)
+neo_dbs_info_date_src(db = abber.date$sourcedb, 
+                      LabCode = abber.date$LabCode)
+
+# ## check abberant dates
+# source("R/neo_find_dates.R")
+# abber.dates <- neo_find_dates(df = isochr$data, idf.dates = c(295))
+# # LabCode = "UtC-1830"
+# fdate(LabCode = abber.dates$labcode)
+# abber.dates
+# fget.db(db = dates$sourcedb, LabCode = abber.dates$labcode)
 
 source("R/neo_kcc_plotbar.R")
 plotbar.neo <- neo_kcc_plotbar(df_cc = df_cc, 
