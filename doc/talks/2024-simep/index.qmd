@@ -88,8 +88,8 @@ Periods are quoting moments. We use a conventional division in 3 phases, both fo
 :::
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><br><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/ropensci/c14bazAAR>]{.smalltext}<br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/zoometh/neonet>]{.smalltext}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><br><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 50px;vertical-align: middle;"/><br>[<https://github.com/ropensci/c14bazAAR>]{.smalltext}<br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
 
 :::
 :::
@@ -102,15 +102,29 @@ Periods are quoting moments. We use a conventional division in 3 phases, both fo
 
 ### Outlier dates
 
-[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)
 
 ```{r, message=FALSE}
 library(DT)
+library(dplyr)
 c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv"
 df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
-datatable(df.to.rm, options = list(width = "700px", pageLength = 10))
-
+df.to.rm %>% 
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(5, 10, 50, -1), 
+                        c('5', '10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", "8pt", "'});"),
+        "}")
+    ) 
+  )
+#, options = list(width = "700px", pageLength = 10))
 ```
+<small>[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)</small>
 
 
 :::
@@ -200,9 +214,12 @@ Extract on the radiocarbon date weighted median
 
 ## Overall evolution 
 
-Evolution of archaeological sites climates
-
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png)
+
+::: notes
+Evolution of archaeological sites climates
+:::
+
 
 ## Spread of farming by time slices
 
@@ -264,6 +281,12 @@ Evolution of archaeological sites climates
 
 :::
 
+:::
+
+::: notes
+**8000 BC** Two main climates: `Csa` and `Csb`. First settlements in Cyprus (`Csa` climate)
+**7000 BC** Same two main climates (`Csa` and `Csb`) + `BWh` and `BWk`. First settlements in Creta (`Csa` climate)
+**6000 BC** ...
 :::
 
 # Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
