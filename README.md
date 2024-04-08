@@ -618,7 +618,7 @@ Gives:
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet_kcc.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/neonet_kcc.png"
 " width="700">
   <br>
     <em>The neonet dataset over the KCC 7k</em>
@@ -645,7 +645,7 @@ Gives:
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/EN_kcc_stacked.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/EN_kcc_stacked.png"
 " width="800">
   <br>
     <em>KCC occupied during the EN between 7,000 and 6,000 BC (9 ka and 8 ka BP)</em>
