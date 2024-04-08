@@ -7,13 +7,13 @@ bda	LY-7287	Kaf Taht El-Ghar (KTG)	-9626	Néolithique ancien	Cardial marocain	re
 bda	OZB-653	Piancada	-7339	Néolithique ancien	Sammardenchia	marked as 'mediocre' in 'bda', origin: Improta & Pessina 1999, p. 328
 bda	Alg-40	Travertins/chemin de Kristel/Kristel jardins	-7049	Néolithique ancien	NA oranais	marked as 'mediocre' in 'bda', origin: Camps et al 1973
 calpal	UtC-1837	Klein Denkte	-8251	Neolithic?	LBK?	marked 'Neolithic? LBK?', origin: Stäuble 1994
--radon	KN-3044/45	Schwanfeld	-7125	ältere LBK	Linienbandkeramik	origin: Stäuble (1995, 2005), see: https://doi.org/10.1007%2Fs10963-016-9096-x
--radon	UtC-2320	Schwanfeld	-7020	älteste LBK	Linienbandkeramik	origin: Stäuble 1995, 234 Tab. 1
--radon	KN-3040	Schwanfeld	-6941	ältere LBK	Linienbandkeramik 	see: https://doi.org/10.1016/j.jas.2005.03.021
+radon	KN-3044/45	Schwanfeld	-7125	ältere LBK	Linienbandkeramik	origin: Stäuble (1995, 2005), see: https://doi.org/10.1007%2Fs10963-016-9096-x
+radon	UtC-2320	Schwanfeld	-7020	älteste LBK	Linienbandkeramik	origin: Stäuble 1995, 234 Tab. 1
+radon	KN-3040	Schwanfeld	-6941	ältere LBK	Linienbandkeramik 	see: https://doi.org/10.1016/j.jas.2005.03.021
 radon	UtC-2322	Klein Denkte	-8251	Neolithic?	LBK?	marked 'Neolithic? LBK?', see: https://doi.org/10.1017/S003382220003068X
--calpal	I-10463	Can Ballester	-6006	Neolithic	Cardial	origin: Balsera
+calpal	I-10463	Can Ballester	-6006	Neolithic	Cardial	origin: Balsera
 bda	UGAMS-3825 (AA-098)	Campu Stefanu	-6592	Néolithique ancien	Ceramica Impressa	marked as 'mediocre' in 'bda', origin: Cesari et al. 2011 p. 278
--radon	UtC-1830	Eitzum 2	-8612	älteste LBK	Linienbandkeramik	the date seems to only exist in radon. ref: Stäuble 1995, 234 Tab. 1
+radon	UtC-1830	Eitzum 2	-8612	älteste LBK	Linienbandkeramik	the date seems to only exist in radon. ref: Stäuble 1995, 234 Tab. 1
 calpal	UBAR-31	Cova 120	-8029	EN	None	To be confirmed, ref: van Willigen 2006
 radon	UtC-1830	Eitzum 2	-8614	EN	Linienbandkeramik 	To be confirmed, ref: Stäuble 1995, 234 Tab. 1
 radon	KN-1395	Königsaue, ehemaliger Gaterslebener See	-8674	EN	None	unclear
