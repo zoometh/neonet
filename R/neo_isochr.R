@@ -3,7 +3,8 @@
 #' @description Creates isochrones contours by interpolation of calibrated radiocarbon dates. Select the date with the minimum median in each site. Need to read config.R to get the `kcc_colors` values
 #'
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
-#' @selected.per the period selected. Default "EN".
+#' @param selected.per the period selected. Default "EN".
+#' @param where A sf to limit the analysis. Deafult NA.
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
 #' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000) in BC.
 #' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff, or a SpatRaster.
@@ -25,6 +26,7 @@
 #' @export
 neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
                        selected.per = c("EN"),
+                       where = NA,
                        # max.sd = 100,
                        calibrate = TRUE,
                        time.interv = 250,
@@ -58,6 +60,13 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   }
   if(is.data.frame(df.c14)){
     df.dates <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
+  }
+  if(!is.na(where)){
+    if(verbose){
+      print(paste0("Spatial subset on new roi"))
+    }
+    inside <- sf::st_within(df.dates, where, sparse = FALSE)
+    df.dates <- df.dates[inside, ]
   }
   nb.dates.tot <- nrow(df.dates)
   if(verbose){
@@ -132,7 +141,8 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   }
   # contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
   # TODO: do the same on weighted medians
-  if(is.na(isochr.subset)){
+  test_subset <- ifelse(all(is.na(isochr.subset)), FALSE, TRUE)
+  if(!test_subset){
     contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
     print(contour_levels)
   }
@@ -315,7 +325,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                   caption = capt)
   # ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
   if(lbl.time.interv){
-    if(is.na(isochr.subset)){
+    if(!test_subset){
       # all contours
       map <- map +
         metR::geom_text_contour(data = interp_df,
@@ -345,7 +355,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     if(verbose){
       print(paste0("Add dates"))
     }
-    if(is.na(isochr.subset)){
+    if(!test_subset){
       map <- map +
         ggplot2::geom_point(data = df, 
                             ggplot2::aes(x = longitude, y = latitude), 

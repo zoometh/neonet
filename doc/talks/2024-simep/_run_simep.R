@@ -14,6 +14,8 @@ source("R/config.R")
 
 root.path <- "C:/Rprojects/neonet/doc/talks/2024-simep/img/"
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
+where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi_cyprus.geojson"
+
 l.dbs <- c("neonet", "calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
 # l.dbs <- c("radonb") 
 # xronos
@@ -223,8 +225,11 @@ source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
                      isochr.subset = -8000,
+                     # isochr.subset = c(-8000, -7500),
+                     # where = where,
                      selected.per = "EN",
-                     kcc.file = NA, # "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
+                     # kcc.file = NA, # "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
                      time.line.size = .5,
                      calibrate = FALSE,
                      shw.dates = TRUE,
