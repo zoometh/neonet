@@ -54,8 +54,9 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14). The applicat
 <p align="center">
 <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank"><b>NeoNet app</b></a> 
 </p>
+
 <p align="center">
-<a href="http://shinyserver.cfs.unipi.it:3838/C14dev2/" target="_blank">NeoNet app <em>dev</em></a> 
+<a href="http://shinyserver.cfs.unipi.it:3838/C14dev/" target="_blank">NeoNet app <em>dev</em></a> 
 </p>
 
 ### TODO

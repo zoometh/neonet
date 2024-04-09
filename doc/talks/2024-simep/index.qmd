@@ -293,10 +293,10 @@ Evolution of archaeological sites climates
 
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
 
-| Header 1 | Header 2 |
+|  |  |
 |----------|----------|
-| Cell 1   | Cell 2   |
-| Cell 3   | Cell 4   |
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}  | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}   |
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"} | ![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Isochrones-neolithic-isochr.png){width="400" style="horizontal-align: middle;"}   |
 
 # Conclusion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
