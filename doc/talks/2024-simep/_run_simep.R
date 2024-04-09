@@ -25,6 +25,8 @@ when <- c(-9000, -4000)
 where <- sf::st_read(where.roi,
                      quiet = TRUE)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
+
+## Read databases
 source("R/neo_dbs_parse.R")
 df <- neo_dbs_parse(l.dbs = l.dbs, #what.db, # c("bda", "medafricarbon"),
                     col.c14baz = col.c14baz,
@@ -33,8 +35,6 @@ df <- neo_dbs_parse(l.dbs = l.dbs, #what.db, # c("bda", "medafricarbon"),
 source("R/neo_dbs_align.R")
 df.c14 <- neo_dbs_align(df = df,
                         mapping.file = "C:/Rprojects/neonet/doc/ref_table_per_NM.xlsx")
-
-
 # dbs
 # DB not done: kiteeastafrica, nerd, aida,  (no culture)
 # DB done: calpal, medafricarbon, agrichange, neonet, bda, calpal, radon, katsianis
@@ -70,12 +70,6 @@ col.req <- gsub(pattern = ".tif", "", kcc.file)
 
 source("R/neo_kcc_extract.R")
 df_cc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
-
-source("R/neo_kcc_sankey.R")
-gout <- neo_kcc_sankey(df_cc, col.req)
-ggsave(filename = paste0(outDir, period.names, "_kcc.png"),
-       gout,
-       width = 16, height = 12)
 
 # KCC
 source("R/neo_kcc_plotbar.R")
@@ -219,6 +213,7 @@ source("R/neo_isochr.R")
 #######################
 #### Pioneer front ####
 #######################
+df.c14 <- samp_df
 source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14)
 
@@ -227,9 +222,9 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -7000,
+                     isochr.subset = -8000,
                      selected.per = "EN",
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
+                     kcc.file = NA, # "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
                      time.line.size = .5,
                      calibrate = FALSE,
                      shw.dates = TRUE,
@@ -354,3 +349,8 @@ neo_spd(df.c14 = df.temp.2, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/i
         width = 14, height = 11)
 # remotes::install_github("people3k/p3k14c@2022.06")
 
+source("R/neo_kcc_sankey.R")
+gout <- neo_kcc_sankey(df_cc, col.req)
+ggsave(filename = paste0(outDir, period.names, "_kcc.png"),
+       gout,
+       width = 16, height = 12)

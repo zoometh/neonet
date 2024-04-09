@@ -40,6 +40,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        coloramp = c("Reds", "Blues"),
                        mapname = "Isochrones",
                        verbose = TRUE){
+  # TODO: median or mean
   `%>%` <- dplyr::`%>%` # used to not load dplyr
   ## dates
   # check which periods have been selected
@@ -176,20 +177,31 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   #                                z = df$median, 
   #                                duplicate = "mean", # 'strip' is also not working / duplicated values
   #                                output = "grid")
-  interpolated <- akima::interp(x = df$longitude, 
-                                y = df$latitude, 
-                                z = df$median, 
-                                duplicate = "mean")
+  # interpolated <- akima::interp(x = df$longitude, 
+  #                               y = df$latitude, 
+  #                               z = df$median, 
+  #                               duplicate = "mean")
   
-  # convert this to a long form dataframe
-  interp_df <- tidyr::expand_grid(i = seq_along(interpolated$x), 
-                                  j = seq_along(interpolated$y)) %>% 
-    dplyr::mutate(lon = interpolated$x[i],
-                  lat = interpolated$y[j],
-                  date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %>% 
-    dplyr::select(-i, -j)
-  # rm interpolated results having NA
-  interp_df <- na.omit(interp_df)
+  source("R/neo_isochr_inter.R")
+  interp_df <- neo_isochr_inter(df)
+  
+  
+  # ## Export the interpolated grid to detect the edges ##########
+  # # write.table(interpolated$z, 
+  # #             "C:/Rprojects/neonet/doc/data/interpolated_isochr.csv",
+  # #             row.names = F)
+  # #############################################################
+  # # convert this to a long form dataframe
+  # interp_df <- tidyr::expand_grid(i = seq_along(interpolated$x), 
+  #                                 j = seq_along(interpolated$y)) %>% 
+  #   dplyr::mutate(lon = interpolated$x[i],
+  #                 lat = interpolated$y[j],
+  #                 date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %>% 
+  #   dplyr::select(-i, -j)
+  # # rm interpolated results having NA
+  # interp_df <- na.omit(interp_df)
+  
+  
   # colors. rm the lightest colors
   nb.contours <- length(contour_levels)
   if(nb.contours > 1){
@@ -211,6 +223,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   if(is.na(kcc.file)){
     if(verbose){
       print(paste0("Will use a neutral basemap (rnaturalearth)"))
+      kcc.info <- "natural earth"
     }
     world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")}
   if(is(kcc.file, "SpatRaster")) {
@@ -238,14 +251,20 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   periods <- paste0(unique(df.dates$Period), collapse = " ")
   if(neolithic){
     tit <- paste("Neolithic")
+    if(nb.contours < 3){
+      subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
+    }
     capt <- paste0(periods, " | isochrones on the earliest medians | ",
                    nrow(df), " medians from ", nb.dates.tot, " calibrated dates BC\n",
-                   "KCC map: ", kcc.info, " (BP)")
+                   "Map: ", kcc.info, " (BP)")
   } else {
     tit <- paste("Mesolithic")
+    if(nb.contours < 3){
+      subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
+    }
     capt <- paste0(periods, " | isochrones on the latest medians | ",
                    nrow(df), " medians from ", nb.dates.tot, " calibrated dates BC\n",
-                   "KCC map: ", kcc.info, " (BP)")
+                   "Map: ", kcc.info, " (BP)")
   }
   # create map
   if(is.na(kcc.file)){
@@ -292,6 +311,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     ggplot2::scale_color_gradientn(colours = rev(myPalette),
                                    name = "Cal BC") +
     ggplot2::labs(title = tit,
+                  subtitle = subtit,
                   caption = capt)
   # ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
   if(lbl.time.interv){
