@@ -217,7 +217,7 @@ Extract on the radiocarbon date weighted median
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png)
 
 ::: notes
-Evolution of archaeological sites climates
+Evolution of archaeological sites climates.
 :::
 
 
@@ -284,9 +284,9 @@ Evolution of archaeological sites climates
 :::
 
 ::: notes
-**8000 BC** Two main climates: `Csa` and `Csb`. First settlements in Cyprus (`Csa` climate)
-**7000 BC** Same two main climates (`Csa` and `Csb`) + `BWh` and `BWk`. First settlements in Creta (`Csa` climate)
-**6000 BC** ...
+- **8000 BC** `Cs*` (`Csa` and `Csb`: Temperate dry summer) are the CC of 90% of the EN sites in 8,000 BC. First settlements in Cyprus (`Csa` climate)
+- **7000 BC** Same two main Temperate dry summer climates (`Cs*`) with more `BW*` (`BWh` and `BWk`: Arid desert) climates. First settlements in Creta (`Csa` climate)
+- **6000 BC** ...
 :::
 
 # Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
