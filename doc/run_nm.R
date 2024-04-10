@@ -1,4 +1,5 @@
 ## Spot outiler dates ##
+## see: https://github.com/zoometh/neonet?tab=readme-ov-file#outlier-dates
 ########################
 
 
@@ -18,7 +19,8 @@ df.c14 <- samp_df
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 
 source("R/neo_dbs_rm_date.R")
-df_filtered <- neo_dbs_rm_date(df.c14)
+df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
+                               c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
 
 source("R/config.R")
 source("R/neo_spd.R")

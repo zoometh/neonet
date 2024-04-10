@@ -394,134 +394,6 @@ neo_isochr(df.c14 = myc14data, mapname = "France_EW", selected.per = c("LM"))
     <em>Output maps from the `1_AOI_France_E-W.geojson`: earliest Neolithic dates and latest Paleolithic dates</em>
 </p>
 
-### Harris Matrix
-
-The output CSV file exported by [NeoNet-starti](https://github.com/zoometh/neonet#neonet-strati) can be read by the `neo_strat()` function. For example, ploting the `C14Age` and the `PhaseCode`.
-
-```R
-neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
-          outLabel = c("C14Age"))
-neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
-          outLabel = c("PhaseCode"))
-```
-Gives:
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-c14age.png"
-" width="400">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-phasecode.png"
-" width="400">
-  <br>
-    <em>"Roc du Dourgne" stratgraphical relationships using LabCode identifiers, ordered on the "LabCode" column, displaying the C14Age (left) and the LabCode (right)</em>
-</p>
-
-Changing the `outLabel` to `Period` allows to color on periods using the default period colors (see the [web document](https://zoometh.github.io/neonet/#3_data_panel))
-
-```R
-neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
-          outLabel = c("Period"))
-```
-Gives:
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-period.png"
-" width="500">
-  <br>
-    <em>"Roc du Dourgne" stratgraphical relationships using LabCode identifiers, ordered on the "LabCode" column</em>
-</p>
-
-### Cultural Periods
-
-Leapfrog is a 
-Using `neo_leapfrog(DT = T)` to merge dataframe from NeoNet and Leapfrog on common C14 LabCode values: <https://historical-time.github.io/caa23/neonet/results/NN_and_LF.html>
-
-<p align="center">
-<img src="https://github.com/historical-time/caa23/blob/main/neonet/results/NN_and_LF.gif" width="800"><br>
-<em>Screen capture of [NN_and_LF.html](https://historical-time.github.io/caa23/neonet/results/NN_and_LF.html)</em>
-</p>
-
-## Neonet-strati
-
-NeoNet-strati is an online R Shiny interactive app to record the stratigraphy of NeoNet's archaeological sites in an editable dataframe based on `LabCode` identifiers. 
-
-<p align="center">
-<a href="https://trainingidn.shinyapps.io/neonet-strati" target="_blank"><b>NeoNet-strati app</b></a> 
-</p>
-
-A site name is copied from [All sites panel](https://github.com/zoometh/neonet#all-sites-panel) to [Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel).
-
-<p align="center">
-<br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne.png"
-" width="700">
-  <br>
-    <em>"Roc du Dourgne" site sorted on its "PhaseCode"</em>
-</p>
-
-The stratigraphical relations can be added into the "After" column, and thereafter exported in CSV
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne-after.png"
-" width="1100">
-  <br>
-    <em>"Roc du Dourgne" stratgraphical relationships (column "After") after edition</em>
-</p>
-
-For example, "Roc du Dourgne" relationships are:
-
-|LabCode |After   |Period |PhaseCode | C14Age| C14SD|
-|:-------|:-------|:------|:---------|------:|-----:|
-|MC-1101 |MC-1102 |EN     |C5        |   5050|   100|
-|MC-1102 |MC-1103 |EN     |C5        |   6170|   100|
-|MC-1103 |MC-1105 |EN     |C6        |   5100|    80|
-|MC-1104 |MC-1105 |EN     |C6        |   6470|   100|
-|MC-1105 |MC-1107 |EN     |C6        |   5550|    80|
-|MC-1107 |        |LM     |C7        |   6850|   100|
-|MC-781  |        |EN     |C6        |   5000|   170|
-|MC-782  |        |LM     |Layer 7   |   5770|   170|
-
-The first row can be read as: "*the layer containing radiocarbon date MC-1101 comes after the layer containing radiocarbon date MC-1102*". 
-
-Save the changes by downloading the dataset pressing the button (top-left) as a CSV file that can be read by the `neo_strati()` function (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix))
-
-### Worflow
-
-```mermaid
-flowchart TD
-    A[NeoNet dataset] --is read by--> B{{<a href='https://trainingidn.shinyapps.io/neonet-strati'>neonet-strati</a>}}:::neonetshiny;
-    B --edit<br>site stratigraphy--> B;
-    B --export<br>site stratigraphy<br>file--> C[<a href='https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv'>Roc du Dourgne_2023-07-30.csv</a>];
-    C --is read by--> D{{<a href='https://github.com/historical-time/caa23/blob/main/neonet/functions/neo_strat.R'>neonet_strat</a>}}:::neonetfunct;
-    D --export --> E[maps<br>charts<br>listings<br>...];
-    classDef neonetfunct fill:#e3c071;
-    classDef neonetshiny fill:#71e37c;
-```
-### App interface
-
-The app is composed by different panels: a site to be recorded ([Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet#all-sites-panel)).
-#### Site Startigraphy panel
-
-Plot a selected site in an editable table to record its stratigraphical relationships.
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site.png"
-" width="700">
-  <br>
-    <em>Panel "Site Stratigraphy" editable dataframe. By default the app opens on "Pokrovnik"</em>
-</p>
-
-#### All sites panel
-
-Show the complete NeoNet dataset. A site can be selected by searching it in the selection search bar (top-right) and copying its name (`Site Name` column). Here Roc du Dourgne, highlighted in blue.
-
-<p align="center">
-<br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-allsite-dourgne.png"
-" width="1100">
-  <br>
-    <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
-</p>
-
 ## Koppen
 > KCC, Koppen Climate Classification, Koeppen Climate Classification 
 
@@ -655,6 +527,135 @@ Gives:
 </p>
 
 The `neo_kcc_extract()` function collects the KCC values (climates) of each date. 
+
+
+## Neonet-strati
+
+NeoNet-strati is an online R Shiny interactive app to record the stratigraphy of NeoNet's archaeological sites in an editable dataframe based on `LabCode` identifiers. 
+
+<p align="center">
+<a href="https://trainingidn.shinyapps.io/neonet-strati" target="_blank"><b>NeoNet-strati app</b></a> 
+</p>
+
+A site name is copied from [All sites panel](https://github.com/zoometh/neonet#all-sites-panel) to [Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel).
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne.png"
+" width="700">
+  <br>
+    <em>"Roc du Dourgne" site sorted on its "PhaseCode"</em>
+</p>
+
+The stratigraphical relations can be added into the "After" column, and thereafter exported in CSV
+
+<p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne-after.png"
+" width="1100">
+  <br>
+    <em>"Roc du Dourgne" stratgraphical relationships (column "After") after edition</em>
+</p>
+
+For example, "Roc du Dourgne" relationships are:
+
+|LabCode |After   |Period |PhaseCode | C14Age| C14SD|
+|:-------|:-------|:------|:---------|------:|-----:|
+|MC-1101 |MC-1102 |EN     |C5        |   5050|   100|
+|MC-1102 |MC-1103 |EN     |C5        |   6170|   100|
+|MC-1103 |MC-1105 |EN     |C6        |   5100|    80|
+|MC-1104 |MC-1105 |EN     |C6        |   6470|   100|
+|MC-1105 |MC-1107 |EN     |C6        |   5550|    80|
+|MC-1107 |        |LM     |C7        |   6850|   100|
+|MC-781  |        |EN     |C6        |   5000|   170|
+|MC-782  |        |LM     |Layer 7   |   5770|   170|
+
+The first row can be read as: "*the layer containing radiocarbon date MC-1101 comes after the layer containing radiocarbon date MC-1102*". 
+
+Save the changes by downloading the dataset pressing the button (top-left) as a CSV file that can be read by the `neo_strati()` function (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix))
+
+### Harris Matrix
+
+The output CSV file exported by [NeoNet-starti](https://github.com/zoometh/neonet#neonet-strati) can be read by the `neo_strat()` function. For example, ploting the `C14Age` and the `PhaseCode`.
+
+```R
+neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
+          outLabel = c("C14Age"))
+neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
+          outLabel = c("PhaseCode"))
+```
+Gives:
+
+<p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-c14age.png"
+" width="400">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-phasecode.png"
+" width="400">
+  <br>
+    <em>"Roc du Dourgne" stratgraphical relationships using LabCode identifiers, ordered on the "LabCode" column, displaying the C14Age (left) and the LabCode (right)</em>
+</p>
+
+Changing the `outLabel` to `Period` allows to color on periods using the default period colors (see the [web document](https://zoometh.github.io/neonet/#3_data_panel))
+
+```R
+neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
+          outLabel = c("Period"))
+```
+Gives:
+
+<p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-diag-dourgne-period.png"
+" width="500">
+  <br>
+    <em>"Roc du Dourgne" stratgraphical relationships using LabCode identifiers, ordered on the "LabCode" column</em>
+</p>
+
+### Worflow
+
+```mermaid
+flowchart TD
+    A[NeoNet dataset] --is read by--> B{{<a href='https://trainingidn.shinyapps.io/neonet-strati'>neonet-strati</a>}}:::neonetshiny;
+    B --edit<br>site stratigraphy--> B;
+    B --export<br>site stratigraphy<br>file--> C[<a href='https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv'>Roc du Dourgne_2023-07-30.csv</a>];
+    C --is read by--> D{{<a href='https://github.com/historical-time/caa23/blob/main/neonet/functions/neo_strat.R'>neonet_strat</a>}}:::neonetfunct;
+    D --export --> E[maps<br>charts<br>listings<br>...];
+    classDef neonetfunct fill:#e3c071;
+    classDef neonetshiny fill:#71e37c;
+```
+### App interface
+
+The app is composed by different panels: a site to be recorded ([Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet#all-sites-panel)).
+#### Site Startigraphy panel
+
+Plot a selected site in an editable table to record its stratigraphical relationships.
+
+<p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site.png"
+" width="700">
+  <br>
+    <em>Panel "Site Stratigraphy" editable dataframe. By default the app opens on "Pokrovnik"</em>
+</p>
+
+#### All sites panel
+
+Show the complete NeoNet dataset. A site can be selected by searching it in the selection search bar (top-right) and copying its name (`Site Name` column). Here Roc du Dourgne, highlighted in blue.
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-allsite-dourgne.png"
+" width="1100">
+  <br>
+    <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
+</p>
+
+
+## Leafrog alignment
+
+Using `neo_leapfrog(DT = T)` to merge dataframe from NeoNet and Leapfrog on common C14 LabCode values: <https://historical-time.github.io/caa23/neonet/results/NN_and_LF.html>
+
+<p align="center">
+<img src="https://github.com/historical-time/caa23/blob/main/neonet/results/NN_and_LF.gif" width="800"><br>
+<em>Screen capture of [NN_and_LF.html](https://historical-time.github.io/caa23/neonet/results/NN_and_LF.html)</em>
+</p>
 
 
 ## Documentation
