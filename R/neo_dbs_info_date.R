@@ -14,14 +14,17 @@
 #'
 #' @export
 neo_dbs_info_date <- function(LabCode = NA, 
-                               columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
+                              df.c14 = NA,
+                              columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
   # 
   if(inherits(df.c14, "sf")){
-    df.out <- na.omit(sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns], NULL))[1,]
+    # df.out <- na.omit(sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns], NULL))[1,]
+    df.out <- sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns], NULL)[1,]
     a.date <- as.character(df.out)
   }
   if(is.data.frame(df.c14)){
-    df.out <- na.omit(df.c14[df.c14$LabCode == LabCode, columns])[1, ]
+    # df.out <- na.omit(df.c14[df.c14$LabCode == LabCode, columns])[1, ]
+    df.out <- df.c14[df.c14$LabCode == LabCode, columns][1, ]
     a.date <- as.character(df.out)
   }
   # cat(paste(a.date, collapse = "\t"), "\n")

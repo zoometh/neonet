@@ -32,7 +32,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        time.interv = 250,
                        isochr.subset = NA,
                        kcc.file = NA,
-                       time.line.size = 1,
+                       isochr.line.size = 1,
                        buff = .1,
                        shw.dates = TRUE,
                        lbl.dates = FALSE,
@@ -310,13 +310,13 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                           ),
                           # breaks = contour_levels,
                           breaks = contour_levels,
-                          linewidth = time.line.size) +
+                          linewidth = isochr.line.size) +
     # ggplot2::geom_contour(data = interp_df, 
     #                       ggplot2::aes(x = lon, y = lat, z = date.med, 
     #                                    # color = ..level..
     #                                    color = ggplot2::after_stat(level)
     #                       ),
-    #                       linewidth = time.line.size,
+    #                       linewidth = isochr.line.size,
     #                       breaks = contour_levels) +
     ggplot2::scale_color_gradientn(colours = rev(myPalette),
                                    name = "Cal BC") +
@@ -407,4 +407,4 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
 # source("R/neo_calib.R")
 # myc14data <- "C:/Rprojects/neonet/doc/presentation/bhdc/data/neonet-data-2023-10-07.geojson"
 # neo_isochr(df.c14 = myc14data, lbl.time.interv = FALSE, selected.per = ("LM"),
-#            bck.alpha = .3, time.line.size = 1, export = T, outDir = myc14data <- "C:/Rprojects/neonet/doc/presentation/bhdc/data/")
+#            bck.alpha = .3, isochr.line.size = 1, export = T, outDir = myc14data <- "C:/Rprojects/neonet/doc/presentation/bhdc/data/")

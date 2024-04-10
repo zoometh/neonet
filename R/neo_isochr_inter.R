@@ -19,6 +19,7 @@ neo_isochr_inter <- function(df = NA,
                              span.time = 200,
                              n.connectivity = 8,
                              edge.detection = FALSE){
+  `%>%` <- dplyr::`%>%` # used to not load dplyr
   interpolated <- akima::interp(x = df$longitude, 
                                 y = df$latitude, 
                                 z = df$median, 
