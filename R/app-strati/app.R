@@ -7,7 +7,15 @@ library(dplyr)
 
 
 # df <- read.table("http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv", sep = "\t", header = T, quote = "")
-df <- readr::read_tsv("140_140_id00140_doc_elencoc14.tsv", quote = "")
+
+serv <- FALSE
+
+if(serv){
+  df <- readr::read_tsv("140_140_id00140_doc_elencoc14.tsv", quote = "")
+} else {
+  df <- readr::read_tsv("C:/Rprojects/neonet/R/app-strati/c14_dataset_med_x_atl_2.tsv")
+  nn_strati_logo <- "C:/Rprojects/neonet/R/app-strati/logo_nn_strati.png"
+}
 
 mysite <- "Pokrovnik"
 df.sample <- df[df$SiteName == mysite, ]
@@ -22,19 +30,25 @@ library(DT)
 library(dplyr)
 
 ui <- fluidPage(
-  titlePanel("NeoNet stratigraphy"),
+  # titlePanel("NeoNet stratigraphy"),
+  titlePanel(
+    tags$div(
+      tags$img(src = nn_strati_logo, height = '50px', style = "vertical-align:middle; margin-right: 10px;"),
+      tags$h1("NeoNet stratigraphy", style = "display:inline; vertical-align:middle;")
+    )
+  ),
   mainPanel(
     tabsetPanel(
       id = 'dataset',
       tabPanel("Site stratigraphy",
                textInput("mysite", "select a site name", value = "Pokrovnik"),
                div(
-                 DT::dataTableOutput("neonet.df_data", width = 1200),
+                 DT::dataTableOutput("neonet.df_data"), #, width = 1200
                  style = "font-size: 90%"
-                 ),
+               ),
                # DT::dataTableOutput("neonet.df_data", width = "90%"),
                # br(),
-               ),
+      ),
       tabPanel("All sites",
                div(
                  DT::dataTableOutput("alldata", width = 1200),
@@ -61,6 +75,7 @@ server <- function(input, output) {
       searching = TRUE,
       fixedColumns = FALSE,
       autoWidth = TRUE,
+      responsive = TRUE,
       ordering = TRUE,
       # dom = 'Bfrtip',
       dom = "Bft",
@@ -100,7 +115,7 @@ server <- function(input, output) {
         # scrollX = T,
         buttons = list(
           list(extend = 'csv', filename = outFile)
-          )
+        )
       ),
       class = "display"
     )
@@ -124,7 +139,7 @@ server <- function(input, output) {
                                     dt.page.len(-1);
                                     dt.ajax.reload();
                                 }")))
-      ))
+    ))
   )
 }
 

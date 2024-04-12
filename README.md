@@ -433,7 +433,8 @@ KCC are created as GeoTiffs using the pastclim package
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_10k.png" width="300">|koppen_10k|
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_9k.png" width="300">|koppen_9k|
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_8k.png" width="300">|koppen_8k|
-
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_7k|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_6k|
 
 ### Classes
 
