@@ -3,15 +3,14 @@
 #'
 #' @name neo_leapfrog
 #'
-#' @description read, format and merge Leapfrog dataset and cultures with NeoNet. v. entites: "https://api.nakala.fr/data/10.34847/nkl.3d8bv011/e201bf47cdabfa9dfba7590845d32d3062cd82a1"
+#' @description Read, format and merge Leapfrog dataset and cultures with NeoNet. v. entites: "https://api.nakala.fr/data/10.34847/nkl.3d8bv011/e201bf47cdabfa9dfba7590845d32d3062cd82a1"
 #'
 #' @param data.neonet the URL of the NeoNet dataset (Default: Fedora / Uni Pisa)
 #' @param data.leapfrog the URL of the Leapfrog dataset (Default: local)
-#' @param cultures.leapfrog the URL of the Leapfrog culture list (Default: local)
+#' @param cultures.leapfrog the URL of the file where the Leapfrog culture are listed (Default: local)
+#' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param all.x preserve all records of NN (TRUE) or not (Default: FALSE)
 #' @param DT if TRUE export as interactive datatable (HTML)
-#' @export.data export data if TRUE
-#' @param outFileName the name of the exported file (only if export.data = T)
 #'
 #' @details columns NN and LF are hexa colors mapping respectively 'Period' (Neonet dataset) and 'Cultural_Complex' (LeapFrog dataset) columns
 #'
@@ -26,13 +25,11 @@
 neo_leapfrog <- function(data.neonet = "https://digitallib.unipi.it/fedora/objects/mag:1062/datastreams/MMf3519905c5344b41cf3ae62e0df4d70b/content", # https://raw.githubusercontent.com/historical-time/caa23/main/neonet/data/140_id00140_doc_elencoc14.csv",
                          data.leapfrog = "https://raw.githubusercontent.com/historical-time/caa23/main/neonet/data/Binder.csv",
                          cultures.leapfrog = "https://raw.githubusercontent.com/historical-time/caa23/main/neonet/data/cultures.tsv",
+                         # ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                          all.x = F,
                          DT = F,
-                         export.data = T,
-                         outFileName = "NN_and_LF",
-                         outDir = paste0(getwd(), "/neonet/results/"),
                          verbose = T){
-  # NeoNet colors
+  # TODO: red the GH periods.tsv NeoNet colors
   lcul_col <- list(# colors
     EM = "#0000CF", # BLUE
     MM = "#1D1DFF", #
@@ -45,10 +42,14 @@ neo_leapfrog <- function(data.neonet = "https://digitallib.unipi.it/fedora/objec
     LN = "#FFC04D", #
     UN = "#E7E700" # NEO UNDEF.
   )
+  # periods.colors <- read.csv(ref.period, sep = "\t")
+  # lcul_col <- setNames(periods.colors$color, periods.colors$period)
+  # lcul_col1 <- periods.colors$color
+  # names(lcul_col1) <- periods.colors$period
   nn.peri <- as.data.frame(t(t(lcul_col)))
   nn.peri$V1 <- as.character(nn.peri$V1)
   nn.peri$Period <- rownames(nn.peri)
-
+  
   nn.data <- read.csv(paste0(file = data.neonet),
                       header = T, sep = "\t")
   lf.data <- read.csv(paste0(file = data.leapfrog),
@@ -67,7 +68,7 @@ neo_leapfrog <- function(data.neonet = "https://digitallib.unipi.it/fedora/objec
   df <- merge(df.data, df.cult, by.x = "Cultural_complex", by.y = "code_aspect", all.x = T)
   # merge df with NN periods
   df <- merge(df, nn.peri, by = "Period", all.x = T)
-
+  
   # reorder
   df <- df[order(df$SiteName), ]
   rownames(df) <- seq(1, nrow(df))
@@ -101,16 +102,8 @@ neo_leapfrog <- function(data.neonet = "https://digitallib.unipi.it/fedora/objec
         # "Period",
         backgroundColor = DT::styleEqual(df$LF,
                                          df$LF))
-    if(export.data){
-      dt.out <- paste0(outDir, outFileName, ".html")
-      htmlwidgets::saveWidget(dt, dt.out)
-      if(verbose){print(paste("Merged dataframe exported to: ", dt.out))}
-    } else{
-      print(dt)
-    }
-  } else {
-    return(df)
   }
+  return(df)
 }
 
 # neo_leapfrog(DT = T)
