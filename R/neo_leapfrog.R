@@ -23,12 +23,13 @@
 #'
 #' @export
 neo_leapfrog <- function(data.neonet = "https://digitallib.unipi.it/fedora/objects/mag:1062/datastreams/MMf3519905c5344b41cf3ae62e0df4d70b/content", # https://raw.githubusercontent.com/historical-time/caa23/main/neonet/data/140_id00140_doc_elencoc14.csv",
-                         data.leapfrog = "https://raw.githubusercontent.com/historical-time/caa23/main/neonet/data/Binder.csv",
-                         cultures.leapfrog = "https://raw.githubusercontent.com/historical-time/caa23/main/neonet/data/cultures.tsv",
+                         data.leapfrog = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/leapfrog/Binder.csv",
+                         cultures.leapfrog = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/leapfrog/cultures.tsv",
                          # ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                          all.x = F,
                          DT = F,
                          verbose = T){
+  `%>%` <- dplyr::`%>%`
   # TODO: red the GH periods.tsv NeoNet colors
   lcul_col <- list(# colors
     EM = "#0000CF", # BLUE
@@ -55,9 +56,21 @@ neo_leapfrog <- function(data.neonet = "https://digitallib.unipi.it/fedora/objec
   lf.data <- read.csv(paste0(file = data.leapfrog),
                       header = T,
                       sep = ";")
-  lf.cult <- read.csv(paste0(file = cultures.leapfrog),
+  lf.cult <- read.csv(paste0(file = cultures.leapfrog), fileEncoding = "ISO-8859-1",
                       header = T,
                       sep = "\t")
+  # lf.cult[] <- lapply(lf.cult, function(x) {
+  #   if (is.character(x)) {
+  #     iconv(x, from = "ISO-8859-1", to = "UTF-8")
+  #   } else {
+  #     x
+  #   }
+  # })
+  # lf.cult <- read.table(paste0(file = cultures.leapfrog), encoding = "UTF-8",
+  #                       header = T,
+  #                       sep = "\t")
+  # data <- read.csv(cultures.leapfrog, sep="\t", fileEncoding="ISO-8859-1")
+  
   # merge data
   df.data <- merge(nn.data, lf.data, by.x = "LabCode", by.y = "Lab_count_id.", all.x = all.x)
   df.data <- df.data[ , c(1:7, 21, 22, 25)]
@@ -77,11 +90,17 @@ neo_leapfrog <- function(data.neonet = "https://digitallib.unipi.it/fedora/objec
   df <- df[ , col.col]
   names(df)[names(df) == 'V1'] <- 'NN'
   names(df)[names(df) == 'hexa'] <- 'LF'
+  
+  # Replace invalid UTF-8 characters
+  df <- df %>%
+    dplyr::mutate(across(where(is.character), ~iconv(., from = "UTF-8", to = "UTF-8", sub = "")))
+  
+  
   # df[, argColRng] <- df[, dataColRng] < Argu
   # output
   if(DT){
     library(dplyr)
-    dt <- DT::datatable(df,
+    df <- DT::datatable(df,
                         width = "100%",
                         height = "100%",
                         extensions = 'Buttons',
@@ -106,4 +125,10 @@ neo_leapfrog <- function(data.neonet = "https://digitallib.unipi.it/fedora/objec
   return(df)
 }
 
-# neo_leapfrog(DT = T)
+df <- neo_leapfrog(DT = T)
+
+# df <- df %>%
+#   mutate(across(where(is.character), ~iconv(., from = "unknown", to = "UTF-8", sub = "byte")))
+# 
+# # Now try to render your datatable
+# DT::datatable(df)

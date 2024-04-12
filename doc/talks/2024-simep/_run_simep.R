@@ -21,7 +21,6 @@ l.dbs <- c("neonet", "calpal", "medafricarbon", "agrichange", "bda", "calpal", "
 # xronos
 # l.dbs <- c("p3k14c")
 # l.dbs <- c("bda")
-# "neonet" gives a timeout
 present <- 1950
 when <- c(-9000, -4000)
 where <- sf::st_read(where.roi,
