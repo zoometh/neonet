@@ -14,7 +14,7 @@ source("R/config.R")
 
 root.path <- "C:/Rprojects/neonet/doc/talks/2024-simep/img/"
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
-where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi_cyprus.geojson"
+# where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi_cyprus.geojson"
 
 l.dbs <- c("neonet", "calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
 # l.dbs <- c("radonb") 
@@ -56,7 +56,7 @@ df.c14 <- neo_dbs_align(df = df,
 
 ###################################################
 ##### shortcut: load the 'df14_simep.csv' file ####
-# samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_3.csv")
+# samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 # samp_df <- read.csv(samp_df)
 # df.c14 <- samp_df[sample(1:nrow(samp_df), 150), ]
 # #           OR
@@ -102,11 +102,9 @@ lay <- rbind(c(1, 1, 1, 1, 1, 3, 3, 3),
              c(2, 2, 2, 2, 2, 4, 4, 4), 
              c(2, 2, 2, 2, 2, 4, 4, 4))
 g <- gridExtra::grid.arrange(Meso, Neo, kcc.legend, g.neo.map,
-                             layout_matrix = lay,
-                             top = paste0("Distribution of radiocarbon dates ", 
-                                          "by Koppen classes in the ROI (n = ", 
-                                          nrow(df.c14), ")")
-                             
+                             # top = paste0("Distribution of radiocarbon dates ", 
+                             #              "by Koppen classes in the ROI"),
+                             layout_matrix = lay
 )
 g.out <- paste0(root.path, "/kcc_meso_neo.png")
 ggplot2::ggsave(file = g.out, g, width = 14, height = 10)
@@ -223,22 +221,22 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -8000,
+                     isochr.subset = -5000,
                      # isochr.subset = c(-8000, -7500),
                      # where = where,
                      selected.per = "EN",
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                      # kcc.file = NA, # "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
                      isochr.line.size = .5,
                      calibrate = FALSE,
                      shw.dates = TRUE,
-                     lbl.dates = TRUE,
+                     lbl.dates = FALSE,
                      lbl.dates.size = 2.5,
                      lbl.time.interv = TRUE)
 isochr$map
 
 ## To save
-# ggplot2::ggsave(paste0(root.path, "EN_kcc_10k-iso.png"), isochr$map,
+# ggplot2::ggsave(paste0(root.path, "EN_kcc_7k-iso.png"), isochr$map,
 #                 width = 14, height = 10)
 
 source("R/neo_find_date.R")

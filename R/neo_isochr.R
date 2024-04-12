@@ -264,16 +264,16 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     if(nb.contours < 3){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     }
-    capt <- paste0(periods, " | isochrones on the earliest medians | ",
-                   nrow(df), " medians from ", nb.dates.tot, " calibrated dates BC\n",
+    capt <- paste0(periods, " | isochrones on the earliest weighted medians | ",
+                   nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
                    "Map: ", kcc.info, " (BP)")
   } else {
     tit <- paste("Mesolithic")
     if(nb.contours < 3){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     }
-    capt <- paste0(periods, " | isochrones on the latest medians | ",
-                   nrow(df), " medians from ", nb.dates.tot, " calibrated dates BC\n",
+    capt <- paste0(periods, " | isochrones on the latest weighted medians | ",
+                   nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
                    "Map: ", kcc.info, " (BP)")
   }
   # create map

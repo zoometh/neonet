@@ -86,8 +86,8 @@ neo_kcc_plotbar <- function(df_cc = NA,
     capt <- c(capt, paste0("<span style='color: ", color, ";'>", period, "</span>"))
   }
   capt <- paste0(capt, collapse = ", ")
-  caption <- paste("Koppen Climate Classes in ka BP",
-                   "| BP =", present, 
+  caption <- paste("Number of dates by Koppen Climate Classes in ka BP",
+                   # "| BP =", present, 
                    "| periods:", capt, "| n =", nrow(df), "dates")
   kcc_colors.sub <- kcc_colors[names(kcc_colors) %in% unique(df_long$value)]
   df_long <- na.omit(df_long)

@@ -14,7 +14,7 @@ when <- c(-9000, -4000)
 where <- sf::st_read(where.roi,
                      quiet = TRUE)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
-samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_3.csv")
+samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 df.c14 <- samp_df
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 

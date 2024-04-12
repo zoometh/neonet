@@ -73,7 +73,7 @@ neo_map <- function(map.name = "map_atl",
     if(verbose){
       print(paste0("Spatial intersection with the ROI"))
     }
-    nrow(df.dates)
+    # nrow(df.dates)
     if (sf::st_crs(df.dates) != sf::st_crs(where.roi)) {
       df.dates <- sf::st_transform(df.dates, sf::st_crs(where.roi))
     }
@@ -125,8 +125,8 @@ neo_map <- function(map.name = "map_atl",
                      plot.caption = ggtext::element_markdown())
   }
   g.neo.map <- g.neo.map +
-    ggplot2::coord_sf(xlim = c(sf::st_bbox(ws.roi)[1] - buff, sf::st_bbox(ws.roi)[3] + buff),
-                      ylim = c(sf::st_bbox(ws.roi)[2] - buff, sf::st_bbox(ws.roi)[4] + buff)) +
+    ggplot2::coord_sf(xlim = c(sf::st_bbox(roi)[1] - buff, sf::st_bbox(roi)[3] + buff),
+                      ylim = c(sf::st_bbox(roi)[2] - buff, sf::st_bbox(roi)[4] + buff)) +
     ggplot2::theme(axis.text = ggplot2::element_text(size = 7)) 
   return(g.neo.map)
 }
