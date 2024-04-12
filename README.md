@@ -530,7 +530,7 @@ Gives:
 The `neo_kcc_extract()` function collects the KCC values (climates) of each date. 
 
 
-## Neonet-strati
+## NeoNet strati <br> <img src="doc/img/logo_nn_starti.png" width='150px' align="right"/>
 
 NeoNet-strati is an online R Shiny interactive app to record the stratigraphy of NeoNet's archaeological sites in an editable dataframe based on `LabCode` identifiers. 
 
