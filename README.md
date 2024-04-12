@@ -538,11 +538,53 @@ NeoNet-strati is an online R Shiny interactive app to record the stratigraphy of
 <a href="https://trainingidn.shinyapps.io/neonet-strati" target="_blank"><b>NeoNet-strati app</b></a> 
 </p>
 
-A site name is copied from [All sites panel](https://github.com/zoometh/neonet#all-sites-panel) to [Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel).
+
+```mermaid
+flowchart TD
+    A[NeoNet dataset] --is read by--> B{{<a href='https://trainingidn.shinyapps.io/neonet-strati'>neonet-strati</a>}}:::neonetshiny;
+    B --edit<br>site stratigraphy--> B;
+    B --export<br>site stratigraphy<br>file--> C[<a href='https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv'>Roc du Dourgne_2023-07-30.csv</a>];
+    C --is read by--> D{{<a href='https://github.com/historical-time/caa23/blob/main/neonet/functions/neo_strat.R'>neonet_strat</a>}}:::neonetfunct;
+    D --export --> E[maps<br>charts<br>listings<br>...];
+    classDef neonetfunct fill:#e3c071;
+    classDef neonetshiny fill:#71e37c;
+```
+<p align="center">
+<em> Strati app and starti analysis overall Workflow </em>
+</p>
+
+### App interface
+
+The app is composed by different panels: a site to be recorded ([Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet#all-sites-panel)). A site name is copied from [All sites panel](https://github.com/zoometh/neonet#all-sites-panel) to [Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel).
+
+#### Site Startigraphy panel
+
+Plot a selected site in an editable table to record its stratigraphical relationships.
+
+<p align="center">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site.png"
+" width="700">
+  <br>
+    <em>Panel "Site Stratigraphy" editable dataframe. By default the app opens on "Pokrovnik"</em>
+</p>
+
+#### All sites panel
+
+Show the complete NeoNet dataset. A site can be selected by searching it in the selection search bar (top-right) and copying its name (`Site Name` column). Here Roc du Dourgne, highlighted in blue.
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-allsite-dourgne.png"
+" width="1100">
+  <br>
+    <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
+</p>
+
+
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site-dourgne-1.png"
 " width="700">
   <br>
     <em>"Roc du Dourgne" site sorted on its "PhaseCode"</em>
@@ -570,11 +612,15 @@ For example, "Roc du Dourgne" relationships are:
 |MC-781  |        |EN     |C6        |   5000|   170|
 |MC-782  |        |LM     |Layer 7   |   5770|   170|
 
-The first row can be read as: "*the layer containing radiocarbon date MC-1101 comes after the layer containing radiocarbon date MC-1102*". 
+The first row can be read as: "*the layer containing radiocarbon date MC-1101 comes **after** the layer containing radiocarbon date MC-1102*". 
 
-Save the changes by downloading the dataset pressing the button (top-left) as a CSV file that can be read by the `neo_strati()` function (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix))
+Once the site stratigraphy recorded, save the changes by downloading the dataset pressing the button (top-left) as a CSV file. The output file name is the site name and the current date (ex: `Roc du Dourgne_2024-04-12.csv`).
 
-### Harris Matrix
+### Strati analysis
+
+The file exported from the NeoNet strati app can be read by the `neo_strati()` function (see [Harris Matrix](https://github.com/zoometh/neonet#harris-matrix))
+
+#### Harris Matrix
 
 The output CSV file exported by [NeoNet-starti](https://github.com/zoometh/neonet#neonet-strati) can be read by the `neo_strat()` function. For example, ploting the `C14Age` and the `PhaseCode`.
 
@@ -608,44 +654,6 @@ Gives:
 " width="500">
   <br>
     <em>"Roc du Dourgne" stratgraphical relationships using LabCode identifiers, ordered on the "LabCode" column</em>
-</p>
-
-### Worflow
-
-```mermaid
-flowchart TD
-    A[NeoNet dataset] --is read by--> B{{<a href='https://trainingidn.shinyapps.io/neonet-strati'>neonet-strati</a>}}:::neonetshiny;
-    B --edit<br>site stratigraphy--> B;
-    B --export<br>site stratigraphy<br>file--> C[<a href='https://github.com/historical-time/data-samples/blob/main/neonet/Roc%20du%20Dourgne_2023-07-30.csv'>Roc du Dourgne_2023-07-30.csv</a>];
-    C --is read by--> D{{<a href='https://github.com/historical-time/caa23/blob/main/neonet/functions/neo_strat.R'>neonet_strat</a>}}:::neonetfunct;
-    D --export --> E[maps<br>charts<br>listings<br>...];
-    classDef neonetfunct fill:#e3c071;
-    classDef neonetshiny fill:#71e37c;
-```
-### App interface
-
-The app is composed by different panels: a site to be recorded ([Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet#all-sites-panel)).
-#### Site Startigraphy panel
-
-Plot a selected site in an editable table to record its stratigraphical relationships.
-
-<p align="center">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-site.png"
-" width="700">
-  <br>
-    <em>Panel "Site Stratigraphy" editable dataframe. By default the app opens on "Pokrovnik"</em>
-</p>
-
-#### All sites panel
-
-Show the complete NeoNet dataset. A site can be selected by searching it in the selection search bar (top-right) and copying its name (`Site Name` column). Here Roc du Dourgne, highlighted in blue.
-
-<p align="center">
-<br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/app-strati-allsite-dourgne.png"
-" width="1100">
-  <br>
-    <em>Panel "All sites". Selection of the "Roc du Dourgne" site</em>
 </p>
 
 

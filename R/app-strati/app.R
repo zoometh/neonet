@@ -14,7 +14,7 @@ if(serv){
   df <- readr::read_tsv("140_140_id00140_doc_elencoc14.tsv", quote = "")
 } else {
   df <- readr::read_tsv("C:/Rprojects/neonet/R/app-strati/c14_dataset_med_x_atl_2.tsv")
-  nn_strati_logo <- "C:/Rprojects/neonet/R/app-strati/logo_nn_strati.png"
+  nn_strati_logo <- "logo_nn_strati.png" # "C:/Rprojects/neonet/R/app-strati/logo_nn_strati.png"
 }
 
 mysite <- "Pokrovnik"
@@ -33,8 +33,8 @@ ui <- fluidPage(
   # titlePanel("NeoNet stratigraphy"),
   titlePanel(
     tags$div(
-      tags$img(src = nn_strati_logo, height = '50px', style = "vertical-align:middle; margin-right: 10px;"),
-      tags$h1("NeoNet stratigraphy", style = "display:inline; vertical-align:middle;")
+      tags$h1("NeoNet stratigraphy", style = "display:inline; vertical-align:middle;"),
+      tags$img(src = nn_strati_logo, height = '70px', style = "vertical-align:middle; margin-right: 10px;")
     )
   ),
   mainPanel(
@@ -60,9 +60,10 @@ ui <- fluidPage(
 # neonet.df <- df.sample
 
 server <- function(input, output) {
-  output$neonet_url <- renderText({
-    "http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv"
-  })
+  # output$neonet_url <- renderText({
+  #   # ??
+  #   "http://mappaproject.arch.unipi.it/mod/files/140_140_id00140_doc_elencoc14.tsv"
+  # })
   output$neonet.df_data <- renderDataTable(
     df.sample,
     selection = 'none',
