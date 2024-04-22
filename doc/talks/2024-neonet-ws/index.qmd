@@ -40,7 +40,7 @@ format:
 
 # Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
-## HG and EF
+## Late Foragers and Early Farmers
 
 <table style="font-size: 30px;">
   <tr>
@@ -162,15 +162,18 @@ df.to.rm %>%
 | <small>Mean annual temperature (ºC)</small> | <small>Annual precipitation (mm year <sup>-1</sup></small>| <small>Biome (pollen-based)</small> |
 |----------|----------|----------|
 | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png)    | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png)   | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png)   |
-Mid-Holocene reconstruction, Beyer et *al.* 2020[^1]
+Mid-Holocene reconstruction (c. 6,000 BP), Beyer et *al.* 2020[^1]
 
+\
+\
 
 [^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
 
 ::: notes
-- We use the pastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)
+- We use the *pastclim* R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)
 - The KCC system categorizes the world's climates based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).
 - The pastclim KCC current resolution is 30" = 0.5 degrees = c. 50 km. It uses the Beyer *et al.* 2020 dataset.
+- GCM (Global Circulation Models)
 :::
 
 
@@ -327,13 +330,33 @@ Evolution of archaeological sites climates.
 
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
 
+### Modeling
+
 |  |  |
 |----------|----------|
 | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}  | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}   |
 | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"} | ![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Isochrones-neolithic-isochr.png){width="400" style="horizontal-align: middle;"}   |
 
+### Cultural data
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_strati.png" style="height: 50px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
+
+
+### Climate data
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
+
+```{=html}
+<iframe width="780" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
+```
+
+
+:::
+
 ::: notes
-notes: Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
+- Dates curation
+- Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
 :::
 
 # Conclusion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
