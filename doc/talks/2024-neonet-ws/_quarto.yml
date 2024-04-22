@@ -3,8 +3,8 @@ project:
   output-dir: pres
 
 website:
-  title: "KCC "
-  favicon: ../2024-simep/img/simep-logo.png
+  title: ""
+  favicon: img/logo_nn_pkg.png
   repo-url: https://github.com/quarto-dev/quarto-web
   page-footer:
     right:

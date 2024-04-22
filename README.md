@@ -678,6 +678,8 @@ Using `neo_leapfrog(DT = T)` to merge dataframe from NeoNet and Leapfrog on comm
 * Big Historical Data Conference
   - Shiny server (with the app embeded): http://shinyserver.cfs.unipi.it:3838/neonet/bhdc
   - GitHub (without the app embeded): https://zoometh.github.io/neonet/doc/talks/2023-bhdc
+* Neonet workshop
+  - GitHub: https://zoometh.github.io/neonet/doc/talks/2024-neonet-ws/pres
 * SIMEP
   - GitHub: https://zoometh.github.io/neonet/doc/talks/2024-simep/pres
     

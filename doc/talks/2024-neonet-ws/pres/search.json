@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "myproject/myproject.html",
-    "href": "myproject/myproject.html",
-    "title": "myproject",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "myproject/myproject.html#quarto",
-    "href": "myproject/myproject.html#quarto",
-    "title": "myproject",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
     "objectID": "index.html#hg-and-ef",
     "href": "index.html#hg-and-ef",
     "title": "Climates during the Spread of Farming in Mediterranean",
@@ -46,27 +32,20 @@
     "href": "index.html#overall-evolution",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Overall evolution",
-    "text": "Overall evolution\n\n\nEvolution of archaeological sites climates"
+    "text": "Overall evolution\n\n\nEvolution of archaeological sites climates."
   },
   {
     "objectID": "index.html#spread-of-farming-by-time-slices",
     "href": "index.html#spread-of-farming-by-time-slices",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Spread of farming by time slices",
-    "text": "Spread of farming by time slices\n\n8000 BC7000 BC6000 BC5000 BC\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n8000 BC Two main climates: Csa and Csb. First settlements in Cyprus (Csa climate) 7000 BC Same two main climates (Csa and Csb) + BWh and BWk. First settlements in Creta (Csa climate) 6000 BC …"
+    "text": "Spread of farming by time slices\n\n8000 BC7000 BC6000 BC5000 BC\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n8000 BC Cs* (Csa and Csb: Temperate dry summer) are the CC of 90% of the EN sites in 8,000 BC. First settlements in Cyprus (Csa climate)\n7000 BC Same two main Temperate dry summer climates (Cs*) with more BW* (BWh and BWk: Arid desert) climates. First settlements in Creta (Csa climate)\n6000 BC …"
   },
   {
     "objectID": "index.html#productible-methods",
     "href": "index.html#productible-methods",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": " productible methods",
-    "text": "productible methods"
-  },
-  {
-    "objectID": "index.html#not-show",
-    "href": "index.html#not-show",
-    "title": "Climates during the Spread of Farming in Mediterranean",
-    "section": "NOT SHOW",
-    "text": "NOT SHOW\n\n\n\ntime spancal BC\n\n\nraster\n\n\nmedian\n\n\n\n\n9500\n\n\n\n\n\n\n\n\n\n9000\n\n\n\n\n8500\n\n\n\n\n8500\n\n\n\n\n\n\n\n\n\n8000\n\n\n\n\n7500\n\n\n\n\n7500\n\n\n\n\n\n\n\n\n\n\n7000\n\n\n\n\n6500\n\n\n\n\n6500\n\n\n\n\n\n\n\n\n\n\n6000\n\n\n\n\n5500\n\n\n\n\n5500\n\n\n\n\n\n\n\n\n\n5000\n\n\n\n\n4500\n\n\n\n\n\n\nSocial Interactions in Mediterranean Prehistory   https://simep2024.com/ 21-23 October 2024, Barcelona (Spain)"
+    "text": "productible methods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nnotes: Possibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
   }
 ]
