@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<link href="./../2024-simep/img/simep-logo.png" rel="icon" type="image/png">
+<link href="./img/logo_nn_pkg.png" rel="icon" type="image/png">
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/tabby.min.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -13,7 +13,7 @@
 
   <meta name="author" content="Thomas Huet">
   <meta name="author" content="Niccolò Mazzucco">
-  <title>KCC - Climates during the Spread of Farming in Mediterranean</title>
+  <title>Climates during the Spread of Farming in Mediterranean</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -340,7 +340,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png" data-background-opacity="0.4" data-background-size="120%" data-notes="Climate Types. Focus on the LM/EN transition." class="quarto-title-block center">
+<section id="title-slide" data-background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png" data-background-opacity="0.4" data-background-size="120%" data-notes="Climate Types. Focus on the LM/EN transition. This presentation examines the spread of farming across the Mediterranean from 8,000 to 5,000 BC, using quantitative tools in R programming to analyse over 4,000 curated radiocarbon dates, alongside Köppen Climate Classification past reconstructions, to assess changes in the climates inhabited by the latest foragers and the earliest farmers" class="quarto-title-block center">
   <h1 class="title">Climates during the Spread of Farming in Mediterranean</h1>
   <p class="subtitle">Koppen climates classes of last Hunter-Gatherers and early Farmers archaeological sites through reproducible methods</p>
 
@@ -394,7 +394,7 @@ Baume de Montclus<br><img src="https://raw.githubusercontent.com/zoometh/neonet/
 </tr>
 <tr>
 <td>
-<span style="color:#3737FF">LM Late Mesolithic</span> Residenciality increase. Circular mobility to access discontinuous resources in time and space.
+<b><span style="color:#3737FF">LM Late Mesolithic</span> Late Foragers</b>. Residenciality increase. Circular mobility to access discontinuous resources in time and space.
 </td>
 </tr>
 <tr>
@@ -402,7 +402,7 @@ Baume de Montclus<br><img src="https://raw.githubusercontent.com/zoometh/neonet/
 Franchthi cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png">
 </td>
 <td>
-<span style="color:#FF1B1B">EN Early Neolithic</span> Early farmers. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.
+<b><span style="color:#FF1B1B">EN Early Neolithic</span> Early farmers</b>. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.
 </td>
 </tr>
 <tr>
@@ -450,13 +450,83 @@ Franchthi cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/mas
 </div>
 </div>
 <div id="tabset-1-2">
+<div class="column" style="width:60%;">
 <p><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/asNeonetClass.png" style="horizontal-align: middle;" width="700"></p>
+</div>
+<div class="column" style="width:40%;">
+<table>
+<colgroup>
+<col style="width: 7%">
+<col style="width: 27%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>period</th>
+<th>period full name</th>
+<th>color</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EM</td>
+<td>Early Mesolithic</td>
+<td><img data-src="https://placehold.co/15x15/0000CF/0000CF.png" alt="#0000CF"></td>
+</tr>
+<tr class="even">
+<td>MM</td>
+<td>Middle Mesolithic</td>
+<td><img data-src="https://placehold.co/15x15/1D1DFF/1D1DFF.png" alt="#1D1DFF"></td>
+</tr>
+<tr class="odd">
+<td>LM</td>
+<td>Late Mesolithic</td>
+<td><img data-src="https://placehold.co/15x15/3737FF/3737FF.png" alt="#3737FF"></td>
+</tr>
+<tr class="even">
+<td>LMEN</td>
+<td>Late Mesolithic/Early Neolithic</td>
+<td><img data-src="https://placehold.co/15x15/6A6AFF/6A6AFF.png" alt="#6A6AFF"></td>
+</tr>
+<tr class="odd">
+<td>UM</td>
+<td>Undefined Mesolithic</td>
+<td><img data-src="https://placehold.co/15x15/8484FF/8484FF.png" alt="#8484FF"></td>
+</tr>
+<tr class="even">
+<td>EN</td>
+<td>Early Neolithic</td>
+<td><img data-src="https://placehold.co/15x15/FF1B1B/FF1B1B.png" alt="#FF1B1B"></td>
+</tr>
+<tr class="odd">
+<td>EMN</td>
+<td>Early/Middle Neolithic</td>
+<td><img data-src="https://placehold.co/15x15/FF541B/FF541B.png" alt="#FF541B"></td>
+</tr>
+<tr class="even">
+<td>MN</td>
+<td>Middle Neolithic</td>
+<td><img data-src="https://placehold.co/15x15/FF8D1B/FF8D1B.png" alt="#FF8D1B"></td>
+</tr>
+<tr class="odd">
+<td>LN</td>
+<td>Late Neolithic</td>
+<td><img data-src="https://placehold.co/15x15/FFC04D/FFC04D.png" alt="#FFC04D"></td>
+</tr>
+<tr class="even">
+<td>UN</td>
+<td>Undefined Neolithic</td>
+<td><img data-src="https://placehold.co/15x15/E7E700/E7E700.png" alt="#E7E700"></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="tabset-1-3">
 <div class="cell">
 <div class="cell-output-display">
-<div id="htmlwidget-ab8a967c0788b07bd280" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ab8a967c0788b07bd280">{"x":{"filter":"none","vertical":false,"data":[["bda","neonetatl","neonetatl","bda","bda","bda","bda","calpal","radon","radon","radon","radon","calpal","bda","radon","calpal","radon","radon","bda","radon","radon","bda","neonet","bda","neonetatl","calpal","bda","calpal","calpal","neonet","calpal","neonet","bda","radon","calpal"],["LY-7969","Ly-7969","Ly-6043","LY-7695","LY-7287","OZB-653","Alg-40","UtC-1837","KN-3044/45","UtC-2320","KN-3040","UtC-2322","I-10463","UGAMS-3825 (AA-098)","UtC-1830","UBAR-31","KN-1395","UtC-1832","LY-6043","UtC-1834","KN-3044/45","MC-1239","Gif-3077","Arias_2009_x1","GaK-8953","Beta-116624","Lyon-4174 (SacA-7431)","Mc-500A","Mc-500-A","MC-500-A","UtC-22","BM-2557","P-1999","OxA-12857","OxA-27408"],["La Lède-du-Gurp","Lède-du-Gurp","Lède-du-Gurp","Kaf Taht El-Ghar (KTG)","Kaf Taht El-Ghar (KTG)","Piancada","Travertins/chemin de Kristel/Kristel jardins","Klein Denkte","Schwanfeld","Schwanfeld","Schwanfeld","Klein Denkte","Can Ballester","Campu Stefanu","Eitzum 2","Cova 120","Königsaue, ehemaliger Gaterslebener See","Eitzum 2","La Lède-du-Gurp","Klein Denkte","Schwanfeld","Poujade","Grotte de Camprafaud","Chica de Santiagio","Cueva de la Dehesilla","Cova de le Cendres","Cap Ragnon","Grotte du Cap Ragnon","Cap Ragnon","Cap Ragnon","Grotte dell Corbeddu","Coppa Nevigata","Casa San Paolo","Ecsegfalva","Akanthou"],[-7733,-7733,-7310,-9654,-9626,-7339,-7049,-8251,-7125,-7020,-6941,-8251,-6006,-6592,-8612,-8029,-8674,-8193,-7123,-7020,-7085,-7297,-7135,-7215.05,-7375.05,-7508,-7918,-7187,-7199,-7190,-7407.05,-7352.05,-7027,-7021,-8295],["Néolithique ancien","EN","EN","Néolithique ancien","Néolithique ancien","Néolithique ancien","Néolithique ancien","Neolithic?","ältere LBK","älteste LBK","ältere LBK","Neolithic?","Neolithic","Néolithique ancien","älteste LBK","EN","EN","älteste LBK","EN","älteste LBK","ältere LBK","Néolithique ancien","EN","EN","EN","Neolithic","Néolithique ancien","Neolithic","Neolithic","EN","Epipalaeolithic","EN","Néolithique ancien","EN","Neolithic"],["NACA","None","None","Cardial marocain","Cardial marocain","Sammardenchia","NA oranais","LBK?","Linienbandkeramik","Linienbandkeramik","Linienbandkeramik ","LBK?","Cardial","Ceramica Impressa","Linienbandkeramik","None","None","Linienbandkeramik","Néolithique ancien","Linienbandkeramik","Linienbandkeramik","Roucadourien","None","None","None","Cardial","Cardial","Cardial","Cardial","None","Cardial","None","Ceramica Impressa","None","Aceramic"],["From https://banadora.mom.fr/ only (not internet), marked as mediocre in bda","Same as bda, marked as mediocre in bda","Same as bda","refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999","refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999","marked as mediocre in bda, origin: Improta &amp; Pessina 1999, p. 328","marked as mediocre in bda, origin: Camps et al 1973","marked Neolithic? LBK?, origin: Stäuble 1994","origin: Stäuble (1995, 2005), see: https://doi.org/10.1007%2Fs10963-016-9096-x","origin: Stäuble 1995, 234 Tab. 1","see: https://doi.org/10.1016/j.jas.2005.03.021","marked Neolithic? LBK?, see: https://doi.org/10.1017/S003382220003068X","origin: Balsera","marked as mediocre in bda, origin: Cesari et al. 2011 p. 278","the date seems to only exist in radon. ref: Stäuble 1995, 234 Tab. 1","To be confirmed, ref: van Willigen 2006","unclear","To be confirmed, ref: Stäuble 1995, 234 Tab. 1","ref: Roussot-Larroque 1995 3 - médiocre","To be confirmed, ref: Stäuble 1995, 234 Tab. 1","To be confirmed","To be confirmed, ref: Arnal 1995, p.72. Marked as comment = inconnue in bda","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed, ref: Oxford Datelist 2014"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>sourcedb<\/th>\n      <th>LabCode<\/th>\n      <th>SiteName<\/th>\n      <th>median<\/th>\n      <th>db_period<\/th>\n      <th>db_culture<\/th>\n      <th>comments<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"lengthMenu":[[5,10,50,-1],["5","10","50","All"]],"paging":true,"initComplete":"function(settings, json) {\n$(this.api().table().container()).css({'font-size': '8pt'});\n}","columnDefs":[{"className":"dt-right","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.initComplete"],"jsHooks":[]}</script>
+<div id="htmlwidget-2ba9eea13ad6a960042a" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2ba9eea13ad6a960042a">{"x":{"filter":"none","vertical":false,"data":[["bda","neonetatl","neonetatl","bda","bda","bda","bda","calpal","radon","radon","radon","radon","calpal","bda","radon","calpal","radon","radon","bda","radon","radon","bda","neonet","bda","neonetatl","calpal","bda","calpal","calpal","neonet","calpal","neonet","bda","radon","calpal"],["LY-7969","Ly-7969","Ly-6043","LY-7695","LY-7287","OZB-653","Alg-40","UtC-1837","KN-3044/45","UtC-2320","KN-3040","UtC-2322","I-10463","UGAMS-3825 (AA-098)","UtC-1830","UBAR-31","KN-1395","UtC-1832","LY-6043","UtC-1834","KN-3044/45","MC-1239","Gif-3077","Arias_2009_x1","GaK-8953","Beta-116624","Lyon-4174 (SacA-7431)","Mc-500A","Mc-500-A","MC-500-A","UtC-22","BM-2557","P-1999","OxA-12857","OxA-27408"],["La Lède-du-Gurp","Lède-du-Gurp","Lède-du-Gurp","Kaf Taht El-Ghar (KTG)","Kaf Taht El-Ghar (KTG)","Piancada","Travertins/chemin de Kristel/Kristel jardins","Klein Denkte","Schwanfeld","Schwanfeld","Schwanfeld","Klein Denkte","Can Ballester","Campu Stefanu","Eitzum 2","Cova 120","Königsaue, ehemaliger Gaterslebener See","Eitzum 2","La Lède-du-Gurp","Klein Denkte","Schwanfeld","Poujade","Grotte de Camprafaud","Chica de Santiagio","Cueva de la Dehesilla","Cova de le Cendres","Cap Ragnon","Grotte du Cap Ragnon","Cap Ragnon","Cap Ragnon","Grotte dell Corbeddu","Coppa Nevigata","Casa San Paolo","Ecsegfalva","Akanthou"],[-7733,-7733,-7310,-9654,-9626,-7339,-7049,-8251,-7125,-7020,-6941,-8251,-6006,-6592,-8612,-8029,-8674,-8193,-7123,-7020,-7085,-7297,-7135,-7215.05,-7375.05,-7508,-7918,-7187,-7199,-7190,-7407.05,-7352.05,-7027,-7021,-8295],["Néolithique ancien","EN","EN","Néolithique ancien","Néolithique ancien","Néolithique ancien","Néolithique ancien","Neolithic?","ältere LBK","älteste LBK","ältere LBK","Neolithic?","Neolithic","Néolithique ancien","älteste LBK","EN","EN","älteste LBK","EN","älteste LBK","ältere LBK","Néolithique ancien","EN","EN","EN","Neolithic","Néolithique ancien","Neolithic","Neolithic","EN","Epipalaeolithic","EN","Néolithique ancien","EN","Neolithic"],["NACA","None","None","Cardial marocain","Cardial marocain","Sammardenchia","NA oranais","LBK?","Linienbandkeramik","Linienbandkeramik","Linienbandkeramik ","LBK?","Cardial","Ceramica Impressa","Linienbandkeramik","None","None","Linienbandkeramik","Néolithique ancien","Linienbandkeramik","Linienbandkeramik","Roucadourien","None","None","None","Cardial","Cardial","Cardial","Cardial","None","Cardial","None","Ceramica Impressa","None","Aceramic"],["From https://banadora.mom.fr/ only (not internet), marked as mediocre in bda","Same as bda, marked as mediocre in bda","Same as bda","refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999","refused by https://doi.org/10.1007/s10437-021-09425-x, origin: Daugas et al. 1999","marked as mediocre in bda, origin: Improta &amp; Pessina 1999, p. 328","marked as mediocre in bda, origin: Camps et al 1973","marked Neolithic? LBK?, origin: Stäuble 1994","origin: Stäuble (1995, 2005), see: https://doi.org/10.1007%2Fs10963-016-9096-x","origin: Stäuble 1995, 234 Tab. 1","see: https://doi.org/10.1016/j.jas.2005.03.021","marked Neolithic? LBK?, see: https://doi.org/10.1017/S003382220003068X","origin: Balsera","marked as mediocre in bda, origin: Cesari et al. 2011 p. 278","the date seems to only exist in radon. ref: Stäuble 1995, 234 Tab. 1","To be confirmed, ref: van Willigen 2006","unclear","To be confirmed, ref: Stäuble 1995, 234 Tab. 1","ref: Roussot-Larroque 1995 3 - médiocre","To be confirmed, ref: Stäuble 1995, 234 Tab. 1","To be confirmed","To be confirmed, ref: Arnal 1995, p.72. Marked as comment = inconnue in bda","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed","To be confirmed, ref: Oxford Datelist 2014"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>sourcedb<\/th>\n      <th>LabCode<\/th>\n      <th>SiteName<\/th>\n      <th>median<\/th>\n      <th>db_period<\/th>\n      <th>db_culture<\/th>\n      <th>comments<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"lengthMenu":[[5,10,50,-1],["5","10","50","All"]],"paging":true,"initComplete":"function(settings, json) {\n$(this.api().table().container()).css({'font-size': '12pt'});\n}","columnDefs":[{"className":"dt-right","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.initComplete"],"jsHooks":[]}</script>
 </div>
 </div>
 <p><small><a href="https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv">c14_aberrant_dates.tsv</a></small></p>
@@ -464,7 +534,12 @@ Franchthi cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/mas
 </div>
 </div>
 <aside class="notes">
-<p>NeoNet is one of the numerous existing radiocarbon datasets. That’s why we have developed a <em>getter</em> function within the C14bazaar package for the dataset’s to be harvestable.</p>
+<ul>
+<li>With R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.</li>
+<li>We map these dates to the Neonet periods (here on the left <strong>class</strong>).</li>
+<li>Then we remove duplicated dates and discard outliers (currently in process).</li>
+<li>some 4,000 dates are now available for the study.</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -480,10 +555,46 @@ Franchthi cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/mas
 <section id="climate-data" class="slide level2">
 <h2>Climate data</h2>
 <p><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"> <span class="smalltext"><a href="https://github.com/EvolEcolGroup/pastclim" class="uri">https://github.com/EvolEcolGroup/pastclim</a></span></p>
-<blockquote>
-<p>TODO</p>
-</blockquote>
-</section>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mean annual temperature (ºC)</th>
+<th>Annual precipitation (mm year <sup>-1</sup></th>
+<th>biome (pollen-based)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png"></td>
+<td><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png"></td>
+<td><img data-src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png"></td>
+</tr>
+</tbody>
+</table>
+<p>Mid-Holocene reconstruction, Beyer et <em>al.</em> 2020<a href="#/footnotes" class="footnote-ref" id="fnref1" role="doc-noteref" data-footnote-href="#/fn1" onclick=""><sup>1</sup></a></p>
+<aside class="notes">
+<ul>
+<li>We use the pastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)</li>
+<li>The KCC system categorizes the world’s climates based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).</li>
+<li>The pastclim KCC current resolution is 30” = 0.5 degrees = c.&nbsp;50 km. It uses the Beyer <em>et al.</em> 2020 dataset.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside></aside></section>
 <section id="climates-by-radiocarbon-dates" class="slide level2">
 <h2>Climates by radiocarbon dates</h2>
 <div class="panel-tabset">
@@ -699,6 +810,12 @@ date
 <h1>Conclusion</h1>
 
 </section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document smaller scrollable" role="doc-endnotes"><h2>Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Beyer, R. M., Krapp, M., &amp; Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. <em>Scientific data</em>, 7(1), 236.</p></li>
+</ol>
 </section>
     </div>
   </div>

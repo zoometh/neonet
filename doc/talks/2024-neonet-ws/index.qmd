@@ -159,10 +159,10 @@ df.to.rm %>%
 
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
 
-| temperature | precipitation | biome |
+| <small>Mean annual temperature (ºC)</small> | <small>Annual precipitation (mm year <sup>-1</sup></small>| <small>Biome (pollen-based)</small> |
 |----------|----------|----------|
-| https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png    | https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png   | https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png   |
-Mid-Holocene, Beyer et *al.* 2020[^1]
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png)    | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png)   | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png)   |
+Mid-Holocene reconstruction, Beyer et *al.* 2020[^1]
 
 
 [^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
