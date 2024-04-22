@@ -52,27 +52,28 @@ format:
   </tr>
   <tr>
     <td rowspan="3">Baume de Montclus<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png"></td>
-    <td><span style="color:#0000CF">EM Early Mesolithic</span> Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocene transition. Late Last Glacial Maximum climate.</td>
+    <td style="font-size: 25px;"><span style="color:#0000CF">EM - Early Mesolithic</span> Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocene transition. Late Last Glacial Maximum climate.</td>
   </tr>
   <tr>
-    <td><span style="color:#1D1DFF">MM Middle Mesolithic</span> Increased specialization in tool production, territorialisation. New climates: new species.</td>
+    <td style="font-size: 25px;"><span style="color:#1D1DFF">MM - Middle Mesolithic</span> Increased specialization in tool production, territorialisation. New climates: new species.</td>
   </tr>
   <tr>
-    <td><b><span style="color:#3737FF">LM Late Mesolithic</span> Late Foragers</b>. Residenciality increase. Circular mobility to access discontinuous resources in time and space.</td>
+    <td><b><span style="color:#3737FF">LM - Late Mesolithic</span> Late Foragers</b>. Residenciality increase. Circular mobility to access discontinuous resources in time and space.</td>
   </tr>
   <tr>
     <td rowspan="3">Franchthi cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png"></td>
-    <td><b><span style="color:#FF1B1B">EN Early Neolithic</span> Early farmers</b>. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.</td>
+    <td><b><span style="color:#FF1B1B">EN - Early Neolithic</span> Early farmers</b>. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.</td>
   </tr>
   <tr>
-    <td><span style="color:#FF8D1B">MN Middle Neolithic</span> Craftware, crops and livestock specialization. Deforestation. Warm and stable climate.</td>
+    <td style="font-size: 25px;"><span style="color:#FF8D1B">MN - Middle Neolithic</span> Craftware, crops and livestock specialization. Deforestation. Warm and stable climate.</td>
   </tr>
   <tr>
-    <td><span style="color:#FFC04D">LN Late Neolithic</span> Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions.</td>
+    <td style="font-size: 25px;"><span style="color:#FFC04D">LN - Late Neolithic</span> Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions.</td>
   </tr>
 </table>
 
-
+\
+\
 
 ::: notes
 Periods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:
@@ -89,6 +90,9 @@ Periods are quoting moments. We use a conventional division in 3 phases, both fo
 ::: columns
 ::: {.column width="60%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/dbs_counts.png){width="600" style="horizontal-align: middle;"}
+\
+\
+
 :::
 
 ::: {.column width="40%"}
@@ -101,25 +105,38 @@ Periods are quoting moments. We use a conventional division in 3 phases, both fo
 
 ### Neonet equivalences
 
-::: {.column width="60%"}
+::: {.column width="70%"}
+
+Mapping table
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/asNeonetClass.png){width="700" style="horizontal-align: middle;"}
 :::
 
-::: {.column width="40%"}
+::: {.column width="30%"}
 
-| period | period full name             | color                                                                 |
-|--------|------------------------------|-----------------------------------------------------------------------|
-| EM     | Early Mesolithic             | ![#0000CF](https://placehold.co/15x15/0000CF/0000CF.png)              |
-| MM     | Middle Mesolithic            | ![#1D1DFF](https://placehold.co/15x15/1D1DFF/1D1DFF.png)              |
-| LM     | Late Mesolithic              | ![#3737FF](https://placehold.co/15x15/3737FF/3737FF.png)              |
-| LMEN   | Late Mesolithic/Early Neolithic | ![#6A6AFF](https://placehold.co/15x15/6A6AFF/6A6AFF.png)           |
-| UM     | Undefined Mesolithic         | ![#8484FF](https://placehold.co/15x15/8484FF/8484FF.png)              |
-| EN     | Early Neolithic              | ![#FF1B1B](https://placehold.co/15x15/FF1B1B/FF1B1B.png)              |
-| EMN    | Early/Middle Neolithic       | ![#FF541B](https://placehold.co/15x15/FF541B/FF541B.png)              |
-| MN     | Middle Neolithic             | ![#FF8D1B](https://placehold.co/15x15/FF8D1B/FF8D1B.png)              |
-| LN     | Late Neolithic               | ![#FFC04D](https://placehold.co/15x15/FFC04D/FFC04D.png)              |
-| UN     | Undefined Neolithic          | ![#E7E700](https://placehold.co/15x15/E7E700/E7E700.png)              |
+Neonet classes
+
+<table style="font-size: 30px;">
+    <tr>
+        <td><span style="color:#0000CF">EM - Early Mesolithic</span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#1D1DFF">MM - Middle Mesolithic</span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#3737FF">LM - Late Mesolithic</span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#FF1B1B">EN - Early Neolithic</span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#FF8D1B">MN - Middle Neolithic</span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#FFC04D">LN - Late Neolithic</span></td>
+    </tr>
+</table>
+
 
 :::
 
@@ -163,10 +180,11 @@ df.to.rm %>%
 
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
 
-| <small>Mean annual temperature (ºC)</small> | <small>Annual precipitation (mm year <sup>-1</sup></small>| <small>Biome (pollen-based)</small> |
+| <small>Mean annual temperature (ºC)</small> | <small>Annual precipitation (mm year <sup>-1</sup>)</small>| <small>Biome (pollen-based)</small> |
 |----------|----------|----------|
-| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png)    | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png)   | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png)   |
-Mid-Holocene reconstruction (c. 6,000 BP), Beyer et *al.* 2020[^1]
+| <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="300px"> | <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="300px"> | <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="300px"> |
+
+<small>Mid-Holocene reconstruction (c. 6,000 BP), Beyer et *al.* 2020[^1]</small>
 
 \
 \
@@ -334,17 +352,17 @@ Evolution of archaeological sites climates.
 
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
 
+::: {.panel-tabset}
+
 ### Modeling
 
-|  |  |
-|----------|----------|
-| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}  | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}   |
-| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"} | ![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Isochrones-neolithic-isochr.png){width="400" style="horizontal-align: middle;"}   |
+|  |  |  |
+|----------|----------|------------|
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}  | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}   | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"} |
 
 ### Cultural data
 
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_strati.png" style="height: 50px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_strati.png" style="height: 50px;vertical-align: middle;"/>[<https://github.com/zoometh/neonet>]{.smalltext}
 
 
 ### Climate data
@@ -352,7 +370,7 @@ Evolution of archaeological sites climates.
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
 
 ```{=html}
-<iframe width="780" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
+<iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
 ```
 
 
@@ -431,4 +449,9 @@ Evolution of archaeological sites climates.
   </tr>
 </table>
 
+## NOT VISIBLE {data-visibility=hidden}
 
+|  |  |
+|----------|----------|
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}  | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}   |
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"} | ![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Isochrones-neolithic-isochr.png){width="400" style="horizontal-align: middle;"}   |
