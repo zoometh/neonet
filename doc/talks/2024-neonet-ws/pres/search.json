@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "index.html#hg-and-ef",
-    "href": "index.html#hg-and-ef",
+    "objectID": "index.html#late-foragers-and-early-farmers",
+    "href": "index.html#late-foragers-and-early-farmers",
     "title": "Climates during the Spread of Farming in Mediterranean",
-    "section": "HG and EF",
-    "text": "HG and EF\n\n\n\n\n\n\nBaume de Montclus\n\n\nEM Early Mesolithic Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.\n\n\n\n\nMM Middle Mesolithic Increased specialization in tool production, territorialisation. New climates: new species.\n\n\n\n\nLM Late Mesolithic Late Foragers. Residenciality increase. Circular mobility to access discontinuous resources in time and space.\n\n\n\n\nFranchthi cave\n\n\nEN Early Neolithic Early farmers. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.\n\n\n\n\nMN Middle Neolithic Craftware, crops and livestock specialization. Deforestation. Warm and stable climate.\n\n\n\n\nLN Late Neolithic Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions.\n\n\n\n\nPeriods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:"
+    "section": "Late Foragers and Early Farmers",
+    "text": "Late Foragers and Early Farmers\n\n\n\n\n\n\nBaume de Montclus\n\n\nEM Early Mesolithic Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.\n\n\n\n\nMM Middle Mesolithic Increased specialization in tool production, territorialisation. New climates: new species.\n\n\n\n\nLM Late Mesolithic Late Foragers. Residenciality increase. Circular mobility to access discontinuous resources in time and space.\n\n\n\n\nFranchthi cave\n\n\nEN Early Neolithic Early farmers. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.\n\n\n\n\nMN Middle Neolithic Craftware, crops and livestock specialization. Deforestation. Warm and stable climate.\n\n\n\n\nLN Late Neolithic Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions.\n\n\n\n\nPeriods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:"
   },
   {
     "objectID": "index.html#radiocarbon-data",
@@ -18,7 +18,7 @@
     "href": "index.html#climate-data",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Climate data",
-    "text": "Climate data\n https://github.com/EvolEcolGroup/pastclim\n\n\n\n\n\n\n\n\nMean annual temperature (ºC)\nAnnual precipitation (mm year -1\nBiome (pollen-based)\n\n\n\n\n\n\n\n\n\n\nMid-Holocene reconstruction, Beyer et al. 20201\n\n\n\n\n\nWe use the pastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nThe KCC system categorizes the world’s climates based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
+    "text": "Climate data\n https://github.com/EvolEcolGroup/pastclim\n\n\n\n\n\n\n\n\nMean annual temperature (ºC)\nAnnual precipitation (mm year -1\nBiome (pollen-based)\n\n\n\n\n\n\n\n\n\n\nMid-Holocene reconstruction (c. 6,000 BP), Beyer et al. 20201\n\n\n\n\n\nWe use the pastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nThe KCC system categorizes the world’s climates based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset.\nGCM (Global Circulation Models)"
   },
   {
     "objectID": "index.html#climates-by-radiocarbon-dates",
@@ -46,7 +46,7 @@
     "href": "index.html#productible-methods",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": " productible methods",
-    "text": "productible methods\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nnotes: Possibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
+    "text": "productible methods\nModeling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCultural data\n https://github.com/zoometh/neonet\nClimate data\n https://github.com/EvolEcolGroup/pastclim\n\n:::\n\n\nDates curation\nPossibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
   },
   {
     "objectID": "index.html#footnotes",

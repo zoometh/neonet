@@ -1,6 +1,6 @@
 ---
 title: "Climates during the Spread of Farming in Mediterranean "
-subtitle: "Koppen climates classes of last Hunter-Gatherers and early Farmers archaeological sites through reproducible methods"
+# subtitle: "Koppen climates classes of last Hunter-Gatherers and early Farmers archaeological sites through reproducible methods"
 author:
   - name: Thomas Huet
     affiliation: 
@@ -10,6 +10,10 @@ author:
     affiliation: 
       - id: up
         name: <span style="font-size:16pt">Università di Pisa</span>
+  - name: Andrea Manica (collaboration)
+    affiliation: 
+      - id: uc
+        name: <span style="font-size:16pt">University of Cambridge</span>
 title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"
     data-background-size: "120%"
@@ -48,7 +52,7 @@ format:
   </tr>
   <tr>
     <td rowspan="3">Baume de Montclus<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png"></td>
-    <td><span style="color:#0000CF">EM Early Mesolithic</span> Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.</td>
+    <td><span style="color:#0000CF">EM Early Mesolithic</span> Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocene transition. Late Last Glacial Maximum climate.</td>
   </tr>
   <tr>
     <td><span style="color:#1D1DFF">MM Middle Mesolithic</span> Increased specialization in tool production, territorialisation. New climates: new species.</td>
