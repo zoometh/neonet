@@ -1,0 +1,72 @@
+[
+  {
+    "objectID": "myproject/myproject.html",
+    "href": "myproject/myproject.html",
+    "title": "myproject",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "myproject/myproject.html#quarto",
+    "href": "myproject/myproject.html#quarto",
+    "title": "myproject",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "index.html#hg-and-ef",
+    "href": "index.html#hg-and-ef",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "HG and EF",
+    "text": "HG and EF\n\n\n\n\n\n\nBaume de Montclus\n\n\nEM Early Mesolithic Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocen transition. Late Last Glacial Maximum climate.\n\n\n\n\nMM Middle Mesolithic Increased specialization in tool production, territorialisation. New climates: new species.\n\n\n\n\nLM Late Mesolithic Residenciality increase. Circular mobility to access discontinuous resources in time and space.\n\n\n\n\nFranchthi cave\n\n\nEN Early Neolithic Early farmers. Permanent settlements, soil fertility for wheat and barley and climates: sheep, goats, pigs, and cattle. Warm and stable climate.\n\n\n\n\nMN Middle Neolithic Craftware, crops and livestock specialization. Deforestation. Warm and stable climate.\n\n\n\n\nLN Late Neolithic Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions.\n\n\n\n\nPeriods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:"
+  },
+  {
+    "objectID": "index.html#radiocarbon-data",
+    "href": "index.html#radiocarbon-data",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Radiocarbon data",
+    "text": "Radiocarbon data\n\nDatabasesNeonet equivalencesOutlier dates\n\n\n\n\n\n\nhttps://github.com/ropensci/c14bazAAR https://github.com/zoometh/neonet\n\n\n\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\n\n\nNeoNet is one of the numerous existing radiocarbon datasets. That’s why we have developed a getter function within the C14bazaar package for the dataset’s to be harvestable."
+  },
+  {
+    "objectID": "index.html#climate-data",
+    "href": "index.html#climate-data",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Climate data",
+    "text": "Climate data\n https://github.com/EvolEcolGroup/pastclim\n\nTODO"
+  },
+  {
+    "objectID": "index.html#climates-by-radiocarbon-dates",
+    "href": "index.html#climates-by-radiocarbon-dates",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Climates by radiocarbon dates",
+    "text": "Climates by radiocarbon dates\n\nDates selectionDates mediansDates Koppen Classes\n\n\n\n\nThe most recent LM date median \n\nThe most ancient EN date median \n\n\n\n\n\n\n\ntime spancal BC\n\n\nKCC map\n\n\ndate\n\n\n\n\n7500\n\n\n\n\n\n\n\n\n\n\n7000\n\n\n\n\n6500\n\n\n\n\n6500\n\n\n\n\n\n\n\n\n\n\n6000\n\n\n\n\n5500\n\n\n\n\n\n\n\n\n\n\nExtract on the radiocarbon date weighted median"
+  },
+  {
+    "objectID": "index.html#overall-evolution",
+    "href": "index.html#overall-evolution",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Overall evolution",
+    "text": "Overall evolution\n\n\nEvolution of archaeological sites climates"
+  },
+  {
+    "objectID": "index.html#spread-of-farming-by-time-slices",
+    "href": "index.html#spread-of-farming-by-time-slices",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Spread of farming by time slices",
+    "text": "Spread of farming by time slices\n\n8000 BC7000 BC6000 BC5000 BC\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n8000 BC Two main climates: Csa and Csb. First settlements in Cyprus (Csa climate) 7000 BC Same two main climates (Csa and Csb) + BWh and BWk. First settlements in Creta (Csa climate) 6000 BC …"
+  },
+  {
+    "objectID": "index.html#productible-methods",
+    "href": "index.html#productible-methods",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": " productible methods",
+    "text": "productible methods"
+  },
+  {
+    "objectID": "index.html#not-show",
+    "href": "index.html#not-show",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "NOT SHOW",
+    "text": "NOT SHOW\n\n\n\ntime spancal BC\n\n\nraster\n\n\nmedian\n\n\n\n\n9500\n\n\n\n\n\n\n\n\n\n9000\n\n\n\n\n8500\n\n\n\n\n8500\n\n\n\n\n\n\n\n\n\n8000\n\n\n\n\n7500\n\n\n\n\n7500\n\n\n\n\n\n\n\n\n\n\n7000\n\n\n\n\n6500\n\n\n\n\n6500\n\n\n\n\n\n\n\n\n\n\n6000\n\n\n\n\n5500\n\n\n\n\n5500\n\n\n\n\n\n\n\n\n\n5000\n\n\n\n\n4500\n\n\n\n\n\n\nSocial Interactions in Mediterranean Prehistory   https://simep2024.com/ 21-23 October 2024, Barcelona (Spain)"
+  }
+]
