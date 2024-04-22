@@ -530,7 +530,7 @@ Gives:
 The `neo_kcc_extract()` function collects the KCC values (climates) of each date. 
 
 
-## NeoNet strati <br> <img src="doc/img/logo_nn_starti.png" width='80px' align="right"/>
+## NeoNet strati <br> <img src="doc/img/logo_nn_strati.png" width='80px' align="right"/>
 
 NeoNet-strati is an online R Shiny interactive app to record the stratigraphy of NeoNet's archaeological sites in an editable dataframe based on `LabCode` identifiers. 
 
@@ -550,14 +550,14 @@ flowchart TD
     classDef neonetshiny fill:#71e37c;
 ```
 <p align="center">
-<em> Strati app and starti analysis overall Workflow </em>
+<em> Strati app and strati analysis overall Workflow </em>
 </p>
 
 ### App interface
 
-The app is composed by different panels: a site to be recorded ([Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet#all-sites-panel)). A site name is copied from [All sites panel](https://github.com/zoometh/neonet#all-sites-panel) to [Site Startigraphy panel](https://github.com/zoometh/neonet#site-startigraphy-panel).
+The app is composed by different panels: a site to be recorded ([Site Stratigraphy panel](https://github.com/zoometh/neonet#site-stratigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet#all-sites-panel)). A site name is copied from [All sites panel](https://github.com/zoometh/neonet#all-sites-panel) to [Site Stratigraphy panel](https://github.com/zoometh/neonet#site-stratigraphy-panel).
 
-#### Site Startigraphy panel
+#### Site Stratigraphy panel
 
 Plot a selected site in an editable table to record its stratigraphical relationships.
 
@@ -622,7 +622,7 @@ The file exported from the NeoNet strati app can be read by the `neo_strati()` f
 
 #### Harris Matrix
 
-The output CSV file exported by [NeoNet-starti](https://github.com/zoometh/neonet#neonet-strati) can be read by the `neo_strat()` function. For example, ploting the `C14Age` and the `PhaseCode`.
+The output CSV file exported by [NeoNet-strati](https://github.com/zoometh/neonet#neonet-strati) can be read by the `neo_strat()` function. For example, ploting the `C14Age` and the `PhaseCode`.
 
 ```R
 neo_strat(inData = 'https://raw.githubusercontent.com/historical-time/data-samples/main/neonet/Roc du Dourgne_2023-07-30.csv',
