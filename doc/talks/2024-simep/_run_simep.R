@@ -126,10 +126,10 @@ neo_spd(df.c14 = df_cc[df_cc$Period %in% c("EN"), ],
         time.span = c(13000, 6000),
         calendar = 'BP',
         # shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
-        x.intercept = 7000,
+        x.intercept = 11000,
         color.on = "kcc",
         export = TRUE,
-        outFile = "EN_kcc_7k",
+        outFile = "EN_kcc_11k",
         outDir = root.path,
         width = 18, height = 13,
 )
@@ -221,11 +221,11 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -5000,
+                     isochr.subset = -9000,
                      # isochr.subset = c(-8000, -7500),
                      # where = where,
                      selected.per = "EN",
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif",
                      # kcc.file = NA, # "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
                      isochr.line.size = .5,
                      calibrate = FALSE,
@@ -236,8 +236,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
 isochr$map
 
 ## To save
-# ggplot2::ggsave(paste0(root.path, "EN_kcc_7k-iso.png"), isochr$map,
-#                 width = 14, height = 10)
+# ggplot2::ggsave(paste0(root.path, "EN_kcc_11k-iso.png"), isochr$map, width = 14, height = 10)
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")

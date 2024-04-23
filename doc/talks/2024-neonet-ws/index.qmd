@@ -17,7 +17,7 @@ author:
 title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img.png"
     data-background-size: "90%"
-    data-background-opacity: "0.4"
+    data-background-opacity: "0.3"
     data-notes: Climate Types. Focus on the LM/EN transition. This presentation examines the spread of farming across the Mediterranean from 8,000 to 5,000 BC, using quantitative tools in R programming to analyse over 4,000 curated radiocarbon dates, alongside Köppen Climate Classification past reconstructions, to assess changes in the climates inhabited by the latest foragers and the earliest farmers
 format:
   revealjs: 
@@ -178,20 +178,32 @@ df.to.rm %>%
 - some 4,000 dates are now available for the study.
 :::
 
-## Climate data
+## Climates data
 
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
 
-| <small>Mean annual temperature (ºC)</small> | <small>Annual precipitation (mm year <sup>-1</sup>)</small>| <small>Biome (pollen-based)</small> |
-|----------|----------|----------|
-| <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="300px"> | <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="300px"> | <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="300px"> |
+::: {.column width="33%"}
+<small>Mean annual temperature (ºC)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="320px">
+:::
 
-<small>Mid-Holocene reconstruction (c. 6,000 BP), Beyer et *al.* 2020[^1]</small>
+::: {.column width="33%"}
+<small>Annual precipitation (mm year <sup>-1</sup>)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="320px">
+:::
 
-\
-\
+::: {.column width="33%"}
+<small>Biome (pollen-based)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="320px">
+:::
+<small>Mid-Holocene reconstruction (c. 6,000 BP), Beyer et *al.* 2020</small>[^1]
 
 [^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
+
+\
+\
+
+
 
 ::: notes
 - We use the *pastclim* R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)
@@ -287,7 +299,7 @@ Evolution of archaeological sites climates.
 
 ::: {.panel-tabset}
 
-### 8000 BC
+### 9,000 BC
 
 ::: columns
 
@@ -301,7 +313,21 @@ Evolution of archaeological sites climates.
 
 :::
 
-### 7000 BC
+### 8,000 BC
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 7,000 BC
 
 ::: columns
 
@@ -315,7 +341,7 @@ Evolution of archaeological sites climates.
 
 :::
 
-### 6000 BC
+### 6,000 BC
 
 ::: columns
 
@@ -329,7 +355,7 @@ Evolution of archaeological sites climates.
 
 :::
 
-### 5000 BC
+### 5,000 BC
 
 ::: columns
 
@@ -346,6 +372,7 @@ Evolution of archaeological sites climates.
 :::
 
 ::: notes
+- interpolation of radiocarbon dates -> isochrones
 - **8000 BC** `Cs*` (`Csa` and `Csb`: Temperate dry summer) are the CC of 90% of the EN sites in 8,000 BC. First settlements in Cyprus (`Csa` climate)
 - **7000 BC** Same two main Temperate dry summer climates (`Cs*`) with more `BW*` (`BWh` and `BWk`: Arid desert) climates. First settlements in Creta (`Csa` climate)
 - **6000 BC** ...
