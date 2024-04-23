@@ -11,7 +11,7 @@
     "href": "index.html#radiocarbon-data",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Radiocarbon data",
-    "text": "Radiocarbon data\n\nDatabasesNeonet equivalencesOutlier dates\n\n\n\n\n\n\n\n\nhttps://github.com/ropensci/c14bazAAR https://github.com/zoometh/neonet\n\n\n\n\n\nMapping table\n\n\n\nNeonet classes\n\n\n\nEM - Early Mesolithic\n\n\n\n\nMM - Middle Mesolithic\n\n\n\n\nLM - Late Mesolithic\n\n\n\n\nEN - Early Neolithic\n\n\n\n\nMN - Middle Neolithic\n\n\n\n\nLN - Late Neolithic\n\n\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nsome 4,000 dates are now available for the study."
+    "text": "Radiocarbon data\n\nDatabasesNeonet equivalencesOutlier dates\n\n\n\n\n\n\n\n\nhttps://github.com/ropensci/c14bazAAR https://github.com/zoometh/neonet\n\n\n\n\n\n\n\n\nNeonet classes\n\n\n\nEM - Early Mesolithic\n\n\n\n\nMM - Middle Mesolithic\n\n\n\n\nLM - Late Mesolithic\n\n\n\n\nEN - Early Neolithic\n\n\n\n\nMN - Middle Neolithic\n\n\n\n\nLN - Late Neolithic\n\n\n\n\n\n\nmapping table\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nsome 4,000 dates are now available for the study."
   },
   {
     "objectID": "index.html#climate-data",
@@ -46,14 +46,7 @@
     "href": "index.html#productible-methods",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": " productible methods",
-    "text": "productible methods\n\nModelingCultural dataClimate data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n https://github.com/zoometh/neonet\n\n\n https://github.com/EvolEcolGroup/pastclim\n\n\n\n\n\n\nDates curation\nPossibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
-  },
-  {
-    "objectID": "index.html#not-visible",
-    "href": "index.html#not-visible",
-    "title": "Climates during the Spread of Farming in Mediterranean",
-    "section": "NOT VISIBLE",
-    "text": "NOT VISIBLE\nModeling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSEMINARIO NEONET   25-26 April 2024, Alcalá de Henares (Spain)"
+    "text": "productible methods\n\nModelingCultural dataClimate data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhttps://github.com/zoometh/neonet\n\n\n https://github.com/EvolEcolGroup/pastclim\n\n\n\n\n\n\nDates curation\nPossibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
   },
   {
     "objectID": "index.html#footnotes",

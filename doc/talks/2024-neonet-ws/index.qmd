@@ -10,7 +10,7 @@ author:
     affiliation: 
       - id: up
         name: <span style="font-size:16pt">Università di Pisa</span>
-  - name: Andrea Manica (collaboration)
+  - name: <span style="font-size:16pt">with the collaboration of </span>Andrea Manica
     affiliation: 
       - id: uc
         name: <span style="font-size:16pt">University of Cambridge</span>
@@ -105,18 +105,16 @@ Periods are quoting moments. We use a conventional division in 3 phases, both fo
 
 ### Neonet equivalences
 
-::: {.column width="70%"}
-
-Mapping table
+::: {.column width="75%"}
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/asNeonetClass.png){width="700" style="horizontal-align: middle;"}
 :::
 
-::: {.column width="30%"}
+::: {.column width="25%"}
 
 Neonet classes
 
-<table style="font-size: 30px;">
+<table style="font-size: 35px;">
     <tr>
         <td><span style="color:#0000CF">EM - Early Mesolithic</span></td>
     </tr>
@@ -138,6 +136,10 @@ Neonet classes
 </table>
 
 
+:::
+
+::: notes
+- mapping table
 :::
 
 ### Outlier dates
