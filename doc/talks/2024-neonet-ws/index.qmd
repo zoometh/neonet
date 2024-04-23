@@ -16,7 +16,7 @@ author:
         name: <span style="font-size:16pt">University of Cambridge</span>
 title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img.png"
-    data-background-size: "120%"
+    data-background-size: "90%"
     data-background-opacity: "0.4"
     data-notes: Climate Types. Focus on the LM/EN transition. This presentation examines the spread of farming across the Mediterranean from 8,000 to 5,000 BC, using quantitative tools in R programming to analyse over 4,000 curated radiocarbon dates, alongside Köppen Climate Classification past reconstructions, to assess changes in the climates inhabited by the latest foragers and the earliest farmers
 format:
