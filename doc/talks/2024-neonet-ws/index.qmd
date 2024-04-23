@@ -236,45 +236,24 @@ The most ancient <span style="color: red;">EN</span> date median
 
 :::
 
-### Dates medians
+### Dates medians and Koppen classes
+
+<span style="color:#A9A9A9">6,500 BC -</span> 6,000 BC <span style="color:#A9A9A9">- 5,500 BC </span>
 
 
-<table>
-  <tr>
-    <th>time span<br><small>cal BC</small></th>
-    <th>KCC map</th>
-    <th>date</th>
-  </tr>
-  <tr>
-    <td class="tabtop-left">7500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k_.png" height="250"></td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
-  </tr>
-  <tr>
-    <td><b>7000</b></td>
-  </tr>
-  <tr>
-    <td class="tabbottom-left">6500</td>
-  </tr>
-  <tr>
-    <td class="tabtop-left">6500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" height="250"></td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
-  </tr>
-  <tr>
-    <td><b>6000</b></td>
-  </tr>
-  <tr>
-    <td class="tabbottom-left">5500</td>
-  </tr>
-</table>
+::: columns
 
-### Dates Koppen Classes
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" width="600">
+:::
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png)
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" width="500">
+:::
 
 :::
 
+:::
 
 ::: notes
 - 
@@ -291,11 +270,12 @@ The most ancient <span style="color: red;">EN</span> date median
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png)
 
 ::: notes
-Evolution of archaeological sites climates.
+Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9k BP)
+
 :::
 
 
-## Spread of farming by time slices
+## Spread of farming by time slices {data-visibility=hidden}
 
 ::: {.panel-tabset}
 
@@ -304,11 +284,11 @@ Evolution of archaeological sites climates.
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-spd.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_11k-spd.png){width="700" style="horizontal-align: middle;"}
 :::
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-iso.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_11k-iso.png){width="700" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -386,13 +366,39 @@ Evolution of archaeological sites climates.
 
 ### Modeling
 
-|  |  |  |
-|----------|----------|------------|
-| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}  | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}   | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"} |
+::: columns
+
+::: {.column width="33%"}
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}<br><small>Ammerman, A. J., & Cavalli-Sforza, L. L. (1971). Measuring the rate of spread of early farming in Europe. *Man*, 674-688.</small> 
+:::
+
+::: {.column width="33%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}<br><small>Fort, J. (2022). The spread of agriculture: quantitative laws in prehistory?. In *Simulating Transitions to Agriculture in Prehistory* (pp. 17-28). Cham: Springer International Publishing.</small>
+:::
+
+::: {.column width="33%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"}<br><small>Betti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., ... & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. *Nature Human Behaviour, 4*(10), 1004-1010.</small>
+:::
+
+:::
 
 ### Cultural data
 
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_strati.png" style="height: 50px;vertical-align: middle;"/>[<https://github.com/zoometh/neonet>]{.smalltext}
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
 
 
 ### Climate data
@@ -411,7 +417,7 @@ Evolution of archaeological sites climates.
 - Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
 :::
 
-# Conclusion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
+# Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
 
 ## NOT SHOW {data-visibility=hidden}
 
@@ -483,5 +489,53 @@ Evolution of archaeological sites climates.
 
 |  |  |
 |----------|----------|
-| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}  | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}   |
-| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"} | ![](https://raw.githubusercontent.com/zoometh/neonet/master/results/Isochrones-neolithic-isochr.png){width="400" style="horizontal-align: middle;"}   |
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}<br><small>Ammerman, A. J., & Cavalli-Sforza, L. L. (1971). Measuring the rate of spread of early farming in Europe. *Man*, 674-688.</small>  | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}<br><small>Fort, J. (2022). The spread of agriculture: quantitative laws in prehistory?. In *Simulating Transitions to Agriculture in Prehistory* (pp. 17-28). Cham: Springer International Publishing.</small>   |
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"}<br><small>Betti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., ... & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. *Nature Human Behaviour, 4*(10), 1004-1010.</small> | 
+
+## NOT VISIBLE {data-visibility=hidden}
+
+
+<table>
+  <tr>
+    <th>time span<br><small>cal BC</small></th>
+    <th>KCC map</th>
+    <th>date</th>
+  </tr>
+  <tr>
+    <td class="tabtop-left">7500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k_.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
+  </tr>
+  <tr>
+    <td><b>7000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">6500</td>
+  </tr>
+  <tr>
+    <td class="tabtop-left">6500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
+  </tr>
+  <tr>
+    <td><b>6000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">5500</td>
+  </tr>
+</table>
+
+### Dates Koppen Classes {data-visibility=hidden}
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png)
+
+:::
+
+
+::: notes
+- 
+- Extract on the radiocarbon date weighted median
+:::
+
+
+

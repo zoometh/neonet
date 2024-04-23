@@ -25,28 +25,21 @@
     "href": "index.html#climates-by-radiocarbon-dates",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Climates by radiocarbon dates",
-    "text": "Climates by radiocarbon dates\n\nDates selectionDates mediansDates Koppen Classes\n\n\n\n\nThe most recent LM date median \n\nThe most ancient EN date median \n\n\n\n\n\n\n\ntime spancal BC\n\n\nKCC map\n\n\ndate\n\n\n\n\n7500\n\n\n\n\n\n\n\n\n\n\n7000\n\n\n\n\n6500\n\n\n\n\n6500\n\n\n\n\n\n\n\n\n\n\n6000\n\n\n\n\n5500\n\n\n\n\n\n\n\n\n\n\n\n\nExtract on the radiocarbon date weighted median"
+    "text": "Climates by radiocarbon dates\n\nDates selectionDates medians and Koppen classes\n\n\n\n\nThe most recent LM date median \n\nThe most ancient EN date median \n\n\n\n\n6,500 BC - 6,000 BC - 5,500 BC \n\n\n\n\n\n\n\n\n\n\n\n\n\nExtract on the radiocarbon date weighted median"
   },
   {
     "objectID": "index.html#overall-evolution",
     "href": "index.html#overall-evolution",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Overall evolution",
-    "text": "Overall evolution\n\n\nEvolution of archaeological sites climates."
-  },
-  {
-    "objectID": "index.html#spread-of-farming-by-time-slices",
-    "href": "index.html#spread-of-farming-by-time-slices",
-    "title": "Climates during the Spread of Farming in Mediterranean",
-    "section": "Spread of farming by time slices",
-    "text": "Spread of farming by time slices\n\n8000 BC7000 BC6000 BC5000 BC\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n8000 BC Cs* (Csa and Csb: Temperate dry summer) are the CC of 90% of the EN sites in 8,000 BC. First settlements in Cyprus (Csa climate)\n7000 BC Same two main Temperate dry summer climates (Cs*) with more BW* (BWh and BWk: Arid desert) climates. First settlements in Creta (Csa climate)\n6000 BC …"
+    "text": "Overall evolution\n\n\nEvolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9k BP)"
   },
   {
     "objectID": "index.html#productible-methods",
     "href": "index.html#productible-methods",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": " productible methods",
-    "text": "productible methods\n\nModelingCultural dataClimate data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhttps://github.com/zoometh/neonet\n\n\n https://github.com/EvolEcolGroup/pastclim\n\n\n\n\n\n\nDates curation\nPossibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
+    "text": "productible methods\n\nModelingCultural dataClimate data\n\n\n\n\nAmmerman, A. J., & Cavalli-Sforza, L. L. (1971). Measuring the rate of spread of early farming in Europe. Man, 674-688.\n\nFort, J. (2022). The spread of agriculture: quantitative laws in prehistory?. In Simulating Transitions to Agriculture in Prehistory (pp. 17-28). Cham: Springer International Publishing.\n\nBetti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., … & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. Nature Human Behaviour, 4(10), 1004-1010.\n\n\n\n\nhttps://github.com/zoometh/neonet\n\n\n\n\n\n\n\n\n\n https://github.com/EvolEcolGroup/pastclim\n\n\n\n\n\n\nDates curation\nPossibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
   },
   {
     "objectID": "index.html#footnotes",
