@@ -356,3 +356,24 @@ gout <- neo_kcc_sankey(df_cc, col.req)
 ggsave(filename = paste0(outDir, period.names, "_kcc.png"),
        gout,
        width = 16, height = 12)
+
+source("R/neo_kcc_map.R")
+# kcc.per <- "koppen_9k"
+kcc.file <- c("koppen_6k", "koppen_7k", "koppen_8k",
+              "koppen_9k", "koppen_10k", "koppen_11k")
+for(kcc.per in kcc.file){
+  print(kcc.per)
+  df_cc_per <- df_cc[!is.na(df_cc[[kcc.per]]), ]
+  kcc <- paste0("C:/Rprojects/neonet/doc/data/clim/", kcc.per, ".tif")
+  gout <- neo_kcc_map(kcc = kcc,
+                      df.c14 = df_cc_per,
+                      roi = where,
+                      pt.size = .3,
+                      sys.proj = 32633)
+  ggplot2::ggsave(paste0("C:/Rprojects/neonet/doc/talks/2024-simep/img/", kcc.per, "_.png"),
+                  gout,
+                  width = 15,
+                  height = 10,
+                  units = "cm"
+  )
+}
