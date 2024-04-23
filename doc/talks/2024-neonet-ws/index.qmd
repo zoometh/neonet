@@ -15,7 +15,7 @@ author:
       - id: uc
         name: <span style="font-size:16pt">University of Cambridge</span>
 title-slide-attributes:
-    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"
+    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img.png"
     data-background-size: "120%"
     data-background-opacity: "0.4"
     data-notes: Climate Types. Focus on the LM/EN transition. This presentation examines the spread of farming across the Mediterranean from 8,000 to 5,000 BC, using quantitative tools in R programming to analyse over 4,000 curated radiocarbon dates, alongside Köppen Climate Classification past reconstructions, to assess changes in the climates inhabited by the latest foragers and the earliest farmers
@@ -235,7 +235,7 @@ The most ancient <span style="color: red;">EN</span> date median
   </tr>
   <tr>
     <td class="tabtop-left">7500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k_.png" height="250"></td>
     <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
   </tr>
   <tr>
@@ -246,7 +246,7 @@ The most ancient <span style="color: red;">EN</span> date median
   </tr>
   <tr>
     <td class="tabtop-left">6500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" height="250"></td>
     <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
   </tr>
   <tr>
@@ -259,7 +259,7 @@ The most ancient <span style="color: red;">EN</span> date median
 
 ### Dates Koppen Classes
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png)
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png)
 
 :::
 
