@@ -78,7 +78,7 @@ Meso <- neo_kcc_plotbar(df_cc = df_cc,
                         col.req = col.req,
                         selected.per = c("LM"),
                         title = "Late Mesolithic")
-# ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_meso_lm.png", Meso, width = 18, height = 10)
+# ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_meso_lm.png", Meso, width = 12, height = 7)
 Neo <- neo_kcc_plotbar(df_cc = df_cc, 
                        col.req = col.req,
                        selected.per = c("EN"),
