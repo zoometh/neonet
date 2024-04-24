@@ -209,6 +209,8 @@ df.to.rm %>%
 
 [^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
 
+:::
+
 
 ::: notes
 - We use the *pastclim* R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)
@@ -270,10 +272,6 @@ The most ancient <span style="color: red;">EN</span> date median
 
 ::: {.panel-tabset}
 
-### Overall evolution 
-
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png)
-
 ### Late Foragers
 
 ::: columns
@@ -304,6 +302,12 @@ The most ancient <span style="color: red;">EN</span> date median
 :::
 
 :::
+
+
+### Comparisons 
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png)
+
 
 :::
 

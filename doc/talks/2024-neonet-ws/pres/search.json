@@ -18,7 +18,7 @@
     "href": "index.html#climates-data",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Climates data",
-    "text": "Climates data\n::: {.panel-tabset}\nSources\n\n\nMean annual temperature (ºC)  Annual precipitation (mm year -1)  Biome (pollen-based) \n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\n images references: Mid-Holocene reconstruction (c. 6,000 BP), Beyer et al. 20201\n\n\n\n\nWe use the pastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nThe KCC system categorizes the world’s climates based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset.\nGCM (Global Circulation Models)"
+    "text": "Climates data\n\nSources\n\n\n\n\nMean annual temperature (ºC)  Annual precipitation (mm year -1)  Biome (pollen-based) \n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\n images references: Mid-Holocene reconstruction (c. 6,000 BP), Beyer et al. 20201\n\n\n\n\n\n\n\nWe use the pastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nThe KCC system categorizes the world’s climates based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset.\nGCM (Global Circulation Models)"
   },
   {
     "objectID": "index.html#climates-by-radiocarbon-dates",
@@ -32,7 +32,7 @@
     "href": "index.html#climates-evolution",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Climates evolution",
-    "text": "Climates evolution\n\nOverall evolutionLate ForagersEarly Farmers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEvolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9k BP)"
+    "text": "Climates evolution\n\nLate ForagersEarly FarmersComparisons\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEvolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9k BP)"
   },
   {
     "objectID": "index.html#productible-methods",
