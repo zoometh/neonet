@@ -42,7 +42,8 @@ format:
     width: 1200
 ---
 
-# Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
+# Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+
 
 ## Late Foragers and Early Farmers
 
@@ -79,13 +80,13 @@ format:
 Periods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:
 :::
 
-# Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
+# Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
 
 ## Radiocarbon data
 
 ::: {.panel-tabset}
 
-### Databases
+### Sources
 
 ::: columns
 ::: {.column width="60%"}
@@ -122,10 +123,10 @@ Neonet classes
         <td><span style="color:#1D1DFF">MM - Middle Mesolithic</span></td>
     </tr>
     <tr>
-        <td><span style="color:#3737FF">LM - Late Mesolithic</span></td>
+        <td><span style="color:#3737FF"><b>LM - Late Mesolithic</b></span></td>
     </tr>
     <tr>
-        <td><span style="color:#FF1B1B">EN - Early Neolithic</span></td>
+        <td><span style="color:#FF1B1B"><b>EN - Early Neolithic</b></span></td>
     </tr>
     <tr>
         <td><span style="color:#FF8D1B">MN - Middle Neolithic</span></td>
@@ -180,29 +181,33 @@ df.to.rm %>%
 
 ## Climates data
 
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
 
-::: {.column width="33%"}
+::: {.panel-tabset}
+
+### Sources
+
+::: columns
+::: {.column width="50%"}
 <small>Mean annual temperature (ºC)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="320px">
-:::
-
-::: {.column width="33%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="400px">
 <small>Annual precipitation (mm year <sup>-1</sup>)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="320px">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="400px">
+<small>Biome (pollen-based)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="400px">
+\
+\
+
 :::
 
-::: {.column width="33%"}
-<small>Biome (pollen-based)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="320px">
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><br><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/><br>[<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
+
+<small> images references: Mid-Holocene reconstruction (c. 6,000 BP), Beyer et *al.* 2020[^1]</small>
+
 :::
-<small>Mid-Holocene reconstruction (c. 6,000 BP), Beyer et *al.* 2020</small>[^1]
+:::
 
 [^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
-
-\
-\
-
 
 
 ::: notes
@@ -238,13 +243,11 @@ The most ancient <span style="color: red;">EN</span> date median
 
 ### Dates medians and Koppen classes
 
-<span style="color:#A9A9A9">6,500 BC -</span> 6,000 BC <span style="color:#A9A9A9">- 5,500 BC </span>
-
 
 ::: columns
 
 ::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" width="600">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" width="700">
 :::
 
 ::: {.column width="40%"}
@@ -263,7 +266,7 @@ The most ancient <span style="color: red;">EN</span> date median
 
 
 
-# Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
+# Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
 
 ## Overall evolution 
 
@@ -358,7 +361,7 @@ Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9
 - **6000 BC** ...
 :::
 
-# Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
+# Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
 
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
 
@@ -417,7 +420,7 @@ Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9
 - Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
 :::
 
-# Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/results/neonet_kcc_7k.png"}
+# Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
 
 ## NOT SHOW {data-visibility=hidden}
 
@@ -529,7 +532,8 @@ Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png)
 
-:::
+<span style="color:#A9A9A9">6,500 BC -</span> 6,000 BC <span style="color:#A9A9A9">- 5,500 BC </span>
+
 
 
 ::: notes
