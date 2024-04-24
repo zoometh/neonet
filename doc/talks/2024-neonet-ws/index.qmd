@@ -264,8 +264,6 @@ The most ancient <span style="color: red;">EN</span> date median
 :::
 
 
-
-
 # Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
 
 ## Climates evolution
@@ -275,11 +273,6 @@ The most ancient <span style="color: red;">EN</span> date median
 ### Overall evolution 
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png)
-
-::: notes
-Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9k BP)
-
-:::
 
 ### Late Foragers
 
@@ -293,9 +286,6 @@ Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9
 ::: {.column width="25%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo_legend.png){width="400" style="horizontal-align: middle;"}
 :::
-
-:::
-
 
 :::
 
@@ -315,6 +305,10 @@ Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9
 
 :::
 
+:::
+
+::: notes
+Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9k BP)
 
 :::
 

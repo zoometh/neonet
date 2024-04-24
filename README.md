@@ -500,6 +500,13 @@ Gives:
     <em>The neonet dataset over the KCC 7k</em>
 </p>
 
+Or:
+
+```R
+
+
+```
+
 To assess what were the climates classes that where inhabited in the past, during the Late Mesolithic (LM) and Middle Mesolithic (MM) based on previous dates
 
 ```R

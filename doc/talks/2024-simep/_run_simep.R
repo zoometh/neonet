@@ -83,6 +83,7 @@ Neo <- neo_kcc_plotbar(df_cc = df_cc,
                        col.req = col.req,
                        selected.per = c("EN"),
                        title = "Early Neolithic")
+# ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_neo_en.png", Neo, width = 12, height = 7)
 source("R/neo_kcc_legend.R")
 kcc.legend <- neo_kcc_legend(df_cc = df_cc, 
                              long.legend = TRUE)
