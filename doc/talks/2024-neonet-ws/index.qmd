@@ -299,7 +299,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="75%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_lm.png){width="900" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_lm-1.png){width="900" style="horizontal-align: middle;"}
 \
 \
 
@@ -318,7 +318,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="75%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_neo_en.png){width="900" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_neo_en-1.png){width="900" style="horizontal-align: middle;"}
 
 \
 \
