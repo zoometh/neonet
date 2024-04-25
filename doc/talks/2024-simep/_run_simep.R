@@ -72,13 +72,16 @@ source("R/neo_kcc_plotbar.R")
 Meso <- neo_kcc_plotbar(df_cc = df_cc, 
                         col.req = col.req,
                         selected.per = c("LM"),
+                        counts.show.size = 4,
                         title = "Late Mesolithic")
-# ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_meso_lm.png", Meso, width = 12, height = 7)
+Meso
+# ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_meso_lm-1.png", Meso, width = 10, height = 6)
 Neo <- neo_kcc_plotbar(df_cc = df_cc, 
                        col.req = col.req,
                        selected.per = c("EN"),
+                       counts.show.size = 4,
                        title = "Early Neolithic")
-# ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_neo_en.png", Neo, width = 12, height = 7)
+# ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_neo_en.png", Neo, width = 10, height = 6)
 source("R/neo_kcc_legend.R")
 kcc.legend <- neo_kcc_legend(df_cc = df_cc, 
                              long.legend = TRUE)
@@ -242,12 +245,14 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      calibrate = FALSE,
                      shw.dates = TRUE,
                      lbl.dates = FALSE,
-                     lbl.dates.size = 2.5,
-                     lbl.time.interv = TRUE)
-isochr$map
+                     lbl.dates.size = 2,
+                     lbl.time.interv = TRUE,
+                     lbl.time.interv.size = 12)
+# isochr$map
 
 ## To save
-# ggplot2::ggsave(paste0(root.path, "EN_kcc_11k-iso.png"), isochr$map, width = 14, height = 10)
+ggplot2::ggsave(paste0(root.path, "EN_kcc_8k-iso-not.png"), isochr$map, width = 9, height = 6)
+# ggplot2::ggsave(paste0(root.path, "EN_kcc_8k-iso-not.png"), isochr$map, width = 14, height = 10)
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
