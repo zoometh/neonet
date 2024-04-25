@@ -18,7 +18,7 @@ title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img.png"
     data-background-size: "90%"
     data-background-opacity: "0.3"
-    data-notes: Climate Types. Focus on the LM/EN transition. This presentation examines the spread of farming across the Mediterranean from 8,000 to 5,000 BC, using quantitative tools in R programming to analyse over 4,000 curated radiocarbon dates, alongside Köppen Climate Classification past reconstructions, to assess changes in the climates inhabited by the latest foragers and the earliest farmers
+    data-notes: Climate Types. Focus on the LM/EN transition. Examines the spread of farming across the Mediterranean from 9,000 to 4,000 BC and Assess changes in the climates inhabited by the latest foragers and the earliest farmers. Quantitative tools in R programming to analyse over 4,000 curated radiocarbon dates. And 6 past reconstructions Köppen Climate Classification covering 6 milleniums (slices of 1000 years each). Development both for the datasets and methods. Reproductibility.
 format:
   revealjs: 
     css: https://zoometh.github.io/thomashuet/css/quarto.css
@@ -44,6 +44,9 @@ format:
 
 # Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
 
+::: notes
+Introduce the archaeological cultures. Materials and Methods.
+:::
 
 ## Late Foragers and Early Farmers
 
@@ -53,7 +56,7 @@ format:
   </tr>
   <tr>
     <td rowspan="3">Baume de Montclus<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png"></td>
-    <td style="font-size: 25px;"><span style="color:#0000CF">EM - Early Mesolithic</span> Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocene transition. Late Last Glacial Maximum climate.</td>
+    <td style="font-size: 20px;"><span style="color:#0000CF">EM - Early Mesolithic</span> Continuation of the hunter-gatherer lifestyle. Pleistocene/Holocene transition. Late Last Glacial Maximum climate.</td>
   </tr>
   <tr>
     <td style="font-size: 25px;"><span style="color:#1D1DFF">MM - Middle Mesolithic</span> Increased specialization in tool production, territorialisation. New climates: new species.</td>
@@ -69,7 +72,7 @@ format:
     <td style="font-size: 25px;"><span style="color:#FF8D1B">MN - Middle Neolithic</span> Craftware, crops and livestock specialization. Deforestation. Warm and stable climate.</td>
   </tr>
   <tr>
-    <td style="font-size: 25px;"><span style="color:#FFC04D">LN - Late Neolithic</span> Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions.</td>
+    <td style="font-size: 20px;"><span style="color:#FFC04D">LN - Late Neolithic</span> Apparition of copper industry. Marginal land brought into cultivation. More variable climate conditions.</td>
   </tr>
 </table>
 
@@ -77,20 +80,25 @@ format:
 \
 
 ::: notes
-Periods are quoting moments. We use a conventional division in 3 phases, both for the Mesolithic and Neolithic, a standardized and heuristic way to represent the evolution of a culture. Here it represents, large brushes:
+The different periods defines characteristic anthropological moments. Conventional division in 3 phases, both for the Mesolithic and Neolithic. Standardized and heuristic way to represent the evolution of a culture. We represent here, using large brushes
 :::
 
 # Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+
+::: notes
+Data: radiocarbon dates and palaeoclimatic data.
+:::
 
 ## Radiocarbon data
 
 ::: {.panel-tabset}
 
+
 ### Sources
 
 ::: columns
 ::: {.column width="60%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/dbs_counts.png){width="600" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/dbs_counts.png){width="500" style="horizontal-align: middle;"}
 \
 \
 
@@ -140,7 +148,9 @@ Neonet classes
 :::
 
 ::: notes
-- mapping table
+- 8 different databases and datasets. Among which 2 are the Neonet datasets.
+- mapping table. Periodo
+- 
 :::
 
 ### Outlier dates
@@ -458,7 +468,13 @@ Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9
 - Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
 :::
 
-# Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+# Conclusion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+
+
+::: notes
+- Contribution: mapping table.
+:::
+
 
 ## NOT SHOW {data-visibility=hidden}
 

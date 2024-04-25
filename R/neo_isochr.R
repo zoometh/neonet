@@ -266,7 +266,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     }
     capt <- paste0(periods, " | isochrones on the earliest weighted medians | ",
                    nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
-                   "Map: ", kcc.info, " (BP)")
+                   "Map: ", kcc.info, "")
   } else {
     tit <- paste("Mesolithic")
     if(nb.contours < 3){
@@ -274,12 +274,12 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     }
     capt <- paste0(periods, " | isochrones on the latest weighted medians | ",
                    nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
-                   "Map: ", kcc.info, " (BP)")
+                   "Map: ", kcc.info, "")
   }
   # create map
   if(is.na(kcc.file)){
     map <- ggplot2::ggplot(world) +
-      ggplot2::geom_sf(color = '#595959', fill = "white")
+      ggplot2::geom_sf(color = '#7a7a7a', fill = "white")
   } else {
     map <- ggplot2::ggplot() +
       ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) + 
@@ -333,8 +333,11 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                                 ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
                                 skip = 0,
                                 rotate = TRUE,
-                                stroke = .2,
-                                size = lbl.time.interv.size)
+                                stroke = 0.3, 
+                                stroke.colour = "white",
+                                # size = lbl.time.interv.size,
+                                colour = "black", size = 4.5, fontface = "bold"
+                                )
     } else {
       # only one selected contour
       contour_data <- ggplot2::ggplot_build(ggplot2::ggplot(interp_df, ggplot2::aes(x = lon, y = lat, z = date.med)) + 

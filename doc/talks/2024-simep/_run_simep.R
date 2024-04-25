@@ -1,12 +1,11 @@
-library(c14bazAAR)
-library(dplyr)
-library(ggplot2)
-library(grid)
-library(gridExtra)
-library(sf)
-library(rnaturalearth)
+# library(c14bazAAR)
+# library(dplyr)
+# library(ggplot2)
+# library(grid)
+# library(gridExtra)
+# library(sf)
+# library(rnaturalearth)
 
-getwd()
 source("R/config.R")
 
 ## done
@@ -56,11 +55,7 @@ df.c14 <- neo_dbs_align(df = df,
 
 ###################################################
 ##### shortcut: load the 'df14_simep.csv' file ####
-# samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
-# samp_df <- read.csv(samp_df)
-# df.c14 <- samp_df[sample(1:nrow(samp_df), 150), ]
-# #           OR
-# df.c14 <- samp_df
+# df.c14 <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 ###################################################
 
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
@@ -229,7 +224,6 @@ source("R/neo_isochr.R")
 #######################
 #### Pioneer front ####
 #######################
-df.c14 <- samp_df
 source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14)
 
@@ -238,11 +232,11 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -9000,
+                     isochr.subset = -6000,
                      # isochr.subset = c(-8000, -7500),
                      # where = where,
                      selected.per = "EN",
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif",
+                     # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif",
                      # kcc.file = NA, # "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
                      isochr.line.size = .5,
                      calibrate = FALSE,
