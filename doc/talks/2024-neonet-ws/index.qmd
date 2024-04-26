@@ -433,7 +433,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 # Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
 
 ::: notes
-
+Rproductible methods. Enhancement of cultural and climatic data
 :::
 
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
@@ -477,6 +477,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 
+
 ### Climate data
 
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
@@ -489,15 +490,17 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 ::: notes
+- All models are wrong but some are usefull
 - Dates curation
 - Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
 :::
 
 # Conclusion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
 
+<https://github.com/zoometh/neonet>
 
 ::: notes
-- Contribution: mapping table.
+- Contribution: mapping table (archaeologists), interpolation methods (mathematician), aggregating data from other sources (aDNA, etc.), etc.
 :::
 
 
