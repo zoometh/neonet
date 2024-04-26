@@ -342,10 +342,9 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 ::: notes
-- Late foragers:
-- Early farmers: Evolution of archaeological sites climates from 9,000 BC (11k BP) to 5,000 BC (9k BP)
-- comparisons: 
-
+- Late foragers: Drop of the inhabited cold climates from 11k BP to 7k BP. In 9k BP newly occupied occupied Cold, dry summer, cold summer, possibly corresponding to the higher mountain range (Atlas, Alps, Pyrenees, etc.)
+- Early Farmers: 11k and 10k 2 main climates, continuous area: Fertile Crescent. Arid climates increases in 9k: arid margins (oasis). 8k and 7k: neolithisation of cold and temperated areas (Bulgaria, Southern Germany, etc.)
+- Comparison: LM occupied a larger diversity of ecozones. EF replace HG in cold climate over 4,000 years  
 :::
 
 ## Spread of farming by time slices {data-visibility=hidden}
@@ -432,6 +431,10 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 # Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+
+::: notes
+
+:::
 
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
 
