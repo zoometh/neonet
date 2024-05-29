@@ -436,6 +436,8 @@ Creates these KCC GeoTiffs:
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_7k|
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_6k|
 
+<em>Past Koppen Climate Classification calculated in Kyears BP with the pastclim R package</em>
+
 ### Classes
 
 The Koppen Climate Classes are listed [here](https://github.com/zoometh/neonet/blob/main/inst/extdata/koppen.tsv)
