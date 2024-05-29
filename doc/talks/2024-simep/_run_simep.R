@@ -72,14 +72,14 @@ source("R/neo_kcc_plotbar.R")
 Meso <- neo_kcc_plotbar(df_cc = df_cc, 
                         col.req = col.req,
                         selected.per = c("LM"),
-                        counts.show.size = 4,
+                        counts.show.size = 3,
                         title = "Late Mesolithic")
 Meso
 # ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_meso_lm-1.png", Meso, width = 10, height = 6)
 Neo <- neo_kcc_plotbar(df_cc = df_cc, 
                        col.req = col.req,
                        selected.per = c("EN"),
-                       counts.show.size = 4,
+                       counts.show.size = 3,
                        title = "Early Neolithic")
 # ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_neo_en-.png", Neo, width = 10, height = 6)
 source("R/neo_kcc_legend.R")

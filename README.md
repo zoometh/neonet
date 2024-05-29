@@ -425,7 +425,7 @@ neo_kcc_create()
 
 Creates these KCC GeoTiffs:
 
-KCC are created as GeoTiffs using the pastclim package
+<a name="kcc-past"></a> KCC are created as GeoTiffs using the R pastclim package
 
 | Geotiff image | description |
 |----------|----------|
