@@ -356,7 +356,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   }
   if(shw.dates){
     if(verbose){
-      print(paste0("Add dates"))
+      print(paste0("Add dates to the map"))
     }
     if(!test_subset){
       map <- map +
