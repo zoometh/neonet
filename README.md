@@ -231,11 +231,12 @@ Gives a dataframe where all fields have been renamed to be parsed with the Neone
 
 #### Outlier dates
 
-To filter aberrant dates, a combination of different function allow to retrieve the current information (once mapped to the Neonet layout) of these potential outliers and their original information (from their source database)  
+To filter aberrant dates, a combination of different function allow to retrieve the current information (once mapped to the Neonet layout) of these potential outliers and their original information (from their source database).
+
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-4.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-2.png"
 " width="600">
   <br>
     <em>KCC and isochrone for 8000 calBC (10ka BP). Here the dates 147 (circled in red), 198 and 367 seem aberrant</em>
@@ -307,6 +308,7 @@ By default, dates having a dash prefix in their `sourcedb` column will be skippe
     <em>Screenshot of the 'c14_to_remove2.tsv' table</em>
 </p>
 
+A template script to run this operatin: [run_outliers.R](https://github.com/zoometh/neonet/blob/main/doc/run_outliers.R)
 
 ### SPD plot
 

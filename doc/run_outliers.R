@@ -2,6 +2,22 @@
 ## see: https://github.com/zoometh/neonet?tab=readme-ov-file#outlier-dates
 ########################
 
+# fdate <- function(LabCode = NA,
+#                   columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
+#   # return info on a date from its LabCode
+#   if(inherits(df.c14, "sf")){
+#     a.date <- as.character(na.omit(
+#       sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns],
+#                           NULL)
+#     )[1,])
+#   }
+#   if(is.data.frame(df.c14)){
+#     a.date <- as.character(na.omit(
+#       df.c14[df.c14$LabCode == LabCode, columns]
+#     )[1,])
+#   }
+#   cat(paste(a.date, collapse = "\t"), "\n")
+# }
 
 # Download the R functions using https://download-directory.github.io/
 # and this URL https://github.com/zoometh/neonet/tree/main/R
@@ -34,16 +50,19 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      calibrate = FALSE,
                      shw.dates = TRUE,
                      lbl.dates = TRUE,
-                     lbl.dates.size = 3,
+                     lbl.dates.size = 2.5,
                      lbl.time.interv = TRUE)
 isochr$map
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
 source("R/neo_dbs_info_date_src.R")
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 75)
-abber.date <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
-neo_dbs_info_date_src(db = abber.date$sourcedb, 
-                      LabCode = abber.date$LabCode)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 639)
+ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
+
+## Not run
+# ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = ad$labcode)
+# neo_dbs_info_date_src(db = ad$sourcedb, 
+#                       LabCode = ad$LabCode)
 
 # Add outlier dates in this dataframe: https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv 

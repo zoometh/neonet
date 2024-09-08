@@ -53,10 +53,9 @@ df.c14 <- neo_dbs_align(df = df,
 # library(rcarbon)
 
 
-###################################################
-##### shortcut: load the 'df14_simep.csv' file ####
+######################## shortcut: load the 'df14_simep.csv' file
 # df.c14 <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
-###################################################
+# ----------------------------------------------------------------
 
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 # unique(xxx$Period)
@@ -224,9 +223,8 @@ source("R/neo_isochr.R")
 #                       lbl.dates = TRUE,
 #                       lbl.time.interv = FALSE)
 
-#######################
-#### Pioneer front ####
-#######################
+########## Pioneer front ###########
+
 source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14)
 
@@ -317,11 +315,7 @@ source("R/neo_spd.R")
 source("R/neo_spdplot.R")
 neo_spd(df.c14 = df.c14[c(1), ])
 
-#######################
-#### Plot one date ####
-#######################
-
-
+############# Plot one date ####
 
 f3per <- function(df.c14 = NA){
   # find sites having different periods represented, for example "EN", "MN", "LN", to illustrate the different moments (respectively: early farmers, long-distance trade, copper industry) or "EM", "MM", "LM". For example "Baume de Montclus" has all the Mesolithic represented, while "Franchthi Cave" has all the Neolithic represented
@@ -393,9 +387,9 @@ for(kcc.per in kcc.file){
   )
 }
 
-##############
-## Study ####
+############## ## Study ####
 # bar plot + map by period and ky
+
 source("R/neo_kcc_plotbar.R")
 source("R/neo_kcc_map.R")
 per <- "EN"
