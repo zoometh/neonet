@@ -11,6 +11,10 @@
 #' @return A ggplot
 #'
 #' @examples
+#' 
+#' neo_kcc_sankey(df_cc, col.req = col.req, 
+#'                selected.per = c("EN", "MM"), 
+#'                outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 #'
 #' @export
 neo_kcc_sankey <- function(df_cc = NA,

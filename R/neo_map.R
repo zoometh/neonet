@@ -2,7 +2,7 @@
 #' 
 #' @name neo_map
 #' 
-#' @description map 
+#' @description Create a distribution map of the region of interest (roi) of selected radiocarbon dates.
 #'
 #' @param map.name name of the output map and the name of the saved file (if export.plot is TRUE). Default "NeoNet_atl".
 #' @param df.c14 Path to the dataset (Google Sheet) or the dataset itself (dataframe, sf). 
@@ -14,7 +14,7 @@
 #' @param dates.within.roi Plot only dates located inside the ROI. Default: TRUE.
 #' @param width,height dimension of the output map, if exported.
 #'
-#' @return A map
+#' @return A ggplot
 #'
 #' @examples
 #'

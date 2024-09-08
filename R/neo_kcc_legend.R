@@ -11,6 +11,8 @@
 #'
 #' @examples
 #'
+#' kcc.legend <- neo_kcc_legend(df_cc = df_cc, 
+#'                              long.legend = TRUE)
 #'                    
 #' @export
 neo_kcc_legend <- function(df_cc = NA,

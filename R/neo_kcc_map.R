@@ -9,7 +9,7 @@
 #' @param roi A sf object (optional).
 #' @param sys.proj A new EPSG for a reprojection. Example: `32633` (= UTM 33N, Central Mediterranean). Default NA
 #'
-#' @return 
+#' @return A ggplot
 #'
 #' @examples
 #' 

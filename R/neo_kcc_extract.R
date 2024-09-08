@@ -1,6 +1,6 @@
 #' @name neo_kcc_extract
 #'
-#' @description Extract Koppen Climate Classes (KCC) from one or different KCC SpatRaster (`kcc_file`) using the median calibrated date form a `sf` dataframe of dates (`df.c14`). For example KCC 6k (i.e. -6000) entails dates having their medians between -6500 and -5500 calBC.
+#' @description Extract Koppen Climate Classes (KCC) from one or different KCC SpatRaster (`kcc_file`) using the weighted median of calibrated radiocarbon date form a `sf` dataframe of dates (`df.c14`). For example KCC 6k (i.e. -6000) entails dates having their medians between -6500 and -5500 calBC.
 #' 
 #' @param df.c14 A `sf` dataframe of dates.
 #' @param present KCC are always in cal BP with present = 2000.
@@ -10,11 +10,15 @@
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param verbose if TRUE (default) then display different messages.
 #'
-#' @return
+#' @return An `sf` object
 #'
 #' @examples
 #'
-#'
+#' df.c14 <- neo_calib(df.c14)
+#' df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
+#' kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+#'               "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+#' df_cc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
 #'
 #' @export
 neo_kcc_extract <- function(df.c14 = NA,

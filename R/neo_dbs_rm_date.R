@@ -1,6 +1,6 @@
 #' @name neo_dbs_rm_date
 #'
-#' @description Remove unaccurate/abberant dates. The latter are listed in a TSV file. Not always there is enough evidences to discard these dates, dates having a "-" as a prefix in their database name (ex: "-bda") are escaped ( 
+#' @description Remove unaccurate/outlier dates. The latter are listed in a TSV file. There is not necessarly enough evidences to discard these dates, dates having a "-" as a prefix in their database name (ex: "-bda") are escaped.
 #'
 #' @param df.c14 A dataframe. 
 #' @param c14.to.remove The list of dates to remove in a dataframe TSV format.

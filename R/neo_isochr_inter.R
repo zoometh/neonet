@@ -1,6 +1,6 @@
 #' @name neo_isochr_inter
 #'
-#' @description Interpolate dates to create isochrones. convert this to a long form dataframe. Creates edge detection to identify isochrone barriers.
+#' @description Interpolate dates to create isochrones. Convert an input dataframe into a long form. Creates edge detection to identify isochrone barriers. This function is called by `neo_isochr()`
 #'
 #' @param df a dataframe
 #' @param edge.detection If TRUE will create an edge detection. Default FALSE. 
@@ -8,7 +8,7 @@
 #' @param n.connectivity N-connectivity: 4 or 8.
 #' @param verbose if TRUE (default) then display different messages.
 #'
-#' @return A matrix for `neo_isochr()`
+#' @return A matrix.
 #'
 #' @examples
 #' 

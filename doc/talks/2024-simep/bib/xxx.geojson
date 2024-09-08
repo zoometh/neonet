@@ -1,0 +1,21 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+	  {
+		"type": "Feature",
+		"properties": {
+		  "name": "Çatalhöyük",
+		  "climate_period": "8200 cal yr BP event",
+		  "temporal_start": "ca. 8400 cal yr BP",
+		  "temporal_end": "ca. 8000 cal yr BP",
+		  "Koppen_classification": "Presumed BSk (Semi-arid Steppe)",
+		  "observations": "Decreased rainfall and increased aridity linked to rapid climate changes."
+		},
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [32.8264, 37.6671]
+		}
+	  }
+	]
+  }
+  

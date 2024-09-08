@@ -1,6 +1,6 @@
 #' @name neo_kcc_extract
 #'
-#' @description Extract Koppen Climate Classes (KCC) from one or different KCC SpatRaster (`kcc_file`) using the median calibrated date form a `sf` dataframe of dates (`df.c14`). For example KCC 6k (i.e. -6000) encompasses dates having their medians between -6500 and -5500 calBC. Creates stacked plotbars of radiocarbon dates sums by KCC.
+#' @description Extract Koppen Climate Classes (KCC) from one or different KCC SpatRaster (`kcc_file`) using the weighted median of calibrated radiocarbon dates form a `sf` dataframe of dates (`df.c14`). For example KCC 6k (i.e. -6000) encompasses dates having their medians between -6500 and -5500 calBC. Creates stacked plotbars of radiocarbon dates sums by KCC.
 #' 
 #' @param df_cc A sf dataframe or a dataframe.
 #' @param col.req A vector of column names having KCC values (ex: `c("koppen_6k", "koppen_7k")`.
@@ -13,7 +13,7 @@
 #' @param counts.show Show the sites' count on the stacked plots. Default: TRUE.
 #' @param verbose if TRUE (default) then display different messages.
 #'
-#' @return
+#' @return A ggplot
 #'
 #' @examples
 #'
@@ -91,6 +91,9 @@ neo_kcc_plotbar <- function(df_cc = NA,
                    "| periods:", capt, "| n =", nrow(df), "dates")
   kcc_colors.sub <- kcc_colors[names(kcc_colors) %in% unique(df_long$value)]
   df_long <- na.omit(df_long)
+  if(verbose){
+    print(paste0("Create the stacked plot bar for", selected.per))
+  }
   gout <- ggplot2::ggplot(df_long, 
                           ggplot2::aes(x = koppen_type, y = percentage, fill = factor(value))) +
     ggplot2::geom_bar(stat = "identity", position = "fill") +
@@ -133,6 +136,9 @@ neo_kcc_plotbar <- function(df_cc = NA,
     gout <- gout +
       ggplot2::theme(legend.position = "none",
                      axis.title.x = ggplot2::element_blank())
+  }
+  if(verbose){
+    print(paste0("Export the plot"))
   }
   return(gout)
 }

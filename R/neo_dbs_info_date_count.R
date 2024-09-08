@@ -1,8 +1,8 @@
 #' @name neo_dbs_info_date_count
 #'
-#' @description Copied from https://github.com/ropensci/c14bazAAR. Creates a plot with histogram and maps of dates coming from different databases.
+#' @description Copied from https://github.com/ropensci/c14bazAAR, function: `README_map_figure()` Creates a plot with histogram and maps of dates coming from different databases.
 #'
-#' @param df_filtered A sf dataframe. 
+#' @param df_filtered A `sf` dataframe. 
 #' @param roi Spatial intersection (sf object)
 #' @param n.col For the maps layout: number of columns.
 #' @param verbose if TRUE (default) then display different messages.

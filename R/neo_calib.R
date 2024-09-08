@@ -1,11 +1,12 @@
 #' @name neo_calib
 #'
-#' @description Calibrate the radiocarbon dates, calculate tpq / taq and the median
+#' @description Calibrate radiocarbon dates, calculate tpq / taq and the weighted median
 #'
 #' @param df.c14 A dataframe. The original XLSX with neonet columns (SiteName, Period, etc.) with with checked values (see: neo_subset)
 #' @param intCal calibration curve
 #' @param ci Confidence interval. Default 0.95 (95%)
 #' @param present to calibrate from BP (1950).
+#' @param stat.mean If TRUE, will calculate the mean of the calibrated dates in addition to the weighted median.
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param verbose if TRUE (default) then display different messages.
 #'
@@ -22,7 +23,6 @@ neo_calib <- function(df.c14 = NA,
                       intCal = 'intcal20',
                       ci = 0.95,
                       present = 1950,
-                      stat.median = TRUE,
                       stat.mean = FALSE,
                       ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                       verbose = TRUE,

@@ -1,6 +1,6 @@
 #' @name neo_dbs_info_date
 #'
-#' @description Return info on a date from its LabCode. This function is usefull once dbs have been parsed (neo_dbs_parse) and aligned (neo_dbs_align) to spot outliers (i.e. abberant dates)
+#' @description Return info on a date from its LabCode. This function is usefull once different databases have been parsed (`neo_dbs_parse()`) and aligned (`neo_dbs_align()`) in order to spot outliers (i.e. abberant dates)
 #'
 #' @param LabCode The LabCode of the date to check. 
 #' @param columns The list of columns to display.
