@@ -43,7 +43,7 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -7000,
+                     isochr.subset = -6500,
                      selected.per = "EN",
                      kcc.file = NA, 
                      isochr.line.size = 1,
@@ -57,12 +57,12 @@ isochr$map
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
 source("R/neo_dbs_info_date_src.R")
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 639)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 345)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 
 ## Not run
-# ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = ad$labcode)
-# neo_dbs_info_date_src(db = ad$sourcedb, 
-#                       LabCode = ad$LabCode)
+ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
+neo_dbs_info_date_src(db = ad$sourcedb,
+                      LabCode = ad$LabCode)
 
 # Add outlier dates in this dataframe: https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv 
