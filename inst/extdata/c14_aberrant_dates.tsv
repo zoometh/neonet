@@ -55,6 +55,7 @@ bda	MC-428	Sablière	-6451	Néolithique ancien	Cardial	marked as 'mediocre' in '
 calpal	Mc-440	La Sablière	-6451	Neolithic	Cardial	Probably like MC-428 which is marked as 'mediocre' in 'bda'
 calpal	Mc-428	La Sablière	-6451	Neolithic	Cardial	Duplicate of MC-428 (case sensitive), marked as 'mediocre' in 'bda'
 bda	MC-440	Sablière	-6450	Néolithique ancien	Cardial	marked as 'mediocre' in 'bda' 
+calpal	Mc-429	La Sablière	-6229	Neolithic	Cardial	Probably like other dates from the same site. To confirmed 
 bda	Kn-182	Font-des-Pigeons	-6380	Néolithique ancien	Cardial	marked as 'mediocre' in 'bda'. Kn-1182 is rejected in Manen and Sabatier 2003 
 neonet	KN-182	Abri de la Font-des-Pigeons	-6380	EN	None	Duplicate of Kn-182 
 bda	LY-3945 (OxA)	Pas de l’Échelle	-6455	Néolithique ancien	None	marked as 'mediocre' in 'bda'
@@ -65,3 +66,5 @@ neonet	Gif-1962	Abri de Curacchiaghju	-6456	EN	None	Rejected in Manen and Sabati
 neonet	Z-3399	Crno Vrilo	-6406	EN	None	Mentioned as 'not reliable' in Tab. 1 in Kačar, S. (2019). Impressed ware Blade production of northern Dalmatia (Eastern Adriatic, Croatia) in the context of Neolithisation. Documenta Praehistorica, 46, 352-374.
 calpal	Deb-2733	Maroslele-Panahát	-6352	Neolithic	Körös	Mentioned as 'outliers' in Anders, A., & Siklósi, Z. (2012). The First Neolithic Sites in Central/South-East European Transect. Volume III: The Körös Culture in Eastern Hungary. BAR Publishing.
 calpal	Ly-4302	Cova de les Cendres	-6384	Neolithic	Cardial	probable mix: 'The original date for Cendres CC3 (Ly-4302) probably derives from a mix of charcoal from ceramic and pre-ceramic depositional contexts' in Auban, J. B., Barton, C. M., & Ripoll, M. P. (2001). A taphonomic perspective on Neolithic beginnings: theory, interpretation, and empirical data in the Western Mediterranean. Journal of Archaeological Science, 28(6), 597-612.
+neonet	CNA-2682.1.1	Balma Margineda	-6295	EN	None	Rejected in Oms, F. X., Mazzucco, N., Santos, F. J., Guilaine, J., Subirà, M., & Gibaja, J. F. (2018). Les dades radiocarbòniques i la seva anàlisi durant el Neolític a les Valls d’Andorra.
+neonetatl	Ly-758	Longetraye	-6282	EN	None	Mentioned 'faire preuve d'une extreme prudence' in Philibert, D. (1982). Le gisement préhistorique de Longetraye (Haute-Loire), avec un appendice de Claude Chopelin. Revue Archéologique du centre de la France, 21(1), 3-25.
