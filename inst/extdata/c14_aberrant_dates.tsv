@@ -41,8 +41,8 @@ bda	P-2095	Franchthi	-6882	Néolithique ancien	None	marked as 'mediocre' in 'bda
 neonet	GrA-59634	Abrigo de l'Esplugon	-6541	EN	None	Mesolithic in Domingo, Rafael, et al. Call it home: Mesolithic dwellings in the Ebro Basin (NE Spain). Journal of Archaeological Science: Reports 18 (2018): 1036-1052.
 neonet	Beta-210733	Font del Ros	-6621	EN	None	Mesolithic in  Gómez-Puche, M., & Fernández-López de Pablo, J. (2024). SPATIOTEMPORAL PATTERNS ON THE APPEARANCE OF THE FIRST TRAPEZE INDUSTRIES IN THE LATE MESOLITHIC OF THE IBERIAN PENINSULA. Radiocarbon, 66(1), 59–100. doi:10.1017/RDC.2024.6 
 neonet	MC-500	Cap Ragnon	-6509	EN	None	Considered as 'too early' in Guilaine, J. (1979). The earliest Neolithic in the West Mediterranean: a new appraisal. Antiquity, 53(207)
-calpal	Mc-500	Cap Ragnon	-6509	Neolithic	Cardial	Duplicate "too early" in Guilaine, J. (1979). The earliest Neolithic in the West Mediterranean: a new appraisal. Antiquity, 53(207)
-calpal	Mc-500B	Grotte du Cap Ragnon	-6509	Neolithic	Cardial	Duplicate "too early" in Guilaine, J. (1979). The earliest Neolithic in the West Mediterranean: a new appraisal. Antiquity, 53(207)
+calpal	Mc-500	Cap Ragnon	-6509	Neolithic	Cardial	Duplicate 'too early' in Guilaine, J. (1979). The earliest Neolithic in the West Mediterranean: a new appraisal. Antiquity, 53(207)
+calpal	Mc-500B	Grotte du Cap Ragnon	-6509	Neolithic	Cardial	Duplicate 'too early' in Guilaine, J. (1979). The earliest Neolithic in the West Mediterranean: a new appraisal. Antiquity, 53(207)
 neonet	UGAMS-3825(AA-098)	Campu Stefanu	-6529	EN	None	Mesolithic in Lugliè, C. (2018). Your path led trough the sea… the emergence of Neolithic in Sardinia and Corsica. Quaternary International, 470, 285-300.
 neonet	BM-2139R	Grotta Filiestru	-6621	EN	None	Mentioned as 'BM-2139R comes from a non-archaeological level' in Tykot, Robert Howard. Prehistoric trade in the Western Mediterranean: the sources and distribution of Sardinian obsidian. Harvard University, 1995
 calpal	GrN-?42	Swifterband	-6599	Meso/Neo	Swifterbant	Period: Meso/Neo in calpal, note the typo
