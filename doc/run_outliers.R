@@ -1,4 +1,4 @@
-## Spot outlier dates ##
+## Spot outiler dates ##
 ## see: https://github.com/zoometh/neonet?tab=readme-ov-file#outlier-dates
 ########################
 

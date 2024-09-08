@@ -92,7 +92,7 @@ neo_kcc_plotbar <- function(df_cc = NA,
   kcc_colors.sub <- kcc_colors[names(kcc_colors) %in% unique(df_long$value)]
   df_long <- na.omit(df_long)
   if(verbose){
-    print(paste0("Create the stacked plot bar for", selected.per))
+    print(paste0("Create the stacked plot bar for: ", selected.per))
   }
   gout <- ggplot2::ggplot(df_long, 
                           ggplot2::aes(x = koppen_type, y = percentage, fill = factor(value))) +

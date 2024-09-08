@@ -32,6 +32,8 @@ neo_kcc_map <- function(kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                         roi = NA,
                         sys.proj = NA,
                         pt.size = .5,
+                        lbl.dates = FALSE,
+                        lbl.dates.size = 2,
                         verbose = TRUE){
   # create a KCC map with dates (df.c14). The latter is a sf dataframe
   cc.ky <- DescTools::SplitPath(kcc)$filename 
@@ -80,7 +82,7 @@ neo_kcc_map <- function(kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
       ggplot2::geom_sf(data = df.c14, color = "black", size = pt.size) + # +  # Add the sf object
       # ggplot2::coord_sf(crs = sf::st_crs(sys.proj))  # Use coordinate system from sf object
       ggplot2::coord_sf(xlim = c(roi$xmin, roi$xmax), ylim = c(roi$ymin, roi$ymax))
-        
+    
     
     # if(!inherits(roi, "sf")){
     #   roi <- sf::st_bbox(df.c14)
@@ -89,6 +91,26 @@ neo_kcc_map <- function(kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
     #   roi <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
     #   roi <- sf::st_bbox(roi)
     # }
+    if(lbl.dates){
+      if(!("idf_nn" %in% colnames(df.c14))){
+        if(verbose){
+          print(paste0("Creates the column new unique IDs"))
+        }
+        df.c14$idf <- 1:nrow(df.c14)
+      }
+      # df.c14.wgs84 <- sf::st_transform(df.c14, 4326)
+      coords <- sf::st_coordinates(df.c14)
+      df.c14$longitude <- coords[ , 1]
+      df.c14$latitude <- coords[ , 2]
+      gout <- gout +
+        ggrepel::geom_text_repel(data = df.c14, 
+                                 ggplot2::aes(x = longitude, y = latitude, label = idf),
+                                 size = lbl.dates.size,
+                                 point.padding = grid::unit(5, "pt"),
+                                 segment.alpha = .3,
+                                 segment.size = .3,
+                                 max.overlaps = Inf)
+    }
   }
   if(!inherits(df.c14, "sf")){
     tit <- paste0(cc.ky)

@@ -235,7 +235,7 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -6000,
+                     isochr.subset = -7000,
                      # isochr.subset = c(-8000, -7500),
                      # where = where,
                      selected.per = "EN",
@@ -258,7 +258,7 @@ source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
 source("R/neo_dbs_info_date_src.R")
 
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 159)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 220)
 abber.date <- neo_dbs_info_date(abber.date$labcode)
 neo_dbs_info_date_src(db = abber.date$sourcedb, 
                       LabCode = abber.date$LabCode)
@@ -392,3 +392,29 @@ for(kcc.per in kcc.file){
                   units = "cm"
   )
 }
+
+##############
+## Study ####
+# bar plot + map by period and ky
+source("R/neo_kcc_plotbar.R")
+source("R/neo_kcc_map.R")
+per <- "EN"
+df_cc_per <- df_cc[!is.na(df_cc[["koppen_9k"]]), ]
+df_cc_per <- df_cc_per[df_cc_per[["Period"]] == per, ]
+neo_kcc_plotbar(df_cc = df_cc, 
+                col.req = col.req,
+                selected.per = per,
+                counts.show.size = 3,
+                title = "Early Neolithic")
+gout <- neo_kcc_map(kcc = kcc,
+            df.c14 = df_cc_per,
+            roi = where,
+            pt.size = 1,
+            lbl.dates = TRUE,
+            sys.proj = 32633)
+ggplot2::ggsave(paste0("C:/Rprojects/neonet/doc/talks/2024-simep/img/", kcc.per, "_", per, ".png"),
+                gout,
+                width = 15,
+                height = 10,
+                units = "cm"
+)

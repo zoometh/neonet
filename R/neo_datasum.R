@@ -1,6 +1,6 @@
 #' @name neo_datasum
 #'
-#' @description summarise dataset: spatial and chronological extend, n dates, etc.
+#' @description Summarise dataset: spatial and chronological extend, n dates, etc.
 #'
 #' @param df.c14 the original XLSX with neonet columns (SiteName, Period, etc.) with with checked values (see: neo_subset)
 #' @param verbose if TRUE (default) then display different messages.
@@ -10,6 +10,28 @@
 #' @examples
 #'
 #' neo_datasum(info = "stats", export = F)
+#' 
+#' # Med dataset
+#' df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/140_140_id00140_doc_elencoc14 (4).tsv", sep = "\t")
+#' neo_datasum(df.c14, info = c("maps"),
+#'             roi = "C:/Rprojects/neonet/doc/data/wsh_med.geojson",
+#'             ncol = 2,
+#'             dirOut = "C:/Rprojects/neonet/results/",
+#'             fileOut = "neo_med_datasum_by_periods.png",
+#'             height = 16,
+#'             width = 8,
+#'             export = T)
+#'            
+#' # Atl dataset
+#' df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t")
+#' neo_datasum(df.c14, info = c("maps"),
+#'             roi = "C:/Rprojects/neonet/doc/data/wsh_atl.geojson",
+#'             ncol = 2,
+#'             export = T,
+#'             height = 16, 
+#'             width = 8,
+#'             dirOut = "C:/Rprojects/neonet/results/",
+#'             fileOut = "neo_atl_datasum_by_periods.png")
 #'
 #' @export
 neo_datasum <- function(df.c14,
@@ -291,23 +313,4 @@ neo_datasum <- function(df.c14,
   }
 }
 
-# df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/140_140_id00140_doc_elencoc14 (4).tsv", sep = "\t")
-# # df.c14 <- df.c14[1:100, ]
-# neo_datasum(df.c14, info = c("maps"),
-#             roi = "C:/Rprojects/neonet/doc/data/wsh_med.geojson",
-#             ncol = 3,
-#             dirOut = "C:/Rprojects/neonet/results/",
-#             fileOut = "med_test1.png",
-#             height = 11, 
-#             width = 14,
-#             export = T)
 
-df.c14 <- read.csv("C:/Rprojects/neonet/inst/extdata/id00164_doc_elencoc14.tsv", sep = "\t")
-neo_datasum(df.c14, info = c("maps"),
-            roi = "C:/Rprojects/neonet/doc/data/wsh_atl.geojson",
-            ncol = 2,
-            export = T,
-            height = 16, 
-            width = 8,
-            dirOut = "C:/Rprojects/neonet/results/",
-            fileOut = "neo_atl_datasum_by_periods.png")

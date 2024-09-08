@@ -5,7 +5,7 @@
 NeoNet serves as a framework to investigate the transition between the Late Mesolithic and Early Neolithic periods, in the North-Central Mediterranean (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">loc</a>) and European South Atlantic river basin (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson" target="_blank">loc</a>), by offering:
 1. [curated datasets](https://github.com/zoometh/neonet?tab=readme-ov-file#neonet-datasets)
 2. [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-);
-3. [R functions](https://github.com/zoometh/neonet#neonet-functions)
+3. [R functions](https://github.com/zoometh/neonet#neonet-functions--radiocarbon-management-)
 
 <p align="center">
 <br>
@@ -235,7 +235,7 @@ To filter aberrant dates, a combination of different function allow to retrieve 
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-2.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-4.png"
 " width="600">
   <br>
     <em>KCC and isochrone for 8000 calBC (10ka BP). Here the dates 147 (circled in red), 198 and 367 seem aberrant</em>
