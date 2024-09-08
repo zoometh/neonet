@@ -9,10 +9,12 @@ NeoNet serves as a framework to investigate the transition between the Late Meso
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_datasum_by_periods.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_med_datasum_by_periods.png"
+" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_atl_datasum_by_periods.png"
 " width="500">
   <br>
-    <em>The NeoNet Med dataset filtered by periods</em>
+    <em>The NeoNet Med and NeoNet Atl datasets filtered by periods</em>
 </p>
 
 Studied periods are listed in the [periods.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/periods.tsv) table:
