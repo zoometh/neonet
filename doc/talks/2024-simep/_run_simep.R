@@ -246,7 +246,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates.size = 2,
                      lbl.time.interv = TRUE,
                      lbl.time.interv.size = 12)
-# isochr$map
+isochr$map
 
 ## To save
 ggplot2::ggsave(paste0(root.path, "EN_kcc_8k-iso-not.png"), isochr$map, width = 9, height = 6)
