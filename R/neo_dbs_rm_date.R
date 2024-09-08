@@ -21,7 +21,8 @@ neo_dbs_rm_date <- function(df.c14 = NA,
                             selected.cols = c("sourcedb", "LabCode", "SiteName", "median", "db_period"),
                             escape.pattern = "^-",
                             verbose = TRUE){
-  df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
+  # df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
+  df.to.rm <- read.csv2(c14.to.remove, sep = "\t", header = TRUE)
   df.to.rm <- df.to.rm[!grepl(escape.pattern, df.to.rm$sourcedb), ]
   if(verbose){
     print(paste0(nrow(df.to.rm), " dates to be removed:"))
