@@ -14,26 +14,26 @@ radon	UtC-2322	Klein Denkte	-8251	Neolithic?	LBK?	marked 'Neolithic? LBK?', see:
 calpal	I-10463	Can Ballester	-6006	Neolithic	Cardial	origin: Balsera
 bda	UGAMS-3825 (AA-098)	Campu Stefanu	-6592	Néolithique ancien	Ceramica Impressa	marked as 'mediocre' in 'bda', origin: Cesari et al. 2011 p. 278
 radon	UtC-1830	Eitzum 2	-8612	älteste LBK	Linienbandkeramik	the date seems to only exist in radon. ref: Stäuble 1995, 234 Tab. 1
-calpal	UBAR-31	Cova 120	-8029	EN	None	To be confirmed, ref: van Willigen 2006
+calpal	UBAR-31	Cova 120	-8029	EN	None	To confirmed, ref: van Willigen 2006
 radon	KN-1395	Königsaue, ehemaliger Gaterslebener See	-8674	EN	None	unclear
-radon	UtC-1832	Eitzum 2	-8193	älteste LBK	Linienbandkeramik	To be confirmed, ref: Stäuble 1995, 234 Tab. 1
+radon	UtC-1832	Eitzum 2	-8193	älteste LBK	Linienbandkeramik	To confirmed, ref: Stäuble 1995, 234 Tab. 1
 bda	LY-6043	La Lède-du-Gurp	-7123	EN	Néolithique ancien	ref: Roussot-Larroque 1995 3 - médiocre
-radon	UtC-1834	Klein Denkte	-7020	älteste LBK	Linienbandkeramik	To be confirmed, ref: Stäuble 1995, 234 Tab. 1
-radon	KN-3044/45	Schwanfeld	-7085	ältere LBK	Linienbandkeramik	To be confirmed
-bda	MC-1239	Poujade	-7297	Néolithique ancien	Roucadourien	To be confirmed, ref: Arnal 1995, p.72. Marked as comment = 'inconnue' in bda
-neonet	Gif-3077	Grotte de Camprafaud	-7135	EN	None	To be confirmed
-bda	Arias_2009_x1	Chica de Santiagio	-7215.05	EN	None	To be confirmed
-neonetatl	GaK-8953	Cueva de la Dehesilla	-7375.05	EN	None	To be confirmed
-calpal	Beta-116624	Cova de le Cendres	-7508	Neolithic	Cardial	To be confirmed
-bda	Lyon-4174 (SacA-7431)	Cap Ragnon	-7918	Néolithique ancien	Cardial	To be confirmed
-calpal	Mc-500A	Grotte du Cap Ragnon	-7187	Neolithic	Cardial	To be confirmed
-calpal	Mc-500-A	Cap Ragnon	-7199	Neolithic	Cardial	To be confirmed
-neonet	MC-500-A	Cap Ragnon	-7190 	EN	None	To be confirmed
-calpal	UtC-22	Grotte dell Corbeddu	-7407.05	Epipalaeolithic	Cardial	To be confirmed
-neonet	BM-2557	Coppa Nevigata	-7352.05	EN	None	To be confirmed
-bda	P-1999	Casa San Paolo	-7027	Néolithique ancien	Ceramica Impressa	To be confirmed
-radon	OxA-12857	Ecsegfalva	-7021	EN	None	To be confirmed
-calpal	OxA-27408	Akanthou	-8295	Neolithic	Aceramic	To be confirmed, ref: Oxford Datelist 2014
+radon	UtC-1834	Klein Denkte	-7020	älteste LBK	Linienbandkeramik	To confirmed, ref: Stäuble 1995, 234 Tab. 1
+radon	KN-3044/45	Schwanfeld	-7085	ältere LBK	Linienbandkeramik	To confirmed
+bda	MC-1239	Poujade	-7297	Néolithique ancien	Roucadourien	To confirmed, ref: Arnal 1995, p.72. Marked as comment = 'inconnue' in bda
+neonet	Gif-3077	Grotte de Camprafaud	-7135	EN	None	To confirmed
+bda	Arias_2009_x1	Chica de Santiagio	-7215.05	EN	None	To confirmed
+neonetatl	GaK-8953	Cueva de la Dehesilla	-7375.05	EN	None	To confirmed
+calpal	Beta-116624	Cova de le Cendres	-7508	Neolithic	Cardial	To confirmed
+bda	Lyon-4174 (SacA-7431)	Cap Ragnon	-7918	Néolithique ancien	Cardial	To confirmed
+calpal	Mc-500A	Grotte du Cap Ragnon	-7187	Neolithic	Cardial	To confirmed
+calpal	Mc-500-A	Cap Ragnon	-7199	Neolithic	Cardial	To confirmed
+neonet	MC-500-A	Cap Ragnon	-7190 	EN	None	To confirmed
+calpal	UtC-22	Grotte dell Corbeddu	-7407.05	Epipalaeolithic	Cardial	To confirmed
+neonet	BM-2557	Coppa Nevigata	-7352.05	EN	None	To confirmed
+bda	P-1999	Casa San Paolo	-7027	Néolithique ancien	Ceramica Impressa	To confirmed
+radon	OxA-12857	Ecsegfalva	-7021	EN	None	To confirmed
+calpal	OxA-27408	Akanthou	-8295	Neolithic	Aceramic	To confirmed, ref: Oxford Datelist 2014
 katsianis	UCLA-1657A	Argissa Magoula	-7127	None	Early Neolithic I	Considered as 'controversial' here: http://www.14sea.org/3_IIc.html 
 katsianis	Q-655	Nea Nikomedeia	-7181	None	Early Neolithic	Rejected here: http://www.14sea.org/3_IId.html, see C. Perlès (2001, 100–101, table 6.1)
 katsianis	UCLA-1657D	Argissa Magoula	-6889	None	Early Neolithic I	Rejected here: http://www.14sea.org/3_IIc.html, see Table 1 published by Protsch and Berger (1973, 236)
@@ -50,4 +50,11 @@ radon	UtC-1840	Kleinsorheim	-6581	älteste LBK	Linienbandkeramik	Mentioned 'Neol
 calpal	OxA-9403	Maroslele-Panahát	-6584	Neolithic	Körös	Excluded in Blagojević, Tamara, et al. 'Early Neolithic population dynamics in the eastern Balkans and the Great Hungarian Plain' Documenta Praehistorica 44 (2017): 18-33.
 neonetatl	Beta-164712	São Pedro de Canaferrim	-6569	EN	None	Mentioned as 'datem estratos sem cerâmica cardial' in SIMÕES, TERESA. 'A ocupação do Neolítico antigo de São Pedro de Canaferrim: novos dados em perspectiva.' Muita gente, poucas antas (2003): 115-134.
 bda	PA-2472	Abou Tamsa	-6532	Néolithique ancien	None	marked as 'mediocre' in 'bda', see: Élodie de Faucamberge, “Néolithisation et néolithique en cyrénaïque (Libye)”, Encyclopédie berbère, 34 | 2012, 5474-5481.
-
+neonet	OxA-26070	Cova del Toll	-5403	EN	None	Mentioned as 'the possibility that both are ibex cannot be excluded' in Martins, H., Oms, F. X., Pereira, L., Pike, A. W., Rowsell, K., & Zilhão, J. (2015). Radiocarbon dating the beginning of the Neolithic in Iberia: new results, new problems. Journal of Mediterranean Archaeology, 28(1), 105-131.
+bda	MC-428	Sablière	-6451	Néolithique ancien	Cardial	marked as 'mediocre' in 'bda'
+bda	Kn-182	Font-des-Pigeons	-6380	Néolithique ancien	Cardial	marked as 'mediocre' in 'bda'
+bda	LY-3945 (OxA)	Pas de l’Échelle	-6455	Néolithique ancien	None	marked as 'mediocre' in 'bda'
+neonet	Ly-3945(OxA)	Abri du Pas de l'Echelle	-6455	EN	None	Mentioned as 'Second Mesolithique' in Bintz, P., Millet, J. J., & Oberlin, C. (2018). L’abri-sous-roche du Pas de l’Échelle (Rovon, Vercors, Isère), chronostratigraphie, composantes culturelles et cadre régional. Collection EDYTEM. Cahiers de géographie, 20(1), 119-140. 
+calpal	Mc-2343	La Caucade	-6441	Neolithic	Impressa	Absent from the fig. 8 in Manen, C., Convertini, F., Binder, D., Beeching, A., Briois, F., Bruxelles, L., ... & Sénépart, I. (2004). Premier résultats du projet ACR “Productions céramiques des premières sociétés paysannes”. L’exemple des faciès impressa du Sud de la France. Paysages et Peuplements. Aspects culturels et chronologiques en France méridionale. Actualité de la recherche, Actes des Sixièmes Rencontres Méridonales de Préhistoire Récente, Périgueux, 233-246.
+neonet	MC-2343	Caucade	-6441	EN	None	Absent from the fig. 8 in Manen, C., Convertini, F., Binder, D., Beeching, A., Briois, F., Bruxelles, L., ... & Sénépart, I. (2004). Premier résultats du projet ACR “Productions céramiques des premières sociétés paysannes”. L’exemple des faciès impressa du Sud de la France. Paysages et Peuplements. Aspects culturels et chronologiques en France méridionale. Actualité de la recherche, Actes des Sixièmes Rencontres Méridonales de Préhistoire Récente, Périgueux, 233-246.
+ 

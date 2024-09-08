@@ -39,7 +39,7 @@ neo_dbs_info_date <- function(LabCode = NA,
   df.out.cat <- sf::st_drop_geometry(df.out)
   if(aberrant_dates == "aberrant_dates"){
     if(verbose){
-      print(paste0("Print in 'aberrant dates' format"))
+      print(paste0("Layout for 'aberrant dates' format:"))
     }
     df.out.cat$comments <- NA # to match the 'aberrant dates' TSV format
     df.out.cat$median <- round(df.out.cat$median, 0)
