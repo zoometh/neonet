@@ -43,7 +43,7 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -5000, # -6200
+                     isochr.subset = -5800, # -6200
                      selected.per = "EN",
                      kcc.file = NA,
                      # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
