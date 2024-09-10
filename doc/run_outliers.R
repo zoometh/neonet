@@ -43,7 +43,7 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -6200, # -6200
+                     isochr.subset = -6100, # -6200
                      selected.per = "EN",
                      kcc.file = NA,
                      # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
@@ -59,6 +59,7 @@ source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
 abber.date <- neo_find_date(df = isochr$data, idf.dates = 125)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
+# Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
 ## Not run
 source("R/neo_dbs_info_date_src.R")
