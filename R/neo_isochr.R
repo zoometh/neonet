@@ -232,7 +232,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   ## basemap
   if(is.na(kcc.file)){
     if(verbose){
-      print(paste0("Will use a neutral basemap (rnaturalearth)"))
+      print(paste0("Neutral basemap (rnaturalearth)"))
       kcc.info <- "natural earth"
     }
     world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")}
@@ -365,6 +365,9 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                             col = "black",
                             alpha = .5,
                             size = 1)
+      if(verbose){
+        print(paste0("Add date labels to the map"))
+      }
       if(lbl.dates){
         map <- map +
           ggrepel::geom_text_repel(data = df, 

@@ -57,7 +57,7 @@ isochr$map
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 125)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 769)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
