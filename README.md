@@ -2,7 +2,7 @@
 # NeoNet
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk), [Niccolò Mazzucco](mailto:niccolo.mazzucco@unipi.it), [Miriam Cubas Morera](mailto:mcubas.morera@gmail.com), [Juan Gibaja](mailto:jfgibaja@gmail.com), [F. Xavier Oms](mailto:oms@ub.edu), [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com), [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com), [Elías López-Romero](elias.lopez-romero@iam.csic.es)</sub>
 
-NeoNet serves as a framework to investigate the transition between the Late Mesolithic and Early Neolithic periods, in the North-Central Mediterranean (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">loc</a>) and European South Atlantic river basin (<a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson" target="_blank">loc</a>), by offering:
+NeoNet serves as a framework to investigate the transition between the Late Mesolithic and Early Neolithic periods by offering:
 1. [curated datasets](https://github.com/zoometh/neonet?tab=readme-ov-file#neonet-datasets)
 2. [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-);
 3. [R functions](https://github.com/zoometh/neonet#neonet-functions--radiocarbon-management-)
@@ -12,7 +12,7 @@ NeoNet serves as a framework to investigate the transition between the Late Meso
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_med_datasum_by_periods.png" width="400">
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_atl_datasum_by_periods.png" width="400">
   <br>
-    <em>The NeoNet Med and NeoNet Atl datasets filtered by periods</em>
+    Neonet datasets: NeoNet Med (North-Central Mediterranean, <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">loc</a>) and NeoNet Atl (European South Atlantic river basin, <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson" target="_blank">loc</a>) filtered by periods.
 </p>
 
 Studied periods are listed in the [periods.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/periods.tsv) table:
