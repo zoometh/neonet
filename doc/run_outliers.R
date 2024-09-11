@@ -58,7 +58,7 @@ isochr$map
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 196)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 766)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
@@ -66,7 +66,6 @@ ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 source("R/neo_dbs_info_date_src.R")
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 neo_dbs_info_date_src(db = ad$sourcedb,
-                      # db = "bda",
                       LabCode = ad$LabCode)
 
 # Add outlier dates in this dataframe: https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv 
