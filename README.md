@@ -9,8 +9,8 @@ NeoNet serves as a framework to investigate the transition between the Late Meso
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_med_datasum_by_periods.png" width="400">
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_atl_datasum_by_periods.png" width="400">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_med_datasum_by_periods.png" width="350">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/neo_atl_datasum_by_periods.png" width="350">
   <br>
     Neonet datasets: "NeoNet Med" (North-Central Mediterranean, <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">location</a>) and "NeoNet Atl" (European South Atlantic river basin, <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson" target="_blank">location</a>), here filtered by periods.
 </p>
