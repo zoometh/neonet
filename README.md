@@ -305,10 +305,15 @@ By default, dates having a dash prefix in their `sourcedb` column will be skippe
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-3.png"
 " width="800">
   <br>
-    <em>Screenshot of the 'c14_to_remove2.tsv' table</em>
+    <em>Screenshot of the 'c14_to_remove.tsv' table</em>
 </p>
 
 A template script to run this operatin: [run_outliers.R](https://github.com/zoometh/neonet/blob/main/doc/run_outliers.R)
+
+#### Wrong coordinates
+
+Site coordinates can be wrong, for example for the Jordian site of Sabha ([Xronos](https://xronos.ch/sites/12960) | [Google maps](https://maps.app.goo.gl/r4GEuFyzwysAwLe89)). Curated coordinates are listed in the [c14_corrected_coordinates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_corrected_coordinates.tsv) file and handle by the `neo_dbs_coord_dates()` function.
+
 
 ### SPD plot
 
@@ -676,6 +681,10 @@ Using `neo_leapfrog(DT = T)` to merge dataframe from NeoNet and Leapfrog on comm
 <img src="https://github.com/historical-time/caa23/blob/main/neonet/results/NN_and_LF.gif" width="800"><br>
 <em>Screen capture of [NN_and_LF.html](https://historical-time.github.io/caa23/neonet/results/NN_and_LF.html)</em>
 </p>
+
+## Sibling projects
+
+There are mainy IT-based projects dealing with radiocarbon dates, such as the comprehensive platform [Xronos](https://xronos.ch/), the radiocarbon aggregator [C14bazAAR](https://github.com/ropensci/c14bazAAR), and many others, see the [open-archaeo](https://open-archaeo.info/tags/radiocarbon-dating-calibration-and-sequencing/) site
 
 
 ## Documentation
