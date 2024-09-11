@@ -24,7 +24,7 @@
 
 getwd()
 
-where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
+where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi_cyprus.geojson"
 present <- 1950
 when <- c(-9000, -4000)
 where <- sf::st_read(where.roi,
@@ -43,8 +43,9 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -6100, # -6200
+                     isochr.subset = -5900, # c(-6000, -6100, -6200), # -5900 to do
                      selected.per = "EN",
+                     # where = where,
                      kcc.file = NA,
                      # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
                      isochr.line.size = 1,
@@ -57,7 +58,7 @@ isochr$map
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 769)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 196)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
@@ -65,6 +66,7 @@ ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 source("R/neo_dbs_info_date_src.R")
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 neo_dbs_info_date_src(db = ad$sourcedb,
+                      # db = "bda",
                       LabCode = ad$LabCode)
 
 # Add outlier dates in this dataframe: https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv 

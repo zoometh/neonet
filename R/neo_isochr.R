@@ -4,7 +4,7 @@
 #'
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
 #' @param selected.per the period selected. Default "EN".
-#' @param where A sf to limit the analysis. Deafult NA.
+#' @param where A sf dataframe to limit the analysis. Default NA.
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
 #' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000) in BC.
 #' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff, or a SpatRaster.
@@ -261,15 +261,15 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   periods <- paste0(unique(df.dates$Period), collapse = " ")
   if(neolithic){
     tit <- paste("Neolithic")
-    if(nb.contours < 3){
+    if(nb.contours < 5){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
-    }
+    } else {subtit <- paste0("XXX") }
     capt <- paste0(periods, " | isochrones on the earliest weighted medians | ",
                    nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
                    "Map: ", kcc.info, "")
   } else {
     tit <- paste("Mesolithic")
-    if(nb.contours < 3){
+    if(nb.contours < 5){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     }
     capt <- paste0(periods, " | isochrones on the latest weighted medians | ",
