@@ -2,7 +2,7 @@
 # NeoNet
 > <sub>[Thomas Huet](mailto:thomas.huet@arch.ox.ac.uk), [Niccolò Mazzucco](mailto:niccolo.mazzucco@unipi.it), [Miriam Cubas Morera](mailto:mcubas.morera@gmail.com), [Juan Gibaja](mailto:jfgibaja@gmail.com), [F. Xavier Oms](mailto:oms@ub.edu), [António Faustino Carvalho](mailto:a.faustino.carvalho@gmail.com), [Ana Catarina Basilio](mailto:catarinasbasilio@gmail.com), [Elías López-Romero](elias.lopez-romero@iam.csic.es)</sub>
 
-NeoNet serves as a framework to study the transition from the Late Mesolithic ![#3737FF](https://placehold.co/15x15/3737FF/3737FF.png) to the Early Neolithic [#FF1B1B](https://placehold.co/15x15/FF1B1B/FF1B1B.png) through spatio-temporal modeling of radiocarbon dates and by offering:
+NeoNet serves as a framework to study the transition from the Late Mesolithic ![#3737FF](https://placehold.co/15x15/3737FF/3737FF.png) to the Early Neolithic ![#FF1B1B](https://placehold.co/15x15/FF1B1B/FF1B1B.png) through spatio-temporal modeling of radiocarbon dates and by offering:
 
 1. [curated datasets](https://github.com/zoometh/neonet?tab=readme-ov-file#neonet-datasets)
 2. [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-);
