@@ -15,6 +15,8 @@ NeoNet serves as a framework to investigate the transition between the Late Meso
     Neonet datasets: "NeoNet Med" (North-Central Mediterranean, <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_med.geojson" target="_blank">location</a>) and "NeoNet Atl" (European South Atlantic river basin, <a href="https://github.com/zoometh/neonet/blob/main/doc/data/wsh_atl.geojson" target="_blank">location</a>), here filtered by periods.
 </p>
 
+* **Studied periods**
+
 Studied periods are listed in the [periods.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/periods.tsv) table:
 
 | period | period_full_name             | color                                                                 |
