@@ -2,29 +2,12 @@
 ## see: https://github.com/zoometh/neonet?tab=readme-ov-file#outlier-dates
 ########################
 
-# fdate <- function(LabCode = NA,
-#                   columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture")){
-#   # return info on a date from its LabCode
-#   if(inherits(df.c14, "sf")){
-#     a.date <- as.character(na.omit(
-#       sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns],
-#                           NULL)
-#     )[1,])
-#   }
-#   if(is.data.frame(df.c14)){
-#     a.date <- as.character(na.omit(
-#       df.c14[df.c14$LabCode == LabCode, columns]
-#     )[1,])
-#   }
-#   cat(paste(a.date, collapse = "\t"), "\n")
-# }
+# Download the R functions using https://download-directory.github.io/ and this URL https://github.com/zoometh/neonet/tree/main/R
 
-# Download the R functions using https://download-directory.github.io/
-# and this URL https://github.com/zoometh/neonet/tree/main/R
-
-getwd()
+# getwd()
 
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi_cyprus.geojson"
+# where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-middle-east.geojson"
 present <- 1950
 when <- c(-9000, -4000)
 where <- sf::st_read(where.roi,
@@ -38,23 +21,27 @@ df.c14 <- neo_dbs_coord_dates(df.c14, verbose = FALSE)
 
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 
+# remove aberrant dates listed in 'c14_aberrant_dates.tsv'
 source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
                                c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
+
+# remove dates having a C14SD superior to..
+df_filtered <- df_filtered[df_filtered$C14SD < 101, ]
 
 source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = -8000, # c(-6000, -6100, -6200), # -5500 to do
+                     isochr.subset = c(-5500), # c(-5500, -6000, -6500), # - 5500 TODO
                      selected.per = "EN",
                      # where = where,
-                     # kcc.file = NA,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+                     kcc.file = NA,
+                     # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
                      isochr.line.size = 1,
                      calibrate = FALSE,
-                     # lbl.dates = TRUE,
+                     lbl.dates = TRUE,
                      lbl.dates.size = 2.5,
                      lbl.time.interv = TRUE)
 isochr$map
@@ -62,7 +49,7 @@ isochr$map
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 33)
+abber.date <- neo_find_date(df = isochr$data, idf.dates = 758)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
