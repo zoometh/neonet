@@ -239,7 +239,7 @@ To filter aberrant dates, a combination of different function allow to retrieve 
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-2.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/image-2.png"
 " width="600">
   <br>
     <em>KCC and isochrone for 8000 calBC (10ka BP). Here the dates 147 (circled in red), 198 and 367 seem aberrant</em>
@@ -305,7 +305,7 @@ By default, dates having a dash prefix in their `sourcedb` column will be skippe
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/image-3.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/image-3.png"
 " width="800">
   <br>
     <em>Screenshot of the 'c14_to_remove.tsv' table</em>
