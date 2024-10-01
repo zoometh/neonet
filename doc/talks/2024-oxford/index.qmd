@@ -48,6 +48,10 @@ format:
 Introduce the archaeological cultures. Materials and Methods.
 :::
 
+## An ecologic and economic revolution
+
+
+
 ## Late Foragers and Early Farmers
 
 <table style="font-size: 30px;">
@@ -130,14 +134,17 @@ Data: radiocarbon dates and palaeoclimatic data.
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 90px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 110px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
 
 :::
+
 :::
 
 
-### Data alignment
+### Alignment
 
 ::: {.column width="70%"}
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/asNeonetClass.png){width="800" style="horizontal-align: middle;"}
+<small>[ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx)</small>
+
 :::
 
 ::: {.column width="30%"}
@@ -165,7 +172,6 @@ Neonet classes
     </tr>
 </table>
 
-
 :::
 
 ::: notes
@@ -174,7 +180,46 @@ Neonet classes
 - Using 
 :::
 
-### Outlier dates
+### Date selection
+
+
+::: columns
+
+::: {.column width="50%"}
+The most recent <span style="color: blue;">LM</span> date median
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-lm-montefrignone.png)
+:::
+
+::: {.column width="50%"}
+The most ancient <span style="color: red;">EN</span> date median
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-en-baratin.png)
+:::
+
+:::
+
+### Dates medians
+
+
+::: columns
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" width="500">
+:::
+
+::: {.column width="60%"}
+
+> Show code
+
+:::
+
+:::
+
+::: notes
+- For a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)
+- Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
+:::
+
+### Outlier
 
 
 ```{r, message=FALSE}
@@ -261,48 +306,7 @@ Mid-Holocene (c. 6,000 BP)<br>
 ## Climate dating by site
 
 
-::: {.panel-tabset}
 
-
-### Date selection
-
-
-::: columns
-
-::: {.column width="50%"}
-The most recent <span style="color: blue;">LM</span> date median
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-lm-montefrignone.png)
-:::
-
-::: {.column width="50%"}
-The most ancient <span style="color: red;">EN</span> date median
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-en-baratin.png)
-:::
-
-:::
-
-### Dates medians
-
-
-::: columns
-
-::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" width="500">
-:::
-
-::: {.column width="60%"}
-XX
-:::
-
-
-:::
-
-:::
-
-::: notes
-- For a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)
-- Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
-:::
 
 ### Sites Koppen classes
 
@@ -310,7 +314,7 @@ XX
 ::: columns
 
 ::: {.column width="40%"}
-YY
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" width="500">
 :::
 
 ::: {.column width="60%"}

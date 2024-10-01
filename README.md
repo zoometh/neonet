@@ -173,6 +173,8 @@ df <- neo_dbs_parse(l.dbs = l.dbs,
 df.c14 <- neo_dbs_align(df)
 ```
 
+Alignments are done using [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx)
+
 These other databases suffer issues:
 
 | db name  | Header 2 |
