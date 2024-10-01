@@ -75,11 +75,11 @@ NeoNet app is an R Shiny application for mapping radiocarbon (C14). The applicat
 
 NeoNet functions enable the handling of radiocarbon dates sourced from the dataset or exported from the [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-). Current functions cover:
 
-* [data management](https://github.com/zoometh/neonet#data-preparation)
-* [SPD](https://github.com/zoometh/neonet#spd-plot)
+* [data management](https://github.com/zoometh/neonet?tab=readme-ov-file#data-alignment)
+* [SPD](https://github.com/zoometh/neonet?tab=readme-ov-file#spd-plot)
 * [isochrones](https://github.com/zoometh/neonet#isochrones)
-* [Koppen climate classes](https://github.com/zoometh/neonet#koppen)
-* [Harris matrices](https://github.com/zoometh/neonet#harris-matrix) using the [NeoNet-strati app](https://github.com/zoometh/neonet#neonet-strati).
+* [Koppen climate classes](https://github.com/zoometh/neonet?tab=readme-ov-file#koppen)
+* [Harris matrices](https://github.com/zoometh/neonet?tab=readme-ov-file#harris-matrix) using the [NeoNet-strati app](https://github.com/zoometh/neonet?tab=readme-ov-file#neonet-strati).
 
 ### Data
 
@@ -340,7 +340,7 @@ neo_spd(df.c14 = df.c14)
 </p>
 
 
-`neo_spd()` can be run on a GeoJSON file exported from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/doc/#export_dates). For example [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson), see also: [isochrones](https://github.com/zoometh/neonet#isochrones)
+`neo_spd()` can be run on a GeoJSON file exported from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/doc/#export_dates). For example [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson), see also: [isochrones](https://github.com/zoometh/neonet?tab=readme-ov-file#isochrones)
 
 ```R
 neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson",
@@ -574,7 +574,7 @@ flowchart TD
 
 ### App interface
 
-The app is composed by different panels: a site to be recorded ([Site Stratigraphy panel](https://github.com/zoometh/neonet#site-stratigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet#all-sites-panel)). A site name is copied from [All sites panel](https://github.com/zoometh/neonet#all-sites-panel) to [Site Stratigraphy panel](https://github.com/zoometh/neonet#site-stratigraphy-panel).
+The app is composed by different panels: a site to be recorded ([Site Stratigraphy panel](https://github.com/zoometh/neonet?tab=readme-ov-file#site-stratigraphy-panel)), and the complete dataset ([All sites panel](https://github.com/zoometh/neonet?tab=readme-ov-file#all-sites-panel)). A site name is copied from [All sites panel](https://github.com/zoometh/neonet?tab=readme-ov-file#all-sites-panel) to [Site Stratigraphy panel](https://github.com/zoometh/neonet?tab=readme-ov-file#site-stratigraphy-panel).
 
 #### Site Stratigraphy panel
 
