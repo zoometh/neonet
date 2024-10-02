@@ -160,44 +160,40 @@ neo_datamiss(df.c14)
 
 #### Data alignment
 
-Parse and align c14bazAAR data with the Neonet layout
+Retrieve dates coming from other databases (with the [c14bazAAR](https://github.com/ropensci/c14bazAAR) R package) and mapped to be compliant with the Neonet format (..., LM, EN, ...) and functions, using `neo_dbs_parse()`, a mapping table (XLSX) created with `neo_dbs_create_ref()`, and `neo_dbs_align()`:
 
 ```R
 source("R/neo_dbs_parse.R")
 source("R/neo_dbs_align.R")
 
+# spatial and chronological limits
+where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson", quiet = TRUE)
+when <- c(-9000, -4000) # in cal BC
+
+# parameters
 l.dbs <- c("calpal", "medafricarbon", "agrichange", "bda", "calpal", "radon", "katsianis") 
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
-df <- neo_dbs_parse(l.dbs = l.dbs,
-                    col.c14baz = col.c14baz)
-df.c14 <- neo_dbs_align(df)
-```
-
-Alignments are done using [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx)
-
-These other databases suffer issues:
-
-| db name  | Header 2 |
-|----------|----------|
-| 14sea    | No lat / lon information, spatialisation should be done on site name  |
-| neonet   | Timeout, the server URL returns a `ERR_CONNECTION_TIMED_OUT`  |
-| p3k14c   | Cultural information (`culture` and `period`) is largely missing  |
-
-Foreign dates aggregated though the c14bazAAR can be audited, for example: "Alg-40"
-
-
-To retrieve dates coming from other databases (with the [c14bazAAR](https://github.com/ropensci/c14bazAAR) R package) and mapped to be compliant with the Neonet format and functions, using `neo_dbs_parse()`, a mapping table (XLSX) created with `neo_dbs_create_ref()`, and `neo_dbs_align()`:
-
-```R
-when <- c(-9000, -4000)
-where <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
-                     quiet = TRUE)
 
 # collect the dates form different DBs, standardize the cultural period layout, filter on 'when' and 'where'
-df <- neo_dbs_parse(l.dbs = c("bda", "medafricarbon"), 
-                    col.c14baz = c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat"),
+df <- neo_dbs_parse(l.dbs = l.dbs,
                     chr.interval.uncalBC = when, 
-                    roi = where)
+                    roi = where,
+                    col.c14baz = col.c14baz)
+df.c14 <- neo_dbs_align(df,
+                        mapping.file = "C:/Rprojects/neonet/doc/ref_table_per.xlsx")
+```
+
+Alignments are done using the mapping file [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx), a default parameter in `neo_dbs_align()`. 
+
+##### Mapping file
+
+The XLSX file [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/doc/ref_table_per.xlsx) has been created using:
+
+```R
+df <- neo_dbs_parse(l.dbs = l.dbs,
+                    chr.interval.uncalBC = when, 
+                    roi = where,
+                    col.c14baz = col.c14baz)
 
 # create the mapping file
 neo_dbs_create_ref(df.all.res = df,
@@ -212,10 +208,10 @@ This mapping file [ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/ma
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/ref_table_per.png"
 " width="600">
   <br>
-    <em>The neonet dataset over the KCC 7k</em>
+    Equivalences between third part databases cultural assessment (columns 'period' and 'culture') and Neonet classes (column 'class')
 </p>
 
-The `neo_dbs_align()` function reuses this mapping table. 
+For example: 
 
 ```R
 df.c14 <- neo_dbs_align(df,
@@ -223,7 +219,7 @@ df.c14 <- neo_dbs_align(df,
 head(df.c14)
 ```
 
-Gives a dataframe where all fields have been renamed to be parsed with the Neonet functions. Among this mapping the column 'Period' with, for example, `MM`  Middle Mesolithic) maps the `bda` period = `Mésolithique 1` and culture = `Capsien ancien` or `Capsien typique`:
+Gives a dataframe where all fields have been renamed to be parsed with the Neonet functions. Among this mapping the column 'Period' with, for example, `MM`  Middle Mesolithic) maps the `bda` period = `Mésolithique 1` and culture = `Capsien ancien` or `Capsien typique` (columns 'db_period' and 'db_culture'):
 
 | sourcedb | SiteName       | LabCode  | C14Age | C14SD | db_period      | db_culture      | Period | lon      | lat     |
 |----------|----------------|----------|--------|-------|----------------|-----------------|--------|----------|---------|
@@ -241,60 +237,47 @@ To filter aberrant dates, a combination of different function allow to retrieve 
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/image-2.png"
-" width="600">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/image-5.png" width="600">
   <br>
-    <em>KCC and isochrone for 8000 calBC (10ka BP). Here the dates 147 (circled in red), 198 and 367 seem aberrant</em>
-</p>
+    <em>Here the dates 260 (circled in red), 396 and 345 seem aberrant</em>
 
+To check the info of the date numbered `260`, do:
 
 ```R
 source("R/neo_find_date.R")
+source("R/neo_dbs_info_date.R")
 
-abber.date <- neo_find_date(df = isochr$data, idf.dates = 147)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 260)
+ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 ```
 
 Gives:
 
 ```
-idf sourcedb labcode     site   median period
-147   calpal UBAR-31 Cova 120 -8040.05     EN
+[1] "Reads a 'sf' dataframe"
+[1] "Layout for 'aberrant dates' format:"
+neonetatl	Sac-1676	El Retamar	-6263	EN	None	None 
 ```
 
-Where `147` is the contextual identifier of the date. This date comes from the `calpal` DB. The calibrated radiocarbon date median (`-8040.05`) is really too high for an `EN` period (Early Neolithic). Running the followin functions helps to contextualize the date.
+Where `neonetatl` is the source DB, `Sac-1676` is the labnum, `El Retamar` the site name, `-6263` the weighted mean (cal BC), `EN` the period (Early Neolithic), `None` the culture (no data) and the second `None` a place holder for a description explaining why this date has been discarted. 
+If the archaeological documentation shows that date `Sac-1676` (*aka* `260`) is wrong (mixed assemblage, possibly coming from another layer, etc.). The last line `neonetatl	Sac-1676	El Retamar	-6263	EN	None	None` can be pasted as it into the [c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv) file. 
+More info can be found for this date, reusing the `ad` dataframe. Running the following functions helps to contextualize the date.
 
 ```R
 source("R/neo_dbs_info_date_src.R")
 
-abber.date <- neo_dbs_info_date(abber.date$labcode)
+neo_dbs_info_date_src(db = ad$sourcedb,
+                      LabCode = ad$LabCode)
 ```
 
 Gives:
 
 ```
-     sourcedb LabCode SiteName   median db_period db_culture
-3451   calpal UBAR-31 Cova 120 -8040.05 Neolithic Epicardial
+   sourcedb sourcedb_version    labnr c14age c14std       site    feature period material species country      lat
+1 neonetatl       2023-12-08 Sac-1676   7400    100 El Retamar Conchero 6     EN    shell    <NA>   Spain 36.57873
+        lon                    shortref
+1 -6.226273 Cantillo-Duarte et al. 2010
 ```
-
-The date `147` (aka `UBAR-31`) is tagged `Neolithic` and `Epicardial` in `calpal`. To have its full record, as it is created using the c14bazAAR package, run:
-
-
-```R
-source("R/neo_dbs_info_date.R")
-
-neo_dbs_info_date_src(db = abber.dates$sourcedb, 
-                      LabCode = abber.dates$LabCode)
-```
-
-Gives:
-
-```
-  sourcedb sourcedb_version method   labnr c14age c14std c13val     site sitetype    period    culture material species country
-2   calpal       2020-08-20    14C UBAR-31   8550    150      0 Cova 120     <NA> Neolithic Epicardial charcoal    <NA>   Spain
-    lat  lon          shortref
-2 42.47 2.61 van Willigen 2006
-```
-
 The list of aberrant dates, for example [c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv), is used to discard some dates with the `neo_dbs_rm_date()` function
 
 ```R
