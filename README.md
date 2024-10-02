@@ -296,7 +296,7 @@ By default, dates having a dash prefix in their `sourcedb` column will be skippe
     <em>Screenshot of the 'c14_to_remove.tsv' table</em>
 </p>
 
-A template script to run this operatin: [run_outliers.R](https://github.com/zoometh/neonet/blob/main/doc/run_outliers.R)
+A template script to run this operation: [run_outliers.R](https://github.com/zoometh/neonet/blob/main/doc/run_outliers.R)
 
 #### Wrong coordinates
 
