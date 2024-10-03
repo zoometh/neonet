@@ -1,0 +1,242 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>code</Description>
+    <GDALRasterAttributeTable tableType="thematic">
+      <FieldDefn index="0">
+        <Name>id</Name>
+        <Type>0</Type>
+        <Usage>0</Usage>
+      </FieldDefn>
+      <FieldDefn index="1">
+        <Name>id_broad</Name>
+        <Type>0</Type>
+        <Usage>0</Usage>
+      </FieldDefn>
+      <FieldDefn index="2">
+        <Name>code</Name>
+        <Type>2</Type>
+        <Usage>0</Usage>
+      </FieldDefn>
+      <FieldDefn index="3">
+        <Name>code_broad</Name>
+        <Type>2</Type>
+        <Usage>0</Usage>
+      </FieldDefn>
+      <FieldDefn index="4">
+        <Name>colour</Name>
+        <Type>2</Type>
+        <Usage>0</Usage>
+      </FieldDefn>
+      <Row index="0">
+        <F>1</F>
+        <F>1</F>
+        <F>Af</F>
+        <F>Tropical, rainforest</F>
+        <F>#0000FF</F>
+      </Row>
+      <Row index="1">
+        <F>2</F>
+        <F>1</F>
+        <F>Am</F>
+        <F>Tropical, monsoon</F>
+        <F>#0078FF</F>
+      </Row>
+      <Row index="2">
+        <F>3</F>
+        <F>1</F>
+        <F>Aw</F>
+        <F>Tropical, savannah</F>
+        <F>#46AAFA</F>
+      </Row>
+      <Row index="3">
+        <F>4</F>
+        <F>2</F>
+        <F>BWh</F>
+        <F>Arid, desert, hot</F>
+        <F>#FF0000</F>
+      </Row>
+      <Row index="4">
+        <F>5</F>
+        <F>2</F>
+        <F>BWk</F>
+        <F>Arid, desert, cold</F>
+        <F>#FF9696</F>
+      </Row>
+      <Row index="5">
+        <F>6</F>
+        <F>2</F>
+        <F>BSh</F>
+        <F>Arid, steppe, hot</F>
+        <F>#F5A500</F>
+      </Row>
+      <Row index="6">
+        <F>7</F>
+        <F>2</F>
+        <F>BSk</F>
+        <F>Arid, steppe, cold</F>
+        <F>#FFDC64</F>
+      </Row>
+      <Row index="7">
+        <F>8</F>
+        <F>3</F>
+        <F>Csa</F>
+        <F>Temperate, dry summer, hot summer</F>
+        <F>#FFFF00</F>
+      </Row>
+      <Row index="8">
+        <F>9</F>
+        <F>3</F>
+        <F>Csb</F>
+        <F>Temperate, dry summer, warm summer</F>
+        <F>#C8C800</F>
+      </Row>
+      <Row index="9">
+        <F>10</F>
+        <F>3</F>
+        <F>Csc</F>
+        <F>Temperate, dry summer, cold summer</F>
+        <F>#969600</F>
+      </Row>
+      <Row index="10">
+        <F>11</F>
+        <F>3</F>
+        <F>Cwa</F>
+        <F>Temperate, dry winter, hot summer</F>
+        <F>#96FF96</F>
+      </Row>
+      <Row index="11">
+        <F>12</F>
+        <F>3</F>
+        <F>Cwb</F>
+        <F>Temperate, dry winter, warm summer</F>
+        <F>#64C864</F>
+      </Row>
+      <Row index="12">
+        <F>13</F>
+        <F>3</F>
+        <F>Cwc</F>
+        <F>Temperate, dry winter, cold summer</F>
+        <F>#329632</F>
+      </Row>
+      <Row index="13">
+        <F>14</F>
+        <F>3</F>
+        <F>Cfa</F>
+        <F>Temperate, no dry season, hot summer</F>
+        <F>#C8FF50</F>
+      </Row>
+      <Row index="14">
+        <F>15</F>
+        <F>3</F>
+        <F>Cfb</F>
+        <F>Temperate, no dry season, warm summer</F>
+        <F>#64FF50</F>
+      </Row>
+      <Row index="15">
+        <F>16</F>
+        <F>3</F>
+        <F>Cfc</F>
+        <F>Temperate, no dry season, cold summer</F>
+        <F>#32C800</F>
+      </Row>
+      <Row index="16">
+        <F>17</F>
+        <F>4</F>
+        <F>Dsa</F>
+        <F>Cold, dry summer, hot summer</F>
+        <F>#FF00FF</F>
+      </Row>
+      <Row index="17">
+        <F>18</F>
+        <F>4</F>
+        <F>Dsb</F>
+        <F>Cold, dry summer, warm summer</F>
+        <F>#C800C8</F>
+      </Row>
+      <Row index="18">
+        <F>19</F>
+        <F>4</F>
+        <F>Dsc</F>
+        <F>Cold, dry summer, cold summer</F>
+        <F>#963296</F>
+      </Row>
+      <Row index="19">
+        <F>20</F>
+        <F>4</F>
+        <F>Dsd</F>
+        <F>Cold, dry summer, very cold winter</F>
+        <F>#966496</F>
+      </Row>
+      <Row index="20">
+        <F>21</F>
+        <F>4</F>
+        <F>Dwa</F>
+        <F>Cold, dry winter, hot summer</F>
+        <F>#AAAFFF</F>
+      </Row>
+      <Row index="21">
+        <F>22</F>
+        <F>4</F>
+        <F>Dwb</F>
+        <F>Cold, dry winter, warm summer</F>
+        <F>#5A78DC</F>
+      </Row>
+      <Row index="22">
+        <F>23</F>
+        <F>4</F>
+        <F>Dwc</F>
+        <F>Cold, dry winter, cold summer</F>
+        <F>#4B50B4</F>
+      </Row>
+      <Row index="23">
+        <F>24</F>
+        <F>4</F>
+        <F>Dwd</F>
+        <F>Cold, dry winter, very cold winter</F>
+        <F>#320087</F>
+      </Row>
+      <Row index="24">
+        <F>25</F>
+        <F>4</F>
+        <F>Dfa</F>
+        <F>Cold, no dry season, hot summer</F>
+        <F>#00FFFF</F>
+      </Row>
+      <Row index="25">
+        <F>26</F>
+        <F>4</F>
+        <F>Dfb</F>
+        <F>Cold, no dry season, warm summer</F>
+        <F>#37C8FF</F>
+      </Row>
+      <Row index="26">
+        <F>27</F>
+        <F>4</F>
+        <F>Dfc</F>
+        <F>Cold, no dry season, cold summer</F>
+        <F>#007D7D</F>
+      </Row>
+      <Row index="27">
+        <F>28</F>
+        <F>4</F>
+        <F>Dfd</F>
+        <F>Cold, no dry season, very cold winter</F>
+        <F>#00465F</F>
+      </Row>
+      <Row index="28">
+        <F>29</F>
+        <F>5</F>
+        <F>ET</F>
+        <F>Polar, tundra</F>
+        <F>#B2B2B2</F>
+      </Row>
+      <Row index="29">
+        <F>30</F>
+        <F>5</F>
+        <F>EF</F>
+        <F>Polar, frost</F>
+        <F>#666666</F>
+      </Row>
+    </GDALRasterAttributeTable>
+  </PAMRasterBand>
+</PAMDataset>

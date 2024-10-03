@@ -5,6 +5,5 @@
 inst/extdata/_*..tsv\$
 inst/extdata/*..xlsx\$
 doc/bib
-doc/data/clim
-doc/clim/data
+doc/src/
 doc/data/(archives)
