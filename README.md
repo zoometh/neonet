@@ -424,12 +424,14 @@ Creates these KCC GeoTiffs:
 
 | Geotiff image | description |
 |----------|----------|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_11k.png" width="300">|koppen_11k|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_10k.png" width="300">|koppen_10k|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_9k.png" width="300">|koppen_9k|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_8k.png" width="300">|koppen_8k|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_7k|
-| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_6k|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_11k.png" width="300">|koppen_11k [download](https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_11k.tif)|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_10k.png" width="300">|koppen_10k [download](https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_10k.tif)|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_9k.png" width="300">|koppen_9k [download](https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_9k.tif)|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_8k.png" width="300">|koppen_8k [download](https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.tif)|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_7k [download](https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.tif)|
+| <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_6k [download](https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_6k.tif)|
+
+
 
 <em>Past Koppen Climate Classification calculated in Kyears BP with the pastclim R package</em>
 
