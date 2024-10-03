@@ -8,11 +8,20 @@
 
 source("R/config.R")
 
-where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
-where <- sf::st_read(where.roi,
+med.area <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
+med.area <- sf::st_read(med.area,
                      quiet = TRUE)
+med.coast <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/med_sea.geojson"
+med.coast <- sf::st_read(med.coast,
+                        quiet = TRUE)
+# Define the raw GitHub URL to the .tif file
 koppen_8k <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.tif"
-
+temp_file <- tempfile(fileext = ".tif")
+download.file(koppen_8k, destfile = temp_file, mode = "wb")
+raster_data <- rast(temp_file)
+what <- terra::rast(temp_file)
+plot(what)
+unlink(temp_file)
 
 ####
 
