@@ -8,6 +8,16 @@
 
 source("R/config.R")
 
+where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
+where <- sf::st_read(where.roi,
+                     quiet = TRUE)
+koppen_8k <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.tif"
+
+
+####
+
+source("R/config.R")
+
 ## done
 # l.dbs <- c("calpal", "medafricarbon", "agrichange", "neonet", "bda", "calpal", "radon", "katsianis")
 
