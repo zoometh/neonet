@@ -10,18 +10,86 @@ source("R/config.R")
 
 med.area <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
 med.area <- sf::st_read(med.area,
-                     quiet = TRUE)
-med.coast <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/med_sea.geojson"
-med.coast <- sf::st_read(med.coast,
                         quiet = TRUE)
+
+neo_kcc_sankey_BIS <- function(buffer_km = 500, 
+                               med.sea = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/med_sea.geojson",
+                               root.path = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/",
+                               kcc.file = c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+                                            "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")){
+  med.coast <- sf::st_read(med.sea,
+                           quiet = TRUE)
+  ll <- list()
+  # Define the raw GitHub URL to the .tif file
+  # koppen_8k <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.tif"
+  for (kcc in kcc.file){
+    temp_file <- tempfile(fileext = ".tif")
+    koppen_k <- paste0(root.path, kcc)
+    download.file(koppen_k, destfile = temp_file, mode = "wb")
+    what <- terra::rast(temp_file)
+    buffer <- sf::st_buffer(med.coast, dist = buffer_km*1000)  # in meters to km
+    buffer_vect <- terra::vect(buffer)
+    what_clipped <- terra::mask(what, buffer_vect)
+    what_clipped <- terra::crop(what_clipped, buffer_vect)
+    ll[[length(ll)+1]] <- what_clipped
+  }
+  # plot(what_clipped)
+  unlink(temp_file)
+  return(ll)
+}
+
+kcc_clipped_list <- neo_kcc_sankey_BIS()
+library(dplyr)  # For data manipulation
+library(networkD3)  # For creating Sankey diagrams
+stacked_rasters <- rast(kcc_clipped_list)
+pixel_values <- as.data.frame(values(stacked_rasters))
+colnames(pixel_values) <- paste0("Layer", seq_along(kcc_clipped_list))
+transition_data <- pixel_values %>%
+  group_by(across(everything())) %>%
+  summarise(count = n(), .groups = 'drop')
+unique_values <- unique(unlist(pixel_values))
+nodes <- data.frame(name = as.character(unique_values))
+links <- data.frame()
+for (i in seq_len(ncol(pixel_values) - 1)) {
+  links <- rbind(links, 
+                 data.frame(source = match(pixel_values[[i]], unique_values) - 1,
+                            target = match(pixel_values[[i + 1]], unique_values) - 1,
+                            value = rep(1, length(pixel_values[[i]]))))
+}
+links <- links %>%
+  group_by(source, target) %>%
+  summarise(value = n(), .groups = 'drop')
+sankeyNetwork(Links = links, Nodes = nodes, Source = "source", Target = "target", 
+              Value = "value", NodeID = "name", fontSize = 12, nodeWidth = 30)
+# neo_kcc_sankey()?
+
+# unlink(temp_file)
+
+
+# Load necessary libraries
+library(sf)
+library(terra)
+
+# Read the polygon (GeoJSON) into an sf object
+med.coast <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/med_sea.geojson"
+med.coast <- sf::st_read(med.coast, quiet = TRUE)
+
 # Define the raw GitHub URL to the .tif file
 koppen_8k <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.tif"
+
+# Download the GeoTIFF file temporarily
 temp_file <- tempfile(fileext = ".tif")
 download.file(koppen_8k, destfile = temp_file, mode = "wb")
-raster_data <- rast(temp_file)
-what <- terra::rast(temp_file)
-plot(what)
+
+# Read the raster data using the terra package
+# what <- rast(temp_file)
+
+
+
+# Clean up: Remove the temporary file
 unlink(temp_file)
+
+
 
 ####
 
@@ -421,11 +489,11 @@ neo_kcc_plotbar(df_cc = df_cc,
                 counts.show.size = 3,
                 title = "Early Neolithic")
 gout <- neo_kcc_map(kcc = kcc,
-            df.c14 = df_cc_per,
-            roi = where,
-            pt.size = 1,
-            lbl.dates = TRUE,
-            sys.proj = 32633)
+                    df.c14 = df_cc_per,
+                    roi = where,
+                    pt.size = 1,
+                    lbl.dates = TRUE,
+                    sys.proj = 32633)
 ggplot2::ggsave(paste0("C:/Rprojects/neonet/doc/talks/2024-simep/img/", kcc.per, "_", per, ".png"),
                 gout,
                 width = 15,
