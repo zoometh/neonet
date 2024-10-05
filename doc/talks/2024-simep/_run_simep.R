@@ -57,14 +57,35 @@ df.c14 <- neo_dbs_align(df = df,
 # df.c14 <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 # ----------------------------------------------------------------
 
-df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
-# unique(xxx$Period)
+# df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
               "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
 col.req <- gsub(pattern = ".tif", "", kcc.file)
+where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi_cyprus.geojson"
+# where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-middle-east.geojson"
+present <- 1950
+when <- c(-9000, -4000)
+where <- sf::st_read(where.roi,
+                     quiet = TRUE)
+col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
+samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
+df.c14 <- samp_df
+# correct coordinates (# Sabha)
+source("R/neo_dbs_coord_dates.R")
+df.c14 <- neo_dbs_coord_dates(df.c14, verbose = FALSE)
+
+df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
+
+# remove aberrant dates listed in 'c14_aberrant_dates.tsv'
+source("R/neo_dbs_rm_date.R")
+df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
+                               c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
+# remove dates having a C14SD superior to..
+df_filtered <- df_filtered[df_filtered$C14SD < 101, ]
+
 
 source("R/neo_kcc_extract.R")
-df_cc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
+df_cc <- neo_kcc_extract(df.c14 = df_filtered, kcc.file = kcc.file)
 
 # CA
 source("R/neo_kcc_ca.R")
@@ -76,6 +97,7 @@ g <- gridExtra::grid.arrange(grobs = cas,
                              )
 g.out <- "C:/Rprojects/neonet/doc/talks/2024-simep/img/ca.png"
 ggsave(file = g.out, g, width=18, height=9)
+# View(df_filtered[df_filtered$Period == "MN", ])
 
 
 # KCC
