@@ -366,6 +366,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                             ggplot2::aes(x = longitude, y = latitude), 
                             col = "black",
                             alpha = .5,
+                            stroke = NA,
                             size = 1)
       if(verbose){
         print(paste0("Add date labels to the map"))
@@ -391,7 +392,8 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
         ggplot2::geom_point(data = df.isochr.subset, 
                             ggplot2::aes(x = longitude, y = latitude), 
                             col = "black",
-                            alpha = .5,
+                            alpha = .3,
+                            stroke = NA,
                             size = 1)
       if(lbl.dates){
         map <- map +

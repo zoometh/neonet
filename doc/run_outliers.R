@@ -33,7 +33,7 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = c(-6000), # c(-5500, -6000, -6500), # - 5500 TODO
+                     isochr.subset = c(-5500), # c(-5500, -6000, -6500), # - 5500 TODO
                      selected.per = "EN",
                      # where = where,
                      kcc.file = NA,
@@ -48,7 +48,7 @@ isochr$map
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 500)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 657)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
