@@ -1,4 +1,5 @@
-#' Creates a KCC map from a polygon (ex: Mediterranean sea) and a buffer
+#' Creates a KCC map from a polygon (ex: Mediterranean sea) and a buffer (ex: 200 km)
+#' 
 #' 
 #' @name neo_kcc_map_buffer
 #' 

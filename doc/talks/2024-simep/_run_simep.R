@@ -96,7 +96,7 @@ g <- gridExtra::grid.arrange(grobs = cas,
                              # widths = c(10,10)
                              )
 g.out <- "C:/Rprojects/neonet/doc/talks/2024-simep/img/ca.png"
-ggsave(file = g.out, g, width=18, height=9)
+ggsave(file = g.out, g, width=20, height=8)
 # View(df_filtered[df_filtered$Period == "MN", ])
 
 

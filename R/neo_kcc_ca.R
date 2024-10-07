@@ -86,10 +86,14 @@ neo_kcc_ca <- function(df_cc = NA,
     ca.kcc.per$shape[is.na(ca.kcc.per$shape)] <- 17
     # titre
     the.periods <- paste(selected.per, collapse = ", ")
-    tit <- paste0("CA on climates occupied during '", kcc.col[i],"' by the periods: ", the.periods)
+    tit <- paste0("CA on occupied climates")
+    subtit <- paste0("KCC map: ", kcc.col[i])
+    capt <- paste0("Periods: ", the.periods)
     # graphique
     gca <- ggplot2::ggplot(ca.kcc.per, aes(CA1, CA2, color = color, shape = shape)) +
-      ggplot2::ggtitle(tit) +
+      ggplot2::labs(title = tit,
+                    subtitle = subtit,
+                    caption = capt) +
       ggplot2::geom_point(# fill = color, # pour les shape > 20
         # stroke = .5, # pour les shape > 20
         size = 3) + # 1.5
@@ -115,7 +119,8 @@ neo_kcc_ca <- function(df_cc = NA,
                          alpha = 0.5) +
       ggplot2::scale_color_identity() +
       ggplot2::scale_shape_identity() +
-      ggplot2::theme(plot.title = element_text(size = 8, face = "bold")) +
+      ggplot2::theme(plot.title = element_text(size = 10, face = "bold"),
+                     plot.subtitle = element_text(size = 8)) +
       ggplot2::theme(axis.text=element_text(size = 5),
                      axis.title.x=element_text(size = 8),
                      axis.title.y=element_text(size = 8))+

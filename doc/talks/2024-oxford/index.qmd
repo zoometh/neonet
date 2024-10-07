@@ -87,7 +87,13 @@ Introduce the archaeological cultures. Materials and Methods.
 The different periods defines characteristic anthropological moments. Conventional division in 3 phases, both for the Mesolithic and Neolithic. Standardized and heuristic way to represent the evolution of a culture. We represent here, using large brushes
 :::
 
+
+
 ## EM - Early Mesolithic {data-visibility=hidden}
+
+::: notes
+Le Mésolithique, largo senso, débute pendant le Dryas II (BIB 1405). Le réchauffement climatique bouleverse les équilibres écologiques. Le Mésolithique marque la fin de la glaciation de Wurm et début de l' Holocène\Préboréal (BIB 2653). végétation, wetland
+:::
 
 ## MM - Middle Mesolithic {data-visibility=hidden}
 
@@ -97,11 +103,19 @@ Late Foragers
 
 Climates: Near East is temperate and wet, North Africa transitioned to arid conditions, Southern Europe experienced is warmer and wetter
 
+::: notes
+Cold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging
+:::
+
 ## EN - Early Neolithic
 
 Early farmers
 
 Climates: broadly warm and stable
+
+::: notes
+Fertile Crescent | cultigens
+:::
 
 ## MN - Middle Neolithic {data-visibility=hidden}
 
@@ -439,6 +453,11 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 :::
+
+::: notes
+minimizing regional climate contrasts: Similarity between local landscapes of early Neolithic sites in Western Anatolia and those of older Neolithic sites in Southwest Asia 9Van Andel et Runnels, 1995, Groenhuijzen et al., 2015, Horejs et al., 2015)(minimizing regional climate contrasts)(BIB 3726)
+:::
+
 
 ### 6,000 BC
 

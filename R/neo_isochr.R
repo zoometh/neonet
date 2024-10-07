@@ -281,8 +281,10 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     map <- ggplot2::ggplot(world) +
       ggplot2::geom_sf(color = '#7a7a7a', fill = "white")
   } else {
+    world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
     map <- ggplot2::ggplot() +
       ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) + 
+      ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
       ggplot2::scale_fill_manual(values = kcc_colors)
   }
   # 
