@@ -63,7 +63,8 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   if(is.data.frame(df.c14)){
     df.dates <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
   }
-  if(!is.na(where)){
+  # if(!is.na(where)){
+  if(inherits(where, "sf")){
     if(verbose){
       print(paste0("Spatial subset on new roi"))
     }

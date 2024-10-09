@@ -6,7 +6,9 @@
 
 # getwd()
 root.path <- "C:/Rprojects/neonet/doc/talks/2024-simep/"
-where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi_cyprus.geojson"
+where.roi.path <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/"
+where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
+where.roi <- paste0(where.roi.path, "roi-med-cw.geojson")
 where <- sf::st_read(where.roi,
                      quiet = TRUE)
 
@@ -36,10 +38,10 @@ source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
                      isochr.subset = c(-5300), # c(-5500, -6000, -6500), # - 5500 TODO
                      selected.per = "EN",
-                     # where = where,
+                     where = where,
                      # kcc.file = NA,
                      # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
-                     # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      is.other.geotiff = TRUE,
                      isochr.line.size = 1,
                      calibrate = FALSE,

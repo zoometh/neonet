@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "roi-midi-france",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 1.02768233, 46.44486459 ], [ 11.40383725, 46.44486459 ], [ 11.40383725, 40.83697718 ], [ 1.02768233, 40.83697718 ], [ 1.02768233, 46.44486459 ] ] ] ] } }
+]
+}
