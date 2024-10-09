@@ -1,0 +1,33 @@
+name: XLSX to TSV Conversion for ref_table_per
+
+on:
+  push:
+    paths:
+      - 'inst/extdata/'
+
+jobs:
+  convert_to_tsv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install openpyxl
+
+      - name: Convert XLSX to TSV
+        run: |
+          python inst/extdata/convert_xlsx_to_tsv.py inst/extdata/ref_table_per.xlsx inst/extdata/ref_table_per-readonly.tsv
+
+      - name: Commit and push TSV file
+        run: |
+          git config user.name "zoometh"
+          git config user.email "thomashuet7@gmail.com"
+          git add data/bulk_data/templates/doc
+          git commit -m "Convert XLSX to TSV bulkpload"
+          git push
