@@ -99,6 +99,59 @@ calpal	GrN-4753	Bylany	-8772	MN	Lengyel	The median seems aberrant
 calpal	Pta-2700	Wadi Tbeik	-10250	Neolithic	LPPNB	Marked as 'considered as much too old', https://www.exoriente.org/associated_projects/ppnd_site.php?s=73 accessed 2024-10-07
 bda	GrN-19870	Asikli Höyük	-7766	Néolithique ancien	PPNB	marked as 'mediocre' in 'bda'
 neonet	Erl-11802	Mas Neuf	-6069	EN	None	marked as 'without stratigraphic information', https://journals.uni-lj.si/DocumentaPraehistorica/article/view/47.10/9197 accessed 2024-10-07
-neonet	Beta-103872	Petites Baties	-6111	EN	None	Seems to be considered as not-EN in "Les occupations néolithiques des Petites-Bâties (Lamotte-du-Rhône, Vaucluse)" Binder et al. 2002
+neonet	Beta-103872	Petites Baties	-6111	EN	None	Seems to be considered as not-EN in 'Les occupations néolithiques des Petites-Bâties (Lamotte-du-Rhône, Vaucluse)' Binder et al. 2002
 calpal	OxA-5500	Pinarbasi A	-8517	Epipalaeolithic	Aceramic	Marked as 'Epipalaeolithic Aceramic'
 bda	SacA-23652 (P-1069)	SHM-1 (Sebkhet Halk el Menzel 1)	-5731	Néolithique ancien	None	marked as 'mediocre' in 'bda' 
+calpal	KN-2514	Nieborowa	-5510	Neolithic	LBK	Aberrant 
+neonet	Beta-221643	Abrigo de Los Husos II	-6196	EN	None	Steile layer 
+radon	Bln-1430	Eilsleben	-5785	älteste LBK	Linienbandkeramik	Rejected by Pavúk, J. (1994). JAMÉ Nyíregyháza, 36, 135-149.
+calpal	GrN-?40	Swifterband	-5583	Meso/Neo	Swifterbant	Transitional date not clear
+radon	KN-2289	Niedermerz 3	-5695	mittlere LBK (Phase IIa)	Linienbandkeramik	No clear references
+radon	KN-2297	Langweiler 2	-5946	Langweiler 2, Phase 1	Linienbandkeramik	SD 175 reported in Pinhasi et al. 2005
+neonetatl	Beta-310057	Casas Novas	-5588	EN	None	Rejected by Cardoso et al. 2018 Estudos Arqueológicos de Oeiras, 125-140.
+neonetatl	Wk-9214	Pena d'Água	-5675	EN	None	None Rejected by Carvalho et al. 2016 The Pena d’Água rock-shelter. Valencia: SIPMPV, 211-223.
+neonetatl	Wk-12077	Valada do Mato	-5586	EN	None	Rejected by Carvalho, A. F. (2019). Sagvntvm. Papeles del Laboratorio de Arqueología de Valencia, 51, 9.
+neonetatl	Sac-2002	Encosta de Sant'Ana	-6169	EN	None	None Error data. Sa-2002 is 7310 ± 90 in Angelucci et al. 2007 Journal of Archaeological Science 34(10):1641-1648
+neonetatl	Beta-417016	Vale Marim I	-6039	EN	None	Mesolithic not Neolithic 
+neonetatl	Beta-452078	Vidigal	-5687	EN	None	Mesolithic not Neolithic
+neonetatl	Wk-12139	Vale Santo 1	-5558	EN	None	Transitional Meso/Neo Diniz & Neves 2018. O princípio do Neolítico no Sudoeste Peninsular (Portugal)
+neonetatl	Wk-17029	Rocha das Gaivotas	-5687	EN	None	Transitional Meso/Neo Diniz & Neves 2018. O princípio do Neolítico no Sudoeste Peninsular (Portugal)
+neonetatl	Beta-223092	La Paleta	-5580	EN	None	Date obtained from an aggregation of wheat and other palaeobotanic material Berrocal 2012 J. World Prehistory
+bda	MAMS-30166	Esplugón	-5680	Néolithique ancien	None	Mesolithic by Alcolea et al. 2021 Quaternary International, 593, 332-345. 
+neonet	Beta-242783	Abrigo de Pena Larga	-5637	EN	None	None
+neonet	R-2748	Lugo di Romagna	-5531	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 200 yrs younger
+neonet	KIA-30570	Riparo Ala Le Corone	-5561	EN	None	Error in the dataset US14 is Late Mesoltihic layer
+calpal	R-2530	Fagnigola	-5523	Neolithic	Fagnigola	Likely old wood effect, short-lived dates from the same site from same sect. are 300 yrs younger
+neonet	R-2550	Fagnigola	-5523	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 300 yrs younger
+bda	Bin-4436	Valer	-5514	Néolithique ancien	Fagnigola	Likely old wood effect, short-lived dates from the same site from same sect. are 300 yrs younger
+neonet	ETH-30057	Villandro/Villanders	-5802	EN	None	Problematic Late Mesolithic US Nisbet 2008 Atti Soc. Preist. Protost. Friuli-V.G., XVI, 75-131  
+neonet	R-2547	Sammardenchia	-5523	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 300 yrs younger
+neonet	GrN-19839	Fiorano Modenese	-5503	EN	None	Doubful date Starnini et al. 2018 Quaternary International, 470, 301-317.
+neonet	Bln-4436	Valer	-5514	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 300 yrs younger
+neonet	R-2538	Fagnigola	-5505	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 300 yrs younger
+neonet	GrN-23129	Grotta dell'Edera	-5533	EN	None	Too o from Vlaska/Danilo Biagi et al. 2008 The Iron Gates in Prehstory: new perspectives
+neonet	Ly-824	Grotte de Gritulu	-5723	EN	None	Mesolithic layer
+neonet	Ly-9519	Renaghju	-5671	EN	None	None
+neonet	Poz-18393	Crno Vrilo	-5797	EN	None	Questioned by Kačar 2019 Documenta Praehistorica, 46, 352-374.    
+calpal	GrN-22668	Forcas	-5780	Neolithic	Cardial	Mesolithic context Mazzucco 2018
+calpal	Beta-59973	Peña de las Forcas 2	-5825	Neolithic	Cardial	Mesolithic context Mazzucco 2018
+bda	Beta-60773	Forcas II	-5825	Néolithique ancien	None	Mesolithic context Mazzucco 2018 Human Occupation of Central Pyrenees
+neonet	GrN-19658	Abrigo de Mendandia	-6074	EN	None	Mesolithic context Alday 2012
+neonetatl	Beta-197386	Cueva del Mirador	-5915	EN	None	Rejected by Saiz 2019 Munibe Antropologia-Arkeologia, 70, 109-134.    
+neonet	KIA-27671	Abrigo de la Dehesa	-5899	EN	None	Mesolithic context
+neonet	GrN-22742	Abrigo de Mendandia	-6039	EN	None	Mesolithic context Alday 2012
+neonet	GrN-12685	Cueva de Chaves	-5672	EN	None	Old wood effect Mazzucco 2018 Human Occupation of Central Pyrenees
+neonet	GrN-22688	Abrigo de Forcas II	-5780	EN	None	Mesolithic context
+neonetatl	ICEN-405	Fraga d'Aia	-5432	EN	None	Old wood effect as indicated by Carvalho A. F. (1999) Revista Portuguesa de Arqueologia, 2 (1)
+neonet	R-2745	Lugo di Grezzana	-5480	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 200 yrs younger 
+bda	Bin-4431	Valer	-5447	Néolithique ancien	Fagnigola	Likely old wood effect, short-lived dates from the same site from same sect. are 200 yrs younger
+bda	R-1136	Romagnano loc.III	-5424	Néolithique ancien	Gaban	Castelnovian layer Fontana et al. (2016). Quaternary International, 423, 252-265.
+neonet	R-2545	Sammardenchia	-5494	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 200 yrs younger
+neonet	Bln-4431	Valer	-5447	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 200 yrs younger
+neonet	R-2554	Fagnigola	-5504	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 200 yrs younger  
+neonet	R-2549	Sammardenchia	-5486	EN	None	Likely old wood effect, short-lived dates from the same site from same sect. are 200 yrs younger
+bda	MC-531-T	Font-des-Pigeons	-5667	Néolithique ancien	Cardial	Medium reliability by Defranould (2020). Bulletin de la Société préhistorique française, 117(4), 583-618.   
+neonetatl	Beta-232890	Casa Montero	-5431	EN	None	Consuegra & Díaz-del-Río (2018). Papers in honour of Jacek Lech. Archaeopress Archaeology. Oxford, 1-8.
+neonet	Beta-172521	Balma Serrat del Pont	-5419	EN	None	Mesolithic layer by Alcalde % Saña. (2017) Mesolithic Miscellany 25.1, 3-10.
+neonet	KIA-37689	Cova del Sardo	-5489	EN	None	Possible Mesolithic context, unclear cultural affiliation suggested by Mazzucco 2018
+neonetatl	ICEN-904	Fraga d'Aia	-5260	EN	None	Possible mixing indicate by Carvalho 2020 In: On Pre- and Earlier History of Iberia and Central Europe
