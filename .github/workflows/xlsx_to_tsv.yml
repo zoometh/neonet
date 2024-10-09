@@ -3,7 +3,7 @@ name: XLSX to TSV Conversion for ref_table_per
 on:
   push:
     paths:
-      - 'inst/extdata/'
+      - 'inst/extdata/*'
 
 jobs:
   convert_to_tsv:
