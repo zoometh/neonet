@@ -38,6 +38,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        is.other.geotiff = FALSE,
                        isochr.line.color = 'black',
                        isochr.line.size = 1,
+                       isochr.txt.size = 4.5,
                        buff = .1,
                        shw.dates = TRUE,
                        alpha.dates = .5,
@@ -54,9 +55,10 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   # check which periods have been selected
   neolithic <- selected.per %in% c("EN", "EMN", "MN", "LN", "UN")
   mesolithic <- !neolithic
-  # periods colors
-  periods.colors <- read.csv(ref.period, sep = "\t")
+  # TODO: periods colors
+  # periods.colors <- read.csv(ref.period, sep = "\t")
   # periods.colors.selected <- periods.colors[periods.colors$period %in% shown.per, c("period", "color")]
+  isochr.txt.colour <- isochr.line.color
   if(is.character(df.c14)){
     df.dates <- sf::st_read(df.c14, quiet = T)
     # title/filename
@@ -224,6 +226,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   
   # colors. rm the lightest colors
   nb.contours <- length(contour_levels)
+  # isochr.line.color <- isochr.line.color
   if(nb.contours > 1){
     if(neolithic){
       isochr.line.color <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours + 5)
@@ -231,13 +234,14 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
       isochr.line.color <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours + 5)
     }
     isochr.line.color <- isochr.line.color[-c(1:5)]
+    isochr.txt.colour <- "black"
   } else {
     if(is.na(isochr.line.color)){
       if(neolithic){
-        isochr.line.color <- "red"
+        isochr.line.color <- isochr.txt.colour <- "red"
       }
       if(!neolithic){
-        isochr.line.color <- "blue"
+        isochr.line.color <- isochr.txt.colour <-  "blue"
       }
     }
   }
@@ -369,19 +373,8 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                           # breaks = contour_levels,
                           breaks = contour_levels,
                           linewidth = isochr.line.size) +
-    # TODO: isochrone colors ###############
-  # neolithic = "red"; !neolithic = "blue"
-  #########################################
-  
-  # ggplot2::geom_contour(data = interp_df, 
-  #                       ggplot2::aes(x = lon, y = lat, z = date.med, 
-  #                                    # color = ..level..
-  #                                    color = ggplot2::after_stat(level)
-  #                       ),
-  #                       linewidth = isochr.line.size,
-  #                       breaks = contour_levels) +
-  ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
-                                 name = "Cal BC") +
+    ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
+                                   name = "Cal BC") +
     ggplot2::labs(title = tit,
                   subtitle = subtit,
                   caption = capt)
@@ -390,16 +383,18 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     if(!test_subset){
       # all contours
       map <- map +
-        metR::geom_text_contour(data = interp_df,
-                                binwidth = time.interv,
-                                ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
-                                skip = 0,
-                                rotate = TRUE,
-                                stroke = 0.3, 
-                                stroke.colour = "white",
-                                # size = lbl.time.interv.size,
-                                colour = "black", size = 4.5, fontface = "bold"
-        )
+      metR::geom_text_contour(data = interp_df,
+                              binwidth = time.interv,
+                              ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
+                              skip = 0,
+                              rotate = TRUE,
+                              stroke = 0.3, 
+                              stroke.colour = "white",
+                              # size = lbl.time.interv.size,
+                              colour = isochr.txt.colour, 
+                              size = isochr.txt.size, 
+                              fontface = "bold"
+      )
     } else {
       # only one selected contour
       contour_data <- ggplot2::ggplot_build(ggplot2::ggplot(interp_df, ggplot2::aes(x = lon, y = lat, z = date.med)) + 
@@ -410,10 +405,14 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
         dplyr::slice(1) %>%
         dplyr::ungroup()
       map <- map + 
-        ggplot2::geom_contour(data = interp_df, ggplot2::aes(x = lon, y = lat, z = date.med), 
-                              breaks = isochr.subset, colour = "black") +
-        ggplot2::geom_text(data = contour_data_lbl, ggplot2::aes(x = x, y = y, label = sprintf("%.0f", level)),
-                           size = 3, colour = "black")
+        ggplot2::geom_contour(data = interp_df, 
+                              ggplot2::aes(x = lon, y = lat, z = date.med), 
+                              breaks = isochr.subset, 
+                              colour = "black") +
+        ggplot2::geom_text(data = contour_data_lbl, 
+                           ggplot2::aes(x = x, y = y, label = sprintf("%.0f", level)),
+                           size = isochr.txt.size, 
+                           colour = isochr.txt.colour)
     }
   }
   if(shw.dates){
