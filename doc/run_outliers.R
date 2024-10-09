@@ -36,12 +36,13 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = c(-5300), # c(-5500, -6000, -6500), # - 5500 TODO
+                     isochr.subset = c(-5800), # c(-5500, -6000, -6500), # - 5500 TODO
                      selected.per = "EN",
                      where = where,
                      # kcc.file = NA,
                      # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
-                     kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
+                     # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      is.other.geotiff = TRUE,
                      isochr.line.size = 1,
                      calibrate = FALSE,
@@ -49,7 +50,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates.size = 2.5,
                      lbl.time.interv = TRUE)
 isochr$map
-# ggplot2::ggsave(paste0(root.path, "img/", "bib_binder22_5600-5450_AEC.png"), isochr$map, width = 9, height = 6)
+# ggplot2::ggsave(paste0(root.path, "img/", "bib_binder22_5600-5450_AEC_close.png"), isochr$map, width = 9, height = 6)
 
 
 source("R/neo_find_date.R")

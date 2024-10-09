@@ -251,7 +251,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   }
   if(is.character(kcc.file)){
     if(verbose){
-      print(paste0("Will use a KCC basemap (reading a GeoTiff)"))
+      print(paste0("Will use a GeoTiff"))
     }
     kcc_geo <- terra::rast(kcc.file)
     raster_df <- terra::as.data.frame(kcc_geo, xy = TRUE)
@@ -296,16 +296,31 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
       # Create a data frame from the raster layers
       world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
       raster_df2 <- raster_df
-      colnames(raster_df2) <- c("x", "y", "Red", "Green", "Blue")
-      # Combine the RGB values into a single color
-      raster_df2$color <- with(raster_df2, rgb(Red/255, Green/255, Blue/255))
-      # Plot the raster using ggplot2 and geom_raster
-      map <- ggplot2::ggplot() +
-        geom_raster(data = raster_df2, aes(x = x, y = y, fill = color)) +
-        ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
-        scale_fill_identity() #+  # Use the color column as it is
+      if(length(names(kcc_geo)) == 1){
+        # Grey scale / not working
+        colnames(raster_df2) <- c("x", "y", "color")
+        map <- ggplot2::ggplot() +
+          ggplot2::geom_raster(data= raster_df2, ggplot2::aes(x = x, y = y, fill = color)) +
+          ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
+          ggplot2::scale_fill_gradient(low = "black", high = "white")  # Blue for low values, red for high
+          # scale_fill_viridis_c() +  # Use a continuous color scale (e.g., Viridis)
+          # coord_fixed() +  # Maintain aspect ratio for geospatial data
+          # labs(title = "Single-Channel Raster Plot", fill = "Value") +
+          # theme_minimal()
+      
+      if(length(names(kcc_geo)) == 3){
+        # RGB
+        colnames(raster_df2) <- c("x", "y", "Red", "Green", "Blue")
+        # Combine the RGB values into a single color
+        raster_df2$color <- with(raster_df2, rgb(Red/255, Green/255, Blue/255))
+        # Plot the raster using ggplot2 and geom_raster
+        map <- ggplot2::ggplot() +
+          ggplot2::geom_raster(data = raster_df2, ggplot2::aes(x = x, y = y, fill = color)) +
+          ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
+          ggplot2::scale_fill_identity() #+  # Use the color column as it is
         # coord_fixed() +  # Maintain the aspect ratio
         # theme_minimal()
+      }
     }
   }
   # 
