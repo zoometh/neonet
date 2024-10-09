@@ -4,6 +4,7 @@
 #'
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
 #' @param selected.per the period selected. Default "EN".
+#' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param where A sf dataframe to limit the analysis. Default NA.
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
 #' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000) in BC.
@@ -27,6 +28,7 @@
 #' @export
 neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
                        selected.per = c("EN"),
+                       ref.period = "https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/periods.tsv",
                        where = NA,
                        # max.sd = 100,
                        calibrate = TRUE,
@@ -34,9 +36,11 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        isochr.subset = NA,
                        kcc.file = NA,
                        is.other.geotiff = FALSE,
+                       isochr.line.color = 'black',
                        isochr.line.size = 1,
                        buff = .1,
                        shw.dates = TRUE,
+                       alpha.dates = .5,
                        lbl.dates = FALSE,
                        lbl.dates.size = 2,
                        lbl.time.interv = FALSE,
@@ -50,6 +54,9 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   # check which periods have been selected
   neolithic <- selected.per %in% c("EN", "EMN", "MN", "LN", "UN")
   mesolithic <- !neolithic
+  # periods colors
+  periods.colors <- read.csv(ref.period, sep = "\t")
+  # periods.colors.selected <- periods.colors[periods.colors$period %in% shown.per, c("period", "color")]
   if(is.character(df.c14)){
     df.dates <- sf::st_read(df.c14, quiet = T)
     # title/filename
@@ -219,13 +226,20 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   nb.contours <- length(contour_levels)
   if(nb.contours > 1){
     if(neolithic){
-      myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours + 5)
+      isochr.line.color <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours + 5)
     } else {
-      myPalette <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours + 5)
+      isochr.line.color <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[2]))(nb.contours + 5)
     }
-    myPalette <- myPalette[-c(1:5)]
+    isochr.line.color <- isochr.line.color[-c(1:5)]
   } else {
-    myPalette <- "black"
+    if(is.na(isochr.line.color)){
+      if(neolithic){
+        isochr.line.color <- "red"
+      }
+      if(!neolithic){
+        isochr.line.color <- "blue"
+      }
+    }
   }
   # map
   bbox <- c(left = min(Xs) - buff, 
@@ -297,18 +311,24 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
       world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
       raster_df2 <- raster_df
       if(length(names(kcc_geo)) == 1){
+        if(verbose){
+          print(paste0("   .. Grey scale"))
+        }
         # Grey scale / not working
         colnames(raster_df2) <- c("x", "y", "color")
         map <- ggplot2::ggplot() +
           ggplot2::geom_raster(data= raster_df2, ggplot2::aes(x = x, y = y, fill = color)) +
           ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
           ggplot2::scale_fill_gradient(low = "black", high = "white")  # Blue for low values, red for high
-          # scale_fill_viridis_c() +  # Use a continuous color scale (e.g., Viridis)
-          # coord_fixed() +  # Maintain aspect ratio for geospatial data
-          # labs(title = "Single-Channel Raster Plot", fill = "Value") +
-          # theme_minimal()
-      
+        # scale_fill_viridis_c() +  # Use a continuous color scale (e.g., Viridis)
+        # coord_fixed() +  # Maintain aspect ratio for geospatial data
+        # labs(title = "Single-Channel Raster Plot", fill = "Value") +
+        # theme_minimal()
+      }
       if(length(names(kcc_geo)) == 3){
+        if(verbose){
+          print(paste0("   .. RGB scale"))
+        }
         # RGB
         colnames(raster_df2) <- c("x", "y", "Red", "Green", "Blue")
         # Combine the RGB values into a single color
@@ -349,15 +369,19 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                           # breaks = contour_levels,
                           breaks = contour_levels,
                           linewidth = isochr.line.size) +
-    # ggplot2::geom_contour(data = interp_df, 
-    #                       ggplot2::aes(x = lon, y = lat, z = date.med, 
-    #                                    # color = ..level..
-    #                                    color = ggplot2::after_stat(level)
-    #                       ),
-    #                       linewidth = isochr.line.size,
-    #                       breaks = contour_levels) +
-    ggplot2::scale_color_gradientn(colours = rev(myPalette),
-                                   name = "Cal BC") +
+    # TODO: isochrone colors ###############
+  # neolithic = "red"; !neolithic = "blue"
+  #########################################
+  
+  # ggplot2::geom_contour(data = interp_df, 
+  #                       ggplot2::aes(x = lon, y = lat, z = date.med, 
+  #                                    # color = ..level..
+  #                                    color = ggplot2::after_stat(level)
+  #                       ),
+  #                       linewidth = isochr.line.size,
+  #                       breaks = contour_levels) +
+  ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
+                                 name = "Cal BC") +
     ggplot2::labs(title = tit,
                   subtitle = subtit,
                   caption = capt)
@@ -396,12 +420,13 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     if(verbose){
       print(paste0("Add dates to the map"))
     }
+    print(test_subset)
     if(!test_subset){
       map <- map +
         ggplot2::geom_point(data = df, 
                             ggplot2::aes(x = longitude, y = latitude), 
                             col = "black",
-                            alpha = .5,
+                            alpha = alpha.dates,
                             stroke = NA,
                             size = 1)
       if(verbose){
@@ -428,7 +453,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
         ggplot2::geom_point(data = df.isochr.subset, 
                             ggplot2::aes(x = longitude, y = latitude), 
                             col = "black",
-                            alpha = .3,
+                            alpha = alpha.dates,
                             stroke = NA,
                             size = 1)
       if(lbl.dates){

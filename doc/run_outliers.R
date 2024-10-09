@@ -8,7 +8,8 @@
 root.path <- "C:/Rprojects/neonet/doc/talks/2024-simep/"
 where.roi.path <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/"
 where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
-where.roi <- paste0(where.roi.path, "roi-med-cw.geojson")
+where.roi <- paste0(where.roi.path, "roi-med-cw.geojson") # = Binder
+where.roi <- paste0(where.roi.path, "roi-midi-france.geojson") # = Perrin
 where <- sf::st_read(where.roi,
                      quiet = TRUE)
 
@@ -36,16 +37,18 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = c(-5800), # c(-5500, -6000, -6500), # - 5500 TODO
+                     isochr.subset = c(-6200), # c(-5500, -6000, -6500), # - 5500 TODO
                      selected.per = "EN",
-                     where = where,
+                     # where = where,
                      # kcc.file = NA,
                      # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
-                     kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
-                     is.other.geotiff = TRUE,
+                     # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
+                     # is.other.geotiff = TRUE,
+                     isochr.line.color = NA,
                      isochr.line.size = 1,
                      calibrate = FALSE,
+                     alpha.dates = 1,
                      lbl.dates = FALSE,
                      lbl.dates.size = 2.5,
                      lbl.time.interv = TRUE)
