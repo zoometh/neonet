@@ -5,13 +5,14 @@
 # Download the R functions using https://download-directory.github.io/ and this URL https://github.com/zoometh/neonet/tree/main/R
 
 # getwd()
-
+root.path <- "C:/Rprojects/neonet/doc/talks/2024-simep/"
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi_cyprus.geojson"
+where <- sf::st_read(where.roi,
+                     quiet = TRUE)
+
 # where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-middle-east.geojson"
 present <- 1950
 when <- c(-9000, -4000)
-where <- sf::st_read(where.roi,
-                     quiet = TRUE)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
 samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 df.c14 <- samp_df
@@ -33,17 +34,20 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = c(-5500), # c(-5500, -6000, -6500), # - 5500 TODO
+                     isochr.subset = c(-5300), # c(-5500, -6000, -6500), # - 5500 TODO
                      selected.per = "EN",
                      # where = where,
-                     kcc.file = NA,
+                     # kcc.file = NA,
                      # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
+                     # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
+                     is.other.geotiff = TRUE,
                      isochr.line.size = 1,
                      calibrate = FALSE,
-                     lbl.dates = TRUE,
+                     lbl.dates = FALSE,
                      lbl.dates.size = 2.5,
                      lbl.time.interv = TRUE)
 isochr$map
+# ggplot2::ggsave(paste0(root.path, "img/", "bib_binder22_5600-5450_AEC.png"), isochr$map, width = 9, height = 6)
 
 
 source("R/neo_find_date.R")

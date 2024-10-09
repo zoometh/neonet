@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "roi-med-cw",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 0.07180157, 48.0342267 ], [ 23.73331373, 48.0342267 ], [ 23.73331373, 31.8513415 ], [ 0.07180157, 31.8513415 ], [ 0.07180157, 48.0342267 ] ] ] ] } }
+]
+}

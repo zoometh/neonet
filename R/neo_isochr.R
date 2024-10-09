@@ -8,6 +8,7 @@
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
 #' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000) in BC.
 #' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff, or a SpatRaster.
+#' @param is.other.geotiff To display another Geotiff. Default: FALSE.
 #' @param time.interv Time interval between two isochrones (bins), in years. Default: 250.
 #' @param coloramp the name of the coloramps to use on contour, for the Neolithic dates and mesolithic dates. Default: c("Reds", "Blues"). 
 #' @param lbl.dates show the sites identifiers (default: TRUE)
@@ -32,6 +33,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        time.interv = 250,
                        isochr.subset = NA,
                        kcc.file = NA,
+                       is.other.geotiff = FALSE,
                        isochr.line.size = 1,
                        buff = .1,
                        shw.dates = TRUE,
@@ -233,17 +235,17 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   if(is.na(kcc.file)){
     if(verbose){
       print(paste0("Neutral basemap (rnaturalearth)"))
-      kcc.info <- "natural earth"
+      basemap.info <- "natural earth"
     }
     world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")}
   if(is(kcc.file, "SpatRaster")) {
     if(verbose){
-      print(paste0("Will use a KCC basemap (SpatRaster)"))
+      print(paste0("Will use a KCC basemap or another raster (SpatRaster)"))
     }
     # not tested
     world <- st_as_sf(kcc.file, coords = c("x", "y"), crs = st_crs(kcc.file))
     orig.file <- terra::sources(kcc.file, nlyr=FALSE, bands=FALSE)
-    kcc.info <- DescTools::SplitPath(orig.file)$filename
+    basemap.info <- DescTools::SplitPath(orig.file)$filename
     # world <- st_as_sf(kcc_geo, coords = c("x", "y"), crs = st_crs(kcc_geo))
   }
   if(is.character(kcc.file)){
@@ -252,7 +254,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     }
     kcc_geo <- terra::rast(kcc.file)
     raster_df <- terra::as.data.frame(kcc_geo, xy = TRUE)
-    kcc.info <- DescTools::SplitPath(kcc.file)$filename
+    basemap.info <- DescTools::SplitPath(kcc.file)$filename
     # 
     # raster_df <- terra::as.data.frame(raster, xy = TRUE, na.rm = TRUE)
     # world <- st_as_sf(raster_df, coords = c("x", "y"), crs = st_crs(raster))
@@ -266,7 +268,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     } else {subtit <- paste0("XXX") }
     capt <- paste0(periods, " | isochrones on the earliest weighted medians | ",
                    nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
-                   "Map: ", kcc.info, "")
+                   "Map: ", basemap.info, "")
   } else {
     tit <- paste("Mesolithic")
     if(nb.contours < 5){
@@ -274,18 +276,36 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     }
     capt <- paste0(periods, " | isochrones on the latest weighted medians | ",
                    nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
-                   "Map: ", kcc.info, "")
+                   "Map: ", basemap.info, "")
   }
   # create map
   if(is.na(kcc.file)){
     map <- ggplot2::ggplot(world) +
       ggplot2::geom_sf(color = '#7a7a7a', fill = "white")
   } else {
-    world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
-    map <- ggplot2::ggplot() +
-      ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) + 
-      ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
-      ggplot2::scale_fill_manual(values = kcc_colors)
+    if(!is.other.geotiff){
+      world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
+      map <- ggplot2::ggplot() +
+        # ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y)) + 
+        ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) +
+        ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
+        ggplot2::scale_fill_manual(values = kcc_colors)
+    }
+    if(is.other.geotiff){
+      # Create a data frame from the raster layers
+      world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
+      raster_df2 <- raster_df
+      colnames(raster_df2) <- c("x", "y", "Red", "Green", "Blue")
+      # Combine the RGB values into a single color
+      raster_df2$color <- with(raster_df2, rgb(Red/255, Green/255, Blue/255))
+      # Plot the raster using ggplot2 and geom_raster
+      map <- ggplot2::ggplot() +
+        geom_raster(data = raster_df2, aes(x = x, y = y, fill = color)) +
+        ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
+        scale_fill_identity() #+  # Use the color column as it is
+        # coord_fixed() +  # Maintain the aspect ratio
+        # theme_minimal()
+    }
   }
   # 
   # gout <- ggplot2::ggplot() +
@@ -339,7 +359,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                                 stroke.colour = "white",
                                 # size = lbl.time.interv.size,
                                 colour = "black", size = 4.5, fontface = "bold"
-                                )
+        )
     } else {
       # only one selected contour
       contour_data <- ggplot2::ggplot_build(ggplot2::ggplot(interp_df, ggplot2::aes(x = lon, y = lat, z = date.med)) + 
