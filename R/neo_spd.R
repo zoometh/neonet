@@ -44,6 +44,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
                     shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
                     time.span = NA, #c(10000, 5000),
                     time.round = 1000,
+                    calCurves = "intcal20",
                     calendar = "BCAD",
                     color.on = "Period",
                     show.median = FALSE,
@@ -178,6 +179,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
                            h = 50)
   x <- rcarbon::calibrate(c14.cal$C14Age,
                           c14.cal$C14SD,
+                          calCurves = calCurves,
                           normalised = FALSE)
   spd.c14 <- rcarbon::stackspd(x = x,
                                group = c14.cal[[color.on]],

@@ -134,8 +134,18 @@ kcc.legend
 # print(final_plot)
 # ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_meso_neo_legend.png", final_plot, width = 8, height = 10)
 
+source("R/neo_kcc_map.R")
+where.roi.path <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/"
+where.roi <- paste0(where.roi.path, "roi.geojson")
+kcc.per <- "koppen_8k"
+kcc <- paste0("C:/Rprojects/neonet/doc/data/clim/", kcc.per, ".tif")
+gout <- neo_kcc_map(kcc = kcc,
+                    df.c14 = NA,
+                    roi = where.roi)
+
 # map
 source("R/neo_map.R")
+# neo_map(df.c14 = df.c14)
 g.neo.map <- neo_map(df.c14 = df_cc, 
                      plot.dates = TRUE,
                      roi = where, 
@@ -352,29 +362,43 @@ neo_spd(df.c14 = df.c14[c(1), ])
 
 ############# Plot one date ####
 
-f3per <- function(df.c14 = NA){
-  # find sites having different periods represented, for example "EN", "MN", "LN", to illustrate the different moments (respectively: early farmers, long-distance trade, copper industry) or "EM", "MM", "LM". For example "Baume de Montclus" has all the Mesolithic represented, while "Franchthi Cave" has all the Neolithic represented
-  site.by.per <- df.c14 %>%
-    dplyr::group_by(SiteName, Period) %>%
-    dplyr::summarise(Count = dplyr::n(), .groups = 'drop')
-  site.by.per.count <- as.data.frame(table(site.by.per$SiteName))
-  
-  return(site.by.per.count)
-  # to see the period, run, for example:
-  # site.by.per[site.by.per$SiteName == "Franchthi Cave", ]
-}
+
 
 source("R/neo_calib.R")
 source("R/neo_spd.R")
 source("R/neo_spdplot.R")
+source("R/neo_info_site.R")
 
-site.by.per.count <- f3per(df.c14)
+a.site <- "Baratin"
+df.temp <- df.c14[grep(a.site, df.c14$SiteName), ]
+df.temp <- df.temp[df.temp$LabCode == "Ly-4725", ]
+df.temp <- neo_calib(df.temp, 
+                       verbose.freq = 5)
+# df.temp.2 <- df.temp.1[4, ]
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+neo_spd(df.c14 = df.temp, 
+        outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/", 
+        # outFile = "moments-dbs-neo-Baratin.png",
+        # outFile = "moments-dbs-meso-Montclus.png",
+        outFile = paste0("aDate-", df.temp$SiteName, "-", df.temp$LabCode, ".png"),
+        # time.span = c(10000, 6500),
+        time.span = c(8500, 6500),
+        export = TRUE,
+        title = paste(df.temp$SiteName, "-", df.temp$LabCode),
+        show.median = TRUE,
+        width = 18, height = 11)
+
+
+site.by.per.count <- neo_info_site(df.c14)
+head(site.by.per.count)
 # selelct 1 site
 # View(site.by.per.count)
 # df.temp <- site.by.per[site.by.per$SiteName == "Baume de Montclus", ]
 # df.temp.1 <- df.c14[df.c14$SiteName == "Baume de Montclus" & df.c14$Period %in% c("EM", "MM", "LM"), ]
-df.temp <- site.by.per[site.by.per$SiteName == "Franchthi Cave", ]
-df.temp.1 <- df.c14[df.c14$SiteName == "Franchthi Cave" & df.c14$Period %in% c("EN", "MN", "LN"), ]
+a.site <- "Franchthi Cave"
+df.temp <- site.by.per[site.by.per.count$SiteName == a.site, ]
+df.temp.1 <- df.c14[df.c14$SiteName == a.site & df.c14$Period %in% c("EN", "MN", "LN"), ]
 df.temp.1 <- df.temp.1[df.temp.1$LabCode != "P-1921", ]
 df.temp.1 <- df.temp.1[!is.na(df.temp.1$LabCode), ]
 df.temp.1 <- neo_calib(df.temp.1, 
@@ -383,7 +407,8 @@ df.temp.2 <- df.temp.1[4, ]
 
 source("R/neo_spd.R")
 source("R/neo_spdplot.R")
-neo_spd(df.c14 = df.temp.2, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/", 
+neo_spd(df.c14 = df.temp.2, 
+        outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/", 
         # outFile = "moments-dbs-neo-Franchti.png",
         # outFile = "moments-dbs-meso-Montclus.png",
         outFile = paste0("aDate-", df.temp.2$SiteName, "-", df.temp.2$LabCode, ".png"),
