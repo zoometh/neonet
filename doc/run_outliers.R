@@ -11,8 +11,8 @@ where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 where.roi <- paste0(where.roi.path, "roi-midi-france.geojson") # = Perrin
 where.roi <- paste0(where.roi.path, "roi.geojson")
 where.roi <- paste0(where.roi.path, "roi-med-cw.geojson") # = Binder
-where <- sf::st_read(where.roi,
-                     quiet = TRUE)
+# where <- sf::st_read(where.roi,
+#                      quiet = TRUE)
 
 # where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-middle-east.geojson"
 present <- 1950
@@ -37,11 +37,12 @@ source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
+where.roi <- c(30, 30, 45, 40)
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = c(-5400), # c(-5500, -6000, -6500), # - 5500 TODO
+                     isochr.subset = c(-8400), # c(-5500, -6000, -6500), # - 5500 TODO
                      selected.per = "EN",
-                     where = where,
-                     # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
+                     where = where.roi,
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
@@ -52,9 +53,10 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      isochr.txt.size = 3,
                      calibrate = FALSE,
                      alpha.dates = 1,
-                     lbl.dates = TRUE,
+                     lbl.dates = FALSE,
                      lbl.dates.size = 2.5,
-                     lbl.time.interv = TRUE)
+                     lbl.time.interv = TRUE,
+                     create.legend = TRUE)
 isochr$map
 # ggplot2::ggsave(paste0(root.path, "img/", "bib_binder22_5600-5450_AEC_close.png"), isochr$map, width = 9, height = 6)
 

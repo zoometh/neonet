@@ -119,19 +119,19 @@ Neo
 source("R/neo_kcc_legend.R")
 kcc.legend <- neo_kcc_legend(df_cc = df_cc, 
                              long.legend = TRUE)
-
+kcc.legend
 ## Not Run / convert tableGrob to ggplot / TODO: add in neo_kcc_legend()
-# Create an empty ggplot object
-plot <- ggplot2::ggplot() +
-  ggplot2::geom_blank(ggplot2::aes(1, 1)) +
-  ggplot2::theme_void()  # Use theme_void() to create an empty canvas
-final_plot <- plot +
-  ggplot2::annotation_custom(
-    grob = kcc.legend, 
-    xmin = -Inf, xmax = Inf, 
-    ymin = -Inf, ymax = Inf
-  )
-print(final_plot)
+# # Create an empty ggplot object
+# plot <- ggplot2::ggplot() +
+#   ggplot2::geom_blank(ggplot2::aes(1, 1)) +
+#   ggplot2::theme_void()  # Use theme_void() to create an empty canvas
+# final_plot <- plot +
+#   ggplot2::annotation_custom(
+#     grob = kcc.legend, 
+#     xmin = -Inf, xmax = Inf, 
+#     ymin = -Inf, ymax = Inf
+#   )
+# print(final_plot)
 # ggplot2::ggsave(file = "C:/Rprojects/neonet/doc/talks/2024-simep/img/kcc_meso_neo_legend.png", final_plot, width = 8, height = 10)
 
 # map

@@ -5,7 +5,7 @@
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
 #' @param selected.per the period selected. Default "EN".
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
-#' @param where A sf dataframe to limit the analysis. Default NA.
+#' @param where An area to limit the analysis. Can be an sf dataframe, a GeoJSON path, a bounding box (xmin, ymin, xmin, xmax). Default NA.
 #' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
 #' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000) in BC.
 #' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff, or a SpatRaster.
@@ -48,6 +48,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        lbl.time.interv.size = 3,
                        coloramp = c("Reds", "Blues"),
                        mapname = "Isochrones",
+                       create.legend = FALSE,
                        verbose = TRUE){
   # TODO: median or mean
   `%>%` <- dplyr::`%>%` # used to not load dplyr
@@ -72,14 +73,46 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   if(is.data.frame(df.c14)){
     df.dates <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
   }
-  # if(!is.na(where)){
+  # where
+  if(inherits(where, "character")){
+    if(verbose){
+      print(paste0("Spatial subset on new roi, bounding box object"))
+    }
+    where <- sf::st_read(where,
+                         quiet = TRUE)
+    inside <- sf::st_within(df.dates, where, sparse = FALSE)
+    df.dates <- df.dates[inside, ]
+  }
   if(inherits(where, "sf")){
     if(verbose){
-      print(paste0("Spatial subset on new roi"))
+      print(paste0("Spatial subset on new roi, sf object"))
     }
     inside <- sf::st_within(df.dates, where, sparse = FALSE)
     df.dates <- df.dates[inside, ]
   }
+  if(inherits(where, "numeric")){
+    if(verbose){
+      print(paste0("Spatial subset on new roi, bounding box"))
+    }
+    xmin <- where[1]
+    ymin <- where[2]
+    xmax <- where[3]
+    ymax <- where[4]
+    polygon <- sf::st_polygon(list(matrix(c(xmin, ymin,
+                                            xmax, ymin,
+                                            xmax, ymax,
+                                            xmin, ymax,
+                                            xmin, ymin), 
+                                          ncol = 2, byrow = TRUE)))
+    where <- sf::st_sf(geometry = sf::st_sfc(polygon, crs = 4326))
+    inside <- sf::st_within(df.dates, where, sparse = FALSE)
+    df.dates <- df.dates[inside, ]
+  }
+  # Load the sf package
+  # library(sf)
+  
+  # Define the bounding coordinates
+  # 
   nb.dates.tot <- nrow(df.dates)
   if(verbose){
     print(paste0("Original file: ", nb.dates.tot, " dates"))
@@ -383,43 +416,50 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
     if(!test_subset){
       # all contours
       map <- map +
-      metR::geom_text_contour(data = interp_df,
-                              binwidth = time.interv,
-                              ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
-                              skip = 0,
-                              rotate = TRUE,
-                              stroke = 0.3, 
-                              stroke.colour = "white",
-                              # size = lbl.time.interv.size,
-                              colour = isochr.txt.colour, 
-                              size = isochr.txt.size, 
-                              fontface = "bold"
-      )
+        metR::geom_text_contour(data = interp_df,
+                                binwidth = time.interv,
+                                ggplot2::aes(x = lon, y = lat, z = date.med, colour = ..level..),
+                                skip = 0,
+                                rotate = TRUE,
+                                stroke = 0.3, 
+                                stroke.colour = "white",
+                                # size = lbl.time.interv.size,
+                                colour = isochr.txt.colour, 
+                                size = isochr.txt.size, 
+                                fontface = "bold"
+        )
     } else {
       # only one selected contour
-      contour_data <- ggplot2::ggplot_build(ggplot2::ggplot(interp_df, ggplot2::aes(x = lon, y = lat, z = date.med)) + 
+      contour_data <- ggplot2::ggplot_build(ggplot2::ggplot(interp_df, 
+                                                            ggplot2::aes(x = lon, y = lat, z = date.med)) + 
                                               ggplot2::geom_contour(breaks = isochr.subset))$data[[1]]
       # one label by countour
-      contour_data_lbl <- contour_data %>%
-        dplyr::group_by(group) %>%
-        dplyr::slice(1) %>%
-        dplyr::ungroup()
-      map <- map + 
-        ggplot2::geom_contour(data = interp_df, 
-                              ggplot2::aes(x = lon, y = lat, z = date.med), 
-                              breaks = isochr.subset, 
-                              colour = "black") +
-        ggplot2::geom_text(data = contour_data_lbl, 
-                           ggplot2::aes(x = x, y = y, label = sprintf("%.0f", level)),
-                           size = isochr.txt.size, 
-                           colour = isochr.txt.colour)
+      
+      # print(nrow(contour_data))
+      # print(class(contour_data))
+      if(nrow(contour_data) > 0){
+        # add only if there are contours
+        contour_data_lbl <- contour_data %>%
+          dplyr::group_by(group) %>%
+          dplyr::slice(1) %>%
+          dplyr::ungroup()
+        map <- map + 
+          ggplot2::geom_contour(data = interp_df, 
+                                ggplot2::aes(x = lon, y = lat, z = date.med), 
+                                breaks = isochr.subset, 
+                                colour = "black") +
+          ggplot2::geom_text(data = contour_data_lbl, 
+                             ggplot2::aes(x = x, y = y, label = sprintf("%.0f", level)),
+                             size = isochr.txt.size, 
+                             colour = isochr.txt.colour)
+      }
     }
   }
   if(shw.dates){
     if(verbose){
       print(paste0("Add dates to the map"))
     }
-    print(test_subset)
+    # print(test_subset)
     if(!test_subset){
       map <- map +
         ggplot2::geom_point(data = df, 
@@ -468,7 +508,18 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   }
   map <- map +
     ggplot2::theme(legend.position = "none")
-  outData <- list(data = df, map = map)
+  if(create.legend){
+    source("R/neo_kcc_legend.R")
+    if(verbose){
+      print(paste0("  + call neo_kcc_legend() to create a legend"))
+    }
+    legend <- neo_kcc_legend(df_cc = NA, 
+                             kcc.file = kcc.file,
+                             where = where,
+                             long.legend = TRUE,
+                             verbose = verbose)
+  }
+  outData <- list(data = df, map = map, legend = legend)
   return(outData)
 }
 

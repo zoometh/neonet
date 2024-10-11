@@ -38,14 +38,16 @@ neo_kcc_extract <- function(df.c14 = NA,
     cc.ky.int <- sub(".*_", "", cc.ky)
     cc.ky.int.bp <- -as.integer(gsub("k", "000", cc.ky.int))
     cc.ky.int.bc <- cc.ky.int.bp + present
+    # TODO: more simply.. write a round()
     cc.ky.int.interval <- c(cc.ky.int.bc - (kcc.step)/2, 
                             cc.ky.int.bc + (kcc.step)/2)
+    ################################################
     if(verbose){
       print(paste0("  sample calibrated dates having their median within ",
                    cc.ky.int.interval[1], " and ", cc.ky.int.interval[2], " (BC)"))
     }
     df.c14.exist.in.ky <- subset(df.c14, median >= cc.ky.int.interval[1] & median <= cc.ky.int.interval[2])
-    head(df.c14.exist.in.ky)
+    # head(df.c14.exist.in.ky)
     if(verbose){
       print(paste0("  nb of dates/kcc: ", nrow(df.c14.exist.in.ky)))
     }
