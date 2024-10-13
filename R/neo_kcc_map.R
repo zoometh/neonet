@@ -31,10 +31,12 @@ neo_kcc_map <- function(kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                         df.c14 = NA,
                         roi = NA,
                         sys.proj = NA,
+                        kcc_colors = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv",
                         pt.size = .5,
                         lbl.dates = FALSE,
                         lbl.dates.size = 2,
                         verbose = TRUE){
+  koppen_colors <- read.table(kcc_colors, sep = "\t", header = TRUE)
   # create a KCC map with dates (df.c14). The latter is a sf dataframe
   cc.ky <- DescTools::SplitPath(kcc)$filename 
   kcc_geo <- terra::rast(kcc)
@@ -45,7 +47,18 @@ neo_kcc_map <- function(kcc = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
     kcc_geo <- terra::project(kcc_geo, paste0("EPSG:", as.character(sys.proj)))
     roi <- sf::st_transform(roi, sys.proj)
   }
+  # where
+  if(inherits(roi, "character")){
+    if(verbose){
+      print(paste0("Spatial subset on new roi, bounding box object"))
+    }
+    roi <- sf::st_read(roi,
+                         quiet = TRUE)
+    # inside <- sf::st_within(df.dates, where, sparse = FALSE)
+    # df.dates <- df.dates[inside, ]
+  }
   roi <- sf::st_bbox(roi)
+  
   # plot(kcc_geo)
   # kcc_geo <- raster::raster(kcc)
   raster_df <- terra::as.data.frame(kcc_geo, xy = TRUE)

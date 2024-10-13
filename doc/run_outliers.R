@@ -37,28 +37,29 @@ source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
-where.roi <- c(30, 30, 45, 40)
+# where.roi <- c(30, 30, 45, 40)
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = c(-8400), # c(-5500, -6000, -6500), # - 5500 TODO
-                     selected.per = "EN",
+                     isochr.subset = "None", # c(-5600), # c(-5500, -6000, -6500), # - 5500 TODO
+                     # selected.per = "LM",
                      where = where.roi,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/jousse04_bos_domestic_afrique.tif",
                      # is.other.geotiff = TRUE,
                      isochr.line.color = "black", # NA to get colored isochrones (red, blue)
-                     isochr.line.size = 1,
-                     isochr.txt.size = 3,
+                     isochr.line.size = .5,
+                     isochr.txt.size = 0,
                      calibrate = FALSE,
+                     size.date = 3,
                      alpha.dates = 1,
                      lbl.dates = FALSE,
                      lbl.dates.size = 2.5,
                      lbl.time.interv = TRUE,
                      create.legend = TRUE)
 isochr$map
-# ggplot2::ggsave(paste0(root.path, "img/", "bib_binder22_5600-5450_AEC_close.png"), isochr$map, width = 9, height = 6)
+# ggplot2::ggsave(paste0(root.path, "img/", "bck-img-2.png"), isochr$map, width = 21, height = 19)
 
 
 source("R/neo_find_date.R")

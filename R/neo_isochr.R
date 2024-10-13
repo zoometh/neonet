@@ -26,7 +26,7 @@
 #'
 #'
 #' @export
-neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
+neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-23.geojson",
                        selected.per = c("EN"),
                        ref.period = "https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/periods.tsv",
                        where = NA,
@@ -40,6 +40,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                        isochr.line.size = 1,
                        isochr.txt.size = 4.5,
                        buff = .1,
+                       size.date = 1,
                        shw.dates = TRUE,
                        alpha.dates = .5,
                        lbl.dates = FALSE,
@@ -119,10 +120,15 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   }
   # subset on periods
   df.dates <- df.dates[df.dates$Period %in% selected.per, ]
+  selected.per.lbl <- paste0(selected.per, collapse = ", ")
   if(verbose){
     print(paste0("After subsetting Periods on '",
-                 paste0(selected.per, collapse = ", "),"': ",
+                 #paste0(selected.per, collapse = ", "),"': ",
+                 selected.per.lbl,
                  nrow(df.dates), " dates to model"))
+  }
+  if(nrow(df.dates) == 0){
+    stop(paste0("No ", selected.per.lbl, " dates in this geographical area"))
   }
   # # subset on SD
   # if(!is.na(max.sd)){
@@ -187,6 +193,11 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   # contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
   # TODO: do the same on weighted medians
   test_subset <- ifelse(all(is.na(isochr.subset)), FALSE, TRUE)
+  is.none.subset <- ifelse(isochr.subset == "None", TRUE, FALSE)
+  if(is.none.subset){
+    contour_levels <- 0
+  }
+  print(is.none.subset)
   if(!test_subset){
     contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
     print(contour_levels)
@@ -260,6 +271,10 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   # colors. rm the lightest colors
   nb.contours <- length(contour_levels)
   # isochr.line.color <- isochr.line.color
+  if(nb.contours == 0){
+    isochr.line.color <- NA
+    isochr.txt.colour <- NA
+  }
   if(nb.contours > 1){
     if(neolithic){
       isochr.line.color <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours + 5)
@@ -313,6 +328,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   }
   # tit
   periods <- paste0(unique(df.dates$Period), collapse = " ")
+  subtit <- ""
   if(neolithic){
     tit <- paste("Neolithic")
     if(nb.contours < 5){
@@ -392,28 +408,43 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
   #   # ggplot2::coord_sf(xlim = c(roi$xmin, roi$xmax), ylim = c(roi$ymin, roi$ymax)) +
   #   ggplot2::theme_bw() +
   #   ggplot2::theme(legend.position = "none")
-  
   map <- map +
     ggplot2::coord_sf(xlim = c(min(Xs) - buff, max(Xs) + buff),
                       ylim = c(min(Ys) - buff, max(Ys) + buff)) +
     ggplot2::theme_bw() +
     ggplot2::theme(axis.text = ggplot2::element_text(size = 7)) +
-    ggplot2::geom_contour(data = interp_df, 
-                          ggplot2::aes(x = lon, y = lat, z = date.med, 
-                                       # color = ..level..
-                                       color = ggplot2::after_stat(level)
-                          ),
-                          # breaks = contour_levels,
-                          breaks = contour_levels,
-                          linewidth = isochr.line.size) +
-    ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
-                                   name = "Cal BC") +
+    # ggplot2::geom_contour(data = interp_df, 
+    #                       ggplot2::aes(x = lon, y = lat, z = date.med, 
+    #                                    # color = ..level..
+    #                                    color = ggplot2::after_stat(level)
+    #                       ),
+    #                       # breaks = contour_levels,
+    #                       breaks = contour_levels,
+    #                       linewidth = isochr.line.size) +
+    # ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
+    #                                name = "Cal BC") +
     ggplot2::labs(title = tit,
                   subtitle = subtit,
                   caption = capt)
   # ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
+  # if(!is.none.subset){
+  #   
+  # }
+  if(!is.none.subset){
+    map <- map +
+      ggplot2::geom_contour(data = interp_df, 
+                            ggplot2::aes(x = lon, y = lat, z = date.med, 
+                                         # color = ..level..
+                                         color = ggplot2::after_stat(level)
+                            ),
+                            # breaks = contour_levels,
+                            breaks = contour_levels,
+                            linewidth = isochr.line.size) +
+      ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
+                                     name = "Cal BC")
+  }
   if(lbl.time.interv){
-    if(!test_subset){
+    if(!test_subset & !is.none.subset){
       # all contours
       map <- map +
         metR::geom_text_contour(data = interp_df,
@@ -428,7 +459,8 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                                 size = isochr.txt.size, 
                                 fontface = "bold"
         )
-    } else {
+    } # else {
+    if(test_subset & !is.none.subset){
       # only one selected contour
       contour_data <- ggplot2::ggplot_build(ggplot2::ggplot(interp_df, 
                                                             ggplot2::aes(x = lon, y = lat, z = date.med)) + 
@@ -467,7 +499,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                             col = "black",
                             alpha = alpha.dates,
                             stroke = NA,
-                            size = 1)
+                            size = size.date)
       if(verbose){
         print(paste0("Add date labels to the map"))
       }
@@ -494,7 +526,7 @@ neo_isochr <- function(df.c14 = "https://raw.githubusercontent.com/zoometh/neone
                             col = "black",
                             alpha = alpha.dates,
                             stroke = NA,
-                            size = 1)
+                            size = size.date)
       if(lbl.dates){
         map <- map +
           ggrepel::geom_text_repel(data = df.isochr.subset, 

@@ -41,8 +41,8 @@ neo_kcc_ca <- function(df_cc = NA,
     df.tot[[kcc]] <- NULL
     # df_grouped <- aggregate(cbind(value1, value2) ~ group, data = df, FUN = sum)
     df_grouped <- df.tot %>%
-      group_by_at(colname.period) %>%
-      summarise(across(everything(), sum))
+      dplyr::group_by_at(colname.period) %>%
+      dplyr::summarise(across(everything(), sum))
     df_grouped$kcc <- kcc
     # print(df_grouped)
     df_list[[length(df_list)+1]] <- df_grouped
@@ -90,14 +90,14 @@ neo_kcc_ca <- function(df_cc = NA,
     subtit <- paste0("KCC map: ", kcc.col[i])
     capt <- paste0("Periods: ", the.periods)
     # graphique
-    gca <- ggplot2::ggplot(ca.kcc.per, aes(CA1, CA2, color = color, shape = shape)) +
+    gca <- ggplot2::ggplot(ca.kcc.per,ggplot2::aes(CA1, CA2, color = color, shape = shape)) +
       ggplot2::labs(title = tit,
                     subtitle = subtit,
                     caption = capt) +
       ggplot2::geom_point(# fill = color, # pour les shape > 20
         # stroke = .5, # pour les shape > 20
         size = 3) + # 1.5
-      ggrepel::geom_text_repel(aes(label = id),
+      ggrepel::geom_text_repel(ggplot2::aes(label = id),
                                cex=3,
                                segment.size = 0.1,
                                segment.alpha = 0.5,
@@ -119,18 +119,18 @@ neo_kcc_ca <- function(df_cc = NA,
                          alpha = 0.5) +
       ggplot2::scale_color_identity() +
       ggplot2::scale_shape_identity() +
-      ggplot2::theme(plot.title = element_text(size = 10, face = "bold"),
-                     plot.subtitle = element_text(size = 8)) +
-      ggplot2::theme(axis.text=element_text(size = 5),
-                     axis.title.x=element_text(size = 8),
-                     axis.title.y=element_text(size = 8))+
-      ggplot2::theme(axis.ticks = element_line(size = 0.2))+
+      ggplot2::theme(plot.title =  ggplot2::element_text(size = 10, face = "bold"),
+                     plot.subtitle =  ggplot2::element_text(size = 8)) +
+      ggplot2::theme(axis.text= ggplot2::element_text(size = 5),
+                     axis.title.x= ggplot2::element_text(size = 8),
+                     axis.title.y= ggplot2::element_text(size = 8))+
+      ggplot2::theme(axis.ticks =  ggplot2::element_line(size = 0.2))+
       ggplot2::theme(legend.position = "none")+
-      ggplot2::theme(strip.text.x = element_text(size = 8),
-                     strip.text.y = element_blank()) +
-      ggplot2::theme(panel.border = element_rect(colour = 'black', fill = NA, linewidth = 0.2)) +
-      ggplot2::theme(panel.background = element_rect(fill = 'transparent')) +
-      ggplot2::theme(panel.spacing.y = unit(0, "lines"))
+      ggplot2::theme(strip.text.x =  ggplot2::element_text(size = 8),
+                     strip.text.y =  ggplot2::element_blank()) +
+      ggplot2::theme(panel.border =  ggplot2::element_rect(colour = 'black', fill = NA, linewidth = 0.2)) +
+      ggplot2::theme(panel.background =  ggplot2::element_rect(fill = 'transparent')) +
+      ggplot2::theme(panel.spacing.y =  ggplot2::unit(0, "lines"))
     g_list[[length(g_list)+1]] <- gca
   }
   return(g_list)
