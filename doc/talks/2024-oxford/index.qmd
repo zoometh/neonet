@@ -15,7 +15,7 @@ author:
       - id: uc
         name: <span style="font-size:16pt">University of Cambridge</span>
 title-slide-attributes:
-    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img.png"
+    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2.png"
     data-background-size: "90%"
     data-background-opacity: "0.3"
     data-notes: Climate Types. Focus on the LM/EN transition. Examines the spread of farming across the Mediterranean from 9,000 to 4,000 BC. Assess changes in the climates inhabited by the latest foragers during the LM and the earliest farmers during the EN. R programming to analyse over 4,000 curated radiocarbon dates. And 6 past reconstructions Köppen Climate Classification covering 6 milleniums (slices of 1000 years each). Development both for the datasets and methods. Reproductibility.
@@ -37,19 +37,23 @@ format:
     # self-contained: true
     # embed-resources: true
     # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<em><b>Climate & Chronology</b> series</em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-oxford/img/climate_and_chronology_image-01.jpg' style='height: 40px;vertical-align: middle;'>  xx October 2024, Oxford (UK)"
+    footer: "<em><b>Climate & Chronology</b> series   </em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-oxford/img/climate_and_chronology_image-01.jpg' style='height: 40px;vertical-align: middle;'>   15 October 2024, University of Oxford"
     margin: 0
     width: 1200
 ---
 
-# Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+# Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
 ::: notes
-Introduce the archaeological cultures. Materials and Methods.
+
 :::
 
-## An ecologic and economic revolution
+## An ecological and economic revolution
 
+
+::: notes
+Holocene
+:::
 
 
 ## Late Foragers and Early Farmers
@@ -59,25 +63,25 @@ Introduce the archaeological cultures. Materials and Methods.
     <!-- Empty row -->
   </tr>
   <tr>
-    <td rowspan="3">Baume de Montclus<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png"></td>
-    <td style="font-size: 20px;"><span style="color:#0000CF">EM - Early Mesolithic</span></td>
+    <td rowspan="2" style="font-size: 15px;"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png" height="250" width="600"><br>Baume de Montclus, stacked SPD</td>
+    <td style="font-size: 20px;"><span style="color:#0000CF">EM - Early Mesolithic</span>,<span style="color:#1D1DFF"> MM - Middle Mesolithic</span></td>
   </tr>
-  <tr>
-    <td style="font-size: 25px;"><span style="color:#1D1DFF">MM - Middle Mesolithic</span></td>
-  </tr>
+  <!-- <tr> -->
+  <!--   <td style="font-size: 25px;"><span style="color:#1D1DFF">MM - Middle Mesolithic</span></td> -->
+  <!-- </tr> -->
   <tr>
     <td><b><span style="color:#3737FF">LM - Late Mesolithic</span> Late Foragers</b>. Residenciality increase. Circular mobility to access discontinuous resources in time and space.</td>
   </tr>
   <tr>
-    <td rowspan="3">Franchthi cave<br><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png"></td>
+    <td rowspan="2" style="font-size: 15px;"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png" height="250" width="600"><br>Franchthi cave, stacked SPD</td>
     <td><b><span style="color:#FF1B1B">EN - Early Neolithic</span> Early farmers</b>. Permanent settlements, soil fertility for agriculture (cereals) and climates for livestock.</td>
   </tr>
   <tr>
-    <td style="font-size: 25px;"><span style="color:#FF8D1B">MN - Middle Neolithic</span></td>
+    <td style="font-size: 25px;"><span style="color:#FF8D1B">MN - Middle Neolithic</span>, <span style="color:#FFC04D">LN - Late Neolithic</span></td>
   </tr>
-  <tr>
-    <td style="font-size: 20px;"><span style="color:#FFC04D">LN - Late Neolithic</span></td>
-  </tr>
+  <!-- <tr> -->
+  <!--   <td style="font-size: 20px;"><span style="color:#FFC04D">LN - Late Neolithic</span></td> -->
+  <!-- </tr> -->
 </table>
 
 \
@@ -121,8 +125,41 @@ Fertile Crescent | cultigens
 
 ## LN - Late Neolithic {data-visibility=hidden}
 
+# Framework {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
-# Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+::: notesl
+Data: radiocarbon dates and palaeoclimatic data.
+:::
+
+## Neonet project
+
+::: {.panel-tabset}
+
+### Faarming Pionneer front
+
+
+
+### Dataset
+
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="600"/>
+
+
+### App
+
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png"/ width="600">
+
+### Functions
+
+```{r}
+my_code_R <- paste0("Hello ", "the world")
+
+
+```
+
+:::
+
+
+# Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
 ::: notes
 Data: radiocarbon dates and palaeoclimatic data.
@@ -349,7 +386,7 @@ Mid-Holocene (c. 6,000 BP)<br>
 ::: columns
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" width="500">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725.png-spd-align.png" width="500">
 :::
 
 ::: {.column width="60%"}
@@ -366,7 +403,7 @@ Mid-Holocene (c. 6,000 BP)<br>
 - Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
 :::
 
-# Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+# Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
 ::: notes
 Radiocarbon dates are still being revised, and many of them need to be verified. First modeling
@@ -517,7 +554,7 @@ minimizing regional climate contrasts: Similarity between local landscapes of ea
 - **6000 BC** ...
 :::
 
-# Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+# Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
 ::: notes
 Rproductible methods. Enhancement of cultural and climatic data
@@ -582,7 +619,7 @@ Rproductible methods. Enhancement of cultural and climatic data
 - Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
 :::
 
-# Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-50perc.png"}
+# Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
 <https://github.com/zoometh/neonet>
 

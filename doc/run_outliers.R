@@ -39,8 +39,8 @@ source("R/neo_calib.R")
 source("R/neo_isochr.R")
 # where.roi <- c(30, 30, 45, 40)
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset = "None", # c(-5600), # c(-5500, -6000, -6500), # - 5500 TODO
-                     # selected.per = "LM",
+                     isochr.subset =  c(-5600), # "None", # c(-5600), # - 5500 TODO
+                     selected.per = "EN",
                      where = where.roi,
                      kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
@@ -52,7 +52,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      isochr.line.size = .5,
                      isochr.txt.size = 0,
                      calibrate = FALSE,
-                     size.date = 3,
+                     size.date = 1,
                      alpha.dates = 1,
                      lbl.dates = FALSE,
                      lbl.dates.size = 2.5,

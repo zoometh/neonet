@@ -30,7 +30,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                        selected.per = c("EN"),
                        ref.period = "https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/periods.tsv",
                        where = NA,
-                       # max.sd = 100,
+                       max.sd = 101,
                        calibrate = TRUE,
                        time.interv = 250,
                        isochr.subset = NA,
@@ -130,15 +130,16 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   if(nrow(df.dates) == 0){
     stop(paste0("No ", selected.per.lbl, " dates in this geographical area"))
   }
-  # # subset on SD
-  # if(!is.na(max.sd)){
-  #   df.dates <- df.dates[df.dates$C14SD < max.sd, ]
-  #   if(verbose){
-  #     print(paste0("After subset of SD on < ", 
-  #                  max.sd,": ",
-  #                  nrow(df.dates), " dates to calibrate and model"))
-  #   }
-  # }
+  # subset on SD
+  if(!is.na(max.sd)){
+    df.dates <- df.dates[df.dates$C14SD < max.sd, ]
+    # df_filtered <- df_filtered[df_filtered$C14SD < 101, ]
+    if(verbose){
+      print(paste0("After subset of SD on < ",
+                   max.sd,": ",
+                   nrow(df.dates), " dates to calibrate and model"))
+    }
+  }
   # Early Neolithic (EN): Select the row with the minimum median in each site
   # not.EN <- rownames(df.dates[df.dates$Period != "EN", ])
   # rownames(df.dates[not.EN, ]) <- NULL
@@ -334,17 +335,17 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     if(nb.contours < 5){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     } else {subtit <- paste0("XXX") }
-    capt <- paste0(periods, " | isochrones on the earliest weighted medians | ",
-                   nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
-                   "Map: ", basemap.info, "")
+    capt <- paste0(periods, " | isochrones on the earliest weighted medians | ")
+    capt <- paste0(capt, nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
+                   "basemap: ", basemap.info, "")
   } else {
     tit <- paste("Mesolithic")
     if(nb.contours < 5){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     }
-    capt <- paste0(periods, " | isochrones on the latest weighted medians | ",
-                   nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
-                   "Map: ", basemap.info, "")
+    capt <- paste0(periods, " | isochrones on the latest weighted medians | ")
+    capt <- paste0(capt, nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
+                   "basemap: ", basemap.info, "")
   }
   # create map
   if(is.na(kcc.file)){
