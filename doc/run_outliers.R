@@ -61,6 +61,13 @@ isochr <- neo_isochr(df.c14 = df_filtered,
 isochr$map
 # ggplot2::ggsave(paste0(root.path, "img/", "bck-img-2.png"), isochr$map, width = 21, height = 19)
 
+library(rcarbon)
+
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+
+neo_spd(df.c14 = df.c14, time.span = c(-12000, -6000))
+
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")

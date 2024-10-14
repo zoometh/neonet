@@ -195,17 +195,17 @@ Data: radiocarbon dates and palaeoclimatic data.
 ::: columns
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png"/ width="600">
-:::
-
-::: {.column width="60%"}
-
 ```{.r}
 source("R/neo_spd.R")
 source("R/neo_spdplot.R")
 
 neo_spd(df.c14 = df.c14)
 ```
+
+:::
+
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/spd-spd.png"/ width="600">
 
 :::
 
