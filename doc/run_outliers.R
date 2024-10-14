@@ -53,7 +53,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      selected.per = "EN",
                      where = where.roi,
                      # kcc.file = NA,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
@@ -71,7 +71,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates.size = 3,
                      lbl.time.interv = TRUE)
 isochr$map
-# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5500BC-EN-Binder.png"), isochr$map, width = 7, height = 7)
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5600BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
 # ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5600BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
 
 # source("R/neo_spd.R")

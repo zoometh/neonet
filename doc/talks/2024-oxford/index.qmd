@@ -575,7 +575,7 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 Radiocarbon dates are still being revised, and many of them need to be verified. First modeling
 :::
 
-## Spread of Neolithic (in BC)
+## Spread of Neolithic in Eastern and Central Mediterranean (in BC)
 
 ::: {.panel-tabset}
 
@@ -685,7 +685,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### 5600e
+### 5600
 
 ::: columns
 
@@ -700,7 +700,13 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### 5600w
+:::
+
+## Spread of Neolithic in Western Mediterranean (in BC)
+
+::: {.panel-tabset}
+
+### 5600
 
 ::: columns
 
