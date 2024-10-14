@@ -569,13 +569,13 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 :::
 
 
-# Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+# Spread of Neolithic the Mediterranean {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
 ::: notes
 Radiocarbon dates are still being revised, and many of them need to be verified. First modeling
 :::
 
-## Spread of Neolithic in Eastern and Central Mediterranean (in BC)
+## Eastern and Central Mediterranean (in BC)
 
 ::: {.panel-tabset}
 
@@ -614,7 +614,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-7600BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-7600BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
 :::
 
 
@@ -629,7 +629,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6800BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6800BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
 :::
 
 
@@ -660,7 +660,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6000BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6000BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
 :::
 
 
@@ -675,7 +675,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5800BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5800BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
 :::
 
 
@@ -690,7 +690,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
 :::
 
 
@@ -702,7 +702,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-## Spread of Neolithic in Western Mediterranean (in BC)
+## Western Mediterranean (in BC)
 
 ::: {.panel-tabset}
 
@@ -711,7 +711,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-west.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-west.png){width="500" style="horizontal-align: middle;"}
 :::
 
 
@@ -726,7 +726,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5300BC-EN-kcc-west.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5300BC-EN-kcc-west.png){width="500" style="horizontal-align: middle;"}
 :::
 
 
