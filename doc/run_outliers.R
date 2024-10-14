@@ -43,14 +43,15 @@ where.roi <- c(20, 30, 45, 40)
 where.roi <- c(20, 30, 35, 42) # 6200 BC = 8.2 ky event
 where.roi <- c(32, 30, 45, 40) # Near East
 where.roi <- c(24, 25, 45, 40) # East Med
+where.roi <- c(20, 25, 45, 40) # East Med2
 # where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-7600), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-6800), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      where = where.roi,
                      # kcc.file = NA,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_10k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_9k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
@@ -67,8 +68,8 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.time.interv = TRUE,
                      create.legend = TRUE)
 isochr$map
-# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-7600BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
-# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-7600BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-6800BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-6800BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
 
 # source("R/neo_spd.R")
 # source("R/neo_spdplot.R")
@@ -81,7 +82,7 @@ isochr$map
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 52)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 18)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
