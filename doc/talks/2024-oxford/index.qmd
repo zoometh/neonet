@@ -495,15 +495,19 @@ Mid-Holocene (c. 6,000 BP)<br>
 
 ## Climate dating by site
 
+::: {.panel-tabset}
+
+### Extract KCC
 
 ::: columns
 
-::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725.png-spd-align.png" width="500">
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725.png-spd-align.png" width="600"><br>
+<small>Le Baratin, Ly-4725 (number 52 in the map)</small>
 :::
 
-::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" width="700">
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map.png" width="400">
 :::
 
 
@@ -513,6 +517,29 @@ Mid-Holocene (c. 6,000 BP)<br>
 - For a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)
 - Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
 :::
+
+### Mobile window
+
+
+::: columns
+
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map.png" width="500">
+:::
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map-legend.png" width="500">
+:::
+
+:::
+
+:::
+
+::: notes
+- For a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)
+- Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
+:::
+
 
 # Results {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
