@@ -36,6 +36,7 @@ df_filtered <- df_filtered[df_filtered$C14SD < 101, ]
 source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
+source("R/neo_kcc_legend.R")
 source("R/neo_isochr.R")
 where.roi <- c(20, 30, 45, 40)
 # where.roi <- c(2, 42, 7, 45) # Le Baratin
@@ -62,9 +63,9 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates.size = 3,
                      lbl.time.interv = TRUE,
                      create.legend = TRUE)
-isochr$map
+isochr$legend
 # ggplot2::ggsave(paste0(root.path, "img/", "isochrones-9000BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
-# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-6200BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-9000BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
 
 # source("R/neo_spd.R")
 # source("R/neo_spdplot.R")

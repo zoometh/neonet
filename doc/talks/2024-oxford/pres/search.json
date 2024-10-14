@@ -53,7 +53,7 @@
     "href": "index.html#climates-data",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Climates data",
-    "text": "Climates data\n\nSourcesMethods\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n\n Beyer et al. 20201\n\n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\n\nB &lt;- MAP &lt; 10 * Pthresh\nBW &lt;- B & MAP &lt; 5 * Pthresh\nBWh &lt;- BW & MAT &gt;= 18\nBWk &lt;- BW & MAT &lt; 18\nBS &lt;- B & MAP &gt;= 5 * Pthresh\nBSh &lt;- BS & MAT &gt;= 18\nBSk &lt;- BS & MAT &lt; 18\nhttps://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R\n\n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
+    "text": "Climates data\n\nSourcesMethods\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n\n Beyer et al. 20201\n\n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\n\nB &lt;- MAP &lt; 10 * Pthresh\nBW &lt;- B & MAP &lt; 5 * Pthresh\nBWh &lt;- BW & MAT &gt;= 18\nBWk &lt;- BW & MAT &lt; 18\nBS &lt;- B & MAP &gt;= 5 * Pthresh\nBSh &lt;- BS & MAT &gt;= 18\nBSk &lt;- BS & MAT &lt; 18\n\nA &lt;- Thot &gt;= 18 & !B\nAf &lt;- A & Pdry &gt;= 60\nAm &lt;- A & !Af & Pdry &gt;= 100 - MAP / 25\nAw &lt;- A & !Af & Pdry &lt; 100 - MAP / 25\nhttps://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R\n\n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
   },
   {
     "objectID": "index.html#climate-dating-by-site",
@@ -61,6 +61,13 @@
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Climate dating by site",
     "text": "Climate dating by site\n\nExtract KCCEF Pioneer front KCC\n\n\n\n\n\n\n 52: Le Baratin, Ly-4725\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
+  },
+  {
+    "objectID": "index.html#spread-of-neolithic",
+    "href": "index.html#spread-of-neolithic",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Spread of Neolithic",
+    "text": "Spread of Neolithic\n\n9000 BCOther"
   },
   {
     "objectID": "index.html#climates-evolution",
