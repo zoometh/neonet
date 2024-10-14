@@ -66,7 +66,9 @@ library(rcarbon)
 source("R/neo_spd.R")
 source("R/neo_spdplot.R")
 
-neo_spd(df.c14 = df.c14, time.span = c(-12000, -6000))
+neo_spd(df.c14 = head(df_filtered, 200), time.span = c(-12000, -6000))
+neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
+
 
 
 source("R/neo_find_date.R")

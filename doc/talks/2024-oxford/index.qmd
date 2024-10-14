@@ -205,7 +205,7 @@ neo_spd(df.c14 = df.c14)
 :::
 
 ::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/spd-spd.png"/ width="600">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/spd-spd.png" width="400"/>
 
 :::
 
@@ -220,7 +220,7 @@ neo_spd(df.c14 = df.c14)
 Data: radiocarbon dates and palaeoclimatic data.
 :::
 
-## Radiocarbon data
+## Radiocarbon dataset
 
 ::: {.panel-tabset}
 
@@ -307,6 +307,50 @@ Neonet classes
 - Using 
 :::
 
+### Outlier
+
+
+```{r, message=FALSE}
+library(DT)
+library(dplyr)
+c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv"
+df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
+df.to.rm %>% 
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(5, 10, 50, -1), 
+                        c('5', '10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
+        "}")
+    ) 
+  )
+#, options = list(width = "700px", pageLength = 10))
+```
+<small>[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)</small>
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_8k-iso-not.png){width="1200" style="horizontal-align: middle;"}
+
+
+:::
+
+::: notes
+- With R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases. 
+- We map these dates to the Neonet periods (here on the left **class**).
+- Then we remove duplicated dates and discard outliers (currently in process).
+- Some 4,000 dates are now available for the study.
+:::
+
+
+## Radiocarbon modelling
+
+::: {.panel-tabset}
+
+
 ### Date selection
 
 
@@ -345,35 +389,6 @@ The most ancient <span style="color: red;">EN</span> date median
 - For a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)
 - Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
 :::
-
-### Outlier
-
-
-```{r, message=FALSE}
-library(DT)
-library(dplyr)
-c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv"
-df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
-df.to.rm %>% 
-  DT::datatable(
-    width = "100%",
-    rownames = FALSE,
-    options=list(
-      lengthMenu = list(c(5, 10, 50, -1), 
-                        c('5', '10', '50', 'All')),
-      paging = T,
-      initComplete = htmlwidgets::JS(
-        "function(settings, json) {",
-        paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
-        "}")
-    ) 
-  )
-#, options = list(width = "700px", pageLength = 10))
-```
-<small>[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)</small>
-
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_8k-iso-not.png){width="1200" style="horizontal-align: middle;"}
-
 
 :::
 
