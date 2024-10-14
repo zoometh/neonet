@@ -42,6 +42,7 @@ format:
     width: 1200
 ---
 
+
 # Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
 ::: notes
@@ -249,6 +250,7 @@ Data: radiocarbon dates and palaeoclimatic data.
 ::: {.column width="70%"}
 
 
+
 ```{r, message=FALSE}
 library(DT)
 library(dplyr)
@@ -270,6 +272,7 @@ df.to.rm %>%
   )
 #, options = list(width = "700px", pageLength = 10))
 ```
+
 <small>[ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/inst/extdata/ref_table_per.xlsx)</small>
 
 :::
@@ -310,6 +313,7 @@ df.to.rm %>%
 ### Outlier
 
 
+
 ```{r, message=FALSE}
 library(DT)
 library(dplyr)
@@ -331,6 +335,7 @@ df.to.rm %>%
   )
 #, options = list(width = "700px", pageLength = 10))
 ```
+
 <small>[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)</small>
 
 
@@ -343,14 +348,17 @@ df.to.rm %>%
 
 ### ROI
 
+
 ```{r}
 library(sf) ; library(dplyr) ; library(leaflet)
 dirIn <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2023-bhdc/data/"
 ```
 
+
 ::: columns
 ::: {.column width="50%"}
 <small>`neonet-data-2023-10-22-select-aera.geojson`</small>
+
 
 ```{r}
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
@@ -359,10 +367,12 @@ leaflet(df, width = "300px") %>%
   addTiles() %>%
   addPolygons(popup = ID)# "<b>Hello World</b>")
 ```
+
 :::
 
 ::: {.column width="50%"}
 <small>`neonet-data-2023-10-22.geojson`</small>
+
 
 ```{r}
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22.geojson"),  quiet = T)
@@ -370,6 +380,7 @@ leaflet(df, width = "300px") %>%
   addTiles() %>% 
   addCircleMarkers(popup = ~SiteName)
 ```
+
 :::
 :::
 
@@ -771,9 +782,11 @@ Rproductible methods. Enhancement of cultural and climatic data
 
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
 
+
 ```{=html}
 <iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
 ```
+
 
 
 :::
@@ -911,6 +924,7 @@ Rproductible methods. Enhancement of cultural and climatic data
 - 
 - Extract on the radiocarbon date weighted median
 :::
+
 
 
 
