@@ -502,12 +502,12 @@ Mid-Holocene (c. 6,000 BP)<br>
 ::: columns
 
 ::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725.png-spd-align.png" width="600"><br>
-<small>Le Baratin, Ly-4725 (number 52 in the map)</small>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725.png-spd-align.png" width="600">
 :::
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map.png" width="400">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map.png" width="400"><br>
+<small><b>52</b>: Le Baratin, Ly-4725</small>
 :::
 
 
