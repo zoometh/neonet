@@ -48,7 +48,7 @@ where.roi <- c(10, 25, 45, 45) # East Med3
 # where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-6000), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-5800), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      where = where.roi,
                      # kcc.file = NA,
