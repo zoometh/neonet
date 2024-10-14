@@ -188,6 +188,8 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 :::
 
+<small><http://shinyserver.cfs.unipi.it:3838/C14dev/></small>
+
 
 
 ### Functions
@@ -450,7 +452,7 @@ df.c14[i, "taq"] <- -(max(ages1$Date1$ageGrid) - present)
 ::: columns
 
 ::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN.png" width="500">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN.png" width="400">
 :::
 
 ::: {.column width="50%"}
@@ -482,35 +484,55 @@ interpolated <- akima::interp(x = df$longitude,
 ### Sources
 
 ::: columns
-::: {.column width="50%"}
-Mid-Holocene (c. 6,000 BP)<br>
+
+::: {.column width="33%"}
+<!-- Mid-Holocene (c. 6,000 BP)<br> -->
 <small>Mean annual temperature (ºC)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="250px"><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="250px">
+:::
+
+::: {.column width="33%"}
 <small>Annual precipitation (mm year <sup>-1</sup>)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="250px"><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="250px">
+:::
+
+::: {.column width="33%"}
 <small>Biome (pollen-based)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="250px"><br>
-<small> Beyer et *al.* 2020[^1]</small>
-\
-\
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="250px">
+:::
+
 
 :::
+
+<small> Beyer et *al.* 2020[^1]</small>
+
+### Methods
+
+::: columns
 
 ::: {.column width="50%"}
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 90px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 110px;vertical-align: middle;"/><br>[<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
-<br>
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo_legend.png){width="400" style="horizontal-align: middle;"}<br>
-
-
-:::
 :::
 
-<http://shinyserver.cfs.unipi.it:3838/C14dev/>
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png){width="1000" style="horizontal-align: middle;"}
+::: {.column width="50%"}
+```{.r}
+B <- MAP < 10 * Pthresh
+BW <- B & MAP < 5 * Pthresh
+BWh <- BW & MAT >= 18
+BWk <- BW & MAT < 18
+BS <- B & MAP >= 5 * Pthresh
+BSh <- BS & MAT >= 18
+BSk <- BS & MAT < 18
+```
+
+<small><https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R></small>
+:::
+
+:::
+
+:::
 
 [^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
-
-:::
 
 
 ::: notes
@@ -545,17 +567,18 @@ Mid-Holocene (c. 6,000 BP)<br>
 - Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
 :::
 
-### Mobile window
+
+### EF Pioneer front KCC
 
 
 ::: columns
 
 ::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map.png" width="500">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN-kcc.png" width="400">
 :::
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map-legend.png" width="500">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN-kcc-legend.png" width="350">
 :::
 
 :::

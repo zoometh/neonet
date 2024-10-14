@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "index.html#an-ecological-and-economic-revolution",
+    "href": "index.html#an-ecological-and-economic-revolution",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "An ecological and economic revolution",
+    "text": "An ecological and economic revolution\n\nHolocene"
+  },
+  {
+    "objectID": "index.html#late-foragers-and-early-farmers",
+    "href": "index.html#late-foragers-and-early-farmers",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Late Foragers and Early Farmers",
+    "text": "Late Foragers and Early Farmers\n\n\n\n\n\n\nBaume de Montclus, stacked SPD\n\n\nEM - Early Mesolithic, MM - Middle Mesolithic\n\n\n\n\n\n\n\nLM - Late Mesolithic Late Foragers. Residenciality increase. Circular mobility to access discontinuous resources in time and space.\n\n\n\n\nFranchthi cave, stacked SPD\n\n\nEN - Early Neolithic Early farmers. Permanent settlements, soil fertility for agriculture (cereals) and climates for livestock.\n\n\n\n\nMN - Middle Neolithic, LN - Late Neolithic\n\n\n\n\n\n\n\n\n\n\nThe different periods defines characteristic anthropological moments. Conventional division in 3 phases, both for the Mesolithic and Neolithic. Standardized and heuristic way to represent the evolution of a culture. We represent here, using large brushes"
+  },
+  {
+    "objectID": "index.html#lm---late-mesolithic",
+    "href": "index.html#lm---late-mesolithic",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "LM - Late Mesolithic",
+    "text": "LM - Late Mesolithic\nLate Foragers\nClimates: Near East is temperate and wet, North Africa transitioned to arid conditions, Southern Europe experienced is warmer and wetter\n\nCold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging Residenciality increase. Circular mobility to access discontinuous resources in time and space."
+  },
+  {
+    "objectID": "index.html#en---early-neolithic",
+    "href": "index.html#en---early-neolithic",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "EN - Early Neolithic",
+    "text": "EN - Early Neolithic\nEarly farmers\nClimates: broadly warm and stable\n\nFertile Crescent | cultigens. Permanent settlements, soil fertility for agriculture (cereals) and climates for livestock."
+  },
+  {
+    "objectID": "index.html#neonet-project",
+    "href": "index.html#neonet-project",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Neonet project",
+    "text": "Neonet project\n\nFarming Pioneer frontDatasetAppFunctions\n\n\nEarly Mesolithic (EM),  Middle Mesolithic (MM),  Late Mesolithic (LM),  Early Neolithic (EN),  Middle Neolithic (MN),  Late Neolithic (LN)\n\n\nBaume de Montclus, stacked SPD\n\nFranchthi cave, stacked SPD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhttp://shinyserver.cfs.unipi.it:3838/C14dev/\n\n\n\n\nsource(\"R/neo_spd.R\")\nsource(\"R/neo_spdplot.R\")\n\nneo_spd(df.c14 = df.c14)"
+  },
+  {
+    "objectID": "index.html#radiocarbon-dataset",
+    "href": "index.html#radiocarbon-dataset",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Radiocarbon dataset",
+    "text": "Radiocarbon dataset\n\nSourcesAlignmentOutlierROIWorflow\n\n\n\n\n\n\n\n\nhttps://github.com/ropensci/c14bazAAR https://github.com/zoometh/neonet\n\n\n\n\n\n\n\n\n\n\n\nref_table_per.xlsx\n\n\n\n\n\n\nEM - Early Mesolithic\n\n\n\n\nMM - Middle Mesolithic\n\n\n\n\nLM - Late Mesolithic\n\n\n\n\nEN - Early Neolithic\n\n\n\n\nMN - Middle Neolithic\n\n\n\n\nLN - Late Neolithic\n\n\n\n\n\n\n8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.\nmapping table with period and culture coming from different datasest to be mapped to the Neonet main classes (10 classes, among which 4 are undefined and period transition).\nUsing\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\nneonet-data-2023-10-22-select-aera.geojson\n\n\n\n\n\n\n\nneonet-data-2023-10-22.geojson\n\n\n\n\n\n\n\n\n\nHere it’s a leaflet view of these exported files. On the left hand side the selection rectangle, on the right hand side the dates. Dates can undergo a secondary curation and subsetting process using a GIS or any other appropriate application."
+  },
+  {
+    "objectID": "index.html#radiocarbon-modelling",
+    "href": "index.html#radiocarbon-modelling",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Radiocarbon modelling",
+    "text": "Radiocarbon modelling\n\nDate selectionDates mediansDates interpolation\n\n\n\n\nThe most recent LM date median \n\nThe most ancient EN date median \n\n\n\n\n\n\n\n\nweighted.median &lt;- matrixStats::weightedMedian(x = ages1$Date1$ageGrid,\n                                               w = ages1$Date1$densities)\ndf.c14[i, \"median\"] &lt;- -(weighted.median - present)\nif(stat.mean){\n  weighted.mean &lt;- matrixStats::weightedMean(x = ages1$Date1$ageGrid,\n                                             w = ages1$Date1$densities)\n  df.c14[i, \"mean\"] &lt;- -(weighted.mean - present)\n}\ndf.c14[i, \"tpq\"] &lt;- -(min(ages1$Date1$ageGrid) - present)\ndf.c14[i, \"taq\"] &lt;- -(max(ages1$Date1$ageGrid) - present)\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\ninterpolated &lt;- akima::interp(x = df$longitude, \n                                y = df$latitude, \n                                z = df$median, \n                                duplicate = \"mean\")\n  \n  interp_df &lt;- tidyr::expand_grid(i = seq_along(interpolated$x), \n                                  j = seq_along(interpolated$y)) %&gt;% \n    dplyr::mutate(lon = interpolated$x[i],\n                  lat = interpolated$y[j],\n                  date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %&gt;% \n    dplyr::select(-i, -j)"
+  },
+  {
+    "objectID": "index.html#climates-data",
+    "href": "index.html#climates-data",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Climates data",
+    "text": "Climates data\n\nSourcesMethods\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n\n Beyer et al. 20201\n\n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\n\nB &lt;- MAP &lt; 10 * Pthresh\nBW &lt;- B & MAP &lt; 5 * Pthresh\nBWh &lt;- BW & MAT &gt;= 18\nBWk &lt;- BW & MAT &lt; 18\nBS &lt;- B & MAP &gt;= 5 * Pthresh\nBSh &lt;- BS & MAT &gt;= 18\nBSk &lt;- BS & MAT &lt; 18\nhttps://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R\n\n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
+  },
+  {
+    "objectID": "index.html#climate-dating-by-site",
+    "href": "index.html#climate-dating-by-site",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Climate dating by site",
+    "text": "Climate dating by site\n\nExtract KCCEF Pioneer front KCC\n\n\n\n\n\n\n 52: Le Baratin, Ly-4725\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
+  },
+  {
+    "objectID": "index.html#climates-evolution",
+    "href": "index.html#climates-evolution",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Climates evolution",
+    "text": "Climates evolution\n\nLate ForagersEarly FarmersComparisons\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLate foragers: Drop of the inhabited cold climates from 11k BP to 7k BP. In 9k BP newly occupied occupied Cold, dry summer, cold summer, possibly corresponding to the higher mountain range (Atlas, Alps, Pyrenees, etc.)\nEarly Farmers: 11k and 10k 2 main climates, continuous area: Fertile Crescent. Arid climates increases in 9k: arid margins (oasis). 8k and 7k: neolithisation of cold and temperated areas (Bulgaria, Southern Germany, etc.)\nComparison: LM occupied a larger diversity of ecozones. EF replace HG in cold climate over 4,000 years"
+  },
+  {
+    "objectID": "index.html#productible-methods",
+    "href": "index.html#productible-methods",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": " productible methods",
+    "text": "productible methods\n\nModelingCultural dataClimate data\n\n\n\n\nAmmerman, A. J., & Cavalli-Sforza, L. L. (1971). Measuring the rate of spread of early farming in Europe. Man, 674-688.\n\nFort, J. (2022). The spread of agriculture: quantitative laws in prehistory?. In Simulating Transitions to Agriculture in Prehistory (pp. 17-28). Cham: Springer International Publishing.\n\nBetti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., … & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. Nature Human Behaviour, 4(10), 1004-1010.\n\n\n\n\nhttps://github.com/zoometh/neonet\n\n\n\n\n\n\n\n\n\n https://github.com/EvolEcolGroup/pastclim\n\n\n\n\n\n\nAll models are wrong but some are usefull\nDates curation\nPossibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Climates during the Spread of Farming in Mediterranean",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nBeyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. Scientific data, 7(1), 236."
+  }
+]

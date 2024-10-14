@@ -195,6 +195,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   # TODO: do the same on weighted medians
   test_subset <- ifelse(all(is.na(isochr.subset)), FALSE, TRUE)
   is.none.subset <- ifelse(isochr.subset == "None", TRUE, FALSE)
+  print(is.none.subset)
   if(is.none.subset){
     contour_levels <- 0
   }
