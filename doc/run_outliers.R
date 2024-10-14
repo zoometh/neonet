@@ -48,7 +48,7 @@ where.roi <- c(10, 25, 45, 45) # East Med3
 # where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-5800), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-5600), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      where = where.roi,
                      # kcc.file = NA,
@@ -69,8 +69,8 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.time.interv = TRUE,
                      create.legend = TRUE)
 isochr$map
-# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-6000BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
-# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-6000BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5600BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5600BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
 
 # source("R/neo_spd.R")
 # source("R/neo_spdplot.R")
