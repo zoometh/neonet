@@ -196,7 +196,8 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   test_subset <- ifelse(all(is.na(isochr.subset)), FALSE, TRUE)
   is.none.subset <- ifelse(isochr.subset == "None", TRUE, FALSE)
   print(is.none.subset)
-  if(is.none.subset){
+  # if(is.none.subset){
+  if(any(is.none.subset)){
     contour_levels <- 0
   }
   print(is.none.subset)
@@ -432,7 +433,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   # if(!is.none.subset){
   #   
   # }
-  if(!is.none.subset){
+  if(!any(is.none.subset)){
     map <- map +
       ggplot2::geom_contour(data = interp_df, 
                             ggplot2::aes(x = lon, y = lat, z = date.med, 
@@ -446,7 +447,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                                      name = "Cal BC")
   }
   if(lbl.time.interv){
-    if(!test_subset & !is.none.subset){
+    if(!test_subset & !any(is.none.subset)){
       # all contours
       map <- map +
         metR::geom_text_contour(data = interp_df,
@@ -462,7 +463,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                                 fontface = "bold"
         )
     } # else {
-    if(test_subset & !is.none.subset){
+    if(test_subset & !any(is.none.subset)){
       # only one selected contour
       contour_data <- ggplot2::ggplot_build(ggplot2::ggplot(interp_df, 
                                                             ggplot2::aes(x = lon, y = lat, z = date.med)) + 

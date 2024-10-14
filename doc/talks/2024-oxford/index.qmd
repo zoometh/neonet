@@ -58,34 +58,7 @@ Holocene
 
 ## Late Foragers and Early Farmers
 
-<table style="font-size: 30px;">
-  <tr>
-    <!-- Empty row -->
-  </tr>
-  <tr>
-    <td rowspan="2" style="font-size: 15px;"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png" height="250" width="600"><br>Baume de Montclus, stacked SPD</td>
-    <td style="font-size: 20px;"><span style="color:#0000CF">EM - Early Mesolithic</span>,<span style="color:#1D1DFF"> MM - Middle Mesolithic</span></td>
-  </tr>
-  <!-- <tr> -->
-  <!--   <td style="font-size: 25px;"><span style="color:#1D1DFF">MM - Middle Mesolithic</span></td> -->
-  <!-- </tr> -->
-  <tr>
-    <td><b><span style="color:#3737FF">LM - Late Mesolithic</span> Late Foragers</b>. Residenciality increase. Circular mobility to access discontinuous resources in time and space.</td>
-  </tr>
-  <tr>
-    <td rowspan="2" style="font-size: 15px;"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png" height="250" width="600"><br>Franchthi cave, stacked SPD</td>
-    <td><b><span style="color:#FF1B1B">EN - Early Neolithic</span> Early farmers</b>. Permanent settlements, soil fertility for agriculture (cereals) and climates for livestock.</td>
-  </tr>
-  <tr>
-    <td style="font-size: 25px;"><span style="color:#FF8D1B">MN - Middle Neolithic</span>, <span style="color:#FFC04D">LN - Late Neolithic</span></td>
-  </tr>
-  <!-- <tr> -->
-  <!--   <td style="font-size: 20px;"><span style="color:#FFC04D">LN - Late Neolithic</span></td> -->
-  <!-- </tr> -->
-</table>
 
-\
-\
 
 ::: notes
 The different periods defines characteristic anthropological moments. Conventional division in 3 phases, both for the Mesolithic and Neolithic. Standardized and heuristic way to represent the evolution of a culture. We represent here, using large brushes
@@ -357,7 +330,7 @@ dirIn <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2023-b
 ```{r}
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
 ID <- as.character(df$ID)
-leaflet(df, width = "300px") %>%
+leaflet(df, width = "300px", height = "300px") %>%
   addTiles() %>%
   addPolygons(popup = ID)# "<b>Hello World</b>")
 ```
@@ -368,7 +341,7 @@ leaflet(df, width = "300px") %>%
 
 ```{r}
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22.geojson"),  quiet = T)
-leaflet(df, width = "300px") %>%
+leaflet(df, width = "300px", height = "300px") %>%
   addTiles() %>% 
   addCircleMarkers(popup = ~SiteName)
 ```
@@ -451,11 +424,11 @@ df.c14[i, "taq"] <- -(max(ages1$Date1$ageGrid) - present)
 
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN.png" width="400">
 :::
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 ```{.r}
 interpolated <- akima::interp(x = df$longitude, 
                                 y = df$latitude, 
@@ -523,6 +496,11 @@ BWk <- BW & MAT < 18
 BS <- B & MAP >= 5 * Pthresh
 BSh <- BS & MAT >= 18
 BSk <- BS & MAT < 18
+
+A <- Thot >= 18 & !B
+Af <- A & Pdry >= 60
+Am <- A & !Af & Pdry >= 100 - MAP / 25
+Aw <- A & !Af & Pdry < 100 - MAP / 25
 ```
 
 <small><https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R></small>

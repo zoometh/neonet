@@ -69,17 +69,47 @@ neo_kcc_legend <- function(df_cc = NA,
     climate_df$color <- climate_df$color.x
     climate_df <- climate_df[ , c("kcc", "color")]
   }
+  # # Plot
+  # gout <- ggplot2::ggplot(climate_df, ggplot2::aes(x = kcc, y = 1, fill = factor(kcc))) + 
+  #   ggplot2::geom_bar(stat = "identity") +
+  #   ggplot2::scale_fill_manual(values = climate_df$color, name = 'Koppen Climates Classes') +
+  #   ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1)) +
+  #   ggplot2::labs(x = NULL, y = NULL) + 
+  #   ggplot2::theme_void()
+  # # gout
+  # tmp <- ggplot2::ggplot_gtable(ggplot2::ggplot_build(gout))
+  # leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
+  # legend.grob <- tmp$grobs[[leg]]
+  # plot <- ggplot2::ggplot() +
+  #   ggplot2::geom_blank(ggplot2::aes(1, 1)) +
+  #   ggplot2::theme_void()  # Use theme_void() to create an empty canvas
+  # legend <- plot +
+  #   ggplot2::annotation_custom(
+  #     grob = legend.grob, 
+  #     xmin = -Inf, xmax = Inf, 
+  #     ymin = -Inf, ymax = Inf
+  #   )
+  # # print(final_plot)
+  # return(legend)
+  # # return(gout)
   # Plot
   gout <- ggplot2::ggplot(climate_df, ggplot2::aes(x = kcc, y = 1, fill = factor(kcc))) + 
     ggplot2::geom_bar(stat = "identity") +
     ggplot2::scale_fill_manual(values = climate_df$color, name = 'Koppen Climates Classes') +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1)) +
     ggplot2::labs(x = NULL, y = NULL) + 
-    ggplot2::theme_void()
-  # gout
+    ggplot2::theme_void() +
+    ggplot2::theme(
+      legend.box.margin = ggplot2::unit(0, "mm"),  # Set all legend box margins to zero
+      legend.margin = ggplot2::unit(0, "mm")       # Ensure no additional margin around the legend itself
+    )
+  
+  # Extract legend as before
   tmp <- ggplot2::ggplot_gtable(ggplot2::ggplot_build(gout))
   leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
   legend.grob <- tmp$grobs[[leg]]
+  
+  # Ensure the legend is placed without margins in the final annotation
   plot <- ggplot2::ggplot() +
     ggplot2::geom_blank(ggplot2::aes(1, 1)) +
     ggplot2::theme_void()  # Use theme_void() to create an empty canvas
@@ -89,7 +119,7 @@ neo_kcc_legend <- function(df_cc = NA,
       xmin = -Inf, xmax = Inf, 
       ymin = -Inf, ymax = Inf
     )
-  # print(final_plot)
+  
   return(legend)
-  # return(gout)
+  
 }
