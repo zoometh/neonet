@@ -332,7 +332,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   subtit <- ""
   if(neolithic){
     tit <- paste("Neolithic")
-    if(nb.contours < 5){
+    if(nb.contours < 5 & nb.contours > 0){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     } else {subtit <- paste0("XXX") }
     capt <- paste0(periods, " | isochrones on the earliest weighted medians | ")
@@ -340,7 +340,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                    "basemap: ", basemap.info, "")
   } else {
     tit <- paste("Mesolithic")
-    if(nb.contours < 5){
+    if(nb.contours < 5 & nb.contours > 0){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     }
     capt <- paste0(periods, " | isochrones on the latest weighted medians | ")

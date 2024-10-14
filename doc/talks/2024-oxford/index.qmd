@@ -205,7 +205,7 @@ neo_spd(df.c14 = df.c14)
 :::
 
 ::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/spd-spd.png" width="400"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/spd-spd.png" width="600"/>
 
 :::
 
@@ -276,9 +276,9 @@ df.to.rm %>%
 
 ::: {.column width="30%"}
 
-Neonet classes
+<!-- Neonet classes -->
 
-<table style="font-size: 30px;">
+<table style="font-size: 25px;">
     <tr>
         <td><span style="color:#0000CF">EM - Early Mesolithic</span></td>
     </tr>
@@ -333,16 +333,55 @@ df.to.rm %>%
 ```
 <small>[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)</small>
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_8k-iso-not.png){width="1200" style="horizontal-align: middle;"}
-
-
-:::
 
 ::: notes
 - With R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases. 
 - We map these dates to the Neonet periods (here on the left **class**).
 - Then we remove duplicated dates and discard outliers (currently in process).
 - Some 4,000 dates are now available for the study.
+:::
+
+### ROI
+
+```{r}
+library(sf) ; library(dplyr) ; library(leaflet)
+dirIn <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2023-bhdc/data/"
+```
+
+::: columns
+::: {.column width="50%"}
+<small>`neonet-data-2023-10-22-select-aera.geojson`</small>
+
+```{r}
+df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
+ID <- as.character(df$ID)
+leaflet(df, width = "300px") %>%
+  addTiles() %>%
+  addPolygons(popup = ID)# "<b>Hello World</b>")
+```
+:::
+
+::: {.column width="50%"}
+<small>`neonet-data-2023-10-22.geojson`</small>
+
+```{r}
+df <- st_read(paste0(dirIn, "neonet-data-2023-10-22.geojson"),  quiet = T)
+leaflet(df, width = "300px") %>%
+  addTiles() %>% 
+  addCircleMarkers(popup = ~SiteName)
+```
+:::
+:::
+
+::: notes
+Here it's a leaflet view of these exported files. On the left hand side the selection rectangle, on the right hand side the dates. Dates can undergo a secondary curation and subsetting process using a GIS or any other appropriate application.
+:::
+
+### Worflow
+
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/workflow-radiocaron-dataset.png)
+
 :::
 
 
@@ -373,14 +412,23 @@ The most ancient <span style="color: red;">EN</span> date median
 
 ::: columns
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" width="500">
 :::
 
-::: {.column width="60%"}
-
-> Show code
-
+::: {.column width="65%"}
+```{.r}
+weighted.median <- matrixStats::weightedMedian(x = ages1$Date1$ageGrid,
+                                               w = ages1$Date1$densities)
+df.c14[i, "median"] <- -(weighted.median - present)
+if(stat.mean){
+  weighted.mean <- matrixStats::weightedMean(x = ages1$Date1$ageGrid,
+                                             w = ages1$Date1$densities)
+  df.c14[i, "mean"] <- -(weighted.mean - present)
+}
+df.c14[i, "tpq"] <- -(min(ages1$Date1$ageGrid) - present)
+df.c14[i, "taq"] <- -(max(ages1$Date1$ageGrid) - present)
+```
 :::
 
 :::
@@ -448,11 +496,6 @@ Mid-Holocene (c. 6,000 BP)<br>
 ## Climate dating by site
 
 
-
-
-### Sites Koppen classes
-
-
 ::: columns
 
 ::: {.column width="40%"}
@@ -463,8 +506,6 @@ Mid-Holocene (c. 6,000 BP)<br>
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" width="700">
 :::
 
-
-:::
 
 :::
 

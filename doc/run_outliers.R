@@ -38,11 +38,12 @@ source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
 # where.roi <- c(30, 30, 45, 40)
+where.roi <- c(2, 42, 7, 45)
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-5600), # "None", # c(-5600), # - 5500 TODO
+                     isochr.subset =  "None", #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      where = where.roi,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
@@ -52,28 +53,28 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      isochr.line.size = .5,
                      isochr.txt.size = 0,
                      calibrate = FALSE,
-                     size.date = 1,
+                     size.date = 1.5,
                      alpha.dates = 1,
-                     lbl.dates = FALSE,
-                     lbl.dates.size = 2.5,
+                     lbl.dates = TRUE,
+                     lbl.dates.size = 3,
                      lbl.time.interv = TRUE,
                      create.legend = TRUE)
 isochr$map
-# ggplot2::ggsave(paste0(root.path, "img/", "bck-img-2.png"), isochr$map, width = 21, height = 19)
+# ggplot2::ggsave(paste0(root.path, "img/", "aDate-Le Baratin-Ly-4725-map.png"), isochr$map, width = 7, height = 7)
+# ggplot2::ggsave(paste0(root.path, "img/", "aDate-Le Baratin-Ly-4725-map-legend.png"), isochr$legend, width = 5, height = 5)
 
-library(rcarbon)
+# source("R/neo_spd.R")
+# source("R/neo_spdplot.R")
+# 
+# neo_spd(df.c14 = head(df_filtered, 200), time.span = c(-12000, -6000))
+# neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 
-source("R/neo_spd.R")
-source("R/neo_spdplot.R")
-
-neo_spd(df.c14 = head(df_filtered, 200), time.span = c(-12000, -6000))
-neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 
 
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 357)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 52)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
