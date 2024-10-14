@@ -541,7 +541,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   }
   map <- map +
     ggplot2::theme(legend.position = "none")
-  if(create.legend){
+  if(create.legend & !is.na(kcc.file)){
     source("R/neo_kcc_legend.R")
     if(verbose){
       print(paste0("  + call neo_kcc_legend() to create a legend"))

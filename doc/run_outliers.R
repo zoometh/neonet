@@ -37,13 +37,15 @@ source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
 source("R/neo_isochr.R")
-# where.roi <- c(30, 30, 45, 40)
-where.roi <- c(2, 42, 7, 45)
+where.roi <- c(20, 30, 45, 40)
+# where.roi <- c(2, 42, 7, 45) # Le Baratin
+where.roi <- c(20, 30, 35, 42) # 6200 BC = 8.2 ky event
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  "None", #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-6200), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      where = where.roi,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+                     # kcc.file = NA,
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
@@ -55,13 +57,13 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      calibrate = FALSE,
                      size.date = 1.5,
                      alpha.dates = 1,
-                     lbl.dates = TRUE,
+                     lbl.dates = FALSE,
                      lbl.dates.size = 3,
                      lbl.time.interv = TRUE,
                      create.legend = TRUE)
 isochr$map
-# ggplot2::ggsave(paste0(root.path, "img/", "aDate-Le Baratin-Ly-4725-map.png"), isochr$map, width = 7, height = 7)
-# ggplot2::ggsave(paste0(root.path, "img/", "aDate-Le Baratin-Ly-4725-map-legend.png"), isochr$legend, width = 5, height = 5)
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-6200BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-6200BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
 
 # source("R/neo_spd.R")
 # source("R/neo_spdplot.R")

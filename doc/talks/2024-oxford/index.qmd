@@ -438,13 +438,16 @@ df.c14[i, "taq"] <- -(max(ages1$Date1$ageGrid) - present)
 - Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
 :::
 
-:::
-
 ::: notes
 - With R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases. 
 - We map these dates to the Neonet periods (here on the left **class**).
 - Then we remove duplicated dates and discard outliers (currently in process).
 - Some 4,000 dates are now available for the study.
+:::
+
+### Dates interpolation
+
+
 :::
 
 ## Climates data
