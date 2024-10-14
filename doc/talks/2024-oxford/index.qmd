@@ -685,7 +685,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### 5600
+### 5600e
 
 ::: columns
 
@@ -696,6 +696,21 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 ::: {.column width="50%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 5600w
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-west.png){width="400" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-west-legend.png){width="400" style="horizontal-align: middle;"}
 :::
 
 :::

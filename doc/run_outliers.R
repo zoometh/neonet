@@ -45,6 +45,7 @@ where.roi <- c(32, 30, 45, 40) # Near East
 where.roi <- c(24, 25, 45, 40) # East Med
 where.roi <- c(20, 25, 45, 40) # East Med2
 where.roi <- c(10, 25, 45, 45) # East Med3
+where.roi <- c(-10, 30, 20, 45) # West Med3
 # where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 isochr <- neo_isochr(df.c14 = df_filtered, 
@@ -52,24 +53,25 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      selected.per = "EN",
                      where = where.roi,
                      # kcc.file = NA,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/jousse04_bos_domestic_afrique.tif",
-                     # is.other.geotiff = TRUE,
+                     is.other.geotiff = FALSE,
+                     create.legend = TRUE,
                      isochr.line.color = NA, # "black", # NA to get colored isochrones (red, blue)
                      isochr.line.size = .5,
                      isochr.txt.size = 0,
                      calibrate = FALSE,
+                     shw.dates = TRUE,
                      size.date = 1.5,
                      alpha.dates = 1,
                      lbl.dates = FALSE,
                      lbl.dates.size = 3,
-                     lbl.time.interv = TRUE,
-                     create.legend = TRUE)
+                     lbl.time.interv = TRUE)
 isochr$map
-# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5600BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5500BC-EN-Binder.png"), isochr$map, width = 7, height = 7)
 # ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5600BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
 
 # source("R/neo_spd.R")
