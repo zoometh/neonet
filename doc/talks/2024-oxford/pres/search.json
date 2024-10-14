@@ -18,21 +18,21 @@
     "href": "index.html#lm---late-mesolithic",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "LM - Late Mesolithic",
-    "text": "LM - Late Mesolithic\nLate Foragers\nClimates: Near East is temperate and wet, North Africa transitioned to arid conditions, Southern Europe experienced is warmer and wetter\n\nCold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging"
+    "text": "LM - Late Mesolithic\nLate Foragers\nClimates: Near East is temperate and wet, North Africa transitioned to arid conditions, Southern Europe experienced is warmer and wetter\n\nCold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging Residenciality increase. Circular mobility to access discontinuous resources in time and space."
   },
   {
     "objectID": "index.html#en---early-neolithic",
     "href": "index.html#en---early-neolithic",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "EN - Early Neolithic",
-    "text": "EN - Early Neolithic\nEarly farmers\nClimates: broadly warm and stable\n\nFertile Crescent | cultigens"
+    "text": "EN - Early Neolithic\nEarly farmers\nClimates: broadly warm and stable\n\nFertile Crescent | cultigens. Permanent settlements, soil fertility for agriculture (cereals) and climates for livestock."
   },
   {
     "objectID": "index.html#neonet-project",
     "href": "index.html#neonet-project",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Neonet project",
-    "text": "Neonet project\n\nDatasetAppFunctions"
+    "text": "Neonet project\n\nFarming Pioneer frontDatasetAppFunctions\n\n\nEarly Mesolithic (EM),  Middle Mesolithic (MM),  Late Mesolithic (LM),  Early Neolithic (EN),  Middle Neolithic (MN),  Late Neolithic (LN)\n\n\nBaume de Montclus, stacked SPD\n\nFranchthi cave, stacked SPD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmy_code_R &lt;- paste0(\"Hello \", \"the world\")"
   },
   {
     "objectID": "index.html#radiocarbon-data",

@@ -6,7 +6,7 @@
 #' @param selected.per the period selected. Default "EN".
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param where An area to limit the analysis. Can be an sf dataframe, a GeoJSON path, a bounding box (xmin, ymin, xmin, xmax). Default NA.
-#' @param calibrate if TRUE (default) will calibrate dates using the neo_calib() function.
+#' @param calibrate if TRUE (default: FALSE) will calibrate dates using the neo_calib() function.
 #' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000) in BC.
 #' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff, or a SpatRaster.
 #' @param is.other.geotiff To display another Geotiff. Default: FALSE.
@@ -31,7 +31,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                        ref.period = "https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/periods.tsv",
                        where = NA,
                        max.sd = 101,
-                       calibrate = TRUE,
+                       calibrate = FALSE,
                        time.interv = 250,
                        isochr.subset = NA,
                        kcc.file = NA,

@@ -16,7 +16,7 @@ author:
         name: <span style="font-size:16pt">University of Cambridge</span>
 title-slide-attributes:
     data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2.png"
-    data-background-size: "90%"
+    data-background-size: "110%"
     data-background-opacity: "0.3"
     data-notes: Climate Types. Focus on the LM/EN transition. Examines the spread of farming across the Mediterranean from 9,000 to 4,000 BC. Assess changes in the climates inhabited by the latest foragers during the LM and the earliest farmers during the EN. R programming to analyse over 4,000 curated radiocarbon dates. And 6 past reconstructions Köppen Climate Classification covering 6 milleniums (slices of 1000 years each). Development both for the datasets and methods. Reproductibility.
 format:
@@ -109,6 +109,7 @@ Climates: Near East is temperate and wet, North Africa transitioned to arid cond
 
 ::: notes
 Cold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging
+Residenciality increase. Circular mobility to access discontinuous resources in time and space.
 :::
 
 ## EN - Early Neolithic
@@ -118,7 +119,7 @@ Early farmers
 Climates: broadly warm and stable
 
 ::: notes
-Fertile Crescent | cultigens
+Fertile Crescent | cultigens.  Permanent settlements, soil fertility for agriculture (cereals) and climates for livestock.
 :::
 
 ## MN - Middle Neolithic {data-visibility=hidden}
@@ -127,7 +128,7 @@ Fertile Crescent | cultigens
 
 # Framework {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
-::: notesl
+::: notes
 Data: radiocarbon dates and palaeoclimatic data.
 :::
 
@@ -135,29 +136,83 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ::: {.panel-tabset}
 
-### Faarming Pionneer front
+### Farming Pioneer front
 
+
+<span style="color:#0000CF; font-size: 25px;">Early Mesolithic (EM), </span>
+<span style="color:#1D1DFF; font-size: 25px;">Middle Mesolithic (MM), </span>
+<span style="color:#3737FF; font-size: 30px;">Late Mesolithic (LM), </span>
+<span style="color:#FF1B1B; font-size: 30px;">Early Neolithic (EN), </span>
+<span style="color:#FF8D1B; font-size: 25px;">Middle Neolithic (MN), </span>
+<span style="color:#FFC04D; font-size: 25px;">Late Neolithic (LN)</span>
+
+::: columns
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png" height="250" width="600"><br><small>Baume de Montclus, stacked SPD</small>
+:::
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png" height="250" width="600"><br><small>Franchthi cave, stacked SPD</small>
+:::
+
+:::
 
 
 ### Dataset
 
+::: columns
+
+::: {.column width="50%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="600"/>
+:::
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/watersheds-rivers.png" width="600"/>
+:::
+
+:::
 
 
 ### App
 
+::: columns
+
+::: {.column width="40%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png"/ width="600">
+:::
+
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/donzere-app-north-and-south-calib-1.png" width="600"/>
+:::
+
+:::
+
+
 
 ### Functions
 
-```{r}
-my_code_R <- paste0("Hello ", "the world")
+::: columns
 
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png"/ width="600">
+:::
 
+::: {.column width="60%"}
+
+```{.r}
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+
+neo_spd(df.c14 = df.c14)
 ```
 
 :::
 
+
+:::
+
+:::
 
 # Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
