@@ -136,18 +136,18 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ::: columns
 
-::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="600"/>
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="400"/>
 :::
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/watersheds-rivers.png" width="600"/>
 :::
 
 :::
 
 
-### App
+### Online app
 
 ::: columns
 
@@ -282,7 +282,7 @@ df.to.rm %>%
 - Using 
 :::
 
-### Outlier
+### Outliers
 
 
 ```{r, message=FALSE}
@@ -330,7 +330,7 @@ dirIn <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2023-b
 ```{r}
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
 ID <- as.character(df$ID)
-leaflet(df, width = "300px", height = "300px") %>%
+leaflet(df, width = "350px", height = "350px") %>%
   addTiles() %>%
   addPolygons(popup = ID)# "<b>Hello World</b>")
 ```
@@ -341,7 +341,7 @@ leaflet(df, width = "300px", height = "300px") %>%
 
 ```{r}
 df <- st_read(paste0(dirIn, "neonet-data-2023-10-22.geojson"),  quiet = T)
-leaflet(df, width = "300px", height = "300px") %>%
+leaflet(df, width = "350px", height = "350px") %>%
   addTiles() %>% 
   addCircleMarkers(popup = ~SiteName)
 ```
@@ -529,7 +529,7 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 ::: columns
 
 ::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725.png-spd-align.png" width="600">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725.png-spd-align.png" width="650">
 :::
 
 ::: {.column width="40%"}
