@@ -575,11 +575,11 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 Radiocarbon dates are still being revised, and many of them need to be verified. First modeling
 :::
 
-## Spread of Neolithic
+## Spread of Neolithic (in BC)
 
 ::: {.panel-tabset}
 
-### 9000 BC
+### 9000
 
 ::: columns
 
@@ -594,7 +594,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### 8400 BC
+### 8400
 
 ::: columns
 
@@ -609,7 +609,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### 7600 BC
+### 7600
 
 ::: columns
 
@@ -624,7 +624,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### 6800 BC
+### 6800
 
 ::: columns
 
@@ -640,7 +640,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 
-### 6200 BC
+### 6200
 
 ::: columns
 
@@ -655,7 +655,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### 6000 BC
+### 6000
 
 ::: columns
 
@@ -670,7 +670,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### 5800 BC
+### 5800
 
 ::: columns
 
@@ -685,7 +685,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### 5600 BC
+### 5600
 
 ::: columns
 
