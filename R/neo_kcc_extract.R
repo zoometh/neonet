@@ -24,6 +24,7 @@
 neo_kcc_extract <- function(df.c14 = NA,
                             present = 2000,
                             root.path = "C:/Rprojects/neonet/doc/data/clim/",
+                            labcode.col = "LabCode",
                             kcc.file = c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
                                          "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif"),
                             kcc.step = 1000,
@@ -31,7 +32,9 @@ neo_kcc_extract <- function(df.c14 = NA,
   # 
   for(ky in kcc.file){
     # ky <- kcc.file[3]
-    print(paste0("*read: ", ky, " (BP)"))
+    if(verbose){
+      print(paste0("*read: ", ky, " (BP)"))
+    }
     kcc <- paste0(root.path, ky)
     cc.ky <- DescTools::SplitPath(ky)$filename
     # convert 6k to 6000
@@ -52,13 +55,22 @@ neo_kcc_extract <- function(df.c14 = NA,
       print(paste0("  nb of dates/kcc: ", nrow(df.c14.exist.in.ky)))
     }
     kcc_geo <- terra::rast(kcc)
+    
+    # print(class(df.c14.exist.in.ky))
+    
     sf.c14.exist.in.ky <- sf::st_as_sf(df.c14.exist.in.ky, coords = c("lon", "lat"), crs = 4326)
+    
+    # print(class(sf.c14.exist.in.ky))
+    
     df_cc <- terra::extract(kcc_geo, sf.c14.exist.in.ky)
     df.c14.exist.in.ky[[cc.ky]] <- df_cc[["code"]]
     # merge on LabCode
-    df.c14.exist.in.ky <- df.c14.exist.in.ky[, c("LabCode", cc.ky)]
+    df.c14.exist.in.ky <- df.c14.exist.in.ky[, c(labcode.col, cc.ky)]
+    
+    # print(nrow(df.c14.exist.in.ky))
+    
     df.c14.exist.in.ky <- sf::st_set_geometry(df.c14.exist.in.ky, NULL)
-    df.c14 <- merge(df.c14, df.c14.exist.in.ky, by = "LabCode", all.x = TRUE)
+    df.c14 <- merge(df.c14, df.c14.exist.in.ky, by = labcode.col, all.x = TRUE)
     # df_cc <- df_cc %>%
     #   dplyr::rename(!!cc.ky := code)
     # append a column

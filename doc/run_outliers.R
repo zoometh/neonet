@@ -42,18 +42,18 @@ where.roi <- c(20, 30, 45, 40)
 # where.roi <- c(2, 42, 7, 45) # Le Baratin
 where.roi <- c(20, 30, 35, 42) # 6200 BC = 8.2 ky event
 where.roi <- c(32, 30, 45, 40) # Near East
-where.roi <- c(24, 25, 45, 40) # East Med
-where.roi <- c(20, 25, 45, 40) # East Med2
-where.roi <- c(10, 25, 45, 45) # East Med3
-where.roi <- c(-10, 30, 20, 45) # West Med3
+# where.roi <- c(24, 25, 45, 40) # East Med
+# where.roi <- c(20, 25, 45, 40) # East Med2
+# where.roi <- c(10, 25, 45, 45) # East Med3
+# where.roi <- c(-10, 30, 20, 45) # West Med3
 # where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-5300), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-9000), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      where = where.roi,
                      # kcc.file = NA,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
@@ -80,7 +80,22 @@ isochr$map
 # neo_spd(df.c14 = head(df_filtered, 200), time.span = c(-12000, -6000))
 # neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 
-
+View(isochr$data)
+kcc_colors <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv"
+kcc_colors <- read.csv(kcc_colors, sep = "\t")
+kcc_colors <- kcc_colors[ , c("code", "color")]
+isochr.1 <- merge(isochr$data, kcc_colors, by = "code", all.x = TRUE)
+isochr.1 <- isochr.1[ , c("idf", "site", "median", "code", "color")]
+isochr.1$all <- "All"
+ggplot2::ggplot(isochr.1, ggplot2::aes(x = all, fill = code)) +
+  ggplot2::geom_bar() +
+  ggplot2::scale_fill_manual(values = unique(isochr.1$color[order(isochr.1$code)])) +
+  ggplot2::theme_minimal()
+# names(isochr$data)[names(isochr$data) == 'longitude'] <- 'lon'
+# names(isochr$data)[names(isochr$data) == 'latitude'] <- 'lat'
+# data.df <- sf::st_as_sf(isochr$data, coords = c("lon", "lat"), crs = 4326)
+# kcc_geo <- terra::rast("C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif")
+# kcc.list <- terra::extract(kcc_geo, data.df)
 
 
 source("R/neo_find_date.R")

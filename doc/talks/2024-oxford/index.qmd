@@ -109,24 +109,26 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ::: {.panel-tabset}
 
-### Farming Pioneer front
+### Meso/Neo
 
-
-<span style="color:#0000CF; font-size: 25px;">Early Mesolithic (EM), </span>
-<span style="color:#1D1DFF; font-size: 25px;">Middle Mesolithic (MM), </span>
-<span style="color:#3737FF; font-size: 30px;">Late Mesolithic (LM), </span>
-<span style="color:#FF1B1B; font-size: 30px;">Early Neolithic (EN), </span>
-<span style="color:#FF8D1B; font-size: 25px;">Middle Neolithic (MN), </span>
-<span style="color:#FFC04D; font-size: 25px;">Late Neolithic (LN)</span>
 
 ::: columns
 
-::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png" height="250" width="600"><br><small>Baume de Montclus, stacked SPD</small>
+::: {.column width="20%"}
+<span style="color:#0000CF; font-size: 20px;">Early Mesolithic (EM)</span><br>
+<span style="color:#1D1DFF; font-size: 20px;">Middle Mesolithic (MM)</span><br>
+<span style="color:#3737FF; font-size: 25px;"><b>Late Mesolithic (LM)</b></span><br>
+<span style="color:#FF1B1B; font-size: 25px;"><b>Early Neolithic (EN)</b></span><br>
+<span style="color:#FF8D1B; font-size: 20px;">Middle Neolithic (MN)</span><br>
+<span style="color:#FFC04D; font-size: 20px;">Late Neolithic (LN)</span><br>
 :::
 
-::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png" height="250" width="600"><br><small>Franchthi cave, stacked SPD</small>
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png" width="500"><br><small>Baume de Montclus, stacked SPD</small><br>
+:::
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png" width="500"><br><small>Franchthi cave, stacked SPD</small>
 :::
 
 :::
@@ -186,6 +188,11 @@ neo_spd(df.c14 = df.c14)
 
 
 :::
+
+### Openness
+
+* Open Data, Open Source, Open Access
+* Scalable, Incrementable, Reusable, Analyzable
 
 :::
 
@@ -404,6 +411,7 @@ if(stat.mean){
 df.c14[i, "tpq"] <- -(min(ages1$Date1$ageGrid) - present)
 df.c14[i, "taq"] <- -(max(ages1$Date1$ageGrid) - present)
 ```
+<small>![neonet::neo_calib()](https://github.com/zoometh/neonet/blob/main/R/neo_calib.R)</small>
 :::
 
 :::
@@ -442,7 +450,7 @@ interpolated <- akima::interp(x = df$longitude,
                   date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %>% 
     dplyr::select(-i, -j)
 ```
-
+<small>![neonet::neo_isochr_inter()](https://github.com/zoometh/neonet/blob/main/R/neo_isochr_inter.R)</small>
 :::
 
 :::
@@ -502,8 +510,7 @@ Af <- A & Pdry >= 60
 Am <- A & !Af & Pdry >= 100 - MAP / 25
 Aw <- A & !Af & Pdry < 100 - MAP / 25
 ```
-
-<small><https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R></small>
+<small>![pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R)</small>
 :::
 
 :::
@@ -533,8 +540,8 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 :::
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map.png" width="400"><br>
-<small><b>52</b>: Le Baratin, Ly-4725</small>
+<small><b>52</b>: Le Baratin, Ly-4725</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map.png" width="400">
 :::
 
 
@@ -893,6 +900,7 @@ Rproductible methods. Enhancement of cultural and climatic data
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
 
 ::: {.panel-tabset}
+
 
 ### Modeling
 
