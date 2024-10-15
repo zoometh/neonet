@@ -54,11 +54,11 @@ format:
 
 ::: {.column width="50%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/holocene_clim.png" width="500">
-<small><http://www.atmo.arizona.edu/students/courselinks/spring16/atmo336/lectures/sec5/holocene.html></small>
+<small>![http://www.atmo.arizona.edu](http://www.atmo.arizona.edu/students/courselinks/spring16/atmo336/lectures/sec5/holocene.html)</small>
 :::
 
 ::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib-the-dawn-of-everything.jpg" width="500">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib-the-dawn-of-everything.jpg" width="350">
 :::
 
 :::
@@ -803,7 +803,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5300BC-EN-kcc-west.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5300BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
 :::
 
 :::
