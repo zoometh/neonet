@@ -76,9 +76,11 @@ Holocene
 
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 
 <span style="color:#3737FF;"><b>Late Mesolithic (LM)</b></span>, Late Foragers.
+
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_meso.png" width="500"><small>@ChatGPT</small>
 
 * Residenciality increase
 
@@ -88,15 +90,17 @@ Holocene
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 
 <span style="color:#FF1B1B;"><b>Early Neolithic (EN)</b></span>, Early farmers.
 
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_neo.png" width="500"><small>@ChatGPT</small>
+
 * Permanent settlements
 
-* Logistic mobility to access localized resources related to farming economy and proto-urbanism
+* Logistic mobility to access localized resources for farming economy
 
-* High demography  
+* High demography 
 
 :::
 
