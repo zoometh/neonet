@@ -42,18 +42,19 @@ where.roi <- c(20, 30, 45, 40)
 # where.roi <- c(2, 42, 7, 45) # Le Baratin
 where.roi <- c(20, 30, 35, 42) # 6200 BC = 8.2 ky event
 where.roi <- c(32, 30, 45, 40) # Near East
-# where.roi <- c(24, 25, 45, 40) # East Med
-# where.roi <- c(20, 25, 45, 40) # East Med2
-# where.roi <- c(10, 25, 45, 45) # East Med3
+where.roi <- c(24, 25, 45, 40) # East Med
+where.roi <- c(20, 25, 45, 40) # East Med2
+where.roi <- c(10, 25, 45, 45) # East Med3
 # where.roi <- c(-10, 30, 20, 45) # West Med3
 # where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
+where.roi <- c(18, 35, 30, 43) # East Med3
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-9000), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-5800), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      where = where.roi,
                      # kcc.file = NA,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
@@ -71,8 +72,9 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates.size = 3,
                      lbl.time.interv = TRUE)
 isochr$map
-# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5300BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
-# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5300BC-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
+# View(isochr$data)
+ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-5800-EN-kcc.png"), isochr$map, width = 7, height = 7)
+ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-6200-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)
 
 # source("R/neo_spd.R")
 # source("R/neo_spdplot.R")
@@ -80,7 +82,8 @@ isochr$map
 # neo_spd(df.c14 = head(df_filtered, 200), time.span = c(-12000, -6000))
 # neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 
-View(isochr$data)
+# Create a stacked barplot of climates from sites
+
 kcc_colors <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv"
 kcc_colors <- read.csv(kcc_colors, sep = "\t")
 kcc_colors <- kcc_colors[ , c("code", "color")]
@@ -100,7 +103,7 @@ ggplot2::ggplot(isochr.1, ggplot2::aes(x = all, fill = code)) +
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 18)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 76)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
