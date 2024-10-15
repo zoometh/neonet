@@ -485,11 +485,13 @@ interpolated <- akima::interp(x = df$longitude,
 
 :::
 
+<small> Beyer et *al.* 2020[^1]</small>
+
+
 ```{=html}
 <iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
 ```
 
-<small> Beyer et *al.* 2020[^1]</small>
 
 ### Methods
 
@@ -938,7 +940,7 @@ Rproductible methods. Enhancement of cultural and climatic data
 
 ::: columns
 
-::: {.column width="33%"}
+::: {.column width="25%"}
 
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-6200-EN-kcc.png){width="400" style="horizontal-align: middle;"}
@@ -946,12 +948,16 @@ Rproductible methods. Enhancement of cultural and climatic data
 
 :::
 
-::: {.column width="33%"}
+::: {.column width="25%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-6000-EN-kcc.png){width="400" style="horizontal-align: middle;"}
 :::
 
-::: {.column width="33%"}
+::: {.column width="25%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-5800-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-6200-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
 :::
 
 :::
