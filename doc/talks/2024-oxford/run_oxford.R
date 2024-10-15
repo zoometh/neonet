@@ -6,7 +6,7 @@ kcc <- paste0("C:/Rprojects/neonet/doc/data/clim/", kcc.per, ".tif")
 
 source("C:/Rprojects/neonet/R/neo_kcc_map.R")
 gout <- neo_kcc_map(kcc = kcc,
-                    df.c14 = NA,
+                    df.c14 = df_filtered,
                     roi = where.roi)
 ggplot2::ggsave(paste0("C:/Rprojects/neonet/doc/talks/2024-simep/img/xxx", kcc.per, ".png"),
        gout,
