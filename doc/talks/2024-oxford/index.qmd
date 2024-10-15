@@ -485,6 +485,10 @@ interpolated <- akima::interp(x = df$longitude,
 
 :::
 
+```{=html}
+<iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
+```
+
 <small> Beyer et *al.* 2020[^1]</small>
 
 ### Methods
@@ -906,47 +910,47 @@ Rproductible methods. Enhancement of cultural and climatic data
 
 ::: columns
 
-::: {.column width="33%"}
+::: {.column width="25%"}
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}<br><small>Ammerman, A. J., & Cavalli-Sforza, L. L. (1971). Measuring the rate of spread of early farming in Europe. *Man*, 674-688.</small> 
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}<br><small>Ammerman, A. J., & Cavalli-Sforza, L. L. (1971)[^2]</small> 
 :::
 
-::: {.column width="33%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}<br><small>Fort, J. (2022). The spread of agriculture: quantitative laws in prehistory?. In *Simulating Transitions to Agriculture in Prehistory* (pp. 17-28). Cham: Springer International Publishing.</small>
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}<br><small>Fort, J. (2022)[^3]</small>
 :::
 
-::: {.column width="33%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"}<br><small>Betti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., ... & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. *Nature Human Behaviour, 4*(10), 1004-1010.</small>
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"}<br><small>Betti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., ... & Manica, A. (2020)[^4]</small>
+:::
+
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5500BC-EN-Binder.png){width="400" style="horizontal-align: middle;"}<br><small>Binder, D., Angeli, L., Gomart, L., Huet, T., Maggi, R., Manen, C., ... & Tagliacozzo, A. (2022)[^5]</small>
 :::
 
 :::
 
-### Cultural data
+[^2]: Ammerman, A. J., & Cavalli-Sforza, L. L. (1971)[^2]. Measuring the rate of spread of early farming in Europe. *Man*, 674-688.
+[^3]: Fort, J. (2022). The spread of agriculture: quantitative laws in prehistory?. In *Simulating Transitions to Agriculture in Prehistory* (pp. 17-28). Cham: Springer International Publishing.
+[^4]: Betti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., ... & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. *Nature Human Behaviour, 4*(10), 1004-1010.
+[^5]: Binder, D., Angeli, L., Gomart, L., Huet, T., Maggi, R., Manen, C., ... & Tagliacozzo, A. (2019, March). L’Impresso-cardial du nord-ouest et ses rapports avec la «zone-source»: une synthèse chrono-culturelle. In *Céramiques imprimées de Méditerranée occidentale. Matières premières, productions, usages*.
 
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_strati.png" style="height: 50px;vertical-align: middle;"/>[<https://github.com/zoometh/neonet>]{.smalltext}
-
+### Cultural and Climate data
 
 ::: columns
 
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-spd.png){width="700" style="horizontal-align: middle;"}
-:::
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-iso.png){width="700" style="horizontal-align: middle;"}
-:::
+::: {.column width="33%"}
 
 :::
 
+::: {.column width="33%"}
 
+:::
 
-### Climate data
+::: {.column width="33%"}
 
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 40px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 50px;vertical-align: middle;"/> [<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
+:::
 
-```{=html}
-<iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
-```
+:::
 
 
 :::
