@@ -1,6 +1,6 @@
 ---
-title: "Climates during the Spread of Farming in Mediterranean "
-# subtitle: "Koppen climates classes of last Hunter-Gatherers and early Farmers archaeological sites through reproducible methods"
+title: "Climates of the Mediterranean During the Neolithic Transition"
+subtitle: "A Quantitative Approach Using the Köppen Classification and Radiocarbon Dating"
 author:
   - name: Thomas Huet
     affiliation: 
