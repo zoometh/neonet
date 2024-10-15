@@ -11,21 +11,7 @@
     "href": "index.html#late-foragers-and-early-farmers",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Late Foragers and Early Farmers",
-    "text": "Late Foragers and Early Farmers\n\nThe different periods defines characteristic anthropological moments. Conventional division in 3 phases, both for the Mesolithic and Neolithic. Standardized and heuristic way to represent the evolution of a culture. We represent here, using large brushes"
-  },
-  {
-    "objectID": "index.html#lm---late-mesolithic",
-    "href": "index.html#lm---late-mesolithic",
-    "title": "Climates during the Spread of Farming in Mediterranean",
-    "section": "LM - Late Mesolithic",
-    "text": "LM - Late Mesolithic\nLate Foragers\nClimates: Near East is temperate and wet, North Africa transitioned to arid conditions, Southern Europe experienced is warmer and wetter\n\nCold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging Residenciality increase. Circular mobility to access discontinuous resources in time and space."
-  },
-  {
-    "objectID": "index.html#en---early-neolithic",
-    "href": "index.html#en---early-neolithic",
-    "title": "Climates during the Spread of Farming in Mediterranean",
-    "section": "EN - Early Neolithic",
-    "text": "EN - Early Neolithic\nEarly farmers\nClimates: broadly warm and stable\n\nFertile Crescent | cultigens. Permanent settlements, soil fertility for agriculture (cereals) and climates for livestock."
+    "text": "Late Foragers and Early Farmers\n\n\nLate Mesolithic (LM), Late Foragers.\n\nResidenciality increase\nCircular mobility to access discontinuous resources in time and space (seasonality)\nLow demography\n\n\nEarly Neolithic (EN), Early farmers.\n\nPermanent settlements\nLogistic mobility to access localized resources related to farming economy and proto-urbanism\nHigh demography\n\n\n\n\nCold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging Climates: Near East is temperate and wet, North Africa transitioned to arid conditions, Southern Europe experienced is warmer and wetter Fertile Crescent | cultigens. , soil fertility for agriculture (cereals) and climates for livestock. Climates: broadly warm and stable The different periods defines characteristic anthropological moments. Conventional division in 3 phases, both for the Mesolithic and Neolithic. Standardized and heuristic way to represent the evolution of a culture. We represent here, using large brushes"
   },
   {
     "objectID": "index.html#neonet-project",
@@ -53,7 +39,7 @@
     "href": "index.html#climates-data",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": "Climates data",
-    "text": "Climates data\n\nSourcesMethods\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n\n\n Beyer et al. 20201\n\n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\n\nB &lt;- MAP &lt; 10 * Pthresh\nBW &lt;- B & MAP &lt; 5 * Pthresh\nBWh &lt;- BW & MAT &gt;= 18\nBWk &lt;- BW & MAT &lt; 18\nBS &lt;- B & MAP &gt;= 5 * Pthresh\nBSh &lt;- BS & MAT &gt;= 18\nBSk &lt;- BS & MAT &lt; 18\n\nA &lt;- Thot &gt;= 18 & !B\nAf &lt;- A & Pdry &gt;= 60\nAm &lt;- A & !Af & Pdry &gt;= 100 - MAP / 25\nAw &lt;- A & !Af & Pdry &lt; 100 - MAP / 25\n\n\n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
+    "text": "Climates data\n\nSourcesMethods\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n\n Beyer et al. 20201\n\n\n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\n\nB &lt;- MAP &lt; 10 * Pthresh\nBW &lt;- B & MAP &lt; 5 * Pthresh\nBWh &lt;- BW & MAT &gt;= 18\nBWk &lt;- BW & MAT &lt; 18\nBS &lt;- B & MAP &gt;= 5 * Pthresh\nBSh &lt;- BS & MAT &gt;= 18\nBSk &lt;- BS & MAT &lt; 18\n\nA &lt;- Thot &gt;= 18 & !B\nAf &lt;- A & Pdry &gt;= 60\nAm &lt;- A & !Af & Pdry &gt;= 100 - MAP / 25\nAw &lt;- A & !Af & Pdry &lt; 100 - MAP / 25\n\n\n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
   },
   {
     "objectID": "index.html#climate-dating-by-site",
@@ -88,7 +74,7 @@
     "href": "index.html#productible-methods",
     "title": "Climates during the Spread of Farming in Mediterranean",
     "section": " productible methods",
-    "text": "productible methods\n\nModelingCultural and Climate data\n\n\n\n\nAmmerman, A. J., & Cavalli-Sforza, L. L. (1971)2\n\nFort, J. (2022)3\n\nBetti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., … & Manica, A. (2020)4\n\nBinder, D., Angeli, L., Gomart, L., Huet, T., Maggi, R., Manen, C., … & Tagliacozzo, A. (2022)5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAll models are wrong but some are usefull\nDates curation\nPossibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
+    "text": "productible methods\n\nModelingCultural and Climate data\n\n\n\n\nAmmerman, A. J., & Cavalli-Sforza, L. L. (1971)2\n\nFort, J. (2022)3\n\nBetti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., … & Manica, A. (2020)4\n\nBinder, D., Angeli, L., Gomart, L., Huet, T., Maggi, R., Manen, C., … & Tagliacozzo, A. (2022)5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAll models are wrong but some are usefull\nDates curation\nPossibility of having 1 km of resolution and aggregating in 5” (~10 km) with TraCE21k"
   },
   {
     "objectID": "index.html#footnotes",
