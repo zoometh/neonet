@@ -54,6 +54,8 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   # TODO: median or mean
   `%>%` <- dplyr::`%>%` # used to not load dplyr
   ## dates
+  # round to a year
+  df.c14$median <- round(df.c14$median, 0)
   # check which periods have been selected
   neolithic <- selected.per %in% c("EN", "EMN", "MN", "LN", "UN")
   mesolithic <- !neolithic
@@ -151,14 +153,18 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     df.dates.min <- df.dates %>% 
       dplyr::group_by(SiteName) %>% 
       dplyr::slice_min(median)
+    n.dates.display <- nrow(df.dates.min[df.dates.min[["median"]] < isochr.subset, ])
   } else {
     df.dates.min <- df.dates %>% 
       dplyr::group_by(SiteName) %>% 
       dplyr::slice_max(median)
+    n.dates.display <- nrow(df.dates.min[df.dates.min[["median"]] > isochr.subset, ])
   }
   if(verbose){
-    print(paste0("Medians of calibrated dates by site selected: ",
+    print(paste0("Medians of calibrated dates by site selected for interpolation: ",
                  nrow(df.dates.min), " dates"))
+    print(paste0("Unique dates by site to display on the map: ",
+                 n.dates.display, " dates"))
   }
   # to sf
   # df.dates.min$geometry <- sf::st_as_text(df.dates.min$geometry)
@@ -195,12 +201,12 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   # TODO: do the same on weighted medians
   test_subset <- ifelse(all(is.na(isochr.subset)), FALSE, TRUE)
   is.none.subset <- ifelse(isochr.subset == "None", TRUE, FALSE)
-  print(is.none.subset)
+  # print(is.none.subset)
   # if(is.none.subset){
   if(any(is.none.subset)){
     contour_levels <- 0
   }
-  print(is.none.subset)
+  # print(is.none.subset)
   if(!test_subset){
     contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
     print(contour_levels)
@@ -324,6 +330,12 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     }
     kcc_geo <- terra::rast(kcc.file)
     raster_df <- terra::as.data.frame(kcc_geo, xy = TRUE)
+    # print(colnames(raster_df))
+    # library()
+    # round the coordinates
+    # raster_df <- raster_df %>% dplyr::mutate(dplyr::across(c(y, x), round, digits = 4))
+    raster_df <- raster_df %>% 
+      dplyr::mutate(dplyr::across(c(y, x), ~round(., digits = 4)))
     basemap.info <- DescTools::SplitPath(kcc.file)$filename
     # 
     # raster_df <- terra::as.data.frame(raster, xy = TRUE, na.rm = TRUE)
@@ -337,9 +349,10 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     if(nb.contours < 5 & nb.contours > 0){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     } else {subtit <- paste0("XXX") }
-    capt <- paste0(periods, " | isochrones on the earliest weighted medians | ")
-    capt <- paste0(capt, nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
-                   "basemap: ", basemap.info, "")
+    capt <- paste0(periods, " | isochrones calculated on the earliest weighted medians of ", nrow(df), " dates | ", n.dates.display, " dates older than the isochrone (displayed)\n")
+    capt <- paste0(capt, nb.dates.tot, " calibrated dates BC in total | ")
+    capt <- paste0(capt, "basemap: ", basemap.info, "")
+    
   } else {
     tit <- paste("Mesolithic")
     if(nb.contours < 5 & nb.contours > 0){
@@ -357,8 +370,8 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     if(!is.other.geotiff){
       world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
       map <- ggplot2::ggplot() +
-        # ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y)) + 
-        ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) +
+        # ggplot2::geom_raster(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) +
+        ggplot2::geom_tile(data = raster_df, ggplot2::aes(x = x, y = y, fill = factor(code))) +
         ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
         ggplot2::scale_fill_manual(values = kcc_colors)
     }
@@ -391,7 +404,8 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
         raster_df2$color <- with(raster_df2, rgb(Red/255, Green/255, Blue/255))
         # Plot the raster using ggplot2 and geom_raster
         map <- ggplot2::ggplot() +
-          ggplot2::geom_raster(data = raster_df2, ggplot2::aes(x = x, y = y, fill = color)) +
+          # ggplot2::geom_raster(data = raster_df2, ggplot2::aes(x = x, y = y, fill = color)) +
+          ggplot2::geom_tile(data = raster_df2, ggplot2::aes(x = x, y = y, fill = color)) +
           ggplot2::geom_sf(data = world, color = '#7a7a7a', fill = "white") +
           ggplot2::scale_fill_identity() #+  # Use the color column as it is
         # coord_fixed() +  # Maintain the aspect ratio
@@ -517,7 +531,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
       }
     } else {
       if(neolithic){
-        # only plot medians older than 
+        # only plot medians older than
         df.isochr.subset <- df[df[["median"]] < isochr.subset, ]
       }
       if(mesolithic){
@@ -566,7 +580,17 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     data.df <- sf::st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
     # kcc_geo <- terra::rast("C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif")
     kcc.list <- terra::extract(kcc_geo, data.df)
+    # df <- data.frame(cbind(df, kcc.list))
     df <- data.frame(cbind(df, kcc.list))
+    if(neolithic){
+      # only plot medians older than
+      df <- df[df[["median"]] < isochr.subset, ]
+    }
+    if(mesolithic){
+      df <- df[df[["median"]] > isochr.subset, ]
+    }
+    # print(nrow(df))
+    
     # names(df.isochr.subset)[names(df.isochr.subset) == 'longitude'] <- 'lon'
     # names(df.isochr.subset)[names(df.isochr.subset) == 'latitude'] <- 'lat'
     # print(head(df.isochr.subset))
@@ -576,7 +600,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     outData <- list(data = df, map = map, legend = legend)
   }
   if(is.other.geotiff){
-    outData <- list(data = df, map = map, legend = legend)
+    outData <- list(data = df, map = map)
   }
   return(outData)
 }

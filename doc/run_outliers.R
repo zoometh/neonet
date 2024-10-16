@@ -31,13 +31,11 @@ source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
                                c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
 # remove dates having a C14SD superior to..
-df_filtered <- df_filtered[df_filtered$C14SD < 101, ]
+# df_filtered <- df_filtered[df_filtered$C14SD < 101, ] # embedded into neo_isochr()
 
 source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
-source("R/neo_kcc_legend.R")
-source("R/neo_isochr.R")
 where.roi <- c(20, 30, 45, 40)
 # where.roi <- c(2, 42, 7, 45) # Le Baratin
 where.roi <- c(20, 30, 35, 42) # 6200 BC = 8.2 ky event
@@ -49,9 +47,12 @@ where.roi <- c(10, 25, 45, 45) # East Med3
 # where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 where.roi <- c(18, 35, 30, 43) # East Med3
+source("R/neo_isochr.R")
+source("R/neo_kcc_legend.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-5800), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-9000), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
+                     max.sd = 101,
                      where = where.roi,
                      # kcc.file = NA,
                      kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
@@ -68,10 +69,11 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      shw.dates = TRUE,
                      size.date = 1.5,
                      alpha.dates = 1,
-                     lbl.dates = FALSE,
+                     lbl.dates = TRUE,
                      lbl.dates.size = 3,
                      lbl.time.interv = TRUE)
 isochr$map
+isochr$data
 # View(isochr$data)
 ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-5800-EN-kcc.png"), isochr$map, width = 7, height = 7)
 ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-6200-EN-kcc-legend.png"), isochr$legend, width = 5, height = 5)

@@ -99,9 +99,13 @@ neo_kcc_legend <- function(df_cc = NA,
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, hjust = 1)) +
     ggplot2::labs(x = NULL, y = NULL) + 
     ggplot2::theme_void() +
+    # ggplot2::theme(
+    #   legend.box.margin = ggplot2::unit(0, "mm"),  # Set all legend box margins to zero
+    #   legend.margin = ggplot2::unit(0, "mm")       # Ensure no additional margin around the legend itself
+    # )
     ggplot2::theme(
-      legend.box.margin = ggplot2::unit(0, "mm"),  # Set all legend box margins to zero
-      legend.margin = ggplot2::unit(0, "mm")       # Ensure no additional margin around the legend itself
+      legend.box.margin = ggplot2::margin(0, 0, 0, 0),  # Set all legend box margins to zero using margin()
+      legend.margin = ggplot2::margin(0, 0, 0, 0)       # Set no additional margin around the legend
     )
   
   # Extract legend as before
