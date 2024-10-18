@@ -126,7 +126,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   if(verbose){
     print(paste0("After subsetting Periods on '",
                  #paste0(selected.per, collapse = ", "),"': ",
-                 selected.per.lbl,
+                 selected.per.lbl, "' there are ", 
                  nrow(df.dates), " dates to model"))
   }
   if(nrow(df.dates) == 0){
@@ -285,6 +285,9 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     isochr.txt.colour <- NA
   }
   if(nb.contours > 1){
+    if(verbose){
+      print(paste0("Will plot ", nb.contours, " isochrones"))
+    }
     if(neolithic){
       isochr.line.color <- colorRampPalette(RColorBrewer::brewer.pal(9, coloramp[1]))(nb.contours + 5)
     } else {
@@ -345,11 +348,11 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   periods <- paste0(unique(df.dates$Period), collapse = " ")
   subtit <- ""
   if(neolithic){
-    tit <- paste("Neolithic")
+    tit <- paste("Neolithic (", periods, ")")
     if(nb.contours < 5 & nb.contours > 0){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     } else {subtit <- paste0("XXX") }
-    capt <- paste0(periods, " | isochrones calculated on the earliest weighted medians of ", nrow(df), " dates | ", n.dates.display, " dates older than the isochrone (displayed)\n")
+    capt <- paste0("max SD = ", max.sd," | ", "isochr. on earliest wmedians of ", nrow(df), " dates | ", n.dates.display, " dates older than isochr. (displayed)\n")
     capt <- paste0(capt, nb.dates.tot, " calibrated dates BC in total | ")
     capt <- paste0(capt, "basemap: ", basemap.info, "")
     
@@ -448,6 +451,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   #   
   # }
   if(!any(is.none.subset)){
+    # print(isochr.line.color)
     map <- map +
       ggplot2::geom_contour(data = interp_df, 
                             ggplot2::aes(x = lon, y = lat, z = date.med, 
@@ -478,7 +482,9 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
         )
     } # else {
     if(test_subset & !any(is.none.subset)){
-      # only one selected contour
+      if(verbose){
+        print(paste0("Nb of isochrones: ", nrow(isochr.subset))) # Wrong, works with more than one contour
+      }
       contour_data <- ggplot2::ggplot_build(ggplot2::ggplot(interp_df, 
                                                             ggplot2::aes(x = lon, y = lat, z = date.med)) + 
                                               ggplot2::geom_contour(breaks = isochr.subset))$data[[1]]
@@ -493,14 +499,27 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
           dplyr::slice(1) %>%
           dplyr::ungroup()
         map <- map + 
-          ggplot2::geom_contour(data = interp_df, 
-                                ggplot2::aes(x = lon, y = lat, z = date.med), 
-                                breaks = isochr.subset, 
+          ggplot2::geom_contour(data = interp_df,
+                                ggplot2::aes(x = lon, y = lat, z = date.med),
+                                breaks = isochr.subset,
+                                # colour = isochr.line.color) + #"black") +
                                 colour = "black") +
+          # ggplot2::geom_contour(data = interp_df, 
+          #                       ggplot2::aes(x = lon, y = lat, z = date.med, 
+          #                                    # color = ..level..
+          #                                    color = ggplot2::after_stat(level)
+          #                       ),
+          #                       # breaks = contour_levels,
+          #                       breaks = contour_levels,
+          #                       linewidth = isochr.line.size) +
+          # ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
+          #                                name = "Cal BC") +
           ggplot2::geom_text(data = contour_data_lbl, 
                              ggplot2::aes(x = x, y = y, label = sprintf("%.0f", level)),
                              size = isochr.txt.size, 
                              colour = isochr.txt.colour)
+        # ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
+        #                                name = "Cal BC")
       }
     }
   }
@@ -556,7 +575,10 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     }
   }
   map <- map +
-    ggplot2::theme(legend.position = "none")
+    ggplot2::theme(legend.position = "none",
+                   axis.title.x = ggplot2::element_blank(),
+                   axis.title.y = ggplot2::element_blank()
+    )
   if(create.legend & !is.na(kcc.file)){
     source("R/neo_kcc_legend.R")
     if(verbose){
@@ -574,7 +596,6 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     if(verbose){
       print(paste0("Extract koppen classes"))
     }
-    
     names(df)[names(df) == 'longitude'] <- 'lon'
     names(df)[names(df) == 'latitude'] <- 'lat'
     data.df <- sf::st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
