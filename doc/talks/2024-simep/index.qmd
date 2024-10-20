@@ -204,13 +204,13 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ::: columns
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-joad.png" width="500"/>
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="500"/>
 :::
 
-::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/watersheds-rivers.png" width="600"/>
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/watersheds-rivers.png" width="500"/>
 :::
 
 :::

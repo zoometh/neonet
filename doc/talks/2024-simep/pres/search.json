@@ -95,7 +95,7 @@
     "href": "index.html#neonet-project",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Neonet project",
-    "text": "Neonet project\n\nMeso/NeoDatasetOnline appFunctionsOpenness\n\n\n\n\nEarly Mesolithic (EM) Middle Mesolithic (MM) Late Mesolithic (LM) Early Neolithic (EN) Middle Neolithic (MN) Late Neolithic (LN)\n\nBaume de Montclus, stacked SPD\n\nFranchthi cave, stacked SPD\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhttp://shinyserver.cfs.unipi.it:3838/C14dev/\n\n\n\n\nsource(\"R/neo_spd.R\")\nsource(\"R/neo_spdplot.R\")\n\nneo_spd(df.c14 = df.c14)\n\n\n\n\n\n\n\nOpen Data, Open Source, Open Access\nScalable, Incrementable, Reusable, Analyzable"
+    "text": "Neonet project\n\nMeso/NeoDatasetOnline appFunctionsOpenness\n\n\n\n\nEarly Mesolithic (EM) Middle Mesolithic (MM) Late Mesolithic (LM) Early Neolithic (EN) Middle Neolithic (MN) Late Neolithic (LN)\n\nBaume de Montclus, stacked SPD\n\nFranchthi cave, stacked SPD\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\nhttp://shinyserver.cfs.unipi.it:3838/C14dev/\n\n\n\n\nsource(\"R/neo_spd.R\")\nsource(\"R/neo_spdplot.R\")\n\nneo_spd(df.c14 = df.c14)\n\n\n\n\n\n\n\nOpen Data, Open Source, Open Access\nScalable, Incrementable, Reusable, Analyzable"
   },
   {
     "objectID": "index.html#radiocarbon-dataset",
