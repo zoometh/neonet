@@ -497,39 +497,23 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 
 
 
-## Modelling
+## Modelling Dates and Climates
 
 ::: {.panel-tabset}
 
-
-### Date selection
-
-
-::: columns
-
-::: {.column width="50%"}
-The most recent <span style="color: blue;">LM</span> date median
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-lm-montefrignone.png)
-:::
-
-::: {.column width="50%"}
-The most ancient <span style="color: red;">EN</span> date median
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/median-en-baratin.png)
-:::
-
-:::
 
 ### Dates medians and KCC extraction
 
 
 ::: columns
 
-::: {.column width="35%"}
+::: {.column width="60%"}
+<small>The most recent <span style="color: blue;">LM</span> and the most ancient <span style="color: red;">EN</span> date weighted medians</small>
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161-spd.png" width="500">
 :::
 
-::: {.column width="65%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="500">
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="400">
 :::
 
 :::
@@ -550,63 +534,12 @@ The most ancient <span style="color: red;">EN</span> date median
 
 ::: columns
 
-::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN.png" width="400">
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map.png" width="400">
 :::
 
-::: {.column width="60%"}
-```{.r}
-interpolated <- akima::interp(x = df$longitude, 
-                                y = df$latitude, 
-                                z = df$median, 
-                                duplicate = "mean")
-  
-  interp_df <- tidyr::expand_grid(i = seq_along(interpolated$x), 
-                                  j = seq_along(interpolated$y)) %>% 
-    dplyr::mutate(lon = interpolated$x[i],
-                  lat = interpolated$y[j],
-                  date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %>% 
-    dplyr::select(-i, -j)
-```
-<small>![neonet::neo_isochr_inter()](https://github.com/zoometh/neonet/blob/main/R/neo_isochr_inter.R)</small>
-:::
-
-:::
-
-
-### Extract KCC
-
-::: columns
-
-::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725.png-spd-align.png" width="650">
-:::
-
-::: {.column width="40%"}
-<small><b>52</b>: Le Baratin, Ly-4725</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Le Baratin-Ly-4725-map.png" width="400">
-:::
-
-
-:::
-
-::: notes
-- For a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)
-- Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
-:::
-
-
-### EF Pioneer front KCC
-
-
-::: columns
-
-::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN-kcc.png" width="400">
-:::
-
-::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN-kcc-legend.png" width="350">
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map-ex.png" width="400">
 :::
 
 :::
@@ -619,7 +552,7 @@ interpolated <- akima::interp(x = df$longitude,
 :::
 
 
-# Spread of Neolithic the Mediterranean {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+# Spread of Neolithic in the Mediterranean {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
 ::: notes
 Radiocarbon dates are still being revised, and many of them need to be verified. First modeling
