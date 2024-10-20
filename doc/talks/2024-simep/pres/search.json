@@ -158,13 +158,34 @@
     "href": "index.html#modelling",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Modelling",
-    "text": "Modelling\n\nDate selectionDates medians and KCC extractionDates interpolationExtract KCCEF Pioneer front KCC\n\n\n\n\nThe most recent LM date median \n\nThe most ancient EN date median \n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\ninterpolated &lt;- akima::interp(x = df$longitude, \n                                y = df$latitude, \n                                z = df$median, \n                                duplicate = \"mean\")\n  \n  interp_df &lt;- tidyr::expand_grid(i = seq_along(interpolated$x), \n                                  j = seq_along(interpolated$y)) %&gt;% \n    dplyr::mutate(lon = interpolated$x[i],\n                  lat = interpolated$y[j],\n                  date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %&gt;% \n    dplyr::select(-i, -j)\n\n\n\n\n\n\n\n\n\n52: Le Baratin, Ly-4725 \n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
+    "text": "Modelling\n\nDates medians and KCC extractionDates interpolation\n\n\n\n\nThe most recent LM and the most ancient EN date weighted medians \n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
   },
   {
     "objectID": "index.html#modelling-dates-and-climates",
     "href": "index.html#modelling-dates-and-climates",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Modelling Dates and Climates",
-    "text": "Modelling Dates and Climates\n\nDates medians and KCC extractionDates interpolationEF Pioneer front KCC\n\n\n\n\nThe most recent LM and the most ancient ENdate medians \n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\ninterpolated &lt;- akima::interp(x = df$longitude, \n                                y = df$latitude, \n                                z = df$median, \n                                duplicate = \"mean\")\n  \n  interp_df &lt;- tidyr::expand_grid(i = seq_along(interpolated$x), \n                                  j = seq_along(interpolated$y)) %&gt;% \n    dplyr::mutate(lon = interpolated$x[i],\n                  lat = interpolated$y[j],\n                  date.med = purrr::map2_dbl(i, j, ~interpolated$z[.x, .y])) %&gt;% \n    dplyr::select(-i, -j)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
+    "text": "Modelling Dates and Climates\n\nDates medians and KCC extractionDates interpolation\n\n\n\n\nThe most recent LM and the most ancient EN date weighted medians \n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
+  },
+  {
+    "objectID": "index.html#eastern-mediterranean-in-bc",
+    "href": "index.html#eastern-mediterranean-in-bc",
+    "title": "Climates during the Spread of Farming in the Mediterranean",
+    "section": "Eastern Mediterranean (in BC)",
+    "text": "Eastern Mediterranean (in BC)\n\n90008400760068006200"
+  },
+  {
+    "objectID": "index.html#case-study-1-balkans",
+    "href": "index.html#case-study-1-balkans",
+    "title": "Climates during the Spread of Farming in the Mediterranean",
+    "section": "Case study 1: Balkans",
+    "text": "Case study 1: Balkans\nHELOO"
+  },
+  {
+    "objectID": "index.html#central-mediterranean-in-bc",
+    "href": "index.html#central-mediterranean-in-bc",
+    "title": "Climates during the Spread of Farming in the Mediterranean",
+    "section": "Central Mediterranean (in BC)",
+    "text": "Central Mediterranean (in BC)\n\n600058005600"
   }
 ]
