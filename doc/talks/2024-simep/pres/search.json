@@ -18,7 +18,7 @@
     "href": "index.html#radiocarbon-data",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Radiocarbon data",
-    "text": "Radiocarbon data\n\nSourcesAlignmentOutliersROIWorflow\n\n\n\n\n\n\n\n\nhttps://github.com/ropensci/c14bazAAR https://github.com/zoometh/neonet\n\n\n\n\n\n\n\n\n\n\n\nref_table_per.xlsx\n\n\n\n\n\n\nEM - Early Mesolithic\n\n\n\n\nMM - Middle Mesolithic\n\n\n\n\nLM - Late Mesolithic\n\n\n\n\nEN - Early Neolithic\n\n\n\n\nMN - Middle Neolithic\n\n\n\n\nLN - Late Neolithic\n\n\n\n\n\n\n8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.\nmapping table with period and culture coming from different datasest to be mapped to the Neonet main classes (10 classes, among which 4 are undefined and period transition).\nUsing\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study."
+    "text": "Radiocarbon data\n\nSourcesAlignmentOutliersROIWorflow\n\n\n\n\n\n\n\n\nhttps://github.com/ropensci/c14bazAAR\nhttps://github.com/zoometh/neonet\nhttps://github.com/ahb108/rcarbon\n\n\n\n\n\n\n\n\n\n\n\nref_table_per.xlsx\n\n\n\n\n\n\nEM - Early Mesolithic\n\n\n\n\nMM - Middle Mesolithic\n\n\n\n\nLM - Late Mesolithic\n\n\n\n\nEN - Early Neolithic\n\n\n\n\nMN - Middle Neolithic\n\n\n\n\nLN - Late Neolithic\n\n\n\n\n\n\n8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.\nmapping table with period and culture coming from different datasest to be mapped to the Neonet main classes (10 classes, among which 4 are undefined and period transition).\nUsing\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study."
   },
   {
     "objectID": "index.html#climate-data",
@@ -144,7 +144,7 @@
     "href": "index.html#climates-evolution",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Climates evolution",
-    "text": "Climates evolution\n\nLate ForagersEarly FarmersComparisons\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLate foragers: Drop of the inhabited cold climates from 11k BP to 7k BP. In 9k BP newly occupied occupied Cold, dry summer, cold summer, possibly corresponding to the higher mountain range (Atlas, Alps, Pyrenees, etc.)\nEarly Farmers: 11k and 10k 2 main climates, continuous area: Fertile Crescent. Arid climates increases in 9k: arid margins (oasis). 8k and 7k: neolithisation of cold and temperated areas (Bulgaria, Southern Germany, etc.)\nComparison: LM occupied a larger diversity of ecozones. EF replace HG in cold climate over 4,000 years"
+    "text": "Climates evolution\n\n\n\n\n\nLate foragers: Drop of the inhabited cold climates from 11k BP to 7k BP. In 9k BP newly occupied occupied Cold, dry summer, cold summer, possibly corresponding to the higher mountain range (Atlas, Alps, Pyrenees, etc.)\nEarly Farmers: 11k and 10k 2 main climates, continuous area: Fertile Crescent. Arid climates increases in 9k: arid margins (oasis). 8k and 7k: neolithisation of cold and temperated areas (Bulgaria, Southern Germany, etc.)\nComparison: LM occupied a larger diversity of ecozones. EF replace HG in cold climate over 4,000 years"
   },
   {
     "objectID": "index.html#footnotes",
@@ -158,7 +158,7 @@
     "href": "index.html#modelling",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Modelling",
-    "text": "Modelling\n\nDates medians and KCC extractionDates interpolation\n\n\n\n\nThe most recent LM and the most ancient EN date weighted medians \n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
+    "text": "Modelling\n\nDates medians and KCC extractionDates interpolation\n\n\n\n\nMost recent LM and most ancient EN date weighted medians by site \n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
   },
   {
     "objectID": "index.html#modelling-dates-and-climates",
@@ -179,7 +179,7 @@
     "href": "index.html#case-study-1-balkans",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Case study 1: Balkans",
-    "text": "Case study 1: Balkans\n\nAB"
+    "text": "Case study 1: Balkans\n\nClimatesSites"
   },
   {
     "objectID": "index.html#central-mediterranean-in-bc",
@@ -193,6 +193,6 @@
     "href": "index.html#case-study-2-italy",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Case study 2: Italy",
-    "text": "Case study 2: Italy\n\nAB"
+    "text": "Case study 2: Italy\n\nClimatesSites"
   }
 ]

@@ -63,6 +63,7 @@ kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
 col.req <- gsub(pattern = ".tif", "", kcc.file)
 where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi_cyprus.geojson"
 # where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-middle-east.geojson"
+where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson"
 present <- 1950
 when <- c(-9000, -4000)
 where <- sf::st_read(where.roi,
@@ -180,16 +181,16 @@ source("R/neo_spd.R")
 # df_cc.meso <- df_cc[df_cc$Period %in% c("LM"), ]
 # # df_cc.neo <- head(df_cc.neo, 50)
 neo_spd(df.c14 = df_cc[df_cc$Period %in% c("EN"), ],
-        title = "Early Neolithic",
+        title = "Neolithic (EN)",
         # time.round = 1000,
-        time.span = c(13000, 6000),
-        calendar = 'BP',
+        time.span = c(11000, 4000),
+        calendar = 'BC',
         # shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
-        x.intercept = 11000,
-        color.on = "kcc",
+        x.intercept = 9000,
+        color.on = "Period",
         export = TRUE,
-        outFile = "EN_kcc_11k",
-        outDir = root.path,
+        outFile = "EN_kcc_9kBC_periods",
+        outDir = paste0(root.path, "img/"),
         width = 18, height = 13,
 )
 # 

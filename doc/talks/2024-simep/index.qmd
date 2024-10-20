@@ -285,8 +285,11 @@ Data: radiocarbon dates and palaeoclimatic data.
 :::
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 80px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 100px;vertical-align: middle;"/><br>[<https://github.com/ropensci/c14bazAAR>]{.smalltext}<br>
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 80px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 100px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 70px;vertical-align: middle;"/><br>[<https://github.com/ropensci/c14bazAAR>]{.smalltext}<br>
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 70px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/r-pkg-rcarbon.png" style="height: 70px;vertical-align: middle;"/><br>[<https://github.com/ahb108/rcarbon>]{.smalltext}
 
 :::
 
@@ -648,13 +651,13 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 ::: {.panel-tabset}
 
-### A
+### Climates
 
 
 ::: columns
 
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
@@ -664,22 +667,23 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 :::
 
-### B
+### Sites
 
 ::: columns
 
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 
 ```{r, message=FALSE}
 library(DT)
 library(dplyr)
 balkans <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.tsv"
 df.to.rm <- read.table(balkans, sep = "\t", header = TRUE)
+df.to.rm$lon <- df.to.rm$lat <- NULL
 df.to.rm %>% 
   DT::datatable(
     width = "100%",
@@ -758,13 +762,13 @@ df.to.rm %>%
 
 ::: {.panel-tabset}
 
-### A
+### Climates
 
 
 ::: columns
 
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
@@ -774,22 +778,23 @@ df.to.rm %>%
 
 :::
 
-### B
+### Sites
 
 ::: columns
 
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 
 ```{r, message=FALSE}
 library(DT)
 library(dplyr)
 balkans <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.tsv"
 df.to.rm <- read.table(balkans, sep = "\t", header = TRUE)
+df.to.rm$lon <- df.to.rm$lat <- NULL
 df.to.rm %>% 
   DT::datatable(
     width = "100%",
@@ -851,54 +856,9 @@ df.to.rm %>%
 
 ## Climates evolution
 
-::: {.panel-tabset}
-
-### Late Foragers
-
-::: columns
-
-::: {.column width="75%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_lm-1.png){width="900" style="horizontal-align: middle;"}
-\
-\
-
-:::
-
-
-::: {.column width="25%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo_legend.png){width="400" style="horizontal-align: middle;"}
-:::
-
-:::
-
-
-### Early Farmers
-
-::: columns
-
-::: {.column width="75%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_neo_en-1.png){width="900" style="horizontal-align: middle;"}
-
-\
-\
-
-:::
-
-
-::: {.column width="25%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo_legend.png){width="400" style="horizontal-align: middle;"}
-:::
-
-:::
-
-
-### Comparisons 
-
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png)
 \
 \
-
-:::
 
 ::: notes
 - Late foragers: Drop of the inhabited cold climates from 11k BP to 7k BP. In 9k BP newly occupied occupied Cold, dry summer, cold summer, possibly corresponding to the higher mountain range (Atlas, Alps, Pyrenees, etc.)
@@ -1068,7 +1028,7 @@ Rproductible methods. Enhancement of cultural and climatic data
 - Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
 :::
 
-# Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+#      Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-spd.png"}
 
 <https://github.com/zoometh/neonet>
 
