@@ -78,7 +78,7 @@ Holocene
 
 <!-- <span style="color:#3737FF;"><small><b>Late Mesolithic (LM)</b></small></span> -->
 <center> 
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_meso.png" height="450"><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_meso_2.png" height="450"><br>
 <span style="color:#3737FF;"><small><b>Late Mesolithic (LM)[^98]</b></small></span>
 <!-- <small>[Late Mesolithic (LM)](https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/img/chatgpt_prompt.md#lm) @ChatGPT</small> -->
 </center> 
@@ -89,7 +89,7 @@ Holocene
 
 <!-- <span style="color:#FF1B1B;"><small><b>Early Neolithic (EN)</b></small></span> -->
 <center> 
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_neo.png" height="450"><span style="color:#FF1B1B;"><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_neo_2.png" height="450"><span style="color:#FF1B1B;"><br>
 <small><b>Early Neolithic (EN)[^99]</b></small></span>
 
 <!-- <small>[Early Neolithic (EN)](https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/img/chatgpt_prompt.md#en). @ChatGPT</small> -->
