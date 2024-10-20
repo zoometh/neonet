@@ -41,8 +41,17 @@ neo_kcc_legend <- function(df_cc = NA,
     #                      quiet = TRUE)
     # 
     kcc_geo <- terra::rast(kcc.file)
+    # print(class(kcc_geo))
+    # print("XXXXX")
+    # if(!is.na(where)){
     clipped_raster <- terra::mask(kcc_geo, where)
+    # kcc_geo <- terra::mask(kcc_geo, where)
+    # print(class(clipped_raster))
+    # }
     values_vector <- terra::extract(clipped_raster, where)
+    # values_vector <- terra::extract(kcc_geo, where)
+    # print(class(kcc_geo))
+    # values_vector <- terra::extract(kcc_geo)
     # values_vector <- terra::values(clipped_raster)  # This extracts all pixel values
     selected.kcc <- na.omit(values_vector$code)
     

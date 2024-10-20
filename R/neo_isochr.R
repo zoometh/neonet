@@ -50,6 +50,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                        coloramp = c("Reds", "Blues"),
                        mapname = "Isochrones",
                        create.legend = FALSE,
+                       create.topomap = FALSE,
                        verbose = TRUE){
   # TODO: median or mean
   `%>%` <- dplyr::`%>%` # used to not load dplyr
@@ -622,6 +623,140 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   }
   if(is.other.geotiff){
     outData <- list(data = df, map = map)
+  }
+  if(create.topomap){
+    # TODO: create a TOPO map ()
+    # Load necessary libraries
+    library(basemaps)
+    library(ggplot2)
+    library(sf)
+    
+    # Set the map defaults for the basemap
+    set_defaults(map_service = "osm", map_type = "topographic")
+    
+    # Define the new bounding box using xmin, ymin, xmax, ymax
+    xmin <- 10
+    ymin <- 37
+    xmax <- 18
+    ymax <- 45
+    
+    # Create a bounding box object with the defined coordinates (WGS84 - EPSG:4326)
+    bbox <- st_bbox(c(xmin = xmin, ymin = ymin, xmax = xmax, ymax = ymax), crs = st_crs(4326))
+    
+    # Convert the bbox to an 'sf' object (sfc) so that it's compatible with ggplot
+    ext <- st_as_sfc(bbox)
+    
+    # Create the ggplot map using the new extent and basemap_gglayer
+    ggplot() +
+      basemap_gglayer(ext) +     # Use the new extent for the basemap
+      scale_fill_identity() +    # Keep the fill scale
+      coord_sf(xlim = c(xmin, xmax), ylim = c(ymin, ymax), expand = FALSE)  # Set the coordinate limits
+    
+    
+    xmin <- 10
+    ymin <- 37
+    xmax <- 18
+    ymax <- 45
+    # bbox <- c(xmin, ymin, xmax, ymax)
+    bbox <- sf::st_bbox(c(xmin = xmin, ymin = ymin, xmax = xmax, ymax = ymax), crs = sf::st_crs(4326))
+    ext2 <- sf::st_as_sfc(bbox)
+    ext2 <- sf::st_sf(ext2)
+    sf::st_geometry(ext2) = "geometry" # rename
+    
+    library(basemaps)
+    library(basemaps)
+    data(ext)
+    set_defaults(map_service = "osm", map_type = "topographic")
+    basemaps::get_maptypes()
+    library(ggplot2)
+    ggplot() +
+      basemap_gglayer(ext2) +
+      scale_fill_identity() +
+      coord_sf()
+    
+    # data(ext)
+    set_defaults(map_service = "esri", map_type = "world_shaded_relief")
+    basemaps::get_maptypes()
+    library(ggplot2)
+    ggplot() +
+      basemap_gglayer(ext) +
+      scale_fill_identity() +
+      coord_sf()
+    
+    # world_topo_map, world_shaded_relief, world_imagery
+    library(basemaps)
+    library(ggplot2)
+    data(ext)
+    for (esri in basemaps::get_maptypes()$esri){
+      set_defaults(map_service = "esri", map_type = esri)
+      gmap <- ggplot() +
+        ggplot2::ggtitle(paste0("esri-", esri)) +
+        basemap_gglayer(ext) +
+        scale_fill_identity() +
+        coord_sf()
+      print(gmap)
+    }
+    
+    
+    
+    
+    library(ggmap) 
+    
+    nc <- st_read(system.file("shape/nc.shp", package="sf"))
+    #> Reading layer `nc' from data source `/home/gilles/R/x86_64-pc-linux-gnu-library/3.4/sf/shape/nc.shp' using driver `ESRI Shapefile'
+    #> Simple feature collection with 100 features and 14 fields
+    #> geometry type:  MULTIPOLYGON
+    #> dimension:      XY
+    #> bbox:           xmin: -84.32385 ymin: 33.88199 xmax: -75.45698 ymax: 36.58965
+    #> epsg (SRID):    4267
+    #> proj4string:    +proj=longlat +datum=NAD27 +no_defs
+    nc_map <- get_map(location = "North Carolina, NC", zoom = 7)
+    #> Map from URL : http://maps.googleapis.com/maps/api/staticmap?center=North+Carolina,+NC&zoom=7&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false
+    #> Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=North%20Carolina,%20NC&sensor=false
+    nc_centers <- st_centroid(nc)
+    #> Warning in st_centroid.sfc(st_geometry(x), of_largest_polygon =
+    #> of_largest_polygon): st_centroid does not give correct centroids for
+    #> longitude/latitude data
+    
+    ggmap::ggmap(nc_map) +
+      # ggplot2::geom_sf(data = nc_centers, 
+      #                  ggplot2::aes(color = SID79, size = BIR74),
+      #         show.legend = "point", inherit.aes = FALSE) +
+      # coord_sf(datum = NA) +
+      ggplot2::coord_sf(xlim = c(xmin, xmax), ylim = c(ymin, ymax), expand = FALSE) +
+      theme_minimal()
+    
+    
+    map <- ggplot2::ggplot() +
+      # ggspatial::annotation_map_tile("esri_topo") +
+      gg +
+      ggplot2::coord_sf(xlim = c(xmin, xmax), ylim = c(ymin, ymax), expand = FALSE) +
+      ggplot2::labs(title = "ESRI Topographic Map",
+           subtitle = paste("Bounding box from", xmin, "to", xmax, "Longitude and", ymin, "to", ymax, "Latitude"))
+    library(ggplot2)
+    library(basemaps)
+    
+    data(ext)
+    set_defaults(map_service = "osm", map_type = "topographic")
+    
+    gg <- basemaps::basemap_ggplot(ext)
+    
+    #default ggplot2 behavior
+    gg
+    
+    # # Print the map
+    # print(map)
+    # library(tidyverse)
+    # library(sf)
+    # library(ggspatial)
+    # 
+    # site <- data.frame(longitude = -75.144353, latitude = 39.917631) %>% 
+    #   sf::st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
+    # 
+    # ggplot2::ggplot(site) +
+    #   ggspatial::annotation_map_tile("cartolight") +
+    #   ggplot2::geom_sf(size = 5)
+    
   }
   return(outData)
 }
