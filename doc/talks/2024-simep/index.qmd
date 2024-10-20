@@ -278,15 +278,15 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ::: columns
 ::: {.column width="60%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/dbs_counts.png){width="500" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/dbs_counts.png){width="550" style="horizontal-align: middle;"}
 \
 \
 
 :::
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 90px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 110px;vertical-align: middle;"/><br>[<https://github.com/ropensci/c14bazAAR>]{.smalltext}<br>
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 90px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 110px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 80px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 100px;vertical-align: middle;"/><br>[<https://github.com/ropensci/c14bazAAR>]{.smalltext}<br>
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 80px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 100px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
 
 :::
 
@@ -363,7 +363,7 @@ df.to.rm %>%
 library(DT)
 library(dplyr)
 c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv"
-df.to.rm <- read.table(c14.to.remove, sep = "\t", header = TRUE)
+df.to.rm <- read.csv2(c14.to.remove, sep = "\t", header = TRUE)
 df.to.rm %>% 
   DT::datatable(
     width = "100%",
@@ -392,38 +392,22 @@ df.to.rm %>%
 
 ### ROI
 
-```{r}
-library(sf) ; library(dplyr) ; library(leaflet)
-dirIn <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2023-bhdc/data/"
-```
-
-::: columns
-::: {.column width="50%"}
-<small>`neonet-data-2023-10-22-select-aera.geojson`</small>
+<center>
 
 ```{r}
-df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
-ID <- as.character(df$ID)
-leaflet(df, width = "350px", height = "350px") %>%
-  addTiles() %>%
-  addPolygons(popup = ID)# "<b>Hello World</b>")
+library(dplyr)
+# df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
+df <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson", quiet = T)
+roi <- paste0('<a href="', "https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/roi.geojson", '" target="_blank">roi.geojson</a>')
+leaflet::leaflet(df, width = "700px", height = "450px") %>%
+  leaflet::addTiles() %>%
+  leaflet::addPolygons(popup = roi)# "<b>Hello World</b>")
 ```
-:::
 
-::: {.column width="50%"}
-<small>`neonet-data-2023-10-22.geojson`</small>
-
-```{r}
-df <- st_read(paste0(dirIn, "neonet-data-2023-10-22.geojson"),  quiet = T)
-leaflet(df, width = "350px", height = "350px") %>%
-  addTiles() %>% 
-  addCircleMarkers(popup = ~SiteName)
-```
-:::
-:::
+</center>
 
 ::: notes
-Here it's a leaflet view of these exported files. On the left hand side the selection rectangle, on the right hand side the dates. Dates can undergo a secondary curation and subsetting process using a GIS or any other appropriate application.
+
 :::
 
 ### Worflow
