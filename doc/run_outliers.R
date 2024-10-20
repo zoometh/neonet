@@ -46,7 +46,7 @@ where.roi <- c(10, 25, 45, 45) # East Med3
 # where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 Balkans.where <- c(18, 35, 30, 43) ; Balkans.when <- c(-6200, -5800)
-Italia.where <- c(5, 37, 18, 48) ; Italia.when <- c(-5500, -5250, -5000)
+Italia.where <- c(5, 37, 18, 48) ; Italia.when <- c(-5500) # c(-5500, -5250, -5000)
 Mediterranean.where <- paste0(where.roi.path, "roi.geojson")
 source("R/neo_isochr.R")
 source("R/neo_kcc_legend.R")
@@ -54,7 +54,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      isochr.subset =  Italia.when, #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      max.sd = 101,
-                     where = Mediterranean.where, #Italia.where, # where.roi,
+                     where = Italia.where, #Italia.where, # where.roi,
                      # kcc.file = NA,
                      kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
@@ -68,15 +68,25 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      isochr.txt.size = 3,
                      calibrate = FALSE,
                      shw.dates = TRUE,
+                     # show.all.dates = FALSE,
                      size.date = 1.5,
                      alpha.dates = 1,
-                     lbl.dates = FALSE,
+                     lbl.dates = TRUE,
+                     # lbl.all.dates = FALSE,
+                     # lbl.date.field = "median",
                      lbl.dates.size = 3,
                      lbl.time.interv = TRUE)
 isochr$map
 isochr$data
+
+source("R/neo_isochr_inter_map.R")
+inter.map <- neo_isochr_inter_map(isochr$inter)
+inter.map
+ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-inter-map.png"), inter.map, width = 7, height = 7)
+
+
 # View(isochr$data)
-ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc_1.png"), isochr$map, width = 12, height = 12)
+ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc_1.png"), isochr$map, width = 7, height = 7)
 ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc-legend_1.png"), isochr$legend, width = 5, height = 5)
 openxlsx::write.xlsx(x = isochr$data, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc_1.xlsx"))
 

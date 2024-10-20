@@ -269,7 +269,7 @@ neo_spd(df.c14 = df.c14)
 Data: radiocarbon dates and palaeoclimatic data.
 :::
 
-## Radiocarbon dataset
+## Radiocarbon data
 
 ::: {.panel-tabset}
 
@@ -412,13 +412,92 @@ leaflet::leaflet(df, width = "700px", height = "450px") %>%
 
 ### Worflow
 
+<center>
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/workflow-radiocaron-dataset.png)
+</center>
 
 :::
 
 
-## Radiocarbon modelling
+## Climates data
+
+
+::: {.panel-tabset}
+
+### Sources
+
+::: columns
+
+::: {.column width="33%"}
+<!-- Mid-Holocene (c. 6,000 BP)<br> -->
+<small>Mean annual temperature (ºC)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="250px">
+:::
+
+::: {.column width="33%"}
+<small>Annual precipitation (mm year <sup>-1</sup>)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="250px">
+:::
+
+::: {.column width="33%"}
+<small>Biome (pollen-based)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="250px">
+:::
+
+
+:::
+
+<small> Beyer et *al.* 2020[^1]</small>
+
+
+```{=html}
+<iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
+```
+
+
+### Methods
+
+::: columns
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 90px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 110px;vertical-align: middle;"/><br>[<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
+:::
+
+::: {.column width="50%"}
+```{.r}
+B <- MAP < 10 * Pthresh
+BW <- B & MAP < 5 * Pthresh
+BWh <- BW & MAT >= 18
+BWk <- BW & MAT < 18
+BS <- B & MAP >= 5 * Pthresh
+BSh <- BS & MAT >= 18
+BSk <- BS & MAT < 18
+
+A <- Thot >= 18 & !B
+Af <- A & Pdry >= 60
+Am <- A & !Af & Pdry >= 100 - MAP / 25
+Aw <- A & !Af & Pdry < 100 - MAP / 25
+```
+<small>![pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R)</small>
+:::
+
+:::
+
+:::
+
+[^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
+
+
+::: notes
+- *pastclim* R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)
+- KCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).
+- The pastclim KCC current resolution is 30" = 0.5 degrees = c. 50 km. It uses the Beyer *et al.* 2020 dataset.
+:::
+
+
+
+## Modelling
 
 ::: {.panel-tabset}
 
@@ -506,87 +585,6 @@ interpolated <- akima::interp(x = df$longitude,
 
 :::
 
-:::
-
-## Climates data
-
-
-::: {.panel-tabset}
-
-### Sources
-
-::: columns
-
-::: {.column width="33%"}
-<!-- Mid-Holocene (c. 6,000 BP)<br> -->
-<small>Mean annual temperature (ºC)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="250px">
-:::
-
-::: {.column width="33%"}
-<small>Annual precipitation (mm year <sup>-1</sup>)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="250px">
-:::
-
-::: {.column width="33%"}
-<small>Biome (pollen-based)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="250px">
-:::
-
-
-:::
-
-<small> Beyer et *al.* 2020[^1]</small>
-
-
-```{=html}
-<iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
-```
-
-
-### Methods
-
-::: columns
-
-::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 90px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 110px;vertical-align: middle;"/><br>[<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
-:::
-
-::: {.column width="50%"}
-```{.r}
-B <- MAP < 10 * Pthresh
-BW <- B & MAP < 5 * Pthresh
-BWh <- BW & MAT >= 18
-BWk <- BW & MAT < 18
-BS <- B & MAP >= 5 * Pthresh
-BSh <- BS & MAT >= 18
-BSk <- BS & MAT < 18
-
-A <- Thot >= 18 & !B
-Af <- A & Pdry >= 60
-Am <- A & !Af & Pdry >= 100 - MAP / 25
-Aw <- A & !Af & Pdry < 100 - MAP / 25
-```
-<small>![pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R)</small>
-:::
-
-:::
-
-:::
-
-[^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
-
-
-::: notes
-- *pastclim* R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)
-- KCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).
-- The pastclim KCC current resolution is 30" = 0.5 degrees = c. 50 km. It uses the Beyer *et al.* 2020 dataset.
-:::
-
-
-## Climate dating by site
-
-::: {.panel-tabset}
 
 ### Extract KCC
 

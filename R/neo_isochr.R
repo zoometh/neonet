@@ -42,8 +42,10 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                        buff = .1,
                        size.date = 1,
                        shw.dates = TRUE,
+                       show.all.dates = FALSE,
                        alpha.dates = .5,
                        lbl.dates = FALSE,
+                       lbl.date.field = "idf",
                        lbl.dates.size = 2,
                        lbl.time.interv = FALSE,
                        lbl.time.interv.size = 3,
@@ -201,6 +203,9 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   # contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
   # TODO: do the same on weighted medians
   test_subset <- ifelse(all(is.na(isochr.subset)), FALSE, TRUE)
+  if(verbose){
+    print(paste0("'test_subset': ", as.character(test_subset)))
+  }
   is.none.subset <- ifelse(isochr.subset == "None", TRUE, FALSE)
   # print(is.none.subset)
   # if(is.none.subset){
@@ -257,9 +262,11 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   #                               y = df$latitude, 
   #                               z = df$median, 
   #                               duplicate = "mean")
-  
+  # call Gridded Bivariate Interpolation for Irregular Data
   source("R/neo_isochr_inter.R")
   interp_df <- neo_isochr_inter(df)
+  # print(class(interp_df))
+  # print(head(interp_df))
   
   
   # ## Export the interpolated grid to detect the edges ##########
@@ -537,10 +544,10 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                             alpha = alpha.dates,
                             stroke = NA,
                             size = size.date)
-      if(verbose){
-        print(paste0("Add date labels to the map"))
-      }
       if(lbl.dates){
+        if(verbose){
+          print(paste0("Add date labels to the map"))
+        }
         map <- map +
           ggrepel::geom_text_repel(data = df, 
                                    ggplot2::aes(x = longitude, y = latitude, label = idf),
@@ -557,6 +564,17 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
       if(mesolithic){
         df.isochr.subset <- df[df[["median"]] > isochr.subset, ]
       }
+      # TODO: show all dates to show case the interpolation method
+      # show.all.dates <- TRUE
+      if(show.all.dates){
+        map <- map +
+          ggplot2::geom_point(data = df, 
+                              ggplot2::aes(x = longitude, y = latitude), 
+                              col = "grey",
+                              # alpha = alpha.dates,
+                              stroke = NA,
+                              size = size.date)
+      }
       map <- map +
         ggplot2::geom_point(data = df.isochr.subset, 
                             ggplot2::aes(x = longitude, y = latitude), 
@@ -565,13 +583,32 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                             stroke = NA,
                             size = size.date)
       if(lbl.dates){
-        map <- map +
-          ggrepel::geom_text_repel(data = df.isochr.subset, 
-                                   ggplot2::aes(x = longitude, y = latitude, label = idf),
-                                   size = lbl.dates.size,
-                                   segment.alpha = .3,
-                                   segment.size = .3,
-                                   max.overlaps = Inf)
+        if(verbose){
+          print(paste0("Add date labels to the map"))
+          # print(colnames(df))
+        }
+        # TODO: simplify by using !! in ggplot
+        # label = !!label_sym), # 
+        # my_label <- "idf"
+        # label_sym <- sym(my_label)
+        if(lbl.date.field == "idf"){
+          map <- map +
+            ggrepel::geom_text_repel(data = df.isochr.subset, 
+                                     ggplot2::aes(x = longitude, y = latitude, label = idf),
+                                     size = lbl.dates.size,
+                                     segment.alpha = .3,
+                                     segment.size = .3,
+                                     max.overlaps = Inf)
+        }
+        if(lbl.date.field == "median"){
+          map <- map +
+            ggrepel::geom_text_repel(data = df.isochr.subset, 
+                                     ggplot2::aes(x = longitude, y = latitude, label = median),
+                                     size = lbl.dates.size,
+                                     segment.alpha = .3,
+                                     segment.size = .3,
+                                     max.overlaps = Inf)
+        }
       }
     }
   }
@@ -619,7 +656,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     # 
     # kcc.file.full <- DescTools::SplitPath(kcc.file)$fullfilename
     # df_cc <- neo_kcc_extract(df.c14 = df.isochr.subset, labcode.col = "labcode", kcc.file = kcc.file.full)
-    outData <- list(data = df, map = map, legend = legend)
+    outData <- list(data = df, map = map, legend = legend, inter = interp_df)
   }
   if(is.other.geotiff){
     outData <- list(data = df, map = map)
@@ -732,7 +769,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
       gg +
       ggplot2::coord_sf(xlim = c(xmin, xmax), ylim = c(ymin, ymax), expand = FALSE) +
       ggplot2::labs(title = "ESRI Topographic Map",
-           subtitle = paste("Bounding box from", xmin, "to", xmax, "Longitude and", ymin, "to", ymax, "Latitude"))
+                    subtitle = paste("Bounding box from", xmin, "to", xmax, "Longitude and", ymin, "to", ymax, "Latitude"))
     library(ggplot2)
     library(basemaps)
     
