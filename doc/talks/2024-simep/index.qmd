@@ -519,29 +519,17 @@ The most ancient <span style="color: red;">EN</span> date median
 
 :::
 
-### Dates medians
+### Dates medians and KCC extraction
 
 
 ::: columns
 
 ::: {.column width="35%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" width="500">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161-spd.png" width="500">
 :::
 
 ::: {.column width="65%"}
-```{.r}
-weighted.median <- matrixStats::weightedMedian(x = ages1$Date1$ageGrid,
-                                               w = ages1$Date1$densities)
-df.c14[i, "median"] <- -(weighted.median - present)
-if(stat.mean){
-  weighted.mean <- matrixStats::weightedMean(x = ages1$Date1$ageGrid,
-                                             w = ages1$Date1$densities)
-  df.c14[i, "mean"] <- -(weighted.mean - present)
-}
-df.c14[i, "tpq"] <- -(min(ages1$Date1$ageGrid) - present)
-df.c14[i, "taq"] <- -(max(ages1$Date1$ageGrid) - present)
-```
-<small>![neonet::neo_calib()](https://github.com/zoometh/neonet/blob/main/R/neo_calib.R)</small>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="500">
 :::
 
 :::
