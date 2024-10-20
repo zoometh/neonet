@@ -508,7 +508,7 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 ::: columns
 
 ::: {.column width="60%"}
-<small>The most recent <span style="color: blue;">LM</span> and the most ancient <span style="color: red;">EN</span> date weighted medians</small>
+<small>Most recent <span style="color: blue;">LM</span> and most ancient <span style="color: red;">EN</span> date weighted medians by site</small>
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161-spd.png" width="500">
 :::
 
