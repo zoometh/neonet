@@ -678,7 +678,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ```{r, message=FALSE}
 library(DT)
 library(dplyr)
-balkans = "https://raw.githubusercontent.com/zoometh/neonet/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.tsv"
+balkans <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.tsv"
 df.to.rm <- read.table(balkans, sep = "\t", header = TRUE)
 df.to.rm %>% 
   DT::datatable(
@@ -747,6 +747,65 @@ df.to.rm %>%
 
 ::: {.column width="50%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+:::
+
+
+## Case study 2: Italy
+
+::: {.panel-tabset}
+
+### A
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc-legend){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### B
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+```{r, message=FALSE}
+library(DT)
+library(dplyr)
+balkans <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.tsv"
+df.to.rm <- read.table(balkans, sep = "\t", header = TRUE)
+df.to.rm %>% 
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(5, 10, 50, -1), 
+                        c('5', '10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
+        "}")
+    ) 
+  )
+#, options = list(width = "700px", pageLength = 10))
+```
 :::
 
 :::
