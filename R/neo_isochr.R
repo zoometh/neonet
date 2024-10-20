@@ -628,7 +628,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                              long.legend = TRUE,
                              verbose = verbose)
   }
-  if(!is.other.geotiff){
+  if(!is.other.geotiff & !is.na(kcc.file)){
     # = KCC
     # source("R/neo_kcc_extract.R")
     if(verbose){
@@ -657,6 +657,36 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     # kcc.file.full <- DescTools::SplitPath(kcc.file)$fullfilename
     # df_cc <- neo_kcc_extract(df.c14 = df.isochr.subset, labcode.col = "labcode", kcc.file = kcc.file.full)
     outData <- list(data = df, map = map, legend = legend, inter = interp_df)
+  }
+  if(!is.other.geotiff & is.na(kcc.file)){
+    # = KCC
+    # source("R/neo_kcc_extract.R")
+    # if(verbose){
+    #   print(paste0("Extract koppen classes"))
+    # }
+    names(df)[names(df) == 'longitude'] <- 'lon'
+    names(df)[names(df) == 'latitude'] <- 'lat'
+    data.df <- sf::st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
+    # kcc_geo <- terra::rast("C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif")
+    # kcc.list <- terra::extract(kcc_geo, data.df)
+    # # df <- data.frame(cbind(df, kcc.list))
+    # df <- data.frame(cbind(df, kcc.list))
+    if(neolithic){
+      # only plot medians older than
+      df <- df[df[["median"]] < isochr.subset, ]
+    }
+    if(mesolithic){
+      df <- df[df[["median"]] > isochr.subset, ]
+    }
+    # print(nrow(df))
+    
+    # names(df.isochr.subset)[names(df.isochr.subset) == 'longitude'] <- 'lon'
+    # names(df.isochr.subset)[names(df.isochr.subset) == 'latitude'] <- 'lat'
+    # print(head(df.isochr.subset))
+    # 
+    # kcc.file.full <- DescTools::SplitPath(kcc.file)$fullfilename
+    # df_cc <- neo_kcc_extract(df.c14 = df.isochr.subset, labcode.col = "labcode", kcc.file = kcc.file.full)
+    outData <- list(data = df, map = map, inter = interp_df)
   }
   if(is.other.geotiff){
     outData <- list(data = df, map = map)
