@@ -289,7 +289,7 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 70px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
 
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/r-pkg-rcarbon.png" style="height: 70px;vertical-align: middle;"/><br>[<https://github.com/ahb108/rcarbon>]{.smalltext}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-rcarbon.png" style="height: 70px;vertical-align: middle;"/><br>[<https://github.com/ahb108/rcarbon>]{.smalltext}
 
 :::
 
@@ -856,7 +856,9 @@ df.to.rm %>%
 
 ## Climates evolution
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png)
+<center>
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo.png){width="850" style="horizontal-align: middle;"}
+</center>
 \
 \
 
@@ -960,7 +962,13 @@ minimizing regional climate contrasts: Similarity between local landscapes of ea
 Rproductible methods. Enhancement of cultural and climatic data
 :::
 
-## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods
+## Climates occupied by the Early Farmers 
+
+<center>
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-spd.png){width="850" style="horizontal-align: middle;"}
+</center>
+
+## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods {data-visibility=hidden}
 
 ::: {.panel-tabset}
 
@@ -993,7 +1001,7 @@ Rproductible methods. Enhancement of cultural and climatic data
 [^4]: Betti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., ... & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. *Nature Human Behaviour, 4*(10), 1004-1010.
 [^5]: Binder, D., Angeli, L., Gomart, L., Huet, T., Maggi, R., Manen, C., ... & Tagliacozzo, A. (2019, March). L’Impresso-cardial du nord-ouest et ses rapports avec la «zone-source»: une synthèse chrono-culturelle. In *Céramiques imprimées de Méditerranée occidentale. Matières premières, productions, usages*.
 
-### Cultural and Climate data
+### Cultural and Climate data {data-visibility=hidden}
 
 ::: columns
 
@@ -1028,7 +1036,7 @@ Rproductible methods. Enhancement of cultural and climatic data
 - Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
 :::
 
-#      Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-spd.png"}
+#      Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
 <https://github.com/zoometh/neonet>
 
