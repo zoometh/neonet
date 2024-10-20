@@ -1,6 +1,6 @@
 ---
-title: "Climates during the Spread of Farming in Mediterranean "
-subtitle: "Koppen climates classes of last Hunter-Gatherers and early Farmers archaeological sites through reproducible methods"
+title: "Climates during the Spread of Farming in the Mediterranean"
+subtitle: "Koppen Climates Classes of Last Hunter-Gatherers and Early Farmers archaeological sites through reproducible methods"
 author:
   - name: Thomas Huet
     affiliation: 
@@ -37,7 +37,7 @@ format:
     # self-contained: true
     # embed-resources: true
     # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<em><b>Social Interactions in Mediterranean Prehistory  </b></em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/simep-logo.png' style='height: 30px;vertical-align: middle;'>  <https://simep2024.com/> 21-23 October 2024, Barcelona (Spain)"
+    footer: "<em><b>Social Interactions in Mediterranean Prehistory  </b></em> <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/simep-logo.png' style='height: 20px;vertical-align: middle;'>  21-23 October 2024, Barcelona, Spain"
     margin: 0
     width: 1200
 ---
@@ -48,7 +48,7 @@ format:
 
 :::
 
-## An ecological and economic revolution
+## An ecological and economic revolution {data-visibility=hidden}
 
 ::: columns
 
@@ -72,42 +72,45 @@ Holocene
 ## Late Foragers and Early Farmers
 
 
-
-
 ::: columns
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 
-<span style="color:#3737FF;"><b>Late Mesolithic (LM)</b></span>, Late Foragers.
-
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_meso.png" width="500"><small>@ChatGPT</small>
-
-* Residenciality increase
-
-* Circular mobility to access discontinuous resources in time and space (seasonality)
-
-* Low demography
+<!-- <span style="color:#3737FF;"><small><b>Late Mesolithic (LM)</b></small></span> -->
+<center> 
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_meso.png" height="450"><br>
+<span style="color:#3737FF;"><small><b>Late Mesolithic (LM)[^98]</b></small></span>
+<!-- <small>[Late Mesolithic (LM)](https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/img/chatgpt_prompt.md#lm) @ChatGPT</small> -->
+</center> 
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 
-<span style="color:#FF1B1B;"><b>Early Neolithic (EN)</b></span>, Early farmers.
+<!-- <span style="color:#FF1B1B;"><small><b>Early Neolithic (EN)</b></small></span> -->
+<center> 
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_neo.png" height="450"><span style="color:#FF1B1B;"><br>
+<small><b>Early Neolithic (EN)[^99]</b></small></span>
 
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_neo.png" width="500"><small>@ChatGPT</small>
-
-* Permanent settlements
-
-* Logistic mobility to access localized resources for farming economy
-
-* High demography 
-
+<!-- <small>[Early Neolithic (EN)](https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/img/chatgpt_prompt.md#en). @ChatGPT</small> -->
+</center>
 :::
 
 :::
+[^98]: **Late Foragers**. Create an image in a portrait layout of: A Mediterranean coastal area, view from distance (bird eye), during the Late Mesolithic, with a temperate to cold and humid climate, showing an estuary river banks and a part of a marsh. The dominant colors in the image should be cool tones, such as blues and green, and the people should be dressed in furs suitable for cold to temperate climates (Koppen climate classes: Cfb and Dfa). Include only 5 characters: A women collecting sea shells and collecting fruits and wild seeds in cane baskets. A children collecting wild seeds in cane baskets. A man fishing with a vegetal net. A woman hunting ducks with a bow. A man skinning a fish. Include only these items: A vegetal net An arrow. Living wild animals should be distant from humans. The characters and animals in the image must be realistic. The faces of the people should be well-defined. The tools should be made of wood, flints and bones only. The image should have: No domestic animals. No ceramic potteries. No glass. No candle or wood fire. Do not include anything that I didn't described
+
+[^99]: **Early Farmers**. The scene depicts a Mediterranean landscape set in a river valley of the inland Iberian Peninsula during the Neolithic period. The environment reflects the typical Mediterranean vegetation, including holm oaks, oak trees, and shrubs. The landscape shows a mosaic of forests and small cereal fields, with more emphasis on the dense forest. In the foreground, a group of five people is working in the fields, harvesting wheat using wooden and flint sickles. The group consists of three men and two women, all dressed in prehistoric brown wool and linen garments, appropriate for the period. In the background, there is a small flock of black goats and brown sheep, which are being watched over by an elderly woman and a child, both holding wooden staffs. The animals are enclosed within a small wooden pen located far from the cereal fields <small>[prompt@ChatGPT](https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/img/chatgpt_prompt.md#en)</small>.
 
 
 ::: notes
+LM
+* Residenciality increase
+* Circular mobility to access discontinuous resources in time and space (seasonality)
+* Low demography
+EN
+* Permanent settlements
+* Logistic mobility to access localized resources for farming economy
+* High demography 
 Cold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging
 Climates: Near East is temperate and wet, North Africa transitioned to arid conditions, Southern Europe experienced is warmer and wetter
 Fertile Crescent | cultigens.  , soil fertility for agriculture (cereals) and climates for livestock.
