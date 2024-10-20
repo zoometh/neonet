@@ -46,15 +46,15 @@ where.roi <- c(10, 25, 45, 45) # East Med3
 # where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 Balkans.where <- c(18, 35, 30, 43) ; Balkans.when <- c(-6200, -5800)
-Italia.where <- c(5, 37, 18, 48) ; Italia.when <- c(-5500) # c(-5500, -5250, -5000)
+Italia.where <- c(5, 37, 18, 48) ; Italia.when <- c(-5600, -5400) # c(-5500, -5250, -5000)
 Mediterranean.where <- paste0(where.roi.path, "roi.geojson")
 source("R/neo_isochr.R")
 source("R/neo_kcc_legend.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  Balkans.when, #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  Italia.when, #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      max.sd = 101,
-                     where = Balkans.where, #Italia.where, # where.roi,
+                     where = Italia.where, #Italia.where, # where.roi,
                      # kcc.file = NA,
                      kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
@@ -92,7 +92,7 @@ openxlsx::write.xlsx(x = isochr$data, paste0(root.path, "img/", "isochrones-barr
 
 # export data in TSV
 df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
-write.table(df, paste0(root.path, "img/", "isochrones-barriere-Balkans-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
+write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
 
 # source("R/neo_spd.R")
 # source("R/neo_spdplot.R")
