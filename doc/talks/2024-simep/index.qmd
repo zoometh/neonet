@@ -205,7 +205,8 @@ Data: radiocarbon dates and palaeoclimatic data.
 ::: columns
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="400"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-joad.png" width="500"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="500"/>
 :::
 
 ::: {.column width="60%"}
