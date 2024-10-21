@@ -205,12 +205,12 @@ Data: radiocarbon dates and palaeoclimatic data.
 ::: columns
 
 ::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-joad.png" width="500"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-joad.png" width="400"/>
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="500"/>
 :::
 
 ::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/watersheds-rivers.png" width="500"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/watersheds-rivers.png" width="600"/>
 :::
 
 :::
@@ -229,9 +229,9 @@ Data: radiocarbon dates and palaeoclimatic data.
 :::
 
 :::
-
+<center>
 <small><http://shinyserver.cfs.unipi.it:3838/C14dev/></small>
-
+</center>
 
 
 ### Functions
@@ -305,7 +305,7 @@ Data: radiocarbon dates and palaeoclimatic data.
 library(DT)
 library(dplyr)
 ref_table_per = "https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/ref_table_per-readonly.tsv"
-df.to.rm <- read.table(ref_table_per, sep = "\t", header = TRUE)
+df.to.rm <- read.csv2(ref_table_per, sep = "\t", header = TRUE)
 df.to.rm %>% 
   DT::datatable(
     width = "100%",
@@ -682,21 +682,35 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 library(DT)
 library(dplyr)
 balkans <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.tsv"
-df.to.rm <- read.table(balkans, sep = "\t", header = TRUE)
-df.to.rm$lon <- df.to.rm$lat <- NULL
-df.to.rm %>% 
+climate_df <- read.table(balkans, sep = "\t", header = TRUE)
+kcc_df <- "https://raw.githubusercontent.com/zoometh/neonet/master/inst/extdata/koppen.tsv"
+kcc_colors  <- read.csv2(kcc_df, sep = "\t")
+kcc_colors <- kcc_colors[ , c("code", "color")]
+kcc_colors <- rbind(kcc_colors, c(NA, "#FFFFFF"))
+climate_df <- merge(climate_df, kcc_colors, by = "code", all.x = TRUE)
+climate_df$lon <- climate_df$lat <- NULL
+
+climate_df %>% 
   DT::datatable(
     width = "100%",
     rownames = FALSE,
-    options=list(
+    options = list(
       lengthMenu = list(c(5, 10, 50, -1), 
                         c('5', '10', '50', 'All')),
-      paging = T,
+      paging = TRUE,
       initComplete = htmlwidgets::JS(
         "function(settings, json) {",
         paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
         "}")
-    ) 
+    )
+  ) %>% 
+  DT::formatStyle(
+    'color',  # The column used to determine the color
+    target = 'row',  # Apply the color to the entire row
+    backgroundColor = DT::styleEqual(
+      unique(climate_df$color),  # Unique color values in your 'color' column
+      unique(climate_df$color)   # Matching those values to the same background color
+    )
   )
 #, options = list(width = "700px", pageLength = 10))
 ```
@@ -793,21 +807,35 @@ df.to.rm %>%
 library(DT)
 library(dplyr)
 balkans <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.tsv"
-df.to.rm <- read.table(balkans, sep = "\t", header = TRUE)
-df.to.rm$lon <- df.to.rm$lat <- NULL
-df.to.rm %>% 
+climate_df <- read.table(balkans, sep = "\t", header = TRUE)
+kcc_df <- "https://raw.githubusercontent.com/zoometh/neonet/master/inst/extdata/koppen.tsv"
+kcc_colors  <- read.csv2(kcc_df, sep = "\t")
+kcc_colors <- kcc_colors[ , c("code", "color")]
+kcc_colors <- rbind(kcc_colors, c(NA, "#FFFFFF"))
+climate_df <- merge(climate_df, kcc_colors, by = "code", all.x = TRUE)
+climate_df$lon <- climate_df$lat <- NULL
+
+climate_df %>% 
   DT::datatable(
     width = "100%",
     rownames = FALSE,
-    options=list(
+    options = list(
       lengthMenu = list(c(5, 10, 50, -1), 
                         c('5', '10', '50', 'All')),
-      paging = T,
+      paging = TRUE,
       initComplete = htmlwidgets::JS(
         "function(settings, json) {",
         paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
         "}")
-    ) 
+    )
+  ) %>% 
+  DT::formatStyle(
+    'color',  # The column used to determine the color
+    target = 'row',  # Apply the color to the entire row
+    backgroundColor = DT::styleEqual(
+      unique(climate_df$color),  # Unique color values in your 'color' column
+      unique(climate_df$color)   # Matching those values to the same background color
+    )
   )
 #, options = list(width = "700px", pageLength = 10))
 ```

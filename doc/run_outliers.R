@@ -51,12 +51,12 @@ Mediterranean.where <- paste0(where.roi.path, "roi.geojson")
 source("R/neo_isochr.R")
 source("R/neo_kcc_legend.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-5000), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-5100), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      max.sd = 101,
                      where = Mediterranean.where, #Italia.where, # where.roi,
                      # kcc.file = NA,
-                     # kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_8k.tif",
+                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
@@ -70,7 +70,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      shw.dates = TRUE,
                      # show.all.dates = FALSE,
                      size.date = 1.5,
-                     alpha.dates = 1,
+                     alpha.dates = .5,
                      lbl.dates = FALSE,
                      # lbl.all.dates = FALSE,
                      # lbl.date.field = "median",
@@ -86,7 +86,7 @@ ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-inter-ma
 
 
 # View(isochr$data)
-ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5000BC-EN-kcc.png"), isochr$map, width = 7, height = 7)
+ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5100BC-EN-kcc.png"), isochr$map, width = 12, height = 7)
 ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc-legend_1.png"), isochr$legend, width = 5, height = 5)
 openxlsx::write.xlsx(x = isochr$data, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc_1.xlsx"))
 
