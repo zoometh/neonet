@@ -43,6 +43,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                        size.date = 1,
                        shw.dates = TRUE,
                        show.all.dates = FALSE,
+                       color.dates = "black",
                        alpha.dates = .5,
                        lbl.dates = FALSE,
                        lbl.date.field = "idf",
@@ -540,7 +541,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
       map <- map +
         ggplot2::geom_point(data = df, 
                             ggplot2::aes(x = longitude, y = latitude), 
-                            col = "black",
+                            col = color.dates,
                             alpha = alpha.dates,
                             stroke = NA,
                             size = size.date)
@@ -578,7 +579,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
       map <- map +
         ggplot2::geom_point(data = df.isochr.subset, 
                             ggplot2::aes(x = longitude, y = latitude), 
-                            col = "black",
+                            col = color.dates,
                             alpha = alpha.dates,
                             stroke = NA,
                             size = size.date)
