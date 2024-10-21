@@ -157,16 +157,16 @@ g.neo.map <- neo_map(df.c14 = df_cc,
 # layout & export
 lay <- rbind(c(1, 1, 1, 1, 1, 3, 3, 3), 
              c(1, 1, 1, 1, 1, 3, 3, 3), 
-             c(1, 1, 1, 1, 1, 3, 3, 3), 
-             c(2, 2, 2, 2, 2, 4, 4, 4),
-             c(2, 2, 2, 2, 2, 4, 4, 4), 
-             c(2, 2, 2, 2, 2, 4, 4, 4))
-g <- gridExtra::grid.arrange(Meso, Neo, kcc.legend, g.neo.map,
+             # c(1, 1, 1, 1, 1, 3, 3, 3), 
+             c(2, 2, 2, 2, 2, 3, 3, 3),
+             c(2, 2, 2, 2, 2, 3, 3, 3)) 
+             # c(2, 2, 2, 2, 2, 3, 3, 3))
+g <- gridExtra::grid.arrange(Meso, Neo, kcc.legend, # g.neo.map,
                              # top = paste0("Distribution of radiocarbon dates ", 
                              #              "by Koppen classes in the ROI"),
                              layout_matrix = lay
 )
-g.out <- paste0(root.path, "/kcc_meso_neo.png")
+g.out <- paste0(root.path, "img/kcc_meso_neo_1.png")
 ggplot2::ggsave(file = g.out, g, width = 14, height = 10)
 
 # neo_kcc_sankey(df_cc, col.req = col.req, 
