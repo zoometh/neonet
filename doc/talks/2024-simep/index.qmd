@@ -893,7 +893,7 @@ climate_df %>%
 
 * 5800-5600 BC: Rapid inland expansion <span style="color:#FFFF00;">Csa</span>, for ex: La Marmotta (idf <b>94</b>) and Rio Tana (idf <b>149</b>), Central Italy
 * 5600 BC: Slowdown linked to the transition to a climate with no dry season (<span style="color:#C8FF50;">Cfa</span>, <span style="color:#64FF50;">Cfb</span>), northern Abruzzo.
-* Confirms: Mazzucco et al., 2023[^71], Binder et al., 2018[^72].
+* Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
 
 </small></p>
 
@@ -946,7 +946,7 @@ climate_df %>%
 ## End of the Mediterranean Neolithisation
 
 <center>
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5100BC-EN-kcc.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5100BC-EN-kcc.png){width="900" style="horizontal-align: middle;"}
 </center>
 
 
