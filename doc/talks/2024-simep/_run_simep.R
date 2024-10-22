@@ -167,7 +167,7 @@ g <- gridExtra::grid.arrange(Meso, Neo, kcc.legend, # g.neo.map,
                              layout_matrix = lay
 )
 g.out <- paste0(root.path, "img/kcc_meso_neo_1.png")
-ggplot2::ggsave(file = g.out, g, width = 14, height = 10)
+ggplot2::ggsave(file = g.out, g, width = 17, height = 9)
 
 # neo_kcc_sankey(df_cc, col.req = col.req, 
 #                selected.per = c("EN", "MM"), 
