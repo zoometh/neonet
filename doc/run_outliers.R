@@ -48,10 +48,11 @@ where.roi <- c(10, 25, 45, 45) # East Med3
 Balkans.where <- c(18, 35, 30, 43) ; Balkans.when <- c(-6200, -5800)
 Italia.where <- c(5, 37, 18, 48) ; Italia.when <- c(-5600, -5400) # c(-5500, -5250, -5000)
 Mediterranean.where <- paste0(where.roi.path, "roi.geojson")
+Mediterranean.where <- paste0(where.roi.path, "roi2.geojson")
 source("R/neo_isochr.R")
 source("R/neo_kcc_legend.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-5100), #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-5100), Italia.when, #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      max.sd = 101,
                      where = Mediterranean.where, #Italia.where, # where.roi,

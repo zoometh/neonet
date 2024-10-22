@@ -734,8 +734,8 @@ climate_df %>%
 ::: {.column width="50%"}
 <p><small>
 
-* Neolithic expansion in the Southern Balkans was more rapid in areas with a mild climate and dry summers (<span style="color:#FFFF00;">Csa</span>).
-* Northern expansion required adapting agriculture and stockbreeding systems to colder climates (<span style="color:#00FFFF;">Dfa</span>, <span style="color:#37C8FF;">Dfb</span>)
+* Rapid expansion in the Southern Balkans (<span style="color:#FFFF00;">Csa</span>).
+* Northern Balkans expansion required adapting agriculture and stockbreeding systems to colder climates (<span style="color:#00FFFF;">Dfa</span>, <span style="color:#37C8FF;">Dfb</span>)
 * Slowdown of Neolithic expansion. Early northern occupations, such as Porodin (idf <b>26</b>).
 * Confirms: Krauß et al. 2018[^81], Ivanova et al. 2018[^82].
 
@@ -891,7 +891,7 @@ climate_df %>%
 ::: {.column width="50%"}
 <p><small>
 
-* 5800-5600 BC: Rapid inland expansion between  in <span style="color:#FFFF00;">Csa</span>, for ex: La Marmotta (idf <b>94</b>) and Rio Tana (idf <b>149</b>), Central Italy
+* 5800-5600 BC: Rapid inland expansion <span style="color:#FFFF00;">Csa</span>, for ex: La Marmotta (idf <b>94</b>) and Rio Tana (idf <b>149</b>), Central Italy
 * 5600 BC: Slowdown linked to the transition to a climate with no dry season (<span style="color:#C8FF50;">Cfa</span>, <span style="color:#64FF50;">Cfb</span>), northern Abruzzo.
 * Confirms: Mazzucco et al., 2023[^71], Binder et al., 2018[^72].
 
@@ -941,23 +941,13 @@ climate_df %>%
 
 :::
 
-### 5100
+:::
 
+## End of the Mediterranean Neolithisation
 
-::: columns
-
-::: {.column width="70%"}
+<center>
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5100BC-EN-kcc.png){width="700" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="30%"}
-BLBLA
-:::
-
-:::
-
-:::
+</center>
 
 
 ## Climates evolution
