@@ -32,8 +32,7 @@ source("R/neo_dbs_coord_dates.R")
 df.c14 <- neo_dbs_coord_dates(df.c14, verbose = FALSE)
 # remove aberrant dates listed in 'c14_aberrant_dates.tsv'
 source("R/neo_dbs_rm_date.R")
-df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
-                               c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
+df_filtered <- neo_dbs_rm_date(df.c14 = df.c14)
 
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 
@@ -55,7 +54,7 @@ head(df_kcc_long)
 source("R/neo_dbs_info_dates_datatable.R")
 dt.out <- neo_dbs_info_dates_datatable(df.c14 = df_kcc_long,
                                        fields = c("SiteName", "code", "Period", "median", "map", "LabCode", "db_period", "db_culture", "sourcedb", "color"))
-htmlwidgets::saveWidget(dt.out, )
+htmlwidgets::saveWidget(dt.out, "C:/Rprojects/neonet/doc/talks/2024-simep/img/dates_kcc.html")
 
 ##
 
