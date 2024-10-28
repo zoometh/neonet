@@ -19,6 +19,8 @@ when <- c(-9000, -4000)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
 samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 df.c14 <- samp_df
+# correct sitenames
+
 # correct coordinates (# Sabha)
 source("R/neo_dbs_coord_dates.R")
 df.c14 <- neo_dbs_coord_dates(df.c14, verbose = FALSE)
