@@ -17,17 +17,28 @@
 #' @export
 neo_dbs_info_dates_datatable <- function(df.c14 = NA,
                                          kcc_df = "https://raw.githubusercontent.com/zoometh/neonet/master/inst/extdata/koppen.tsv",
+                                         fields = c("idf", "site", "median", "period", "code", "sourcedb", "color"),
                                          verbose = TRUE){
   # library(DT)
   # library(dplyr)
   `%>%` <- dplyr::`%>%` # used to not load dplyr 
-  climate_df <- read.table(df.c14, sep = "\t", header = TRUE) # TODO: chnage to `read.csv2()`
+  if(inherits(df.c14, "character")){
+    climate_df <- read.table(df.c14, sep = "\t", header = TRUE) # TODO: chnage to `read.csv2()`
+  }
+  if(inherits(df.c14, "data.frame")){
+    climate_df <- df.c14
+  }
+  if(inherits(df.c14, "sf")){
+    climate_df <- sf::st_drop_geometry(df.c14)
+  }
   kcc_colors  <- read.csv2(kcc_df, sep = "\t")
   kcc_colors <- kcc_colors[ , c("code", "color")]
   kcc_colors <- rbind(kcc_colors, c(NA, "#FFFFFF"))
   climate_df <- merge(climate_df, kcc_colors, by = "code", all.x = TRUE)
+  climate_df$median <- round(climate_df$median, 0)
   climate_df$lon <- climate_df$lat <- NULL
-  climate_df <- climate_df[, c("idf", "site", "median", "period", "code", "sourcedb", "color")]
+  climate_df <- climate_df[, fields]
+  # climate_df <- climate_df[, c("idf", "site", "median", "period", "code", "sourcedb", "color")]
   # Identify the index of the 'color' column (for JavaScript, this needs 0-based indexing)
   color_col_index <- which(colnames(climate_df) == "color") - 1
   dt.out <- climate_df %>%

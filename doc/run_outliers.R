@@ -18,19 +18,48 @@ present <- 1950
 when <- c(-9000, -4000)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
 samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
-df.c14 <- samp_df
-# correct sitenames
 
+df.c14 <- samp_df
+
+# correct sitenames
+source("R/neo_dbs_sitename_dates.R")
+df.c14 <- neo_dbs_sitename_dates(df.c14)
+# remove duplicates
+source("R/neo_dbs_rm_duplicated_dates.R")
+df.c14 <- neo_dbs_rm_duplicated_dates(df.c14)
 # correct coordinates (# Sabha)
 source("R/neo_dbs_coord_dates.R")
 df.c14 <- neo_dbs_coord_dates(df.c14, verbose = FALSE)
-
-df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
-
 # remove aberrant dates listed in 'c14_aberrant_dates.tsv'
 source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
                                c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
+
+df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
+
+## datatable
+
+kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+              "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+source("R/neo_kcc_extract.R")
+df_kcc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
+df_kcc <- sf::st_drop_geometry(df_kcc)
+koppen_columns <- c("koppen_6k", "koppen_7k", "koppen_8k", "koppen_9k", "koppen_10k", "koppen_11k")
+df_kcc_long <- df_kcc %>%
+  tidyr::pivot_longer(cols = all_of(koppen_columns), names_to = "map", values_to = "code") %>%
+  dplyr::filter(!is.na(code))
+df_kcc_long <- data.frame(df_kcc_long)
+# View the result
+head(df_kcc_long)
+
+source("R/neo_dbs_info_dates_datatable.R")
+dt.out <- neo_dbs_info_dates_datatable(df.c14 = df_kcc_long,
+                                       fields = c("SiteName", "code", "Period", "median", "map", "LabCode", "db_period", "db_culture", "sourcedb", "color"))
+htmlwidgets::saveWidget(dt.out, )
+
+##
+
+
 # remove dates having a C14SD superior to..
 # df_filtered <- df_filtered[df_filtered$C14SD < 101, ] # embedded into neo_isochr()
 
