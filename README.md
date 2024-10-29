@@ -302,6 +302,15 @@ A template script to run this operation: [run_outliers.R](https://github.com/zoo
 
 Site coordinates can be wrong, for example for the Jordian site of Sabha ([Xronos](https://xronos.ch/sites/12960) | [Google maps](https://maps.app.goo.gl/r4GEuFyzwysAwLe89)). Curated coordinates are listed in the [c14_corrected_coordinates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_corrected_coordinates.tsv) file and handle by the `neo_dbs_coord_dates()` function.
 
+#### Correct Site names
+
+When aggregate different databases, using ce c14bazAAR package, two same sites can have different site names (ex: Pollera and Grotta della Pollera). To avoid these mismatches, the function `neo_dbs_sitename_dates()` uses the mapping table [c14_corrected_sitenames.tsv](https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_sitenames.tsv)
+
+```R
+source("R/neo_dbs_sitename_dates.R")
+df.c14 <- neo_dbs_sitename_dates(df.c14)
+```
+
 
 ### SPD plot
 
