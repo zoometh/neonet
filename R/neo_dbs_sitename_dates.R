@@ -27,6 +27,7 @@ neo_dbs_sitename_dates <- function(df.c14 = NA,
   if(verbose){
     corrected.sitenames <- setdiff(df.c14$SiteName, df$SiteName)
     print(paste0("These SiteNames have been corrected: '", paste0(corrected.sitenames, collapse = ", "), "'"))
+    print(paste(length(unique(df.c14$SiteName)), " site names --> ", length(unique(df$SiteName)), " site names"))
   }
   return(df)
 }

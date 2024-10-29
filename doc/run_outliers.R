@@ -20,6 +20,7 @@ col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "cult
 samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 
 df.c14 <- samp_df
+nrow(df.c14)
 
 # correct sitenames
 source("R/neo_dbs_sitename_dates.R")
