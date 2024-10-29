@@ -1,6 +1,6 @@
 #' @name neo_dbs_rm_duplicated_dates
 #'
-#' @description Remove duplicated dates
+#' @description Remove duplicated dates on specified fields
 #'
 #' @param df.c14 a dataset of dates
 #' @param duplicated.on.fields Fields on which duplicated will be identified.

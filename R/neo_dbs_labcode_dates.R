@@ -1,6 +1,6 @@
 #' @name neo_dbs_labcode_dates
 #'
-#' @description Avoid Labcode mispelling (ex: 	Hd-16784---768 from one database, and Hd-16784-768 from another database) by performing a left join to replace LabCode in df.c14 with LabCode from labcodes when there's a match on AlternativeLabCode
+#' @description Avoid Labcode mispelling (ex: 	Hd-16784---768 from one database, and Hd-16784-768 from another database) by performing a left join to replace LabCode in df.c14 with LabCode from labcodes when there's a match on AlternativeLabCode. Avoid also uppercase vs lowercase mismatches.
 #'
 #' @param df.c14 a dataset of dates
 #' @param sitenames.equiv A TSV file listing the equivalences between LabCodes.
@@ -26,7 +26,16 @@ neo_dbs_labcode_dates <- function(df.c14 = NA,
     dplyr::select(-LabCode.y)
   if(verbose){
     corrected.sitenames <- setdiff(df.c14$LabCode, df$LabCode)
-    print(paste0("These LabCodes have been corrected: '", paste0(corrected.sitenames, collapse = ", "), "'"))
+    print(paste0("These LabCodes have been corrected: '", paste0(corrected.sitenames, collapse = ", "), "' (mispelling)"))
+    print(paste(length(unique(df.c14$LabCode)), " labcodes --> ", length(unique(df$LabCode)), " labcodes"))
+  }
+  # Lower- Upper-case
+  df$LabCodeX <- tolower(df$LabCode)
+  df <- df[!duplicated(df$LabCodeX), ]
+  if(verbose){
+    corrected.sitenames <- setdiff(df.c14$LabCode, df$LabCode)
+    print(paste0("These LabCodes have been corrected: '", paste0(corrected.sitenames, collapse = ", "), "' (uppercase vs lowercase)"))
+    print(paste(length(unique(df.c14$LabCode)), " labcodes --> ", length(unique(df$LabCode)), " labcodes"))
   }
   return(df)
 }
