@@ -30,6 +30,10 @@ neo_dbs_rm_date <- function(df.c14 = NA,
   }
   df <- dplyr::anti_join(df.c14, df.to.rm, 
                          by = c("sourcedb", "LabCode"))
+  if(verbose){
+    corrected.sitenames <- setdiff(df.c14$SiteName, df$SiteName)
+    print(paste(nrow(df.c14), " dates --> ", nrow(df), " dates"))
+  }
   return(df)
 }
 

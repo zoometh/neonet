@@ -24,6 +24,7 @@ neo_dbs_rm_duplicated_dates <- function(df.c14 = NA,
   if(verbose){
     rm.dates <- nrow(df.c14) - nrow(df)
     print(paste0(rm.dates, " duplicated on fields '", paste0(duplicated.on.fields, collapse = ", "), "' have been removed"))
+    print(paste(nrow(df.c14), " dates --> ", nrow(df), " dates"))
   }
   return(df)
 }

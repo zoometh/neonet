@@ -33,10 +33,10 @@ source("R/neo_dbs_rm_duplicated_dates.R")
 df.c14 <- neo_dbs_rm_duplicated_dates(df.c14)
 # correct coordinates (# Sabha)
 source("R/neo_dbs_coord_dates.R")
-df.c14 <- neo_dbs_coord_dates(df.c14, verbose = FALSE)
+df.c14 <- neo_dbs_coord_dates(df.c14)
 # remove aberrant dates listed in 'c14_aberrant_dates.tsv'
 source("R/neo_dbs_rm_date.R")
-df_filtered <- neo_dbs_rm_date(df.c14 = df.c14)
+df.c14 <- neo_dbs_rm_date(df.c14)
 
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 
