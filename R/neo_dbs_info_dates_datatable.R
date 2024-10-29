@@ -18,6 +18,7 @@
 neo_dbs_info_dates_datatable <- function(df.c14 = NA,
                                          kcc_df = "https://raw.githubusercontent.com/zoometh/neonet/master/inst/extdata/koppen.tsv",
                                          fields = c("idf", "site", "median", "period", "code", "sourcedb", "color"),
+                                         font.size = "12pt",
                                          verbose = TRUE){
   # library(DT)
   # library(dplyr)
@@ -52,7 +53,7 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
         columnDefs = list(list(visible = FALSE, targets = color_col_index)),  # Hide the 'color' column
         initComplete = htmlwidgets::JS(
           "function(settings, json) {",
-          paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
+          paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
           "}")
       )
     ) %>% 

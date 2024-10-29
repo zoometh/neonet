@@ -53,7 +53,8 @@ head(df_kcc_long)
 
 source("R/neo_dbs_info_dates_datatable.R")
 dt.out <- neo_dbs_info_dates_datatable(df.c14 = df_kcc_long,
-                                       fields = c("SiteName", "code", "Period", "median", "map", "LabCode", "db_period", "db_culture", "sourcedb", "color"))
+                                       fields = c("SiteName", "code", "Period", "median", "map", "LabCode", "db_period", "db_culture", "sourcedb", "color"),
+                                       font.size = "18pt")
 htmlwidgets::saveWidget(dt.out, "C:/Rprojects/neonet/doc/talks/2024-simep/img/dates_kcc.html")
 
 ##
