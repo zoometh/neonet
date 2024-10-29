@@ -40,8 +40,7 @@ df.c14 <- neo_dbs_rm_date(df.c14)
 
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 
-## datatable
-
+## creates a datatable of all dates
 kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
               "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
 source("R/neo_kcc_extract.R")
@@ -53,7 +52,6 @@ dt.out <- neo_dbs_info_dates_datatable(df.c14 = df_kcc_long,
                                        fields = c("SiteName", "code", "Period", "median", "map", "LabCode", "db_period", "db_culture", "sourcedb", "X", "Y", "color"),
                                        font.size = "16pt")
 htmlwidgets::saveWidget(dt.out, "C:/Rprojects/neonet/doc/talks/2024-simep/img/dates_kcc.html")
-
 ##
 
 
