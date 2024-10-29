@@ -49,8 +49,8 @@ source("R/neo_kcc_extract_longformat.R")
 df_kcc_long <- neo_kcc_extract_longformat(df_kcc)
 source("R/neo_dbs_info_dates_datatable.R")
 dt.out <- neo_dbs_info_dates_datatable(df.c14 = df_kcc_long,
-                                       fields = c("SiteName", "code", "Period", "median", "map", "LabCode", "db_period", "db_culture", "sourcedb", "color"),
-                                       font.size = "18pt")
+                                       fields = c("SiteName", "code", "Period", "median", "map", "LabCode", "db_period", "db_culture", "sourcedb", "X", "Y", "color"),
+                                       font.size = "16pt")
 htmlwidgets::saveWidget(dt.out, "C:/Rprojects/neonet/doc/talks/2024-simep/img/dates_kcc.html")
 
 ##

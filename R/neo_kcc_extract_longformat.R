@@ -20,8 +20,12 @@ neo_kcc_extract_longformat <- function(df.c14 = NA,
   
   `%>%` <- dplyr::`%>%` # used to not load dplyr 
   if(inherits(df.c14, "sf")){
-    df_kcc <- sf::st_drop_geometry(df.c14)
+    df <- df.c14
+    df$X <- sf::st_coordinates(df$geometry)[, 1]
+    df$Y <- sf::st_coordinates(df$geometry)[, 2]
+    df_kcc <- sf::st_drop_geometry(df)
   }
+  df_kcc <- df_kcc
   df <- df_kcc %>%
     tidyr::pivot_longer(cols = all_of(koppen_columns), names_to = "map", values_to = "code") %>%
     dplyr::filter(!is.na(code))
