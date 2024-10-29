@@ -696,4 +696,3 @@ There are mainy IT-based projects dealing with radiocarbon dates, such as the co
   - GitHub: https://zoometh.github.io/neonet/doc/talks/2024-oxford/pres
 * SIMEP
   - GitHub: https://zoometh.github.io/neonet/doc/talks/2024-simep/pres
-    
