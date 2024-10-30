@@ -343,7 +343,9 @@ neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/
 
 ### Isochrones
 
-Create a map with isochrone contours to model the spread of Neolithic. 
+Create a map with isochrone contours to model the spread of Neolithic using the `neo_isochr()` function.
+
+#### Example
 
 The file [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/doc/#export_dates)). This GeoJSON file can be curated in a GIS (ex: removing aberrant dates) before running the following functions (`neo_isochr`, `neo_spd`, etc.).
 
@@ -378,9 +380,31 @@ Where `neo_calib()` calculate the cal BC min and max (i.e, calibrates), and the 
     <em>Output map from the `neonet-data-2023-09-24.geojson`</em>
 </p>
 
-#### Earliest Neolithic and Latest Paleolithic
+#### Interpolation
 
-The same function can be used symetrically: instead of plotting the earliest dates of the Neolithic, one can also plot the latest dates of the Paleolithic
+Isochrones are created from the interpolation map:
+
+```R
+source("R/neo_isochr_inter_map.R")
+inter.map <- neo_isochr_inter_map(isochr$inter)
+inter.map
+## Not Run
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-inter-map.png"), inter.map, width = 7, height = 7)
+```
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map.png"
+" width="500">
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map-ex.png"
+" width="500">
+  <br>
+    <em>Weighted medians interpolated</em>
+</p>
+
+#### EN and LM
+
+The same function can be used symetrically: instead of plotting the earliest dates of the Neolithic (EN), one can also plot the latest dates of the Paleolithic (or Late Mesolithic, LM)
 
 ```R
 myc14data <- "https://raw.githubusercontent.com/zoometh/neonet/main/results/1_AOI_France_E-W.geojson"

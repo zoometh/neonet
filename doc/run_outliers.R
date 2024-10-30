@@ -35,24 +35,15 @@ df.c14 <- neo_dbs_rm_duplicated_dates(df.c14)
 source("R/neo_dbs_coord_dates.R")
 df.c14 <- neo_dbs_coord_dates(df.c14)
 # remove aberrant dates listed in 'c14_aberrant_dates.tsv'
-source("R/neo_dbs_rm_date.R")
-df.c14 <- neo_dbs_rm_date(df.c14)
-
 df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
 
-## creates a datatable of all dates
-kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
-              "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
-source("R/neo_kcc_extract.R")
-df_kcc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
-source("R/neo_kcc_extract_longformat.R")
-df_kcc_long <- neo_kcc_extract_longformat(df_kcc)
-source("R/neo_dbs_info_dates_datatable.R")
-dt.out <- neo_dbs_info_dates_datatable(df.c14 = df_kcc_long,
-                                       fields = c("SiteName", "code", "Period", "median", "map", "LabCode", "db_period", "db_culture", "sourcedb", "X", "Y", "color"),
-                                       font.size = "16pt")
-htmlwidgets::saveWidget(dt.out, "C:/Rprojects/neonet/doc/talks/2024-simep/img/dates_kcc.html")
-##
+# remove aberrant dates listed in 'c14_aberrant_dates.tsv'
+source("R/neo_dbs_rm_date.R")
+df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
+                               c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
+# remove dates having a C14SD superior to..
+df_filtered <- df_filtered[df_filtered$C14SD < 101, ]
+
 
 
 # remove dates having a C14SD superior to..
@@ -78,10 +69,10 @@ Mediterranean.where <- paste0(where.roi.path, "roi2.geojson")
 source("R/neo_isochr.R")
 source("R/neo_kcc_legend.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  c(-5100), Italia.when, #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  c(-5600, -5400), Italia.when, #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      max.sd = 101,
-                     where = Mediterranean.where, #Italia.where, # where.roi,
+                     where = Italia.where, #Italia.where, # where.roi,
                      # kcc.file = NA,
                      kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
@@ -107,17 +98,15 @@ isochr <- neo_isochr(df.c14 = df_filtered,
 isochr$map
 isochr$data
 
-source("R/neo_isochr_inter_map.R")
-inter.map <- neo_isochr_inter_map(isochr$inter)
-inter.map
-ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-inter-map.png"), inter.map, width = 7, height = 7)
+# isochrones-barriere-Italy-EN-kcc_1
+
+
 
 
 # View(isochr$data)
 ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5100BC-EN-kcc.png"), isochr$map, width = 12, height = 7)
 ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc-legend_1.png"), isochr$legend, width = 5, height = 5)
 openxlsx::write.xlsx(x = isochr$data, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc_1.xlsx"))
-
 # export data in TSV
 df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
 write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
@@ -165,3 +154,6 @@ neo_dbs_info_date_src(db = ad$sourcedb,
 # a.db <- neo_dbs_info_date_src(db = "bda", print.res = FALSE)
 
 # Add outlier dates in this dataframe: https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv 
+
+
+##
