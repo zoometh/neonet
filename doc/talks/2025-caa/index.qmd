@@ -1,0 +1,1203 @@
+---
+title: "Climates during the Spread of Farming in the Mediterranean"
+# subtitle: "Koppen Climates Classes of Last Hunter-Gatherers and Early Farmers archaeological sites through reproducible methods"
+author:
+  - name: Thomas Huet
+    affiliation: 
+      - id: uo
+        name: <span style="font-size:16pt">University of Oxford</span>
+  - name: Niccolò Mazzucco
+    affiliation: 
+      - id: up
+        name: <span style="font-size:16pt">Università di Pisa</span>
+  - name: <span style="font-size:16pt">with the collaboration of </span>Andrea Manica
+    affiliation: 
+      - id: uc
+        name: <span style="font-size:16pt">University of Cambridge</span>
+title-slide-attributes:
+    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2.png"
+    data-background-size: "110%"
+    data-background-opacity: "0.3"
+    data-notes: Climate Types. Focus on the LM/EN transition. Examines the spread of farming across the Mediterranean from 9,000 to 4,000 BC. Assess changes in the climates inhabited by the latest foragers during the LM and the earliest farmers during the EN. R programming to analyse over 4,000 curated radiocarbon dates. And 6 past reconstructions Köppen Climate Classification covering 6 milleniums (slices of 1000 years each). Development both for the datasets and methods. Reproductibility.
+format:
+  revealjs: 
+    css: https://zoometh.github.io/thomashuet/css/quarto.css
+    controls: true
+    auto-stretch: false
+    code-fold: false
+    code-summary: "<small>Code</small>"
+    slide-number: true
+    chalkboard:
+      theme: "whiteboard"
+      color: ['rgba(255, 0, 0, 0.3)'] # red
+    scrollable: true
+    preview-links: auto
+    reference-location: document
+    footnotes-hover: true
+    # self-contained: true
+    # embed-resources: true
+    # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
+    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/logo-caa25.png' style='height: 20px;vertical-align: middle;'>  5-9 May 2025, Athens, Greece"
+    margin: 0
+    width: 1200
+---
+
+# Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+
+::: notes
+
+:::
+
+## An ecological and economic revolution {data-visibility=hidden}
+
+::: columns
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/holocene_clim.png" width="500">
+<small>![http://www.atmo.arizona.edu](http://www.atmo.arizona.edu/students/courselinks/spring16/atmo336/lectures/sec5/holocene.html)</small>
+:::
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib-the-dawn-of-everything.jpg" width="350">
+:::
+
+:::
+
+
+::: notes
+Holocene
+:::
+
+
+## Late Foragers and Early Farmers
+
+
+::: columns
+
+::: {.column width="50%"}
+
+<!-- <span style="color:#3737FF;"><small><b>Late Mesolithic (LM)</b></small></span> -->
+<center> 
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_meso_2.png" height="450"><br>
+<span style="color:#3737FF;"><small><b>Late Mesolithic (LM)[^98]</b></small></span>
+<!-- <small>[Late Mesolithic (LM)](https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/img/chatgpt_prompt.md#lm) @ChatGPT</small> -->
+</center> 
+
+:::
+
+::: {.column width="50%"}
+
+<!-- <span style="color:#FF1B1B;"><small><b>Early Neolithic (EN)</b></small></span> -->
+<center> 
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_neo_2.png" height="450"><span style="color:#FF1B1B;"><br>
+<small><b>Early Neolithic (EN)[^99]</b></small></span>
+
+<!-- <small>[Early Neolithic (EN)](https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/img/chatgpt_prompt.md#en). @ChatGPT</small> -->
+</center>
+:::
+
+:::
+[^98]: **Late Foragers**. Create an image in a portrait layout of: A Mediterranean coastal area, view from distance (bird eye), during the Late Mesolithic, with a temperate to cold and humid climate, showing an estuary river banks and a part of a marsh. The dominant colors in the image should be cool tones, such as blues and green, and the people should be dressed in furs suitable for cold to temperate climates (Koppen climate classes: Cfb and Dfa). Include only 5 characters: A women collecting sea shells and collecting fruits and wild seeds in cane baskets. A children collecting wild seeds in cane baskets. A man fishing with a vegetal net. A woman hunting ducks with a bow. A man skinning a fish. Include only these items: A vegetal net An arrow. Living wild animals should be distant from humans. The characters and animals in the image must be realistic. The faces of the people should be well-defined. The tools should be made of wood, flints and bones only. The image should have: No domestic animals. No ceramic potteries. No glass. No candle or wood fire. Do not include anything that I didn't described
+
+[^99]: **Early Farmers**. The scene depicts a Mediterranean landscape set in a river valley of the inland Iberian Peninsula during the Neolithic period. The environment reflects the typical Mediterranean vegetation, including holm oaks, oak trees, and shrubs. The landscape shows a mosaic of forests and small cereal fields, with more emphasis on the dense forest. In the foreground, a group of five people is working in the fields, harvesting wheat using wooden and flint sickles. The group consists of three men and two women, all dressed in prehistoric brown wool and linen garments, appropriate for the period. In the background, there is a small flock of black goats and brown sheep, which are being watched over by an elderly woman and a child, both holding wooden staffs. The animals are enclosed within a small wooden pen located far from the cereal fields <small>[prompt@ChatGPT](https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/img/chatgpt_prompt.md#en)</small>.
+
+
+::: notes
+LM
+* Residenciality increase
+* Circular mobility to access discontinuous resources in time and space (seasonality)
+* Low demography
+EN
+* Permanent settlements
+* Logistic mobility to access localized resources for farming economy
+* High demography 
+Cold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging
+Climates: Near East is temperate and wet, North Africa transitioned to arid conditions, Southern Europe experienced is warmer and wetter
+Fertile Crescent | cultigens.  , soil fertility for agriculture (cereals) and climates for livestock.
+Climates: broadly warm and stable
+The different periods defines characteristic anthropological moments. Conventional division in 3 phases, both for the Mesolithic and Neolithic. Standardized and heuristic way to represent the evolution of a culture. We represent here, using large brushes
+:::
+
+
+
+## EM - Early Mesolithic {data-visibility=hidden}
+
+::: notes
+Le Mésolithique, largo senso, débute pendant le Dryas II (BIB 1405). Le réchauffement climatique bouleverse les équilibres écologiques. Le Mésolithique marque la fin de la glaciation de Wurm et début de l' Holocène\Préboréal (BIB 2653). végétation, wetland
+:::
+
+## MM - Middle Mesolithic {data-visibility=hidden}
+
+## LM - Late Mesolithic {data-visibility=hidden}
+
+Late Foragers.
+
+* Residenciality increase
+
+* Circular mobility to access discontinuous resources in time and space (seasonality)
+
+* Low demography
+
+
+
+::: notes
+Cold weather favors a greater mobility. A la fin du Dryas III, vers 9,600 BC: amélioration du climat, et diminution des grands herbivores clairement documentée au Moyen-Orient et dans le Nouveau Monde, force les HG à intensifier leur foraging
+Climates: Near East is temperate and wet, North Africa transitioned to arid conditions, Southern Europe experienced is warmer and wetter
+:::
+
+## EN - Early Neolithic {data-visibility=hidden}
+
+Early farmers.
+
+* Permanent settlements
+
+* Logistic mobility to access localized resources related to agriculture, animal husbandry and proto-urbanism
+
+* High demography  
+
+
+::: notes
+Fertile Crescent | cultigens.  , soil fertility for agriculture (cereals) and climates for livestock.
+Climates: broadly warm and stable
+:::
+
+## MN - Middle Neolithic {data-visibility=hidden}
+
+## LN - Late Neolithic {data-visibility=hidden}
+
+# Framework {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+
+::: notes
+Data: radiocarbon dates and palaeoclimatic data.
+:::
+
+## Neonet project
+
+::: {.panel-tabset}
+
+### Meso/Neo
+
+
+::: columns
+
+::: {.column width="20%"}
+<span style="color:#0000CF; font-size: 20px;">Early Mesolithic (EM)</span><br>
+<span style="color:#1D1DFF; font-size: 20px;">Middle Mesolithic (MM)</span><br>
+<span style="color:#3737FF; font-size: 25px;"><b>Late Mesolithic (LM)</b></span><br>
+<span style="color:#FF1B1B; font-size: 25px;"><b>Early Neolithic (EN)</b></span><br>
+<span style="color:#FF8D1B; font-size: 20px;">Middle Neolithic (MN)</span><br>
+<span style="color:#FFC04D; font-size: 20px;">Late Neolithic (LN)</span><br>
+:::
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-meso-Montclus.png-spd.png" width="500"><br><small>Baume de Montclus, stacked SPD</small><br>
+:::
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/moments-dbs-neo-Franchti.png-spd.png" width="500"><br><small>Franchthi cave, stacked SPD</small>
+:::
+
+:::
+
+
+### Dataset
+
+::: columns
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-joad.png" width="400"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="500"/>
+:::
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/watersheds-rivers.png" width="600"/>
+:::
+
+:::
+
+
+### Online app
+
+::: columns
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png"/ width="600">
+:::
+
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/donzere-app-north-and-south-calib-1.png" width="600"/>
+:::
+
+:::
+<center>
+<small><http://shinyserver.cfs.unipi.it:3838/C14dev/></small>
+</center>
+
+
+### Functions
+
+::: columns
+
+::: {.column width="40%"}
+```{.r}
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+
+neo_spd(df.c14 = df.c14)
+```
+
+:::
+
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/spd-spd.png" width="600"/>
+
+:::
+
+
+:::
+
+### Openness
+
+* Open Data, Open Source, Open Access
+* Scalable, Incrementable, Reusable, Analyzable
+
+:::
+
+# Materials and Methods {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+
+::: notes
+Data: radiocarbon dates and palaeoclimatic data.
+:::
+
+## Radiocarbon data
+
+::: {.panel-tabset}
+
+
+### Sources
+
+::: columns
+::: {.column width="60%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/dbs_counts.png){width="550" style="horizontal-align: middle;"}
+\
+\
+
+:::
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-c14bazaar.png" style="height: 70px;vertical-align: middle;"/><br>[<https://github.com/ropensci/c14bazAAR>]{.smalltext}<br>
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 70px;vertical-align: middle;"/><br>[<https://github.com/zoometh/neonet>]{.smalltext}
+
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 50px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/r-pkg-rcarbon.png" style="height: 70px;vertical-align: middle;"/><br>[<https://github.com/ahb108/rcarbon>]{.smalltext}
+
+:::
+
+:::
+
+
+### Alignment
+
+::: {.column width="70%"}
+
+
+```{r, message=FALSE}
+library(DT)
+library(dplyr)
+ref_table_per = "https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/ref_table_per-readonly.tsv"
+df.to.rm <- read.csv2(ref_table_per, sep = "\t", header = TRUE)
+df.to.rm %>% 
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(5, 10, 50, -1), 
+                        c('5', '10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
+        "}")
+    ) 
+  )
+#, options = list(width = "700px", pageLength = 10))
+```
+<small>[ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/inst/extdata/ref_table_per.xlsx)</small>
+
+:::
+
+::: {.column width="30%"}
+
+<!-- Neonet classes -->
+
+<table style="font-size: 25px;">
+    <tr>
+        <td><span style="color:#0000CF">EM - Early Mesolithic</span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#1D1DFF">MM - Middle Mesolithic</span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#3737FF"><b>LM - Late Mesolithic</b></span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#FF1B1B"><b>EN - Early Neolithic</b></span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#FF8D1B">MN - Middle Neolithic</span></td>
+    </tr>
+    <tr>
+        <td><span style="color:#FFC04D">LN - Late Neolithic</span></td>
+    </tr>
+</table>
+
+:::
+
+::: notes
+- 8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.
+- mapping table with period and culture coming from different datasest to be mapped to the Neonet main classes (10 classes, among which 4 are undefined and period transition).
+- Using 
+:::
+
+### Outliers
+
+
+```{r, message=FALSE}
+library(DT)
+library(dplyr)
+c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv"
+df.to.rm <- read.csv2(c14.to.remove, sep = "\t", header = TRUE)
+df.to.rm %>% 
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(5, 10, 50, -1), 
+                        c('5', '10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
+        "}")
+    ) 
+  )
+#, options = list(width = "700px", pageLength = 10))
+```
+<small>[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)</small>
+
+
+::: notes
+- With R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases. 
+- We map these dates to the Neonet periods (here on the left **class**).
+- Then we remove duplicated dates and discard outliers (currently in process).
+- Some 4,000 dates are now available for the study.
+:::
+
+### ROI
+
+<center>
+
+```{r}
+library(dplyr)
+# df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
+df <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson", quiet = T)
+roi <- paste0('<a href="', "https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/roi.geojson", '" target="_blank">roi.geojson</a>')
+leaflet::leaflet(df, width = "700px", height = "450px") %>%
+  leaflet::addTiles() %>%
+  leaflet::addPolygons(popup = roi)# "<b>Hello World</b>")
+```
+
+</center>
+
+::: notes
+
+:::
+
+### Worflow
+
+<center>
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/workflow-radiocaron-dataset.png)
+</center>
+
+:::
+
+
+## Climates data
+
+
+::: {.panel-tabset}
+
+### Sources
+
+::: columns
+
+::: {.column width="33%"}
+<!-- Mid-Holocene (c. 6,000 BP)<br> -->
+<small>Mean annual temperature (ºC)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="250px">
+:::
+
+::: {.column width="33%"}
+<small>Annual precipitation (mm year <sup>-1</sup>)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="250px">
+:::
+
+::: {.column width="33%"}
+<small>Biome (pollen-based)</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="250px">
+:::
+
+
+:::
+
+<small> Beyer et *al.* 2020[^1]</small>
+
+
+```{=html}
+<iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
+```
+
+
+### Methods
+
+::: columns
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 90px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 110px;vertical-align: middle;"/><br>[<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
+:::
+
+::: {.column width="50%"}
+```{.r}
+B <- MAP < 10 * Pthresh
+BW <- B & MAP < 5 * Pthresh
+BWh <- BW & MAT >= 18
+BWk <- BW & MAT < 18
+BS <- B & MAP >= 5 * Pthresh
+BSh <- BS & MAT >= 18
+BSk <- BS & MAT < 18
+
+A <- Thot >= 18 & !B
+Af <- A & Pdry >= 60
+Am <- A & !Af & Pdry >= 100 - MAP / 25
+Aw <- A & !Af & Pdry < 100 - MAP / 25
+```
+<small>![pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R)</small>
+:::
+
+:::
+
+:::
+
+[^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
+
+
+::: notes
+- *pastclim* R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)
+- KCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).
+- The pastclim KCC current resolution is 30" = 0.5 degrees = c. 50 km. It uses the Beyer *et al.* 2020 dataset.
+:::
+
+
+
+## Modelling
+
+::: {.panel-tabset}
+
+
+### Dates medians and KCC extraction
+
+
+::: columns
+
+::: {.column width="60%"}
+<small>Most recent <span style="color: blue;">LM</span> and most ancient <span style="color: red;">EN</span> date weighted medians by site</small>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161-spd.png" width="500">
+:::
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="400">
+:::
+
+:::
+
+::: notes
+- For a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)
+- Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
+:::
+
+::: notes
+- With R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases. 
+- We map these dates to the Neonet periods (here on the left **class**).
+- Then we remove duplicated dates and discard outliers (currently in process).
+- Some 4,000 dates are now available for the study.
+:::
+
+### Dates interpolation
+
+::: columns
+
+::: {.column width="50%"}
+<center>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map.png" width="400">
+</center>
+:::
+
+::: {.column width="50%"}
+<center>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map-ex.png" width="400">
+</center>
+:::
+
+:::
+
+:::
+
+::: notes
+- For a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)
+- Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
+:::
+
+
+# Spread of Neolithic in the Mediterranean {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+
+::: notes
+Radiocarbon dates are still being revised, and many of them need to be verified. First modeling
+:::
+
+## Eastern Mediterranean (in BC)
+
+::: {.panel-tabset}
+
+### 9000
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-9000BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-9000BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 8400
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-8400BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-8400BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 7600
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-7600BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-7600BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 6800
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6800BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6800BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 6200
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+:::
+
+
+## Case study 1: Balkans
+
+::: {.panel-tabset}
+
+### Climates
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### Sites
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="60%"}
+
+```{r, message=FALSE}
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.tsv")
+```
+:::
+
+:::
+
+### Assumptions
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+<p><small>
+
+* Rapid expansion in the Southern Balkans (<span style="color:#FFFF00;">Csa</span> and <span style="color:#FFDC64;">BSk</span> ).
+* Northern Balkans expansion required adapting agriculture and stockbreeding systems to colder climates (<span style="color:#00FFFF;">Dfa</span>, <span style="color:#37C8FF;">Dfb</span>)
+* Slowdown of Neolithic expansion. Early northern occupations, such as Porodin (idf <b>26</b>).
+* Confirms: Krauß et al. 2018[^81], Ivanova et al. 2018[^82].
+
+</small></p>
+
+
+
+:::
+
+:::
+
+:::
+
+[^81]: Krauß, R., Marinova, E., De Brue, H., & Weninger, B. (2018). The rapid spread of early farming from the Aegean into the Balkans via the Sub-Mediterranean-Aegean Vegetation Zone. Quaternary International, 496, 24-41. https://doi.org/10.1016/j.quaint.2017.01.019
+[^82]: Ivanova, M., De Cupere, B., Ethier, J., & Marinova, E. (2018). Pioneer farming in southeast Europe during the early sixth millennium BC: Climate-related adaptations in the exploitation of plants and animals. PLoS One, 13(5), e0197225. https://doi.org/10.1371/journal.pone.0197225
+
+## Central Mediterranean (in BC)
+
+::: {.panel-tabset}
+
+### 6000
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6000BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6000BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 5800
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5800BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5800BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 5600
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+:::
+
+
+## Case study 2: Italy
+
+::: {.panel-tabset}
+
+### Climates
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### Sites
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="60%"}
+
+```{r, message=FALSE}
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.tsv")
+```
+:::
+
+:::
+
+### Assumptions
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+<p><small>
+
+* 5800-5600 BC: Rapid inland expansion <span style="color:#FFFF00;">Csa</span>, for ex: La Marmotta (idf <b>94</b>) and Rio Tana (idf <b>149</b>), Central Italy
+* 5600 BC: Slowdown linked to the transition to a climate with no dry season (<span style="color:#C8FF50;">Cfa</span>, <span style="color:#64FF50;">Cfb</span>), northern Abruzzo.
+* Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+[^71]: Mazzucco, N., Mineo, M., Gibaja, J.F. (2023). La Marmotta site in the framework of the Early Mediterranean Neolithic. In: *The Submerged Site of La Marmotta*. Oxbow Books, Rome, Italy. Oxford.
+[^72]: Didier Binder, Lucia Angeli, Louise Gomart, Thomas Huet, Roberto Maggi, Claire Manen, ..., (2022). Le complexe de la Céramique Imprimée en Méditerranée centrale et nord-occidentale : une synthèse chronoculturelle (VIIe et VIe millénaires AEC). In: *Céramiques imprimées de Méditerranée occidentale (VIe millénaire AEC) : données, approches et enjeux nouveaux*. Actes de la séance de la Société préhistorique française de Nice (mars 2019), D. Binder and C. Manen (eds), Paris, Société préhistorique française.
+
+
+## Western Mediterranean (in BC)
+
+::: {.panel-tabset}
+
+### 5600
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-west.png){width="500" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-west-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 5300
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5300BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5300BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+:::
+
+## End of the Mediterranean Neolithisation
+
+<center>
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5100BC-EN-kcc.png){width="900" style="horizontal-align: middle;"}
+</center>
+
+
+## Climates evolution
+
+::: columns
+
+::: {.column width="65%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo_1.png){width="850" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="35%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_meso_neo_legend.png){width="350" style="horizontal-align: middle;"}
+:::
+
+:::
+
+
+
+::: notes
+- Late foragers: Drop of the inhabited cold climates from 11k BP to 7k BP. In 9k BP newly occupied occupied Cold, dry summer, cold summer, possibly corresponding to the higher mountain range (Atlas, Alps, Pyrenees, etc.)
+- Early Farmers: 11k and 10k 2 main climates, continuous area: Fertile Crescent. Arid climates increases in 9k: arid margins (oasis). 8k and 7k: neolithisation of cold and temperated areas (Bulgaria, Southern Germany, etc.)
+- Comparison: LM occupied a larger diversity of ecozones. EF replace HG in cold climate over 4,000 years  
+:::
+
+## Spread of farming by time slices {data-visibility=hidden}
+
+::: {.panel-tabset}
+
+### 9,000 BC
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_11k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_11k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 8,000 BC
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_10k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 7,000 BC
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_9k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_9k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
+
+::: notes
+minimizing regional climate contrasts: Similarity between local landscapes of early Neolithic sites in Western Anatolia and those of older Neolithic sites in Southwest Asia 9Van Andel et Runnels, 1995, Groenhuijzen et al., 2015, Horejs et al., 2015)(minimizing regional climate contrasts)(BIB 3726)
+:::
+
+
+### 6,000 BC
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_8k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_8k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### 5,000 BC
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-spd.png){width="700" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-iso.png){width="700" style="horizontal-align: middle;"}
+:::
+
+:::
+
+:::
+
+::: notes
+- interpolation of radiocarbon dates -> isochrones
+- **8000 BC** `Cs*` (`Csa` and `Csb`: Temperate dry summer) are the CC of 90% of the EN sites in 8,000 BC. First settlements in Cyprus (`Csa` climate)
+- **7000 BC** Same two main Temperate dry summer climates (`Cs*`) with more `BW*` (`BWh` and `BWk`: Arid desert) climates. First settlements in Creta (`Csa` climate)
+- **6000 BC** ...
+:::
+
+# Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+
+::: notes
+Rproductible methods. Enhancement of cultural and climatic data
+:::
+
+## Climates occupied by the Early Farmers 
+
+<center>
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-spd.png){width="850" style="horizontal-align: middle;"}
+</center>
+
+## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods {data-visibility=hidden}
+
+::: {.panel-tabset}
+
+
+### Modeling
+
+::: columns
+
+::: {.column width="25%"}
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}<br><small>Ammerman, A. J., & Cavalli-Sforza, L. L. (1971)[^2]</small> 
+:::
+
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}<br><small>Fort, J. (2022)[^3]</small>
+:::
+
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"}<br><small>Betti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., ... & Manica, A. (2020)[^4]</small>
+:::
+
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5500BC-EN-Binder.png){width="400" style="horizontal-align: middle;"}<br><small>Binder, D., Angeli, L., Gomart, L., Huet, T., Maggi, R., Manen, C., ... & Tagliacozzo, A. (2022)[^5]</small>
+:::
+
+:::
+
+[^2]: Ammerman, A. J., & Cavalli-Sforza, L. L. (1971)[^2]. Measuring the rate of spread of early farming in Europe. *Man*, 674-688.
+[^3]: Fort, J. (2022). The spread of agriculture: quantitative laws in prehistory?. In *Simulating Transitions to Agriculture in Prehistory* (pp. 17-28). Cham: Springer International Publishing.
+[^4]: Betti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., ... & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. *Nature Human Behaviour, 4*(10), 1004-1010.
+[^5]: Binder, D., Angeli, L., Gomart, L., Huet, T., Maggi, R., Manen, C., ... & Tagliacozzo, A. (2019, March). L’Impresso-cardial du nord-ouest et ses rapports avec la «zone-source»: une synthèse chrono-culturelle. In *Céramiques imprimées de Méditerranée occidentale. Matières premières, productions, usages*.
+
+### Cultural and Climate data {data-visibility=hidden}
+
+::: columns
+
+::: {.column width="25%"}
+
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-6200-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+
+
+:::
+
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-6000-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-5800-EN-kcc.png){width="400" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="25%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-6200-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+
+:::
+
+::: notes
+- All models are wrong but some are usefull
+- Dates curation
+- Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
+:::
+
+#      Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+
+<https://github.com/zoometh/neonet>
+
+::: notes
+- Contribution: mapping table (archaeologists), interpolation methods (mathematician), aggregating data from other sources (aDNA, etc.), etc.
+:::
+
+
+## NOT SHOW {data-visibility=hidden}
+
+
+<table>
+  <tr>
+    <th>time span<br><small>cal BC</small></th>
+    <th>raster</th>
+    <th>median</th>
+  </tr>
+  <tr>
+    <td class="tabtop-left">9500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_11k.png" height="250"></td>
+    <td rowspan="3"></td>
+  </tr>
+  <tr>
+    <td><b>9000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">8500</td>
+  </tr>
+  <tr>
+    <td class="tabtop-left">8500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_10k.png" height="250"></td>
+    <td rowspan="3"></td>
+  </tr>
+  <tr>
+    <td><b>8000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">7500</td>
+  </tr>
+  <tr>
+    <td class="tabtop-left">7500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
+  </tr>
+  <tr>
+    <td><b>7000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">6500</td>
+  </tr>
+  <tr>
+    <td class="tabtop-left">6500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
+  </tr>
+  <tr>
+    <td><b>6000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">5500</td>
+  </tr>
+  <tr>
+    <td class="tabtop-left">5500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_7k.png" height="250"></td>
+    <td rowspan="3"></td>
+  </tr>
+  <tr>
+    <td><b>5000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">4500</td>
+  </tr>
+</table>
+
+## NOT VISIBLE {data-visibility=hidden}
+
+|  |  |
+|----------|----------|
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_ammerman71.png){width="400" style="horizontal-align: middle;"}<br><small>Ammerman, A. J., & Cavalli-Sforza, L. L. (1971). Measuring the rate of spread of early farming in Europe. *Man*, 674-688.</small>  | ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_fort22.png){width="400" style="horizontal-align: middle;"}<br><small>Fort, J. (2022). The spread of agriculture: quantitative laws in prehistory?. In *Simulating Transitions to Agriculture in Prehistory* (pp. 17-28). Cham: Springer International Publishing.</small>   |
+| ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bib_betti20.png){width="400" style="horizontal-align: middle;"}<br><small>Betti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., ... & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. *Nature Human Behaviour, 4*(10), 1004-1010.</small> | 
+
+## NOT VISIBLE {data-visibility=hidden}
+
+
+<table>
+  <tr>
+    <th>time span<br><small>cal BC</small></th>
+    <th>KCC map</th>
+    <th>date</th>
+  </tr>
+  <tr>
+    <td class="tabtop-left">7500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k_.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
+  </tr>
+  <tr>
+    <td><b>7000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">6500</td>
+  </tr>
+  <tr>
+    <td class="tabtop-left">6500</td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" height="250"></td>
+    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
+  </tr>
+  <tr>
+    <td><b>6000</b></td>
+  </tr>
+  <tr>
+    <td class="tabbottom-left">5500</td>
+  </tr>
+</table>
+
+### Dates Koppen Classes {data-visibility=hidden}
+
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png)
+
+<span style="color:#A9A9A9">6,500 BC -</span> 6,000 BC <span style="color:#A9A9A9">- 5,500 BC </span>
+
+
+
+::: notes
+- 
+- Extract on the radiocarbon date weighted median
+:::
+
+
+

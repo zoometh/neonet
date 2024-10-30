@@ -395,9 +395,9 @@ inter.map
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map.png"
-" width="500">
+" width="300">
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map-ex.png"
-" width="500">
+" width="300">
   <br>
     <em>Weighted medians interpolated</em>
 </p>
@@ -508,6 +508,27 @@ The Koppen Climate Classes are listed [here](https://github.com/zoometh/neonet/b
 ### Koppen functions
 
 Koppen functions are designed not only for the Neonet dataset, but also for all radiocarbon dataset respecting the minimum data stracture (site, labcode, x, y, etc.).
+
+#### Extract
+
+This set of functions creates an interactive dataset of `df.c14` dates and the climates to which they belong.
+
+```R
+kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+              "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+source("R/neo_kcc_extract.R")
+df_kcc <- neo_kcc_extract(df.c14 = df.c14, kcc.file = kcc.file)
+source("R/neo_kcc_extract_longformat.R")
+df_kcc_long <- neo_kcc_extract_longformat(df_kcc)
+source("R/neo_dbs_info_dates_datatable.R")
+dt.out <- neo_dbs_info_dates_datatable(df.c14 = df_kcc_long,
+                                       fields = c("SiteName", "code", "Period", "median", "map", "LabCode", "db_period", "db_culture", "sourcedb", "X", "Y", "color"),
+                                       font.size = "16pt")
+## Not Run
+# htmlwidgets::saveWidget(dt.out, "C:/Rprojects/neonet/doc/talks/2024-simep/img/dates_kcc.html")
+```
+
+#### Map
 
 The `neo_kcc_map()` creates a KCC map with a layer of dates above
 

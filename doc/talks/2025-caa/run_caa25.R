@@ -52,27 +52,33 @@ df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
 source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
-where.roi <- c(20, 30, 45, 40)
-# where.roi <- c(2, 42, 7, 45) # Le Baratin
+# where.roi <- c(20, 30, 45, 40)
 where.roi <- c(20, 30, 35, 42) # 6200 BC = 8.2 ky event
-where.roi <- c(32, 30, 45, 40) # Near East
-where.roi <- c(24, 25, 45, 40) # East Med
-where.roi <- c(20, 25, 45, 40) # East Med2
-where.roi <- c(10, 25, 45, 45) # East Med3
-# where.roi <- c(-10, 30, 20, 45) # West Med3
-# where.roi <- paste0(where.roi.path, "roi.geojson")
 # where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
+WestMed3 <- c(-10, 30, 20, 45)
+LeBaratin.where <- c(2, 42, 7, 45)
+NearEast.where <- c(32, 30, 45, 40)
+EastMed2.where <- c(24, 25, 45, 40) 
+EastMed3.where <- c(10, 25, 45, 45)
 Balkans.where <- c(18, 35, 30, 43) ; Balkans.when <- c(-6200, -5800)
 Italia.where <- c(5, 37, 18, 48) ; Italia.when <- c(-5600, -5400, -5100) # c(-5500, -5250, -5000)
 Mediterranean.where <- paste0(where.roi.path, "roi.geojson")
 Mediterranean.where <- paste0(where.roi.path, "roi2.geojson")
 source("R/neo_isochr.R")
 source("R/neo_kcc_legend.R")
+
+# title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) ; 
+obj.case <- list("Balkans", c(-6200, -5800), c(18, 35, 30, 43))
+obj.case.out <- paste0(obj.case[[1]], paste0(obj.case[[2]], collapse = ""), "BC")
+obj.case.out <- paste0(root.path, "img/", obj.case.out)
+# filename.out <- paste0(deparse(substitute(Italia.when)), 
+#                        paste0(Italia.when, collapse = ""))
+# filename.out <- gsub(".", "-", filename.out, fixed = TRUE)
 isochr <- neo_isochr(df.c14 = df_filtered, 
-                     isochr.subset =  Italia.when, #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset =  obj.case[[2]], #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      max.sd = 101,
-                     where = Italia.where, #Italia.where, # where.roi,
+                     where = obj.case[[3]], #Italia.where, # where.roi,
                      # kcc.file = NA,
                      kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
                      # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
@@ -97,9 +103,10 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.time.interv = TRUE)
 isochr$map
 # View(isochr$data)
-ggplot2::ggsave(paste0(root.path, "img/", "isochrones-5100BC-EN-kcc.png"), isochr$map, width = 12, height = 7)
-ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc-legend_1.png"), isochr$legend, width = 5, height = 5)
-openxlsx::write.xlsx(x = isochr$data, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc_1.xlsx"))
+ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 12, height = 7)
+ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, height = 5)
+openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
+
 # export data in TSV
 df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
 write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
