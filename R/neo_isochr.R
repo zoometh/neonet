@@ -687,7 +687,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     # 
     # kcc.file.full <- DescTools::SplitPath(kcc.file)$fullfilename
     # df_cc <- neo_kcc_extract(df.c14 = df.isochr.subset, labcode.col = "labcode", kcc.file = kcc.file.full)
-    filename.out <- paste0(deparse(substitute(Italia.when)), paste0(Italia.when, collapse = ""))
+    # filename.out <- paste0(deparse(substitute(Italia.when)), paste0(Italia.when, collapse = ""))
     outData <- list(data = df, map = map, inter = interp_df)
   }
   if(is.other.geotiff){

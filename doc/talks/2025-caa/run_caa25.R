@@ -4,23 +4,12 @@
 
 # Download the R functions using https://download-directory.github.io/ and this URL https://github.com/zoometh/neonet/tree/main/R
 
-# getwd()
 root.path <- "C:/Rprojects/neonet/doc/talks/2025-caa/"
-where.roi.path <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/"
-where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
-where.roi <- paste0(where.roi.path, "roi-midi-france.geojson") # = Perrin
-where.roi <- paste0(where.roi.path, "roi-med-cw.geojson") # = Binder
-# where <- sf::st_read(where.roi,
-#                      quiet = TRUE)
-
-# where.roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-middle-east.geojson"
 present <- 1950
 when <- c(-9000, -4000)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
 samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
-
 df.c14 <- samp_df
-nrow(df.c14)
 
 # correct sitenames
 source("R/neo_dbs_sitename_dates.R")
@@ -35,58 +24,47 @@ df.c14 <- neo_dbs_rm_duplicated_dates(df.c14)
 source("R/neo_dbs_coord_dates.R")
 df.c14 <- neo_dbs_coord_dates(df.c14)
 # remove aberrant dates listed in 'c14_aberrant_dates.tsv'
-df.c14 <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
-
-# remove aberrant dates listed in 'c14_aberrant_dates.tsv'
 source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
                                c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
-# remove dates having a C14SD superior to..
-# df_filtered <- df_filtered[df_filtered$C14SD < 101, ]
+# to sf
+df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = 4326)
 
-
-
-# remove dates having a C14SD superior to..
-# df_filtered <- df_filtered[df_filtered$C14SD < 101, ] # embedded into neo_isochr()
-
+ # isochrones
 source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
-# where.roi <- c(20, 30, 45, 40)
-where.roi <- c(20, 30, 35, 42) # 6200 BC = 8.2 ky event
-# where.roi <- paste0(where.roi.path, "roi_cyprus.geojson")
 WestMed3 <- c(-10, 30, 20, 45)
-LeBaratin.where <- c(2, 42, 7, 45)
-NearEast.where <- c(32, 30, 45, 40)
 EastMed2.where <- c(24, 25, 45, 40) 
 EastMed3.where <- c(10, 25, 45, 45)
-Balkans.where <- c(18, 35, 30, 43) ; Balkans.when <- c(-6200, -5800)
-Italia.where <- c(5, 37, 18, 48) ; Italia.when <- c(-5600, -5400, -5100) # c(-5500, -5250, -5000)
-Mediterranean.where <- paste0(where.roi.path, "roi.geojson")
-Mediterranean.where <- paste0(where.roi.path, "roi2.geojson")
 source("R/neo_isochr.R")
 source("R/neo_kcc_legend.R")
-
-# title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) ; 
-obj.case <- list("Balkans", c(-6200, -5800), c(18, 35, 30, 43))
+source("R/neo_dbs_info_dates_datatable.R")
+## Choice
+# title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) use: https://geojson.io/#map=2/0/20 ;
+obj.case <- list("Near East", c(-9000, -8000), c(32, 30, 45, 40), "koppen_11k.tif") # !!
+obj.case <- list("Cyprus", c(-8000), c(30, 30, 40, 40),  "koppen_10k.tif")
+obj.case <- list("Balkans", c(-6200, -5800), c(18, 35, 30, 43), "koppen_8k.tif")
+obj.case <- list("Italia", c(-5600, -5400, -5200), c(5, 37, 18, 48), "koppen_8k.tif")  # !!
+obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
+obj.case <- list("Mediterranean", c(-9000, -8000, -7000, -6000, -5000), c(-12, 27.5, 42.5, 47.5), "koppen_8k.tif") # !!
+# by authors
+obj.case <- list("Binder", c(-5500), c(0.07180157, 31.8513415, 23.73331373, 48.0342267), "koppen_8k.tif")
+# kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
+obj.case <- list("Perrin", c(-5500), c(1.02768233, 40.83697718, 11.40383725, 46.44486459), "koppen_8k.tif")
+# kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
+#################################################################
 obj.case.out <- paste0(obj.case[[1]], paste0(obj.case[[2]], collapse = ""), "BC")
 obj.case.out <- paste0(root.path, "img/", obj.case.out)
-# filename.out <- paste0(deparse(substitute(Italia.when)), 
-#                        paste0(Italia.when, collapse = ""))
-# filename.out <- gsub(".", "-", filename.out, fixed = TRUE)
+kcc.file.path <- paste0("C:/Rprojects/neonet/doc/data/clim/", obj.case[[4]])
 isochr <- neo_isochr(df.c14 = df_filtered, 
                      isochr.subset =  obj.case[[2]], #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
                      max.sd = 101,
                      where = obj.case[[3]], #Italia.where, # where.roi,
-                     # kcc.file = NA,
-                     kcc.file = "C:/Rprojects/neonet/doc/data/clim/koppen_7k.tif",
-                     # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
-                     # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
-                     # kcc.file = "C:/Rprojects/neonet/doc/references/guilaine01_arythmic.tif",
-                     # kcc.file = "C:/Rprojects/neonet/doc/references/jousse04_bos_domestic_afrique.tif",
+                     kcc.file = kcc.file.path, # NA, 
                      is.other.geotiff = FALSE,
-                     create.legend = FALSE,
+                     create.legend = TRUE,
                      isochr.line.color = NA, # "black", # NA to get colored isochrones (red, blue)
                      isochr.line.size = .75,
                      # isochr.txt.size = 3,
@@ -102,14 +80,13 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates.size = 3,
                      lbl.time.interv = TRUE)
 isochr$map
-# View(isochr$data)
 ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 12, height = 7)
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, height = 5)
-openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
-
-# export data in TSV
-df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
-write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
+# openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
+# df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
+# write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
+df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data)
+htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
 
 # source("R/neo_spd.R")
 # source("R/neo_spdplot.R")

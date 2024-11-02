@@ -17,7 +17,7 @@
 #' @export
 neo_dbs_info_dates_datatable <- function(df.c14 = NA,
                                          kcc_df = "https://raw.githubusercontent.com/zoometh/neonet/master/inst/extdata/koppen.tsv",
-                                         fields = c("idf", "site", "median", "period", "code", "sourcedb", "color"),
+                                         fields = c("idf", "site", "median", "period", "code", "labcode", "sourcedb", "color"),
                                          font.size = "12pt",
                                          verbose = TRUE){
   # library(DT)
