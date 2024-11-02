@@ -4,6 +4,7 @@
 .Ruserdata
 inst/extdata/_*..tsv\$
 inst/extdata/*..xlsx\$
+inst/extdata/Flohr_supp_data.xlsx
 doc/bib
 doc/src/
 doc/data/(archives)
