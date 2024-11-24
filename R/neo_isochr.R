@@ -621,7 +621,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   if(create.legend & !is.na(kcc.file)){
     source("R/neo_kcc_legend.R")
     if(verbose){
-      print(paste0("  + call neo_kcc_legend() to create a legend"))
+      print(paste0("  + call `neo_kcc_legend()` to create a legend"))
     }
     legend <- neo_kcc_legend(df_cc = NA, 
                              kcc.file = kcc.file,

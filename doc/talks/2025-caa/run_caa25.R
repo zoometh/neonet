@@ -37,7 +37,6 @@ source("R/neo_calib.R")
 WestMed3 <- c(-10, 30, 20, 45)
 EastMed2.where <- c(24, 25, 45, 40) 
 EastMed3.where <- c(10, 25, 45, 45)
-source("R/neo_isochr.R")
 source("R/neo_kcc_legend.R")
 source("R/neo_dbs_info_dates_datatable.R")
 ## Choice
@@ -57,6 +56,7 @@ obj.case <- list("Perrin", c(-5500), c(1.02768233, 40.83697718, 11.40383725, 46.
 obj.case.name <- paste0("isochr-", paste0(obj.case[[1]], paste0(obj.case[[2]], collapse = ""), "BC"), "-", gsub(".tif", "", obj.case[[4]]))
 obj.case.out <- paste0(root.path, "img/", obj.case.name)
 kcc.file.path <- paste0("C:/Rprojects/neonet/doc/data/clim/", obj.case[[4]])
+source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
                      isochr.subset =  obj.case[[2]], #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
                      selected.per = "EN",
@@ -85,7 +85,7 @@ ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, h
 # openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
 # df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
 # write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
-write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
+write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data)
 htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
 
