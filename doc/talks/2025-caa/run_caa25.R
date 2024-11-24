@@ -39,15 +39,15 @@ EastMed2.where <- c(24, 25, 45, 40)
 EastMed3.where <- c(10, 25, 45, 45)
 source("R/neo_kcc_legend.R")
 source("R/neo_dbs_info_dates_datatable.R")
-## Choice
-# title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) use: https://geojson.io/#map=2/0/20 ;
+### Choice, # !! some study area overlap different KCC
+## title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) use: https://geojson.io/#map=2/0/20 ;
 obj.case <- list("Near East", c(-9000, -8000), c(32, 30, 45, 40), "koppen_11k.tif") # !!
 obj.case <- list("Cyprus", c(-8000), c(30, 30, 40, 40),  "koppen_10k.tif")
 obj.case <- list("Balkans", c(-6200, -5800), c(18, 35, 30, 43), "koppen_8k.tif")
-obj.case <- list("Italia", c(-5600, -5400, -5200), c(5, 37, 18, 48), "koppen_8k.tif")  # !!
+obj.case <- list("Italia", c(-5700, -5500), c(5, 37, 18, 48), "koppen_8k.tif")
 obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
 obj.case <- list("Mediterranean", c(-9000, -8000, -7000, -6000, -5000), c(-12, 27.5, 42.5, 47.5), "koppen_8k.tif") # !!
-# by authors
+## by authors - - - - - - - - - - - - - - - - - - - - - - - -
 obj.case <- list("Binder", c(-5500), c(0.07180157, 31.8513415, 23.73331373, 48.0342267), "koppen_8k.tif")
 # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
 obj.case <- list("Perrin", c(-5500), c(1.02768233, 40.83697718, 11.40383725, 46.44486459), "koppen_8k.tif")
@@ -66,8 +66,8 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      is.other.geotiff = FALSE,
                      create.legend = TRUE,
                      isochr.line.color = NA, # "black", # NA to get colored isochrones (red, blue)
-                     isochr.line.size = .75,
-                     # isochr.txt.size = 3,
+                     isochr.line.size = .5,
+                     isochr.txt.size = 4,
                      calibrate = FALSE,
                      shw.dates = TRUE,
                      # show.all.dates = FALSE,
@@ -80,12 +80,12 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates.size = 3,
                      lbl.time.interv = TRUE)
 isochr$map
-ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 12, height = 7)
-ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, height = 5)
+ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 14, height = 12)
+ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 7, height = 12)
+write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
 # df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
 # write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
-write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data)
 htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
 
@@ -116,7 +116,7 @@ ggplot2::ggplot(isochr.1, ggplot2::aes(x = all, fill = code)) +
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 76)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 118)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 

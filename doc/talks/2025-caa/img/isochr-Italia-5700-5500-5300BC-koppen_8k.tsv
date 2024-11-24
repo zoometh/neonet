@@ -1,0 +1,75 @@
+"sourcedb"	"site"	"idf"	"labcode"	"lon"	"lat"	"period"	"median"	"ID"	"code"
+"neonet"	"Abri Pendimoun"	3	"Gif-A101334"	7.505944	43.812212	"EN"	-5689	3	NA
+"neonet"	"Abri de la Font-des-Pigeons"	5	"MC-2515"	5.1667	43.3834	"EN"	-5792	5	NA
+"neonet"	"Abri de la Grande Rivoire"	6	"Ly-11551(SacA-39068)"	5.644342	45.221564	"EN"	-5392	6	"Cfb"
+"neonet"	"Arma dell'Aquila"	11	"Ly-14593"	8.32967	44.204708	"EN"	-5707	11	"Cfa"
+"neonet"	"Arma dello Stefanin"	12	"Bln-3276"	8.0021	44.1044	"EN"	-5549	12	"Cfa"
+"neonet"	"Balsignano"	15	"KIA-?"	16.794123	41.066968	"EN"	-5517	15	NA
+"bda"	"Bella"	18	"Gif-4375"	12.482	42.646	"EN"	-5408	18	"Csa"
+"neonet"	"Catignano"	27	"R-1147"	13.943843	42.34267	"EN"	-5427	27	"Cfb"
+"neonet"	"Coppa Nevigata"	35	"OxA-1475"	15.830555	41.563888	"EN"	-5773	35	"Csa"
+"neonet"	"Crno Vrilo"	36	"Poz-18395"	15.072992	44.528388	"EN"	-5778	36	"Dfb"
+"neonet"	"Defensola"	38	"UTC-1342"	16.155946	41.897824	"EN"	-5867	38	"Csa"
+"neonet"	"Fagnigola"	42	"R-2539"	12.687636	45.844969	"EN"	-5500	42	"Cfa"
+"bda"	"Favella"	43	"Beta-61633"	16.45	39.75	"EN"	-5793	43	"Csa"
+"neonet"	"Favella della Corte"	44	"LTL-778A"	16.437459	39.684086	"EN"	-5912	44	"Csa"
+"neonet"	"Gospodska Pecina"	46	"Z-579"	16.7537	43.1343	"EN"	-5884	46	"Csa"
+"neonet"	"Grapceva Cave"	48	"Beta-103488"	16.753065	43.133991	"EN"	-5908	48	"Csa"
+"bda"	"Gritulu"	49	"LYON-824"	9.425046	42.89037	"EN"	-5723	49	NA
+"neonet"	"Grotta Continenza"	50	"R-549"	13.563071	41.961674	"EN"	-6099	50	"Csa"
+"neonet"	"Grotta Corbeddu"	51	"UtC-1251"	9.48634	40.255253	"EN"	-5605	51	"Csa"
+"neonet"	"Grotta Sant'angelo di Ostuni"	56	"Gif-6724"	17.574791	40.738148	"EN"	-5778	56	"Csa"
+"neonet"	"Grotta Scaloria"	57	"Lj-4649"	15.906389	41.638889	"EN"	-5633	57	"Csa"
+"neonet"	"Grotta dei Cocci"	59	"GX-29098"	12.5106	42.5157	"EN"	-5633	59	"Cfa"
+"neonet"	"Grotta dell'Edera"	60	"GrN-25474"	13.6964	45.7569	"EN"	-5421	60	"Cfa"
+"bda"	"Grotta dell'Uzzo"	62	"OxA-13661"	12.786694	38.109951	"EN"	-6307	62	NA
+"neonet"	"Grotta della Pollera"	63	"MC-756"	8.314602	44.200546	"EN"	-5834	63	"Cfa"
+"neonet"	"Grotta delle Arene Candide"	64	"Beta-66553"	8.32828	44.162304	"EN"	-5766	64	"Cfa"
+"neonet"	"Grotta delle Arene Candide"	65	"Lj-4143"	8.32828	44.162304	"EN"	-5766	65	"Cfa"
+"neonet"	"Grotta di Settecannelle"	66	"GrA-15587"	11.755982	42.544185	"EN"	-5531	66	"Csa"
+"neonet"	"Grotte del Kronio"	69	"LTL-211A"	13.08	37.51	"EN"	-5870	69	"BSk"
+"neonet"	"Gudnja Cave"	72	"GrN-10315"	17.68882	42.833349	"EN"	-6035	72	"Cfa"
+"neonet"	"Kargadur"	75	"OxA-21092"	13.950637	44.819147	"EN"	-5671	75	NA
+"neonet"	"Konjevrate"	77	"PSU-5291/UCIAMS-116203"	16.011773	43.784563	"EN"	-5581	77	"Cfa"
+"neonet"	"La Marmotta"	81	"R-2360"	12.2745	42.1044	"EN"	-5740	81	"Csa"
+"neonet"	"Lama Balice"	83	"LTL-1212a"	16.759	41.124	"EN"	-5507	83	NA
+"neonet"	"Lama dei Peligni"	84	"OxA-1958"	14.183333	42.049936	"EN"	-5498	84	"Cfa"
+"neonet"	"Lugo di Romagna"	90	"LTL-13471A"	11.901914	44.464184	"EN"	-5306	90	"Cfa"
+"neonet"	"Maddalena di Muccia"	92	"R-643a"	13.059873	43.073523	"EN"	-5530	92	"Cfa"
+"neonet"	"Masseria Candelaro"	96	"OxA-12062"	15.750553	41.61289	"EN"	-5569	96	"Csa"
+"neonet"	"Masseria Giuffreda"	97	"MC-2292"	15.652818	41.4487	"EN"	-5999	97	"Csa"
+"neonet"	"Masseria Pantano"	98	"LTL-12711A"	15.565646	41.435773	"EN"	-5578	98	"Csa"
+"neonet"	"Monte Venere"	101	"R-1175"	12.1814	42.3505	"EN"	-5826	101	"Csa"
+"bda"	"Mora Cavorso"	102	"Lyon-3504"	13.169183	41.888384	"EN"	-5379	102	"Csa"
+"neonet"	"Nakovana"	104	"OxA-18120"	17.083588	43.00062	"EN"	-5933	104	"Cfa"
+"calpal"	"Neckenmarkt"	105	"VERA-1589"	16.5433098	47.613169	"EN"	-5339	105	"Dfa"
+"neonet"	"Palata"	108	"LTL-5187a"	16.0659	41.2222	"EN"	-5528	108	"Csa"
+"bda"	"Pas de l’Échelle"	109	"LY-7094"	5.486	45.1733	"EN"	-5822	109	"Cfa"
+"neonet"	"Piana di Curinga"	115	"P-2946"	16.298682	38.83539	"EN"	-5811	115	"Csa"
+"calpal"	"Pityerdomb"	119	"VERA-218"	17.1413	46.9284	"EN"	-5548	119	"Cfa"
+"neonet"	"Pokrovnik"	121	"PSU-5293/UCIAMS-116205"	16.062428	43.804792	"EN"	-5970	121	"Cfa"
+"neonet"	"Portonovo Fosso Fontanaccia"	122	"LTL-12777A"	13.573426	43.563733	"EN"	-5515	122	NA
+"neonet"	"Pulo di Molfetta"	124	"LTL-142a"	16.575815	41.194638	"EN"	-6004	124	NA
+"neonet"	"Pupicina Cave"	125	"Beta-131625"	14.1642	45.3156	"EN"	-5596	125	"Cfb"
+"calpal"	"Pupičina peč"	126	"OxA-18128"	14.1886	45.3092	"EN"	-5545	126	"Cfb"
+"neonet"	"Rasinovac"	127	"PSU-64923/UCIAMS-158546"	15.843811	43.899871	"EN"	-5940	127	"Csa"
+"neonet"	"Rendina"	129	"Lj-4549"	15.8	40.6334	"EN"	-5667	129	"Csa"
+"neonet"	"Rio Tana"	131	"AECV-2012C"	13.673419	41.940862	"EN"	-5744	131	"Csa"
+"neonet"	"Ripa Tetta"	132	"Beta-47808/CAMS-2681"	15.404016	41.439567	"EN"	-5776	132	"Cfa"
+"neonet"	"Sammardenchia"	138	"R-2548"	13.231355	45.975305	"EN"	-5468	138	"Cfa"
+"neonet"	"Santa Anna d'Oria III"	143	"R-322"	17.639	40.499	"EN"	-5682	143	NA
+"neonet"	"Santa Tecchia"	144	"BM-2414"	15.842114	41.685083	"EN"	-5477	144	"Csa"
+"neonet"	"Santo Stefano di Ortucchio"	145	"LTL-60A"	13.666385	41.953894	"EN"	-5721	145	"Csa"
+"calpal"	"Saracena"	146	"LTL-2155A"	16.498	39.698	"EN"	-5695	146	"Csa"
+"neonet"	"Scamuso"	148	"Gif-7055"	17.039166	41.0775	"EN"	-5703	148	NA
+"neonet"	"Scaramella di San vito"	149	"R-350"	15.637926	41.710877	"EN"	-5875	149	"Csa"
+"radon"	"Sion - Chemin des Collines"	150	"CRG-925"	7.352	46.232	"EN"	-5571	150	"Dfc"
+"neonet"	"Skarin Samograd"	153	"Hd-11950"	16.167023	43.85587	"EN"	-5678	153	"Cfa"
+"neonet"	"Su Carroppu"	156	"Ly-3012"	8.549996	39.196373	"EN"	-5405	156	"Csa"
+"neonet"	"Su Coloru"	157	"Beta-167931"	8.712183	40.661832	"EN"	-5720	157	"Csa"
+"neonet"	"Terragne"	158	"Beta-59933"	17.626339	40.392311	"EN"	-5759	158	NA
+"neonet"	"Torre Canne"	159	"Gif-6725"	17.3667	40.8334	"EN"	-5789	159	"Csa"
+"bda"	"Torre Sabea"	160	"Lyon-1448 (OXA)"	17.9667	40.0556	"EN"	-5740	160	NA
+"neonet"	"Trasano"	163	"Ly-3955(OxA)"	16.636111	40.675555	"EN"	-5809	163	"Csa"
+"neonet"	"Umbro"	164	"Beta-122939"	15.9178	37.9392	"EN"	-5659	164	NA
+"neonet"	"Vela Spila"	166	"OxA-18118"	16.71836	42.969649	"EN"	-6008	166	NA

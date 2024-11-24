@@ -25,7 +25,8 @@ neo_dbs_info_date <- function(LabCode = NA,
       print(paste0("Reads a 'sf' dataframe"))
     }
     # df.out <- na.omit(sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns], NULL))[1,]
-    df.out <- sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns], NULL)[1,]
+    df.out <- sf::st_set_geometry(df.c14[df.c14$LabCode == LabCode, columns], NULL)
+    df.out <- df.out[!is.na(df.out$LabCode), ][1, ]
     a.date <- as.character(df.out)
   }
   if(!inherits(df.c14, "sf")){
@@ -33,7 +34,8 @@ neo_dbs_info_date <- function(LabCode = NA,
       print(paste0("Reads a dataframe"))
     }
     # df.out <- na.omit(df.c14[df.c14$LabCode == LabCode, columns])[1, ]
-    df.out <- df.c14[df.c14$LabCode == LabCode, columns][1, ]
+    df.out <- df.c14[df.c14$LabCode == LabCode, columns]
+    df.out <- df.out[!is.na(df.out$LabCode), ][1, ]
     a.date <- as.character(df.out)
   }
   df.out.cat <- sf::st_drop_geometry(df.out)

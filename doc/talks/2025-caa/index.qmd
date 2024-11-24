@@ -657,12 +657,12 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/isochr-Balkans-6200-5800BC-koppen_8k.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/isochr-Balkans-6200-5800BC-koppen_8k-legend.png){width="400" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -672,7 +672,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/isochr-Balkans-6200-5800BC-koppen_8k.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
@@ -680,7 +680,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 ```{r, message=FALSE}
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
-neo_dbs_info_dates_datatable(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.tsv")
+neo_dbs_info_dates_datatable(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/isochr-Balkans-6200-5800BC-koppen_8k.tsv")
 ```
 :::
 
