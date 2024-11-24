@@ -81,7 +81,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.time.interv = TRUE)
 isochr$map
 ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 14, height = 12)
-ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 7, height = 12)
+ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, height = 7)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
 # df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
@@ -116,7 +116,7 @@ ggplot2::ggplot(isochr.1, ggplot2::aes(x = all, fill = code)) +
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 109)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 129)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
