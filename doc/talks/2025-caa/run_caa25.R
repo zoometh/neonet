@@ -43,8 +43,8 @@ source("R/neo_dbs_info_dates_datatable.R")
 ## title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) use: https://geojson.io/#map=2/0/20 ;
 obj.case <- list("Near East", c(-9000, -8000), c(32, 30, 45, 40), "koppen_11k.tif") # !!
 obj.case <- list("Cyprus", c(-8000), c(30, 30, 40, 40),  "koppen_10k.tif")
-obj.case <- list("Balkans", c(-6200, -5800), c(18, 35, 30, 43), "koppen_8k.tif")
-obj.case <- list("Italia", c(-5700, -5500), c(5, 37, 18, 48), "koppen_8k.tif")
+obj.case <- list("Balkans", c(-6200, -5800), c(18, 35, 30, 43), "koppen_8k.tif") 
+obj.case <- list("Italia", c(-5700, -5500, -5300), c(5, 37, 18, 48), "koppen_8k.tif")  # !!
 obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
 obj.case <- list("Mediterranean", c(-9000, -8000, -7000, -6000, -5000), c(-12, 27.5, 42.5, 47.5), "koppen_8k.tif") # !!
 ## by authors - - - - - - - - - - - - - - - - - - - - - - - -
@@ -116,7 +116,7 @@ ggplot2::ggplot(isochr.1, ggplot2::aes(x = all, fill = code)) +
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 118)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 109)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
