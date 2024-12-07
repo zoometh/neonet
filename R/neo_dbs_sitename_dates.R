@@ -1,6 +1,6 @@
 #' @name neo_dbs_sitename_dates
 #'
-#' @description Avoid site names mispelling (ex: Franchthi from one database, and Franchthi Cave from another database) by performing a left join to replace SiteName in df.c14 with SiteName from sitenames when there's a match on AlternativeNames
+#' @description Avoid site names mispelling or false duplicates (ex: Franchthi from one database, and Franchthi Cave from another database) by performing a left join to replace SiteName in df.c14 with SiteName from sitenames when there's a match on AlternativeNames
 #'
 #' @param df.c14 a dataset of dates
 #' @param sitenames.equiv A TSV file listing the equivalences between site names.
