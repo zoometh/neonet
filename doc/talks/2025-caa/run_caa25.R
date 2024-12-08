@@ -11,6 +11,9 @@ col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "cult
 samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 df.c14 <- samp_df
 
+source("R/neo_dbs_3rdpart_parse.R")
+df.c14 <- neo_dbs_3rdpart_parse() # Brami15 by default
+
 # correct sitenames
 source("R/neo_dbs_sitename_dates.R")
 df.c14 <- neo_dbs_sitename_dates(df.c14)
@@ -28,29 +31,9 @@ source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
                                c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
 # to sf
-df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = 4326)
+# df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
+df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = 4326) # when GDAL/proj.db will be reinstalled
 
-# OK sites
-first_occurrence <- df_filtered %>% 
-  dplyr::group_by(SiteName) %>% 
-  dplyr::filter(dplyr::row_number() == 1) %>%
-  dplyr::ungroup()
-first_occurrence <- first_occurrence[, "SiteName"]
-
-first_occurrence <- first_occurrence[first_occurrence$SiteName == 'Balma Margineda', ]
-
-sitenames.equiv = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_sitenames.tsv"
-sitenames <- read.csv2(sitenames.equiv, sep = "\t")
-`%>%` <- dplyr::`%>%`
-# Perform a left join to replace SiteName in df.c14 with SiteName from sitenames when there's a match on AlternativeNames
-df <- first_occurrence %>%
-  dplyr::left_join(sitenames, by = c("SiteName" = "SiteName")) %>%
-  # dplyr::rename(
-  #   AlternativeNames = SiteName.y,
-  # )
-sf::st_crs(df) <- 4326
-sf::st_write(df, "C:/Rprojects/neonet/inst/extdata/c14_corrected_sitenames.geojson", driver = "GeoJSON")
-  
 
 
  # isochrones

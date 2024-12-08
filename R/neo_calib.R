@@ -1,6 +1,6 @@
 #' @name neo_calib
 #'
-#' @description Calibrate radiocarbon dates, calculate tpq / taq and the weighted median
+#' @description Calibrate radiocarbon dates, calculate tpq / taq and the weighted median (wmedian)
 #'
 #' @param df.c14 A dataframe. The original XLSX with neonet columns (SiteName, Period, etc.) with with checked values (see: neo_subset)
 #' @param intCal calibration curve
@@ -27,12 +27,23 @@ neo_calib <- function(df.c14 = NA,
                       ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                       verbose = TRUE,
                       verbose.freq = 50){
+  # df.c14 <- c14_3rdpart
+  if(verbose){
+    print(paste0("Calibration"))
+  }
   `%>%` <- dplyr::`%>%`
   if(inherits(df.c14, "sf")){
     if(verbose){
       print(paste0("Reads a 'sf' dataframe"))
     }
     df.c14 <- sf::st_set_geometry(df.c14, NULL)
+  }
+  df.c14$C14Age <- as.numeric(df.c14$C14Age)
+  df.c14$C14SD  <- as.numeric(df.c14$C14SD)
+  if(verbose){
+    print(paste0("Data in entry: ", nrow(df.c14)))
+    df.c14 <- na.omit(df.c14)
+    print(paste0("Data in entry after removing NA: ", nrow(df.c14)))
   }
   if(stat.mean){
     if(verbose){

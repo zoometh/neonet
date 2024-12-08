@@ -1,4 +1,4 @@
-#' @name neo_parse_dbs
+#' @name neo_dbs_parse
 #'
 #' @description Collect radiocarbon dates form a list of dbs parsed by the c14bazAAR package, creates missing columns (period or culture), can filter on chronology (time interval) and spatial location (roi)
 #'
