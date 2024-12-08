@@ -13,6 +13,7 @@ df.c14 <- samp_df
 
 source("R/neo_dbs_3rdpart_parse.R")
 df.c14 <- neo_dbs_3rdpart_parse() # Brami15 by default
+View(df.c14)
 
 # correct sitenames
 source("R/neo_dbs_sitename_dates.R")

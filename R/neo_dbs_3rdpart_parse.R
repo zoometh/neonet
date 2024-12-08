@@ -42,13 +42,15 @@ neo_dbs_3rdpart_parse <- function(file.path = "C:/Rprojects/neonet/doc/reference
       colnames(c14_3rdpart)[i] <- col.neonet[idx]
     }
   }
+  # clean extra spaces
+  c14_3rdpart$SiteName <- trimws(c14_3rdpart$SiteName)
   # drop all non used columns
   c14_3rdpart <- c14_3rdpart[ , col.neonet]
   # remove bad text pattern in the whole dataset
   c14_3rdpart <- c14_3rdpart.clean %>%
     dplyr::mutate(across(everything(), ~ gsub(text.to.rm, "", .)))
   c14_3rdpart <- na.omit(c14_3rdpart)
-  head(c14_3rdpart)
+  # head(c14_3rdpart)
   source("R/neo_calib.R")
   df.c14 <- neo_calib(c14_3rdpart,
                       stat.mean = TRUE)
