@@ -53,7 +53,9 @@ neo_dbs_3rdpart_parse <- function(file.path = "C:/Rprojects/neonet/doc/reference
   # head(c14_3rdpart)
   source("R/neo_calib.R")
   df.c14 <- neo_calib(c14_3rdpart,
-                      stat.mean = TRUE)
+                      stat.mean = TRUE) # mean is useful?
+  # clean extra spaces
+  df.c14$SiteName  <- trimws(df.c14$SiteName)
   # Add supp data
   df.c14$sourcedb <- sourcedb
   df.c14$db_period <- db_period
@@ -66,15 +68,18 @@ neo_dbs_3rdpart_parse <- function(file.path = "C:/Rprojects/neonet/doc/reference
   sitenames$AlternativeNames <- paste0(sitenames$AlternativeNames, " | ", sitenames$SiteName)
   sitenames <- sitenames %>%
     tidyr::separate_rows(AlternativeNames, sep = "\\|")  # Use double escape for the pipe character
+  # clean extra spaces
   sitenames$AlternativeNames <- trimws(sitenames$AlternativeNames)
   coordinates <- as.data.frame(sf::st_coordinates(sitenames))
   colnames(coordinates) <- c('lon', 'lat')
   sitenames <- sf::st_drop_geometry(sitenames)
   sitenames <- cbind(sitenames, coordinates)
-  sitenames <- sitenames[!is.na(sitenames$AlternativeNames), ]
+  sitenames <- sitenames[!duplicated(sitenames), ]
+  # sitenames <- sitenames[!is.na(sitenames$AlternativeNames), ]
+  
   # Perform a left join to replace SiteName in df.c14 with SiteName from sitenames when there's a match on AlternativeNames
   df <- df.c14 %>%
-    dplyr::left_join(sitenames, by = c("SiteName" = "AlternativeNames")) %>%
+    dplyr::left_join(sitenames, by = c("SiteName" = "AlternativeNames"), relationship = "many-to-many") %>%
     dplyr::mutate(SiteName = dplyr::coalesce(SiteName.y, SiteName)) %>%
     dplyr::select(-SiteName.y)
   

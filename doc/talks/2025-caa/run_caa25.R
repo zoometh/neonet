@@ -11,8 +11,10 @@ col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "cult
 samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 df.c14 <- samp_df
 
+# third part dataset
 source("R/neo_dbs_3rdpart_parse.R")
-df.c14 <- neo_dbs_3rdpart_parse() # Brami15 by default
+df.brami  <- neo_dbs_3rdpart_parse() # Brami15 by default
+df.c14 <- df.brami
 View(df.c14)
 
 # correct sitenames
@@ -59,6 +61,7 @@ obj.case <- list("Binder", c(-5500), c(0.07180157, 31.8513415, 23.73331373, 48.0
 # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
 obj.case <- list("Perrin", c(-5500), c(1.02768233, 40.83697718, 11.40383725, 46.44486459), "koppen_8k.tif")
 # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
+obj.case <- list("Brami", c(-6500), c(18, 35, 35, 43), "koppen_10k.tif")
 #################################################################
 obj.case.name <- paste0("isochr-", paste0(obj.case[[1]], paste0(obj.case[[2]], collapse = ""), "BC"), "-", gsub(".tif", "", obj.case[[4]]))
 obj.case.out <- paste0(root.path, "img/", obj.case.name)
