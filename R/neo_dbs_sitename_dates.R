@@ -15,9 +15,22 @@
 #'
 #' @export
 neo_dbs_sitename_dates <- function(df.c14 = NA,
-                                   sitenames.equiv = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_sitenames.tsv",
+                                   # sitenames.equiv = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_sitenames.tsv",
+                                   sitenames.equiv = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_sitenames.geojson",
                                    verbose = TRUE){
-  sitenames <- read.csv2(sitenames.equiv, sep = "\t")
+  # sitenames <- read.csv2(sitenames.equiv, sep = "\t")
+  sitenames <- sf::st_read(sitenames.equiv)
+  sitenames <- sf::st_drop_geometry(sitenames)
+  # 
+  # df <- data.frame(
+  #   id = 1:3,
+  #   names = c("Alice|Bob", "Charlie|David|Eve", "Faythe")
+  # )
+  sitenames <- sitenames %>%
+    tidyr::separate_rows(AlternativeNames, sep = "\\|")  # Use double escape for the pipe character
+  sitenames$AlternativeNames <- trimws(sitenames$AlternativeNames)
+  sitenames <- sitenames[!is.na(sitenames$AlternativeNames), ]
+  
   `%>%` <- dplyr::`%>%`
   # Perform a left join to replace SiteName in df.c14 with SiteName from sitenames when there's a match on AlternativeNames
   df <- df.c14 %>%

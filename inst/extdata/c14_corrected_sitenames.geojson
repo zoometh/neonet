@@ -23,7 +23,7 @@
 { "type": "Feature", "properties": { "SiteName": "Abri de Gigot I", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.615721, 47.201294 ] } },
 { "type": "Feature", "properties": { "SiteName": "Abri de la Combe-Grèze", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 3.180294, 44.16505 ] } },
 { "type": "Feature", "properties": { "SiteName": "Abri de la Font-des-Pigeons", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 5.1667, 43.3834 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Abri de la Frau", "AlternativeNames": "La Frau ! Abri de La Fru" }, "geometry": { "type": "Point", "coordinates": [ 5.78, 45.45 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Abri de la Frau", "AlternativeNames": "La Frau | Abri de La Fru" }, "geometry": { "type": "Point", "coordinates": [ 5.78, 45.45 ] } },
 { "type": "Feature", "properties": { "SiteName": "Abri de la Grande Rivoire", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 5.644342, 45.221564 ] } },
 { "type": "Feature", "properties": { "SiteName": "Abri de la Roche aux Fées", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 0.991407, 45.9847 ] } },
 { "type": "Feature", "properties": { "SiteName": "Abri de la Roche aux Pecheurs", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.6667, 47.0667 ] } },
