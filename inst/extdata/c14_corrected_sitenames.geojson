@@ -330,7 +330,7 @@
 { "type": "Feature", "properties": { "SiteName": "Campo Ceresole", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 10.402274, 45.115752 ] } },
 { "type": "Feature", "properties": { "SiteName": "Campu Stefanu", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 8.8612, 41.739 ] } },
 { "type": "Feature", "properties": { "SiteName": "Can Fiula", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 2.175581, 41.53002 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Can Hasan III", "AlternativeNames": "Can Hasan III (ou Canhasan) | CanHasan III" }, "geometry": { "type": "Point", "coordinates": [ 33.3667, 37.25 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Can Hasan", "AlternativeNames": "Can Hasan III (ou Canhasan) | CanHasan III | Can Hasan III | Can Hasan I" }, "geometry": { "type": "Point", "coordinates": [ 33.3667, 37.25 ] } },
 { "type": "Feature", "properties": { "SiteName": "Can Roqueta", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 2.103195, 41.547773 ] } },
 { "type": "Feature", "properties": { "SiteName": "Can Roqueta II", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 2.13049975470855, 41.539613 ] } },
 { "type": "Feature", "properties": { "SiteName": "Can Sadurní", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 1.9119, 41.3444 ] } },
