@@ -4,6 +4,7 @@
 #'
 #' @param df.c14 A df (URL) with medians calculated and KCC climates belonging to one KCC period (ex: 8ky BP). For example: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.tsv"
 #' @param kcc_df A dataframe for the long legend.
+#' @param field.mapping Will map equivalent fieldnames to expected fieldnames. Default: TRUE. 
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return A datatable (DT)
@@ -18,6 +19,7 @@
 neo_dbs_info_dates_datatable <- function(df.c14 = NA,
                                          kcc_df = "https://raw.githubusercontent.com/zoometh/neonet/master/inst/extdata/koppen.tsv",
                                          fields = c("idf", "site", "median", "period", "code", "labcode", "sourcedb", "color"),
+                                         field.mapping = TRUE,
                                          font.size = "12pt",
                                          verbose = TRUE){
   # library(DT)
@@ -31,6 +33,17 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
   }
   if(inherits(df.c14, "sf")){
     climate_df <- sf::st_drop_geometry(df.c14)
+  }
+  if(field.mapping){
+    if(!("idf" %in% climate_df)){climate_df$idf <- rownames(climate_df)}
+    if(!("ID" %in% climate_df)){climate_df$ID <- rownames(climate_df)}
+    if(!("code" %in% climate_df)){climate_df$code <- NA}
+    if(!("site" %in% climate_df)){names(climate_df)[names(climate_df) == 'SiteName'] <- "site"}
+    if(!("labcode" %in% climate_df)){names(climate_df)[names(climate_df) == 'LabCode'] <- "labcode"}
+    if(!("period" %in% climate_df)){names(climate_df)[names(climate_df) == 'Period'] <- "period"}
+    if(verbose){
+      print(paste0("Dataframe fieldnames: ", print(paste0(colnames(climate_df), collapse = ', '))))
+    }
   }
   kcc_colors  <- read.csv2(kcc_df, sep = "\t")
   kcc_colors <- kcc_colors[ , c("code", "color")]

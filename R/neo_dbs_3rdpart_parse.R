@@ -47,7 +47,7 @@ neo_dbs_3rdpart_parse <- function(file.path = "C:/Rprojects/neonet/doc/reference
   # drop all non used columns
   c14_3rdpart <- c14_3rdpart[ , col.neonet]
   # remove bad text pattern in the whole dataset
-  c14_3rdpart <- c14_3rdpart.clean %>%
+  c14_3rdpart <- c14_3rdpart %>%
     dplyr::mutate(across(everything(), ~ gsub(text.to.rm, "", .)))
   c14_3rdpart <- na.omit(c14_3rdpart)
   # head(c14_3rdpart)

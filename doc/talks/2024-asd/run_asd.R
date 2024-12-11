@@ -4,7 +4,7 @@
 
 # Download the R functions using https://download-directory.github.io/ and this URL https://github.com/zoometh/neonet/tree/main/R
 
-root.path <- "C:/Rprojects/neonet/doc/talks/2025-caa/"
+root.path <- "C:/Rprojects/neonet/doc/talks/2024-asd/"
 present <- 1950
 when <- c(-9000, -4000)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
@@ -12,10 +12,17 @@ samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/t
 df.c14 <- samp_df
 
 # third part dataset
-source("R/neo_dbs_3rdpart_parse.R")
-df.brami  <- neo_dbs_3rdpart_parse() # Brami15 by default
-df.c14 <- df.brami
-View(df.c14)
+if(dbs_3rdpart){
+  # Brami15 
+  source("R/neo_dbs_3rdpart_parse.R") # by default 
+  df.brami  <- neo_dbs_3rdpart_parse() 
+  # View(df.brami)
+}
+
+df.14 <- rbind(df.c14, df.brami)
+
+# source("R/neo_dbs_info_dates_datatable.R")
+# df.datatable <- neo_dbs_info_dates_datatable(df.14) ; htmlwidgets::saveWidget(df.datatable, paste0("temp", ".html"))
 
 # correct sitenames
 source("R/neo_dbs_sitename_dates.R")
@@ -39,7 +46,7 @@ df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = 4326) #
 
 
 
- # isochrones
+# isochrones
 source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
@@ -61,7 +68,8 @@ obj.case <- list("Binder", c(-5500), c(0.07180157, 31.8513415, 23.73331373, 48.0
 # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
 obj.case <- list("Perrin", c(-5500), c(1.02768233, 40.83697718, 11.40383725, 46.44486459), "koppen_8k.tif")
 # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
-obj.case <- list("Brami", c(-6500), c(18, 35, 35, 43), "koppen_10k.tif")
+obj.case <- list("Brami", c(-6500), c(18, 35, 35, 43), "koppen_9k.tif")
+# kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
 #################################################################
 obj.case.name <- paste0("isochr-", paste0(obj.case[[1]], paste0(obj.case[[2]], collapse = ""), "BC"), "-", gsub(".tif", "", obj.case[[4]]))
 obj.case.out <- paste0(root.path, "img/", obj.case.name)
@@ -92,12 +100,12 @@ isochr <- neo_isochr(df.c14 = df_filtered,
 isochr$map
 ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 14, height = 12)
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, height = 7)
-write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
+df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
+# write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
 # df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
 # write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
-df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data)
-htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
+
 
 # source("R/neo_spd.R")
 # source("R/neo_spdplot.R")
