@@ -100,16 +100,16 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      calibrate = FALSE,
                      shw.dates = TRUE,
                      # show.all.dates = FALSE,
-                     size.date = 1,
+                     size.date = 1.5,
                      # color.dates = "darkgrey",
                      alpha.dates = 1,
                      lbl.dates = TRUE,
                      # lbl.all.dates = FALSE,
                      # lbl.date.field = "median",
-                     lbl.dates.size = 5,
+                     lbl.dates.size = 4,
                      lbl.time.interv = TRUE)
 isochr$map
-ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 12, height = 10)
+ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 10, height = 8)
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
