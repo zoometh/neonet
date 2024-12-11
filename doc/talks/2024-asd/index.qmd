@@ -44,6 +44,11 @@ format:
 
 # Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
+
+```{r, message=FALSE}
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+```
+
 ::: notes
 
 :::
@@ -654,6 +659,10 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 ## Aegean (6,600 BC)
 
+```{r, message=FALSE}
+df <- "isochr-5800-BC-Egee-koppen_9k"
+```
+
 ::: {.panel-tabset}
 
 ### Climates
@@ -674,6 +683,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 ### Sites
 
+
 ::: columns
 
 ::: {.column width="40%"}
@@ -684,11 +694,85 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: {.column width="60%"}
 
 ```{r, message=FALSE}
-root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
-source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
 df <- "isochr-6600-BC-Egee-koppen_9k"
-data <- paste(, ".tsv"))
-neo_dbs_info_dates_datatable(df.c14 = isochr-Egee-6600BC-koppen_9k.tsv")
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
+```
+:::
+
+:::
+
+### Assumptions
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+<p><small>
+
+* Rapid expansion in the Southern Balkans (<span style="color:#FFFF00;">Csa</span> and <span style="color:#FFDC64;">BSk</span> ).
+* Northern Balkans expansion required adapting agriculture and stockbreeding systems to colder climates (<span style="color:#00FFFF;">Dfa</span>, <span style="color:#37C8FF;">Dfb</span>)
+* Slowdown of Neolithic expansion. Early northern occupations, such as Porodin (idf <b>26</b>).
+* Confirms: Krauß et al. 2018[^81], Ivanova et al. 2018[^82].
+
+</small></p>
+
+
+
+:::
+
+:::
+
+
+## Aegean (6,200 BC)
+
+```{r, message=FALSE}
+df <- "isochr-6200-BC-Egee-koppen_8k"
+```
+
+::: {.panel-tabset}
+
+### Climates
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_9k.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_9k-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### Sites
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_9k.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="60%"}
+
+```{r, message=FALSE}
+df <- "isochr-6200-BC-Egee-koppen_8k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data)
 ```
 :::
 
@@ -724,6 +808,86 @@ neo_dbs_info_dates_datatable(df.c14 = isochr-Egee-6600BC-koppen_9k.tsv")
 
 [^81]: Krauß, R., Marinova, E., De Brue, H., & Weninger, B. (2018). The rapid spread of early farming from the Aegean into the Balkans via the Sub-Mediterranean-Aegean Vegetation Zone. Quaternary International, 496, 24-41. https://doi.org/10.1016/j.quaint.2017.01.019
 [^82]: Ivanova, M., De Cupere, B., Ethier, J., & Marinova, E. (2018). Pioneer farming in southeast Europe during the early sixth millennium BC: Climate-related adaptations in the exploitation of plants and animals. PLoS One, 13(5), e0197225. https://doi.org/10.1371/journal.pone.0197225
+
+:::
+
+## Aegean (5,800 BC)
+
+```{r, message=FALSE}
+df <- "isochr-5800-BC-Egee-koppen_8k"
+```
+
+::: {.panel-tabset}
+
+### Climates
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_9k.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_9k-legend.png){width="400" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### Sites
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_9k.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="60%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
+```
+:::
+
+:::
+
+### Assumptions
+
+
+::: columns
+
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Balkans-EN-kcc.png){width="450" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+<p><small>
+
+* Rapid expansion in the Southern Balkans (<span style="color:#FFFF00;">Csa</span> and <span style="color:#FFDC64;">BSk</span> ).
+* Northern Balkans expansion required adapting agriculture and stockbreeding systems to colder climates (<span style="color:#00FFFF;">Dfa</span>, <span style="color:#37C8FF;">Dfb</span>)
+* Slowdown of Neolithic expansion. Early northern occupations, such as Porodin (idf <b>26</b>).
+* Confirms: Krauß et al. 2018[^81], Ivanova et al. 2018[^82].
+
+</small></p>
+
+
+
+:::
+
+:::
+
+:::
+
+[^81]: Krauß, R., Marinova, E., De Brue, H., & Weninger, B. (2018). The rapid spread of early farming from the Aegean into the Balkans via the Sub-Mediterranean-Aegean Vegetation Zone. Quaternary International, 496, 24-41. https://doi.org/10.1016/j.quaint.2017.01.019
+[^82]: Ivanova, M., De Cupere, B., Ethier, J., & Marinova, E. (2018). Pioneer farming in southeast Europe during the early sixth millennium BC: Climate-related adaptations in the exploitation of plants and animals. PLoS One, 13(5), e0197225. https://doi.org/10.1371/journal.pone.0197225
+
+:::
 
 ## Central Mediterranean (in BC)
 
@@ -775,75 +939,6 @@ neo_dbs_info_dates_datatable(df.c14 = isochr-Egee-6600BC-koppen_9k.tsv")
 :::
 
 :::
-
-
-## Case study 2: Italy
-
-::: {.panel-tabset}
-
-### Climates
-
-
-::: columns
-
-::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="450" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
-:::
-
-:::
-
-### Sites
-
-::: columns
-
-::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="450" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="60%"}
-
-```{r, message=FALSE}
-source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
-neo_dbs_info_dates_datatable(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.tsv")
-```
-:::
-
-:::
-
-### Assumptions
-
-
-::: columns
-
-::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.png){width="450" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-<p><small>
-
-* 5800-5600 BC: Rapid inland expansion <span style="color:#FFFF00;">Csa</span>, for ex: La Marmotta (idf <b>94</b>) and Rio Tana (idf <b>149</b>), Central Italy
-* 5600 BC: Slowdown linked to the transition to a climate with no dry season (<span style="color:#C8FF50;">Cfa</span>, <span style="color:#64FF50;">Cfb</span>), northern Abruzzo.
-* Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
-
-</small></p>
-
-:::
-
-:::
-
-:::
-
-[^71]: Mazzucco, N., Mineo, M., Gibaja, J.F. (2023). La Marmotta site in the framework of the Early Mediterranean Neolithic. In: *The Submerged Site of La Marmotta*. Oxbow Books, Rome, Italy. Oxford.
-[^72]: Didier Binder, Lucia Angeli, Louise Gomart, Thomas Huet, Roberto Maggi, Claire Manen, ..., (2022). Le complexe de la Céramique Imprimée en Méditerranée centrale et nord-occidentale : une synthèse chronoculturelle (VIIe et VIe millénaires AEC). In: *Céramiques imprimées de Méditerranée occidentale (VIe millénaire AEC) : données, approches et enjeux nouveaux*. Actes de la séance de la Société préhistorique française de Nice (mars 2019), D. Binder and C. Manen (eds), Paris, Société préhistorique française.
-
 
 ## Western Mediterranean (in BC)
 
