@@ -82,7 +82,7 @@ obj.case <- list("Perrin", c(-5500), c(1.02768233, 40.83697718, 11.40383725, 46.
 obj.case <- list("Brami", c(-6500), c(18, 35, 35, 43), "koppen_9k.tif")
 # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
 #################################################################
-obj.case.name <- paste0("isochr-", paste0(obj.case[[1]], paste0(obj.case[[2]], collapse = ""), "BC"), "-", gsub(".tif", "", obj.case[[4]]))
+obj.case.name <- paste0("isochr", paste0(obj.case[[2]], "-", paste0("BC-", obj.case[[1]], collapse = "-")), "-", gsub(".tif", "", obj.case[[4]]))
 obj.case.out <- paste0(root.path, "img/", obj.case.name)
 kcc.file.path <- paste0("C:/Rprojects/neonet/doc/data/clim/", obj.case[[4]])
 source("R/neo_isochr.R")
