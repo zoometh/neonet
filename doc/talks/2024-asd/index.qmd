@@ -662,12 +662,12 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-Egee-6600BC-koppen_9k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-Egee-6600BC-koppen_9k-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k-legend.png){width="400" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -677,15 +677,18 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-Egee-6600BC-koppen_9k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="60%"}
 
 ```{r, message=FALSE}
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
-neo_dbs_info_dates_datatable(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-Egee-6600BC-koppen_9k.tsv")
+df <- "isochr-6600-BC-Egee-koppen_9k"
+data <- paste(, ".tsv"))
+neo_dbs_info_dates_datatable(df.c14 = isochr-Egee-6600BC-koppen_9k.tsv")
 ```
 :::
 
