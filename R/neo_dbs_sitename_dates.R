@@ -18,7 +18,7 @@ neo_dbs_sitename_dates <- function(df.c14 = NA,
                                    sitenames.equiv = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_sitenames.geojson",
                                    drop.sitenames.equiv.coords = TRUE,
                                    verbose = TRUE){
-  `%>%` <- dplyr::`%>%`
+  `%>%` <- dplyr::`%>%` # used to not load dplyr 
   # sitenames <- read.csv2(sitenames.equiv, sep = "\t")
   sitenames <- sf::st_read(sitenames.equiv)
   if(drop.sitenames.equiv.coords){
@@ -34,6 +34,14 @@ neo_dbs_sitename_dates <- function(df.c14 = NA,
     tidyr::separate_rows(AlternativeNames, sep = "\\|")  # Use double escape for the pipe character
   sitenames$AlternativeNames <- trimws(sitenames$AlternativeNames)
   sitenames <- sitenames[!is.na(sitenames$AlternativeNames), ]
+  sitename_equiv_alternativename <- nrow(sitenames)
+  sitenames <- sitenames %>% 
+    dplyr::filter(SiteName != AlternativeNames)
+  if(verbose){
+    print(paste0("Remove duplicated rows where 'SiteName' == 'AlternativeNames', ", 
+                 "before = ", sitename_equiv_alternativename, ", after = ", nrow(sitenames), " site names"))
+  }
+  # print(sitenames, n = 50)
   # Perform a left join to replace SiteName in df.c14 with SiteName from sitenames when there's a match on AlternativeNames
   df <- df.c14 %>%
     dplyr::left_join(sitenames, by = c("SiteName" = "AlternativeNames")) %>%

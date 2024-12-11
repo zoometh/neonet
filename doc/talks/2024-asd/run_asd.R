@@ -19,20 +19,24 @@ if(dbs_3rdpart){
   # View(df.brami)
 }
 
-df.14 <- rbind(df.c14, df.brami)
+df.14 <- rbind(samp_df, df.brami)
 
 # source("R/neo_dbs_info_dates_datatable.R")
-# df.datatable <- neo_dbs_info_dates_datatable(df.14) ; htmlwidgets::saveWidget(df.datatable, paste0("temp", ".html"))
+# df.datatable <- neo_dbs_info_dates_datatable(df.c14) ; htmlwidgets::saveWidget(df.datatable, paste0("temp_filtered1", ".html"))
 
 # correct sitenames
 source("R/neo_dbs_sitename_dates.R")
 df.c14 <- neo_dbs_sitename_dates(df.c14)
+
 # correct labcodes
 source("R/neo_dbs_labcode_dates.R")
 df.c14 <- neo_dbs_labcode_dates(df.c14)
 # remove duplicates
 source("R/neo_dbs_rm_duplicated_dates.R")
 df.c14 <- neo_dbs_rm_duplicated_dates(df.c14)
+
+# subset(df.14, SiteName == 'Cyclops Cave')
+
 # correct coordinates (# Sabha)
 source("R/neo_dbs_coord_dates.R")
 df.c14 <- neo_dbs_coord_dates(df.c14)

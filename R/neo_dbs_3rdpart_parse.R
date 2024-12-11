@@ -30,7 +30,7 @@ neo_dbs_3rdpart_parse <- function(file.path = "C:/Rprojects/neonet/doc/reference
                                   chr.interval.uncalBC = NA, 
                                   roi = NA,
                                   verbose = TRUE){
-  `%>%` <- dplyr::`%>%`
+  `%>%` <- dplyr::`%>%` # used to not load dplyr 
   if (length(col.3rdpart) != length(col.neonet)){
     stop("'col.neonet' and 'col.3rdpart' should have the same length for the mapping")
   }
