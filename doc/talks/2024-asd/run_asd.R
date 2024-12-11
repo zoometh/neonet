@@ -109,8 +109,8 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates.size = 5,
                      lbl.time.interv = TRUE)
 isochr$map
-ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 22, height = 17)
-ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 9)
+ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 14, height = 12)
+ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
 # write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)

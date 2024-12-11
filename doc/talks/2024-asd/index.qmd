@@ -670,13 +670,13 @@ df <- "isochr-5800-BC-Egee-koppen_9k"
 
 ::: columns
 
-::: {.column width="60%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k.png){width="450" style="horizontal-align: middle;"}
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
-::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k-legend.png){width="400" style="horizontal-align: middle;"}
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -687,7 +687,7 @@ df <- "isochr-5800-BC-Egee-koppen_9k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
@@ -710,7 +710,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6600-BC-Egee-koppen_9k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
@@ -739,12 +739,12 @@ df <- "isochr-6200-BC-Egee-koppen_8k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_8k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_8k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_8k-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_8k-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -755,7 +755,7 @@ df <- "isochr-6200-BC-Egee-koppen_8k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_8k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_8k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
@@ -778,7 +778,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_8k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6200-BC-Egee-koppen_8k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
@@ -807,12 +807,12 @@ df <- "isochr-5800-BC-Egee-koppen_8k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_8k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_8k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_8k-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_8k-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -823,7 +823,7 @@ df <- "isochr-5800-BC-Egee-koppen_8k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_8k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_8k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
@@ -844,7 +844,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ::: columns
 
 ::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_8k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_8k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
@@ -874,7 +874,7 @@ Lorem
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6000BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6000BC-EN-kcc-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -889,7 +889,7 @@ Lorem
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5800BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5800BC-EN-kcc-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -904,7 +904,7 @@ Lorem
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -925,7 +925,7 @@ Lorem
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-west-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-west-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -940,7 +940,7 @@ Lorem
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5300BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5300BC-EN-kcc-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
