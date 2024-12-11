@@ -106,18 +106,23 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates = TRUE,
                      # lbl.all.dates = FALSE,
                      # lbl.date.field = "median",
-                     lbl.dates.size = 3,
+                     lbl.dates.size = 5,
                      lbl.time.interv = TRUE)
 isochr$map
+
+isochr$legend <- isochr$legend + ggplot2::theme(plot.margin=grid::unit(c(0,0,0,0), "mm"))
+# knitr::plot_crop(isochr$legend)
+
 ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 14, height = 12)
-ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, height = 7)
+ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
 # write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
 # df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
 # write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
-
+# ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 14)
+# ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, height = 7)
 
 # source("R/neo_spd.R")
 # source("R/neo_spdplot.R")
