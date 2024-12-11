@@ -16,10 +16,14 @@ if(dbs_3rdpart){
   # Brami15 
   source("R/neo_dbs_3rdpart_parse.R") # by default 
   df.brami  <- neo_dbs_3rdpart_parse() 
+  # following 'Cyclops Cave'
+  # subset(df.brami[,c(1:10)], SiteName == 'Cyclops Cave' & sourcedb == 'brami15')
   # View(df.brami)
 }
 
-df.14 <- rbind(samp_df, df.brami)
+df.c14 <- rbind(df.brami, samp_df)
+# subset(df.14[,c(1:10)], sourcedb == 'brami15')
+# subset(df.c14[,c(1:10)], SiteName == 'Cyclops Cave' & sourcedb == 'brami15')
 
 # source("R/neo_dbs_info_dates_datatable.R")
 # df.datatable <- neo_dbs_info_dates_datatable(df.c14) ; htmlwidgets::saveWidget(df.datatable, paste0("temp_filtered1", ".html"))
@@ -27,16 +31,12 @@ df.14 <- rbind(samp_df, df.brami)
 # correct sitenames
 source("R/neo_dbs_sitename_dates.R")
 df.c14 <- neo_dbs_sitename_dates(df.c14)
-
 # correct labcodes
 source("R/neo_dbs_labcode_dates.R")
 df.c14 <- neo_dbs_labcode_dates(df.c14)
 # remove duplicates
 source("R/neo_dbs_rm_duplicated_dates.R")
 df.c14 <- neo_dbs_rm_duplicated_dates(df.c14)
-
-# subset(df.14, SiteName == 'Cyclops Cave')
-
 # correct coordinates (# Sabha)
 source("R/neo_dbs_coord_dates.R")
 df.c14 <- neo_dbs_coord_dates(df.c14)
@@ -44,6 +44,10 @@ df.c14 <- neo_dbs_coord_dates(df.c14)
 source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
                                c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
+
+# subset(df.c14[,c(1:10)], SiteName == 'Cyclops Cave' & sourcedb == 'brami15')
+
+
 # to sf
 # df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
 df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = 4326) # when GDAL/proj.db will be reinstalled
@@ -63,7 +67,10 @@ source("R/neo_dbs_info_dates_datatable.R")
 ## title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) use: https://geojson.io/#map=2/0/20 ;
 obj.case <- list("Near East", c(-9000, -8000), c(32, 30, 45, 40), "koppen_11k.tif") # !!
 obj.case <- list("Cyprus", c(-8000), c(30, 30, 40, 40),  "koppen_10k.tif")
-obj.case <- list("Balkans", c(-6200, -5800), c(18, 35, 30, 43), "koppen_8k.tif") 
+obj.case <- list("Egee", c(-6600), c(18, 35, 34, 42), "koppen_9k.tif") # anct 
+obj.case <- list("Egee", c(-6200), c(18, 35, 35, 43), "koppen_8k.tif") 
+obj.case <- list("Egee", c(-5800), c(18, 35, 35, 43), "koppen_8k.tif") 
+obj.case <- list("Balkans", c(-5800), c(18, 35, 30, 43), "koppen_8k.tif")
 obj.case <- list("Italia", c(-5700, -5500, -5300), c(5, 37, 18, 48), "koppen_8k.tif")  # !!
 obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
 obj.case <- list("Mediterranean", c(-9000, -8000, -7000, -6000, -5000), c(-12, 27.5, 42.5, 47.5), "koppen_8k.tif") # !!
@@ -89,7 +96,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      create.legend = TRUE,
                      isochr.line.color = NA, # "black", # NA to get colored isochrones (red, blue)
                      isochr.line.size = .5,
-                     isochr.txt.size = 4,
+                     isochr.txt.size = 0,
                      calibrate = FALSE,
                      shw.dates = TRUE,
                      # show.all.dates = FALSE,
@@ -104,6 +111,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
 isochr$map
 ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 14, height = 12)
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, height = 7)
+write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
 # write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
