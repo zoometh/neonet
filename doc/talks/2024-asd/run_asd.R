@@ -68,8 +68,8 @@ source("R/neo_dbs_info_dates_datatable.R")
 obj.case <- list("Near East", c(-9000, -8000), c(32, 30, 45, 40), "koppen_11k.tif") # !!
 obj.case <- list("Cyprus", c(-8000), c(30, 30, 40, 40),  "koppen_10k.tif")
 obj.case <- list("Egee", c(-6600), c(18, 35, 34, 42), "koppen_9k.tif") # anct 
-obj.case <- list("Egee", c(-6200), c(18, 35, 35, 43), "koppen_8k.tif") 
-obj.case <- list("Egee", c(-5800), c(18, 35, 35, 43), "koppen_8k.tif") 
+obj.case <- list("Egee", c(-6200), c(18, 35, 34, 42), "koppen_8k.tif") 
+obj.case <- list("Egee", c(-5800), c(18, 35, 34, 42), "koppen_8k.tif") 
 obj.case <- list("Balkans", c(-5800), c(18, 35, 30, 43), "koppen_8k.tif")
 obj.case <- list("Italia", c(-5700, -5500, -5300), c(5, 37, 18, 48), "koppen_8k.tif")  # !!
 obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
@@ -112,7 +112,7 @@ isochr$map
 ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 14, height = 12)
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5, height = 7)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
-df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
+# df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
 # write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
 # df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]

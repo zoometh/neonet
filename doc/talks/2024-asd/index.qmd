@@ -37,7 +37,7 @@ format:
     # self-contained: true
     # embed-resources: true
     # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/logo-caa25.png' style='height: 20px;vertical-align: middle;'>  5-9 May 2025, Athens, Greece"
+    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/_logo-caa25.png' style='height: 20px;vertical-align: middle;'>  5-9 May 2025, Athens, Greece"
     margin: 0
     width: 1200
 ---
@@ -295,6 +295,10 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 :::
 
+### 3rd parts
+
+Brami15
+
 
 ### Alignment
 
@@ -307,19 +311,19 @@ library(dplyr)
 ref_table_per = "https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/ref_table_per-readonly.tsv"
 df.to.rm <- read.csv2(ref_table_per, sep = "\t", header = TRUE)
 df.to.rm %>% 
-  DT::datatable(
-    width = "100%",
-    rownames = FALSE,
-    options=list(
-      lengthMenu = list(c(5, 10, 50, -1), 
-                        c('5', '10', '50', 'All')),
-      paging = T,
-      initComplete = htmlwidgets::JS(
-        "function(settings, json) {",
-        paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
-        "}")
-    ) 
-  )
+DT::datatable(
+width = "100%",
+rownames = FALSE,
+options=list(
+lengthMenu = list(c(5, 10, 50, -1), 
+c('5', '10', '50', 'All')),
+paging = T,
+initComplete = htmlwidgets::JS(
+"function(settings, json) {",
+paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
+"}")
+) 
+)
 #, options = list(width = "700px", pageLength = 10))
 ```
 <small>[ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/inst/extdata/ref_table_per.xlsx)</small>
@@ -331,24 +335,24 @@ df.to.rm %>%
 <!-- Neonet classes -->
 
 <table style="font-size: 25px;">
-    <tr>
-        <td><span style="color:#0000CF">EM - Early Mesolithic</span></td>
-    </tr>
-    <tr>
-        <td><span style="color:#1D1DFF">MM - Middle Mesolithic</span></td>
-    </tr>
-    <tr>
-        <td><span style="color:#3737FF"><b>LM - Late Mesolithic</b></span></td>
-    </tr>
-    <tr>
-        <td><span style="color:#FF1B1B"><b>EN - Early Neolithic</b></span></td>
-    </tr>
-    <tr>
-        <td><span style="color:#FF8D1B">MN - Middle Neolithic</span></td>
-    </tr>
-    <tr>
-        <td><span style="color:#FFC04D">LN - Late Neolithic</span></td>
-    </tr>
+<tr>
+<td><span style="color:#0000CF">EM - Early Mesolithic</span></td>
+</tr>
+<tr>
+<td><span style="color:#1D1DFF">MM - Middle Mesolithic</span></td>
+</tr>
+<tr>
+<td><span style="color:#3737FF"><b>LM - Late Mesolithic</b></span></td>
+</tr>
+<tr>
+<td><span style="color:#FF1B1B"><b>EN - Early Neolithic</b></span></td>
+</tr>
+<tr>
+<td><span style="color:#FF8D1B">MN - Middle Neolithic</span></td>
+</tr>
+<tr>
+<td><span style="color:#FFC04D">LN - Late Neolithic</span></td>
+</tr>
 </table>
 
 :::
@@ -368,19 +372,19 @@ library(dplyr)
 c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv"
 df.to.rm <- read.csv2(c14.to.remove, sep = "\t", header = TRUE)
 df.to.rm %>% 
-  DT::datatable(
-    width = "100%",
-    rownames = FALSE,
-    options=list(
-      lengthMenu = list(c(5, 10, 50, -1), 
-                        c('5', '10', '50', 'All')),
-      paging = T,
-      initComplete = htmlwidgets::JS(
-        "function(settings, json) {",
-        paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
-        "}")
-    ) 
-  )
+DT::datatable(
+width = "100%",
+rownames = FALSE,
+options=list(
+lengthMenu = list(c(5, 10, 50, -1), 
+c('5', '10', '50', 'All')),
+paging = T,
+initComplete = htmlwidgets::JS(
+"function(settings, json) {",
+paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
+"}")
+) 
+)
 #, options = list(width = "700px", pageLength = 10))
 ```
 <small>[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)</small>
@@ -402,9 +406,10 @@ library(dplyr)
 # df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
 df <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson", quiet = T)
 roi <- paste0('<a href="', "https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/roi.geojson", '" target="_blank">roi.geojson</a>')
-leaflet::leaflet(df, width = "700px", height = "450px") %>%
-  leaflet::addTiles() %>%
-  leaflet::addPolygons(popup = roi)# "<b>Hello World</b>")
+leaflet::leaflet(df, width = "700px", height = "450px") %>% 
+leaflet::addTiles() %>%
+leaflet::addPolygons(popup = roi, fillOpacity = 0) 
+# "<b>Hello World</b>")
 ```
 
 </center>
@@ -647,7 +652,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 
-## Case study 1: Balkans
+## Aegean (6,600 BC)
 
 ::: {.panel-tabset}
 
@@ -657,12 +662,12 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/isochr-Balkans-6200-5800BC-koppen_8k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-Egee-6600BC-koppen_9k.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/isochr-Balkans-6200-5800BC-koppen_8k-legend.png){width="400" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-Egee-6600BC-koppen_9k-legend.png){width="400" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -672,7 +677,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ::: columns
 
 ::: {.column width="40%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/isochr-Balkans-6200-5800BC-koppen_8k.png){width="450" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-Egee-6600BC-koppen_9k.png){width="450" style="horizontal-align: middle;"}
 :::
 
 
@@ -680,7 +685,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 ```{r, message=FALSE}
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
-neo_dbs_info_dates_datatable(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/isochr-Balkans-6200-5800BC-koppen_8k.tsv")
+neo_dbs_info_dates_datatable(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-Egee-6600BC-koppen_9k.tsv")
 ```
 :::
 
@@ -1084,66 +1089,66 @@ Rproductible methods. Enhancement of cultural and climatic data
 
 
 <table>
-  <tr>
-    <th>time span<br><small>cal BC</small></th>
-    <th>raster</th>
-    <th>median</th>
-  </tr>
-  <tr>
-    <td class="tabtop-left">9500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_11k.png" height="250"></td>
-    <td rowspan="3"></td>
-  </tr>
-  <tr>
-    <td><b>9000</b></td>
-  </tr>
-  <tr>
-    <td class="tabbottom-left">8500</td>
-  </tr>
-  <tr>
-    <td class="tabtop-left">8500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_10k.png" height="250"></td>
-    <td rowspan="3"></td>
-  </tr>
-  <tr>
-    <td><b>8000</b></td>
-  </tr>
-  <tr>
-    <td class="tabbottom-left">7500</td>
-  </tr>
-  <tr>
-    <td class="tabtop-left">7500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k.png" height="250"></td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
-  </tr>
-  <tr>
-    <td><b>7000</b></td>
-  </tr>
-  <tr>
-    <td class="tabbottom-left">6500</td>
-  </tr>
-  <tr>
-    <td class="tabtop-left">6500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k.png" height="250"></td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
-  </tr>
-  <tr>
-    <td><b>6000</b></td>
-  </tr>
-  <tr>
-    <td class="tabbottom-left">5500</td>
-  </tr>
-  <tr>
-    <td class="tabtop-left">5500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_7k.png" height="250"></td>
-    <td rowspan="3"></td>
-  </tr>
-  <tr>
-    <td><b>5000</b></td>
-  </tr>
-  <tr>
-    <td class="tabbottom-left">4500</td>
-  </tr>
+<tr>
+<th>time span<br><small>cal BC</small></th>
+<th>raster</th>
+<th>median</th>
+</tr>
+<tr>
+<td class="tabtop-left">9500</td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_11k.png" height="250"></td>
+<td rowspan="3"></td>
+</tr>
+<tr>
+<td><b>9000</b></td>
+</tr>
+<tr>
+<td class="tabbottom-left">8500</td>
+</tr>
+<tr>
+<td class="tabtop-left">8500</td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_10k.png" height="250"></td>
+<td rowspan="3"></td>
+</tr>
+<tr>
+<td><b>8000</b></td>
+</tr>
+<tr>
+<td class="tabbottom-left">7500</td>
+</tr>
+<tr>
+<td class="tabtop-left">7500</td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k.png" height="250"></td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
+</tr>
+<tr>
+<td><b>7000</b></td>
+</tr>
+<tr>
+<td class="tabbottom-left">6500</td>
+</tr>
+<tr>
+<td class="tabtop-left">6500</td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k.png" height="250"></td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
+</tr>
+<tr>
+<td><b>6000</b></td>
+</tr>
+<tr>
+<td class="tabbottom-left">5500</td>
+</tr>
+<tr>
+<td class="tabtop-left">5500</td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_7k.png" height="250"></td>
+<td rowspan="3"></td>
+</tr>
+<tr>
+<td><b>5000</b></td>
+</tr>
+<tr>
+<td class="tabbottom-left">4500</td>
+</tr>
 </table>
 
 ## NOT VISIBLE {data-visibility=hidden}
@@ -1157,33 +1162,33 @@ Rproductible methods. Enhancement of cultural and climatic data
 
 
 <table>
-  <tr>
-    <th>time span<br><small>cal BC</small></th>
-    <th>KCC map</th>
-    <th>date</th>
-  </tr>
-  <tr>
-    <td class="tabtop-left">7500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k_.png" height="250"></td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
-  </tr>
-  <tr>
-    <td><b>7000</b></td>
-  </tr>
-  <tr>
-    <td class="tabbottom-left">6500</td>
-  </tr>
-  <tr>
-    <td class="tabtop-left">6500</td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" height="250"></td>
-    <td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
-  </tr>
-  <tr>
-    <td><b>6000</b></td>
-  </tr>
-  <tr>
-    <td class="tabbottom-left">5500</td>
-  </tr>
+<tr>
+<th>time span<br><small>cal BC</small></th>
+<th>KCC map</th>
+<th>date</th>
+</tr>
+<tr>
+<td class="tabtop-left">7500</td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_9k_.png" height="250"></td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" height="250"></td>
+</tr>
+<tr>
+<td><b>7000</b></td>
+</tr>
+<tr>
+<td class="tabbottom-left">6500</td>
+</tr>
+<tr>
+<td class="tabtop-left">6500</td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/koppen_8k_.png" height="250"></td>
+<td rowspan="3"><img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161.png-spd.png" height="250"></td>
+</tr>
+<tr>
+<td><b>6000</b></td>
+</tr>
+<tr>
+<td class="tabbottom-left">5500</td>
+</tr>
 </table>
 
 ### Dates Koppen Classes {data-visibility=hidden}

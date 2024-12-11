@@ -35,12 +35,13 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
     climate_df <- sf::st_drop_geometry(df.c14)
   }
   if(field.mapping){
-    if(!("idf" %in% climate_df)){climate_df$idf <- rownames(climate_df)}
-    if(!("ID" %in% climate_df)){climate_df$ID <- rownames(climate_df)}
-    if(!("code" %in% climate_df)){climate_df$code <- NA}
-    if(!("site" %in% climate_df)){names(climate_df)[names(climate_df) == 'SiteName'] <- "site"}
-    if(!("labcode" %in% climate_df)){names(climate_df)[names(climate_df) == 'LabCode'] <- "labcode"}
-    if(!("period" %in% climate_df)){names(climate_df)[names(climate_df) == 'Period'] <- "period"}
+    cn <- colnames(climate_df)
+    if(!("idf" %in% cn)){climate_df$idf <- rownames(climate_df)}
+    if(!("ID" %in% cn)){climate_df$ID <- rownames(climate_df)}
+    if(!("code" %in% cn)){climate_df$code <- NA}
+    if(!("site" %in% cn)){names(climate_df)[names(climate_df) == 'SiteName'] <- "site"}
+    if(!("labcode" %in% cn)){names(climate_df)[names(climate_df) == 'LabCode'] <- "labcode"}
+    if(!("period" %in% cn)){names(climate_df)[names(climate_df) == 'Period'] <- "period"}
     if(verbose){
       print(paste0("Dataframe fieldnames: ", print(paste0(colnames(climate_df), collapse = ', '))))
     }
