@@ -61,7 +61,7 @@ source("R/neo_dbs_info_dates_datatable.R")
 ### Choice, # !! some study area overlap different KCC
 ## title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) use: https://geojson.io/#map=2/0/20 ;
 obj.case <- list("NearEast", c(-9000), c(30, 30, 45, 41), "koppen_11k.tif")
-obj.case <- list("NearEast", c(-85000), c(30, 30, 45, 41), "koppen_11k.tif")
+obj.case <- list("NearEast", c(-8500), c(30, 30, 45, 41), "koppen_11k.tif")
 obj.case <- list("NearEast", c(-8000), c(30, 30, 45, 41), "koppen_10k.tif")
 obj.case <- list("NearEast", c(-7500), c(30, 30, 45, 41), "koppen_10k.tif")
 obj.case <- list("Egee", c(-6600), c(18, 35, 34, 42), "koppen_9k.tif") # anct 
