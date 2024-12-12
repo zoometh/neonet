@@ -657,6 +657,226 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 
+
+## Near East (9,000 BC)
+
+```{r, message=FALSE}
+df <- "isochr-9000-BC-Near East-koppen_11k"
+```
+
+::: {.panel-tabset}
+
+### Climates
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-Near East-koppen_11k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-Near East-koppen_11k-legend.png){width="500" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### Sites
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-Near East-koppen_11k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+```{r, message=FALSE}
+df <- "isochr-9000-BC-Near East-koppen_11k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
+```
+:::
+
+:::
+
+### Assumptions
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-Near East-koppen_11k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+Lorem
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+
+
+## Near East (8,000 BC)
+
+```{r, message=FALSE}
+df <- "isochr-8000-BC-Near East-koppen_10k"
+```
+
+::: {.panel-tabset}
+
+### Climates
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-Near East-koppen_10k-legend.png){width="500" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### Sites
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+```{r, message=FALSE}
+df <- "isochr-8000-BC-Near East-koppen_10k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
+```
+:::
+
+:::
+
+### Assumptions
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+Lorem
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+
+
+## Near East (7,600 BC)
+
+```{r, message=FALSE}
+df <- "isochr-7600-BC-Near East-koppen_10k"
+```
+
+::: {.panel-tabset}
+
+### Climates
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-Near East-koppen_10k-legend.png){width="500" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### Sites
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+```{r, message=FALSE}
+df <- "isochr-7600-BC-Near East-koppen_10k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
+```
+:::
+
+:::
+
+### Assumptions
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+Lorem
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+
+
 ## Aegean (6,600 BC)
 
 ```{r, message=FALSE}
@@ -796,7 +1016,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 * In Greece, Thessaly and Macedonia, dense settlements in <span style="color:#FFDC64;">BSk</span> climates (<span style="color:#FFDC64;">Sesklo, Paliambela, Anzabegovo</span>, etc. )
 * First Neolithic in Northern Aegean (Ugurlu, idf <b>44</b>) related to first Neolithic in Northwestern Anatolia: <span style="color:#FFFF00;">Barcin</span> (idf <b>9</b>), <span style="color:#FFFF00;">Aktopraklik</span> (idf <b>2</b>)
-* The Neolithic pioneer front seems to slow down in Western Greece (ridge line, river basins, exception: <span style="color:#FFFF00;">Sidari</span> (idf <b>42</b>) and Northern Greece.
+* The Neolithic pioneer front seems to slow down in Western Greece (ridge line, river basins), exception: <span style="color:#FFFF00;">Sidari</span> (idf <b>42</b>) and Northern Greece.
 * New climate: <span style="color:#C8FF50;">Cfa</span> (*Temperate, no dry season, hot summer*). Sites: Mavropigi (idf <b>19</b>), Lefkopetra (idf <b>28</b>), Ofeas (idf <b>32</b>)
 
 
@@ -809,6 +1029,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 :::
 
 :::
+
+
+
 
 
 ## Aegean (5,800 BC)
@@ -861,7 +1084,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 ::: columns
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5800-BC-Egee-koppen_8k.png){width="700" style="horizontal-align: middle;"}
 :::
 
