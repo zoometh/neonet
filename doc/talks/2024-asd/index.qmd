@@ -661,7 +661,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ## Near East (9,000 BC)
 
 ```{r, message=FALSE}
-df <- "isochr-9000-BC-Near East-koppen_11k"
+df <- "isochr-9000-BC-NearEast-koppen_11k"
 ```
 
 ::: {.panel-tabset}
@@ -672,12 +672,12 @@ df <- "isochr-9000-BC-Near East-koppen_11k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-Near East-koppen_11k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-NearEast-koppen_11k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-Near East-koppen_11k-legend.png){width="500" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-NearEast-koppen_11k-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -688,14 +688,14 @@ df <- "isochr-9000-BC-Near East-koppen_11k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-Near East-koppen_11k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-NearEast-koppen_11k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
 
 ```{r, message=FALSE}
-df <- "isochr-9000-BC-Near East-koppen_11k"
+df <- "isochr-9000-BC-NearEast-koppen_11k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
 data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
@@ -711,7 +711,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-Near East-koppen_11k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-9000-BC-NearEast-koppen_11k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
@@ -734,7 +734,7 @@ Lorem
 ## Near East (8,000 BC)
 
 ```{r, message=FALSE}
-df <- "isochr-8000-BC-Near East-koppen_10k"
+df <- "isochr-8000-BC-NearEast-koppen_10k"
 ```
 
 ::: {.panel-tabset}
@@ -745,12 +745,12 @@ df <- "isochr-8000-BC-Near East-koppen_10k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-Near East-koppen_10k-legend.png){width="500" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-NearEast-koppen_10k-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -761,14 +761,14 @@ df <- "isochr-8000-BC-Near East-koppen_10k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
 
 ```{r, message=FALSE}
-df <- "isochr-8000-BC-Near East-koppen_10k"
+df <- "isochr-8000-BC-NearEast-koppen_10k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
 data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
@@ -784,7 +784,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8000-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
@@ -807,7 +807,7 @@ Lorem
 ## Near East (7,600 BC)
 
 ```{r, message=FALSE}
-df <- "isochr-7600-BC-Near East-koppen_10k"
+df <- "isochr-7600-BC-NearEast-koppen_10k"
 ```
 
 ::: {.panel-tabset}
@@ -818,12 +818,12 @@ df <- "isochr-7600-BC-Near East-koppen_10k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-Near East-koppen_10k-legend.png){width="500" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-NearEast-koppen_10k-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -834,14 +834,14 @@ df <- "isochr-7600-BC-Near East-koppen_10k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
 
 ```{r, message=FALSE}
-df <- "isochr-7600-BC-Near East-koppen_10k"
+df <- "isochr-7600-BC-NearEast-koppen_10k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
 data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
@@ -857,7 +857,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-Near East-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
