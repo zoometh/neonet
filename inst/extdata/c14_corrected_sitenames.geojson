@@ -1025,7 +1025,7 @@
 { "type": "Feature", "properties": { "SiteName": "Koudiat Kifène Lahda", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.516477, 35.927984 ] } },
 { "type": "Feature", "properties": { "SiteName": "Koumelo", "AlternativeNames": "Koumelo Cave. Archangelos, Rhodes " }, "geometry": { "type": "Point", "coordinates": [ 28.134232, 36.203044 ] } },
 { "type": "Feature", "properties": { "SiteName": "Kouphovouno", "AlternativeNames": "Kremenik" }, "geometry": { "type": "Point", "coordinates": [ 22.4239, 37.0552 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Kovacevo", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 23.4608, 41.5008 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Kovacevo", "AlternativeNames": "Kovačevo" }, "geometry": { "type": "Point", "coordinates": [ 23.4608, 41.5008 ] } },
 { "type": "Feature", "properties": { "SiteName": "Kremenik", "AlternativeNames": "Kremenik" }, "geometry": { "type": "Point", "coordinates": [ 23.26, 42.3 ] } },
 { "type": "Feature", "properties": { "SiteName": "Kritou-Marottou - Ais Yiorkis", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 32.56, 34.93 ] } },
 { "type": "Feature", "properties": { "SiteName": "Krivače", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 15.84, 43.86 ] } },
