@@ -37,7 +37,7 @@ format:
     # self-contained: true
     # embed-resources: true
     # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/_logo.png' style='height: 20px;vertical-align: middle;'>  18 Dec 2024, ASD-CSIC, Spain"
+    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_logo.png' style='height: 20px;vertical-align: middle;'>  18 Dec 2024, ASD-CSIC, Spain"
     margin: 0
     width: 1200
 ---
@@ -718,8 +718,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 
 <p><small>
 
-* Aegean Sea and Aegean shore are 'neolithised' before Northern Anatolia, or even before South central Anatolia.
-* Earliest neolithic sites are those having pre-neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas, Franchthi and Cyclops Cave.
+* Aegean Sea and Aegean shore are 'neolithised' before Northern Anatolia, and even before South central Anatolia.
+* Earliest neolithic sites are those having pre-neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas (idf <b>27</b>), Franchthi (idf <b>17</b>) and Cyclops Cave (idf <b>11</b>).
 * Confirms: Brami 2015[^66001].
 
 </small></p>
@@ -795,9 +795,12 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * In Greece, Thessaly and Macedonia, dense settlements in <span style="color:#FFDC64;">BSk</span> climates (<span style="color:#FFDC64;">Sesklo, Paliambela, Anzabegovo</span>, etc. )
-* First Neolithic in Northern Aegean (Ugurlu, idf <b>44</b>) related to first Neolithic in Northwestern Anatolia (Barcin, idf <b>9</b>; Aktopraklik, idf <b>2</b>)
-* The Neolithic pioneer front seems to slow down in Western Greece (ridge line, two ≠ river basins, exception: Sidari, idf <b>42</b>) and Northern Greece.
-* New climate: <span style="color:#C8FF50;">Cfa</span>: Temperate, no dry season, hot summer. Sites: Mavropigi, idf <b>19</b>; Lefkopetra, idf <b>28</b>; Ofeas, idf <b>32</b>)
+* First Neolithic in Northern Aegean (Ugurlu, idf <b>44</b>) related to first Neolithic in Northwestern Anatolia: <span style="color:#FFFF00;">Barcin</span> (idf <b>9</b>), <span style="color:#FFFF00;">Aktopraklik</span> (idf <b>2</b>)
+* The Neolithic pioneer front seems to slow down in Western Greece (ridge line, river basins, exception: <span style="color:#FFFF00;">Sidari</span> (idf <b>42</b>) and Northern Greece.
+* New climate: <span style="color:#C8FF50;">Cfa</span> (*Temperate, no dry season, hot summer*). Sites: Mavropigi (idf <b>19</b>), Lefkopetra (idf <b>28</b>), Ofeas (idf <b>32</b>)
+
+
+
 
 </small></p>
 
@@ -869,8 +872,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 * Rapid expansion in the Southern Balkans (<span style="color:#FFFF00;">Csa</span> and <span style="color:#FFDC64;">BSk</span> ).
 * Northern Balkans expansion required adapting agriculture and stockbreeding systems to colder climates (<span style="color:#00FFFF;">Dfa</span>, <span style="color:#37C8FF;">Dfb</span>)
-* Slowdown of Neolithic expansion. Early northern occupations, such as Porodin (idf <b>26</b>).
-* South of Italy (off the map) is reached, probably from Corfu (Sidari, idf <b>40</b>)
+* Slowdown of Neolithic expansion. Early northern occupations, such as <span style="color:#37C8FF;">Porodin</span> (idf <b>26</b>).
+* South of Italy (off the map) is reached, probably from Corfu: <span style="color:#FFFF00;">Sidari</span> (idf <b>40</b>)
 * Confirms: Krauß et al. 2018[^81], Ivanova et al. 2018[^82].
 
 </small></p>

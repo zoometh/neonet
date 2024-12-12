@@ -556,7 +556,7 @@
 { "type": "Feature", "properties": { "SiteName": "Defensola", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 16.155946, 41.897824 ] } },
 { "type": "Feature", "properties": { "SiteName": "Defesa de Cima 2", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -7.501, 38.2443 ] } },
 { "type": "Feature", "properties": { "SiteName": "Delley-Portalban", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.962, 46.9125 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Delphinos river", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 24.293122, 35.355486 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Delphinos", "AlternativeNames": "Delphinos river" }, "geometry": { "type": "Point", "coordinates": [ 24.293122, 35.355486 ] } },
 { "type": "Feature", "properties": { "SiteName": "Dereivka", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 33.7649, 48.9142 ] } },
 { "type": "Feature", "properties": { "SiteName": "Derrière le Village", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 2.238508, 49.91695 ] } },
 { "type": "Feature", "properties": { "SiteName": "Deszk-Olajkut", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 20.25, 46.216667 ] } },
