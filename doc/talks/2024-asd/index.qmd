@@ -37,7 +37,7 @@ format:
     # self-contained: true
     # embed-resources: true
     # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_logo.png' style='height: 20px;vertical-align: middle;'>  18 Dec 2024, ASD-CSIC, Spain"
+    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_logo.png' style='height: 25px;vertical-align: middle;'>  18 Dec 2024, ASD-CSIC, Spain"
     margin: 0
     width: 1200
 ---
@@ -719,7 +719,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 <p><small>
 
 * Aegean Sea and Aegean shore are 'neolithised' before Northern Anatolia, and even before South central Anatolia.
-* Earliest neolithic sites are those having pre-neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas (idf <b>27</b>), Franchthi (idf <b>17</b>) and Cyclops Cave (idf <b>11</b>).
+* Earliest neolithic sites are those having pre-neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas (idf <b>27</b>), Franchthi (idf <b>17</b>) and Cyclops Cave (idf <b>11</b>), no climate data available.
 * Confirms: Brami 2015[^66001].
 
 </small></p>

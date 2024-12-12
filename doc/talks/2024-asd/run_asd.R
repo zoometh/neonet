@@ -11,6 +11,7 @@ col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "cult
 samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 df.c14 <- samp_df
 
+dbs_3rdpart <- TRUE
 # third part dataset
 if(dbs_3rdpart){
   # Brami15 
@@ -55,9 +56,6 @@ df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = 4326) #
 source("R/config.R")
 source("R/neo_spd.R")
 source("R/neo_calib.R")
-WestMed3 <- c(-10, 30, 20, 45)
-EastMed2.where <- c(24, 25, 45, 40) 
-EastMed3.where <- c(10, 25, 45, 45)
 source("R/neo_kcc_legend.R")
 source("R/neo_dbs_info_dates_datatable.R")
 ### Choice, # !! some study area overlap different KCC
