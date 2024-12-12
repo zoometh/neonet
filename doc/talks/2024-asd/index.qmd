@@ -730,6 +730,78 @@ Lorem
 :::
 
 
+## Near East (8,500 BC)
+
+```{r, message=FALSE}
+df <- "isochr-8500-BC-NearEast-koppen_11k"
+```
+
+::: {.panel-tabset}
+
+### Climates
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8500-BC-NearEast-koppen_11k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8500-BC-NearEast-koppen_11k-legend.png){width="500" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### Sites
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8500-BC-NearEast-koppen_11k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+```{r, message=FALSE}
+df <- "isochr-8500-BC-NearEast-koppen_11k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
+```
+:::
+
+:::
+
+### Assumptions
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-8500-BC-NearEast-koppen_11k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+Lorem
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+
 
 ## Near East (8,000 BC)
 
@@ -804,10 +876,10 @@ Lorem
 
 
 
-## Near East (7,600 BC)
+## Near East (7,500 BC)
 
 ```{r, message=FALSE}
-df <- "isochr-7600-BC-NearEast-koppen_10k"
+df <- "isochr-7500-BC-NearEast-koppen_10k"
 ```
 
 ::: {.panel-tabset}
@@ -818,12 +890,12 @@ df <- "isochr-7600-BC-NearEast-koppen_10k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7500-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-NearEast-koppen_10k-legend.png){width="500" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7500-BC-NearEast-koppen_10k-legend.png){width="500" style="horizontal-align: middle;"}
 :::
 
 :::
@@ -834,14 +906,14 @@ df <- "isochr-7600-BC-NearEast-koppen_10k"
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7500-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
 ::: {.column width="50%"}
 
 ```{r, message=FALSE}
-df <- "isochr-7600-BC-NearEast-koppen_10k"
+df <- "isochr-7500-BC-NearEast-koppen_10k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
 data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
@@ -1093,7 +1165,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* Rapid expansion in the Southern Balkans (<span style="color:#FFFF00;">Csa</span> and <span style="color:#FFDC64;">BSk</span> ).
+* Rapid expansion in the Southern Balkans (<span style="color:#FFFF00;">Csa</span> and <span style="color:#FFDC64;">BSk</span>).
 * Northern Balkans expansion required adapting agriculture and stockbreeding systems to colder climates (<span style="color:#00FFFF;">Dfa</span>, <span style="color:#37C8FF;">Dfb</span>)
 * Slowdown of Neolithic expansion. Early northern occupations, such as <span style="color:#37C8FF;">Porodin</span> (idf <b>26</b>).
 * South of Italy (off the map) is reached, probably from Corfu: <span style="color:#FFFF00;">Sidari</span> (idf <b>40</b>)

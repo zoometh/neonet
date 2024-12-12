@@ -61,8 +61,8 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
       width = "100%",
       rownames = FALSE,
       options = list(
-        lengthMenu = list(c(7, 10, 50, -1), 
-                          c('7', '10', '50', 'All')),
+        lengthMenu = list(c(6, 10, 50, -1), 
+                          c('6', '10', '50', 'All')),
         paging = TRUE,
         columnDefs = list(list(visible = FALSE, targets = color_col_index)),  # Hide the 'color' column
         initComplete = htmlwidgets::JS(
