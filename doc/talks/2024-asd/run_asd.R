@@ -45,11 +45,8 @@ source("R/neo_dbs_rm_date.R")
 df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
                                c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv")
 
-# subset(df.c14[,c(1:10)], SiteName == 'Cyclops Cave' & sourcedb == 'brami15')
-
-
 # to sf
-# df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
+# subset(df_filtered[,c(1:10)], is.na(df_filtered$lon))
 df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = 4326) # when GDAL/proj.db will be reinstalled
 
 

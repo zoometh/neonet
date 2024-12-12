@@ -37,7 +37,7 @@ format:
     # self-contained: true
     # embed-resources: true
     # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/_logo-caa25.png' style='height: 20px;vertical-align: middle;'>  5-9 May 2025, Athens, Greece"
+    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-caa/img/_logo.png' style='height: 20px;vertical-align: middle;'>  18 Dec 2024, ASD-CSIC, Spain"
     margin: 0
     width: 1200
 ---
