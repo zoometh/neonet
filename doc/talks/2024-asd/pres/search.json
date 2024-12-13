@@ -18,7 +18,7 @@
     "href": "index.html#radiocarbon-data",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Radiocarbon data",
-    "text": "Radiocarbon data\n\nSources3rd partsAlignmentOutliersROIWorflow\n\n\n\n\n\n\n\n\nhttps://github.com/ropensci/c14bazAAR\nhttps://github.com/zoometh/neonet\nhttps://github.com/ahb108/rcarbon\n\n\n\n\nBrami15\n\n\n\n\n\n\n\n\n\nref_table_per.xlsx\n\n\n\n\n\n\nEM - Early Mesolithic\n\n\n\n\nMM - Middle Mesolithic\n\n\n\n\nLM - Late Mesolithic\n\n\n\n\nEN - Early Neolithic\n\n\n\n\nMN - Middle Neolithic\n\n\n\n\nLN - Late Neolithic\n\n\n\n\n\n\n8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.\nmapping table with period and culture coming from different datasest to be mapped to the Neonet main classes (10 classes, among which 4 are undefined and period transition).\nUsing\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study."
+    "text": "Radiocarbon data\n\nSources3rd partsAlignmentOutliersROIWorflow\n\n\n\n\n\n\n\n\nhttps://github.com/ropensci/c14bazAAR\nhttps://github.com/zoometh/neonet\nhttps://github.com/ahb108/rcarbon\n\n\n\n\nBrami, M.N. A graphical simulation of the 2,000-year lag in Neolithic occupation between Central Anatolia and the Aegean basin. Archaeol Anthropol Sci 7, 319–327 (2015). https://doi.org/10.1007/s12520-014-0193-4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nref_table_per.xlsx\n\n\n\n\n\n\nEM - Early Mesolithic\n\n\n\n\nMM - Middle Mesolithic\n\n\n\n\nLM - Late Mesolithic\n\n\n\n\nEN - Early Neolithic\n\n\n\n\nMN - Middle Neolithic\n\n\n\n\nLN - Late Neolithic\n\n\n\n\n\n\n8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.\nmapping table with period and culture coming from different datasest to be mapped to the Neonet main classes (10 classes, among which 4 are undefined and period transition).\nUsing\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study."
   },
   {
     "objectID": "index.html#radiocarbon-dataset",
@@ -28,18 +28,18 @@
     "text": "Radiocarbon dataset\n\nENLM"
   },
   {
-    "objectID": "index.html#climates-data",
-    "href": "index.html#climates-data",
+    "objectID": "index.html#climates-data-and-model",
+    "href": "index.html#climates-data-and-model",
     "title": "Climates during the Spread of Farming in the Mediterranean",
-    "section": "Climates data",
-    "text": "Climates data\n\nSourcesMethods\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n\n Beyer et al. 20203\n\n\n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\n\nB &lt;- MAP &lt; 10 * Pthresh\nBW &lt;- B & MAP &lt; 5 * Pthresh\nBWh &lt;- BW & MAT &gt;= 18\nBWk &lt;- BW & MAT &lt; 18\nBS &lt;- B & MAP &gt;= 5 * Pthresh\nBSh &lt;- BS & MAT &gt;= 18\nBSk &lt;- BS & MAT &lt; 18\n\nA &lt;- Thot &gt;= 18 & !B\nAf &lt;- A & Pdry &gt;= 60\nAm &lt;- A & !Af & Pdry &gt;= 100 - MAP / 25\nAw &lt;- A & !Af & Pdry &lt; 100 - MAP / 25\n\n\n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
+    "section": "Climates data and model",
+    "text": "Climates data and model\n\nSourcesVariablesMethods\n\n\n\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n\n Beyer et al. 20203\n\n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\nA &lt;- Thot &gt;= 18 & !B\nAf &lt;- A & Pdry &gt;= 60\nAm &lt;- A & !Af & Pdry &gt;= 100 - MAP / 25\nAw &lt;- A & !Af & Pdry &lt; 100 - MAP / 25\n function pastclim::koeppen_geiger() \n\n\n\n\n\n\n\n\n\n\n\ncode\nnum\nvalue\nhexa color\ncolor\n\n\n\n\nAf\n1\nTropical, rainforest\n0000FF\n\n\n\nAm\n2\nTropical, monsoon\n0078FF\n\n\n\nAw\n3\nTropical, savannah\n46AAF\n\n\n\nBWh\n4\nArid, desert, hot\nFF0000\n\n\n\nBWk\n5\nArid, desert, cold\nFF9696\n\n\n\nBSh\n6\nArid, steppe, hot\nF5A500\n\n\n\nBSk\n7\nArid, steppe, cold\nFFDC64\n\n\n\nCsa\n8\nTemperate, dry summer, hot summer\nFFFF00\n\n\n\nCsb\n9\nTemperate, dry summer, warm summer\nC8C800\n\n\n\nCsc\n10\nTemperate, dry summer, cold summer\n969600\n\n\n\nCwa\n11\nTemperate, dry winter, hot summer\n96FF96\n\n\n\nCwb\n12\nTemperate, dry winter, warm summer\n64C864\n\n\n\n\n function neoent::neo_kss_create() \n\n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
   },
   {
-    "objectID": "index.html#modelling",
-    "href": "index.html#modelling",
+    "objectID": "index.html#modelling-dates",
+    "href": "index.html#modelling-dates",
     "title": "Climates during the Spread of Farming in the Mediterranean",
-    "section": "Modelling",
-    "text": "Modelling\n\nDates medians and KCC extractionDates interpolation\n\n\n\n\nMost recent LM and most ancient EN date weighted medians by site \n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
+    "section": "Modelling dates",
+    "text": "Modelling dates\n\nDates medians and KCC extractionDates interpolation\n\n\n\n\nMost recent LM and most ancient EN date weighted medians (w-mendian) by site \n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
   },
   {
     "objectID": "index.html#eastern-mediterranean-in-bc",
@@ -53,28 +53,35 @@
     "href": "index.html#near-east-9000-bc",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Near East (9,000 BC)",
-    "text": "Near East (9,000 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLorem"
+    "text": "Near East (9,000 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNeolithic mostly on Csa and BSk climates (Temperate, dry summer, hot summer and Temperate, dry summer, warm summer)\nNorth Levant and South Levant farmers separated by Mount Lebanon range (Dsa: Cold, dry summer, hot summer).\nCyprus is settled with Klimonas (idf 51)."
   },
   {
     "objectID": "index.html#near-east-8500-bc",
     "href": "index.html#near-east-8500-bc",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Near East (8,500 BC)",
-    "text": "Near East (8,500 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLorem"
+    "text": "Near East (8,500 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmall changes in the estimated area with Neolithic economy\n\nSouthward: new neolithic occupation in a BWh climate: Shkarat Msaied (idf 78)."
   },
   {
     "objectID": "index.html#near-east-8000-bc",
     "href": "index.html#near-east-8000-bc",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Near East (8,000 BC)",
-    "text": "Near East (8,000 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLorem"
+    "text": "Near East (8,000 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMount Lebanon range (Dsa) still existing as a frontier between North Levant and South Levant Neolithic\nCentral Anatolia Plateau (BSk) with new sites: Asikli Höyük (idf 10), Kaletepe (idf 50) and Pinarbasi A (idf 69)"
   },
   {
     "objectID": "index.html#near-east-7500-bc",
     "href": "index.html#near-east-7500-bc",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Near East (7,500 BC)",
-    "text": "Near East (7,500 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLorem"
+    "text": "Near East (7,500 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOnly one new occupation on the Central Anatolian Plateau, Musular (id 64): barrier\nIn Southern Levant, close concentration of occupations in different climates, Csa, BSk, BWh and newly BSh (Arid, steppe, hot)\nBSh sites: Nahal Efe (id 65), Hemar (id 42)"
+  },
+  {
+    "objectID": "index.html#central-anatolian-barrier",
+    "href": "index.html#central-anatolian-barrier",
+    "title": "Climates during the Spread of Farming in the Mediterranean",
+    "section": "Central Anatolian barrier",
+    "text": "Central Anatolian barrier\n\n7,300 BC7,000 BC6,700 BC"
   },
   {
     "objectID": "index.html#aegean-6600-bc",

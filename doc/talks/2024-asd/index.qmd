@@ -37,7 +37,7 @@ format:
     # self-contained: true
     # embed-resources: true
     # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "<img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_logo.png' style='height: 25px;vertical-align: middle;'>  18 Dec 2024, ASD-CSIC, Spain"
+    footer: "Huet & Mazzucco <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_logo.png' style='height: 25px;vertical-align: middle;'>  18 Dec 2024, ASD-CSIC, Spain"
     margin: 0
     width: 1200
 ---
@@ -302,15 +302,18 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ### 3rd parts
 
-<small>Brami, M.N. A graphical simulation of the 2,000-year lag in Neolithic occupation between Central Anatolia and the Aegean basin. <em>Archaeol Anthropol Sci</em> 7, 319–327 (2015). https://doi.org/10.1007/s12520-014-0193-4</small>
+<small>Brami, M.N. A graphical simulation of the 2,000-year lag in Neolithic occupation between Central Anatolia and the Aegean basin. <em>Archaeol Anthropol Sci</em> 7, 319–327 (2015). <https://doi.org/10.1007/s12520-014-0193-4></small>
 
 ::: columns
+
 ::: {.column width="40%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/references/brami15/fig1.png){width="550" style="horizontal-align: middle;"}
 :::
 
 ::: {.column width="60%"}
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/references/brami15/fig2.png){width="550" style="horizontal-align: middle;"}
+:::
+
 :::
 
 
@@ -466,12 +469,20 @@ leaflet::addPolygons(popup = roi, fillOpacity = 0)
 
 :::
 
-## Climates data
+## Climates data and model
 
 
 ::: {.panel-tabset}
 
 ### Sources
+
+
+```{=html}
+<iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
+```
+
+
+### Variables
 
 ::: columns
 
@@ -497,36 +508,50 @@ leaflet::addPolygons(popup = roi, fillOpacity = 0)
 <small> Beyer et *al.* 2020[^1]</small>
 
 
-```{=html}
-<iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
-```
-
-
 ### Methods
 
 ::: columns
 
 ::: {.column width="50%"}
 <img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 90px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 110px;vertical-align: middle;"/><br>[<https://github.com/EvolEcolGroup/pastclim>]{.smalltext}
-:::
 
-::: {.column width="50%"}
 ```{.r}
-B <- MAP < 10 * Pthresh
-BW <- B & MAP < 5 * Pthresh
-BWh <- BW & MAT >= 18
-BWk <- BW & MAT < 18
-BS <- B & MAP >= 5 * Pthresh
-BSh <- BS & MAT >= 18
-BSk <- BS & MAT < 18
-
 A <- Thot >= 18 & !B
 Af <- A & Pdry >= 60
 Am <- A & !Af & Pdry >= 100 - MAP / 25
 Aw <- A & !Af & Pdry < 100 - MAP / 25
 ```
 
-<small>![`pastclim::koeppen_geiger()`](https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R)</small>
+<small>
+function [pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R)
+</small>
+
+
+:::
+
+::: {.column width="50%"}
+
+
+| code |   num | value                                    | hexa color   | color                                                    |
+|------------|-------:|:------------------------------------------|:-------|:---------------------------------------------------------|
+| Af         |      1 | Tropical, rainforest                      | 0000FF | ![#0000FF](https://placehold.co/15x15/0000FF/0000FF.png) |
+| Am         |      2 | Tropical, monsoon                         | 0078FF | ![#0078FF](https://placehold.co/15x15/0078FF/0078FF.png) |
+| Aw         |      3 | Tropical, savannah                        | 46AAF  | ![#46AAF](https://placehold.co/15x15/46AAF/46AAF.png)    |
+| BWh        |      4 | Arid, desert, hot                         | FF0000 | ![#FF0000](https://placehold.co/15x15/FF0000/FF0000.png) |
+| BWk        |      5 | Arid, desert, cold                        | FF9696 | ![#FF9696](https://placehold.co/15x15/FF9696/FF9696.png) |
+| BSh        |      6 | Arid, steppe, hot                         | F5A500 | ![#F5A500](https://placehold.co/15x15/F5A500/F5A500.png) |
+| BSk        |      7 | Arid, steppe, cold                        | FFDC64 | ![#FFDC64](https://placehold.co/15x15/FFDC64/FFDC64.png) |
+| Csa        |      8 | Temperate, dry summer, hot summer         | FFFF00 | ![#FFFF00](https://placehold.co/15x15/FFFF00/FFFF00.png) |
+| Csb        |      9 | Temperate, dry summer, warm summer        | C8C800 | ![#C8C800](https://placehold.co/15x15/C8C800/C8C800.png) |
+| Csc        |     10 | Temperate, dry summer, cold summer        | 969600 | ![#969600](https://placehold.co/15x15/969600/969600.png) |
+| Cwa        |     11 | Temperate, dry winter, hot summer         | 96FF96 | ![#96FF96](https://placehold.co/15x15/96FF96/96FF96.png) |
+| Cwb        |     12 | Temperate, dry winter, warm summer        | 64C864 | ![#64C864](https://placehold.co/15x15/64C864/64C864.png) |
+
+
+<small>
+function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R)
+</small>
+
 
 :::
 
@@ -545,7 +570,7 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 
 
 
-## Modelling
+## Modelling dates
 
 ::: {.panel-tabset}
 
@@ -990,7 +1015,81 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
+## Central Anatolian barrier
 
+::: {.panel-tabset}
+
+
+### 7,300 BC
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7300-BC-CWAnatolie-koppen_9k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+```{r, message=FALSE}
+df <- "isochr-7300-BC-CWAnatolie-koppen_9k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
+```
+:::
+
+:::
+
+### 7,000 BC
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7000-BC-CWAnatolie-koppen_9k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+```{r, message=FALSE}
+df <- "isochr-7000-BC-CWAnatolie-koppen_9k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
+```
+:::
+
+:::
+
+### 6,700 BC
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-6700-BC-CWAnatolie-koppen_9k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+```{r, message=FALSE}
+df <- "isochr-6700-BC-CWAnatolie-koppen_9k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
+```
+:::
+
+:::
+
+:::
 
 ## Aegean (6,600 BC)
 
