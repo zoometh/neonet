@@ -134,7 +134,7 @@ gg.map <- neo_map(df.c14 = df_filtered,
                   selected.per = 'EN',
                   breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
                   dates.size = 1,
-                  title = "Radiocarbon dataset",
+                  title = "Radiocarbon dates",
                   roi = NA, dates.within.roi = FALSE)
 ggplot2::ggsave(paste0(root.path, "img/_map_data.png"), gg.map, width = 8, height = 6)
 

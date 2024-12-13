@@ -133,7 +133,7 @@ neo_map <- function(map.name = "map_atl",
       include.lowest = TRUE
     )
     nb.na.bin <- sum(is.na(df.dates$median_bin))
-    caption <- paste0("n = ", nrow(df.dates), "dates (", nb.na.bin, "out of range & not displayed) | ", "periods:", capt)
+    caption <- paste0("n = ", nrow(df.dates), " dates (", nb.na.bin, " out of range & not displayed) | ", "periods: ", capt)
     # df.dates$median <- abs(df.dates$median)
     g.neo.map <- g.neo.map +
       ggplot2::geom_sf(data = df.dates, ggplot2::aes(color = median_bin), inherit.aes = FALSE, size = dates.size) + 

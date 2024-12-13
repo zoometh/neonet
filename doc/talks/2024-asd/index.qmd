@@ -432,6 +432,14 @@ leaflet::addPolygons(popup = roi, fillOpacity = 0)
 
 :::
 
+## Radiocarbon dataset
+
+<center>
+
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_map_data.png" style="height: 650px;horizontal-align: middle;"/>
+
+
+</center>
 
 ## Climates data
 
