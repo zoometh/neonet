@@ -42,12 +42,15 @@ format:
     width: 1200
 ---
 
+
 # Introduction {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+
 
 
 ```{r, message=FALSE}
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
 ```
+
 
 ::: notes
 
@@ -310,6 +313,7 @@ Brami15
 ::: {.column width="70%"}
 
 
+
 ```{r, message=FALSE}
 library(DT)
 library(dplyr)
@@ -331,6 +335,7 @@ paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
 )
 #, options = list(width = "700px", pageLength = 10))
 ```
+
 <small>[ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/inst/extdata/ref_table_per.xlsx)</small>
 
 :::
@@ -371,6 +376,7 @@ paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
 ### Outliers
 
 
+
 ```{r, message=FALSE}
 library(DT)
 library(dplyr)
@@ -392,6 +398,7 @@ paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
 )
 #, options = list(width = "700px", pageLength = 10))
 ```
+
 <small>[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)</small>
 
 
@@ -406,6 +413,7 @@ paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
 
 <center>
 
+
 ```{r}
 library(dplyr)
 # df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
@@ -416,6 +424,7 @@ leaflet::addTiles() %>%
 leaflet::addPolygons(popup = roi, fillOpacity = 0) 
 # "<b>Hello World</b>")
 ```
+
 
 </center>
 
@@ -488,9 +497,11 @@ leaflet::addPolygons(popup = roi, fillOpacity = 0)
 <small> Beyer et *al.* 2020[^1]</small>
 
 
+
 ```{=html}
 <iframe width="1200" height="500" src="https://chelsa-climate.org/chelsa-trace21k/" title="Quarto Documentation"></iframe>
 ```
+
 
 
 ### Methods
@@ -684,9 +695,11 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 
 ## Near East (9,000 BC)
 
+
 ```{r, message=FALSE}
 df <- "isochr-9000-BC-NearEast-koppen_11k"
 ```
+
 
 ::: {.panel-tabset}
 
@@ -718,6 +731,7 @@ df <- "isochr-9000-BC-NearEast-koppen_11k"
 
 ::: {.column width="50%"}
 
+
 ```{r, message=FALSE}
 df <- "isochr-9000-BC-NearEast-koppen_11k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
@@ -725,6 +739,7 @@ data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
 neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ```
+
 :::
 
 :::
@@ -756,9 +771,11 @@ Lorem
 
 ## Near East (8,500 BC)
 
+
 ```{r, message=FALSE}
 df <- "isochr-8500-BC-NearEast-koppen_11k"
 ```
+
 
 ::: {.panel-tabset}
 
@@ -790,6 +807,7 @@ df <- "isochr-8500-BC-NearEast-koppen_11k"
 
 ::: {.column width="50%"}
 
+
 ```{r, message=FALSE}
 df <- "isochr-8500-BC-NearEast-koppen_11k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
@@ -797,6 +815,7 @@ data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
 neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ```
+
 :::
 
 :::
@@ -829,9 +848,11 @@ Lorem
 
 ## Near East (8,000 BC)
 
+
 ```{r, message=FALSE}
 df <- "isochr-8000-BC-NearEast-koppen_10k"
 ```
+
 
 ::: {.panel-tabset}
 
@@ -863,6 +884,7 @@ df <- "isochr-8000-BC-NearEast-koppen_10k"
 
 ::: {.column width="50%"}
 
+
 ```{r, message=FALSE}
 df <- "isochr-8000-BC-NearEast-koppen_10k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
@@ -870,6 +892,7 @@ data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
 neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ```
+
 :::
 
 :::
@@ -902,9 +925,11 @@ Lorem
 
 ## Near East (7,500 BC)
 
+
 ```{r, message=FALSE}
 df <- "isochr-7500-BC-NearEast-koppen_10k"
 ```
+
 
 ::: {.panel-tabset}
 
@@ -936,6 +961,7 @@ df <- "isochr-7500-BC-NearEast-koppen_10k"
 
 ::: {.column width="50%"}
 
+
 ```{r, message=FALSE}
 df <- "isochr-7500-BC-NearEast-koppen_10k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
@@ -943,6 +969,7 @@ data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
 neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ```
+
 :::
 
 :::
@@ -975,9 +1002,11 @@ Lorem
 
 ## Aegean (6,600 BC)
 
+
 ```{r, message=FALSE}
 df <- "isochr-5800-BC-Egee-koppen_9k"
 ```
+
 
 ::: {.panel-tabset}
 
@@ -1009,6 +1038,7 @@ df <- "isochr-5800-BC-Egee-koppen_9k"
 
 ::: {.column width="50%"}
 
+
 ```{r, message=FALSE}
 df <- "isochr-6600-BC-Egee-koppen_9k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
@@ -1016,6 +1046,7 @@ data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
 neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 ```
+
 :::
 
 :::
@@ -1051,9 +1082,11 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 
 ## Aegean (6,200 BC)
 
+
 ```{r, message=FALSE}
 df <- "isochr-6200-BC-Egee-koppen_8k"
 ```
+
 
 ::: {.panel-tabset}
 
@@ -1085,6 +1118,7 @@ df <- "isochr-6200-BC-Egee-koppen_8k"
 
 ::: {.column width="50%"}
 
+
 ```{r, message=FALSE}
 df <- "isochr-6200-BC-Egee-koppen_8k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/"
@@ -1092,6 +1126,7 @@ data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
 neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ```
+
 :::
 
 :::
@@ -1132,9 +1167,11 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 ## Aegean (5,800 BC)
 
+
 ```{r, message=FALSE}
 df <- "isochr-5800-BC-Egee-koppen_8k"
 ```
+
 
 ::: {.panel-tabset}
 
@@ -1166,11 +1203,13 @@ df <- "isochr-5800-BC-Egee-koppen_8k"
 
 ::: {.column width="50%"}
 
+
 ```{r, message=FALSE}
 data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
 neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ```
+
 :::
 
 :::
@@ -1618,6 +1657,7 @@ Rproductible methods. Enhancement of cultural and climatic data
 - 
 - Extract on the radiocarbon date weighted median
 :::
+
 
 
 
