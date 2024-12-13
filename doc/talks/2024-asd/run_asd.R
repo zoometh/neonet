@@ -128,8 +128,18 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 # neo_spd(df.c14 = head(df_filtered, 200), time.span = c(-12000, -6000))
 # neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 
-# Create a stacked barplot of climates from sites
+# general map
+source("R/neo_map.R")
+gg.map <- neo_map(df.c14 = df_filtered,
+                  selected.per = 'EN',
+                  breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
+                  dates.size = 1,
+                  title = "Radiocarbon dataset",
+                  roi = NA, dates.within.roi = FALSE)
+ggplot2::ggsave(paste0(root.path, "img/_map_data.png"), gg.map, width = 8, height = 6)
 
+
+# Create a stacked barplot of climates from sites
 kcc_colors <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv"
 kcc_colors <- read.csv(kcc_colors, sep = "\t")
 kcc_colors <- kcc_colors[ , c("code", "color")]

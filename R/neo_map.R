@@ -17,6 +17,12 @@
 #' @return A ggplot
 #'
 #' @examples
+#' 
+#' # Plot a curated dataset
+#' neo_map(df.c14 = df_filtered, 
+#'         selected.per = 'EN', 
+#'         breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
+#'         roi = NA, dates.within.roi = FALSE)
 #'
 #' # Plot current region and other river basins
 #' neo_map(df.c14 = df.c14, plot.other.ws = T, export.plot = F)
@@ -31,11 +37,16 @@ neo_map <- function(map.name = "map_atl",
                     plot.dates = TRUE,
                     dates.size = 1,
                     ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
+                    breaks_values = NA,
+                    # breaks_labels <- c("-8000", "-7000", "-6000", "-5000", "-4000")
                     selected.per = NA,
                     dates.within.roi = TRUE,
                     title = NA,
                     verbose = TRUE){
   `%>%` <- dplyr::`%>%` # used to not load dplyr
+  breaks_labels <- as.character(abs(breaks_values))
+  breaks_labels <- paste0(breaks_labels, "-", breaks_labels[-1])
+  breaks_labels <- breaks_labels[-length(breaks_labels)]
   if(is.character(roi)){
     if(verbose){
       print(paste0("ROI: Reads a GeoJSON path"))
@@ -67,6 +78,7 @@ neo_map <- function(map.name = "map_atl",
     }
     df.dates <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
   } 
+  df.dates$median <- round(df.dates$median, 0)
   if(dates.within.roi){
     df.dates <- sf::st_make_valid(df.dates)
     where.roi <- sf::st_make_valid(where.roi)
@@ -97,7 +109,7 @@ neo_map <- function(map.name = "map_atl",
     for(i in 1:nrow(periods.colors)){
       period <- periods.colors[i, "period"]
       color <- periods.colors[i, "color"]
-      capt <- c(capt, paste0("<span style='color: ", color, ";'>", period, "</span>"))
+      capt <- c(capt, paste0("<span style='color: ", color, ";'><b>", period, "</b></span>"))
     }
     capt <- paste0(capt, collapse = ", ")
     caption <- paste("n =", nrow(df.dates), "dates | periods:", capt)
@@ -106,27 +118,60 @@ neo_map <- function(map.name = "map_atl",
   g.neo.map <- ggplot2::ggplot(world) +
     # ggplot2::geom_sf(fill = '#7d7d7d', color = '#7d7d7d') +
     ggplot2::geom_sf() +
-    ggplot2::geom_sf(data = where.roi, color = 'black', fill = NA, inherit.aes = FALSE) +
     ggplot2::theme_bw()
+  if(is.character(roi)){
+    g.neo.map + 
+      ggplot2::geom_sf(data = where.roi, color = 'black', fill = NA, inherit.aes = FALSE)
+  }
   if(plot.dates){
+    # g.neo.map <- g.neo.map +
+    #   ggplot2::geom_sf(data = df.dates, inherit.aes = FALSE, size = dates.size)
+    df.dates$median_bin <- cut(
+      df.dates$median,  # Convert to absolute and numeric
+      breaks = breaks_values,           # Define custom breaks
+      labels = breaks_labels,       # Labels correspond to intervals (excluding the first edge)
+      include.lowest = TRUE
+    )
+    nb.na.bin <- sum(is.na(df.dates$median_bin))
+    caption <- paste0("n = ", nrow(df.dates), "dates (", nb.na.bin, "out of range & not displayed) | ", "periods:", capt)
+    # df.dates$median <- abs(df.dates$median)
     g.neo.map <- g.neo.map +
-      ggplot2::geom_sf(data = df.dates, inherit.aes = FALSE, size = dates.size)
+      ggplot2::geom_sf(data = df.dates, ggplot2::aes(color = median_bin), inherit.aes = FALSE, size = dates.size) + 
+      # ggplot2::scale_color_gradient(low = "lightpink", high = "darkred", name = "Median Age") # +
+      ggplot2::scale_color_viridis_d(option = "C", 
+                                     # breaks = breaks_values,  # Custom breaks for the color scale
+                                     # labels = breaks_labels,   # Custom labels for the breaks
+                                     name = "wmedian BC",
+                                     guide = ggplot2::guide_legend(
+                                       keyheight = ggplot2::unit(1, "cm"),  # Increase marker height
+                                       keywidth = ggplot2::unit(1, "cm")     # Increase marker width
+                                     )) +
+      ggplot2::theme(legend.position = "right")
+    # labs(title = "Map of Sites", subtitle = "Colored by Median Age") +  # Add titles and labels
+    # theme_minimal()  # Use a minimal theme
   }
   if(!is.na(title)){
     # caption <- paste0("n = ", nrow(df.dates), " dates")
     g.neo.map <- g.neo.map +
       ggplot2::labs(
-      title = title,
-      caption = caption) +
+        title = title,
+        caption = caption) +
       # ggplot2::theme_minimal() +
       ggplot2::theme(axis.title.y = ggplot2::element_blank(),
                      axis.title.x = ggplot2::element_blank()) +
       ggplot2::theme(plot.title = ggtext::element_markdown(),
                      plot.caption = ggtext::element_markdown())
   }
-  g.neo.map <- g.neo.map +
-    ggplot2::coord_sf(xlim = c(sf::st_bbox(roi)[1] - buff, sf::st_bbox(roi)[3] + buff),
-                      ylim = c(sf::st_bbox(roi)[2] - buff, sf::st_bbox(roi)[4] + buff)) +
+  if(is.character(roi)){
+    g.neo.map <- g.neo.map +
+      ggplot2::coord_sf(xlim = c(sf::st_bbox(roi)[1] - buff, sf::st_bbox(roi)[3] + buff),
+                        ylim = c(sf::st_bbox(roi)[2] - buff, sf::st_bbox(roi)[4] + buff))
+  } else {
+    g.neo.map <- g.neo.map +
+      ggplot2::coord_sf(xlim = c(sf::st_bbox(df.dates)[1] - buff, sf::st_bbox(df.dates)[3] + buff),
+                        ylim = c(sf::st_bbox(df.dates)[2] - buff, sf::st_bbox(df.dates)[4] + buff))
+  }
+  g.neo.map <- g.neo.map + 
     ggplot2::theme(axis.text = ggplot2::element_text(size = 7)) 
   return(g.neo.map)
 }
