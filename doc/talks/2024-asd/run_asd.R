@@ -64,16 +64,19 @@ obj.case <- list("NearEast", c(-9000), c(30, 30, 45, 41), "koppen_11k.tif")
 obj.case <- list("NearEast", c(-8500), c(30, 30, 45, 41), "koppen_11k.tif")
 obj.case <- list("NearEast", c(-8000), c(30, 30, 45, 41), "koppen_10k.tif")
 obj.case <- list("NearEast", c(-7500), c(30, 30, 45, 41), "koppen_10k.tif")
-obj.case <- list("CWAnatolie", c(-7900), c(24, 28, 45, 41), "koppen_10k.tif")
-obj.case <- list("CWAnatolie", c(-7600), c(24, 28, 45, 41), "koppen_19k.tif")
-obj.case <- list("CWAnatolie", c(-7300), c(24, 28, 45, 41), "koppen_9k.tif")
+# obj.case <- list("CWAnatolie", c(-7900), c(24, 28, 45, 41), "koppen_10k.tif")
+# obj.case <- list("CWAnatolie", c(-7600), c(24, 28, 45, 41), "koppen_10k.tif")
+obj.case <- list("CWAnatolie", c(-7300), c(23, 30, 45, 40), "koppen_9k.tif")
 obj.case <- list("CWAnatolie", c(-7000), c(24, 28, 45, 41), "koppen_9k.tif")
 obj.case <- list("CWAnatolie", c(-6700), c(24, 28, 45, 41), "koppen_9k.tif")
 obj.case <- list("Egee", c(-6600), c(18, 35, 34, 42), "koppen_9k.tif") # anct 
 obj.case <- list("Egee", c(-6200), c(18, 35, 34, 42), "koppen_8k.tif") 
 obj.case <- list("Egee", c(-5800), c(18, 35, 34, 42), "koppen_8k.tif") 
-obj.case <- list("Balkans", c(-5800), c(18, 35, 30, 43), "koppen_8k.tif")
-obj.case <- list("Italia", c(-5700, -5500, -5300), c(5, 37, 18, 48), "koppen_8k.tif")  # !!
+# obj.case <- list("Balkans", c(-5800), c(18, 35, 30, 43), "koppen_8k.tif")
+obj.case <- list("MedCentr", c(-6000), c(5, 35, 20, 47), "koppen_8k.tif")
+obj.case <- list("MedCentr", c(-5700), c(5, 35, 20, 47), "koppen_8k.tif")
+obj.case <- list("MedCentr", c(-5400), c(5, 35, 20, 47), "koppen_7k.tif")
+obj.case <- list("MedCentr", c(-5100), c(5, 35, 20, 47), "koppen_7k.tif")
 obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
 obj.case <- list("Mediterranean", c(-9000, -8000, -7000, -6000, -5000), c(-12, 27.5, 42.5, 47.5), "koppen_8k.tif") # !!
 ## by authors - - - - - - - - - - - - - - - - - - - - - - - -

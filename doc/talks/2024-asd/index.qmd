@@ -302,7 +302,16 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ### 3rd parts
 
-Brami15
+<small>Brami, M.N. A graphical simulation of the 2,000-year lag in Neolithic occupation between Central Anatolia and the Aegean basin. <em>Archaeol Anthropol Sci</em> 7, 319–327 (2015). https://doi.org/10.1007/s12520-014-0193-4</small>
+
+::: columns
+::: {.column width="40%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/references/brami15/fig1.png){width="550" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="60%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/references/brami15/fig2.png){width="550" style="horizontal-align: middle;"}
+:::
 
 
 ### Alignment
@@ -516,7 +525,9 @@ Af <- A & Pdry >= 60
 Am <- A & !Af & Pdry >= 100 - MAP / 25
 Aw <- A & !Af & Pdry < 100 - MAP / 25
 ```
-<small>![pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R)</small>
+
+<small>![`pastclim::koeppen_geiger()`](https://github.com/EvolEcolGroup/pastclim/blob/master/R/koeppen_geiger.R)</small>
+
 :::
 
 :::
@@ -545,7 +556,7 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 ::: columns
 
 ::: {.column width="60%"}
-<small>Most recent <span style="color: blue;">LM</span> and most ancient <span style="color: red;">EN</span> date weighted medians by site</small>
+<small>Most recent <span style="color: blue;">LM</span> and most ancient <span style="color: red;">EN</span> date weighted medians (w-mendian) by site</small>
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161-spd.png" width="500">
 :::
 
@@ -743,7 +754,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-Lorem
+* Neolithic mostly on <span style="color:#FFFF00;">Csa</span> and <span style="color:#FFDC64;">BSk</span> climates (*Temperate, dry summer, hot summer* and *Temperate, dry summer, warm summer*)
+* North Levant and South Levant farmers separated by Mount Lebanon range (<span style="color:#FF00FF;">Dsa</span>: *Cold, dry summer, hot summer*).
+* Cyprus is settled with <span style="color:#FFFF00;">Klimonas</span> (<b>idf</b> 51).
 
 </small></p>
 
@@ -815,7 +828,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-Lorem
+* Small changes in the estimated area with Neolithic economy  
+* Southward: new neolithic occupation in a <span style="color:#FF0000;">BWh</span> climate: Shkarat Msaied (<b>idf</b> 78).
 
 </small></p>
 
@@ -888,7 +902,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-Lorem
+* Mount Lebanon range (<span style="color:#FF00FF;">Dsa</span>) still existing as a frontier between North Levant and South Levant Neolithic
+* Central Anatolia Plateau (<span style="color:#FFDC64;">BSk</span>) with new sites: <span style="color:#FFDC64;">Asikli Höyük</span> (<b>idf</b> 10), <span style="color:#FFDC64;">Kaletepe</span> (<b>idf</b> 50) and <span style="color:#FFDC64;">Pinarbasi A</span> (<b>idf</b> 69)
+
 
 </small></p>
 
@@ -953,7 +969,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ::: columns
 
 ::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7600-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-7500-BC-NearEast-koppen_10k.png){width="700" style="horizontal-align: middle;"}
 :::
 
 
@@ -961,7 +977,10 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-Lorem
+* Only one new occupation on the Central Anatolian Plateau, Musular (<b>id</b> 64): barrier
+* In Southern Levant, close concentration of occupations in different climates, Csa, BSk, BWh and newly BSh (*Arid, steppe, hot*)
+* BSh sites: Nahal Efe (<b>id</b> 65), Hemar (<b>id</b> 42)
+
 
 </small></p>
 
