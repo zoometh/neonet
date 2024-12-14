@@ -60,23 +60,29 @@ source("R/neo_kcc_legend.R")
 source("R/neo_dbs_info_dates_datatable.R")
 ### Choice, # !! some study area overlap different KCC
 ## title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) use: https://geojson.io/#map=2/0/20 ;
+# Near East
 obj.case <- list("NearEast", c(-9000), c(30, 30, 45, 41), "koppen_11k.tif")
 obj.case <- list("NearEast", c(-8500), c(30, 30, 45, 41), "koppen_11k.tif")
 obj.case <- list("NearEast", c(-8000), c(30, 30, 45, 41), "koppen_10k.tif")
 obj.case <- list("NearEast", c(-7500), c(30, 30, 45, 41), "koppen_10k.tif")
-# obj.case <- list("CWAnatolie", c(-7900), c(24, 28, 45, 41), "koppen_10k.tif")
-# obj.case <- list("CWAnatolie", c(-7600), c(24, 28, 45, 41), "koppen_10k.tif")
+# CW barrier --------------------------------------------------------------
 obj.case <- list("CWAnatolie", c(-7300), c(23, 30, 45, 40), "koppen_9k.tif")
 obj.case <- list("CWAnatolie", c(-7000), c(23, 30, 45, 40), "koppen_9k.tif")
 obj.case <- list("CWAnatolie", c(-6700), c(23, 30, 45, 40), "koppen_9k.tif")
-obj.case <- list("Egee", c(-6600), c(18, 35, 34, 42), "koppen_9k.tif") # anct 
-obj.case <- list("Egee", c(-6200), c(18, 35, 34, 42), "koppen_8k.tif") 
-obj.case <- list("Egee", c(-5800), c(18, 35, 34, 42), "koppen_8k.tif") 
-# obj.case <- list("Balkans", c(-5800), c(18, 35, 30, 43), "koppen_8k.tif")
+# --------------------------------------------------------------------------
+# Med Orient
+obj.case <- list("MedEast", c(-6600), c(18, 35, 34, 43), "koppen_9k.tif")
+obj.case <- list("MedEast", c(-6200), c(18, 35, 34, 43), "koppen_8k.tif") 
+obj.case <- list("MedEast", c(-5800), c(18, 35, 34, 43), "koppen_8k.tif") 
+# Med Centr
 obj.case <- list("MedCentr", c(-6000), c(5, 35, 20, 47), "koppen_8k.tif")
 obj.case <- list("MedCentr", c(-5700), c(5, 35, 20, 47), "koppen_8k.tif")
 obj.case <- list("MedCentr", c(-5400), c(5, 35, 20, 47), "koppen_7k.tif")
 obj.case <- list("MedCentr", c(-5100), c(5, 35, 20, 47), "koppen_7k.tif")
+# Med Occ
+obj.case <- list("MedWest", c(-5600), c(-11, 35, 14, 45), "koppen_8k.tif")
+obj.case <- list("MedWest", c(-5300), c(-11, 35, 14, 45), "koppen_7k.tif")
+
 obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
 obj.case <- list("Mediterranean", c(-9000, -8000, -7000, -6000, -5000), c(-12, 27.5, 42.5, 47.5), "koppen_8k.tif") # !!
 ## by authors - - - - - - - - - - - - - - - - - - - - - - - -
@@ -133,13 +139,14 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 
 # general map
 source("R/neo_map.R")
+per <- 'LM'
 gg.map <- neo_map(df.c14 = df_filtered,
-                  selected.per = 'EN',
+                  selected.per = per,
                   breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
                   dates.size = 1,
                   title = "Radiocarbon dates",
                   roi = NA, dates.within.roi = FALSE)
-ggplot2::ggsave(paste0(root.path, "img/_map_data_EN.png"), gg.map, width = 8, height = 6)
+ggplot2::ggsave(paste0(root.path, "img/_map_data_", per, ".png"), gg.map, width = 8, height = 6)
 
 
 # Create a stacked barplot of climates from sites

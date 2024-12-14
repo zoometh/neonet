@@ -361,7 +361,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     if(nb.contours < 5 & nb.contours > 0){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     } else {subtit <- paste0("XXX") }
-    capt <- paste0("max SD = ", max.sd," | ", "isochr. on earliest wmedians of ", nrow(df), " dates | ", n.dates.display, " dates older than isochr. (displayed)\n")
+    capt <- paste0("max SD = ", max.sd," | ", "isochr. on earliest w-medians of ", nrow(df), " dates | ", n.dates.display, " dates older than isochr. (displayed)\n")
     capt <- paste0(capt, nb.dates.tot, " calibrated dates BC in total | ")
     capt <- paste0(capt, "basemap: ", basemap.info, "")
     
@@ -370,8 +370,8 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     if(nb.contours < 5 & nb.contours > 0){
       subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
     }
-    capt <- paste0(periods, " | isochrones on the latest weighted medians | ")
-    capt <- paste0(capt, nrow(df), " weighted medians from ", nb.dates.tot, " calibrated dates BC\n",
+    capt <- paste0(periods, " | isochrones on the latest w-medians | ")
+    capt <- paste0(capt, nrow(df), " w-medians from ", nb.dates.tot, " calibrated dates BC\n",
                    "basemap: ", basemap.info, "")
   }
   # create map
