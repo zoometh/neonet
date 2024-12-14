@@ -1400,7 +1400,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 * ca 6,300 BC, <span style="color:#FFFF00;">Uzzo</span> (Grotta del', idf <b>164</b>, no climatic data) first occupation, few years after <span style="color:#FFFF00;">Sidari</span> (idf <b>147</b>)
 * Between 6,100 and 6,100 numerous occupations: <span style="color:#FFFF00;">Continenza</span>, <span style="color:#FFFF00;">Csa</span>
-* Possible connections between Serbian <span style="color:#C8FF50;">Cfa</span> sites (Topole-Bač idf <b>157</b>, Donja Branjevina idf <b>41</b>) and Gudnja Cave (idf <b>62</b>) in Dalmatia via Obre I (idf <b>94</b>)
+* Possible connections between Serbian <span style="color:#C8FF50;">Cfa</span> sites: <span style="color:#C8FF50;">Topole-Bač</span> (idf <b>157</b>), <span style="color:#C8FF50;">Donja Branjevina</span> (idf <b>41</b>) and <span style="color:#C8FF50;">Gudnja</span> (idf <b>62</b>) in Dalmatia via <span style="color:#37C8FF;">Obre I</span> (idf <b>94</b>)
+* <span style="color:#37C8FF;">Obre I</span> (idf <b>94</b>) in a <span style="color:#37C8FF;">Cfa</span> climate (*Cold, no dry season, warm summer*)
 
 </small></p>
 
@@ -1469,9 +1470,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* 5800-5600 BC: Rapid inland expansion <span style="color:#FFFF00;">Csa</span>, for ex: <span style="color:#FFFF00;">La Marmotta</span> (idf <b>94</b>) and <span style="color:#FFFF00;">Rio Tana</span> (idf <b>149</b>), Central Italy
-* 5600 BC: Slowdown linked to the transition to a climate with no dry season (<span style="color:#C8FF50;">Cfa</span>, <span style="color:#64FF50;">Cfb</span>), northern Abruzzo.
-* Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
+* 5,800 BC, Pollera, Arma dell'Aquila and Arene Candide in Liguria in Cfa climates
+* 5,800-5,600 BC: Rapid inland expansion <span style="color:#FFFF00;">Csa</span>, for ex: <span style="color:#FFFF00;">La Marmotta</span> (idf <b>94</b>) and <span style="color:#FFFF00;">Rio Tana</span> (idf <b>149</b>), Central Italy. Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
+* 5,700, SHM-1 in Tunisia in BSk climate
 
 </small></p>
 
@@ -1543,7 +1544,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-Lorem
+* 5,600-5,400 BC: Slowdown linked to the transition to a climate with no dry season (<span style="color:#C8FF50;">Cfa</span>, <span style="color:#64FF50;">Cfb</span>), northern Abruzzo.
+* No occupations in the the Po Plain
+* Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
 
 </small></p>
 
