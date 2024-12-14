@@ -32,7 +32,7 @@
     "href": "index.html#climates-data-and-model",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Climates data and model",
-    "text": "Climates data and model\n\nSourcesVariablesMethods\n\n\n\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n\n Beyer et al. 20203\n\n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\nA &lt;- Thot &gt;= 18 & !B\nAf &lt;- A & Pdry &gt;= 60\nAm &lt;- A & !Af & Pdry &gt;= 100 - MAP / 25\nAw &lt;- A & !Af & Pdry &lt; 100 - MAP / 25\n function pastclim::koeppen_geiger() \n\n\n\n\n\n\n\n\n\n\n\ncode\nnum\nvalue\nhexa color\ncolor\n\n\n\n\nAf\n1\nTropical, rainforest\n0000FF\n\n\n\nAm\n2\nTropical, monsoon\n0078FF\n\n\n\nAw\n3\nTropical, savannah\n46AAF\n\n\n\nBWh\n4\nArid, desert, hot\nFF0000\n\n\n\nBWk\n5\nArid, desert, cold\nFF9696\n\n\n\nBSh\n6\nArid, steppe, hot\nF5A500\n\n\n\nBSk\n7\nArid, steppe, cold\nFFDC64\n\n\n\nCsa\n8\nTemperate, dry summer, hot summer\nFFFF00\n\n\n\nCsb\n9\nTemperate, dry summer, warm summer\nC8C800\n\n\n\nCsc\n10\nTemperate, dry summer, cold summer\n969600\n\n\n\nCwa\n11\nTemperate, dry winter, hot summer\n96FF96\n\n\n\nCwb\n12\nTemperate, dry winter, warm summer\n64C864\n\n\n\n\n function neoent::neo_kss_create() \n\n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
+    "text": "Climates data and model\n\nSourcesVariablesMethods\n\n\n\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n\n Beyer et al. 20203\n\n\n\n\nhttps://github.com/EvolEcolGroup/pastclim\nA &lt;- Thot &gt;= 18 & !B\nAf &lt;- A & Pdry &gt;= 60\nAm &lt;- A & !Af & Pdry &gt;= 100 - MAP / 25\nAw &lt;- A & !Af & Pdry &lt; 100 - MAP / 25\n function pastclim::koeppen_geiger() \n\n\n\n\n\n\n\n\n\ncode\nclimate\ncolors\n\n\n\n\nA*\nTropical\n  \n\n\nB*\nArid\n   \n\n\nC*\nTemperate\n        \n\n\nD*\nCold\n           \n\n\nE*\nPolar\n \n\n\n\n function neoent::neo_kss_create() \n\n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
   },
   {
     "objectID": "index.html#modelling-dates",
@@ -88,7 +88,7 @@
     "href": "index.html#aegean-6200-bc",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Aegean (6,200 BC)",
-    "text": "Aegean (6,200 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn Greece, Thessaly and Macedonia, dense settlements in BSk climates (Sesklo, Paliambela, Anzabegovo, etc. )\nFirst Neolithic in Northern Aegean (Ugurlu, idf 44) related to first Neolithic in Northwestern Anatolia: Barcin (idf 9), Aktopraklik (idf 2)\nThe Neolithic pioneer front seems to slow down in Western Greece (ridge line, river basins), exception: Sidari (idf 42) and Northern Greece.\nNew climate: Cfa (Temperate, no dry season, hot summer). Sites: Mavropigi (idf 19), Lefkopetra (idf 28), Ofeas (idf 32)"
+    "text": "Aegean (6,200 BC)\n\nClimatesSitesAssumptionsAegean and Adriatic river basins\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn Greece, Thessaly and Macedonia, dense settlements in BSk climates (Sesklo, Paliambela, Anzabegovo, etc. )\nFirst Neolithic in Northern Aegean (Ugurlu, idf 44) related to first Neolithic in Northwestern Anatolia: Barcin (idf 9), Aktopraklik (idf 2)\nThe Neolithic pioneer front seems to slow down in Western Greece (ridge line, river basins), exception: Sidari (idf 42) and Northern Greece.\nNew climate: Cfa (Temperate, no dry season, hot summer). Sites: Mavropigi (idf 19), Lefkopetra (idf 28), Ofeas (idf 32)"
   },
   {
     "objectID": "index.html#aegean-5800-bc",
@@ -96,13 +96,6 @@
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Aegean (5,800 BC)",
     "text": "Aegean (5,800 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRapid expansion in the Southern Balkans (Csa and BSk).\nNorthern Balkans expansion required adapting agriculture and stockbreeding systems to colder climates (Dfa, Dfb)\nSlowdown of Neolithic expansion. Early northern occupations, such as Porodin (idf 26).\nSouth of Italy (off the map) is reached, probably from Corfu: Sidari (idf 40)\nConfirms: Krauß et al. 20185, Ivanova et al. 20186."
-  },
-  {
-    "objectID": "index.html#central-mediterranean-in-bc",
-    "href": "index.html#central-mediterranean-in-bc",
-    "title": "Climates during the Spread of Farming in the Mediterranean",
-    "section": "Central Mediterranean (in BC)",
-    "text": "Central Mediterranean (in BC)\n\n600058005600"
   },
   {
     "objectID": "index.html#western-mediterranean-in-bc",

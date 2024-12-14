@@ -134,12 +134,12 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 # general map
 source("R/neo_map.R")
 gg.map <- neo_map(df.c14 = df_filtered,
-                  selected.per = 'LM',
+                  selected.per = 'EN',
                   breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
                   dates.size = 1,
                   title = "Radiocarbon dates",
                   roi = NA, dates.within.roi = FALSE)
-ggplot2::ggsave(paste0(root.path, "img/_map_data_LM.png"), gg.map, width = 8, height = 6)
+ggplot2::ggsave(paste0(root.path, "img/_map_data_EN.png"), gg.map, width = 8, height = 6)
 
 
 # Create a stacked barplot of climates from sites
