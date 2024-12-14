@@ -310,7 +310,7 @@ Data: radiocarbon dates and palaeoclimatic data.
 ::: {.panel-tabset}
 
 
-### Sources
+### Src
 
 ::: columns
 ::: {.column width="60%"}
@@ -331,7 +331,7 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 :::
 
-### 3rd parts
+### 3<sup>rd</sup> parts
 
 <small>Brami, M.N. A graphical simulation of the 2,000-year lag in Neolithic occupation between Central Anatolia and the Aegean basin. <em>Archaeol Anthropol Sci</em> 7, 319–327 (2015). <https://doi.org/10.1007/s12520-014-0193-4></small>
 
@@ -348,7 +348,7 @@ Data: radiocarbon dates and palaeoclimatic data.
 :::
 
 
-### Alignment
+### Align<sup>t</sup>
 
 ::: {.column width="70%"}
 
@@ -473,32 +473,35 @@ leaflet::addPolygons(popup = roi, fillOpacity = 0)
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/workflow-radiocaron-dataset.png)
 </center>
 
-:::
 
-## Radiocarbon dataset
+### Base
 
 
-::: {.panel-tabset}
+::: columns
 
-### EN 
-
+::: {.column width="50%"}
 <center>
 
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_map_data_EN.png" style="height: 650px;horizontal-align: middle;"/>
-
-
-</center>
-
-### LM 
-
-<center>
-
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_map_data_LM.png" style="height: 650px;horizontal-align: middle;"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_map_data_EN.png" style="width: 650px;horizontal-align: middle;"/>
 
 
 </center>
 
 :::
+
+::: {.column width="50%"}
+<center>
+
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_map_data_LM.png" style="width: 650px;horizontal-align: middle;"/>
+
+
+</center>
+:::
+
+:::
+
+:::
+
 
 ## Climates data and model
 
@@ -641,7 +644,7 @@ df.altern$popup_content <- apply(sf::st_drop_geometry(df.altern), 1, function(ro
   paste0("<b>SiteName:</b> ", row["SiteName"], "<br>",
          "<b>AlternativeNames:</b> ", row["AlternativeNames"], "<br>")
 })
-leaflet::leaflet(df.altern, width = "650px", height = "350px") %>%
+leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
   leaflet::addTiles() %>%  # Add base tiles
   leaflet::addCircleMarkers(
     data = df.altern,
@@ -663,7 +666,7 @@ leaflet::leaflet(df.altern, width = "650px", height = "350px") %>%
 :::
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/method_github_issues_sitenames.png" width="400">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/method_github_issues_sitenames.png" width="400">
 
 :::
 
@@ -681,7 +684,7 @@ leaflet::leaflet(df.altern, width = "650px", height = "350px") %>%
 :::
 
 ::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/neonet_kcc.png" width="400">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/neonet_kcc.png" width="600">
 :::
 
 :::
@@ -1095,8 +1098,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 <small>
 
 * ca 7500-7000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB *koine*. 
-* ca 6,700 BC, first South Western and Western Anatolian sites of Bademagaci (id <b>16</b>) and Cukurici (id <b>23</b>) are temporally (w-medians) and spatially (distances) close to Cretan sites of Delphinos (idf <b>25</b>) and Knossos (id <b>61</b>).
-* ca 6200 BC, aridification of the Central Anatolian Plateau (*8.2 ky BP event*)
+* ca 6,700 BC, first South Western and Western Anatolian sites of <span style="color:#FFFF00;">Bademagaci</span> (idf <b>16</b>) and  <span style="color:#FFFF00;">Cukurici</span> (id <b>23</b>) are temporally (w-medians) and spatially (distances) close to Cretan sites of  <span style="color:#FFFF00;">Delphinos</span> (id <b>23</b>)(idf <b>25</b>) and <span style="color:#FFFF00;">Knossos</span>(idf <b>61</b>).
+* ca 6,200 BC, aridification of the Central Anatolian Plateau (*8.2 ky BP event*)
 
 </small>
 
@@ -1395,7 +1398,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-Lorem
+* ca 6,300 BC, <span style="color:#FFFF00;">Uzzo</span> (Grotta del', idf <b>164</b>, no climatic data) first occupation, few years after <span style="color:#FFFF00;">Sidari</span> (idf <b>147</b>)
+* Between 6,100 and 6,100 numerous occupations: <span style="color:#FFFF00;">Continenza</span>, <span style="color:#FFFF00;">Csa</span>
+* Possible connections between Serbian <span style="color:#C8FF50;">Cfa</span> sites (Topole-Bač idf <b>157</b>, Donja Branjevina idf <b>41</b>) and Gudnja Cave (idf <b>62</b>) in Dalmatia via Obre I (idf <b>94</b>)
 
 </small></p>
 
