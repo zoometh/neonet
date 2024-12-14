@@ -73,7 +73,7 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-
 Holocene
 :::
 
-## Climates, economy and physiologists 
+## Climates and grains 
 
 ::: columns
 
@@ -99,8 +99,6 @@ Holocene
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/bid_against_grain.jpg" height="550"><br>
 
 </center>
-
-
 
 :::
 
@@ -603,7 +601,7 @@ function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/
 ::: {.panel-tabset}
 
 
-### Dates medians and KCC extraction
+### Medians
 
 
 ::: columns
@@ -614,7 +612,7 @@ function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/
 :::
 
 ::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="400">
+
 :::
 
 :::
@@ -624,14 +622,71 @@ function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/
 - Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
 :::
 
-::: notes
-- With R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases. 
-- We map these dates to the Neonet periods (here on the left **class**).
-- Then we remove duplicated dates and discard outliers (currently in process).
-- Some 4,000 dates are now available for the study.
+### Location
+
+
+
+::: columns
+
+::: {.column width="60%"}
+<center>
+
+```{r}
+library(dplyr)
+# df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
+sitenames <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_sitenames.geojson"
+df <- sf::st_read(sitenames, quiet = T)
+df.altern <- subset(df, !is.na(AlternativeNames))
+df.altern$popup_content <- apply(sf::st_drop_geometry(df.altern), 1, function(row) {
+  paste0("<b>SiteName:</b> ", row["SiteName"], "<br>",
+         "<b>AlternativeNames:</b> ", row["AlternativeNames"], "<br>")
+})
+leaflet::leaflet(df.altern, width = "700px", height = "450px") %>%
+  leaflet::addTiles() %>%  # Add base tiles
+  leaflet::addCircleMarkers(
+    data = df.altern,
+    popup = ~popup_content,  # Use the dynamically generated popup content
+    radius = 5, 
+    color = "blue"
+  )
+
+# roi <- paste0('corrected_sitenames.geojson')
+# leaflet::leaflet(df, width = "700px", height = "450px") %>% 
+# leaflet::addTiles() %>%
+# leaflet::addCircles(popup = roi) 
+# "<b>Hello World</b>")
+```
+
+</center>
+
+<small>[c14_corrected_sitenames.geojson](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_corrected_sitenames.geojson)</small>
 :::
 
-### Dates interpolation
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/method_github_issues_sitenames.png" width="400">
+
+:::
+
+:::
+
+
+
+
+### Add KCC
+
+::: columns
+
+::: {.column width="60%"}
+
+:::
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="400">
+:::
+
+:::
+
+### Interpolation
 
 ::: columns
 
@@ -726,8 +781,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * Neolithic mostly on <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates 
-* North and South Levant farmers separated by<span style="color:#FF00FF;">Dsa</span> (*Cold, dry summer, hot summer*) climates: Mount Lebanon mountain range.
-* Cyprus early settlement: <span style="color:#FFFF00;">Klimonas</span> (<b>idf</b> 51).
+* North and South Levant farmers separated by <span style="color:#FF00FF;">Dsa</span> (*Cold, dry summer, hot summer*) climates: Mount Lebanon mountain range.
+* Cyprus early settlement: <span style="color:#FFFF00;">Klimonas</span> (idf <b>51</b>).
 
 </small></p>
 
@@ -800,7 +855,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * Small changes in the estimated area with Neolithic economy  
-* Southward: new neolithic occupation in a <span style="color:#FF0000;">BWh</span> climate (*Arid, desert, hot*): <span style="color:#FF0000;">Shkarat Msaied</span> (<b>idf</b> 78).
+* Southward: new neolithic occupation in a <span style="color:#FF0000;">BWh</span> climate (*Arid, desert, hot*): <span style="color:#FF0000;">Shkarat Msaied</span> (idf <b>78</b>).
 
 </small></p>
 
@@ -873,8 +928,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* Mount Lebanon range (<span style="color:#FF00FF;">Dsa</span>) still existing as a frontier between North Levant and South Levant Neolithic
-* Central Anatolia Plateau (<span style="color:#FFDC64;">BSk</span>) with new sites: <span style="color:#FFDC64;">Asikli Höyük</span> (<b>idf</b> 10), <span style="color:#FFDC64;">Kaletepe</span> (<b>idf</b> 50) and <span style="color:#FFDC64;">Pinarbasi A</span> (<b>idf</b> 69)
+* Mount Lebanon range (<span style="color:#FF00FF;">Dsa</span>) still acts as a frontier between North Levant and South Levant Neolithic
+* Central Anatolia Plateau (<span style="color:#FFDC64;">BSk</span>) with new sites: <span style="color:#FFDC64;">Asikli Höyük</span> (idf <b>10</b>), <span style="color:#FFDC64;">Kaletepe</span> (idf <b>50</b>) and <span style="color:#FFDC64;">Pinarbasi A</span> (idf <b>69</b>)
 
 
 </small></p>
@@ -948,9 +1003,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* Only one new occupation on the Central Anatolian Plateau, <span style="color:#FFDC64;">Musular</span> (<b>id</b> 64): barrier
+* Only one new occupation on the Central Anatolian Plateau, <span style="color:#FFDC64;">Musular</span> (idf <b>64</b>): barrier
 * In Southern Levant, close concentration of occupations in different climates, <span style="color:#FFFF00;">Csa</span>, <span style="color:#FFDC64;">BSk</span>, <span style="color:#FF0000;">BWh</span> and newly <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*)
-* <span style="color:#F5A500;">BSh</span> sites: <span style="color:#F5A500;">Nahal Efe</span> (<b>id</b> 65), <span style="color:#F5A500;">Hemar</span> (<b>id</b> 42)
+* <span style="color:#F5A500;">BSh</span> sites: <span style="color:#F5A500;">Nahal Efe</span> (idf <b>65</b>), <span style="color:#F5A500;">Hemar</span> (idf <b>42</b>)
 
 
 </small></p>
@@ -1036,6 +1091,10 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 :::
 
 ### Asumptions
+
+* ca 7500-7000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB *koine*. 
+* ca 6,700 BC, first South Western and Western Anatolian sites of Bademagaci (id <b>16</b>) and Cukurici (id <b>23</b>) are temporally (w-medians) and spatially (distances) close to Cretan sites of Delphinos (idf <b>25</b>) and Knossos (id <b>61</b>).
+* ca 6200 BC, aridification of the Central Anatolian Plateau (*8.2 ky BP event*)
 
 :::
 
