@@ -81,13 +81,13 @@ Holocene
 
 <center>
 
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/bib_encyclopedie_grain.png" height="350"><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/bib_encyclopedie_grain.png" height="300"><br>
 
 </center>
 
-⬆️ <small> Quesnay, F. (1757). "Grains". In D. Diderot & J. le Rond d’Alembert (Eds.), *L'Encyclopédie* (Vol. 7, pp. 812-31. Retrieved from [bibnum.institutdefrance.fr](https://bibnum.institutdefrance.fr/viewer/2099/?offset=#page=870&viewer=picture&o=bookmark&n=0&q=).</small>
+<small> ⬆️ Quesnay, F. (1757). "Grains". In D. Diderot & J. le Rond d’Alembert (Eds.), *L'Encyclopédie* (Vol. 7), pp. 812-31. from [bibnum.institutdefrance.fr](https://bibnum.institutdefrance.fr/viewer/2099/?offset=#page=870&viewer=picture&o=bookmark&n=0&q=).</small>
 
-<small> Scott, J. C. (2017). *Against the grain: A deep history of the earliest states*. Yale University Press.</small> ➡️
+<small> Scott, J. C. (2017). *Against the grain: A deep history of the earliest states*. Yale University Press.➡️ </small> 
 
 :::
 
@@ -96,7 +96,7 @@ Holocene
 
 <center>
 
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/bid_against_grain.jpg" height="550"><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/bid_against_grain.png" height="500"><br>
 
 </center>
 
@@ -641,12 +641,12 @@ df.altern$popup_content <- apply(sf::st_drop_geometry(df.altern), 1, function(ro
   paste0("<b>SiteName:</b> ", row["SiteName"], "<br>",
          "<b>AlternativeNames:</b> ", row["AlternativeNames"], "<br>")
 })
-leaflet::leaflet(df.altern, width = "700px", height = "450px") %>%
+leaflet::leaflet(df.altern, width = "650px", height = "350px") %>%
   leaflet::addTiles() %>%  # Add base tiles
   leaflet::addCircleMarkers(
     data = df.altern,
     popup = ~popup_content,  # Use the dynamically generated popup content
-    radius = 5, 
+    radius = 3, 
     color = "blue"
   )
 
@@ -676,12 +676,12 @@ leaflet::leaflet(df.altern, width = "700px", height = "450px") %>%
 
 ::: columns
 
-::: {.column width="60%"}
-
-:::
-
 ::: {.column width="40%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="400">
+:::
+
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/neonet_kcc.png" width="400">
 :::
 
 :::
@@ -1092,9 +1092,13 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 
 ### Asumptions
 
+<small>
+
 * ca 7500-7000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB *koine*. 
 * ca 6,700 BC, first South Western and Western Anatolian sites of Bademagaci (id <b>16</b>) and Cukurici (id <b>23</b>) are temporally (w-medians) and spatially (distances) close to Cretan sites of Delphinos (idf <b>25</b>) and Knossos (id <b>61</b>).
 * ca 6200 BC, aridification of the Central Anatolian Plateau (*8.2 ky BP event*)
+
+</small>
 
 :::
 
