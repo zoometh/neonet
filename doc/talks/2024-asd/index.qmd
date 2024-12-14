@@ -1615,7 +1615,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-Lorem
+* *Leapfrogs*, originally from Italy, with settlements in Csa climates mostly: 
+* Le Secche -5671 connects with Pont de Roque-Haute -5970 on cearmics
 
 </small></p>
 
