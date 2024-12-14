@@ -635,88 +635,6 @@ function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/
 Radiocarbon dates are still being revised, and many of them need to be verified. First modeling
 :::
 
-## Eastern Mediterranean (in BC)
-
-::: {.panel-tabset}
-
-### 9000
-
-::: columns
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-9000BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-9000BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
-:::
-
-:::
-
-### 8400
-
-::: columns
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-8400BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-8400BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
-:::
-
-:::
-
-### 7600
-
-::: columns
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-7600BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-7600BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
-:::
-
-:::
-
-### 6800
-
-::: columns
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6800BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6800BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
-:::
-
-:::
-
-### 6200
-
-::: columns
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN-kcc.png){width="400" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6200BC-EN-kcc-legend.png){width="400" style="horizontal-align: middle;"}
-:::
-
-:::
-
-:::
-
-
 
 ## Near East (9,000 BC)
 
@@ -779,9 +697,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* Neolithic mostly on <span style="color:#FFFF00;">Csa</span> and <span style="color:#FFDC64;">BSk</span> climates (*Temperate, dry summer, hot summer* and *Temperate, dry summer, warm summer*)
-* North Levant and South Levant farmers separated by Mount Lebanon range (<span style="color:#FF00FF;">Dsa</span>: *Cold, dry summer, hot summer*).
-* Cyprus is settled with <span style="color:#FFFF00;">Klimonas</span> (<b>idf</b> 51).
+* Neolithic mostly on <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates 
+* North and South Levant farmers separated by<span style="color:#FF00FF;">Dsa</span> (*Cold, dry summer, hot summer*) climates: Mount Lebanon mountain range.
+* Cyprus early settlement: <span style="color:#FFFF00;">Klimonas</span> (<b>idf</b> 51).
 
 </small></p>
 
@@ -854,7 +772,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * Small changes in the estimated area with Neolithic economy  
-* Southward: new neolithic occupation in a <span style="color:#FF0000;">BWh</span> climate: Shkarat Msaied (<b>idf</b> 78).
+* Southward: new neolithic occupation in a <span style="color:#FF0000;">BWh</span> climate (*Arid, desert, hot*): <span style="color:#FF0000;">Shkarat Msaied</span> (<b>idf</b> 78).
 
 </small></p>
 
@@ -1002,9 +920,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* Only one new occupation on the Central Anatolian Plateau, Musular (<b>id</b> 64): barrier
-* In Southern Levant, close concentration of occupations in different climates, Csa, BSk, BWh and newly BSh (*Arid, steppe, hot*)
-* BSh sites: Nahal Efe (<b>id</b> 65), Hemar (<b>id</b> 42)
+* Only one new occupation on the Central Anatolian Plateau, <span style="color:#FFDC64;">Musular</span> (<b>id</b> 64): barrier
+* In Southern Levant, close concentration of occupations in different climates, <span style="color:#FFFF00;">Csa</span>, <span style="color:#FFDC64;">BSk</span>, <span style="color:#FF0000;">BWh</span> and newly <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*)
+* <span style="color:#F5A500;">BSh</span> sites: <span style="color:#F5A500;">Nahal Efe</span> (<b>id</b> 65), <span style="color:#F5A500;">Hemar</span> (<b>id</b> 42)
 
 
 </small></p>
@@ -1242,6 +1160,24 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
+### Aegean and Adriatic river basins
+
+<center>
+
+```{r}
+library(dplyr)
+# df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
+df <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/wsh_med.geojson", quiet = T)
+roi <- paste0('<a href="', "https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/roi.geojson", '" target="_blank">roi.geojson</a>')
+leaflet::leaflet(df, width = "700px", height = "450px") %>% 
+leaflet::addTiles() %>%
+leaflet::addPolygons(popup = roi, fillOpacity = .5) 
+# "<b>Hello World</b>")
+```
+
+</center>
+
+
 :::
 
 
@@ -1324,56 +1260,6 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 [^81]: Krauß, R., Marinova, E., De Brue, H., & Weninger, B. (2018). The rapid spread of early farming from the Aegean into the Balkans via the Sub-Mediterranean-Aegean Vegetation Zone. Quaternary International, 496, 24-41. https://doi.org/10.1016/j.quaint.2017.01.019
 [^82]: Ivanova, M., De Cupere, B., Ethier, J., & Marinova, E. (2018). Pioneer farming in southeast Europe during the early sixth millennium BC: Climate-related adaptations in the exploitation of plants and animals. PLoS One, 13(5), e0197225. https://doi.org/10.1371/journal.pone.0197225
 
-## Central Mediterranean (in BC)
-
-::: {.panel-tabset}
-
-### 6000
-
-::: columns
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6000BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-6000BC-EN-kcc-legend.png){width="500" style="horizontal-align: middle;"}
-:::
-
-:::
-
-### 5800
-
-::: columns
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5800BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5800BC-EN-kcc-legend.png){width="500" style="horizontal-align: middle;"}
-:::
-
-:::
-
-### 5600
-
-::: columns
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc.png){width="500" style="horizontal-align: middle;"}
-:::
-
-
-::: {.column width="50%"}
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5600BC-EN-kcc-legend.png){width="500" style="horizontal-align: middle;"}
-:::
-
-:::
-
-:::
 
 ## Western Mediterranean (in BC)
 

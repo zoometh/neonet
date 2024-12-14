@@ -42,25 +42,18 @@
     "text": "Modelling dates\n\nDates medians and KCC extractionDates interpolation\n\n\n\n\nMost recent LM and most ancient EN date weighted medians (w-mendian) by site \n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)\n\n\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
   },
   {
-    "objectID": "index.html#eastern-mediterranean-in-bc",
-    "href": "index.html#eastern-mediterranean-in-bc",
-    "title": "Climates during the Spread of Farming in the Mediterranean",
-    "section": "Eastern Mediterranean (in BC)",
-    "text": "Eastern Mediterranean (in BC)\n\n90008400760068006200"
-  },
-  {
     "objectID": "index.html#near-east-9000-bc",
     "href": "index.html#near-east-9000-bc",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Near East (9,000 BC)",
-    "text": "Near East (9,000 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNeolithic mostly on Csa and BSk climates (Temperate, dry summer, hot summer and Temperate, dry summer, warm summer)\nNorth Levant and South Levant farmers separated by Mount Lebanon range (Dsa: Cold, dry summer, hot summer).\nCyprus is settled with Klimonas (idf 51)."
+    "text": "Near East (9,000 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNeolithic mostly on Csa (Temperate, dry summer, hot summer) and BSk (Temperate, dry summer, warm summer) climates\nNorth and South Levant farmers separated byDsa (Cold, dry summer, hot summer) climates: Mount Lebanon mountain range.\nCyprus early settlement: Klimonas (idf 51)."
   },
   {
     "objectID": "index.html#near-east-8500-bc",
     "href": "index.html#near-east-8500-bc",
     "title": "Climates during the Spread of Farming in the Mediterranean",
     "section": "Near East (8,500 BC)",
-    "text": "Near East (8,500 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmall changes in the estimated area with Neolithic economy\n\nSouthward: new neolithic occupation in a BWh climate: Shkarat Msaied (idf 78)."
+    "text": "Near East (8,500 BC)\n\nClimatesSitesAssumptions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmall changes in the estimated area with Neolithic economy\n\nSouthward: new neolithic occupation in a BWh climate (Arid, desert, hot): Shkarat Msaied (idf 78)."
   },
   {
     "objectID": "index.html#near-east-8000-bc",

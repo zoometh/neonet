@@ -425,6 +425,61 @@ neo_isochr(df.c14 = myc14data, mapname = "France_EW", selected.per = c("LM"))
 ## Koppen
 > KCC, Koppen Climate Classification, Koeppen Climate Classification 
 
+The Neonet framework and online app integrate Koppen Climate Classification (KCC) for 6,000 BP to 10,000 BP.  
+
+### Classes
+
+Koppen classification uses five broad classes:
+
+* A* Tropical ![#0000FF](https://placehold.co/15x15/0000FF/0000FF.png) ![#0078FF](https://placehold.co/15x15/0078FF/0078FF.png) ![#46AAF](https://placehold.co/15x15/46AAF/46AAF.png)
+* B* Arid ![#FF0000](https://placehold.co/15x15/FF0000/FF0000.png) ![#FF9696](https://placehold.co/15x15/FF9696/FF9696.png) ![#F5A500](https://placehold.co/15x15/F5A500/F5A500.png) ![#FFDC64](https://placehold.co/15x15/FFDC64/FFDC64.png)
+* C* Temperate ![#FFFF00](https://placehold.co/15x15/FFFF00/FFFF00.png) ![#C8C800](https://placehold.co/15x15/C8C800/C8C800.png) ![#969600](https://placehold.co/15x15/969600/969600.png) ![#96FF96](https://placehold.co/15x15/96FF96/96FF96.png) ![#64C864](https://placehold.co/15x15/64C864/64C864.png) ![#329632](https://placehold.co/15x15/329632/329632.png) ![#C8FF50](https://placehold.co/15x15/C8FF50/C8FF50.png) ![#64FF50](https://placehold.co/15x15/64FF50/64FF50.png) ![#32C800](https://placehold.co/15x15/32C800/32C800.png)
+* D* Cold ![#FF00FF](https://placehold.co/15x15/FF00FF/FF00FF.png) ![#C800C8](https://placehold.co/15x15/C800C8/C800C8.png) ![#963296](https://placehold.co/15x15/963296/963296.png) ![#966496](https://placehold.co/15x15/966496/966496.png) ![#AAAF](https://placehold.co/15x15/AAAF/AAAF.png) ![#5A78DC](https://placehold.co/15x15/5A78DC/5A78DC.png) ![#4B50B4](https://placehold.co/15x15/4B50B4/4B50B4.png) ![#320087](https://placehold.co/15x15/320087/320087.png) ![#00FFFF](https://placehold.co/15x15/00FFFF/00FFFF.png) ![#37C8FF](https://placehold.co/15x15/37C8FF/37C8FF.png) ![#007D7D](https://placehold.co/15x15/007D7D/007D7D.png) ![#00465F](https://placehold.co/15x15/00465F/00465F.png)
+* E* Polar ![#B2B2B2](https://placehold.co/15x15/B2B2B2/B2B2B2.png) ![#666666](https://placehold.co/15x15/666666/666666.png)
+
+There are 30 basic classes
+
+| code |   num | value                                    | hexa color   | color                                                    |
+|------------|-------:|:------------------------------------------|:-------|:---------------------------------------------------------|
+| Af         |      1 | Tropical, rainforest                      | 0000FF | ![#0000FF](https://placehold.co/15x15/0000FF/0000FF.png) |
+| Am         |      2 | Tropical, monsoon                         | 0078FF | ![#0078FF](https://placehold.co/15x15/0078FF/0078FF.png) |
+| Aw         |      3 | Tropical, savannah                        | 46AAF  | ![#46AAF](https://placehold.co/15x15/46AAF/46AAF.png)    |
+| BWh        |      4 | Arid, desert, hot                         | FF0000 | ![#FF0000](https://placehold.co/15x15/FF0000/FF0000.png) |
+| BWk        |      5 | Arid, desert, cold                        | FF9696 | ![#FF9696](https://placehold.co/15x15/FF9696/FF9696.png) |
+| BSh        |      6 | Arid, steppe, hot                         | F5A500 | ![#F5A500](https://placehold.co/15x15/F5A500/F5A500.png) |
+| BSk        |      7 | Arid, steppe, cold                        | FFDC64 | ![#FFDC64](https://placehold.co/15x15/FFDC64/FFDC64.png) |
+| Csa        |      8 | Temperate, dry summer, hot summer         | FFFF00 | ![#FFFF00](https://placehold.co/15x15/FFFF00/FFFF00.png) |
+| Csb        |      9 | Temperate, dry summer, warm summer        | C8C800 | ![#C8C800](https://placehold.co/15x15/C8C800/C8C800.png) |
+| Csc        |     10 | Temperate, dry summer, cold summer        | 969600 | ![#969600](https://placehold.co/15x15/969600/969600.png) |
+| Cwa        |     11 | Temperate, dry winter, hot summer         | 96FF96 | ![#96FF96](https://placehold.co/15x15/96FF96/96FF96.png) |
+| Cwb        |     12 | Temperate, dry winter, warm summer        | 64C864 | ![#64C864](https://placehold.co/15x15/64C864/64C864.png) |
+| Cwc        |     13 | Temperate, dry winter, cold summer        | 329632 | ![#329632](https://placehold.co/15x15/329632/329632.png) |
+| Cfa        |     14 | Temperate, no dry season, hot summer      | C8FF50 | ![#C8FF50](https://placehold.co/15x15/C8FF50/C8FF50.png) |
+| Cfb        |     15 | Temperate, no dry season, warm summer     | 64FF50 | ![#64FF50](https://placehold.co/15x15/64FF50/64FF50.png) |
+| Cfc        |     16 | Temperate, no dry season, cold summer     | 32C800 | ![#32C800](https://placehold.co/15x15/32C800/32C800.png) |
+| Dsa        |     17 | Cold, dry summer, hot summer              | FF00FF | ![#FF00FF](https://placehold.co/15x15/FF00FF/FF00FF.png) |
+| Dsb        |     18 | Cold, dry summer, warm summer             | C800C8 | ![#C800C8](https://placehold.co/15x15/C800C8/C800C8.png) |
+| Dsc        |     19 | Cold, dry summer, cold summer             | 963296 | ![#963296](https://placehold.co/15x15/963296/963296.png) |
+| Dsd        |     20 | Cold, dry summer, very cold winter        | 966496 | ![#966496](https://placehold.co/15x15/966496/966496.png) |
+| Dwa        |     21 | Cold, dry winter, hot summer              | AAAF   | ![#AAAF](https://placehold.co/15x15/AAAF/AAAF.png)       |
+| Dwb        |     22 | Cold, dry winter, warm summer             | 5A78DC | ![#5A78DC](https://placehold.co/15x15/5A78DC/5A78DC.png) |
+| Dwc        |     23 | Cold, dry winter, cold summer             | 4B50B4 | ![#4B50B4](https://placehold.co/15x15/4B50B4/4B50B4.png) |
+| Dwd        |     24 | Cold, dry winter, very cold winter        | 320087 | ![#320087](https://placehold.co/15x15/320087/320087.png) |
+| Dfa        |     25 | Cold, no dry season, hot summer           | 00FFFF | ![#00FFFF](https://placehold.co/15x15/00FFFF/00FFFF.png) |
+| Dfb        |     26 | Cold, no dry season, warm summer          | 37C8FF | ![#37C8FF](https://placehold.co/15x15/37C8FF/37C8FF.png) |
+| Dfc        |     27 | Cold, no dry season, cold summer          | 007D7D | ![#007D7D](https://placehold.co/15x15/007D7D/007D7D.png) |
+| Dfd        |     28 | Cold, no dry season, very cold winter     | 00465F | ![#00465F](https://placehold.co/15x15/00465F/00465F.png) |
+| ET         |     29 | Polar, tundra                             | B2B2B2 | ![#B2B2B2](https://placehold.co/15x15/B2B2B2/B2B2B2.png) |
+| EF         |     30 | Polar, frost                              | 666666 | ![#666666](https://placehold.co/15x15/666666/666666.png) |
+
+The Koppen Climate Classes (KCC) are listed [here](https://github.com/zoometh/neonet/blob/main/inst/extdata/koppen.tsv)
+
+### Koppen functions
+
+Koppen functions are designed not only for the Neonet dataset, but also for all radiocarbon dataset respecting the minimum data stracture (site, labcode, x, y, etc.).
+
+#### Create KCC maps
+
 The app integrates Koppen Climate Classification (KCC) for 6,000 BP to 10,000 BP created with the R [pastclim](https://github.com/EvolEcolGroup/pastclim) package and the `neo_kcc_create()` function.
 
 <p align="center">
@@ -464,50 +519,7 @@ Creates these KCC GeoTiffs:
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_7k [download](https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.tif)|
 | <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/koppen_7k.png" width="300">|koppen_6k [download](https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_6k.tif)|
 
-
-
 <em>Past Koppen Climate Classification calculated in Kyears BP with the pastclim R package</em>
-
-### Classes
-
-The Koppen Climate Classes are listed [here](https://github.com/zoometh/neonet/blob/main/inst/extdata/koppen.tsv)
-
-| code |   num | value                                    | hexa color   | color                                                    |
-|------------|-------:|:------------------------------------------|:-------|:---------------------------------------------------------|
-| Af         |      1 | Tropical, rainforest                      | 0000FF | ![#0000FF](https://placehold.co/15x15/0000FF/0000FF.png) |
-| Am         |      2 | Tropical, monsoon                         | 0078FF | ![#0078FF](https://placehold.co/15x15/0078FF/0078FF.png) |
-| Aw         |      3 | Tropical, savannah                        | 46AAF  | ![#46AAF](https://placehold.co/15x15/46AAF/46AAF.png)    |
-| BWh        |      4 | Arid, desert, hot                         | FF0000 | ![#FF0000](https://placehold.co/15x15/FF0000/FF0000.png) |
-| BWk        |      5 | Arid, desert, cold                        | FF9696 | ![#FF9696](https://placehold.co/15x15/FF9696/FF9696.png) |
-| BSh        |      6 | Arid, steppe, hot                         | F5A500 | ![#F5A500](https://placehold.co/15x15/F5A500/F5A500.png) |
-| BSk        |      7 | Arid, steppe, cold                        | FFDC64 | ![#FFDC64](https://placehold.co/15x15/FFDC64/FFDC64.png) |
-| Csa        |      8 | Temperate, dry summer, hot summer         | FFFF00 | ![#FFFF00](https://placehold.co/15x15/FFFF00/FFFF00.png) |
-| Csb        |      9 | Temperate, dry summer, warm summer        | C8C800 | ![#C8C800](https://placehold.co/15x15/C8C800/C8C800.png) |
-| Csc        |     10 | Temperate, dry summer, cold summer        | 969600 | ![#969600](https://placehold.co/15x15/969600/969600.png) |
-| Cwa        |     11 | Temperate, dry winter, hot summer         | 96FF96 | ![#96FF96](https://placehold.co/15x15/96FF96/96FF96.png) |
-| Cwb        |     12 | Temperate, dry winter, warm summer        | 64C864 | ![#64C864](https://placehold.co/15x15/64C864/64C864.png) |
-| Cwc        |     13 | Temperate, dry winter, cold summer        | 329632 | ![#329632](https://placehold.co/15x15/329632/329632.png) |
-| Cfa        |     14 | Temperate, no dry season, hot summer      | C8FF50 | ![#C8FF50](https://placehold.co/15x15/C8FF50/C8FF50.png) |
-| Cfb        |     15 | Temperate, no dry season, warm summer     | 64FF50 | ![#64FF50](https://placehold.co/15x15/64FF50/64FF50.png) |
-| Cfc        |     16 | Temperate, no dry season, cold summer     | 32C800 | ![#32C800](https://placehold.co/15x15/32C800/32C800.png) |
-| Dsa        |     17 | Cold, dry summer, hot summer              | FF00FF | ![#FF00FF](https://placehold.co/15x15/FF00FF/FF00FF.png) |
-| Dsb        |     18 | Cold, dry summer, warm summer             | C800C8 | ![#C800C8](https://placehold.co/15x15/C800C8/C800C8.png) |
-| Dsc        |     19 | Cold, dry summer, cold summer             | 963296 | ![#963296](https://placehold.co/15x15/963296/963296.png) |
-| Dsd        |     20 | Cold, dry summer, very cold winter        | 966496 | ![#966496](https://placehold.co/15x15/966496/966496.png) |
-| Dwa        |     21 | Cold, dry winter, hot summer              | AAAF   | ![#AAAF](https://placehold.co/15x15/AAAF/AAAF.png)       |
-| Dwb        |     22 | Cold, dry winter, warm summer             | 5A78DC | ![#5A78DC](https://placehold.co/15x15/5A78DC/5A78DC.png) |
-| Dwc        |     23 | Cold, dry winter, cold summer             | 4B50B4 | ![#4B50B4](https://placehold.co/15x15/4B50B4/4B50B4.png) |
-| Dwd        |     24 | Cold, dry winter, very cold winter        | 320087 | ![#320087](https://placehold.co/15x15/320087/320087.png) |
-| Dfa        |     25 | Cold, no dry season, hot summer           | 00FFFF | ![#00FFFF](https://placehold.co/15x15/00FFFF/00FFFF.png) |
-| Dfb        |     26 | Cold, no dry season, warm summer          | 37C8FF | ![#37C8FF](https://placehold.co/15x15/37C8FF/37C8FF.png) |
-| Dfc        |     27 | Cold, no dry season, cold summer          | 007D7D | ![#007D7D](https://placehold.co/15x15/007D7D/007D7D.png) |
-| Dfd        |     28 | Cold, no dry season, very cold winter     | 00465F | ![#00465F](https://placehold.co/15x15/00465F/00465F.png) |
-| ET         |     29 | Polar, tundra                             | B2B2B2 | ![#B2B2B2](https://placehold.co/15x15/B2B2B2/B2B2B2.png) |
-| EF         |     30 | Polar, frost                              | 666666 | ![#666666](https://placehold.co/15x15/666666/666666.png) |
-
-### Koppen functions
-
-Koppen functions are designed not only for the Neonet dataset, but also for all radiocarbon dataset respecting the minimum data stracture (site, labcode, x, y, etc.).
 
 #### Extract
 
