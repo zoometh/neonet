@@ -73,8 +73,41 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-
 Holocene
 :::
 
+## Climates, economy and physiologists 
 
-## Late Foragers and Early Farmers
+::: columns
+
+::: {.column width="50%"}
+
+<center>
+
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/bib_encyclopedie_grain.png" height="350"><br>
+
+</center>
+
+⬆️ <small> Quesnay, F. (1757). "Grains". In D. Diderot & J. le Rond d’Alembert (Eds.), *L'Encyclopédie* (Vol. 7, pp. 812-31. Retrieved from [bibnum.institutdefrance.fr](https://bibnum.institutdefrance.fr/viewer/2099/?offset=#page=870&viewer=picture&o=bookmark&n=0&q=).</small>
+
+<small> Scott, J. C. (2017). *Against the grain: A deep history of the earliest states*. Yale University Press.</small> ➡️
+
+:::
+
+
+::: {.column width="50%"}
+
+<center>
+
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/bid_against_grain.jpg" height="550"><br>
+
+</center>
+
+
+
+:::
+
+:::
+
+
+## Late Foragers and Early Farmers {data-visibility=hidden}
 
 
 ::: columns
@@ -531,7 +564,9 @@ function [pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim/
 
 ::: {.column width="50%"}
 
-| code | climate | colors | 
+<small>
+
+| code | climate | colors (classes) | 
 | -----|---------|--------|
 | A*   | Tropical  | ![#0000FF](https://placehold.co/15x15/0000FF/0000FF.png) ![#0078FF](https://placehold.co/15x15/0078FF/0078FF.png) ![#46AAF](https://placehold.co/15x15/46AAF/46AAF.png) | 
 | B*   | Arid  | ![#FF0000](https://placehold.co/15x15/FF0000/FF0000.png) ![#FF9696](https://placehold.co/15x15/FF9696/FF9696.png) ![#F5A500](https://placehold.co/15x15/F5A500/F5A500.png) ![#FFDC64](https://placehold.co/15x15/FFDC64/FFDC64.png) | 
@@ -539,6 +574,7 @@ function [pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim/
 | D*   | Cold  | ![#FF00FF](https://placehold.co/15x15/FF00FF/FF00FF.png) ![#C800C8](https://placehold.co/15x15/C800C8/C800C8.png) ![#963296](https://placehold.co/15x15/963296/963296.png) ![#966496](https://placehold.co/15x15/966496/966496.png) ![#AAAF](https://placehold.co/15x15/AAAF/AAAF.png) ![#5A78DC](https://placehold.co/15x15/5A78DC/5A78DC.png) ![#4B50B4](https://placehold.co/15x15/4B50B4/4B50B4.png) ![#320087](https://placehold.co/15x15/320087/320087.png) ![#00FFFF](https://placehold.co/15x15/00FFFF/00FFFF.png) ![#37C8FF](https://placehold.co/15x15/37C8FF/37C8FF.png) ![#007D7D](https://placehold.co/15x15/007D7D/007D7D.png) ![#00465F](https://placehold.co/15x15/00465F/00465F.png) |
 | E*   | Polar  | ![#B2B2B2](https://placehold.co/15x15/B2B2B2/B2B2B2.png) ![#666666](https://placehold.co/15x15/666666/666666.png) |
 
+</small>
 
 <small>
 function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R)
@@ -573,7 +609,7 @@ function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/
 ::: columns
 
 ::: {.column width="60%"}
-<small>Most recent <span style="color: blue;">LM</span> and most ancient <span style="color: red;">EN</span> date weighted medians (w-mendian) by site</small>
+<small>Most recent <span style="color: blue;">LM</span> and most ancient <span style="color: red;">EN</span> date weighted medians (w-median) by site</small>
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161-spd.png" width="500">
 :::
 
@@ -1365,7 +1401,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-Lorem
+* 5800-5600 BC: Rapid inland expansion <span style="color:#FFFF00;">Csa</span>, for ex: <span style="color:#FFFF00;">La Marmotta</span> (idf <b>94</b>) and <span style="color:#FFFF00;">Rio Tana</span> (idf <b>149</b>), Central Italy
+* 5600 BC: Slowdown linked to the transition to a climate with no dry season (<span style="color:#C8FF50;">Cfa</span>, <span style="color:#64FF50;">Cfb</span>), northern Abruzzo.
+* Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
 
 </small></p>
 
@@ -1374,6 +1412,9 @@ Lorem
 :::
 
 :::
+
+[^71]: Mazzucco, N., Mineo, M., Gibaja, J.F. (2023). La Marmotta site in the framework of the Early Mediterranean Neolithic. In: *The Submerged Site of La Marmotta*. Oxbow Books, Rome, Italy. Oxford.
+[^72]: Didier Binder, Lucia Angeli, Louise Gomart, Thomas Huet, Roberto Maggi, Claire Manen, ..., (2022). Le complexe de la Céramique Imprimée en Méditerranée centrale et nord-occidentale : une synthèse chronoculturelle (VIIe et VIe millénaires AEC). In: *Céramiques imprimées de Méditerranée occidentale (VIe millénaire AEC) : données, approches et enjeux nouveaux*. Actes de la séance de la Société préhistorique française de Nice (mars 2019), D. Binder and C. Manen (eds), Paris, Société préhistorique française.
 
 ## Central Mediterranean (5,400 BC)
 
