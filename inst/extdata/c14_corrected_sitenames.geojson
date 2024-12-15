@@ -342,7 +342,7 @@
 { "type": "Feature", "properties": { "SiteName": "Castelo Belinho", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -8.5546, 37.2067 ] } },
 { "type": "Feature", "properties": { "SiteName": "Castillejos de Montefrío", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -3.956817, 37.33528 ] } },
 { "type": "Feature", "properties": { "SiteName": "Kazanlak", "AlternativeNames": "Kazanlăk" }, "geometry": { "type": "Point", "coordinates": [ 25.55751085430353, 42.624281199210742 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Catal", "AlternativeNames": "Çatalhöyük | Çatalhöyük East | Çatal Höyük (Est) | Çatal Höyük | Çatalhöyük West\n| Çatalhöyük East\n| Çatalhöyük" }, "geometry": { "type": "Point", "coordinates": [ 32.81, 37.65 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Catalhuyuk", "AlternativeNames": "Çatalhöyük | Çatalhöyük East | Çatal Höyük (Est) | Çatal Höyük | Çatalhöyük West\n| Çatalhöyük East\n| Çatalhöyük" }, "geometry": { "type": "Point", "coordinates": [ 32.81, 37.65 ] } },
 { "type": "Feature", "properties": { "SiteName": "Catignano", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 13.943843, 42.34267 ] } },
 { "type": "Feature", "properties": { "SiteName": "Caucade", "AlternativeNames": "La Caucade" }, "geometry": { "type": "Point", "coordinates": [ 7.209978, 43.675768 ] } },
 { "type": "Feature", "properties": { "SiteName": "Cauno d'Arques", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 2.37, 42.95 ] } },
