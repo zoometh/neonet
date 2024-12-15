@@ -1160,7 +1160,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 
 <p><small>
 
-* Aegean Sea and Aegean shore are 'neolithised' before Northern Anatolia, and even before South central Anatolia.
+* Aegean sea and shore 'neolithised' before Northern Anatolia, and even before South central Anatolia.
 * Earliest neolithic sites are those having pre-neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas (idf <b>27</b>), Franchthi (idf <b>17</b>) and Cyclops Cave (idf <b>11</b>), no climate data available.
 * Confirms: Brami 2015[^66001].
 
@@ -1236,10 +1236,10 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* In Greece, Thessaly and Macedonia, dense settlements in <span style="color:#FFDC64;">BSk</span> climates (<span style="color:#FFDC64;">Sesklo, Paliambela, Anzabegovo</span>, etc. )
+* ca 6,200 BC, Greece mainland turns colder (*8.2 ky BP event*), visible in the KCC
+* In Greece, Thessaly and Macedonia, concentration of dates in <span style="color:#FFDC64;">BSk</span> climates (<span style="color:#FFDC64;">Sesklo, Paliambela, Anzabegovo</span>, etc. )
 * First Neolithic in Northern East Mediterranean (Ugurlu, idf <b>44</b>) related to first Neolithic in Northwestern Anatolia: <span style="color:#FFFF00;">Barcin</span> (idf <b>9</b>), <span style="color:#FFFF00;">Aktopraklik</span> (idf <b>2</b>)
-* The Neolithic pioneer front seems to slow down in Western Greece (ridge line, river basins), exception: <span style="color:#FFFF00;">Sidari</span> (idf <b>42</b>) and Northern Greece.
-* New climate: <span style="color:#C8FF50;">Cfa</span> (*Temperate, no dry season, hot summer*). Sites: Mavropigi (idf <b>19</b>), Lefkopetra (idf <b>28</b>), Ofeas (idf <b>32</b>)
+* New <span style="color:#C8FF50;">Cfa</span> climate (*Temperate, no dry season, hot summer*) with  <span style="color:#C8FF50;">Mavropigi</span> (idf <b>19</b>), <span style="color:#C8FF50;">Lefkopetra</span> (idf <b>28</b>), <span style="color:#C8FF50;">Ofeas</span> (idf <b>32</b>)
 
 
 
