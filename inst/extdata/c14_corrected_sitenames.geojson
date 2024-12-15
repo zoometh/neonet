@@ -1089,7 +1089,6 @@
 { "type": "Feature", "properties": { "SiteName": "Magzaliyah", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 42.32, 36.39 ] } },
 { "type": "Feature", "properties": { "SiteName": "Maisons-Alfort", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 5.35, 45.6833 ] } },
 { "type": "Feature", "properties": { "SiteName": "Elateia", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 22.592067425236515, 39.831707626645681 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Makri", "AlternativeNames": "Makri | Makri. Evros | Makri, Evros" }, "geometry": { "type": "Point", "coordinates": [ 32.6, 26.2125 ] } },
 { "type": "Feature", "properties": { "SiteName": "Makri", "AlternativeNames": "Makri. Evros | Makri, Evros" }, "geometry": { "type": "Point", "coordinates": [ 25.7462, 40.8486 ] } },
 { "type": "Feature", "properties": { "SiteName": "Mala Triglavca", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 13.9568, 45.6744 ] } },
 { "type": "Feature", "properties": { "SiteName": "Mandalo", "AlternativeNames": "Mandalo. Pella" }, "geometry": { "type": "Point", "coordinates": [ 22.220446, 40.857778 ] } },
