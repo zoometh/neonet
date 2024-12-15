@@ -73,7 +73,7 @@ obj.case <- list("CWAnatolie", c(-6700), c(23, 30, 45, 40), "koppen_9k.tif")
 # Med Orient
 obj.case <- list("MedEast", c(-6600), c(18, 35, 34, 43), "koppen_9k.tif")
 obj.case <- list("MedEast", c(-6200), c(18, 35, 34, 43), "koppen_8k.tif") 
-obj.case <- list("MedEast", c(-6300), c(19, 35, 32, 43), "koppen_8k.tif") 
+# obj.case <- list("MedEast", c(-6300), c(19, 35, 32, 43), "koppen_8k.tif") 
 obj.case <- list("MedEast", c(-5800), c(18, 35, 34, 43), "koppen_8k.tif") 
 # Med Centr
 obj.case <- list("MedCentr", c(-6000), c(5, 35, 20, 47), "koppen_8k.tif")
@@ -108,7 +108,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      is.other.geotiff = FALSE,
                      create.legend = TRUE,
                      isochr.line.color = NA, # "black", # NA to get colored isochrones (red, blue)
-                     isochr.line.size = 1,
+                     isochr.line.size = .5,
                      isochr.txt.size = 0,
                      calibrate = FALSE,
                      shw.dates = TRUE,
@@ -116,13 +116,13 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      size.date = 1.5,
                      # color.dates = "darkgrey",
                      alpha.dates = 1,
-                     lbl.dates = FALSE,
+                     lbl.dates = TRUE,
                      # lbl.all.dates = FALSE,
                      # lbl.date.field = "median",
                      lbl.dates.size = 4,
                      lbl.time.interv = TRUE)
 isochr$map
-ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 7, height = 6)
+# ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 7, height = 6)
 ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 10, height = 8)
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
