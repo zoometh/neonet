@@ -1804,7 +1804,7 @@
 { "type": "Feature", "properties": { "SiteName": "Zwolle-Ittersumallee", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.0584, 52.4625 ] } },
 { "type": "Feature", "properties": { "SiteName": "Zwolle-Oude Deventerstraatweg", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.0712, 52.4625 ] } },
 { "type": "Feature", "properties": { "SiteName": "Melos", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 24.370033574330495, 36.689306546392146 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Pinarbasi A", "AlternativeNames": "Pinarbasi A\n| Pınarbaşı A\n" }, "geometry": { "type": "Point", "coordinates": [ 33.030950181982945, 37.469050753804531 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Pinarbasi A", "AlternativeNames": "Pinarbasi A | Pınarbaşı A" }, "geometry": { "type": "Point", "coordinates": [ 33.030950181982945, 37.469050753804531 ] } },
 { "type": "Feature", "properties": { "SiteName": "PORTIRAGNES, Peiro Signado", "AlternativeNames": null }, "geometry": null }
 ]
 }
