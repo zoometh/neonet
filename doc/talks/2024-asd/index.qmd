@@ -1001,7 +1001,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * Only one new occupation on the Central Anatolian Plateau, <span style="color:#FFDC64;">Musular</span> (idf <b>64</b>): barrier
-* In Southern Levant, close concentration of occupations in different climates, <span style="color:#FFFF00;">Csa</span>, <span style="color:#FFDC64;">BSk</span>, <span style="color:#FF0000;">BWh</span> and newly <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*)
+* In Southern Levant, close concentration of occupations in different climates: <span style="color:#FFFF00;">Csa</span>, <span style="color:#FFDC64;">BSk</span>, <span style="color:#FF0000;">BWh</span> and newly <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*)
 * <span style="color:#F5A500;">BSh</span> sites: <span style="color:#F5A500;">Nahal Efe</span> (idf <b>65</b>), <span style="color:#F5A500;">Hemar</span> (idf <b>42</b>)
 
 
@@ -1092,7 +1092,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 <small>
 
 * ca 7500-7000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB *koine*. 
-* ca 6,700 BC, first South Western and Western Anatolian sites of <span style="color:#FFFF00;">Bademagaci</span> (idf <b>16</b>) and  <span style="color:#FFFF00;">Cukurici</span> (id <b>23</b>) are temporally (w-medians) and spatially (distances) close to Cretan sites of  <span style="color:#FFFF00;">Delphinos</span> (id <b>23</b>)(idf <b>25</b>) and <span style="color:#FFFF00;">Knossos</span>(idf <b>61</b>).
+* ca 6,700 BC, first South Western and Western Anatolian sites of <span style="color:#FFFF00;">Bademagaci</span> (idf <b>16</b>) and  <span style="color:#FFFF00;">Cukurici</span> (id <b>23</b>) are temporally (w-medians) and spatially (distances) close to Cretan sites of  <span style="color:#FFFF00;">Delphinos</span> (idf <b>25</b>) and <span style="color:#FFFF00;">Knossos</span>(idf <b>61</b>).
 * ca 6,200 BC, aridification of the Central Anatolian Plateau (*8.2 ky BP event*)
 
 </small>
