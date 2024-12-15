@@ -631,7 +631,7 @@ function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/
 
 ::: columns
 
-::: {.column width="60%"}
+::: {.column width="50%"}
 <center>
 
 ```{r}
@@ -659,8 +659,8 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
 <small>[c14_corrected_sitenames.geojson](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_corrected_sitenames.geojson)</small>
 :::
 
-::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/method_github_issues_sitenames.png" width="400">
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/method_github_issues_sitenames.png" width="500">
 
 :::
 
@@ -678,7 +678,7 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
 :::
 
 ::: {.column width="65%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/neonet_kcc.png" width="700">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/neonet_kcc.png" width="650">
 :::
 
 :::
@@ -1623,7 +1623,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ## End of the Mediterranean Neolithisation
 
 <center>
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5200-BC-MedCompleted-koppen_7k.png.png){width="900" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5200-BC-MedCompleted-koppen_7k.png){width="900" style="horizontal-align: middle;"}
 </center>
 
 

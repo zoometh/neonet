@@ -6,7 +6,7 @@
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
 #' @param shown.per .
 #' @param col.kcc KCC column names. Only useful if `color.on = "kcc"`.
-#' @param time.span The min and max of the dates to plot (x limit interval of the ggplot) in cal BP. If `NA` (default), will be calculated on the fly, using `time.round` to round.
+#' @param time.span The min and max of the dates to plot (x limit interval of the ggplot) in cal BP, ex: `c(10000, 5000)`, If `NA` (default), will be calculated on the fly, using `time.round` to round.
 #' @param time.round Interval to round-up the axis of the plot. Only used if `time.span` is `NA`.
 #' @param calendar a `plot.stackCalSPD()` category: `BP` or `BCAD` (default).
 #' @param title The title of the plot description.
@@ -42,7 +42,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
                     ref.period = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/periods.tsv",
                     col.kcc = c("koppen_6k", "koppen_7k", "koppen_8k", "koppen_9k", "koppen_10k", "koppen_11k"),
                     shown.per = c("EM", "MM", "LM", "EN", "MN", "LN"),
-                    time.span = NA, #c(10000, 5000),
+                    time.span = NA,
                     time.round = 1000,
                     calCurves = "intcal20",
                     calendar = "BCAD",

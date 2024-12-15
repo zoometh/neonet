@@ -143,7 +143,7 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 # general map
 source("R/neo_map.R")
 per <- 'LM'
-tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "red", ";'>", per, "</span>")
+tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "blue", ";'>", per, "</span>")
 gg.map <- neo_map(df.c14 = df_filtered,
                   selected.per = per,
                   breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
@@ -169,6 +169,24 @@ ggplot2::ggplot(isochr.1, ggplot2::aes(x = all, fill = code)) +
 # data.df <- sf::st_as_sf(isochr$data, coords = c("lon", "lat"), crs = 4326)
 # kcc_geo <- terra::rast("C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif")
 # kcc.list <- terra::extract(kcc_geo, data.df)
+
+# library(rcarbon)
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+source("R/neo_kcc_extract.R")
+kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+              "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+df_cc <- neo_kcc_extract(df.c14 = df_filtered,
+                         kcc.file = kcc.file)
+per <- 'EN'
+df_cc.per <- subset(df_cc, Period == per)
+tit <- paste0("SPD on ", per)
+neo_spd(df.c14 = df_cc.per, 
+        title = tit,
+        color.on = "kcc",
+        time.span = c(12500, 5500),
+        outDir = paste0(root.path, 'img/'), outFile = 'SPD_clim.png',
+        width = 19, height = 15)
 
 
 source("R/neo_find_date.R")

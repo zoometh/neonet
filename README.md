@@ -341,6 +341,19 @@ neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/
         export = T)
 ```
 
+In the same way, SPD can be done for KCC
+
+```R
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+source("R/neo_kcc_extract.R")
+kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+              "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+df_cc <- neo_kcc_extract(df.c14 = df_filtered,
+                         kcc.file = kcc.file)
+neo_spd(df.c14 = df_cc, color.on = "kcc")
+```
+
 ### Isochrones
 
 Create a map with isochrone contours to model the spread of Neolithic using the `neo_isochr()` function.
