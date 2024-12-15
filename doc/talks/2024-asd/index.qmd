@@ -87,7 +87,7 @@ Holocene
 
 <small> ↑️ Quesnay, F. (1757). "Grains". In D. Diderot & J. le Rond d’Alembert (Eds.), *L'Encyclopédie* (Vol. 7), pp. 812-31. from [bibnum.institutdefrance.fr](https://bibnum.institutdefrance.fr/viewer/2099/?offset=#page=870&viewer=picture&o=bookmark&n=0&q=).</small>
 
-<small> Scott, J. C. (2017). *Against the grain: A deep history of the earliest states*. Yale University Press. →</small> 
+<small> Scott, J. C. (2017). *Against the grain: A Deep History of the Earliest States*. Yale University Press. →</small> 
 
 :::
 
@@ -240,12 +240,12 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ::: columns
 
-::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-joad.png" width="400"/>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="500"/>
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-joad.png" width="350"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/pub-neonet-joad.png" width="650"/>
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/watersheds-rivers.png" width="600"/>
 :::
 
@@ -274,18 +274,18 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ::: columns
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 ```{.r}
-source("R/neo_spd.R")
-source("R/neo_spdplot.R")
-
 neo_spd(df.c14 = df.c14)
 ```
-
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png" width="600"/>
 :::
 
-::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/spd-spd.png" width="600"/>
+::: {.column width="50%"}
+```{.r}
+neo_isochr(df.c14 = df.c14)
+```
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/isochr-6300-BC-MedEast-koppen_8k.png" width="600"/>
 
 :::
 
