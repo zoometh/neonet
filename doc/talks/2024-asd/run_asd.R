@@ -83,9 +83,9 @@ obj.case <- list("MedCentr", c(-5100), c(5, 35, 20, 47), "koppen_7k.tif")
 obj.case <- list("MedWest", c(-5600), c(-11, 35, 14, 45), "koppen_8k.tif")
 obj.case <- list("MedWest", c(-5300), c(-11, 35, 14, 45), "koppen_7k.tif")
 # All Med
-obj.case <- list("MedCompleted", c(-5200), c(-7, 30, 38, 45), "koppen_7k.tif")
+obj.case <- list("MedCompleted", c(-5200), c(-7, 30, 38, 46), "koppen_7k.tif")
 ## by sites - - - - - - - - - - - - - - - - - - - - - - - -
-obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 46), "koppen_8k.tif") # !!
+obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
 ## by authors - - - - - - - - - - - - - - - - - - - - - - - -
 obj.case <- list("Binder", c(-5500), c(0.07180157, 31.8513415, 23.73331373, 48.0342267), "koppen_8k.tif")
 # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
@@ -110,7 +110,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      isochr.line.size = .5,
                      isochr.txt.size = 0,
                      calibrate = FALSE,
-                     shw.dates = FALSE,
+                     shw.dates = TRUE,
                      # show.all.dates = FALSE,
                      size.date = 1.5,
                      # color.dates = "darkgrey",
@@ -171,7 +171,7 @@ ggplot2::ggplot(isochr.1, ggplot2::aes(x = all, fill = code)) +
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 129)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 234)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
