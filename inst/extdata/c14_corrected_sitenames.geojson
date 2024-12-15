@@ -1098,7 +1098,7 @@
 { "type": "Feature", "properties": { "SiteName": "Mareuil-lès-Meaux", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 2.86, 48.93 ] } },
 { "type": "Feature", "properties": { "SiteName": "Marienberg", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.5743, 52.5304 ] } },
 { "type": "Feature", "properties": { "SiteName": "Marievka", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 35.25, 48.1833 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Marja (Oued el Hay)", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -2.0833, 34.1167 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Marja", "AlternativeNames": "Marja (Oued el Hay)" }, "geometry": { "type": "Point", "coordinates": [ -2.0833, 34.1167 ] } },
 { "type": "Feature", "properties": { "SiteName": "Maroslele-Panahát", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 20.3632, 46.278 ] } },
 { "type": "Feature", "properties": { "SiteName": "Maroulas", "AlternativeNames": "Maroulas, Kythnos | Maroulas. Kythnos" }, "geometry": { "type": "Point", "coordinates": [ 24.4334, 37.4167 ] } },
 { "type": "Feature", "properties": { "SiteName": "Marsh Benham", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -1.3961, 51.4027 ] } },
