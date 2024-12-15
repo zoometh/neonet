@@ -43,6 +43,10 @@ neo_dbs_sitename_dates <- function(df.c14 = NA,
   }
   # print(sitenames, n = 50)
   # Perform a left join to replace SiteName in df.c14 with SiteName from sitenames when there's a match on AlternativeNames
+  # problematic_x <- df.c14 %>%
+  #   dplyr::count(SiteName) %>%
+  #   dplyr::filter(n > 1)
+  # print(problematic_x)
   df <- df.c14 %>%
     dplyr::left_join(sitenames, by = c("SiteName" = "AlternativeNames")) %>%
     dplyr::mutate(SiteName = dplyr::coalesce(SiteName.y, SiteName)) %>%
