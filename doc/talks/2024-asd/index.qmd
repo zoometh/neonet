@@ -73,7 +73,7 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-
 Holocene
 :::
 
-## Climates and grains 
+## Grains and climates  
 
 ::: columns
 
@@ -85,9 +85,9 @@ Holocene
 
 </center>
 
-<small> ⬆️ Quesnay, F. (1757). "Grains". In D. Diderot & J. le Rond d’Alembert (Eds.), *L'Encyclopédie* (Vol. 7), pp. 812-31. from [bibnum.institutdefrance.fr](https://bibnum.institutdefrance.fr/viewer/2099/?offset=#page=870&viewer=picture&o=bookmark&n=0&q=).</small>
+<small> ↑️ Quesnay, F. (1757). "Grains". In D. Diderot & J. le Rond d’Alembert (Eds.), *L'Encyclopédie* (Vol. 7), pp. 812-31. from [bibnum.institutdefrance.fr](https://bibnum.institutdefrance.fr/viewer/2099/?offset=#page=870&viewer=picture&o=bookmark&n=0&q=).</small>
 
-<small> Scott, J. C. (2017). *Against the grain: A deep history of the earliest states*. Yale University Press.➡️ </small> 
+<small> Scott, J. C. (2017). *Against the grain: A deep history of the earliest states*. Yale University Press. →</small> 
 
 :::
 
@@ -470,7 +470,7 @@ leaflet::addPolygons(popup = roi, fillOpacity = 0)
 
 <center>
 
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/workflow-radiocaron-dataset.png)
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/workflow-radiocaron-dataset.png){height="500" style="horizontal-align: middle;"}
 </center>
 
 
@@ -606,16 +606,16 @@ function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/
 
 ### Medians
 
+<small>Most recent <span style="color: blue;">LM</span> and most ancient <span style="color: red;">EN</span> date weighted medians (w-median) by site</small>
 
 ::: columns
 
-::: {.column width="60%"}
-<small>Most recent <span style="color: blue;">LM</span> and most ancient <span style="color: red;">EN</span> date weighted medians (w-median) by site</small>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161-spd.png" width="500">
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161-spd.png" width="550">
 :::
 
-::: {.column width="40%"}
-
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" width="550">
 :::
 
 :::
@@ -652,12 +652,6 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
     radius = 3, 
     color = "blue"
   )
-
-# roi <- paste0('corrected_sitenames.geojson')
-# leaflet::leaflet(df, width = "700px", height = "450px") %>% 
-# leaflet::addTiles() %>%
-# leaflet::addCircles(popup = roi) 
-# "<b>Hello World</b>")
 ```
 
 </center>
@@ -679,12 +673,12 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
 
 ::: columns
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="400">
 :::
 
-::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/neonet_kcc.png" width="600">
+::: {.column width="65%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/neonet_kcc.png" width="700">
 :::
 
 :::

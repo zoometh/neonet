@@ -109,7 +109,7 @@ neo_map <- function(map.name = "map_atl",
     for(i in 1:nrow(periods.colors)){
       period <- periods.colors[i, "period"]
       color <- periods.colors[i, "color"]
-      capt <- c(capt, paste0("<span style='color: ", color, ";'><b>", period, "</b></span>"))
+      capt <- c(capt, paste0("<span style='color: ", color, ";'>", period, "</span>"))
     }
     capt <- paste0(capt, collapse = ", ")
     caption <- paste("n =", nrow(df.dates), "dates | periods:", capt)
@@ -133,7 +133,7 @@ neo_map <- function(map.name = "map_atl",
       include.lowest = TRUE
     )
     nb.na.bin <- sum(is.na(df.dates$median_bin))
-    caption <- paste0("n = ", nrow(df.dates), " dates (", nb.na.bin, " out of range & not displayed) | ", "periods: ", capt)
+    caption <- paste0("n = ", nrow(df.dates), " dates | ", nb.na.bin, " dates out of range (not displayed) | ", "periods: ", capt)
     # df.dates$median <- abs(df.dates$median)
     g.neo.map <- g.neo.map +
       ggplot2::geom_sf(data = df.dates, ggplot2::aes(color = median_bin), inherit.aes = FALSE, size = dates.size) + 

@@ -139,12 +139,13 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 
 # general map
 source("R/neo_map.R")
-per <- 'LM'
+per <- 'EN'
+tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "red", ";'>", per, "</span>")
 gg.map <- neo_map(df.c14 = df_filtered,
                   selected.per = per,
                   breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
                   dates.size = 1,
-                  title = "Radiocarbon dates",
+                  title = tit,
                   roi = NA, dates.within.roi = FALSE)
 ggplot2::ggsave(paste0(root.path, "img/_map_data_", per, ".png"), gg.map, width = 8, height = 6)
 
