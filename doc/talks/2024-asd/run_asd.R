@@ -183,10 +183,11 @@ df_cc.per <- subset(df_cc, Period == per)
 tit <- paste0("SPD on ", per)
 neo_spd(df.c14 = df_cc.per, 
         title = tit,
-        color.on = "kcc",
-        time.span = c(12500, 5500),
-        outDir = paste0(root.path, 'img/'), outFile = 'SPD_clim.png',
-        width = 19, height = 15)
+        # color.on = "kcc",
+        time.span = c(12000, 6500),
+        x.intercept = 5200,
+        outDir = paste0(root.path, 'img/'), outFile = 'dates',
+        width = 17, height = 14)
 
 
 source("R/neo_find_date.R")

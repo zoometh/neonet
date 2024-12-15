@@ -222,7 +222,7 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
               periods.colors = var.colors, # TODO: change fieldname in neo_spdsubplot() to entail KCC
               # shown.per = shown.per,
               weighted.median = weighted.median,
-              x.intercept = x.intercept,
+              x.intercept = -x.intercept,
               verbose = FALSE)
   if(export){
     dev.off()

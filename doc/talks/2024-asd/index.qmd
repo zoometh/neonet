@@ -1748,8 +1748,23 @@ Rproductible methods. Enhancement of cultural and climatic data
 
 ## Climates occupied by the Early Farmers 
 
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/dates-spd.png){width="650" style="horizontal-align: middle;"}
+:::
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/clim-spd.png){width="650" style="horizontal-align: middle;"}
+:::
+
+:::
+
+:::
+
+
 <center>
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/EN_kcc_7k-spd.png){width="850" style="horizontal-align: middle;"}
+
 </center>
 
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods {data-visibility=hidden}
