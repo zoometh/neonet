@@ -1775,7 +1775,7 @@
 { "type": "Feature", "properties": { "SiteName": "Xestido III", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -7.478983, 43.36449 ] } },
 { "type": "Feature", "properties": { "SiteName": "Yabalkovo", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 19.75, 44.9 ] } },
 { "type": "Feature", "properties": { "SiteName": "Yagodina Cave", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 24.4, 41.6333 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Yarim Tepe I", "AlternativeNames": "Yeşilova Höyük" }, "geometry": { "type": "Point", "coordinates": [ 42.01, 36.73 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Yarim Tepe I", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 42.01, 36.73 ] } },
 { "type": "Feature", "properties": { "SiteName": "Yarimburgaz", "AlternativeNames": "Yarimburgaz Cave" }, "geometry": { "type": "Point", "coordinates": [ 28.73, 41.08 ] } },
 { "type": "Feature", "properties": { "SiteName": "Yeni Mahalle", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 38.79, 37.15 ] } },
 { "type": "Feature", "properties": { "SiteName": "Yiftahel", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 35.18, 32.71 ] } },
@@ -1805,6 +1805,7 @@
 { "type": "Feature", "properties": { "SiteName": "Zwolle-Oude Deventerstraatweg", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.0712, 52.4625 ] } },
 { "type": "Feature", "properties": { "SiteName": "Melos", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 24.370033574330495, 36.689306546392146 ] } },
 { "type": "Feature", "properties": { "SiteName": "Pinarbasi A", "AlternativeNames": "Pinarbasi A | Pınarbaşı A" }, "geometry": { "type": "Point", "coordinates": [ 33.030950181982945, 37.469050753804531 ] } },
-{ "type": "Feature", "properties": { "SiteName": "PORTIRAGNES, Peiro Signado", "AlternativeNames": null }, "geometry": null }
+{ "type": "Feature", "properties": { "SiteName": "PORTIRAGNES, Peiro Signado", "AlternativeNames": null }, "geometry": null },
+{ "type": "Feature", "properties": { "SiteName": "Yeşilova Höyük", "AlternativeNames": "Yesilova Höyük | Yesilova Huyuk" }, "geometry": { "type": "Point", "coordinates": [ 27.214665388490996, 38.441252611000046 ] } }
 ]
 }

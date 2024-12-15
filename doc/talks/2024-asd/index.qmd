@@ -1236,7 +1236,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* ca 6,200 BC, Greece mainland turns colder (*8.2 ky BP event*), visible in the KCC
+* ca 6,200 BC, Greece mainland turns colder (*8.2 ky BP event*), visible in the KCC (<span style="color:#FF00FF;">Dsa</span> → <span style="color:#37C8FF;">Dfb</span>)
 * In Greece, Thessaly and Macedonia, concentration of dates in <span style="color:#FFDC64;">BSk</span> climates (<span style="color:#FFDC64;">Sesklo, Paliambela, Anzabegovo</span>, etc. )
 * First Neolithic in Northern East Mediterranean (Ugurlu, idf <b>44</b>) related to first Neolithic in Northwestern Anatolia: <span style="color:#FFFF00;">Barcin</span> (idf <b>9</b>), <span style="color:#FFFF00;">Aktopraklik</span> (idf <b>2</b>)
 * New <span style="color:#C8FF50;">Cfa</span> climate (*Temperate, no dry season, hot summer*) with  <span style="color:#C8FF50;">Mavropigi</span> (idf <b>19</b>), <span style="color:#C8FF50;">Lefkopetra</span> (idf <b>28</b>), <span style="color:#C8FF50;">Ofeas</span> (idf <b>32</b>)
