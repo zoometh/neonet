@@ -82,9 +82,10 @@ obj.case <- list("MedCentr", c(-5100), c(5, 35, 20, 47), "koppen_7k.tif")
 # Med Occ
 obj.case <- list("MedWest", c(-5600), c(-11, 35, 14, 45), "koppen_8k.tif")
 obj.case <- list("MedWest", c(-5300), c(-11, 35, 14, 45), "koppen_7k.tif")
-
-obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
-obj.case <- list("Mediterranean", c(-9000, -8000, -7000, -6000, -5000), c(-12, 27.5, 42.5, 47.5), "koppen_8k.tif") # !!
+# All Med
+obj.case <- list("MedCompleted", c(-5200), c(-7, 30, 38, 45), "koppen_7k.tif")
+## by sites - - - - - - - - - - - - - - - - - - - - - - - -
+obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 46), "koppen_8k.tif") # !!
 ## by authors - - - - - - - - - - - - - - - - - - - - - - - -
 obj.case <- list("Binder", c(-5500), c(0.07180157, 31.8513415, 23.73331373, 48.0342267), "koppen_8k.tif")
 # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
@@ -109,7 +110,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      isochr.line.size = .5,
                      isochr.txt.size = 0,
                      calibrate = FALSE,
-                     shw.dates = TRUE,
+                     shw.dates = FALSE,
                      # show.all.dates = FALSE,
                      size.date = 1.5,
                      # color.dates = "darkgrey",
@@ -139,7 +140,7 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 
 # general map
 source("R/neo_map.R")
-per <- 'EN'
+per <- 'LM'
 tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "red", ";'>", per, "</span>")
 gg.map <- neo_map(df.c14 = df_filtered,
                   selected.per = per,

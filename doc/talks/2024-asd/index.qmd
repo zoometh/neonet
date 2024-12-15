@@ -1466,7 +1466,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 * 5,800 BC, Pollera, Arma dell'Aquila and Arene Candide in Liguria in Cfa climates
 * 5,800-5,600 BC: Rapid inland expansion <span style="color:#FFFF00;">Csa</span>, for ex: <span style="color:#FFFF00;">La Marmotta</span> (idf <b>94</b>) and <span style="color:#FFFF00;">Rio Tana</span> (idf <b>149</b>), Central Italy. Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
-* 5,700, SHM-1 in Tunisia in BSk climate
+* 5,700, <span style="color:#FFDC64;">SHM-1</span> in Tunisia in <span style="color:#FFDC64;">BSk</span> climate 
 
 </small></p>
 
@@ -1538,9 +1538,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* 5,600-5,400 BC: Slowdown linked to the transition to a climate with no dry season (<span style="color:#C8FF50;">Cfa</span>, <span style="color:#64FF50;">Cfb</span>), northern Abruzzo.
+* 5,600-5,400 BC: Slowdown linked to the transition <span style="color:#C8FF50;">Cfa</span> and <span style="color:#64FF50;">Cfb</span> climates (no dry season) in northern Abruzzo. Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
 * No occupations in the the Po Plain
-* Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
+* 5,500 BC, first Alpine occupations in Sion (ca 491 m.s.n.m): <span style="color:#007D7D;">Chemin des Collines</span> and <span style="color:#007D7D;">Planta</span>, in <span style="color:#007D7D;">Dfc</span> climates (*Cold, no dry season, cold summer*).
 
 </small></p>
 
@@ -1609,8 +1609,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* *Leapfrogs*, originally from Italy, with settlements in Csa climates mostly: 
-* Le Secche -5671 connects with Pont de Roque-Haute -5970 on cearmics
+* *Leapfrogs*, originally from Italy, with settlements in <span style="color:#FFFF00;">Csa</span> climates mostly: 
+* Le Secche -5671 connects with <span style="color:#FFFF00;">Pont de Roque-Haute</span> -5970 on cearmics
 
 </small></p>
 
@@ -1623,7 +1623,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ## End of the Mediterranean Neolithisation
 
 <center>
-![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-5100BC-EN-kcc.png){width="900" style="horizontal-align: middle;"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5200-BC-MedCompleted-koppen_7k.png.png){width="900" style="horizontal-align: middle;"}
 </center>
 
 
