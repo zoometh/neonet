@@ -1014,7 +1014,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-## Central Anatolian barrier
+## 🚧 Central Anatolian barrier
 
 ::: {.panel-tabset}
 
@@ -1675,8 +1675,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* *Leapfrogs*, originally from Italy, with settlements in (same) <span style="color:#FFFF00;">Csa</span> climates mostly: 
-* Le Secche -5671 (no climate data, probably <span style="color:#FFFF00;">Csa</span>) connects with <span style="color:#FFFF00;">Pont de Roque-Haute</span> -5970 on ceramics
+* The Southwest of the Iberian Peninsula is neolithised by ...
+* Direct maritime connection between Corsica and Sardinia to the Levant Iberian coast is likely improbable
 
 </small></p>
 
