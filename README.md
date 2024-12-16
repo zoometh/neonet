@@ -80,8 +80,14 @@ NeoNet functions enable the handling of radiocarbon dates sourced from the datas
 * [isochrones](https://github.com/zoometh/neonet#isochrones)
 * [Koppen climate classes](https://github.com/zoometh/neonet?tab=readme-ov-file#koppen)
 * [Harris matrices](https://github.com/zoometh/neonet?tab=readme-ov-file#harris-matrix) using the [NeoNet-strati app](https://github.com/zoometh/neonet?tab=readme-ov-file#neonet-strati).
+* [reference data]()
 
 ### Data
+
+#### Reference data
+
+* [standardised site names](https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/c14_corrected_sitenames.geojson)
+* [outlier dates]()
 
 #### Data preparation
 
