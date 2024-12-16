@@ -1462,8 +1462,7 @@
 { "type": "Feature", "properties": { "SiteName": "Saint Denis les Sens", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 3.27, 48.23 ] } },
 { "type": "Feature", "properties": { "SiteName": "Saint Paul Trois Chateaux", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 4.753, 44.343 ] } },
 { "type": "Feature", "properties": { "SiteName": "Saint Ursanne", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 7.1576, 47.3646 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Saleux", "AlternativeNames": "Les Baquets | Saleux 125 | Saleux 295 | saleux 244a" }, "geometry": { "type": "Point", "coordinates": [ -9.1226, 38.5319 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Les Baquets", "AlternativeNames": "Saleux 295 | saleux 244a | Saleux 125 | Saleux" }, "geometry": { "type": "Point", "coordinates": [ 2.23, 49.85 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Les Baquets", "AlternativeNames": "Saleux | Saleux 295 | saleux 244a | Saleux 125 | Saleux" }, "geometry": { "type": "Point", "coordinates": [ 2.23, 49.85 ] } },
 { "type": "Feature", "properties": { "SiteName": "Samborzec", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 21.6457, 50.6445 ] } },
 { "type": "Feature", "properties": { "SiteName": "Samir", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 34.95, 32.81 ] } },
 { "type": "Feature", "properties": { "SiteName": "Sammardenchia", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 13.231355, 45.975305 ] } },
@@ -1719,8 +1718,8 @@
 { "type": "Feature", "properties": { "SiteName": "Vinogradi-Bečej", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 20.0328, 45.6164 ] } },
 { "type": "Feature", "properties": { "SiteName": "Vinya en Pau", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 1.699466, 41.344905 ] } },
 { "type": "Feature", "properties": { "SiteName": "Vizula", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 13.935, 44.823 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Vlasac", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 22.0408, 44.5281 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Vlasac and Lepenski Vir", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 22.0167, 44.6 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Vlasac", "AlternativeNames": "Vlasac and Lepenski Vir" }, "geometry": { "type": "Point", "coordinates": [ 22.0408, 44.5281 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Lepenski Vir", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 22.0264, 44.5567 ] } },
 { "type": "Feature", "properties": { "SiteName": "Vledder", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.21, 52.8575 ] } },
 { "type": "Feature", "properties": { "SiteName": "Vlijtingen", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 5.0797, 50.7642 ] } },
 { "type": "Feature", "properties": { "SiteName": "Volniensky", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 19.75, 44.9 ] } },
@@ -1797,7 +1796,6 @@
 { "type": "Feature", "properties": { "SiteName": "Zwolle-Oude Deventerstraatweg", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.0712, 52.4625 ] } },
 { "type": "Feature", "properties": { "SiteName": "Melos", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 24.370033574330495, 36.689306546392146 ] } },
 { "type": "Feature", "properties": { "SiteName": "Pinarbasi A", "AlternativeNames": "Pinarbasi A | Pınarbaşı A" }, "geometry": { "type": "Point", "coordinates": [ 33.030950181982945, 37.469050753804531 ] } },
-{ "type": "Feature", "properties": { "SiteName": "PORTIRAGNES, Peiro Signado", "AlternativeNames": null }, "geometry": null },
 { "type": "Feature", "properties": { "SiteName": "Yeşilova Höyük", "AlternativeNames": "Yesilova Höyük | Yesilova Huyuk" }, "geometry": { "type": "Point", "coordinates": [ 27.214665388490996, 38.441252611000046 ] } }
 ]
 }
