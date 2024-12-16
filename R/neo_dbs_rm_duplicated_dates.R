@@ -16,10 +16,14 @@
 #' @export
 neo_dbs_rm_duplicated_dates <- function(df.c14 = NA,
                                         duplicated.on.fields = c("SiteName", "median", "Period"),
+                                        # is.same.date = c("SiteName", "median", "Period"),
+                                        duplicated.on.samedate = TRUE,
                                         verbose = TRUE){
   # df <- unique(df.c14[ , duplicated.on.fields ] )
   `%>%` <- dplyr::`%>%`
-  df <- df.c14 %>%
+  df <- df.c14
+  df$median <- round(df$median, 0)
+  df <- df %>%
     dplyr::distinct(across(all_of(duplicated.on.fields)), .keep_all = TRUE)
   if(verbose){
     rm.dates <- nrow(df.c14) - nrow(df)
