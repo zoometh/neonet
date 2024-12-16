@@ -1,6 +1,6 @@
 "sourcedb"	"site"	"idf"	"labcode"	"lon"	"lat"	"period"	"median"	"ID"	"code"
-"neonet"	"Arene Candide"	22	"Beta-66553"	8.32828	44.162304	"EN"	-5766	22	"Cfa"
-"neonet"	"Arene Candide"	23	"Lj-4143"	8.32828	44.162304	"EN"	-5766	23	"Cfa"
+"neonet"	"Arene Candide"	22	"Lj-4143"	8.32828	44.162304	"EN"	-5766	22	"Cfa"
+"neonet"	"Arene Candide"	23	"Beta-66553"	8.32828	44.162304	"EN"	-5766	23	"Cfa"
 "neonet"	"Arma dell'Aquila"	24	"Ly-14593"	8.32967	44.204708	"EN"	-5707	24	"Cfa"
 "agrichange"	"Bonica"	34	"OxA-23440"	1.932166	41.387861	"EN"	-5633	34	"Csa"
 "neonetatl"	"Cabranosa"	38	"Sac-1321"	-8.9666	37.0471	"EN"	-5812	38	"Csa"
@@ -9,37 +9,35 @@
 "neonet"	"Correge-Leucate"	69	"MC-788"	3.0507	42.8958	"EN"	-5697	69	NA
 "calpal"	"Cova de l'Or"	82	"Beta-136677"	-0.364154	38.84465	"EN"	-5787	82	"BSk"
 "neonet"	"Cova de les Cendres"	85	"Beta-75220"	0.152631	38.685691	"EN"	-5642	85	NA
-"neonet"	"Cueva de Bajondillo"	96	"Ua-21999"	-4.496648	36.622965	"EN"	-6170	96	"Csa"
-"neonetatl"	"Cueva de Carigüela"	97	"Beta-141150"	-3.431582	37.44239	"EN"	-5796	97	"Csa"
-"neonet"	"Cueva de Nerja"	102	"Birm-1113"	-3.844529	36.762871	"EN"	-5867	102	"BSk"
-"neonetatl"	"El Retamar"	118	"Sac-1525"	-6.226273	36.57873	"EN"	-6146	118	"Csa"
-"neonetatl"	"Encosta de Sant'Ana"	119	"Sac-2004"	-9.137902	38.71563	"EN"	-5769	119	"Csa"
-"neonet"	"Fem"	123	"Beta-42867"	0.867881	41.302597	"EN"	-5774	123	"Csa"
-"neonet"	"Font-des-Pigeons"	127	"MC-2515"	5.1667	43.3834	"EN"	-5792	127	NA
-"neonet"	"Fontbregoua"	128	"Gif-2990"	6.23231	43.5637	"EN"	-5616	128	"Cfb"
-"bda"	"Forcas II"	129	"Beta-247405"	0.3402435	42.184362	"EN"	-5652	129	"Csa"
-"neonet"	"Gazel"	133	"GrN-6702"	2.421154	43.325325	"EN"	-5795	133	"Cfa"
-"bda"	"Gritulu"	136	"LYON-824"	9.425046	42.89037	"EN"	-5723	136	NA
-"neonet"	"Grotta Corbeddu"	137	"UtC-1251"	9.48634	40.255253	"EN"	-5605	137	"Csa"
-"neonet"	"Grotta Filiestru"	138	"Q-3020"	8.651545	40.453804	"EN"	-5625	138	"Csa"
-"neonet"	"Kargadur"	149	"OxA-21092"	13.950637	44.819147	"EN"	-5671	149	NA
-"neonet"	"Kronio"	150	"LTL-211A"	13.08	37.51	"EN"	-5870	150	"BSk"
-"neonet"	"La Marmotta"	154	"R-2360"	12.2745	42.1044	"EN"	-5740	154	"Csa"
-"neonet"	"Le Secche"	159	"LTL-16672A"	10.882	42.381891	"EN"	-5671	159	NA
-"neonet"	"Monte Venere"	174	"R-1175"	12.1814	42.3505	"EN"	-5826	174	"Csa"
-"neonet"	"Peiro Signado"	185	"Ly-5689(SacA-13451)"	3.32891	43.3083	"EN"	-5801	185	"Csa"
-"neonet"	"Pendimoun"	186	"Gif-A101334"	7.505944	43.812212	"EN"	-5689	186	NA
-"neonet"	"Pendimoun"	187	"LTL-15941A"	7.505944	43.812212	"EN"	-5689	187	NA
-"neonet"	"Pollera"	192	"MC-756"	8.314602	44.200546	"EN"	-5834	192	"Cfa"
-"neonet"	"Pont de Roque-Haute"	193	"Ly-7625"	3.36003	43.2927	"EN"	-5970	193	"Csa"
-"neonet"	"Rio Tana"	202	"AECV-2012C"	13.673419	41.940862	"EN"	-5744	202	"Csa"
-"bda"	"SHM-1"	210	"SacA-23651 (P-1068)"	10.496	36.019	"EN"	-5713	210	"BSk"
-"neonet"	"San Sebastiano di Perti"	214	"OxA-21359"	8.309641	44.184808	"EN"	-5670	214	"Cfa"
-"agrichange"	"Sant Llorenc"	216	"Beta-311606"	1.831924	41.252455	"EN"	-5659	216	"Csa"
-"neonet"	"Santo Stefano di Ortucchio"	218	"LTL-60A"	13.666385	41.953894	"EN"	-5721	218	"Csa"
-"neonet"	"Savignano sul Panaro"	219	"Lj-4649"	11.04242	44.476479	"EN"	-5633	219	"Cfb"
-"brami15"	"Senhora da Alegria"	220	"BM-1157"	-8.2346	40.0751	"EN"	-5795	220	"Csa"
-"neonet"	"Su Coloru"	224	"Beta-167931"	8.712183	40.661832	"EN"	-5720	224	"Csa"
-"bda"	"Uzzo"	229	"OxA-13661"	12.786694	38.109951	"EN"	-6307	229	NA
-"neonetatl"	"Vale Marim I"	233	"Beta-417015"	-8.806815	37.9302	"EN"	-5908	233	"Csa"
-"neonetatl"	"Vale Pincel I"	234	"Beta-164664"	-8.844087	37.94075	"EN"	-5652	234	"Csa"
+"neonetatl"	"Cueva de Carigüela"	96	"Beta-141150"	-3.431582	37.44239	"EN"	-5796	96	"Csa"
+"neonet"	"Cueva de Nerja"	101	"Birm-1113"	-3.844529	36.762871	"EN"	-5867	101	"BSk"
+"neonetatl"	"Encosta de Sant'Ana"	117	"Sac-2004"	-9.137902	38.71563	"EN"	-5769	117	"Csa"
+"neonet"	"Fem"	121	"Beta-42867"	0.867881	41.302597	"EN"	-5774	121	"Csa"
+"neonet"	"Font-des-Pigeons"	125	"MC-2515"	5.1667	43.3834	"EN"	-5792	125	NA
+"neonet"	"Fontbregoua"	126	"Gif-2990"	6.23231	43.5637	"EN"	-5616	126	"Cfb"
+"bda"	"Forcas II"	127	"Beta-247405"	0.3402435	42.184362	"EN"	-5652	127	"Csa"
+"neonet"	"Gazel"	131	"GrN-6702"	2.421154	43.325325	"EN"	-5795	131	"Cfa"
+"bda"	"Gritulu"	134	"LYON-824"	9.425046	42.89037	"EN"	-5723	134	NA
+"neonet"	"Grotta Corbeddu"	135	"UtC-1251"	9.48634	40.255253	"EN"	-5605	135	"Csa"
+"neonet"	"Grotta Filiestru"	136	"Q-3020"	8.651545	40.453804	"EN"	-5625	136	"Csa"
+"neonet"	"Kargadur"	147	"OxA-21092"	13.950637	44.819147	"EN"	-5671	147	NA
+"neonet"	"Kronio"	148	"LTL-211A"	13.08	37.51	"EN"	-5870	148	"BSk"
+"neonet"	"La Marmotta"	152	"R-2360"	12.2745	42.1044	"EN"	-5740	152	"Csa"
+"neonet"	"Le Secche"	157	"LTL-16672A"	10.882	42.381891	"EN"	-5671	157	NA
+"neonet"	"Monte Venere"	172	"R-1175"	12.1814	42.3505	"EN"	-5826	172	"Csa"
+"neonet"	"Peiro Signado"	183	"Ly-5689(SacA-13451)"	3.32891	43.3083	"EN"	-5801	183	"Csa"
+"neonet"	"Pendimoun"	184	"Gif-A101334"	7.505944	43.812212	"EN"	-5689	184	NA
+"neonet"	"Pendimoun"	185	"LTL-15941A"	7.505944	43.812212	"EN"	-5689	185	NA
+"neonet"	"Pollera"	190	"MC-756"	8.314602	44.200546	"EN"	-5834	190	"Cfa"
+"neonet"	"Pont de Roque-Haute"	191	"Ly-7625"	3.36003	43.2927	"EN"	-5970	191	"Csa"
+"neonet"	"Rio Tana"	200	"AECV-2012C"	13.673419	41.940862	"EN"	-5744	200	"Csa"
+"bda"	"SHM-1"	208	"SacA-23651 (P-1068)"	10.496	36.019	"EN"	-5713	208	"BSk"
+"neonet"	"San Sebastiano di Perti"	212	"OxA-21359"	8.309641	44.184808	"EN"	-5670	212	"Cfa"
+"agrichange"	"Sant Llorenc"	214	"Beta-311606"	1.831924	41.252455	"EN"	-5659	214	"Csa"
+"neonet"	"Santo Stefano di Ortucchio"	216	"LTL-60A"	13.666385	41.953894	"EN"	-5721	216	"Csa"
+"neonet"	"Savignano sul Panaro"	217	"Lj-4649"	11.04242	44.476479	"EN"	-5633	217	"Cfb"
+"brami15"	"Senhora da Alegria"	218	"BM-1157"	-8.2346	40.0751	"EN"	-5795	218	"Csa"
+"neonet"	"Su Coloru"	222	"Beta-167931"	8.712183	40.661832	"EN"	-5720	222	"Csa"
+"bda"	"Uzzo"	227	"OxA-13661"	12.786694	38.109951	"EN"	-6307	227	NA
+"neonetatl"	"Vale Marim I"	231	"Beta-417015"	-8.806815	37.9302	"EN"	-5908	231	"Csa"
+"neonetatl"	"Vale Pincel I"	232	"Beta-164664"	-8.844087	37.94075	"EN"	-5652	232	"Csa"

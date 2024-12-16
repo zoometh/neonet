@@ -87,6 +87,8 @@ obj.case <- list("MedWest", c(-5300), c(-11, 35, 14, 45), "koppen_7k.tif")
 obj.case <- list("MedCompleted", c(-5200), c(-7, 30, 38, 46), "koppen_7k.tif")
 # whole area
 obj.case <- list("Whole", c(-5000), c(-10, 30, 35, 50), "koppen_7k.tif")
+# whole area
+obj.case <- list("SouthMed", c(-5000), c(-7, 26, 40, 39), "koppen_8k.tif")
 ## by sites - - - - - - - - - - - - - - - - - - - - - - - -
 obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
 ## by authors - - - - - - - - - - - - - - - - - - - - - - - -
@@ -147,7 +149,7 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 97)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 96)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 
