@@ -5,8 +5,7 @@
 NeoNet serves as a framework to study the transition from the Late Mesolithic to the Early Neolithic through spatio-temporal modeling of radiocarbon dates and by offering:
 
 1. [curated datasets](https://github.com/zoometh/neonet?tab=readme-ov-file#neonet-datasets)
-2. [R functions](https://github.com/zoometh/neonet#neonet-functions--radiocarbon-management-)
-  - [reference data](https://github.com/zoometh/neonet?tab=readme-ov-file#reference-data)
+2. [R functions](https://github.com/zoometh/neonet#neonet-functions--radiocarbon-management-) and [reference data](https://github.com/zoometh/neonet?tab=readme-ov-file#reference-data)
 3. [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-)
 
 <p align="center">

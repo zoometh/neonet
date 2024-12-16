@@ -1605,8 +1605,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* *Leapfrogs*, originally from Italy, with settlements in (same) <span style="color:#FFFF00;">Csa</span> climates mostly: 
-* Le Secche -5671 (no climate data, probably <span style="color:#FFFF00;">Csa</span>) connects with <span style="color:#FFFF00;">Pont de Roque-Haute</span> -5970 on ceramics
+* *Leapfrogs*, originally from Italy, with mostly settlements in (same) <span style="color:#FFFF00;">Csa</span> climates
+* <span style="color:#64FF50;">Fonbregoua</span> in <span style="color:#64FF50;">Cfb</span> climate (*Temperate, no dry season, warm summer*) and <span style="color:#C8FF50;">Gazel</span> in <span style="color:#C8FF50;">Cfa</span> climate
+
 
 </small></p>
 
@@ -1678,6 +1679,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 * The Southwest of the Iberian Peninsula is neolithised by ...
 * Direct maritime connection between Corsica and Sardinia to the Levant Iberian coast is likely improbable.
 * Catalonian Neolithic faces different climates that slow down the spread of the Neolithic (acclimatization)
+* Pioneer site in <span style="color:#C8C800;">Csb</span> climate (*Temperate, dry summer, warm summer*) C8C800 between 5,600 and 5,300 BC: <span style="color:#C8C800;">Balma Margineda (Andorra), <span style="color:#C8C800;">Abri des Castelli</span> (Corsica), and a cluster in the upper Ebro Basin: <span style="color:#C8C800;">Tumul del Padro</span>, etc.	
 
 </small></p>
 
@@ -1807,11 +1809,6 @@ minimizing regional climate contrasts: Similarity between local landscapes of ea
 - **6000 BC** ...
 :::
 
-# Discussion {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
-
-::: notes
-Rproductible methods. Enhancement of cultural and climatic data
-:::
 
 ## Climates occupied by the Early Farmers 
 
