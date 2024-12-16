@@ -1676,7 +1676,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * The Southwest of the Iberian Peninsula is neolithised by ...
-* Direct maritime connection between Corsica and Sardinia to the Levant Iberian coast is likely improbable
+* Direct maritime connection between Corsica and Sardinia to the Levant Iberian coast is likely improbable.
+* Catalonian Neolithic faces different climates that slow down the spread of the Neolithic (acclimatization)
 
 </small></p>
 
