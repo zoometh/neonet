@@ -23,7 +23,7 @@ if(dbs_3rdpart){
 }
 
 df.c14 <- rbind(df.brami, samp_df)
-# subset(df.14[,c(1:10)], sourcedb == 'brami15')
+# subset(df.c14[,c(1:10)], sourcedb == 'brami15')
 # subset(df.c14[,c(1:10)], SiteName == 'Cyclops Cave' & sourcedb == 'brami15')
 
 # source("R/neo_dbs_info_dates_datatable.R")

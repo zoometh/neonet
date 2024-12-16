@@ -274,18 +274,18 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="60%"}
 ```{.r}
 neo_spd(df.c14 = df.c14)
 ```
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png" width="500"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet_med_spd.png" width="600"/>
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 ```{.r}
 neo_isochr(df.c14 = df.c14)
 ```
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/isochr-6300-BC-MedEast-koppen_8k.png" width="500"/>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/isochr-6300-BC-MedEast-koppen_8k.png" width="400"/>
 
 :::
 
@@ -777,7 +777,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* Neolithic mostly on <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates 
+* Neolithic mostly on <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates
 * North and South Levant farmers separated by <span style="color:#FF00FF;">Dsa</span> (*Cold, dry summer, hot summer*) climates: Mount Lebanon mountain range.
 * Cyprus early settlement: <span style="color:#FFFF00;">Klimonas</span> (idf <b>51</b>).
 
@@ -851,7 +851,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* Small changes in the estimated area with Neolithic economy  
+* Small changes in the estimated area with Neolithic economy
 * Southward: new neolithic occupation in a <span style="color:#FF0000;">BWh</span> climate (*Arid, desert, hot*): <span style="color:#FF0000;">Shkarat Msaied</span> (idf <b>78</b>).
 
 </small></p>
@@ -1091,7 +1091,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 
 <small>
 
-* ca 7500-7000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB *koine*. 
+* ca 7,500-7,000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB *koine*. 
 * ca 6,700 BC, first South Western and Western Anatolian sites of <span style="color:#FFFF00;">Bademagaci</span> (idf <b>16</b>) and  <span style="color:#FFFF00;">Cukurici</span> (id <b>23</b>) are temporally (w-medians) and spatially (distances) close to Cretan sites of  <span style="color:#FFFF00;">Delphinos</span> (idf <b>25</b>) and <span style="color:#FFFF00;">Knossos</span>(idf <b>61</b>).
 * ca 6,200 BC, aridification of the Central Anatolian Plateau (*8.2 ky BP event*)
 
@@ -1760,12 +1760,6 @@ Rproductible methods. Enhancement of cultural and climatic data
 
 :::
 
-:::
-
-
-<center>
-
-</center>
 
 ## <img src='https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-prg-r.png' style='height: 50px;vertical-align: middle;'/> productible methods {data-visibility=hidden}
 
