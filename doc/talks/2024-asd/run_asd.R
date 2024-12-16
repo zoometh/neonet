@@ -81,7 +81,7 @@ obj.case <- list("MedCentr", c(-5700), c(5, 35, 20, 47), "koppen_8k.tif")
 obj.case <- list("MedCentr", c(-5400), c(5, 35, 20, 47), "koppen_7k.tif")
 obj.case <- list("MedCentr", c(-5100), c(5, 35, 20, 47), "koppen_7k.tif")
 # Med Occ
-obj.case <- list("MedWest", c(-5600), c(-11, 35, 14, 45), "koppen_8k.tif")
+obj.case <- list("MedWest", c(-5600), c(-11, 35, 10, 44), "koppen_8k.tif")
 obj.case <- list("MedWest", c(-5300), c(-11, 35, 14, 45), "koppen_7k.tif")
 # All Med
 obj.case <- list("MedCompleted", c(-5200), c(-7, 30, 38, 46), "koppen_7k.tif")
