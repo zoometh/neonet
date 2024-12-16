@@ -926,7 +926,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * Mount Lebanon range (<span style="color:#FF00FF;">Dsa</span>) still acts as a frontier between North Levant and South Levant Neolithic
-* Central Anatolia Plateau (<span style="color:#FFDC64;">BSk</span>) with new sites: <span style="color:#FFDC64;">Asikli Höyük</span> (idf <b>10</b>), <span style="color:#FFDC64;">Kaletepe</span> (idf <b>50</b>) and <span style="color:#FFDC64;">Pinarbasi A</span> (idf <b>69</b>)
+* First Central Anatolia Plateau sites: <span style="color:#FFDC64;">Asikli Höyük</span> (idf <b>10</b>), <span style="color:#FFDC64;">Kaletepe</span> (idf <b>50</b>) and <span style="color:#FFDC64;">Pinarbasi A</span> (idf <b>69</b>)
 
 
 </small></p>
@@ -1001,8 +1001,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * Only one new occupation on the Central Anatolian Plateau, <span style="color:#FFDC64;">Musular</span> (idf <b>64</b>): barrier
-* In Southern Levant, close concentration of occupations in different climates: <span style="color:#FFFF00;">Csa</span>, <span style="color:#FFDC64;">BSk</span>, <span style="color:#FF0000;">BWh</span> and newly <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*)
-* <span style="color:#F5A500;">BSh</span> sites: <span style="color:#F5A500;">Nahal Efe</span> (idf <b>65</b>), <span style="color:#F5A500;">Hemar</span> (idf <b>42</b>)
+* In Southern Levant, close concentration of occupations in different climates: <span style="color:#FFFF00;">Csa</span>, <span style="color:#FFDC64;">BSk</span>, <span style="color:#FF0000;">BWh</span> and newly <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*) and <span style="color:#FF9696;">BWk</span> (*Arid, desert, cold*).
+  - <span style="color:#F5A500;">Nahal Efe</span> (idf <b>65</b>), <span style="color:#F5A500;">Hemar</span> (idf <b>42</b>)
+  - <span style="color:#FF9696;">Basta</span> (idf <b>42</b>)
 
 
 </small></p>
@@ -1089,13 +1090,11 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 
 ### Asumptions
 
-<small>
-
 * ca 7,500-7,000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB *koine*. 
-* ca 6,700 BC, first South Western and Western Anatolian sites of <span style="color:#FFFF00;">Bademagaci</span> (idf <b>16</b>) and  <span style="color:#FFFF00;">Cukurici</span> (id <b>23</b>) are temporally (w-medians) and spatially (distances) close to Cretan sites of  <span style="color:#FFFF00;">Delphinos</span> (idf <b>25</b>) and <span style="color:#FFFF00;">Knossos</span>(idf <b>61</b>).
+* ca 6,700 BC, first South Western and Western Anatolian sites of <span style="color:#FFFF00;">Bademagaci</span> (idf <b>16</b>) and  <span style="color:#FFFF00;">Cukurici</span> (id <b>23</b>) are temporally (w-medians) and spatially (distances) closer to Cretan sites of <span style="color:#FFFF00;">Delphinos</span> (idf <b>25</b>) and <span style="color:#FFFF00;">Knossos</span>(idf <b>61</b>) than <span style="color:#FFDC64;">BSk</span> and <span style="color:#FF00FF;">Dsa</span> Anatolian Plateau sites.
+* Confirms: Brami 2015[^66001].
 * ca 6,200 BC, aridification of the Central Anatolian Plateau (*8.2 ky BP event*)
 
-</small>
 
 :::
 
@@ -1161,8 +1160,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 <p><small>
 
 * Aegean sea and shore 'neolithised' before Northern Anatolia, and even before South central Anatolia.
-* Earliest neolithic sites are those having pre-neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas (idf <b>27</b>), Franchthi (idf <b>17</b>) and Cyclops Cave (idf <b>11</b>), no climate data available.
-* Confirms: Brami 2015[^66001].
+* Earliest neolithic sites are those having pre-neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas (idf <b>27</b>), Franchthi (idf <b>17</b>) and Cyclops Cave (idf <b>11</b>). No climate data available but probably <span style="color:#FFFF00;">Csa</span>.
+* <span style="color:#FFFF00;">Yarimburgaz</span>
 
 </small></p>
 
@@ -1236,7 +1235,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* ca 6,200 BC, Greece mainland turns colder (*8.2 ky BP event*), visible in the KCC (<span style="color:#FF00FF;">Dsa</span> → <span style="color:#37C8FF;">Dfb</span>)
+* Greece mainland turns colder (*8.2 ky BP event*), for example: <span style="color:#FF00FF;">Dsa</span> → <span style="color:#37C8FF;">Dfb</span> 
 * In Greece, Thessaly and Macedonia, concentration of dates in <span style="color:#FFDC64;">BSk</span> climates (<span style="color:#FFDC64;">Sesklo, Paliambela, Anzabegovo</span>, etc. )
 * First Neolithic in Northern East Mediterranean (Ugurlu, idf <b>44</b>) related to first Neolithic in Northwestern Anatolia: <span style="color:#FFFF00;">Barcin</span> (idf <b>9</b>), <span style="color:#FFFF00;">Aktopraklik</span> (idf <b>2</b>)
 * New <span style="color:#C8FF50;">Cfa</span> climate (*Temperate, no dry season, hot summer*) with  <span style="color:#C8FF50;">Mavropigi</span> (idf <b>19</b>), <span style="color:#C8FF50;">Lefkopetra</span> (idf <b>28</b>), <span style="color:#C8FF50;">Ofeas</span> (idf <b>32</b>)
@@ -1393,9 +1392,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * ca 6,300 BC, <span style="color:#FFFF00;">Uzzo</span> (Grotta del', idf <b>164</b>, no climatic data) first occupation, few years after <span style="color:#FFFF00;">Sidari</span> (idf <b>147</b>)
-* Between 6,100 and 6,100 numerous occupations: <span style="color:#FFFF00;">Continenza</span>, <span style="color:#FFFF00;">Csa</span>
 * Possible connections between Serbian <span style="color:#C8FF50;">Cfa</span> sites: <span style="color:#C8FF50;">Topole-Bač</span> (idf <b>157</b>), <span style="color:#C8FF50;">Donja Branjevina</span> (idf <b>41</b>) and <span style="color:#C8FF50;">Gudnja</span> (idf <b>62</b>) in Dalmatia via <span style="color:#37C8FF;">Obre I</span> (idf <b>94</b>)
-* <span style="color:#37C8FF;">Obre I</span> (idf <b>94</b>) in a <span style="color:#37C8FF;">Cfa</span> climate (*Cold, no dry season, warm summer*)
+* <span style="color:#37C8FF;">Obre I</span> (idf <b>94</b>) in a <span style="color:#37C8FF;">Dfb</span> climate (*Cold, no dry season, warm summer*)
 
 </small></p>
 
@@ -1537,10 +1535,9 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 ::: {.column width="50%"}
 
 <p><small>
+* *Leapfrogs*, originally from Italy, with settlements in (same) <span style="color:#FFFF00;">Csa</span> climates mostly: 
+* Le Secche -5671 (no climate data, probably <span style="color:#FFFF00;">Csa</span>) connects with <span style="color:#FFFF00;">Pont de Roque-Haute</span> -5970 on ceramics
 
-* 5,600-5,400 BC: Slowdown linked to the transition <span style="color:#C8FF50;">Cfa</span> and <span style="color:#64FF50;">Cfb</span> climates (no dry season) in northern Abruzzo. Confirms: Binder et al. 2022[^72], Mazzucco et al. 2023[^71].
-* No occupations in the the Po Plain
-* 5,500 BC, first Alpine occupations in Sion (ca 491 m.s.n.m): <span style="color:#007D7D;">Chemin des Collines</span> and <span style="color:#007D7D;">Planta</span>, in <span style="color:#007D7D;">Dfc</span> climates (*Cold, no dry season, cold summer*).
 
 </small></p>
 
@@ -1550,7 +1547,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-## Western Mediterranean (5,400 BC)
+## West Mediterranean (5,600 BC)
 
 ```{r, message=FALSE}
 df <- "isochr-5600-BC-MedWest-koppen_8k"
@@ -1609,8 +1606,77 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* *Leapfrogs*, originally from Italy, with settlements in <span style="color:#FFFF00;">Csa</span> climates mostly: 
-* Le Secche -5671 connects with <span style="color:#FFFF00;">Pont de Roque-Haute</span> -5970 on cearmics
+* *Leapfrogs*.
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+## West Mediterranean (5,300 BC)
+
+```{r, message=FALSE}
+df <- "isochr-5300-BC-MedWest-koppen_7k"
+```
+
+::: {.panel-tabset}
+
+### Climates
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5300-BC-MedWest-koppen_7k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5300-BC-MedWest-koppen_7k-legend.png){width="500" style="horizontal-align: middle;"}
+:::
+
+:::
+
+### Sites
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5300-BC-MedWest-koppen_7k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
+```
+:::
+
+:::
+
+### Assumptions
+
+
+::: columns
+
+::: {.column width="50%"}
+![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/isochr-5300-BC-MedWest-koppen_7k.png){width="700" style="horizontal-align: middle;"}
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+* *Leapfrogs*, originally from Italy, with settlements in (same) <span style="color:#FFFF00;">Csa</span> climates mostly: 
+* Le Secche -5671 (no climate data, probably <span style="color:#FFFF00;">Csa</span>) connects with <span style="color:#FFFF00;">Pont de Roque-Haute</span> -5970 on ceramics
 
 </small></p>
 

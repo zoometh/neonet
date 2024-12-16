@@ -85,6 +85,8 @@ obj.case <- list("MedWest", c(-5600), c(-11, 35, 14, 45), "koppen_8k.tif")
 obj.case <- list("MedWest", c(-5300), c(-11, 35, 14, 45), "koppen_7k.tif")
 # All Med
 obj.case <- list("MedCompleted", c(-5200), c(-7, 30, 38, 46), "koppen_7k.tif")
+# whole area
+obj.case <- list("Whole", c(-5000), c(-10, 30, 35, 50), "koppen_7k.tif")
 ## by sites - - - - - - - - - - - - - - - - - - - - - - - -
 obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
 ## by authors - - - - - - - - - - - - - - - - - - - - - - - -
@@ -126,6 +128,8 @@ isochr$map
 ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 10, height = 8)
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
+# subset(isochr$data[order(isochr$data$median),], code == 'Csb')
+
 # df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
 # write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
