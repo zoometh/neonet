@@ -5,8 +5,9 @@
 NeoNet serves as a framework to study the transition from the Late Mesolithic to the Early Neolithic through spatio-temporal modeling of radiocarbon dates and by offering:
 
 1. [curated datasets](https://github.com/zoometh/neonet?tab=readme-ov-file#neonet-datasets)
-2. [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-)
-3. [R functions](https://github.com/zoometh/neonet#neonet-functions--radiocarbon-management-)
+2. [R functions](https://github.com/zoometh/neonet#neonet-functions--radiocarbon-management-)
+  - [reference data](https://github.com/zoometh/neonet?tab=readme-ov-file#reference-data)
+3. [interactive app](https://github.com/zoometh/neonet#neonet-app--mapping-the-late-mesolithicearly-neolithic-transition-)
 
 <p align="center">
 <br>
@@ -80,14 +81,14 @@ NeoNet functions enable the handling of radiocarbon dates sourced from the datas
 * [isochrones](https://github.com/zoometh/neonet#isochrones)
 * [Koppen climate classes](https://github.com/zoometh/neonet?tab=readme-ov-file#koppen)
 * [Harris matrices](https://github.com/zoometh/neonet?tab=readme-ov-file#harris-matrix) using the [NeoNet-strati app](https://github.com/zoometh/neonet?tab=readme-ov-file#neonet-strati).
-* [reference data]()
+* [reference data](https://github.com/zoometh/neonet?tab=readme-ov-file#reference-data)
 
 ### Data
 
 #### Reference data
 
 * [standardised site names](https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/c14_corrected_sitenames.geojson)
-* [outlier dates]()
+* outlier dates ([raw](https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/c14_aberrant_dates.tsv) | [rendered](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv))
 
 #### Data preparation
 
