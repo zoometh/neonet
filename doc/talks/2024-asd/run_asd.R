@@ -131,8 +131,6 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 # subset(isochr$data[order(isochr$data$median),], code == 'Csb')
 
 # df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
-# write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
-# openxlsx::write.xlsx(x = isochr$data, paste0(obj.case.out, ".xlsx"))
 # df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]
 # write.table(df, paste0(root.path, "img/", "isochrones-barriere-Italy-EN-kcc.tsv"), sep = "\t", row.names = FALSE)
 # ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 14)
@@ -144,17 +142,7 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 # neo_spd(df.c14 = head(df_filtered, 200), time.span = c(-12000, -6000))
 # neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 
-# general map
-source("R/neo_map.R")
-per <- 'LM'
-tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "blue", ";'>", per, "</span>")
-gg.map <- neo_map(df.c14 = df_filtered,
-                  selected.per = per,
-                  breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
-                  dates.size = 1,
-                  title = tit,
-                  roi = NA, dates.within.roi = FALSE)
-ggplot2::ggsave(paste0(root.path, "img/_map_data_", per, ".png"), gg.map, width = 8, height = 6)
+
 
 
 source("R/neo_find_date.R")
@@ -179,7 +167,19 @@ neo_dbs_info_date_src(db = ad$sourcedb,
 
 ##
 
-# library(rcarbon)
+# general map
+source("R/neo_map.R")
+per <- 'LM'
+tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "blue", ";'>", per, "</span>")
+gg.map <- neo_map(df.c14 = df_filtered,
+                  selected.per = per,
+                  breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
+                  dates.size = 1,
+                  title = tit,
+                  roi = NA, dates.within.roi = FALSE)
+ggplot2::ggsave(paste0(root.path, "img/_map_data_", per, ".png"), gg.map, width = 8, height = 6)
+
+# SPD
 source("R/neo_spd.R")
 source("R/neo_spdplot.R")
 source("R/neo_kcc_extract.R")
