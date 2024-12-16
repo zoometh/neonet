@@ -157,22 +157,27 @@ gg.map <- neo_map(df.c14 = df_filtered,
 ggplot2::ggsave(paste0(root.path, "img/_map_data_", per, ".png"), gg.map, width = 8, height = 6)
 
 
-# Create a stacked barplot of climates from sites
-kcc_colors <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv"
-kcc_colors <- read.csv(kcc_colors, sep = "\t")
-kcc_colors <- kcc_colors[ , c("code", "color")]
-isochr.1 <- merge(isochr$data, kcc_colors, by = "code", all.x = TRUE)
-isochr.1 <- isochr.1[ , c("idf", "site", "median", "code", "color")]
-isochr.1$all <- "All"
-ggplot2::ggplot(isochr.1, ggplot2::aes(x = all, fill = code)) +
-  ggplot2::geom_bar() +
-  ggplot2::scale_fill_manual(values = unique(isochr.1$color[order(isochr.1$code)])) +
-  ggplot2::theme_minimal()
-# names(isochr$data)[names(isochr$data) == 'longitude'] <- 'lon'
-# names(isochr$data)[names(isochr$data) == 'latitude'] <- 'lat'
-# data.df <- sf::st_as_sf(isochr$data, coords = c("lon", "lat"), crs = 4326)
-# kcc_geo <- terra::rast("C:/Rprojects/neonet/doc/data/clim/koppen_11k.tif")
-# kcc.list <- terra::extract(kcc_geo, data.df)
+source("R/neo_find_date.R")
+source("R/neo_dbs_info_date.R")
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 102)
+ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
+# Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
+
+## Not run
+source("R/neo_dbs_info_date_src.R")
+ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
+neo_dbs_info_date_src(db = ad$sourcedb,
+                      LabCode = ad$LabCode)
+
+# ## Not run
+# source("R/neo_dbs_info_date_src.R")
+# ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
+# a.db <- neo_dbs_info_date_src(db = "bda", print.res = FALSE)
+
+# Add outlier dates in this dataframe: https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv 
+
+
+##
 
 # library(rcarbon)
 source("R/neo_spd.R")
@@ -192,26 +197,3 @@ neo_spd(df.c14 = df_cc.per,
         x.intercept = 5200,
         outDir = paste0(root.path, 'img/'), outFile = 'dates',
         width = 17, height = 14)
-
-
-source("R/neo_find_date.R")
-source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 98)
-ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
-# Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
-
-## Not run
-source("R/neo_dbs_info_date_src.R")
-ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
-neo_dbs_info_date_src(db = ad$sourcedb,
-                      LabCode = ad$LabCode)
-
-# ## Not run
-# source("R/neo_dbs_info_date_src.R")
-# ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
-# a.db <- neo_dbs_info_date_src(db = "bda", print.res = FALSE)
-
-# Add outlier dates in this dataframe: https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv 
-
-
-##
