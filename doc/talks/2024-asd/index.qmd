@@ -445,22 +445,46 @@ paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
 - Some 4,000 dates are now available for the study.
 :::
 
-### ROI
+### Location
 
+
+::: columns
+
+::: {.column width="50%"}
 <center>
 
 ```{r}
 library(dplyr)
 # df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
-df <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson", quiet = T)
-roi <- paste0('<a href="', "https://github.com/zoometh/neonet/blob/main/doc/talks/2024-simep/roi.geojson", '" target="_blank">roi.geojson</a>')
-leaflet::leaflet(df, width = "700px", height = "450px") %>% 
-leaflet::addTiles() %>%
-leaflet::addPolygons(popup = roi, fillOpacity = 0) 
-# "<b>Hello World</b>")
+sitenames <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_sitenames.geojson"
+df <- sf::st_read(sitenames, quiet = T)
+df.altern <- subset(df, !is.na(AlternativeNames))
+df.altern$popup_content <- apply(sf::st_drop_geometry(df.altern), 1, function(row) {
+  paste0("<b>SiteName:</b> ", row["SiteName"], "<br>",
+         "<b>AlternativeNames:</b> ", row["AlternativeNames"], "<br>")
+})
+leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
+  leaflet::addTiles() %>%  # Add base tiles
+  leaflet::addCircleMarkers(
+    data = df.altern,
+    popup = ~popup_content,  # Use the dynamically generated popup content
+    radius = 3, 
+    color = "blue"
+  )
 ```
 
 </center>
+
+<small>[c14_corrected_sitenames.geojson](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_corrected_sitenames.geojson)</small>
+:::
+
+::: {.column width="50%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/method_github_issues_sitenames.png" width="500">
+
+:::
+
+:::
+
 
 ::: notes
 
@@ -763,7 +787,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -837,7 +861,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -911,7 +935,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -986,7 +1010,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -1004,7 +1028,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 * In Southern Levant, close concentration of occupations in different climates: <span style="color:#FFFF00;">Csa</span>, <span style="color:#FFDC64;">BSk</span>, <span style="color:#FF0000;">BWh</span> and newly <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*) and <span style="color:#FF9696;">BWk</span> (*Arid, desert, cold*).
   - <span style="color:#F5A500;">Nahal Efe</span> (idf <b>64</b>), <span style="color:#F5A500;">Hemar</span> (idf <b>42</b>)
   - <span style="color:#FF9696;">Basta</span> (idf <b>17</b>)
-
+* <span style="color:#FF9696;">Basta</span> (idf <b>17</b>) is a mega-site
 
 </small></p>
 
@@ -1088,10 +1112,11 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 
 :::
 
-### Asumptions
+### Observations
 
 <p><small>
-* ca 7,500-7,000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB *koine*. 
+
+* ca 7,500-7,000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB *koine*.
 * ca 6,700 BC, first South Western and Western Anatolian sites of <span style="color:#FFFF00;">Bademagaci</span> (idf <b>16</b>) and  <span style="color:#FFFF00;">Cukurici</span> (id <b>23</b>) are temporally (w-medians) and spatially (distances) closer to Cretan sites of <span style="color:#FFFF00;">Delphinos</span> (idf <b>25</b>) and <span style="color:#FFFF00;">Knossos</span>(idf <b>61</b>) than <span style="color:#FFDC64;">BSk</span> and <span style="color:#FF00FF;">Dsa</span> Anatolian Plateau sites.
 * Confirms: Brami 2015[^66001].
 * ca 6,200 BC, aridification of the Central Anatolian Plateau (*8.2 ky BP event*)
@@ -1147,7 +1172,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -1163,7 +1188,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 
 * Aegean sea and shore 'neolithised' before Northern Anatolia, and even before South central Anatolia.
 * Location of <span style="color:#FFFF00;">Yarimburgaz</span> (idf <b>60</b>,ca. 8,400 BC) and <span style="color:#FFFF00;">Cukurici</span> (idf <b>14</b>, ca. 6,800 BC) fits more with a maritime dispersal than a terrestrian one.
-* Earliest neolithic sites are those having pre-neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas (idf <b>35</b>), Franchthi (idf <b>22</b>) and Cyclops Cave (idf <b>15</b>). No climate data available but probably <span style="color:#FFFF00;">Csa</span>.
+* Earliest neolithic sites are those having pre-neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas (idf <b>35</b>), Franchthi (idf <b>22</b>) and Cyclops Cave (idf <b>15</b>) with no climate data available but probably <span style="color:#FFFF00;">Csa</span>. See Reingruber (2011)[^66002].
 
 </small></p>
 
@@ -1174,7 +1199,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, font.size = "11pt", verbose = FALSE)
 :::
 
 [^66001]: Brami, M. N. (2015). *A graphical simulation of the 2,000-year lag in Neolithic occupation between Central Anatolia and the Aegean basin*. Archaeological and Anthropological Sciences, 7, 319-327.
-
+[^66002]: Reingruber, A. (2011). *Early Neolithic settlement patterns and exchange networks in the Aegean*. Documenta Praehistorica, 38, 291-306.
 
 ## East Mediterranean (6,200 BC)
 
@@ -1223,7 +1248,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -1303,7 +1328,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -1377,7 +1402,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -1391,7 +1416,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* ca 6,300 BC, Grotta del'Uzzo (idf <b>161</b>, no climatic data) first occupation, few years after <span style="color:#FFFF00;">Sidari</span> (idf <b>147</b>)
+* ca 6,300 BC, few years after <span style="color:#FFFF00;">Sidari</span> (idf <b>147</b>), neolithic features in Grotta del'Uzzo (idf <b>161</b>, no climatic data) but possible Meso/Neo acculturation, 
+* ca 6,000 BC, Pulo di Molfetta (idf <b>147</b>, no climatic data), clear evidence of neolithisation (e.g. build walls)
 
 </small></p>
 
@@ -1446,7 +1472,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -1520,7 +1546,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -1591,7 +1617,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -1662,7 +1688,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 :::
 
-### Assumptions
+### Observations
 
 
 ::: columns
@@ -2056,6 +2082,3 @@ minimizing regional climate contrasts: Similarity between local landscapes of ea
 - 
 - Extract on the radiocarbon date weighted median
 :::
-
-
-
