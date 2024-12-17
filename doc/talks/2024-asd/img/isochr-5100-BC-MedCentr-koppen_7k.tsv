@@ -122,22 +122,21 @@
 "neonet"	"Settecannelle"	143	"GrA-15587"	11.755982	42.544185	"EN"	-5531	143	"Csa"
 "katsianis"	"Sidari"	144	"Lyon-3169"	19.698615	39.780078	"EN"	-6383	144	"Csa"
 "neonet"	"Skarin Samograd"	145	"Hd-11950"	16.167023	43.85587	"EN"	-5678	145	"Cfa"
-"brami15"	"Skorba"	146	"Bln-3504"	14.3777	35.9208	"EN"	-5849	146	NA
-"neonet"	"Su Carroppu"	148	"Ly-3012"	8.549996	39.196373	"EN"	-5405	148	"Csa"
-"neonet"	"Su Coloru"	149	"Beta-167931"	8.712183	40.661832	"EN"	-5720	149	"Csa"
-"calpal"	"Szederkény"	150	"SUERC-48423"	18.45	45.98	"EN"	-5339	150	"Cfa"
-"neonet"	"Terragne"	152	"Beta-59933"	17.626339	40.392311	"EN"	-5759	152	NA
-"calpal"	"Tolna-Mözs"	153	"MAMS-14145"	18.7544	46.4119	"EN"	-5210	153	"Cfa"
-"calpal"	"Topole-Bač"	154	"OxA-8693"	19.4436	45.2234	"EN"	-6033	154	"Cfa"
-"neonet"	"Torre Canne"	155	"Gif-6725"	17.3667	40.8334	"EN"	-5789	155	"Csa"
-"bda"	"Torre Sabea"	156	"Lyon-1448 (OXA)"	17.9667	40.0556	"EN"	-5740	156	NA
-"neonet"	"Trasano"	159	"Ly-3955(OxA)"	16.636111	40.675555	"EN"	-5809	159	"Csa"
-"neonet"	"Umbro"	160	"Beta-122939"	15.9178	37.9392	"EN"	-5659	160	NA
-"bda"	"Uzzo"	161	"OxA-13661"	12.786694	38.109951	"EN"	-6307	161	NA
-"neonet"	"Vela Spila"	163	"OxA-18118"	16.71836	42.969649	"EN"	-6008	163	NA
-"calpal"	"Versend-Gilencsa"	164	"SUERC-58578"	18.48	45.99	"EN"	-5370	164	"Cfa"
-"calpal"	"Vinkovci-Sopot"	166	"Beta-251910"	18.7735	45.2628	"EN"	-5977	166	"Cfa"
-"calpal"	"Zadubravlje-Duine"	168	"Z-2922"	18.1538	45.1612	"EN"	-5699	168	"Cfa"
-"radon"	"Zalavár"	169	"Bln-87"	17.166667	46.666667	"EN"	-5116	169	"Cfa"
-"calpal"	"Zemunica Cave"	170	"PSUAMS-2224"	19.75	44.9	"EN"	-5915	170	"Cfa"
-"neonet"	"via Andrea Costa"	171	"LTL-2427a"	11.314323	44.494582	"EN"	-5152	171	"Cfb"
+"neonet"	"Su Carroppu"	147	"Ly-3012"	8.549996	39.196373	"EN"	-5405	147	"Csa"
+"neonet"	"Su Coloru"	148	"Beta-167931"	8.712183	40.661832	"EN"	-5720	148	"Csa"
+"calpal"	"Szederkény"	149	"SUERC-48423"	18.45	45.98	"EN"	-5339	149	"Cfa"
+"neonet"	"Terragne"	151	"Beta-59933"	17.626339	40.392311	"EN"	-5759	151	NA
+"calpal"	"Tolna-Mözs"	152	"MAMS-14145"	18.7544	46.4119	"EN"	-5210	152	"Cfa"
+"calpal"	"Topole-Bač"	153	"OxA-8693"	19.4436	45.2234	"EN"	-6033	153	"Cfa"
+"neonet"	"Torre Canne"	154	"Gif-6725"	17.3667	40.8334	"EN"	-5789	154	"Csa"
+"bda"	"Torre Sabea"	155	"Lyon-1448 (OXA)"	17.9667	40.0556	"EN"	-5740	155	NA
+"neonet"	"Trasano"	158	"Ly-3955(OxA)"	16.636111	40.675555	"EN"	-5809	158	"Csa"
+"neonet"	"Umbro"	159	"Beta-122939"	15.9178	37.9392	"EN"	-5659	159	NA
+"bda"	"Uzzo"	160	"OxA-13661"	12.786694	38.109951	"EN"	-6307	160	NA
+"neonet"	"Vela Spila"	162	"OxA-18118"	16.71836	42.969649	"EN"	-6008	162	NA
+"calpal"	"Versend-Gilencsa"	163	"SUERC-58578"	18.48	45.99	"EN"	-5370	163	"Cfa"
+"calpal"	"Vinkovci-Sopot"	165	"Beta-251910"	18.7735	45.2628	"EN"	-5977	165	"Cfa"
+"calpal"	"Zadubravlje-Duine"	167	"Z-2922"	18.1538	45.1612	"EN"	-5699	167	"Cfa"
+"radon"	"Zalavár"	168	"Bln-87"	17.166667	46.666667	"EN"	-5116	168	"Cfa"
+"calpal"	"Zemunica Cave"	169	"PSUAMS-2224"	19.75	44.9	"EN"	-5915	169	"Cfa"
+"neonet"	"via Andrea Costa"	170	"LTL-2427a"	11.314323	44.494582	"EN"	-5152	170	"Cfb"
