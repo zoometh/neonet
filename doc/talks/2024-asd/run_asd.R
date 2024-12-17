@@ -88,7 +88,7 @@ obj.case <- list("MedCompleted", c(-5200), c(-6, 30, 37, 46), "koppen_7k.tif")
 # whole area
 # obj.case <- list("Whole", c(-5000), c(-10, 30, 35, 50), "koppen_7k.tif")
 # whole area
-obj.case <- list("SouthMed", c(-5000), c(-7, 26, 40, 39), "koppen_8k.tif")
+obj.case <- list("SouthMed", c(-9000, -8000, -7000, -6000, -5000), c(-7, 26, 40, 39), "koppen_8k.tif")
 ## by sites - - - - - - - - - - - - - - - - - - - - - - - -
 obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
 ## by authors - - - - - - - - - - - - - - - - - - - - - - - -

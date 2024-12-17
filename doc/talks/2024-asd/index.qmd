@@ -10,7 +10,7 @@ author:
     affiliation: 
       - id: up
         name: <span style="font-size:16pt">Università di Pisa</span>
-  - name: <span style="font-size:16pt">with the collaboration of </span>Andrea Manica
+  - name: <span style="font-size:16pt">collaboration of </span>Andrea Manica
     affiliation: 
       - id: uc
         name: <span style="font-size:16pt">University of Cambridge</span>
@@ -37,7 +37,7 @@ format:
     # self-contained: true
     # embed-resources: true
     # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
-    footer: "Huet & Mazzucco <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_logo.png' style='height: 25px;vertical-align: middle;'>  18 Dec 2024, ASD-CSIC, Spain"
+    footer: "Huet & Mazzucco  - <img src='https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_logo.png' style='height: 25px;vertical-align: middle;'> -  18 Dec 2024, ASD-CSIC, Spain"
     margin: 0
     width: 1200
 ---
@@ -251,25 +251,6 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 :::
 
-
-### Online app
-
-::: columns
-
-::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png"/ width="600">
-:::
-
-::: {.column width="60%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/donzere-app-north-and-south-calib-1.png" width="600"/>
-:::
-
-:::
-<center>
-<small><http://shinyserver.cfs.unipi.it:3838/C14dev/></small>
-</center>
-
-
 ### Functions
 
 ::: columns
@@ -291,6 +272,27 @@ neo_isochr(df.c14 = df.c14)
 
 
 :::
+
+
+### Online app
+
+::: columns
+
+::: {.column width="40%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/extract_kcc.png"/ width="600">
+:::
+
+::: {.column width="60%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2023-bhdc/img/donzere-app-north-and-south-calib-1.png" width="600"/>
+:::
+
+:::
+<center>
+<small><http://shinyserver.cfs.unipi.it:3838/C14dev/></small>
+</center>
+
+
+
 
 ### Openness
 
@@ -331,7 +333,7 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 :::
 
-### 3<sup>rd</sup> parts
+### 3<sup>rd</sup> part
 
 <small>Brami, M.N. A graphical simulation of the 2,000-year lag in Neolithic occupation between Central Anatolia and the Aegean basin. <em>Archaeol Anthropol Sci</em> 7, 319–327 (2015). <https://doi.org/10.1007/s12520-014-0193-4></small>
 
@@ -348,7 +350,7 @@ Data: radiocarbon dates and palaeoclimatic data.
 :::
 
 
-### Align<sup>t</sup>
+### Alig<sup>t</sup>
 
 ::: {.column width="70%"}
 
@@ -411,7 +413,7 @@ paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
 - Using 
 :::
 
-### Outliers
+### Outlier
 
 
 ```{r, message=FALSE}
@@ -445,7 +447,7 @@ paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
 - Some 4,000 dates are now available for the study.
 :::
 
-### Location
+### Locat<sup>o</sup>
 
 
 ::: columns
@@ -649,51 +651,9 @@ function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/
 - Extract on the radiocarbon date weighted median from the Summed probability density (SPD)
 :::
 
-### Location
 
 
-
-::: columns
-
-::: {.column width="50%"}
-<center>
-
-```{r}
-library(dplyr)
-# df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
-sitenames <- "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_sitenames.geojson"
-df <- sf::st_read(sitenames, quiet = T)
-df.altern <- subset(df, !is.na(AlternativeNames))
-df.altern$popup_content <- apply(sf::st_drop_geometry(df.altern), 1, function(row) {
-  paste0("<b>SiteName:</b> ", row["SiteName"], "<br>",
-         "<b>AlternativeNames:</b> ", row["AlternativeNames"], "<br>")
-})
-leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
-  leaflet::addTiles() %>%  # Add base tiles
-  leaflet::addCircleMarkers(
-    data = df.altern,
-    popup = ~popup_content,  # Use the dynamically generated popup content
-    radius = 3, 
-    color = "blue"
-  )
-```
-
-</center>
-
-<small>[c14_corrected_sitenames.geojson](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_corrected_sitenames.geojson)</small>
-:::
-
-::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/method_github_issues_sitenames.png" width="500">
-
-:::
-
-:::
-
-
-
-
-### Add KCC
+### Add Koppen Climate Classes
 
 ::: columns
 
@@ -1028,7 +988,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 * In Southern Levant, close concentration of occupations in different climates: <span style="color:#FFFF00;">Csa</span>, <span style="color:#FFDC64;">BSk</span>, <span style="color:#FF0000;">BWh</span> and newly <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*) and <span style="color:#FF9696;">BWk</span> (*Arid, desert, cold*).
   - <span style="color:#F5A500;">Nahal Efe</span> (idf <b>64</b>), <span style="color:#F5A500;">Hemar</span> (idf <b>42</b>)
   - <span style="color:#FF9696;">Basta</span> (idf <b>17</b>)
-* <span style="color:#FF9696;">Basta</span> (idf <b>17</b>) is a mega-site
+* Territorial expansion of mega-sites into different climates, ex: <span style="color:#FF9696;">Basta</span> (idf <b>17</b>)
+
 
 </small></p>
 
