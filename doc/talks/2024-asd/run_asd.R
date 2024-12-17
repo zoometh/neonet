@@ -84,9 +84,9 @@ obj.case <- list("MedCentr", c(-5100), c(5, 35, 20, 47), "koppen_7k.tif")
 obj.case <- list("MedWest", c(-5600), c(-11, 35, 10, 44), "koppen_8k.tif")
 obj.case <- list("MedWest", c(-5300), c(-11, 35, 10, 44), "koppen_7k.tif")
 # All Med
-obj.case <- list("MedCompleted", c(-5200), c(-7, 30, 38, 46), "koppen_7k.tif")
+obj.case <- list("MedCompleted", c(-5200), c(-6, 30, 37, 46), "koppen_7k.tif")
 # whole area
-obj.case <- list("Whole", c(-5000), c(-10, 30, 35, 50), "koppen_7k.tif")
+# obj.case <- list("Whole", c(-5000), c(-10, 30, 35, 50), "koppen_7k.tif")
 # whole area
 obj.case <- list("SouthMed", c(-5000), c(-7, 26, 40, 39), "koppen_8k.tif")
 ## by sites - - - - - - - - - - - - - - - - - - - - - - - -
@@ -111,7 +111,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      kcc.file = kcc.file.path, # NA, 
                      is.other.geotiff = FALSE,
                      create.legend = TRUE,
-                     isochr.line.color = NA, # "black", # NA to get colored isochrones (red, blue)
+                     isochr.line.color = "black", # "black", # NA to get colored isochrones (red, blue)
                      isochr.line.size = .5,
                      isochr.txt.size = 0,
                      calibrate = FALSE,
@@ -120,14 +120,14 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      size.date = 1.5,
                      # color.dates = "darkgrey",
                      alpha.dates = 1,
-                     lbl.dates = TRUE,
+                     lbl.dates = FALSE,
                      # lbl.all.dates = FALSE,
                      # lbl.date.field = "median",
                      lbl.dates.size = 4,
                      lbl.time.interv = TRUE)
 isochr$map
 # ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 7, height = 6)
-ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 10, height = 8)
+ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 16, height = 8)
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # subset(isochr$data[order(isochr$data$median),], code == 'Csb')
