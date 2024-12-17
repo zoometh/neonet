@@ -1534,7 +1534,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 <p><small>
 
 * 5,700-5,400 BC, in Italy, slowdown of the spread of Neolithic after its rapid expansion in South Italy. The change between mostly <span style="color:#FFFF00;">Csa</span> (South of the Abruzzes) to <span style="color:#C8FF50;">Cfa</span> (North of the Abruzzes) might be the reason.
-* 5,700-5,200 BC: Cardial Filiestru-Basi-Pienza (Cardial FBP) in Tyrrhenian and Ligurian Sea.
+* 5,700-5,400 BC, on both sides of the Ardriatic Sea (Italy and Croatia), linear gradient: maritime networks. 
+* 5,700-5,200 BC in Tyrrhenian and Ligurian Sea, development of the Cardial Filiestru-Basi-Pienza (Cardial FBP) 
 
 </small></p>
 
@@ -1603,8 +1604,8 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* *Leapfrogs*, originally from Italy, with mostly settlements in (same) <span style="color:#FFFF00;">Csa</span> climates
-* <span style="color:#64FF50;">Fonbregoua</span> in <span style="color:#64FF50;">Cfb</span> climate (*Temperate, no dry season, warm summer*) and <span style="color:#C8FF50;">Gazel</span> in <span style="color:#C8FF50;">Cfa</span> climate
+* *Leapfrogs* to Southern France and the Iberian Peninsula, with mostly settlements in (same) <span style="color:#FFFF00;">Csa</span> climates, among others: <span style="color:#FFFF00;">Pont de Roque-Haute</span> (idf <b>148</b>, Southern France), Coves del <span style="color:#FFFF00;">Fem</span>  (idf <b>101</b>, Northeastern Spain), <span style="color:#FFFF00;">Cabranosa</span> (idf <b>31</b>, South Portugal).
+* <span style="color:#64FF50;">Fonbregoua</span> in <span style="color:#64FF50;">Cfb</span> climate (*Temperate, no dry season, warm summer*) and <span style="color:#C8FF50;">Gazel</span> in <span style="color:#C8FF50;">Cfa</span> climate.
 
 
 </small></p>
@@ -1674,10 +1675,10 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
 
 <p><small>
 
-* The Southwest of the Iberian Peninsula is neolithised by ...
-* Direct maritime connection between Corsica and Sardinia to the Levant Iberian coast is likely improbable.
-* Catalonian Neolithic faces different climates that slow down the spread of the Neolithic (acclimatization)
-* Pioneer site in <span style="color:#C8C800;">Csb</span> climate (*Temperate, dry summer, warm summer*) C8C800 between 5,600 and 5,300 BC: <span style="color:#C8C800;">Balma Margineda (Andorra), <span style="color:#C8C800;">Abri des Castelli</span> (Corsica), and a cluster in the upper Ebro Basin: <span style="color:#C8C800;">Tumul del Padro</span>, etc.	
+* 5,900-5,300 BC, neolithisation of Southwestern Iberian Peninsula (Portugal).
+* Catalonian Neolithic faces different climates that slowdown the spread of the Neolithic (acclimatization): <span style="color:#FFFF00;">Csa</span>, <span style="color:#C8FF50;">Cfa</span>, <span style="color:#64FF50;">Cfb</span>.
+* At the opposite of Catalonia, Valencian area, with only the two main climates of Early Neolithic:  <span style="color:#FFFF00;">Csa</span> and <span style="color:#FFDC64;">BSk</span>, favoring a faster diffusion.
+* Pioneer sites in <span style="color:#C8C800;">Csb</span> climate (*Temperate, dry summer, warm summer*) between 5,600 and 5,300 BC: <span style="color:#C8C800;">Balma Margineda</span> (idf <b>24</b>, Andorra), <span style="color:#C8C800;">Abri des Castelli</span> (idf <b>3</b>, Corsica) and, later, a cluster in the upper Ebro Basin: <span style="color:#C8C800;">Tumul del Padro</span> (idf <b>168</b>), etc.	
 
 </small></p>
 
