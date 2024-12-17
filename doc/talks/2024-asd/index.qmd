@@ -1832,31 +1832,31 @@ minimizing regional climate contrasts: Similarity between local landscapes of ea
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/Slide2.PNG){width="1000" style="horizontal-align: middle;"}
 
-ca 10,000-9,500 BC, Near East <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*), <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and, more rarely, <span style="color:#FF00FF;">Dsa</span> (*Cold, dry summer, hot summer*) climates.
+<small>ca 10,000-9,500 BC, Near East <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*), <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and, more rarely, <span style="color:#FF00FF;">Dsa</span> (*Cold, dry summer, hot summer*) climates.</small>
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/Slide3.PNG){width="1000" style="horizontal-align: middle;"}
 
-ca 9,000-7,500 BC, Near East <span style="color:#FF0000;">BWh</span> climate (*Arid, desert, hot*), ie: arid margins
+<small>ca 9,000-7,500 BC, Near East <span style="color:#FF0000;">BWh</span> climate (*Arid, desert, hot*), ie: arid margins. </small>
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/Slide4.PNG){width="1000" style="horizontal-align: middle;"}
 
-ca 8,000-7,500 BC, Near East (South Levant), <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*), and <span style="color:#FF9696;">BWk</span> (*Arid, desert, cold*).
+<small>ca 8,000-7,500 BC, Near East (South Levant), <span style="color:#F5A500;">BSh</span> (*Arid, steppe, hot*), and <span style="color:#FF9696;">BWk</span> (*Arid, desert, cold*).</small>
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/Slide5.PNG){width="1000" style="horizontal-align: middle;"}
 
-ca 6,500-6,000 BC, Balkans (between North and South), <span style="color:#C8FF50;">Cfa</span> climate (*Temperate, no dry season, hot summer*)
+<small>ca 6,500-6,000 BC, Balkans (between North and South), <span style="color:#C8FF50;">Cfa</span> climate (*Temperate, no dry season, hot summer*).</small>
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/Slide6.PNG){width="1000" style="horizontal-align: middle;"}
 
-ca 6,100-6,000 BC, Balkans, <span style="color:#37C8FF;">Dfb</span> (*Cold, no dry season, warm summer*) = Proto-Sesklo Culture.
+<small>ca 6,100-6,000 BC, Balkans, <span style="color:#37C8FF;">Dfb</span> (*Cold, no dry season, warm summer*) = Proto-Sesklo Culture.</small>
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/Slide7.PNG){width="1000" style="horizontal-align: middle;"}
 
-ca 6,100-6,000 BC, Northern Balkans and Central Europe, <span style="color:#00FFFF;">Dfa</span> (*Cold, no dry season, hot summer*), outside the studied area.
+<small>ca 6,100-6,000 BC, Northern Balkans and Central Europe, <span style="color:#00FFFF;">Dfa</span> (*Cold, no dry season, hot summer*), outside the studied area.</small>
 
 ![](https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/Slide8.PNG){width="1000" style="horizontal-align: middle;"}
 
-ca 5,500-5,300 BC, Western Mediterranean, <span style="color:#C8C800;">Csb</span> climate (*Temperate, dry summer, warm summer*)
+<small>ca 5,500-5,300 BC, Western Mediterranean, <span style="color:#C8C800;">Csb</span> climate (*Temperate, dry summer, warm summer*)</small>
 
 :::
 
