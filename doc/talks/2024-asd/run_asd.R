@@ -127,7 +127,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.time.interv = TRUE)
 isochr$map
 # ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 7, height = 6)
-ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 16, height = 8)
+ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 10, height = 8)
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # subset(isochr$data[order(isochr$data$median),], code == 'Csb')
