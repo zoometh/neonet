@@ -1913,7 +1913,7 @@ minimizing regional climate contrasts: Similarity between local landscapes of ea
 - Possibility of having 1 km of resolution and aggregating in 5" (~10 km) with TraCE21k
 :::
 
-#      Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
+# Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/method_github_issues_dates.png"}
 
 <https://github.com/zoometh/neonet>
 
