@@ -1,6 +1,6 @@
 #' @name neo_isochr
 #'
-#' @description Creates isochrones contours by interpolation of calibrated radiocarbon dates. Select the date with the minimum median in each site. Need to read config.R to get the `kcc_colors` values
+#' @description Creates isochrones contours by interpolation of calibrated radiocarbon dates from one date (median) by site. If the selected period (`selected.per`) is EN (Early Neolithic) then the minimum median in each site is selected (i.e. the most ancien Early Neolithic date). At the opposite, in the selected period (`selected.per`) is LM (Late Mesolithic) then the maximum median in each site is selected (i.e. the most recent Late Mesolithic date). Need to read config.R to get the `kcc_colors` values
 #'
 #' @param df.c14 a dataset of dates in a GeoJSON file (coming from the export of the NeoNet app)
 #' @param selected.per the period selected. Default "EN".
@@ -8,11 +8,13 @@
 #' @param where An area to limit the analysis. Can be an sf dataframe, a GeoJSON path, a bounding box (xmin, ymin, xmin, xmax). Default NA.
 #' @param calibrate if TRUE (default: FALSE) will calibrate dates using the neo_calib() function.
 #' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000) in BC.
-#' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff, or a SpatRaster.
+#' @param largest.isochr If TRUE (Default: FALSE), will only show the largerst isochrone to avoid small closed lines.
+#' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff (using its path), or a SpatRaster object.
 #' @param is.other.geotiff To display another Geotiff. Default: FALSE.
 #' @param time.interv Time interval between two isochrones (bins), in years. Default: 250.
 #' @param coloramp the name of the coloramps to use on contour, for the Neolithic dates and mesolithic dates. Default: c("Reds", "Blues"). 
 #' @param lbl.dates show the sites identifiers (default: TRUE)
+#' @param size.date size of the date label (default: 2)
 #' @param map.longest.size the longest size of the output map (height or width) in cm. The smallest size will be calculated from it. Only useful if if export = TRUE. Default: 15
 #' @param verbose if TRUE (default) then display different messages.
 #'
@@ -32,8 +34,9 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                        where = NA,
                        max.sd = 101,
                        calibrate = FALSE,
-                       time.interv = 250,
+                       time.interv = 250, # Useful?
                        isochr.subset = NA,
+                       largest.isochr = FALSE,
                        kcc.file = NA,
                        is.other.geotiff = FALSE,
                        isochr.line.color = 'black',
@@ -80,10 +83,12 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   if(is.data.frame(df.c14)){
     df.dates <- sf::st_as_sf(df.c14, coords = c("lon", "lat"), crs = 4326)
   }
-  # where
+  ############ subset on spatial ############ 
   if(inherits(where, "character")){
     if(verbose){
-      print(paste0("Spatial subset on new roi, bounding box object"))
+      print(paste0("Spatial window on a new roi: '", 
+                   paste0("[", paste0(obj.case[[3]], collapse = ", "),"]") ,
+                   "', bounding box object"))
     }
     where <- sf::st_read(where,
                          quiet = TRUE)
@@ -92,19 +97,16 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   }
   if(inherits(where, "sf")){
     if(verbose){
-      print(paste0("Spatial subset on new roi, sf object"))
+      print(paste0("Spatial subset on new ROI, sf object"))
     }
     inside <- sf::st_within(df.dates, where, sparse = FALSE)
     df.dates <- df.dates[inside, ]
   }
   if(inherits(where, "numeric")){
     if(verbose){
-      print(paste0("Spatial subset on new roi, bounding box"))
+      print(paste0("Spatial subset on new ROI, bounding box"))
     }
-    xmin <- where[1]
-    ymin <- where[2]
-    xmax <- where[3]
-    ymax <- where[4]
+    xmin <- where[1] ; ymin <- where[2] ; xmax <- where[3] ; ymax <- where[4]
     polygon <- sf::st_polygon(list(matrix(c(xmin, ymin,
                                             xmax, ymin,
                                             xmax, ymax,
@@ -122,9 +124,9 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   # 
   nb.dates.tot <- nrow(df.dates)
   if(verbose){
-    print(paste0("Original file: ", nb.dates.tot, " dates"))
+    print(paste0("Original file: ", nb.dates.tot, " dates inside the ROI"))
   }
-  # subset on periods
+  ############ subset on Periods ############ 
   df.dates <- df.dates[df.dates$Period %in% selected.per, ]
   selected.per.lbl <- paste0(selected.per, collapse = ", ")
   if(verbose){
@@ -136,32 +138,36 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   if(nrow(df.dates) == 0){
     stop(paste0("No ", selected.per.lbl, " dates in this geographical area"))
   }
-  # subset on SD
+  ############ subset on SD ############ 
   if(!is.na(max.sd)){
     df.dates <- df.dates[df.dates$C14SD < max.sd, ]
     # df_filtered <- df_filtered[df_filtered$C14SD < 101, ]
     if(verbose){
       print(paste0("After subset of SD on < ",
-                   max.sd,": ",
-                   nrow(df.dates), " dates to calibrate and model"))
+                   max.sd," years: ",
+                   nrow(df.dates), " dates to model"))
     }
   }
-  # Early Neolithic (EN): Select the row with the minimum median in each site
   # not.EN <- rownames(df.dates[df.dates$Period != "EN", ])
   # rownames(df.dates[not.EN, ]) <- NULL
   # df.dates <- df.dates[df.dates$Period == "EN", ]
   if(calibrate){
+    if(verbose){
+      print(paste0("Will calibrate ", nrow(df.dates), " dates running 'neo_calib()'"))
+    }
     df.dates <- neo_calib(as.data.frame(df.dates))
   }
+  ############ EN vs LM median selection ############
   if(neolithic){
     df.dates.min <- df.dates %>% 
       dplyr::group_by(SiteName) %>% 
-      dplyr::slice_min(median)
+      dplyr::slice_min(median) # here is the most ancient
     n.dates.display <- nrow(df.dates.min[df.dates.min[["median"]] < isochr.subset, ])
   } else {
     df.dates.min <- df.dates %>% 
       dplyr::group_by(SiteName) %>% 
-      dplyr::slice_max(median)
+      dplyr::slice_max(median) # here is the most recent
+    # 
     n.dates.display <- nrow(df.dates.min[df.dates.min[["median"]] > isochr.subset, ])
   }
   if(verbose){
@@ -203,6 +209,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   }
   # contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
   # TODO: do the same on weighted medians
+  # TODO: rm 'test_subset' and 'time.interv' variables. The latters aren't useful. Better the user select his own intervals.
   test_subset <- ifelse(all(is.na(isochr.subset)), FALSE, TRUE)
   if(verbose){
     print(paste0("'test_subset': ", as.character(test_subset)))
@@ -274,7 +281,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   # # write.table(interpolated$z, 
   # #             "C:/Rprojects/neonet/doc/data/interpolated_isochr.csv",
   # #             row.names = F)
-  # #############################################################
+  # ##
   # # convert this to a long form dataframe
   # interp_df <- tidyr::expand_grid(i = seq_along(interpolated$x), 
   #                                 j = seq_along(interpolated$y)) %>% 
@@ -290,8 +297,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   nb.contours <- length(contour_levels)
   # isochr.line.color <- isochr.line.color
   if(nb.contours == 0){
-    isochr.line.color <- NA
-    isochr.txt.colour <- NA
+    isochr.line.color <- isochr.txt.colour <- NA
   }
   if(nb.contours > 1){
     if(verbose){
@@ -304,81 +310,79 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     }
     isochr.line.color <- isochr.line.color[-c(1:5)]
     isochr.txt.colour <- "black"
-  } else {
-    if(is.na(isochr.line.color)){
-      if(neolithic){
-        isochr.line.color <- isochr.txt.colour <- "red"
-      }
-      if(!neolithic){
-        isochr.line.color <- isochr.txt.colour <-  "blue"
-      }
-    }
-  }
-  # map
+  } 
+  # else {
+  #   if(is.na(isochr.line.color)){
+  #     if(neolithic){
+  #       isochr.line.color <- isochr.txt.colour <- "red"
+  #     }
+  #     if(!neolithic){
+  #       isochr.line.color <- isochr.txt.colour <-  "blue"
+  #     }
+  #   }
+  # }
+  ######## map bbox #############
   bbox <- c(left = min(Xs) - buff, 
             bottom = min(Ys) - buff, 
             right = max(Xs) + buff, 
             top = max(Ys) + buff)
-  ## basemap
+  ######## map basemap #############
   if(is.na(kcc.file)){
     if(verbose){
-      print(paste0("Neutral basemap (rnaturalearth)"))
+      print(paste0("Basemap: Neutral (rnaturalearth)"))
       basemap.info <- "natural earth"
     }
     world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")}
   if(is(kcc.file, "SpatRaster")) {
     if(verbose){
-      print(paste0("Will use a KCC basemap or another raster (SpatRaster)"))
+      print(paste0("Basemap: will use a KCC or another raster (SpatRaster)"))
     }
     # not tested
     world <- st_as_sf(kcc.file, coords = c("x", "y"), crs = st_crs(kcc.file))
-    orig.file <- terra::sources(kcc.file, nlyr=FALSE, bands=FALSE)
+    orig.file <- terra::sources(kcc.file, nlyr = FALSE, bands = FALSE)
     basemap.info <- DescTools::SplitPath(orig.file)$filename
     # world <- st_as_sf(kcc_geo, coords = c("x", "y"), crs = st_crs(kcc_geo))
   }
   if(is.character(kcc.file)){
     if(verbose){
-      print(paste0("Will use a GeoTiff"))
+      print(paste0("Basemap: will use this GeoTiff: '", kcc.file, "'"))
     }
     kcc_geo <- terra::rast(kcc.file)
     raster_df <- terra::as.data.frame(kcc_geo, xy = TRUE)
-    # print(colnames(raster_df))
-    # library()
-    # round the coordinates
-    # raster_df <- raster_df %>% dplyr::mutate(dplyr::across(c(y, x), round, digits = 4))
     raster_df <- raster_df %>% 
       dplyr::mutate(dplyr::across(c(y, x), ~round(., digits = 4)))
     basemap.info <- DescTools::SplitPath(kcc.file)$filename
-    # 
     # raster_df <- terra::as.data.frame(raster, xy = TRUE, na.rm = TRUE)
     # world <- st_as_sf(raster_df, coords = c("x", "y"), crs = st_crs(raster))
   }
-  # tit
+  ######## map title #############
   periods <- paste0(unique(df.dates$Period), collapse = " ")
+  isochrs.lbl <- paste0(as.character(abs(contour_levels)), collapse = ", ")
   subtit <- ""
   if(neolithic){
     tit <- paste("Neolithic (", periods, ")")
     if(nb.contours < 5 & nb.contours > 0){
-      subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
+      subtit <- paste0("Isochrones: ", isochrs.lbl, " BC")
     } else {subtit <- paste0("XXX") }
-    capt <- paste0("max SD = ", max.sd," | ", "isochr. on earliest w-medians of ", nrow(df), " dates | ", n.dates.display, " dates older than isochr. (displayed)\n")
+    capt <- paste0("max SD = ", max.sd," | ", "isochr. on earliest w-medians of ", nrow(df), " dates | ", n.dates.display, " dates older than isochr. ", isochrs.lbl, " BC", " (displayed)\n")
     capt <- paste0(capt, nb.dates.tot, " calibrated dates BC in total | ")
     capt <- paste0(capt, "basemap: ", basemap.info, "")
     
   } else {
     tit <- paste("Mesolithic")
     if(nb.contours < 5 & nb.contours > 0){
-      subtit <- paste0("Isochrones: ", paste0(as.character(abs(contour_levels)), collapse = ", "), " BC")
+      subtit <- paste0("Isochrones: ", isochrs.lbl, " BC")
     }
     capt <- paste0(periods, " | isochrones on the latest w-medians | ")
     capt <- paste0(capt, nrow(df), " w-medians from ", nb.dates.tot, " calibrated dates BC\n",
                    "basemap: ", basemap.info, "")
   }
-  # create map
+  ######## map creation #############
   if(is.na(kcc.file)){
     map <- ggplot2::ggplot(world) +
       ggplot2::geom_sf(color = '#7a7a7a', fill = "white")
-  } else {
+  }
+  if(!is.na(kcc.file)){
     if(!is.other.geotiff){
       world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
       map <- ggplot2::ggplot() +
@@ -388,7 +392,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
         ggplot2::scale_fill_manual(values = kcc_colors)
     }
     if(is.other.geotiff){
-      # Create a data frame from the raster layers
+      # Create a dataframe from the raster layers
       world <- rnaturalearth::ne_coastline(scale = "medium", returnclass = "sf")
       raster_df2 <- raster_df
       if(length(names(kcc_geo)) == 1){
@@ -437,6 +441,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   #   # ggplot2::coord_sf(xlim = c(roi$xmin, roi$xmax), ylim = c(roi$ymin, roi$ymax)) +
   #   ggplot2::theme_bw() +
   #   ggplot2::theme(legend.position = "none")
+  ######## map crop + title #############
   map <- map +
     ggplot2::coord_sf(xlim = c(min(Xs) - buff, max(Xs) + buff),
                       ylim = c(min(Ys) - buff, max(Ys) + buff)) +
@@ -461,19 +466,54 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   # }
   if(!any(is.none.subset)){
     # print(isochr.line.color)
-    map <- map +
-      ggplot2::geom_contour(data = interp_df, 
-                            ggplot2::aes(x = lon, y = lat, z = date.med, 
-                                         # color = ..level..
-                                         color = ggplot2::after_stat(level)
-                            ),
-                            # breaks = contour_levels,
-                            breaks = contour_levels,
-                            linewidth = isochr.line.size) +
-      ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
-                                     name = "Cal BC")
+    # largest.isochr <- TRUE
+    if(largest.isochr){
+      if(verbose){
+        print(paste0("Will only show the largest isochrone"))
+      }
+      initial_plot <- ggplot2::ggplot(interp_df, 
+                                      ggplot2::aes(x = lon, y = lat, z = date.med)) +
+        ggplot2::geom_contour(ggplot2::aes(color = ggplot2::after_stat(level)), 
+                              breaks = contour_levels)
+      # Extract contour lines
+      plot_data <- ggplot2::ggplot_build(initial_plot)
+      contour_lines <- plot_data$data[[1]]
+      # Calculate the size of each contour group
+      contour_sizes <- contour_lines %>%
+        dplyr::group_by(group) %>%
+        dplyr::summarize(size = dplyr::n(), level = dplyr::first(level)) %>%
+        dplyr::arrange(desc(size))
+      
+      # Keep only the largest contour group
+      largest_group <- contour_sizes$group[1]
+      largest_contour <- contour_lines %>%
+        dplyr::filter(group == largest_group)
+      # Plot the largest contour
+      map <- map +
+        ggplot2::geom_path(data = largest_contour, 
+                           ggplot2::aes(x = x, y = y, group = group, color = level),
+                           linewidth = isochr.line.size,
+                           show.legend = FALSE) +
+        ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
+                                       name = "Cal BC")
+    } else {
+      # map <- map +
+      map <- map +
+        ggplot2::geom_contour(data = interp_df, 
+                              ggplot2::aes(x = lon, y = lat, z = date.med, 
+                                           # color = ..level..
+                                           color = ggplot2::after_stat(level)
+                              ),
+                              breaks = contour_levels,
+                              linewidth = isochr.line.size) +
+        ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
+                                       name = "Cal BC")
+    }
   }
   if(lbl.time.interv){
+    if(verbose){
+      print(paste0("Label isochrone lines"))
+    }
     if(!test_subset & !any(is.none.subset)){
       # all contours
       map <- map +
@@ -508,21 +548,11 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
           dplyr::slice(1) %>%
           dplyr::ungroup()
         map <- map + 
-          ggplot2::geom_contour(data = interp_df,
-                                ggplot2::aes(x = lon, y = lat, z = date.med),
-                                breaks = isochr.subset,
-                                # colour = isochr.line.color) + #"black") +
-                                colour = "black") +
-          # ggplot2::geom_contour(data = interp_df, 
-          #                       ggplot2::aes(x = lon, y = lat, z = date.med, 
-          #                                    # color = ..level..
-          #                                    color = ggplot2::after_stat(level)
-          #                       ),
-          #                       # breaks = contour_levels,
-          #                       breaks = contour_levels,
-          #                       linewidth = isochr.line.size) +
-          # ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
-          #                                name = "Cal BC") +
+          # ggplot2::geom_contour(data = interp_df,
+          #                       ggplot2::aes(x = lon, y = lat, z = date.med),
+          #                       breaks = isochr.subset,
+          #                       # colour = isochr.line.color) + #"black") +
+          #                       colour = "black") +
           ggplot2::geom_text(data = contour_data_lbl, 
                              ggplot2::aes(x = x, y = y, label = sprintf("%.0f", level)),
                              size = isochr.txt.size, 
@@ -534,7 +564,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   }
   if(shw.dates){
     if(verbose){
-      print(paste0("Add dates to the map"))
+      print(paste0("Add dates (points) to the map"))
     }
     # print(test_subset)
     if(!test_subset){
@@ -547,7 +577,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                             size = size.date)
       if(lbl.dates){
         if(verbose){
-          print(paste0("Add date labels to the map"))
+          print(paste0("Add date (points) labels to the map"))
         }
         map <- map +
           ggrepel::geom_text_repel(data = df, 

@@ -5,10 +5,10 @@
 #' @param df a dataframe
 #' @param edge.detection If TRUE will create an edge detection. Default FALSE. 
 #' @param span.time The threshold to detect edges. Default 200 (years). Only useful if `edge.detection` is True.
-#' @param n.connectivity N-connectivity: 4 or 8.
+#' @param n.connectivity N-connectivity: 4 or 8. Default: 8.
 #' @param verbose if TRUE (default) then display different messages.
 #'
-#' @return A matrix.
+#' @return A tibble dataframe object ("tbl_df", "tbl", "data.frame")
 #'
 #' @examples
 #' 

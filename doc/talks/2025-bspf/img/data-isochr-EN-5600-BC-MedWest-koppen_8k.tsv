@@ -1,0 +1,70 @@
+"sourcedb"	"site"	"idf"	"labcode"	"lon"	"lat"	"period"	"median"	"ID"	"code"
+"neonet"	"Arene Candide"	22	"Beta-66553"	8.32828	44.162304	"EN"	-5766	22	"Cfa"
+"neonet"	"Arma dell'Aquila"	23	"Ly-14593"	8.32967	44.204708	"EN"	-5707	23	"Cfa"
+"agrichange"	"Bonica"	35	"OxA-23440"	1.932166	41.387861	"EN"	-5633	35	"Csa"
+"neonetatl"	"Cabranosa"	40	"Sac-1321"	-8.9666	37.0471	"EN"	-5812	40	"Csa"
+"neonet"	"Cocci"	67	"GX-29098"	12.5106	42.5157	"EN"	-5633	67	"Cfa"
+"neonet"	"Continenza"	70	"R-549"	13.563071	41.961674	"EN"	-6099	70	"Csa"
+"neonet"	"Coppa Nevigata"	71	"OxA-1475"	15.830555	41.563888	"EN"	-5773	71	"Csa"
+"neonet"	"Correge-Leucate"	73	"MC-788"	3.0507	42.8958	"EN"	-5697	73	NA
+"calpal"	"Cova de l'Or"	86	"Beta-136677"	-0.364154	38.84465	"EN"	-5787	86	"BSk"
+"neonet"	"Cova de les Cendres"	89	"Beta-75220"	0.152631	38.685691	"EN"	-5642	89	NA
+"neonet"	"Crno Vrilo"	95	"Poz-18395"	15.072992	44.528388	"EN"	-5778	95	"Dfb"
+"neonet"	"Cueva de Nerja"	105	"Birm-1113"	-3.844529	36.762871	"EN"	-5867	105	"BSk"
+"neonet"	"Defensola"	118	"UTC-1342"	16.155946	41.897824	"EN"	-5867	118	"Csa"
+"neonetatl"	"Encosta de Sant'Ana"	123	"Sac-2004"	-9.137902	38.71563	"EN"	-5769	123	"Csa"
+"bda"	"Favella"	128	"Beta-61633"	16.45	39.75	"EN"	-5793	128	"Csa"
+"neonet"	"Favella della Corte"	129	"LTL-778A"	16.437459	39.684086	"EN"	-5912	129	"Csa"
+"neonet"	"Fem"	130	"Beta-42867"	0.867881	41.302597	"EN"	-5774	130	"Csa"
+"neonet"	"Font-des-Pigeons"	134	"MC-2515"	5.1667	43.3834	"EN"	-5792	134	NA
+"neonet"	"Fontbregoua"	135	"Gif-2990"	6.23231	43.5637	"EN"	-5616	135	"Cfb"
+"neonet"	"Gazel"	139	"GrN-6702"	2.421154	43.325325	"EN"	-5795	139	"Cfa"
+"neonet"	"Gospodska"	142	"Z-579"	16.7537	43.1343	"EN"	-5884	142	"Csa"
+"neonet"	"Grapceva"	144	"Beta-103488"	16.753065	43.133991	"EN"	-5908	144	"Csa"
+"bda"	"Gritulu"	145	"LYON-824"	9.425046	42.89037	"EN"	-5723	145	NA
+"neonet"	"Grotta Corbeddu"	146	"UtC-1251"	9.48634	40.255253	"EN"	-5605	146	"Csa"
+"neonet"	"Grotta Filiestru"	147	"Q-3020"	8.651545	40.453804	"EN"	-5625	147	"Csa"
+"neonet"	"Gudnja"	152	"GrN-10315"	17.68882	42.833349	"EN"	-6035	152	"Cfa"
+"neonet"	"Kargadur"	158	"OxA-21092"	13.950637	44.819147	"EN"	-5671	158	NA
+"neonet"	"Kronio"	161	"LTL-211A"	13.08	37.51	"EN"	-5870	161	"BSk"
+"neonetatl"	"La Carigüela"	163	"Beta-141150"	-3.431582	37.44239	"EN"	-5796	163	"Csa"
+"neonet"	"La Marmotta"	166	"R-2360"	12.2745	42.1044	"EN"	-5740	166	"Csa"
+"neonet"	"Lagnano da Piede"	168	"UCLA-2148"	15.68544	41.238856	"EN"	-5616	168	"Csa"
+"neonet"	"Le Secche"	174	"LTL-16672A"	10.882	42.381891	"EN"	-5671	174	NA
+"neonet"	"Masseria Giuffreda"	190	"MC-2292"	15.652818	41.4487	"EN"	-5999	190	"Csa"
+"neonet"	"Monte Venere"	196	"R-1175"	12.1814	42.3505	"EN"	-5826	196	"Csa"
+"neonet"	"Nakovana"	202	"OxA-18120"	17.083588	43.00062	"EN"	-5933	202	"Cfa"
+"bda"	"Obre I"	203	"UCLA-1605-I"	18.1	44.183333	"EN"	-6058	203	"Dfb"
+"neonet"	"Peiro Signado"	211	"Ly-5689(SacA-13451)"	3.32891	43.3083	"EN"	-5801	211	"Csa"
+"neonet"	"Pendimoun"	212	"Gif-A101334"	7.505944	43.812212	"EN"	-5689	212	NA
+"neonet"	"Piana di Curinga"	215	"P-2946"	16.298682	38.83539	"EN"	-5811	215	"Csa"
+"neonet"	"Pokrovnik"	220	"PSU-5293/UCIAMS-116205"	16.062428	43.804792	"EN"	-5970	220	"Cfa"
+"neonet"	"Pollera"	221	"MC-756"	8.314602	44.200546	"EN"	-5834	221	"Cfa"
+"neonet"	"Pont de Roque-Haute"	222	"Ly-7625"	3.36003	43.2927	"EN"	-5970	222	"Csa"
+"neonet"	"Pulo di Molfetta"	228	"LTL-142a"	16.575815	41.194638	"EN"	-6004	228	NA
+"neonet"	"Rasinovac"	231	"PSU-64923/UCIAMS-158546"	15.843811	43.899871	"EN"	-5940	231	"Csa"
+"neonet"	"Rendina"	233	"Lj-4549"	15.8	40.6334	"EN"	-5667	233	"Csa"
+"neonet"	"Rio Tana"	236	"AECV-2012C"	13.673419	41.940862	"EN"	-5744	236	"Csa"
+"neonet"	"Ripa Tetta"	238	"Beta-47808/CAMS-2681"	15.404016	41.439567	"EN"	-5776	238	"Cfa"
+"bda"	"SHM-1"	246	"SacA-23651 (P-1068)"	10.496	36.019	"EN"	-5713	246	"BSk"
+"neonet"	"San Sebastiano di Perti"	251	"OxA-21359"	8.309641	44.184808	"EN"	-5670	251	"Cfa"
+"agrichange"	"Sant Llorenc"	253	"Beta-311606"	1.831924	41.252455	"EN"	-5659	253	"Csa"
+"neonet"	"Sant'angelo di Ostuni"	255	"Gif-6724"	17.574791	40.738148	"EN"	-5778	255	"Csa"
+"neonet"	"Santa Anna d'Oria III"	256	"R-322"	17.639	40.499	"EN"	-5682	256	NA
+"neonet"	"Santo Stefano di Ortucchio"	258	"LTL-60A"	13.666385	41.953894	"EN"	-5721	258	"Csa"
+"calpal"	"Saracena"	259	"LTL-2155A"	16.498	39.698	"EN"	-5695	259	"Csa"
+"neonet"	"Savignano sul Panaro"	260	"Lj-4649"	11.04242	44.476479	"EN"	-5633	260	"Cfb"
+"neonet"	"Scamuso"	261	"Gif-7055"	17.039166	41.0775	"EN"	-5703	261	NA
+"neonet"	"Scaramella di San vito"	262	"R-350"	15.637926	41.710877	"EN"	-5875	262	"Csa"
+"neonet"	"Serra Cicora"	264	"LTL-221A"	18.006	40.166	"EN"	-5680	264	"Csa"
+"neonet"	"Skarin Samograd"	267	"Hd-11950"	16.167023	43.85587	"EN"	-5678	267	"Cfa"
+"neonet"	"Su Coloru"	269	"Beta-167931"	8.712183	40.661832	"EN"	-5720	269	"Csa"
+"neonet"	"Terragne"	272	"Beta-59933"	17.626339	40.392311	"EN"	-5759	272	NA
+"neonet"	"Torre Canne"	273	"Gif-6725"	17.3667	40.8334	"EN"	-5789	273	"Csa"
+"bda"	"Torre Sabea"	274	"Lyon-1448 (OXA)"	17.9667	40.0556	"EN"	-5740	274	NA
+"neonet"	"Trasano"	276	"Ly-3955(OxA)"	16.636111	40.675555	"EN"	-5809	276	"Csa"
+"neonet"	"Umbro"	279	"Beta-122939"	15.9178	37.9392	"EN"	-5659	279	NA
+"bda"	"Uzzo"	280	"OxA-13661"	12.786694	38.109951	"EN"	-6307	280	NA
+"neonetatl"	"Vale Marim I"	284	"Beta-417015"	-8.806815	37.9302	"EN"	-5908	284	"Csa"
+"neonetatl"	"Vale Pincel I"	285	"Beta-164664"	-8.844087	37.94075	"EN"	-5652	285	"Csa"
+"neonet"	"Vela Spila"	288	"OxA-18118"	16.71836	42.969649	"EN"	-6008	288	NA
