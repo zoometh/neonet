@@ -54,7 +54,7 @@ for(i in seq(1, length(my_list))){
                        # lbl.date.field = "median",
                        lbl.dates.size = 4,
                        lbl.time.interv = TRUE)
-  ggplot2::ggsave(paste0(obj.case.out, obj.case.name, ".png"), isochr$map, width = 10, height = 8)
+  ggplot2::ggsave(paste0(obj.case.out, obj.case.name, ".png"), isochr$map, width = 10, height = 6)
   ggplot2::ggsave(paste0(obj.case.out, "legend-", obj.case.name, ".png"), isochr$legend, width = 5)
   write.table(isochr$data, paste0(obj.case.out, "data-", obj.case.name, ".tsv"), sep = "\t", row.names = FALSE)
 }

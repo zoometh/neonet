@@ -640,7 +640,7 @@
 { "type": "Feature", "properties": { "SiteName": "Falkenstein", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 16.566666666665999, 48.7 ] } },
 { "type": "Feature", "properties": { "SiteName": "Falkensteinhöhle", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 9.0761, 48.1 ] } },
 { "type": "Feature", "properties": { "SiteName": "Faraday Road", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -0.768, 52.4214 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Favella", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 16.45, 39.75 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Favella", "AlternativeNames": "Favella della Corte" }, "geometry": { "type": "Point", "coordinates": [ 16.45, 39.75 ] } },
 { "type": "Feature", "properties": { "SiteName": "Feinan", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 35.43, 30.61 ] } },
 { "type": "Feature", "properties": { "SiteName": "Felsställe", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 10.8, 48.6 ] } },
 { "type": "Feature", "properties": { "SiteName": "Feyda", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 40.35, 36.65 ] } },
