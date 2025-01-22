@@ -27,6 +27,7 @@ my_list <- list(
   list("MedWest", c(-5000), c(-10, 35, 19, 45), "koppen_7k.tif", "LM")
 )
 for(i in seq(1, length(my_list))){
+  # i <- 1
   obj.case.name <- paste0("isochr-", my_list[[i]][[5]], paste0(my_list[[i]][[2]], "-", paste0("BC-", my_list[[i]][[1]], collapse = "-")), "-", gsub(".tif", "", my_list[[i]][[4]]))
   obj.case.out <- paste0(root.path, "img/")
   kcc.file.path <- paste0("C:/Rprojects/neonet/doc/data/clim/", my_list[[i]][[4]])
