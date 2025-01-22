@@ -86,7 +86,8 @@ NeoNet functions enable the handling of radiocarbon dates sourced from the datas
 
 #### Reference data
 
-* [standardised site names](https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/c14_corrected_sitenames.geojson)
+* standardised site names ([raw](https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/c14_corrected_sitenames.geojson) | [rendered](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_corrected_sitenames.geojson))
+* [standardised radiocarbon labcodes](https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_corrected_labcodes.tsv)
 * outlier dates ([raw](https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/c14_aberrant_dates.tsv) | [rendered](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv))
 
 #### Data preparation
@@ -317,6 +318,14 @@ source("R/neo_dbs_sitename_dates.R")
 df.c14 <- neo_dbs_sitename_dates(df.c14)
 ```
 
+#### Correct LabCodes
+
+AlternativeLabCode will be replaced by LabCode
+
+```R
+source("R/neo_dbs_labcode_dates.R")
+df.c14 <- neo_dbs_labcode_dates(df.c14)
+```
 
 ### SPD plot
 
