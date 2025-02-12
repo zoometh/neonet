@@ -26,6 +26,7 @@ my_list <- list(
   list("MedWest", c(-5100), c(-10, 35, 19, 45), "koppen_7k.tif", "LM"),
   list("MedWest", c(-5000), c(-10, 35, 19, 45), "koppen_7k.tif", "LM")
 )
+# 
 for(i in seq(1, length(my_list))){
   # i <- 1
   obj.case.name <- paste0("isochr-", my_list[[i]][[5]], paste0(my_list[[i]][[2]], "-", paste0("BC-", my_list[[i]][[1]], collapse = "-")), "-", gsub(".tif", "", my_list[[i]][[4]]))
@@ -51,6 +52,7 @@ for(i in seq(1, length(my_list))){
                        # color.dates = "darkgrey",
                        alpha.dates = 1,
                        lbl.dates = TRUE,
+                       lbl.dates.interval = c(my_list[[i]][[2]], my_list[[i]][[2]]-99),
                        # lbl.all.dates = FALSE,
                        # lbl.date.field = "median",
                        lbl.dates.size = 4,

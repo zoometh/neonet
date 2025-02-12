@@ -1,15 +1,15 @@
 "sourcedb"	"site"	"idf"	"labcode"	"lon"	"lat"	"period"	"median"	"ID"	"code"
 "neonet"	"Continenza"	70	"R-549"	13.563071	41.961674	"EN"	-6099	70	"Csa"
-"neonet"	"Favella della Corte"	129	"LTL-778A"	16.437459	39.684086	"EN"	-5912	129	"Csa"
-"neonet"	"Grapceva"	144	"Beta-103488"	16.753065	43.133991	"EN"	-5908	144	"Csa"
-"neonet"	"Gudnja"	152	"GrN-10315"	17.68882	42.833349	"EN"	-6035	152	"Cfa"
-"neonet"	"Masseria Giuffreda"	190	"MC-2292"	15.652818	41.4487	"EN"	-5999	190	"Csa"
-"neonet"	"Nakovana"	202	"OxA-18120"	17.083588	43.00062	"EN"	-5933	202	"Cfa"
-"bda"	"Obre I"	203	"UCLA-1605-I"	18.1	44.183333	"EN"	-6058	203	"Dfb"
-"neonet"	"Pokrovnik"	220	"PSU-5293/UCIAMS-116205"	16.062428	43.804792	"EN"	-5970	220	"Cfa"
-"neonet"	"Pont de Roque-Haute"	222	"Ly-7625"	3.36003	43.2927	"EN"	-5970	222	"Csa"
-"neonet"	"Pulo di Molfetta"	228	"LTL-142a"	16.575815	41.194638	"EN"	-6004	228	NA
-"neonet"	"Rasinovac"	231	"PSU-64923/UCIAMS-158546"	15.843811	43.899871	"EN"	-5940	231	"Csa"
+"neonet"	"Favella"	127	"LTL-778A"	16.437459	39.684086	"EN"	-5912	127	"Csa"
+"neonet"	"Grapceva"	142	"Beta-103488"	16.753065	43.133991	"EN"	-5908	142	"Csa"
+"neonet"	"Gudnja"	150	"GrN-10315"	17.68882	42.833349	"EN"	-6035	150	"Cfa"
+"neonet"	"Masseria Giuffreda"	189	"MC-2292"	15.652818	41.4487	"EN"	-5999	189	"Csa"
+"neonet"	"Nakovana"	201	"OxA-18120"	17.083588	43.00062	"EN"	-5933	201	"Cfa"
+"bda"	"Obre I"	202	"UCLA-1605-I"	18.1	44.183333	"EN"	-6058	202	"Dfb"
+"neonet"	"Pokrovnik"	219	"PSU-5293/UCIAMS-116205"	16.062428	43.804792	"EN"	-5970	219	"Cfa"
+"neonet"	"Pont de Roque-Haute"	221	"Ly-7625"	3.36003	43.2927	"EN"	-5970	221	"Csa"
+"neonet"	"Pulo di Molfetta"	227	"LTL-142a"	16.575815	41.194638	"EN"	-6004	227	NA
+"neonet"	"Rasinovac"	230	"PSU-64923/UCIAMS-158546"	15.843811	43.899871	"EN"	-5940	230	"Csa"
 "bda"	"Uzzo"	280	"OxA-13661"	12.786694	38.109951	"EN"	-6307	280	NA
 "neonetatl"	"Vale Marim I"	284	"Beta-417015"	-8.806815	37.9302	"EN"	-5908	284	"Csa"
 "neonet"	"Vela Spila"	288	"OxA-18118"	16.71836	42.969649	"EN"	-6008	288	NA

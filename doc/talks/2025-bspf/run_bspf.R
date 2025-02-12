@@ -11,7 +11,7 @@ col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "cult
 samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
 df.c14 <- samp_df
 
-dbs_3rdpart <- TRUE
+dbs_3rdpart <- FALSE
 # third part dataset
 if(dbs_3rdpart){
   # Brami15 
@@ -72,6 +72,7 @@ obj.case <- list("Perrin", c(-5500), c(1.02768233, 40.83697718, 11.40383725, 46.
 #################################################################
 obj.case.name <- paste0("isochr", paste0(obj.case[[2]], "-", paste0("BC-", obj.case[[1]], collapse = "-")), "-", gsub(".tif", "", obj.case[[4]]))
 obj.case.out <- paste0(root.path, "img/", obj.case.name)
+lbl.dates.interval <- c(obj.case[[2]], obj.case[[2]]-99)
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
                      isochr.subset =  obj.case[[2]], #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
@@ -79,18 +80,15 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      selected.per = "EN",
                      where = obj.case[[3]], #Italia.where, # where.roi,
                      kcc.file = paste0("C:/Rprojects/neonet/doc/data/clim/", obj.case[[4]]), # NA, 
-                     is.other.geotiff = FALSE,
                      create.legend = TRUE,
-                     isochr.line.color = "black", # "black", # NA to get colored isochrones (red, blue)
                      isochr.line.size = .5,
                      isochr.txt.size = 0,
-                     calibrate = FALSE,
-                     shw.dates = TRUE,
                      # show.all.dates = FALSE,
+                     lbl.dates = TRUE,
+                     lbl.dates.interval = c(obj.case[[2]], obj.case[[2]]-99),
                      size.date = 1.5,
                      # color.dates = "darkgrey",
                      alpha.dates = 1,
-                     lbl.dates = FALSE,
                      # lbl.all.dates = FALSE,
                      # lbl.date.field = "median",
                      lbl.dates.size = 4,

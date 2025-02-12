@@ -11,9 +11,12 @@
 #' @param largest.isochr If TRUE (Default: FALSE), will only show the largerst isochrone to avoid small closed lines.
 #' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff (using its path), or a SpatRaster object.
 #' @param is.other.geotiff To display another Geotiff. Default: FALSE.
+#' @param isochr.line.color Default "black", NA to get colored isochrones (red, blue)
 #' @param time.interv Time interval between two isochrones (bins), in years. Default: 250.
 #' @param coloramp the name of the coloramps to use on contour, for the Neolithic dates and mesolithic dates. Default: c("Reds", "Blues"). 
 #' @param lbl.dates show the sites identifiers (default: TRUE)
+#' @param lbl.date.field will use the selected field. Default 'idf', created on the flight if missing.
+#' @param lbl.time.interv label isochrone.
 #' @param size.date size of the date label (default: 2)
 #' @param map.longest.size the longest size of the output map (height or width) in cm. The smallest size will be calculated from it. Only useful if if export = TRUE. Default: 15
 #' @param verbose if TRUE (default) then display different messages.
@@ -49,6 +52,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                        color.dates = "black",
                        alpha.dates = .5,
                        lbl.dates = FALSE,
+                       lbl.dates.interval = NA,
                        lbl.date.field = "idf",
                        lbl.dates.size = 2,
                        lbl.time.interv = FALSE,
@@ -510,6 +514,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                                        name = "Cal BC")
     }
   }
+  # TODO: change 'lbl.time.interv' to 'lbl.isochr'
   if(lbl.time.interv){
     if(verbose){
       print(paste0("Label isochrone lines"))
@@ -622,6 +627,19 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
         # label = !!label_sym), # 
         # my_label <- "idf"
         # label_sym <- sym(my_label)
+        
+        if(any(!is.na(lbl.dates.interval))){
+          # will only label of dates within a particular interval, ex: 6000-5900 BC to avoid label overflow
+          date.youngest <- lbl.dates.interval[1]
+          date.oldest <- lbl.dates.interval[2]
+          if(verbose){print(paste0("Only dates from ", 
+                                   date.youngest, " to ",
+                                   date.oldest, " are labeled" ))
+            }
+          df.isochr.subset <- df.isochr.subset[df.isochr.subset$median < date.youngest & df.isochr.subset$median > date.oldest, ]
+          # nrow(df.isochr.subset.interval)
+        }
+        
         if(lbl.date.field == "idf"){
           map <- map +
             ggrepel::geom_text_repel(data = df.isochr.subset, 

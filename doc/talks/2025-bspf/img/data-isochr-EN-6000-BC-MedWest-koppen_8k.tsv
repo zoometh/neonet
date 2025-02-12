@@ -1,7 +1,7 @@
 "sourcedb"	"site"	"idf"	"labcode"	"lon"	"lat"	"period"	"median"	"ID"	"code"
 "neonet"	"Continenza"	70	"R-549"	13.563071	41.961674	"EN"	-6099	70	"Csa"
-"neonet"	"Gudnja"	152	"GrN-10315"	17.68882	42.833349	"EN"	-6035	152	"Cfa"
-"bda"	"Obre I"	203	"UCLA-1605-I"	18.1	44.183333	"EN"	-6058	203	"Dfb"
-"neonet"	"Pulo di Molfetta"	228	"LTL-142a"	16.575815	41.194638	"EN"	-6004	228	NA
+"neonet"	"Gudnja"	150	"GrN-10315"	17.68882	42.833349	"EN"	-6035	150	"Cfa"
+"bda"	"Obre I"	202	"UCLA-1605-I"	18.1	44.183333	"EN"	-6058	202	"Dfb"
+"neonet"	"Pulo di Molfetta"	227	"LTL-142a"	16.575815	41.194638	"EN"	-6004	227	NA
 "bda"	"Uzzo"	280	"OxA-13661"	12.786694	38.109951	"EN"	-6307	280	NA
 "neonet"	"Vela Spila"	288	"OxA-18118"	16.71836	42.969649	"EN"	-6008	288	NA
