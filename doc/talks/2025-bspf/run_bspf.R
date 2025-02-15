@@ -8,7 +8,12 @@ root.path <- "C:/Rprojects/neonet/doc/talks/2025-bspf/"
 present <- 1950
 when <- c(-9000, -4000)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
-samp_df <- read.csv("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv")
+data.on.gh <- FALSE
+if(data.on.gh){
+  data.url <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv"} else{
+  data.url <- "C:/Rprojects/neonet/doc/talks/2024-simep/df14_simep_4.csv"
+}
+samp_df <- read.csv(data.url)
 df.c14 <- samp_df
 
 dbs_3rdpart <- FALSE
@@ -20,9 +25,10 @@ if(dbs_3rdpart){
   # following 'Cyclops Cave'
   # subset(df.brami[,c(1:10)], SiteName == 'Cyclops Cave' & sourcedb == 'brami15')
   # View(df.brami)
+  df.c14 <- rbind(df.brami, samp_df)
 }
 
-df.c14 <- rbind(df.brami, samp_df)
+
 # subset(df.c14[,c(1:10)], sourcedb == 'brami15')
 # subset(df.c14[,c(1:10)], SiteName == 'Cyclops Cave' & sourcedb == 'brami15')
 
@@ -117,7 +123,7 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 
 source("R/neo_find_date.R")
 source("R/neo_dbs_info_date.R")
-abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 130)
+abber.date <- neo_find_date(df = isochr$data, print.it = FALSE, idf.dates = 4)
 ad <- neo_dbs_info_date(df.c14 = df.c14, LabCode = abber.date$labcode)
 # Do not add double quotes in the https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv file
 

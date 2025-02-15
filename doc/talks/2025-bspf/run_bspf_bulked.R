@@ -28,10 +28,12 @@ my_list <- list(
 )
 # 
 for(i in seq(1, length(my_list))){
-  # i <- 1
+  # i <- 6
   obj.case.name <- paste0("isochr-", my_list[[i]][[5]], paste0(my_list[[i]][[2]], "-", paste0("BC-", my_list[[i]][[1]], collapse = "-")), "-", gsub(".tif", "", my_list[[i]][[4]]))
   obj.case.out <- paste0(root.path, "img/")
   kcc.file.path <- paste0("C:/Rprojects/neonet/doc/data/clim/", my_list[[i]][[4]])
+  # to reduce the number of displayed dates
+  lbl.dates.interval <- c(my_list[[i]][[2]], my_list[[i]][[2]]-99)
   source("R/neo_isochr.R")
   isochr <- neo_isochr(df.c14 = df_filtered, 
                        isochr.subset =  my_list[[i]][[2]], #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
@@ -52,12 +54,15 @@ for(i in seq(1, length(my_list))){
                        # color.dates = "darkgrey",
                        alpha.dates = 1,
                        lbl.dates = TRUE,
-                       lbl.dates.interval = c(my_list[[i]][[2]], my_list[[i]][[2]]-99),
+                       lbl.dates.interval = lbl.dates.interval, # subset dates to be labeled
                        # lbl.all.dates = FALSE,
                        # lbl.date.field = "median",
                        lbl.dates.size = 4,
                        lbl.time.interv = TRUE)
   ggplot2::ggsave(paste0(obj.case.out, obj.case.name, ".png"), isochr$map, width = 10, height = 6)
   ggplot2::ggsave(paste0(obj.case.out, "legend-", obj.case.name, ".png"), isochr$legend, width = 5)
-  write.table(isochr$data, paste0(obj.case.out, "data-", obj.case.name, ".tsv"), sep = "\t", row.names = FALSE)
+  date.youngest <- lbl.dates.interval[1]
+  date.oldest <- lbl.dates.interval[2]
+  df.isochr.subset <- isochr$data[isochr$data$median < date.youngest & isochr$data$median > date.oldest, ]
+  write.table(df.isochr.subset, paste0(obj.case.out, "data-", obj.case.name, ".tsv"), sep = "\t", row.names = FALSE)
 }
