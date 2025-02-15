@@ -134,7 +134,7 @@
 { "type": "Feature", "properties": { "SiteName": "Almere-\"\"Hoge Vaart\"\"", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 5.4979, 52.4445 ] } },
 { "type": "Feature", "properties": { "SiteName": "Almere-Hout \"\"Zwaanpad\"\"", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 5.2066, 52.3219 ] } },
 { "type": "Feature", "properties": { "SiteName": "Almere-Zenit", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 5.2296, 52.355 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Almonda (Galeria da Cisterna)", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -8.3648, 39.3013 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Galeria da Cisterna", "AlternativeNames": "Almonda (Galeria da Cisterna)" }, "geometry": { "type": "Point", "coordinates": [ -8.3648, 39.3013 ] } },
 { "type": "Feature", "properties": { "SiteName": "Alsonyek", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 18.72, 46.16 ] } },
 { "type": "Feature", "properties": { "SiteName": "Alto de Rodilla", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -3.468735, 42.457831 ] } },
 { "type": "Feature", "properties": { "SiteName": "Alton Longville", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -0.2902, 52.5563 ] } },
