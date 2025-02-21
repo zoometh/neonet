@@ -1441,7 +1441,7 @@
 { "type": "Feature", "properties": { "SiteName": "San Marco di Gubbio", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 12.598891, 43.329629 ] } },
 { "type": "Feature", "properties": { "SiteName": "San Nicolao di Pietra Colice", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 9.5727, 44.2557 ] } },
 { "type": "Feature", "properties": { "SiteName": "San Sebastiano di Perti", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 8.309641, 44.184808 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Sanglier", "AlternativeNames": "Grotte du Sanglier" }, "geometry": { "type": "Point", "coordinates": [ 1.718974, 44.700203 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Sanglier", "AlternativeNames": "Grotte du Sanglier" }, "geometry": { "type": "Point", "coordinates": [ 5.852471853849859, 43.14022139384859 ] } },
 { "type": "Feature", "properties": { "SiteName": "Sant Pau del Camp", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 2.169751, 41.375989 ] } },
 { "type": "Feature", "properties": { "SiteName": "Sant’Andrea", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 11.411438, 44.469341 ] } },
 { "type": "Feature", "properties": { "SiteName": "Santa Anna d'Oria III", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 17.639, 40.499 ] } },

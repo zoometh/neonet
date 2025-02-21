@@ -52,7 +52,7 @@ These datasets are harvested by the [c14bazAAR package](https://github.com/ropen
 ## NeoNet app <br> <sub><sup>mapping the Late Mesolithic/Early Neolithic transition </sup></sub><img src="doc/img/neonet.png" width='150px' align="right"/>
 
 
-NeoNet app is an R Shiny application for mapping radiocarbon (C14). The application offers a mobile geographic window for date selection by location, various filters on chronology and date quality, a calibration window, and other tools to create a user-friendly interface supported by curated datasets of radiocarbon dates and archaeological contexts. NeoNet app is hosted on the server of the University of Pisa. This NeoNet app uses this radiocarbon dataset: <a href="https://doi.org/10.13131/archelogicadata-yb11-yb66" target="_blank">https://doi.org/10.13131/archelogicadata-yb11-yb66</a> published as a data paper in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87) and describe in this [web document](https://zoometh.github.io/neonet/doc/).
+NeoNet app is an R Shiny application for mapping radiocarbon (C14). The application offers a mobile geographic window for date selection by location, various filters on chronology and date quality, a calibration window, and other tools to create a user-friendly interface supported by curated datasets of radiocarbon dates and archaeological contexts. NeoNet app is hosted on the server of the University of Pisa. This NeoNet app uses this radiocarbon dataset: <a href="https://doi.org/10.13131/archelogicadata-yb11-yb66" target="_blank">https://doi.org/10.13131/archelogicadata-yb11-yb66</a> published as a data paper in the [Journal of Open Archaeology Data](https://openarchaeologydata.metajnl.com/articles/10.5334/joad.87) and describe in **this [web document](https://zoometh.github.io/neonet/doc/)**.
 
 <p align="center">
 <a href="http://shinyserver.cfs.unipi.it:3838/C14/" target="_blank"><b>NeoNet app</b></a> 
@@ -349,7 +349,7 @@ neo_spd(df.c14 = df.c14)
 </p>
 
 
-`neo_spd()` can be run on a GeoJSON file exported from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/doc/#export_dates). For example [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson), see also: [isochrones](https://github.com/zoometh/neonet?tab=readme-ov-file#isochrones)
+`neo_spd()` can be run on a GeoJSON file exported from the NeoNet app (see "export dates" in the  [web document](https://zoometh.github.io/neonet/doc/#export_dates). For example [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson), see also: [isochrones](https://github.com/zoometh/neonet?tab=readme-ov-file#isochrones)
 
 ```R
 neo_spd(df.c14 = "https://raw.githubusercontent.com/zoometh/neonet/main/results/neonet-data-2023-09-24.geojson",
