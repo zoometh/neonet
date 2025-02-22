@@ -1,25 +1,25 @@
 "sourcedb"	"site"	"idf"	"labcode"	"lon"	"lat"	"period"	"median"	"ID"	"code"
 "neonet"	"Abri des Correardes"	4	"Ly-7077"	5.7	44.6667	"EN"	-5415	4	"Dfb"
-"neonet"	"Abric de la Falguera"	5	"Beta-142289"	-0.5881	38.6662	"EN"	-5462	5	"BSk"
-"neonetatl"	"Almonda (Galeria da Cisterna)"	20	"OxA-9287"	-8.3648	39.3013	"EN"	-5411	20	"Csa"
-"bda"	"Bella"	32	"Gif-4375"	12.482	42.646	"EN"	-5408	32	"Csa"
-"neonetatl"	"Caldeirão"	42	"Wk-38578"	-8.2454	39.3854	"EN"	-5416	42	"Csa"
-"neonet"	"Cap Ragnon"	49	"Ly-4173(SacA-7430)"	5.25	43.367	"EN"	-5420	49	NA
-"neonet"	"Catignano"	59	"R-1147"	13.943843	42.34267	"EN"	-5427	59	"Cfa"
-"neonet"	"Cialdino"	65	"n/a-1"	11.451691	44.144749	"EN"	-5417	65	"Cfb"
-"neonet"	"Cova de la Sarsa"	88	"OxA-26076"	-0.58196	38.756766	"EN"	-5434	88	"BSk"
-"neonetatl"	"Cueva de La Vaquera"	102	"GrA-9226"	-4.060954	41.08505	"EN"	-5407	102	"BSk"
-"neonet"	"Cueva de la Serreta"	108	"Beta-280862"	1.719751	41.324445	"EN"	-5425	108	"Csa"
-"neonet"	"El Barranquet"	118	"Beta-221431"	0.005865	38.854996	"EN"	-5462	118	NA
-"neonet"	"La Resclauze"	165	"MC-1227"	3.2667	43.5	"EN"	-5407	165	"Csa"
-"neonet"	"Lama dei Peligni"	169	"OxA-1958"	14.183333	42.049936	"EN"	-5498	169	"Cfa"
-"neonetatl"	"Lapiás das Lameiras"	171	"OxA-29109"	-9.343528	38.84653	"EN"	-5426	171	"Csa"
-"neonet"	"Los Cascajos"	177	"Ua-24428"	-2.1892	42.5373	"EN"	-5406	177	"Csb"
-"neonet"	"Monte Maulo"	194	"OxA-651"	14.917	41.8074	"EN"	-5498	194	"Cfa"
-"neonet"	"Oullins"	205	"ETH-27972"	4.456943	44.342326	"EN"	-5463	205	"Cfa"
-"neonet"	"Pza. Vila Madrid"	229	"Beta-18271"	2.172524	41.384281	"EN"	-5410	229	NA
-"neonet"	"Renaghju"	231	"Ly-8327"	8.92148	41.52652	"EN"	-5485	231	NA
-"neonet"	"Roc du Dourgne"	240	"MC-1104"	2.0879	42.7607	"EN"	-5422	240	"Cfb"
-"neonet"	"Santa Tecchia"	256	"BM-2414"	15.842114	41.685083	"EN"	-5477	256	"Cfa"
-"neonet"	"Su Carroppu"	268	"Ly-3012"	8.549996	39.196373	"EN"	-5405	268	"Csa"
-"neonetatl"	"Valada do Mato"	281	"GrA-18298"	-7.9902777	38.60806	"EN"	-5485	281	"Csa"
+"bda"	"Bella"	28	"Gif-4375"	12.482	42.646	"EN"	-5408	28	"Csa"
+"neonetatl"	"Caldeirão"	37	"Wk-38578"	-8.2454	39.3854	"EN"	-5416	37	"Csa"
+"neonet"	"Cap Ragnon"	45	"Ly-4173(SacA-7430)"	5.25	43.367	"EN"	-5420	45	NA
+"neonet"	"Catignano"	56	"R-1147"	13.943843	42.34267	"EN"	-5427	56	"Cfa"
+"neonet"	"Cialdino"	62	"n/a-1"	11.451691	44.144749	"EN"	-5417	62	"Cfb"
+"neonet"	"Cova de la Sarsa"	84	"OxA-26076"	-0.58196	38.756766	"EN"	-5434	84	"BSk"
+"neonetatl"	"Cueva de La Vaquera"	98	"GrA-9226"	-4.060954	41.08505	"EN"	-5407	98	"BSk"
+"neonet"	"Cueva de la Serreta"	103	"Beta-280862"	1.719751	41.324445	"EN"	-5425	103	"Csa"
+"neonet"	"El Barranquet"	113	"Beta-221431"	0.005865	38.854996	"EN"	-5462	113	NA
+"neonet"	"Falguera"	122	"Beta-142289"	-0.5881	38.6662	"EN"	-5462	122	"BSk"
+"neonetatl"	"Galeria da Cisterna"	133	"OxA-9287"	-8.3648	39.3013	"EN"	-5411	133	"Csa"
+"neonet"	"La Resclauze"	159	"MC-1227"	3.2667	43.5	"EN"	-5407	159	"Csa"
+"neonet"	"Lama dei Peligni"	163	"OxA-1958"	14.183333	42.049936	"EN"	-5498	163	"Cfa"
+"neonetatl"	"Lapiás das Lameiras"	165	"OxA-29109"	-9.343528	38.84653	"EN"	-5426	165	"Csa"
+"neonet"	"Los Cascajos"	171	"Ua-24428"	-2.1892	42.5373	"EN"	-5406	171	"Csb"
+"neonet"	"Monte Maulo"	189	"OxA-651"	14.917	41.8074	"EN"	-5498	189	"Cfa"
+"neonet"	"Oullins"	200	"ETH-27972"	4.456943	44.342326	"EN"	-5463	200	"Cfa"
+"neonet"	"Pza. Vila Madrid"	225	"Beta-18271"	2.172524	41.384281	"EN"	-5410	225	NA
+"neonet"	"Renaghju"	227	"Ly-8327"	8.92148	41.52652	"EN"	-5485	227	NA
+"neonet"	"Roc du Dourgne"	236	"MC-1104"	2.0879	42.7607	"EN"	-5422	236	"Cfb"
+"neonet"	"Santa Tecchia"	251	"BM-2414"	15.842114	41.685083	"EN"	-5477	251	"Cfa"
+"neonet"	"Su Carroppu"	263	"Ly-3012"	8.549996	39.196373	"EN"	-5405	263	"Csa"
+"neonetatl"	"Valada do Mato"	275	"GrA-18298"	-7.9902777	38.60806	"EN"	-5485	275	"Csa"

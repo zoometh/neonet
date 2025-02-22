@@ -35,6 +35,8 @@ if(dbs_3rdpart){
 # source("R/neo_dbs_info_dates_datatable.R")
 # df.datatable <- neo_dbs_info_dates_datatable(df.c14) ; htmlwidgets::saveWidget(df.datatable, paste0("temp_filtered1", ".html"))
 
+# reference files
+source("R/config.R")
 # correct sitenames
 source("R/neo_dbs_sitename_dates.R")
 df.c14 <- neo_dbs_sitename_dates(df.c14)

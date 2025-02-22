@@ -1,22 +1,21 @@
 "sourcedb"	"site"	"idf"	"labcode"	"lon"	"lat"	"period"	"median"	"ID"	"code"
-"agrichange"	"Bonica"	35	"OxA-23440"	1.932166	41.387861	"EN"	-5633	35	"Csa"
-"neonet"	"Cocci"	67	"GX-29098"	12.5106	42.5157	"EN"	-5633	67	"Cfa"
-"neonet"	"Correge-Leucate"	73	"MC-788"	3.0507	42.8958	"EN"	-5697	73	NA
-"neonet"	"Cova de les Cendres"	89	"Beta-75220"	0.152631	38.685691	"EN"	-5642	89	NA
-"neonet"	"Fem"	128	"Beta-42866"	0.867881	41.302597	"EN"	-5620	128	"Csa"
-"neonet"	"Fontbregoua"	133	"Gif-2990"	6.23231	43.5637	"EN"	-5616	133	"Cfb"
-"neonet"	"Grotta Corbeddu"	144	"UtC-1251"	9.48634	40.255253	"EN"	-5605	144	"Csa"
-"neonet"	"Grotta Filiestru"	145	"Q-3020"	8.651545	40.453804	"EN"	-5625	145	"Csa"
-"neonet"	"Kargadur"	156	"OxA-21092"	13.950637	44.819147	"EN"	-5671	156	NA
-"neonet"	"Lagnano da Piede"	167	"UCLA-2148"	15.68544	41.238856	"EN"	-5616	167	"Csa"
-"neonet"	"Le Secche"	173	"LTL-16672A"	10.882	42.381891	"EN"	-5671	173	NA
-"neonet"	"Pendimoun"	211	"Gif-A101334"	7.505944	43.812212	"EN"	-5689	211	NA
-"neonet"	"Rendina"	232	"Lj-4549"	15.8	40.6334	"EN"	-5667	232	"Csa"
-"neonet"	"San Sebastiano di Perti"	250	"OxA-21359"	8.309641	44.184808	"EN"	-5670	250	"Cfa"
-"neonet"	"Santa Anna d'Oria III"	255	"R-322"	17.639	40.499	"EN"	-5682	255	NA
-"calpal"	"Saracena"	258	"LTL-2155A"	16.498	39.698	"EN"	-5695	258	"Csa"
-"neonet"	"Scaloria"	260	"Lj-4649"	15.906389	41.638889	"EN"	-5633	260	"Csa"
-"neonet"	"Serra Cicora"	264	"LTL-221A"	18.006	40.166	"EN"	-5680	264	"Csa"
-"neonet"	"Skarin Samograd"	267	"Hd-11950"	16.167023	43.85587	"EN"	-5678	267	"Cfa"
-"neonet"	"Umbro"	279	"Beta-122939"	15.9178	37.9392	"EN"	-5659	279	NA
-"neonetatl"	"Vale Pincel I"	285	"Beta-164664"	-8.844087	37.94075	"EN"	-5652	285	"Csa"
+"agrichange"	"Bonica"	30	"OxA-23440"	1.932166	41.387861	"EN"	-5633	30	"Csa"
+"neonet"	"Cocci"	64	"GX-29098"	12.5106	42.5157	"EN"	-5633	64	"Cfa"
+"neonet"	"Cova de les Cendres"	85	"Beta-75220"	0.152631	38.685691	"EN"	-5642	85	NA
+"neonet"	"Fem"	124	"Beta-42866"	0.867881	41.302597	"EN"	-5620	124	"Csa"
+"neonet"	"Fontbregoua"	129	"Gif-2990"	6.23231	43.5637	"EN"	-5616	129	"Cfb"
+"neonet"	"Grotta Corbeddu"	141	"UtC-1251"	9.48634	40.255253	"EN"	-5605	141	"Csa"
+"neonet"	"Grotta Filiestru"	142	"Q-3020"	8.651545	40.453804	"EN"	-5625	142	"Csa"
+"neonet"	"Kargadur"	151	"OxA-21092"	13.950637	44.819147	"EN"	-5671	151	NA
+"neonet"	"Lagnano da Piede"	161	"UCLA-2148"	15.68544	41.238856	"EN"	-5616	161	"Csa"
+"neonet"	"Le Secche"	167	"LTL-16672A"	10.882	42.381891	"EN"	-5671	167	NA
+"neonet"	"Pendimoun"	207	"Gif-A101334"	7.505944	43.812212	"EN"	-5689	207	NA
+"neonet"	"Rendina"	228	"Lj-4549"	15.8	40.6334	"EN"	-5667	228	"Csa"
+"neonet"	"San Sebastiano di Perti"	245	"OxA-21359"	8.309641	44.184808	"EN"	-5670	245	"Cfa"
+"neonet"	"Santa Anna d'Oria III"	250	"R-322"	17.639	40.499	"EN"	-5682	250	NA
+"calpal"	"Saracena"	253	"LTL-2155A"	16.498	39.698	"EN"	-5695	253	"Csa"
+"neonet"	"Scaloria"	255	"Lj-4649"	15.906389	41.638889	"EN"	-5633	255	"Csa"
+"neonet"	"Serra Cicora"	259	"LTL-221A"	18.006	40.166	"EN"	-5680	259	"Csa"
+"neonet"	"Skarin Samograd"	262	"Hd-11950"	16.167023	43.85587	"EN"	-5678	262	"Cfa"
+"neonet"	"Umbro"	273	"Beta-122939"	15.9178	37.9392	"EN"	-5659	273	NA
+"neonetatl"	"Vale Pincel I"	279	"Beta-164664"	-8.844087	37.94075	"EN"	-5652	279	"Csa"

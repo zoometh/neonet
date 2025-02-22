@@ -1,22 +1,22 @@
 "sourcedb"	"site"	"idf"	"labcode"	"lon"	"lat"	"period"	"median"	"ID"	"code"
-"neonet"	"Arene Candide"	22	"Beta-66553"	8.32828	44.162304	"EN"	-5766	22	"Cfa"
-"neonet"	"Arma dell'Aquila"	23	"Ly-14593"	8.32967	44.204708	"EN"	-5707	23	"Cfa"
-"neonet"	"Coppa Nevigata"	71	"OxA-1475"	15.830555	41.563888	"EN"	-5773	71	"Csa"
-"calpal"	"Cova de l'Or"	86	"Beta-136677"	-0.364154	38.84465	"EN"	-5787	86	"BSk"
-"neonet"	"Crno Vrilo"	95	"Poz-18395"	15.072992	44.528388	"EN"	-5778	95	"Dfb"
-"neonetatl"	"Encosta de Sant'Ana"	122	"Sac-2004"	-9.137902	38.71563	"EN"	-5769	122	"Csa"
-"neonet"	"Font-des-Pigeons"	132	"MC-2515"	5.1667	43.3834	"EN"	-5792	132	NA
-"neonet"	"Gazel"	137	"GrN-6702"	2.421154	43.325325	"EN"	-5795	137	"Cfa"
-"bda"	"Gritulu"	143	"LYON-824"	9.425046	42.89037	"EN"	-5723	143	NA
-"neonetatl"	"La Carigüela"	161	"Beta-141150"	-3.431582	37.44239	"EN"	-5796	161	"Csa"
-"neonet"	"La Marmotta"	164	"R-2360"	12.2745	42.1044	"EN"	-5740	164	"Csa"
-"neonet"	"Rio Tana"	235	"AECV-2012C"	13.673419	41.940862	"EN"	-5744	235	"Csa"
-"neonet"	"Ripa Tetta"	237	"Beta-47808/CAMS-2681"	15.404016	41.439567	"EN"	-5776	237	"Cfa"
-"bda"	"SHM-1"	245	"SacA-23651 (P-1068)"	10.496	36.019	"EN"	-5713	245	"BSk"
-"neonet"	"Sant'angelo di Ostuni"	254	"Gif-6724"	17.574791	40.738148	"EN"	-5778	254	"Csa"
-"neonet"	"Santo Stefano di Ortucchio"	257	"LTL-60A"	13.666385	41.953894	"EN"	-5721	257	"Csa"
-"neonet"	"Scamuso"	261	"Gif-7055"	17.039166	41.0775	"EN"	-5703	261	NA
-"neonet"	"Su Coloru"	269	"Beta-167931"	8.712183	40.661832	"EN"	-5720	269	"Csa"
-"neonet"	"Terragne"	272	"Beta-59933"	17.626339	40.392311	"EN"	-5759	272	NA
-"neonet"	"Torre Canne"	273	"Gif-6725"	17.3667	40.8334	"EN"	-5789	273	"Csa"
-"bda"	"Torre Sabea"	274	"Lyon-1448 (OXA)"	17.9667	40.0556	"EN"	-5740	274	NA
+"neonet"	"Arene Candide"	18	"Beta-66553"	8.32828	44.162304	"EN"	-5766	18	"Cfa"
+"neonet"	"Arma dell'Aquila"	19	"Ly-14593"	8.32967	44.204708	"EN"	-5707	19	"Cfa"
+"neonetatl"	"Cariguela"	46	"Beta-141150"	-3.431582	37.44239	"EN"	-5796	46	"Csa"
+"neonet"	"Coppa Nevigata"	68	"OxA-1475"	15.830555	41.563888	"EN"	-5773	68	"Csa"
+"calpal"	"Cova de l'Or"	82	"Beta-136677"	-0.364154	38.84465	"EN"	-5787	82	"BSk"
+"neonet"	"Crno Vrilo"	91	"Poz-18395"	15.072992	44.528388	"EN"	-5778	91	"Dfb"
+"neonetatl"	"Encosta de Sant'Ana"	117	"Sac-2004"	-9.137902	38.71563	"EN"	-5769	117	"Csa"
+"neonet"	"Font-des-Pigeons"	128	"MC-2515"	5.1667	43.3834	"EN"	-5792	128	NA
+"neonet"	"Gazel"	134	"GrN-6702"	2.421154	43.325325	"EN"	-5795	134	"Cfa"
+"bda"	"Gritulu"	140	"LYON-824"	9.425046	42.89037	"EN"	-5723	140	NA
+"neonet"	"La Marmotta"	158	"R-2360"	12.2745	42.1044	"EN"	-5740	158	"Csa"
+"neonet"	"Rio Tana"	231	"AECV-2012C"	13.673419	41.940862	"EN"	-5744	231	"Csa"
+"neonet"	"Ripa Tetta"	233	"Beta-47808/CAMS-2681"	15.404016	41.439567	"EN"	-5776	233	"Cfa"
+"bda"	"SHM-1"	241	"SacA-23651 (P-1068)"	10.496	36.019	"EN"	-5713	241	"BSk"
+"neonet"	"Sant'angelo di Ostuni"	249	"Gif-6724"	17.574791	40.738148	"EN"	-5778	249	"Csa"
+"neonet"	"Santo Stefano di Ortucchio"	252	"LTL-60A"	13.666385	41.953894	"EN"	-5721	252	"Csa"
+"neonet"	"Scamuso"	256	"Gif-7055"	17.039166	41.0775	"EN"	-5703	256	NA
+"neonet"	"Su Coloru"	264	"Beta-167931"	8.712183	40.661832	"EN"	-5720	264	"Csa"
+"neonet"	"Terragne"	267	"Beta-59933"	17.626339	40.392311	"EN"	-5759	267	NA
+"neonet"	"Torre Canne"	268	"Gif-6725"	17.3667	40.8334	"EN"	-5789	268	"Csa"
+"bda"	"Torre Sabea"	269	"Lyon-1448 (OXA)"	17.9667	40.0556	"EN"	-5740	269	NA
