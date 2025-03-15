@@ -31,12 +31,13 @@ for(i in seq(1, length(my_list))){
   # i <- 6
   obj.case.name <- paste0("isochr-", my_list[[i]][[5]], paste0(my_list[[i]][[2]], "-", paste0("BC-", my_list[[i]][[1]], collapse = "-")), "-", gsub(".tif", "", my_list[[i]][[4]]))
   obj.case.out <- paste0(root.path, "img/")
-  kcc.file.path <- paste0("C:/Rprojects/neonet/doc/data/clim/", my_list[[i]][[4]])
+  kcc.file.path <- paste0(root, "doc/data/clim/", my_list[[i]][[4]])
   # to reduce the number of displayed dates
   lbl.dates.interval <- c(my_list[[i]][[2]], my_list[[i]][[2]]-99)
   source("R/neo_isochr.R")
   isochr <- neo_isochr(df.c14 = df_filtered, 
                        isochr.subset =  my_list[[i]][[2]], #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                       isochr.subset.sup = my_list[[i]][[2]] - 100,
                        selected.per = my_list[[i]][[5]],
                        # largest.isochr = TRUE,
                        where = my_list[[i]][[3]], #Italia.where, # where.roi,

@@ -8,6 +8,7 @@
 #' @param where An area to limit the analysis. Can be an sf dataframe, a GeoJSON path, a bounding box (xmin, ymin, xmin, xmax). Default NA.
 #' @param calibrate if TRUE (default: FALSE) will calibrate dates using the neo_calib() function.
 #' @param isochr.subset Default NA. Else: a unique date BC to plot only this isochrone (ex: -6000) in BC.
+#' @param isochr.subset.sup Default NA. Else: a unique date BC to plot only this isochrone shaded (ex: -5900) in BC.
 #' @param largest.isochr If TRUE (Default: FALSE), will only show the largerst isochrone to avoid small closed lines.
 #' @param kcc.file a basemap KCC, ideally compliant with `isochr.subset`. If NA (default), will use a `rnaturalearth` basemap. Either a path to the GeoTiff (using its path), or a SpatRaster object.
 #' @param is.other.geotiff To display another Geotiff. Default: FALSE.
@@ -39,6 +40,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                        calibrate = FALSE,
                        time.interv = 250, # Useful?
                        isochr.subset = NA,
+                       isochr.subset.sup = NA,
                        largest.isochr = FALSE,
                        kcc.file = NA,
                        is.other.geotiff = FALSE,
@@ -375,10 +377,10 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     if(!any(!is.na(lbl.dates.interval))){
       capt <- paste0(capt, " ", n.dates.display, " dates older than isochr. ", 
                      isochrs.lbl, " BC", " (displayed) | ",
-      "labels on dates between ", abs(date.youngest), "-", abs(date.oldest)," BC \n")
+                     "labels on dates between ", abs(date.youngest), "-", abs(date.oldest)," BC \n")
     } else {
-    capt <- paste0(capt, " ", n.dates.display, " dates older than isochr. ", 
-                   isochrs.lbl, " BC", " (displayed)\n")
+      capt <- paste0(capt, " ", n.dates.display, " dates older than isochr. ", 
+                     isochrs.lbl, " BC", " (displayed)\n")
     }
     capt <- paste0(capt, nb.dates.tot, " calibrated dates BC in total | ")
     capt <- paste0(capt, "basemap: ", basemap.info, "")
@@ -512,17 +514,40 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
         ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
                                        name = "Cal BC")
     } else {
-      # map <- map +
-      map <- map +
-        ggplot2::geom_contour(data = interp_df, 
-                              ggplot2::aes(x = lon, y = lat, z = date.med, 
-                                           # color = ..level..
-                                           color = ggplot2::after_stat(level)
-                              ),
-                              breaks = contour_levels,
-                              linewidth = isochr.line.size) +
-        ggplot2::scale_color_gradientn(colours = rev(isochr.line.color),
-                                       name = "Cal BC")
+      if(verbose){
+        print(paste0("Will show one isochrones"))
+      }
+      if(length(contour_levels) == 1){
+        map <- map +
+          ggplot2::geom_contour(data = interp_df, 
+                                ggplot2::aes(x = lon, y = lat, z = date.med), # Remove color mapping
+                                breaks = contour_levels,
+                                linewidth = isochr.line.size,
+                                color = "black")  # Set color directly
+        # map <- map +
+        #   ggplot2::geom_contour(data = interp_df, 
+        #                         ggplot2::aes(x = lon, y = lat, z = date.med, 
+        #                                      # color = ..level..
+        #                                      color = ggplot2::after_stat(level)
+        #                                      # color = "black"
+        #                         ),
+        #                         breaks = contour_levels,
+        #                         linewidth = isochr.line.size) +
+        #   ggplot2::scale_color_gradientn(colours = "black", # rev(isochr.line.color),
+        #                                  name = "Cal BC")
+        if(!is.na(isochr.subset.sup)){
+          if(verbose){
+            print(paste0("Will show additional isochrones"))
+          }
+          print(isochr.line.color)
+          map <- map +
+            ggplot2::geom_contour(data = interp_df, 
+                                  ggplot2::aes(x = lon, y = lat, z = date.med), # Remove color mapping
+                                  breaks = isochr.subset.sup,
+                                  linewidth = isochr.line.size,
+                                  color = "darkgrey")  # Set color directly
+        }
+      }
     }
   }
   # TODO: change 'lbl.time.interv' to 'lbl.isochr'
@@ -646,7 +671,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
           if(verbose){print(paste0("Only dates from ", 
                                    date.youngest, " to ",
                                    date.oldest, " are labeled" ))
-            }
+          }
           df.isochr.subset <- df.isochr.subset[df.isochr.subset$median < date.youngest & df.isochr.subset$median > date.oldest, ]
           # nrow(df.isochr.subset.interval)
         }

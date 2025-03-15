@@ -4,15 +4,17 @@
 
 # Download the R functions using https://download-directory.github.io/ and this URL https://github.com/zoometh/neonet/tree/main/R
 
-root.path <- "C:/Rprojects/neonet/doc/talks/2025-bspf/"
+# root.path <- "C:/Rprojects/neonet/doc/talks/2025-bspf/"
+root <- "C:/Users/TH282424/Rprojects/neonet/"
+root.path <- paste0(root, "doc/talks/2025-bspf/")
 present <- 1950
 when <- c(-9000, -4000)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
 data.on.gh <- FALSE
 if(data.on.gh){
   data.url <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/df14_simep_4.csv"} else{
-  data.url <- "C:/Rprojects/neonet/doc/talks/2024-simep/df14_simep_4.csv"
-}
+    data.url <- paste0(root, "doc/talks/2024-simep/df14_simep_4.csv")
+  }
 samp_df <- read.csv(data.url)
 df.c14 <- samp_df
 
@@ -68,15 +70,52 @@ source("R/neo_kcc_legend.R")
 source("R/neo_dbs_info_dates_datatable.R")
 ### Choice, # !! some study area overlap different KCC
 ## title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) use: https://geojson.io/#map=2/0/20 ;
-# Med CentrOcc
-obj.case <- list("MedWest", c(-5600), c(-10, 35, 19, 45), "koppen_8k.tif")
-## by sites - - - - - - - - - - - - - - - - - - - - - - - -
-obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
-## by authors - - - - - - - - - - - - - - - - - - - - - - - -
-obj.case <- list("Binder", c(-5500), c(0.07180157, 31.8513415, 23.73331373, 48.0342267), "koppen_8k.tif")
-# kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
-obj.case <- list("Perrin", c(-5500), c(1.02768233, 40.83697718, 11.40383725, 46.44486459), "koppen_8k.tif")
-# kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
+my_list <- list(
+  # EN
+  list("MedWest", c(-5500), c(-10, 35, 19, 45), "koppen_8k.tif", "EN")
+)
+i <- 1
+obj.case.name <- paste0("isochr-", my_list[[i]][[5]], paste0(my_list[[i]][[2]], "-", paste0("BC-", my_list[[i]][[1]], collapse = "-")), "-", gsub(".tif", "", my_list[[i]][[4]]))
+obj.case.out <- paste0(root.path, "img/")
+kcc.file.path <- paste0(root, "doc/data/clim/", my_list[[i]][[4]])
+# to reduce the number of displayed dates
+lbl.dates.interval <- c(my_list[[i]][[2]], my_list[[i]][[2]]-99)
+source("R/neo_isochr.R")
+isochr <- neo_isochr(df.c14 = df_filtered, 
+                     isochr.subset =  my_list[[i]][[2]], #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
+                     isochr.subset.sup = my_list[[i]][[2]] - 100,
+                     selected.per = my_list[[i]][[5]],
+                     # largest.isochr = TRUE,
+                     where = my_list[[i]][[3]], #Italia.where, # where.roi,
+                     buff = 0,
+                     kcc.file = kcc.file.path, # NA, 
+                     is.other.geotiff = FALSE,
+                     create.legend = TRUE,
+                     isochr.line.color = NA, # "black", # NA to get colored isochrones (red, blue)
+                     isochr.line.size = .5,
+                     isochr.txt.size = 0,
+                     calibrate = FALSE,
+                     shw.dates = TRUE,
+                     # show.all.dates = FALSE,
+                     size.date = 1,
+                     # color.dates = "darkgrey",
+                     alpha.dates = 1,
+                     lbl.dates = TRUE,
+                     lbl.dates.interval = lbl.dates.interval, # subset dates to be labeled
+                     # lbl.all.dates = FALSE,
+                     # lbl.date.field = "median",
+                     lbl.dates.size = 4,
+                     lbl.time.interv = TRUE)
+isochr$map
+# # Med CentrOcc
+# obj.case <- list("MedWest", c(-5600), c(-10, 35, 19, 45), "koppen_8k.tif")
+# ## by sites - - - - - - - - - - - - - - - - - - - - - - - -
+# obj.case <- list("Le Baratin", c(-5700, -5500), c(2, 42, 7, 45), "koppen_8k.tif") # !!
+# ## by authors - - - - - - - - - - - - - - - - - - - - - - - -
+# obj.case <- list("Binder", c(-5500), c(0.07180157, 31.8513415, 23.73331373, 48.0342267), "koppen_8k.tif")
+# # kcc.file = "C:/Rprojects/neonet/doc/references/binder_et_al_22_fig11_5600-5450_AEC.tif",
+# obj.case <- list("Perrin", c(-5500), c(1.02768233, 40.83697718, 11.40383725, 46.44486459), "koppen_8k.tif")
+# # kcc.file = "C:/Rprojects/neonet/doc/references/perrin08_fig16_3_5800_BC.tif",
 #################################################################
 obj.case.name <- paste0("isochr", paste0(obj.case[[2]], "-", paste0("BC-", obj.case[[1]], collapse = "-")), "-", gsub(".tif", "", obj.case[[4]]))
 obj.case.out <- paste0(root.path, "img/", obj.case.name)
@@ -87,7 +126,7 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      largest.isochr = TRUE,
                      selected.per = "EN",
                      where = obj.case[[3]], #Italia.where, # where.roi,
-                     kcc.file = paste0("C:/Rprojects/neonet/doc/data/clim/", obj.case[[4]]), # NA, 
+                     kcc.file = paste0(root, "doc/data/clim/", obj.case[[4]]), # NA, 
                      create.legend = TRUE,
                      isochr.line.size = .5,
                      isochr.txt.size = 0,
