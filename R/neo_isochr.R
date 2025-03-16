@@ -213,6 +213,12 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                      period = df.dates.min$Period,
                      median = df.dates.min$median)
   }
+  df.raw <- data.frame(site = df.dates.min$SiteName,
+                       idf = idf_nn,
+                       labcode = df.dates.min$LabCode,
+                       C14Age = df.dates.min$C14Age,
+                       C14SD = df.dates.min$C14SD, 
+                       median = df.dates.min$median)
   # contour_levels <- seq(min(df$median), max(df$median), by = time.interv)
   # TODO: do the same on weighted medians
   # TODO: rm 'test_subset' and 'time.interv' variables. The latters aren't useful. Better the user select his own intervals.
@@ -741,7 +747,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     # 
     # kcc.file.full <- DescTools::SplitPath(kcc.file)$fullfilename
     # df_cc <- neo_kcc_extract(df.c14 = df.isochr.subset, labcode.col = "labcode", kcc.file = kcc.file.full)
-    outData <- list(data = df, map = map, legend = legend, inter = interp_df)
+    outData <- list(data = df, data.raw = df.raw, map = map, legend = legend, inter = interp_df)
   }
   if(!is.other.geotiff & is.na(kcc.file)){
     # = KCC
@@ -772,7 +778,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     # kcc.file.full <- DescTools::SplitPath(kcc.file)$fullfilename
     # df_cc <- neo_kcc_extract(df.c14 = df.isochr.subset, labcode.col = "labcode", kcc.file = kcc.file.full)
     # filename.out <- paste0(deparse(substitute(Italia.when)), paste0(Italia.when, collapse = ""))
-    outData <- list(data = df, map = map, inter = interp_df)
+    outData <- list(data = df, data.raw = df.raw, map = map, inter = interp_df)
   }
   if(is.other.geotiff){
     outData <- list(data = df, map = map)

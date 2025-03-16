@@ -1,4 +1,4 @@
-#' Creates a KCC map of the research area
+#' Creates a Sankey diagram
 #' 
 #' @name neo_kcc_sankey
 #' 
