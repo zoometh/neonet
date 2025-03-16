@@ -50,6 +50,8 @@ neo_calib_plot <- function(df.c14 = NA,
     x$metadata$DateID <- df.c14$idf
     # add site names to metadata
     x$metadata$SiteName <- df.c14$site
+    # add LabCode to metadata
+    x$metadata$LabCode <- df.c14$labcode
     ######## calculate medians ############
     wmedians <- c()
     for(i in seq(1, length(x$grids))){

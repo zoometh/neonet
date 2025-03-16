@@ -69,20 +69,30 @@ for(i in seq(1, length(my_list))){
 }
 
 ## seriated dates + wmedians
-source("R/neo_calib_plot.R")
-png(file = "C:/Users/TH282424/Rprojects/neonet/doc/talks/2025-bspf/img/_seriated.png", 
-    width = 21, 
-    height = 29.7, 
-    units = "cm", 
-    res = 300)
 df.c14 <- isochr$data.raw
-df <- head(df.c14, 70)
-neo_calib_plot(df,
-               col.wmedian = "blue",
-               cex.wmedian = .3,
-               cex.id = .3,
-               cex.lab = .5,
-               cex.axis = .5)
-dev.off()
+chunks <- c(seq(from = 1, to = nrow(df.c14), by = 100), nrow(df.c14))
+df.c14 <- df.c14[order(df.c14$median), ]
+source("R/neo_calib_plot.R")
+for(i in seq(1, length(chunks)-1)){
+  achunk <- paste0(chunks[i],"_",chunks[i+1])
+  gout <- paste0("C:/Users/TH282424/Rprojects/neonet/doc/talks/2025-bspf/img/_seriated_", achunk, ".png")
+  png(file = gout, 
+      width = 21, 
+      height = 29.7, 
+      units = "cm", 
+      res = 300)
+  df <- df.c14[seq(chunks[i], chunks[i+1]), ]
+  neo_calib_plot(df,
+                 col.wmedian = "blue",
+                 cex.wmedian = .4,
+                 cex.id = .5,
+                 cex.lab = .5,
+                 cex.axis = .5)
+  dev.off()
+}
 # nrow(df.c14)/4
+
+# cut the whole df in chunks before creating figures
+
+
 

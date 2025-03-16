@@ -160,11 +160,16 @@ neo_calib_multiplot <- function(x,
       # add a buffer on the left to display the label
       xlim[1] <- xlim[1] - 200
     }
+    # vlines each 500
+    vlines.modulo <- xlim %% 500
+    vlines.bornes <- xlim - vlines.modulo
+    vlines <- seq(from = min(c), to = max(c), by = 500)
     plot(0, 0, 
          xlim = xlim, 
          ylim = c(min(unlist(YLIMs)), 
                   max(unlist(YLIMs)) + gap), type = "n", ylab = ylab, 
          xlab = xlabel, axes = F, cex.lab = cex.lab)
+    abline(v = vlines, col = "grey", lty = 2)
     for (i in 1:length(x)) {
       tmpYlim = YLIMs[[i]]
       if (ydisp) {
@@ -221,7 +226,9 @@ neo_calib_multiplot <- function(x,
         if(is.na(label.text)){
           # print(min(unlist(YLIMs)))
           label.anchor <- xlim[1] # 00
-          new.label <- paste0(x$metadata$DateID[i], " - ", x$metadata$SiteName[i])
+          new.label <- paste0(x$metadata$DateID[i], 
+                              " - ", x$metadata$SiteName[i],
+                              " [", x$metadata$LabCode[i], "]")
           text(x = label.anchor, 
                y = ylabel, 
                labels = new.label, 

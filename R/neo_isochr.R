@@ -374,7 +374,10 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
   if(neolithic){
     tit <- paste("Neolithic (", periods, ")")
     if(nb.contours < 5 & nb.contours > 0){
-      subtit <- paste0("Isochrones: ", isochrs.lbl, " BC")
+      subtit <- paste("Isochrones:", isochrs.lbl, "BC")
+      if(!is.na(isochr.subset.sup)){
+        subtit <- paste(subtit, "<span style='color:darkgrey;'>", isochr.subset.sup, "BC", "</span>")
+      }
     } else {
       subtit <- paste0("XXX") 
     }
@@ -482,7 +485,10 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     #                                name = "Cal BC") +
     ggplot2::labs(title = tit,
                   subtitle = subtit,
-                  caption = capt)
+                  caption = capt) +
+    ggplot2::theme(
+      plot.subtitle = ggtext::element_markdown()  # Enables HTML/Markdown
+    )
   # ggplot2::scale_color_gradient(low = "#000000", high = "#FFAAAA")
   # if(!is.none.subset){
   #   
