@@ -123,7 +123,8 @@ lbl.dates.interval <- c(obj.case[[2]], obj.case[[2]]-99)
 source("R/neo_isochr.R")
 isochr <- neo_isochr(df.c14 = df_filtered, 
                      isochr.subset =  obj.case[[2]], #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
-                     largest.isochr = TRUE,
+                     isochr.subset.sup = obj.case[[2]] - 100,
+                     largest.isochr = FALSE,
                      selected.per = "EN",
                      where = obj.case[[3]], #Italia.where, # where.roi,
                      kcc.file = paste0(root, "doc/data/clim/", obj.case[[4]]), # NA, 
