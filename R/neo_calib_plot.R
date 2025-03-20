@@ -10,7 +10,7 @@
 #' @examples
 #'
 #' # one date
-#' df <- neo_calib_one_date(df.c14 = c(6090, 70))
+#' df <- neo_calib_plot(df.c14 = c(6090, 70))
 #'
 #' # a dataframe (after running a selection with `neo_ischr()`)
 #' df.c14 <- isochr$data.raw
@@ -28,14 +28,14 @@ neo_calib_plot <- function(df.c14 = NA,
                            verbose = TRUE){
   if(inherits(df.c14, "numeric")){
     if(verbose){
-      print(paste0("Display one date with wmedians"))
+      print(paste0("Display one date with wmedian"))
     }
     x <- rcarbon::calibrate(x = df.c14[1], 
                             errors = df.c14[2]) 
     weighted.median <- matrixStats::weightedMedian(x = x$grids$`1`$calBP, w = x$grids$`1`$PrDens)
     wmedian <- -(weighted.median - present)
     df.c14 <- c(df.c14, wmedian)
-    plot(x1, calendar = 'BCAD')
+    plot(x, calendar = 'BCAD')
     abline(v = wmedian, col = col.wmedian)
     return(df.c14)
   }
