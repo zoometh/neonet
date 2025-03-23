@@ -3,14 +3,15 @@
 #' @description Plot a calibrate date, or a dataframe of radiocarbon dates, and add the weighted median (wmedian)
 #'
 #' @param df.c14 A tuple (Age, Delta) or a dataframe
+#' @param lbl.median Label the wmedian? Default: TRUE.
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return
 #'
 #' @examples
 #'
-#' # one date
-#' df <- neo_calib_plot(df.c14 = c(6090, 70))
+#' # one date (example: Otzi death)
+#' df <- neo_calib_plot(df.c14 = c(4550, 19))
 #'
 #' # a dataframe (after running a selection with `neo_ischr()`)
 #' df.c14 <- isochr$data.raw
@@ -21,6 +22,7 @@ neo_calib_plot <- function(df.c14 = NA,
                            intCal = 'intcal20',
                            present = 1950,
                            col.wmedian = "blue",
+                           lbl.median = TRUE,
                            cex.wmedian = 1,
                            cex.id = 1,
                            cex.lab = 1,
@@ -36,7 +38,16 @@ neo_calib_plot <- function(df.c14 = NA,
     wmedian <- -(weighted.median - present)
     df.c14 <- c(df.c14, wmedian)
     plot(x, calendar = 'BCAD')
-    abline(v = wmedian, col = col.wmedian)
+    abline(v = wmedian, 
+           col = col.wmedian)
+    if(lbl.median){
+      text(x = wmedian, 
+           y = mean(c(par("usr")[3], par("usr")[4])), 
+           labels = paste("wmedian:", abs(round(wmedian, 0)), "BC"), 
+           col = col.wmedian, 
+           cex = 0.8, 
+           pos = 3)  # Position above the point
+    }
     return(df.c14)
   }
   if(inherits(df.c14, "data.frame")){
@@ -61,21 +72,24 @@ neo_calib_plot <- function(df.c14 = NA,
     wmedians <- round(wmedians, 0)
     wmedians <- -(wmedians - present)
     x$metadata$wmedian <- wmedians
-    source("R/neo_calib_multiplot.R")
-    neo_calib_multiplot(x,
-                        calendar = "BCAD",
-                        decreasing=TRUE,
-                        rescale=TRUE,
-                        HPD=TRUE,
-                        col.wmedian = col.wmedian,
-                        cex.wmedian = cex.wmedian,
-                        cex.id = cex.id,
-                        cex.lab = cex.lab,
-                        cex.axis = cex.axis,
-                        label.pos = 0.9,
-                        label.offset=-200)
+    source("R/neo_calib_plot_multi.R")
+    neo_calib_plot_multi(x,
+                         calendar = "BCAD",
+                         decreasing=TRUE,
+                         rescale=TRUE,
+                         HPD=TRUE,
+                         col.wmedian = col.wmedian,
+                         cex.wmedian = cex.wmedian,
+                         cex.id = cex.id,
+                         cex.lab = cex.lab,
+                         cex.axis = cex.axis,
+                         label.pos = 0.9,
+                         label.offset=-200)
   }
 }
+
+# source("R/neo_calib_plot.R")
+# df <- neo_calib_plot(df.c14 = c(4550, 27))
 #     # max and mins for the plot
 #     maxs <- mins <- c()
 #     for(m in seq(1, length(x$grids))){
