@@ -21,8 +21,12 @@
 neo_calib_plot <- function(df.c14 = NA, 
                            intCal = 'intcal20',
                            present = 1950,
-                           col.wmedian = "blue",
+                           calendar = 'BCAD',
+                           HPD = TRUE,
+                           HPD.inside = "darkgrey",
+                           HPD.outside = "lightgrey",
                            lbl.median = TRUE,
+                           col.wmedian = "blue",
                            cex.wmedian = 1,
                            cex.id = 1,
                            cex.lab = 1,
@@ -37,7 +41,11 @@ neo_calib_plot <- function(df.c14 = NA,
     weighted.median <- matrixStats::weightedMedian(x = x$grids$`1`$calBP, w = x$grids$`1`$PrDens)
     wmedian <- -(weighted.median - present)
     df.c14 <- c(df.c14, wmedian)
-    plot(x, calendar = 'BCAD')
+    plot(x, 
+         calendar = calendar,
+         HPD = HPD,
+         col = HPD.inside,
+         col2 = HPD.outside)
     abline(v = wmedian, 
            col = col.wmedian)
     if(lbl.median){
@@ -77,7 +85,7 @@ neo_calib_plot <- function(df.c14 = NA,
                          calendar = "BCAD",
                          decreasing=TRUE,
                          rescale=TRUE,
-                         HPD=TRUE,
+                         HPD=HPD,
                          col.wmedian = col.wmedian,
                          cex.wmedian = cex.wmedian,
                          cex.id = cex.id,
@@ -87,6 +95,8 @@ neo_calib_plot <- function(df.c14 = NA,
                          label.offset=-200)
   }
 }
+
+df <- neo_calib_plot(df.c14 = c(6930, 60), HPD.inside = "darkgrey", HPD.outside = "lightgrey")
 
 # source("R/neo_calib_plot.R")
 # df <- neo_calib_plot(df.c14 = c(4550, 27))
