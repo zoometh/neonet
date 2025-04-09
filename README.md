@@ -239,7 +239,7 @@ Gives a dataframe where all fields have been renamed to be parsed with the Neone
 
 #### Outlier dates
 
-To filter aberrant dates, a combination of different function allow to retrieve the current information (once mapped to the Neonet layout) of these potential outliers and their original information (from their source database).
+To filter [aberrant dates](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv), a combination of different function allow to retrieve the current information (once mapped to the Neonet layout) of these potential outliers and their original information (from their source database).
 
 
 <p align="center">
@@ -375,7 +375,7 @@ Create a map with isochrone contours to model the spread of Neolithic using the 
 
 #### Example
 
-The file [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/doc/#export_dates)). This GeoJSON file can be curated in a GIS (ex: removing aberrant dates) before running the following functions (`neo_isochr`, `neo_spd`, etc.).
+The file [neonet-data-2023-09-24.geojson](https://github.com/zoometh/neonet/blob/main/results/neonet-data-2023-09-24.geojson) is an export from the NeoNet app (see "export dates" in the [web document](https://zoometh.github.io/neonet/doc/#export_dates)). This GeoJSON file can be curated in a GIS (ex: removing [aberrant dates](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)) before running the following functions (`neo_isochr`, `neo_spd`, etc.).
 
 <p align="center">
 <br>
