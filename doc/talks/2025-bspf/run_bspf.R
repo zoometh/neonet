@@ -60,8 +60,6 @@ df_filtered <- neo_dbs_rm_date(df.c14 = df.c14,
 # subset(df_filtered[,c(1:10)], is.na(df_filtered$lon))
 df_filtered <- sf::st_as_sf(df_filtered, coords = c("lon", "lat"), crs = 4326) # when GDAL/proj.db will be reinstalled
 
-
-
 # isochrones
 source("R/config.R")
 source("R/neo_spd.R")

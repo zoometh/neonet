@@ -96,8 +96,8 @@ neo_calib_plot <- function(df.c14 = NA,
   }
 }
 
-df <- neo_calib_plot(df.c14 = c(6930, 60), HPD.inside = "darkgrey", HPD.outside = "lightgrey")
-
+# df <- neo_calib_plot(df.c14 = c(6930, 60), HPD.inside = "darkgrey", HPD.outside = "lightgrey")
+neo_calib_plot(df.c14 = c(4550, 19))
 # source("R/neo_calib_plot.R")
 # df <- neo_calib_plot(df.c14 = c(4550, 27))
 #     # max and mins for the plot

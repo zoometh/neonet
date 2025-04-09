@@ -11,7 +11,7 @@
 #'
 #' @examples
 #'
-#' df_filtered <- neo_dbs_rm_dates(df.c14)
+#' neo_dbs_info_date(LabCode = "Beta-417015", df.c14 = df_filtered)
 #'
 #' @export
 neo_dbs_info_date <- function(LabCode = NA, 
