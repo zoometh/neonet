@@ -611,7 +611,7 @@ Gives:
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/neonet_kcc.png"
-" width="700">
+" width="600">
   <br>
     <em>The neonet dataset over the KCC 7k</em>
 </p>
