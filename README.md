@@ -551,7 +551,28 @@ Creates these KCC GeoTiffs:
 
 <em>Past Koppen Climate Classification calculated in Kyears BP with the pastclim R package</em>
 
-#### Extract
+#### Crop
+
+To subset a specific area of a KCC map, select a KCC map (ex: 'koppen_7k') and a ROI (ex: 'roi-midi-france')
+
+```R
+source("R/neo_kcc_crop.R")
+map.select <- neo_kcc_crop(kcc = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.tif",
+                           roi = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-midi-france.geojson")
+terra::plot(map.select)
+```
+
+Gives:
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/kcc_cropped.png"
+" width="600">
+  <br>
+    <em>The 'koppen_7k' has been cropped with the ROI 'roi-midi-france'</em>
+</p>
+
+#### Extract dataframe
 
 This set of functions creates an interactive dataset of `df.c14` dates and the climates to which they belong.
 
@@ -594,28 +615,6 @@ Gives:
   <br>
     <em>The neonet dataset over the KCC 7k</em>
 </p>
-
-#### Crop
-
-To subset a specific area of a KCC map, select a KCC map (ex: 'koppen_7k') and a ROI (ex: 'roi-midi-france')
-
-```R
-source("R/neo_kcc_crop.R")
-map.select <- neo_kcc_crop(kcc = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.tif",
-                           roi = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-midi-france.geojson")
-terra::plot(map.select)
-```
-
-Gives:
-
-<p align="center">
-<br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/kcc_cropped.png"
-" width="600">
-  <br>
-    <em>The 'koppen_7k' has been cropped with the ROI 'roi-midi-france'</em>
-</p>
-
 
 #### Changes over time
 

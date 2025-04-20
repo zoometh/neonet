@@ -1,3 +1,95 @@
+neo_kcc_sankey <- function(kcc_data = NA,
+                           roi = NA,
+                           col.req = NA,
+                           kcc_colors = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv",
+                           selected.per = NA,
+                           verbose = TRUE) {
+  `%>%` <- dplyr::`%>%`
+  
+  # Read color mapping
+  koppen_colors <- read.table(kcc_colors, sep = "\t", header = TRUE)
+  kcc_color_map <- setNames(koppen_colors$color, koppen_colors$code)
+  rev_map <- setNames(rownames(koppen_colors), koppen_colors$code)
+  
+  if (inherits(kcc_data, "sf")) {
+    if (verbose) message("Processing site-based KCC changes")
+    
+    df <- sf::st_set_geometry(kcc_data, NULL)
+    
+    if (!all(col.req %in% names(df))) {
+      stop("Some 'col.req' fields are missing in the site dataframe.")
+    }
+    
+    df <- df[, col.req, drop = FALSE]
+    
+    if (!is.na(selected.per)) {
+      df <- df[df$Period %in% selected.per, ]
+    }
+    
+    period.names <- paste0(selected.per, collapse = "-")
+    title_text <- paste0(period.names, " KCC changes")
+    caption_text <- paste0("Number of archaeological sites = ", nrow(df))
+    
+  } else if (inherits(kcc_data, "character")) {
+    if (verbose) message("Processing area-based KCC changes")
+    
+    source("R/neo_kcc_crop.R")
+    
+    if (verbose) message("Cropping maps on ROI")
+    
+    nb_stages <- length(kcc_data)
+    df_list <- vector("list", nb_stages)
+    stage_names <- character(nb_stages)
+    
+    for (i in seq_len(nb_stages)) {
+      map <- neo_kcc_crop(kcc_data[i], roi = roi)
+      df_list[[i]] <- as.data.frame(map, xy = FALSE)
+      stage_names[i] <- terra::varnames(map)
+    }
+    
+    # Create a combined dataframe
+    df <- as.data.frame(do.call(cbind, df_list))
+    names(df) <- stage_names
+    
+    # Replace numeric KCC values with their labels
+    df[stage_names] <- lapply(df[stage_names], function(x) rev_map[as.character(x)])
+    
+    title_text <- "KCC changes"
+    caption_text <- paste0("Number of climate cells = ", nrow(df))
+  }
+  
+  # Build the Sankey dataframe
+  df.sank <- df %>% ggsankey::make_long(colnames(df))
+  
+  if (verbose) message("Building Sankey diagram")
+  
+  plot <- ggplot2::ggplot(df.sank, ggplot2::aes(
+    x = x, next_x = next_x,
+    node = node, next_node = next_node,
+    fill = factor(node), label = node)) +
+    ggsankey::geom_sankey(node.color = "black", show.legend = FALSE) +
+    ggsankey::geom_sankey_label(size = 3, color = "black", fill = "white", hjust = 0.5) +
+    ggplot2::scale_fill_manual(values = kcc_color_map) +
+    ggplot2::labs(title = title_text, caption = caption_text) +
+    ggplot2::theme_bw()
+  
+  if (verbose) message("Sankey plot created")
+  
+  return(plot)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Count transitions from OldClass to NewClass
 transition_counts <- df_changes %>%
   dplyr::group_by(OldClass, NewClass) %>%

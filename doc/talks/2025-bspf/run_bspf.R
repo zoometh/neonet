@@ -120,8 +120,15 @@ ggplot2::ggsave(paste0(root.path, "img/", "_interpol_isochrones.png"),
 # Sankey Diagram
 source("R/neo_kcc_sankey.R")
 gout <- neo_kcc_sankey(kcc_data =  c("https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.tif", "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.tif"),
-                       roi = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-midi-france.geojson")
-gout
+                       roi = c(-10, 35, 19, 45),
+                       label.size = 2)
+ggplot2::ggsave(paste0(root.path, "img/", "_sankey_changes.png"), 
+                gout, 
+                width = 16, 
+                height = 14, 
+                dpi = 300,
+                units = "cm")
+
 
 
 # # Med CentrOcc

@@ -27,6 +27,10 @@ neo_kcc_sankey <- function(kcc_data = NA,
                            col.req = NA,
                            kcc_colors = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/koppen.tsv",
                            selected.per = NA,
+                           label.size = 2,
+                           title.size = 9,
+                           caption.size = 7,
+                           xlabel.size = 7,
                            verbose = TRUE){
   # kcc_data_ <- as.data.frame(kcc_data)
   `%>%` <- dplyr::`%>%`
@@ -103,10 +107,13 @@ neo_kcc_sankey <- function(kcc_data = NA,
                           show.legend = FALSE) +
     ggplot2::scale_fill_manual(values = kcc_color_map) +
     # ggsankey::geom_sankey_label(size = 3, color = "black", fill= "white", hjust = 0.5) +
-    ggsankey::geom_sankey_label(aes(label = paste0(node, "\n(n = ", count, ")")),
-                                size = 3, color = "black", fill= "white", hjust = 0.5) +
+    ggsankey::geom_sankey_label(aes(label = paste0(node, " (n = ", count, ")")),
+                                size = label.size, color = "black", fill= "white", hjust = 0.5) +
     ggplot2::theme_minimal() +
-    ggplot2::theme(axis.title = ggplot2::element_blank(),
+    ggplot2::theme(plot.title =  ggplot2::element_text(size = title.size, face = "bold"),
+                   plot.caption =  ggplot2::element_text(size = caption.size),
+                   axis.text = ggplot2::element_text(size = xlabel.size),
+                   axis.title = ggplot2::element_blank(),
                    axis.ticks = ggplot2::element_blank(),
                    axis.text.y = ggplot2::element_blank(),
                    panel.grid = ggplot2::element_blank()) +
