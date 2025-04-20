@@ -1,39 +1,11 @@
-# Load both GeoTIFFs as raster layers
-# koppen_8k <- rast("/mnt/data/koppen_8k.tif")
-# koppen_7k <- rast("/mnt/data/koppen_7k.tif")
-
-root.path = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/"
-before.map <- rast(paste0(root.path, "koppen_8k.tif"))
-after.map <- rast(paste0(root.path, "koppen_7k.tif"))
-
-roi <- sf::st_read("https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi.geojson",
-                   quiet = TRUE)
-before.map.select <- crop(before.map, roi)
-after.map.select <- crop(after.map, roi)
-after.map.select <- resample(before.map.select, after.map.select)
-
-plot(before.map.select)
-plot(after.map.select)
-
-# Convert rasters to data frames
-before.df <- as.data.frame(before.map.select, xy = FALSE)
-after.df  <- as.data.frame(after.map.select, xy = FALSE)
-
-# Combine into a single data frame
-df_changes <- data.frame(OldClass = before.df[,1], NewClass = after.df[,1])
-
-# Remove NA values if necessary
-df_changes <- na.omit(df_changes)
-
 # Count transitions from OldClass to NewClass
 transition_counts <- df_changes %>%
-  group_by(OldClass, NewClass) %>%
-  summarise(count = n(), .groups = "drop")
+  dplyr::group_by(OldClass, NewClass) %>%
+  dplyr::summarise(count = dplyr::n(), .groups = "drop")
 
 # Convert to a format suitable for Sankey plotting
 links <- transition_counts %>%
-  rename(source = OldClass, target = NewClass, value = count)
-
+  dplyr::rename(source = OldClass, target = NewClass, value = count)
 
 # Extract unique nodes (classes)
 nodes <- data.frame(name = unique(c(links$source, links$target)))
@@ -42,10 +14,10 @@ nodes <- data.frame(name = unique(c(links$source, links$target)))
 links$source <- match(links$source, nodes$name) - 1
 links$target <- match(links$target, nodes$name) - 1
 
-sankey <- sankeyNetwork(Links = links, Nodes = nodes,
-                        Source = "source", Target = "target",
-                        Value = "value", NodeID = "name",
-                        fontSize = 12, nodeWidth = 30)
+sankey <- networkD3::sankeyNetwork(Links = links, Nodes = nodes,
+                                   Source = "source", Target = "target",
+                                   Value = "value", NodeID = "name",
+                                   fontSize = 12, nodeWidth = 30)
 
 # Display the Sankey diagram
 sankey

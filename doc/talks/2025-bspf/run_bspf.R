@@ -8,7 +8,7 @@
 root <- "C:/Users/TH282424/Rprojects/neonet/"
 root.path <- paste0(root, "doc/talks/2025-bspf/")
 present <- 1950
-when <- c(-9000, -4000)
+when <- c(-9000, -3000)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
 data.on.gh <- FALSE
 if(data.on.gh){
@@ -105,6 +105,25 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      lbl.dates.size = 4,
                      lbl.time.interv = TRUE)
 isochr$map
+
+# INterpolation map
+source("R/neo_isochr_inter_map.R")
+inter.map <- neo_isochr_inter_map(isochr$inter, title = "Interpolation des w-médianes des dates radiocarbones")
+inter.map
+ggplot2::ggsave(paste0(root.path, "img/", "_interpol_isochrones.png"), 
+                inter.map, 
+                width = 16, 
+                height = 12, 
+                dpi = 300,
+                units = "cm")
+
+# Sankey Diagram
+source("R/neo_kcc_sankey.R")
+gout <- neo_kcc_sankey(kcc_data =  c("https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.tif", "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.tif"),
+                       roi = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-midi-france.geojson")
+gout
+
+
 # # Med CentrOcc
 # obj.case <- list("MedWest", c(-5600), c(-10, 35, 19, 45), "koppen_8k.tif")
 # ## by sites - - - - - - - - - - - - - - - - - - - - - - - -
@@ -145,6 +164,10 @@ ggplot2::ggsave(paste0(obj.case.out, ".png"), isochr$map, width = 10, height = 8
 ggplot2::ggsave(paste0(obj.case.out, "-legend.png"), isochr$legend, width = 5)
 write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = FALSE)
 # subset(isochr$data[order(isochr$data$median),], code == 'Csb')
+
+
+## Not Run
+# ggplot2::ggsave(paste0(root.path, "img/", "isochrones-barriere-Italy-EN-inter-map.png"), inter.map, width = 7, height = 7)
 
 # df.datatable <- neo_dbs_info_dates_datatable(df.c14 = isochr$data) ; htmlwidgets::saveWidget(df.datatable, paste0(obj.case.out, ".html"))
 # df <- isochr$data[ , c("idf","site", "period", "median", "code", "lon", "lat", "sourcedb")]

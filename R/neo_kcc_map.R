@@ -1,4 +1,4 @@
-#' Creates a KCC map of the research area
+#' Creates a KCC map of the research area with a layer of dates above
 #' 
 #' @name neo_kcc_map
 #' 

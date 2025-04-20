@@ -595,6 +595,10 @@ Gives:
     <em>The neonet dataset over the KCC 7k</em>
 </p>
 
+#### Changes over time
+
+**stacked plots**
+
 To assess what were the climates classes that where inhabited in the past, during the Late Mesolithic (LM) and Middle Mesolithic (MM) based on previous dates
 
 ```R
@@ -621,6 +625,29 @@ Gives:
   <br>
     <em>KCC occupied during the EN between 7,000 and 6,000 BC (9 ka and 8 ka BP) with counts of sites belonging to these time slices</em>
 </p>
+
+**Sankey plots**
+
+To run this before-after diagram on 'koppen_8k' and 'koppen_7k', for a specified area 'roi-midi-france':
+
+```R
+source("R/neo_kcc_sankey.R")
+gout <- neo_kcc_sankey(kcc_data =  c("https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_8k.tif", "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.tif"),
+                       roi = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-midi-france.geojson")
+gout
+```
+
+Gives:
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/sankey_area.png"
+" width="600">
+  <br>
+    <em>Sankey diagram for the whole 'roi-midi-france' between 'koppen_8k' and 'koppen_7k'. Here the changes are assessed for the whole area, that is to say all KCC map cells (n = 149)</em>
+</p>
+
+#### Other
 
 The `neo_kcc_extract()` function collects the KCC values (climates) of each date. 
 
