@@ -9,8 +9,10 @@ neo_spdplot <- function (x,
                          xaxt = "s", yaxt = "s",
                          gapFactor = 0.2,
                          col.fill = NA, col.line = NA, 
-                         lwd.obs = 1, lty.obs = 1, cex.lab = 1, cex.axis = cex.lab, 
-                         legend = TRUE, legend.arg = NULL, ylab = NA, ymargin = 1.1, 
+                         lwd.obs = 1, lty.obs = 1, 
+                         cex.lab = 1, cex.axis = cex.lab, cex.main = 1,
+                         legend = TRUE, legend.arg = NULL, legend.pos = "topleft",
+                         ylab = NA, ymargin = 1.1, 
                          spd.title = "",
                          periods.colors = c("#0000CF", "#1D1DFF", "#3737FF", "#FF1B1B", "#FF8D1B", "#FFC04D", "#808080"),
                          weighted.median = NA,
@@ -141,11 +143,11 @@ neo_spdplot <- function (x,
     }
     if (legend) {
       if (is.null(legend.arg)) {
-        legend("topleft", legend = names(x$spds), 
+        legend(legend.pos, legend = names(x$spds), 
                col = col.line, lty = lty.obs, lwd = lwd.obs)
       }
       else {
-        args.legend1 <- list("topleft", legend = names(x$spds), 
+        args.legend1 <- list(legend.pos, legend = names(x$spds), 
                              col = col.line, lty = lty.obs, lwd = lwd.obs)
         args.legend1[names(legend.arg)] <- legend.arg
         do.call("legend", args = args.legend1)
@@ -165,9 +167,13 @@ neo_spdplot <- function (x,
     }
 
     print(" ------------->  HERE")
-    plot(0, 0, xlim = xlim, ylim = ylim, type = "l", 
+    print(xlim)
+    plot(0, 0, 
+         xlim = xlim, ylim = ylim, type = "l", 
          ylab = ylab, xlab = xlabel, xaxt = "n", yaxt = yaxt, 
-         cex.axis = cex.axis, cex.lab = cex.lab, main = spd.title)
+         cex.axis = cex.axis, cex.lab = cex.lab, 
+         cex.main = cex.main,
+         main = spd.title)
     for (i in 2:(nsets + 1)) {
       polygon(c(plotyears, rev(plotyears)), c(PrDens[, 
                                                      i], rev(PrDens[, i - 1])), col = col.fill[i - 
@@ -190,11 +196,11 @@ neo_spdplot <- function (x,
     }
     if (legend) {
       if (is.null(legend.arg)) {
-        legend("topleft", legend = names(x$spds), 
+        legend(legend.pos, legend = names(x$spds), 
                fill = col.fill)
       }
       else {
-        args.legend1 <- list("topleft", legend = names(x$spds), 
+        args.legend1 <- list(legend.pos, legend = names(x$spds), 
                              fill = col.fill)
         args.legend1[names(legend.arg)] <- legend.arg
         do.call("legend", args = args.legend1)
@@ -236,11 +242,11 @@ neo_spdplot <- function (x,
     }
     if (legend) {
       if (is.null(legend.arg)) {
-        legend("topleft", legend = names(x$spds), 
+        legend(legend.pos, legend = names(x$spds), 
                fill = col.fill)
       }
       else {
-        args.legend1 <- list("topleft", legend = names(x$spds), 
+        args.legend1 <- list(legend.pos, legend = names(x$spds), 
                              fill = col.fill)
         args.legend1[names(legend.arg)] <- legend.arg
         do.call("legend", args.legend1)
@@ -277,11 +283,11 @@ neo_spdplot <- function (x,
     }
     if (legend) {
       if (is.null(legend.arg)) {
-        legend("topleft", legend = names(x$spds), 
+        legend(legend.pos, legend = names(x$spds), 
                fill = col.fill)
       }
       else {
-        args.legend1 <- list("topleft", legend = names(x$spds), 
+        args.legend1 <- list(legend.pos, legend = names(x$spds), 
                              fill = col.fill)
         args.legend1[names(legend.arg)] <- legend.arg
         do.call("legend", args.legend1)

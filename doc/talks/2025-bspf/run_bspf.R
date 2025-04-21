@@ -129,6 +129,25 @@ ggplot2::ggsave(paste0(root.path, "img/", "_sankey_changes.png"),
                 dpi = 300,
                 units = "cm")
 
+# SPD climats
+source("R/neo_spd.R")
+source("R/neo_spdplot.R")
+source("R/neo_kcc_extract.R")
+kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+              "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+df_cc <- neo_kcc_extract(df.c14 = df_filtered,
+                         kcc.file = kcc.file)
+df_filtered_EN <- df_cc[df_cc$Period == "EN", ]
+df_filtered_EN_6000_5000BC <- df_filtered_EN[df_filtered_EN$median > -6001 & df_filtered_EN$median < -4999, ]
+neo_spd(df.c14 = df_filtered_EN_6000_5000BC, 
+        color.on = 'kcc',
+        export = TRUE,
+        legend.pos = "topright",
+        cex.main = .7,
+        width = 14, height = 12,
+        outDir = paste0(root.path, "img/"), 
+        outFile = "_SPD_kcc")
+
 
 
 # # Med CentrOcc

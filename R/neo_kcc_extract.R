@@ -23,7 +23,9 @@
 #' @export
 neo_kcc_extract <- function(df.c14 = NA,
                             present = 2000,
-                            root.path = "C:/Rprojects/neonet/doc/data/clim/",
+                            # when the root.path points to the GH, and not the local path, the map cells values are converted into integer and not KCC (ex: "Af" -> 1; "Am" -> 2)
+                            # root.path = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/",
+                            root.path = "C:/Users/TH282424/Rprojects/neonet/doc/data/clim/",
                             labcode.col = "LabCode",
                             kcc.file = c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
                                          "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif"),

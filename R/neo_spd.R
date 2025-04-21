@@ -1,6 +1,6 @@
 #' @name neo_spd
 #' 
-#' @description SPD on a dataset colored by periods (default) or KCC.
+#' @description SPD on a dataset colored by periods (default) or on KCC.
 #'
 #' @param df.c14 the dataset with NeoNet columns (SiteName, Period, etc.). Can be: a TSV file, or a data.frame, or a GeoJSON, or an sf object. Default: NeoNet med dataset
 #' @param ref.period period referenced in NeoNet (and colors). A TSV file.
@@ -49,6 +49,8 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
                     color.on = "Period",
                     show.median = FALSE,
                     x.intercept = NA,
+                    cex.main = 1,
+                    legend.pos = "topleft",
                     title = "SPD",
                     plotname = "spd",
                     export = TRUE,
@@ -207,15 +209,18 @@ neo_spd <- function(df.c14 = "https://digitallib.unipi.it/fedora/objects/mag:262
   if(!is.na(title)){
     tit <- paste0(title, " (", nrow(c14.cal), " dates)")
   } else {tit <- title}
+  source("R/neo_spdplot.R")
   neo_spdplot(spd.c14,
               type = 'stacked',
               calendar = calendar,
               cex.lab = .7,
               cex.axis = .7,
+              cex.main = cex.main,
               legend.arg = list(cex = .7,
                                 pt.cex = .7,
                                 title = color.on),
               spd.title = tit,
+              legend.pos = legend.pos,
               # colpal = colpal,
               # periods = periods,
               # ref.period = ref.period,

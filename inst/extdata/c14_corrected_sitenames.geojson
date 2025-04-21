@@ -1136,7 +1136,7 @@
 { "type": "Feature", "properties": { "SiteName": "Montes de Baixo", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -8.7883, 37.4361 ] } },
 { "type": "Feature", "properties": { "SiteName": "Moordenaarsven", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 5.0393, 50.7949 ] } },
 { "type": "Feature", "properties": { "SiteName": "Moordenaarsven 2", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 4.642809, 51.351138 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Mora Cavorso", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 13.169183, 41.888384 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Mora Cavorso", "AlternativeNames": "Grotta Mora Cavorso" }, "geometry": { "type": "Point", "coordinates": [ 13.169183, 41.888384 ] } },
 { "type": "Feature", "properties": { "SiteName": "Morgado Superior", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -8.2451, 39.3825 ] } },
 { "type": "Feature", "properties": { "SiteName": "Moringen-Großenrode", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 9.9, 51.66 ] } },
 { "type": "Feature", "properties": { "SiteName": "Moringen-Großenrode \"14-Feldberg\"", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 9.90064501762358, 51.671330880501202 ] } },
