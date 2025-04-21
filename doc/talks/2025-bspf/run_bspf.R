@@ -208,7 +208,7 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 # neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 
 source("R/neo_dbs_info_date.R")
-neo_dbs_info_date(LabCode = "OxA-18120", df.c14 = df_filtered)
+neo_dbs_info_date(LabCode = "Lyon-3504", df.c14 = df_filtered)
 
 
 source("R/neo_find_date.R")
