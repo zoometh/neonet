@@ -180,3 +180,7 @@ neonet	Beta-42867	Fem	-5774	EN	None	Modelled as Mesolithic in 'Piqué, R., Palom
 bda	Lyon-3504	Mora Cavorso	-5379	Néolithique ancien	None	This is a duplicate with Ly-3504 from Neonet
 neonet	x-3	Uzzo	-6305	EN	None	This date ( = OxA-13661 in Tab. 8 of Mannino, M. A., & Thomas, K. D. (2007). New radiocarbon dates for hunter-gatherers and early farmers in Sicily. Accordia Research Papers, 10, 13-34.) should be eliminated. Within the thèse of C. Collina Neolithic Impressa layers would be dated between 5900 and 5800 cal BC. Later Early Neolithic phases, in Trench A, are documented since 5700 cal BCE (P-2733 6750 +- 70) (Stentinello facies).
 bda	OxA-13661	Uzzo	-6307	Néolithique ancien	Ceramica Impressa	Same as LabCode 'x-3'
+neonet	CNA-4611.1.1	Cueva Lobrica	-5386	EN	<NA>	Discussed on https://github.com/zoometh/neonet/issues/19, rejected
+neonet	R-1175	Monte Venere	-5826	EN	<NA>	Discussed on https://github.com/zoometh/neonet/issues/18, rejected
+neonet	Birm-1113	Nerja	-5867	EN	<NA>	Discussed on https://github.com/zoometh/neonet/issues/17, rejected
+neonet	Beta-167931	Su Coloru	-5720	EN	None	Discussed on https://github.com/zoometh/neonet/issues/10, rejected 
