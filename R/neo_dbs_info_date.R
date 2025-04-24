@@ -4,7 +4,7 @@
 #'
 #' @param LabCode The LabCode of the date to check. 
 #' @param columns The list of columns to display.
-#' @param format The output format. Default "aberrant_dates" 
+#' @param format The output format. Default "aberrant_dates"
 #'
 #' @return Print on the screen, return a dataframe.
 #' 
@@ -16,7 +16,7 @@
 #' @export
 neo_dbs_info_date <- function(LabCode = NA, 
                               df.c14 = NA,
-                              columns = c("sourcedb", "LabCode", "SiteName", "median", "db_period", "db_culture"),
+                              columns = c("sourcedb", "LabCode", "SiteName", "C14Age", "C14SD", "median", "db_period", "db_culture"),
                               aberrant_dates = "aberrant_dates",
                               verbose = TRUE){
   `%>%` <- dplyr::`%>%` # used to not load dplyr 
@@ -43,6 +43,7 @@ neo_dbs_info_date <- function(LabCode = NA,
     if(verbose){
       print(paste0("Layout for 'aberrant dates' format:"))
     }
+    df.out.cat$C14Age <- df.out.cat$C14SD <- NULL
     df.out.cat$comments <- NA # to match the 'aberrant dates' TSV format
     df.out.cat$median <- round(df.out.cat$median, 0)
     df.out.cat <- df.out.cat %>%
