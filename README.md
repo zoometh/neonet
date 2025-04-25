@@ -715,7 +715,7 @@ Gives
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/kcc_neo_time_span.png"
-" width="600">
+" width="800">
   <br>
     <em>KCC occupied during the EN between 6,100 and 5,000 BC with counts of dates belonging to these time slices</em>
 </p>
