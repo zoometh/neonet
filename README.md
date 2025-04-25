@@ -686,7 +686,38 @@ Gives:
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/EN_kcc_stacked.png"
 " width="600">
   <br>
-    <em>KCC occupied during the EN between 7,000 and 6,000 BC (9 ka and 8 ka BP) with counts of sites belonging to these time slices</em>
+    <em>KCC occupied during the EN between 7,000 and 6,000 BC (9 ka and 8 ka BP) with counts of dates belonging to these time slices</em>
+</p>
+
+To do the same, not sliced on KCC (koppen_8k, koppen_9k, ...) but time span, use the neo_kcc_plotbar_time_intervals() function. For example on the time span 6100-5000 BC (koppen_8k, koppen_7k maps), each 100 years
+
+```R
+source("R/neo_subset_roi.R")
+source("R/neo_subset_when.R")
+source("R/neo_kcc_extract.R")
+source("R/neo_kcc_plotbar_time_intervals.R")
+
+when <- c(6100, 5000)
+where <- c(-10, 35, 19, 45) # Central Western Mediterranean
+df_filtered_space <- neo_subset_roi(df_filtered, where = where)
+df_filtered_space_time <- neo_subset_when(df.c14 = df_filtered_space, 
+                                          when = when, 
+                                          period = "EN", 
+                                          top.date = TRUE)
+df_cc <- neo_kcc_extract(df.c14 = df_filtered_space_time, kcc.file = c("koppen_7k.tif", "koppen_8k.tif"))
+neo_kcc_plotbar_time_intervals(df_cc, 
+                               time.interval = when, 
+                               time.bin = 100)
+```
+
+Gives
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/kcc_neo_time_span.png"
+" width="600">
+  <br>
+    <em>KCC occupied during the EN between 6,100 and 5,000 BC with counts of dates belonging to these time slices</em>
 </p>
 
 **Sankey plots**
