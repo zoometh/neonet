@@ -53,8 +53,8 @@ neo_kcc_plotbar_time_intervals <- function(df_cc = NA,
   # Plot stacked bar chart
   # print(head(result))
   capt <- paste0(sum(result$count), " dates having a KCC | ",
-                 nrow(df_cc) - sum(result$count), " dates without KCC",
-                 nrow(df_cc), " dates in total | ")
+                 nrow(df_cc) - sum(result$count), " dates without KCC | ",
+                 nrow(df_cc), " dates in total")
   gout <- ggplot2::ggplot(result, 
                           ggplot2::aes(x = time_bin, y = count, fill = factor(climate))) +
     ggplot2::geom_bar(stat = "identity") +
