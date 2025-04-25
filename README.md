@@ -345,7 +345,7 @@ Gives:
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/calibrate_wmedian.png"
 " width=500">
   <br>
-    <em>Calibrate one date showing its weighted median</em>
+    <em>Calibrate one date showing its weighted median (w-median)</em>
 </p>
 
 The function `neo_calib_plot()` can be used for one or many (a dataframe) dates. For the latter case, it will seriate the dates.
@@ -362,7 +362,7 @@ Gives:
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/calibrate_seriated_wmedian.png"
 " width=700">
   <br>
-    <em>Calibrate various dates seriated on their weighted median</em>
+    <em>Calibrate various dates seriated on their weighted median (w-median)</em>
 </p>
 
 
@@ -469,7 +469,7 @@ inter.map
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map-ex.png"
 " width="300">
   <br>
-    <em>Weighted medians interpolated</em>
+    <em>Weighted medians (w-median) interpolated</em>
 </p>
 
 #### EN and LM

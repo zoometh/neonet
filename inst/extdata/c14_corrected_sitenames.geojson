@@ -650,7 +650,7 @@
 { "type": "Feature", "properties": { "SiteName": "Friesack 4", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 12.5783, 52.7398 ] } },
 { "type": "Feature", "properties": { "SiteName": "Frimmersdorf", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 6.5745449066162, 51.046790263622 ] } },
 { "type": "Feature", "properties": { "SiteName": "Ftelia", "AlternativeNames": "Ftelia. Mykonos" }, "geometry": { "type": "Point", "coordinates": [ 25.378448, 37.463509 ] } },
-{ "type": "Feature", "properties": { "SiteName": "Fuente Celada", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ -3.926308, 42.26208 ] } },
+{ "type": "Feature", "properties": { "SiteName": "Fuente Celada", "AlternativeNames": "Celada" }, "geometry": { "type": "Point", "coordinates": [ -3.926308, 42.26208 ] } },
 { "type": "Feature", "properties": { "SiteName": "Fuente Hoz", "AlternativeNames": "Cueva de Fuente Hoz" }, "geometry": { "type": "Point", "coordinates": [ -2.9124, 42.7688 ] } },
 { "type": "Feature", "properties": { "SiteName": "Füzesabony-Gubakút", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 20.3893, 47.7476 ] } },
 { "type": "Feature", "properties": { "SiteName": "Füzesabony-Szikszói-Berek", "AlternativeNames": null }, "geometry": { "type": "Point", "coordinates": [ 20.3933, 47.7621 ] } },

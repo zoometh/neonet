@@ -16,7 +16,7 @@
 #' @export
 neo_dbs_info_date <- function(LabCode = NA, 
                               df.c14 = NA,
-                              columns = c("sourcedb", "LabCode", "SiteName", "C14Age", "C14SD", "median", "db_period", "db_culture"),
+                              columns = c("sourcedb", "LabCode", "SiteName", "C14Age", "C14SD", "median", "db_period", "db_culture", "notes"),
                               aberrant_dates = "aberrant_dates",
                               verbose = TRUE){
   `%>%` <- dplyr::`%>%` # used to not load dplyr 
@@ -43,7 +43,7 @@ neo_dbs_info_date <- function(LabCode = NA,
     if(verbose){
       print(paste0("Layout for 'aberrant dates' format:"))
     }
-    df.out.cat$C14Age <- df.out.cat$C14SD <- NULL
+    df.out.cat$C14Age <- df.out.cat$C14SD <- df.out.cat$notes <- NULL
     df.out.cat$comments <- NA # to match the 'aberrant dates' TSV format
     df.out.cat$median <- round(df.out.cat$median, 0)
     df.out.cat <- df.out.cat %>%
