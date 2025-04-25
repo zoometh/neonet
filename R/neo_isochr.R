@@ -54,6 +54,9 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                        color.dates = "black",
                        alpha.dates = .5,
                        lbl.dates = FALSE,
+                       segment.linetype = 1,
+                       force = 1,
+                       min.segment.length = 0,
                        lbl.dates.interval = NA,
                        lbl.date.field = "idf",
                        lbl.dates.size = 2,
@@ -636,6 +639,9 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
           ggrepel::geom_text_repel(data = df, 
                                    ggplot2::aes(x = longitude, y = latitude, label = idf),
                                    size = lbl.dates.size,
+                                   segment.linetype = segment.linetype,
+                                   force = force,
+                                   min.segment.length = min.segment.length,
                                    segment.alpha = .3,
                                    segment.size = .3,
                                    max.overlaps = Inf)
@@ -689,19 +695,31 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
         }
         
         if(lbl.date.field == "idf"){
+          if(verbose){
+            print(paste0("   add ", lbl.date.field, " as labels"))
+          }
           map <- map +
             ggrepel::geom_text_repel(data = df.isochr.subset, 
                                      ggplot2::aes(x = longitude, y = latitude, label = idf),
                                      size = lbl.dates.size,
+                                     segment.linetype = segment.linetype,
+                                     force = force,
+                                     min.segment.length = min.segment.length,
                                      segment.alpha = .3,
                                      segment.size = .3,
                                      max.overlaps = Inf)
         }
         if(lbl.date.field == "median"){
+          if(verbose){
+            print(paste0("   add ", lbl.date.field, " as labels"))
+          }
           map <- map +
             ggrepel::geom_text_repel(data = df.isochr.subset, 
                                      ggplot2::aes(x = longitude, y = latitude, label = median),
                                      size = lbl.dates.size,
+                                     segment.linetype = segment.linetype,
+                                     force = force,
+                                     min.segment.length = min.segment.length,
                                      segment.alpha = .3,
                                      segment.size = .3,
                                      max.overlaps = Inf)

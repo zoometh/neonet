@@ -50,6 +50,9 @@ for(i in seq(1, length(my_list))){
                        isochr.txt.size = 0,
                        calibrate = FALSE,
                        shw.dates = TRUE,
+                       segment.linetype = 1,
+                       force = 2,
+                       min.segment.length = 0,
                        # show.all.dates = FALSE,
                        size.date = 1,
                        # color.dates = "darkgrey",
@@ -90,6 +93,26 @@ for(i in seq(1, length(chunks)-1)){
                  cex.axis = .5)
   dev.off()
 }
+
+# Stacked climates grouped by 100 years
+when <- c(6100, 5000)
+where <- c(-10, 35, 19, 45)
+source("R/neo_subset_roi.R")
+df_filtered_space <- neo_subset_roi(df_filtered, where = where)
+source("R/neo_subset_when.R")
+df_filtered_space_time <- neo_subset_when(df.c14 = df_filtered_space, 
+                                          when = when, 
+                                          period = "EN", 
+                                          top.date = TRUE)
+source("R/neo_kcc_extract.R")
+# kcc.file <- c("koppen_6k.tif", "koppen_7k.tif", "koppen_8k.tif",
+#               "koppen_9k.tif", "koppen_10k.tif", "koppen_11k.tif")
+kcc.file <- c("koppen_7k.tif", "koppen_8k.tif")
+df_cc <- neo_kcc_extract(df.c14 = df_filtered_space_time, kcc.file = kcc.file)
+source("R/neo_kcc_plotbar_time_intervals.R")
+gout <- neo_kcc_plotbar_time_intervals(df_cc, time.interval = when, time.bin = 100)
+ggplot2::ggsave("C:/Users/TH282424/Rprojects/neonet/doc/talks/2025-bspf/img/_stacked_time_bin.png", gout, width = 10, height = 6)
+
 # nrow(df.c14)/4
 
 # cut the whole df in chunks before creating figures

@@ -1,6 +1,6 @@
 #' @name neo_kcc_extract
 #'
-#' @description Extract Koppen Climate Classes (KCC) from one or different KCC SpatRaster (`kcc_file`) using the weighted median of calibrated radiocarbon dates form a `sf` dataframe of dates (`df.c14`). For example KCC 6k (i.e. -6000) encompasses dates having their medians between -6500 and -5500 calBC. Creates stacked plotbars of radiocarbon dates sums by KCC.
+#' @description Extract Koppen Climate Classes (KCC) from one or different KCC SpatRaster (`kcc_file`) using the weighted median of calibrated radiocarbon dates form a `sf` dataframe of dates (`df.c14`). For example KCC 6k (i.e. -6000) encompasses dates having their medians between -6500 and -5500 calBC. 
 #' 
 #' @param df_cc A sf dataframe or a dataframe.
 #' @param col.req A vector of column names having KCC values (ex: `c("koppen_6k", "koppen_7k")`.
@@ -13,7 +13,7 @@
 #' @param counts.show Show the sites' count on the stacked plots. Default: TRUE.
 #' @param verbose if TRUE (default) then display different messages.
 #'
-#' @return A ggplot
+#' @return Creates a ggplot stacked plotbars of radiocarbon dates sums by KCC (koppen_7k, koppen_8k, etc.).
 #'
 #' @examples
 #'

@@ -99,12 +99,16 @@ isochr <- neo_isochr(df.c14 = df_filtered,
                      # color.dates = "darkgrey",
                      alpha.dates = 1,
                      lbl.dates = TRUE,
+                     segment.linetype = 1,
+                     force = 2,
+                     min.segment.length = 0,
                      lbl.dates.interval = lbl.dates.interval, # subset dates to be labeled
                      # lbl.all.dates = FALSE,
                      # lbl.date.field = "median",
                      lbl.dates.size = 4,
                      lbl.time.interv = TRUE)
 isochr$map
+ggplot2::ggsave("C:/Users/TH282424/Rprojects/neonet/doc/talks/2025-bspf/img/_temp_map.png", isochr$map, width = 10, height = 6)
 
 # INterpolation map
 source("R/neo_isochr_inter_map.R")
@@ -211,7 +215,7 @@ source("R/neo_calib_plot.R")
 neo_calib_plot(df.c14 = c(5030, 143))
 
 source("R/neo_dbs_info_date.R")
-neo_dbs_info_date(LabCode = "Beta-432168", df.c14 = df_filtered)
+neo_dbs_info_date(LabCode = "R-432", df.c14 = df_filtered)
 
 
 source("R/neo_find_date.R")
