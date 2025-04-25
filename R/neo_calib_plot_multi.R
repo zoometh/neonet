@@ -153,23 +153,24 @@ neo_calib_plot_multi <- function(x,
     YLIMs = vector("list", length = length(x))
     YLIMs[[1]] = ylim
     for (i in 2:length(x)) {
-      YLIMs[[i]] = c(YLIMs[[i - 1]][2] + gap, YLIMs[[i - 
-                                                       1]][2] + gap + abs(diff(ylim)))
+      YLIMs[[i]] = c(YLIMs[[i - 1]][2] + gap, YLIMs[[i - 1]][2] + gap + abs(diff(ylim)))
     }
     if(label.wmedian){
       # add a buffer on the left to display the label
       xlim[1] <- xlim[1] - 200
     }
-    # vlines each 500
-    vlines.modulo <- xlim %% 500
-    vlines.bornes <- xlim - vlines.modulo
-    vlines <- seq(from = min(c), to = max(c), by = 500)
     plot(0, 0, 
          xlim = xlim, 
          ylim = c(min(unlist(YLIMs)), 
                   max(unlist(YLIMs)) + gap), type = "n", ylab = ylab, 
          xlab = xlabel, axes = F, cex.lab = cex.lab)
-    abline(v = vlines, col = "grey", lty = 2)
+    # vlines each 500
+    vlines.modulo <- xlim %% 500
+    vlines.bornes <- xlim - vlines.modulo
+    if(inherits(c, "numeric")){
+      vlines <- seq(from = min(c), to = max(c), by = 500)
+      abline(v = vlines, col = "grey", lty = 2)
+    }
     for (i in 1:length(x)) {
       tmpYlim = YLIMs[[i]]
       if (ydisp) {

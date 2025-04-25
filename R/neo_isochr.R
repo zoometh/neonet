@@ -376,7 +376,7 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
     if(nb.contours < 5 & nb.contours > 0){
       subtit <- paste("Isochrones:", isochrs.lbl, "BC")
       if(!is.na(isochr.subset.sup)){
-        subtit <- paste(subtit, "<span style='color:darkgrey;'>", isochr.subset.sup, "BC", "</span>")
+        subtit <- paste0(subtit, "<span style='color:darkgrey;'> / ", abs(isochr.subset.sup), "BC", "</span>")
       }
     } else {
       subtit <- paste0("XXX") 

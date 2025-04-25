@@ -331,7 +331,7 @@ df.c14 <- neo_dbs_labcode_dates(df.c14)
 
 #### Dates
 
-`neo_calib_plot()` reuse a rcarbon function.
+`neo_calib_plot()` reuse a rcarbon function. 
 
 ```R
 source("R/neo_calib_plot.R")
@@ -343,10 +343,28 @@ Gives:
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/calibrate_wmedian.png"
-" width="700">
+" width=500">
   <br>
     <em>Calibrate one date showing its weighted median</em>
 </p>
+
+The function `neo_calib_plot()` can be used for one or many (a dataframe) dates. For the latter case, it will seriate the dates.
+
+```R
+source("R/neo_calib_plot.R")
+neo_calib_plot(df.c14 = isochr$data.raw)
+```
+
+Gives:
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/calibrate_seriated_wmedian.png"
+" width=700">
+  <br>
+    <em>Calibrate various dates seriated on their weighted median</em>
+</p>
+
 
 
 #### SPD plot

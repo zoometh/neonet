@@ -83,16 +83,16 @@ neo_calib_plot <- function(df.c14 = NA,
     source("R/neo_calib_plot_multi.R")
     neo_calib_plot_multi(x,
                          calendar = "BCAD",
-                         decreasing=TRUE,
-                         rescale=TRUE,
-                         HPD=HPD,
+                         decreasing = TRUE,
+                         rescale = TRUE,
+                         HPD = HPD,
                          col.wmedian = col.wmedian,
                          cex.wmedian = cex.wmedian,
                          cex.id = cex.id,
                          cex.lab = cex.lab,
                          cex.axis = cex.axis,
                          label.pos = 0.9,
-                         label.offset=-200)
+                         label.offset = -200)
   }
 }
 

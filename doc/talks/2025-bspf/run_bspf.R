@@ -70,7 +70,7 @@ source("R/neo_dbs_info_dates_datatable.R")
 ## title ; when (isochrones BC) ; where (xmin, ymin, xmax, ymax) use: https://geojson.io/#map=2/0/20 ;
 my_list <- list(
   # EN
-  list("MedWest", c(-5500), c(-10, 35, 19, 45), "koppen_8k.tif", "EN")
+  list("MedWest", c(-5700), c(-10, 35, 19, 45), "koppen_8k.tif", "EN")
 )
 i <- 1
 obj.case.name <- paste0("isochr-", my_list[[i]][[5]], paste0(my_list[[i]][[2]], "-", paste0("BC-", my_list[[i]][[1]], collapse = "-")), "-", gsub(".tif", "", my_list[[i]][[4]]))
