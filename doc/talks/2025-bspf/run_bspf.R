@@ -207,8 +207,11 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 # neo_spd(df.c14 = head(df_filtered, 200), time.span = c(-12000, -6000))
 # neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 
+source("R/neo_calib_plot.R")
+neo_calib_plot(df.c14 = c(6190, 100))
+
 source("R/neo_dbs_info_date.R")
-neo_dbs_info_date(LabCode = "Sac-1321", df.c14 = df_filtered)
+neo_dbs_info_date(LabCode = "Beta-279478", df.c14 = df_filtered)
 
 
 source("R/neo_find_date.R")
