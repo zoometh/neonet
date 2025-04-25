@@ -327,7 +327,27 @@ source("R/neo_dbs_labcode_dates.R")
 df.c14 <- neo_dbs_labcode_dates(df.c14)
 ```
 
-### SPD plot
+### Calibrate
+
+#### Dates
+
+```R
+source("R/neo_calib_plot.R")
+neo_calib_plot(df.c14 = c(6190, 100))
+```
+
+Gives:
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/neonet_med_x_atl_spd.png"
+" width="700">
+  <br>
+    <em>NeoNet dataset SPD with default period colors</em>
+</p>
+
+
+#### SPD plot
 
 Plot the summed probabilty densities (SPD) of the two datasets, once `df.c14` calculated. The function `neo_spd()` calls `neo_spdplot()`. The latter has been adapted from `rcarbon::plot.stackCalSPD.R`, to fetch NeoNet default period colors.
 
@@ -340,9 +360,11 @@ source("R/neo_spdplot.R")
 neo_spd(df.c14 = df.c14)
 ```
 
+Gives:
+
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/img/neonet_med_x_atl_spd.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/resutls/calibrate_wmedian.png"
 " width="700">
   <br>
     <em>NeoNet dataset SPD with default period colors</em>
