@@ -342,7 +342,7 @@ Gives:
 
 <p align="center">
 <br>
-  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/resutls/calibrate_wmedian.png"
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/results/calibrate_wmedian.png"
 " width="700">
   <br>
     <em>Calibrate one date showing its weighted median</em>
