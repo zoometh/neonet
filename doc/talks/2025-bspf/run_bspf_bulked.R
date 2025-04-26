@@ -2,6 +2,7 @@
 
 my_list <- list(
   # EN
+  list("MedWestEst", c(-6000), c(-10, 35, 25, 45), "koppen_8k.tif", "EN"),
   list("MedWest", c(-6000), c(-10, 35, 19, 45), "koppen_8k.tif", "EN"),
   list("MedWest", c(-5900), c(-10, 35, 19, 45), "koppen_8k.tif", "EN"),
   list("MedWest", c(-5800), c(-10, 35, 19, 45), "koppen_8k.tif", "EN"),

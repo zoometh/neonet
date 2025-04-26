@@ -71,6 +71,7 @@ source("R/neo_dbs_info_dates_datatable.R")
 my_list <- list(
   # EN
   list("MedWest", c(-5700), c(-10, 35, 19, 45), "koppen_8k.tif", "EN")
+  # list("MedWestEst", c(-6000), c(-10, 35, 25, 45), "koppen_8k.tif", "EN")
 )
 i <- 1
 obj.case.name <- paste0("isochr-", my_list[[i]][[5]], paste0(my_list[[i]][[2]], "-", paste0("BC-", my_list[[i]][[1]], collapse = "-")), "-", gsub(".tif", "", my_list[[i]][[4]]))
@@ -212,7 +213,7 @@ write.table(isochr$data, paste0(obj.case.out, ".tsv"), sep = "\t", row.names = F
 # neo_spd(df.c14 = df_filtered, width = 15, height = 11, outDir = "C:/Rprojects/neonet/doc/talks/2024-simep/img/")
 
 source("R/neo_calib_plot.R")
-neo_calib_plot(df.c14 = c(5030, 143))
+neo_calib_plot(df.c14 = c(6930, 60))
 
 source("R/neo_dbs_info_date.R")
 neo_dbs_info_date(LabCode = "R-432", df.c14 = df_filtered)
