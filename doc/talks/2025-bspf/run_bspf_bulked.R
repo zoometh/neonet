@@ -2,7 +2,7 @@
 
 my_list <- list(
   # EN
-  list("MedWestEst", c(-6000), c(-10, 35, 25, 45), "koppen_8k.tif", "EN"),
+  list("MedWestEst", c(-6100), c(-10, 35, 25, 45), "koppen_8k.tif", "EN"),
   list("MedWest", c(-6000), c(-10, 35, 19, 45), "koppen_8k.tif", "EN"),
   list("MedWest", c(-5900), c(-10, 35, 19, 45), "koppen_8k.tif", "EN"),
   list("MedWest", c(-5800), c(-10, 35, 19, 45), "koppen_8k.tif", "EN"),
@@ -29,7 +29,7 @@ my_list <- list(
 )
 # 
 for(i in seq(1, length(my_list))){
-  # i <- 6
+  # i <- 1
   obj.case.name <- paste0("isochr-", my_list[[i]][[5]], paste0(my_list[[i]][[2]], "-", paste0("BC-", my_list[[i]][[1]], collapse = "-")), "-", gsub(".tif", "", my_list[[i]][[4]]))
   obj.case.out <- paste0(root.path, "img/")
   kcc.file.path <- paste0(root, "doc/data/clim/", my_list[[i]][[4]])
@@ -74,6 +74,7 @@ for(i in seq(1, length(my_list))){
 
 ## seriated dates + wmedians
 df.c14 <- isochr$data.raw
+# cut the whole df in chunks before creating figures
 chunks <- c(seq(from = 1, to = nrow(df.c14), by = 100), nrow(df.c14))
 df.c14 <- df.c14[order(df.c14$median), ]
 source("R/neo_calib_plot.R")
@@ -116,7 +117,12 @@ ggplot2::ggsave("C:/Users/TH282424/Rprojects/neonet/doc/talks/2025-bspf/img/_sta
 
 # nrow(df.c14)/4
 
-# cut the whole df in chunks before creating figures
+# interpolation map
+source("R/neo_isochr_inter_map.R")
+inter.map <- neo_isochr_inter_map(isochr$inter,
+                                  barwidth = 40)
+ggplot2::ggsave("C:/Users/TH282424/Rprojects/neonet/doc/talks/2025-bspf/img/_interpol_isochrones.png", inter.map, width = 10, height = 6)
+
 
 
 
