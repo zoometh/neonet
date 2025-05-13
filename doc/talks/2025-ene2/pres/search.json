@@ -1,0 +1,135 @@
+[
+  {
+    "objectID": "index.html#radiocarbon-data",
+    "href": "index.html#radiocarbon-data",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Radiocarbon data",
+    "text": "Radiocarbon data\n\nSrcMeso/NeoAligtOutlierLocatoBaseMedians\n\n\n\n\n\n\n\n\nhttps://github.com/ropensci/c14bazAAR\nhttps://github.com/zoometh/neonet\nhttps://github.com/ahb108/rcarbon\n\n\n\n\n\nEarly Mesolithic (EM) Middle Mesolithic (MM) Late Mesolithic (LM) Early Neolithic (EN) Middle Neolithic (MN) Late Neolithic (LN)\n\nBaume de Montclus, stacked SPD\n\nFranchthi cave, stacked SPD\n\n\n\n\n\n\n\n\n\n\nref_table_per.xlsx\n\n\n\n\n\nEM - Early Mesolithic\n\n\n\n\nMM - Middle Mesolithic\n\n\n\n\nLM - Late Mesolithic\n\n\n\n\nEN - Early Neolithic\n\n\n\n\nMN - Middle Neolithic\n\n\n\n\nLN - Late Neolithic\n\n\n\n\n\n8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.\nmapping table with period and culture coming from different datasest to be mapped to the Neonet main classes (10 classes, among which 4 are undefined and period transition).\nUsing\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nc14_corrected_sitenames.geojson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMost recent LM and most ancient EN date weighted medians (w-median) by site.\n\n\n\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
+  },
+  {
+    "objectID": "index.html#climates-data-and-model",
+    "href": "index.html#climates-data-and-model",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Climates data and model",
+    "text": "Climates data and model\n\nVariablesMethods\n\n\n\n\n\nMean annual temperature (ºC) \n\nAnnual precipitation (mm year -1) \n\nBiome (pollen-based) \n\n Beyer et al. 20201\n\n\nKöppen climate classification\n\n\n function pastclim::koeppen_geiger()\nA &lt;- Thot &gt;= 18 & !B\nAf &lt;- A & Pdry &gt;= 60\nAm &lt;- A & !Af & Pdry &gt;= 100 - MAP / 25\nAw &lt;- A & !Af & Pdry &lt; 100 - MAP / 25\n\n\n\n\n\n\n\n\n\n\ncode\nclimate\ncolors (classes)\n\n\n\n\nA*\nTropical\n  \n\n\nB*\nArid\n   \n\n\nC*\nTemperate\n        \n\n\nD*\nCold\n           \n\n\nE*\nPolar\n \n\n\n\n\n function neoent::neo_kss_create() \n\n\n\n\n\n\npastclim R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)\nKCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).\nThe pastclim KCC current resolution is 30” = 0.5 degrees = c. 50 km. It uses the Beyer et al. 2020 dataset."
+  },
+  {
+    "objectID": "index.html#near-east-9000-bc",
+    "href": "index.html#near-east-9000-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Near East (9,000 BC)",
+    "text": "Near East (9,000 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNeolithic mostly on Csa (Temperate, dry summer, hot summer) and BSk (Temperate, dry summer, warm summer) climates\nNorth and South Levant farmers separated by Dsa (Cold, dry summer, hot summer) climates: Mount Lebanon mountain range.\nCyprus early settlement: Klimonas (idf 55)."
+  },
+  {
+    "objectID": "index.html#near-east-8500-bc",
+    "href": "index.html#near-east-8500-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Near East (8,500 BC)",
+    "text": "Near East (8,500 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFew changes in the estimated area with Neolithic economy.\nSouthward: densification, and new neolithic occupation in a BWh climate (Arid, desert, hot): Shkarat Msaied (idf 79), Jordan."
+  },
+  {
+    "objectID": "index.html#near-east-8000-bc",
+    "href": "index.html#near-east-8000-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Near East (8,000 BC)",
+    "text": "Near East (8,000 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMount Lebanon range (Dsa) still acts as a frontier between North Levant and South Levant Neolithic\nFirst Central Anatolian Plateau sites: Asikli Höyük (idf 10), Kaletepe (idf 50) and Pinarbasi A (idf 68)"
+  },
+  {
+    "objectID": "index.html#near-east-7500-bc",
+    "href": "index.html#near-east-7500-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Near East (7,500 BC)",
+    "text": "Near East (7,500 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOnly one new occupation on the Central Anatolian Plateau, Musular (idf 63): barrier\nIn Southern Levant, close concentration of occupations in different climates: Csa, BSk, BWh and newly BSh (Arid, steppe, hot) and BWk (Arid, desert, cold).\n\nNahal Efe (idf 64) and Hemar (idf 42), Israel.\nBasta (idf 17), Jordan.\n\nTerritorial expansion into different climates, ex: Basta (idf 17), mega-sites."
+  },
+  {
+    "objectID": "index.html#central-anatolian-barrier",
+    "href": "index.html#central-anatolian-barrier",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "🚧 Central Anatolian barrier",
+    "text": "🚧 Central Anatolian barrier\n\n7,300 BC7,000 BC6,700 BCObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nca 7,500-7,000 BC, disconnection between Cyprus and the main land (Levant). End of the PPNB koine.\nca 6,700 BC, first South Western and Western Anatolian sites of Bademagaci (idf 16) and Cukurici (id 23) are temporally (w-medians) and spatially (distances) closer to Cretan sites of Delphinos (idf 25) and Knossos(idf 61) than BSk and Dsa Anatolian Plateau sites (ex: Catalhuyuk, idf 21; Suberde, idf 88)\nca 6,200 BC, aridification of the Central Anatolian Plateau (8.2 ky BP event)"
+  },
+  {
+    "objectID": "index.html#east-mediterranean-6600-bc",
+    "href": "index.html#east-mediterranean-6600-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "East Mediterranean (6,600 BC)",
+    "text": "East Mediterranean (6,600 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAegean sea and shore ‘neolithised’ before Northern Anatolia, and even before South central Anatolia. Confirms: Brami 20152.\nLocation of Yarimburgaz (idf 60, ca. 8,400 BC) and Cukurici (idf 14, ca. 6,800 BC) fits more with a maritime dispersal than a terrestrian one.\nEarliest neolithic sites have pre-Neolithic (i.e. Mesolithic) obsidian coming from Melos: Maroulas (idf 35), Franchthi (idf 22) and Cyclops Cave (idf 15) with no climate data available but probably Csa. See Reingruber (2011)3."
+  },
+  {
+    "objectID": "index.html#east-mediterranean-6200-bc",
+    "href": "index.html#east-mediterranean-6200-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "East Mediterranean (6,200 BC)",
+    "text": "East Mediterranean (6,200 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGreece mainland turns colder (8.2 ky BP event), for example: Dsa → Dfb (Cold, no dry season, warm summer)\nIn South Balkans, concentration of dates in BSk climates (Sesklo, idf 52; Paliambela, idf 41); Anzabegovo, idf 41; etc. )\nNew Cfa climate (Temperate, no dry season, hot summer) with Mavropigi (idf 36), Lefkopetra (idf 33), Orfeas (idf 40)"
+  },
+  {
+    "objectID": "index.html#east-mediterranean-5800-bc",
+    "href": "index.html#east-mediterranean-5800-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "East Mediterranean (5,800 BC)",
+    "text": "East Mediterranean (5,800 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNeolithic expansion: rapid expansion in the Southern Balkans (Csa and BSk) and slowdown in Northern Balkans. Adaptation or agriculture and stockbreeding systems to colder climates (Dfb, ex: Porodin, idf 46). Confirms: Krauß et al. 20184, Ivanova et al. 20185.\nWestward: South of Italy (off the map) is reached, probably from Corfu: Sidari (idf 53)"
+  },
+  {
+    "objectID": "index.html#central-mediterranean-6000-bc",
+    "href": "index.html#central-mediterranean-6000-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Central Mediterranean (6,000 BC)",
+    "text": "Central Mediterranean (6,000 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nca 6,300 BC, few years after Sidari (idf 147), neolithic features in Grotta del’Uzzo (idf 160, no climatic data) but possible Meso/Neo acculturation,\nca 6,000 BC, Pulo di Molfetta (idf 147, no climatic data), clear evidence of neolithisation (e.g. built walls)"
+  },
+  {
+    "objectID": "index.html#central-mediterranean-5700-bc",
+    "href": "index.html#central-mediterranean-5700-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Central Mediterranean (5,700 BC)",
+    "text": "Central Mediterranean (5,700 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5,800 BC, early Neolithic settlements (leapfrog) of Pollera, Arma dell’Aquila and Arene Candide in Liguria and Cfa climates.\n5,800-5,600 BC: Rapid inland expansion Csa, for ex: La Marmotta (idf 69) and Rio Tana (idf 120), Central Italy. Confirms: Binder et al. 20226, Mazzucco et al. 20237\n5,700 BC, SHM-1 (idf 128) in Tunisia in BSk climate, maybe related to Kronio (idf 66) in Sicily, dated ca 5,900 BC."
+  },
+  {
+    "objectID": "index.html#central-mediterranean-5400-bc",
+    "href": "index.html#central-mediterranean-5400-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Central Mediterranean (5,400 BC)",
+    "text": "Central Mediterranean (5,400 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5,700-5,400 BC, in Italy, slowdown of the spread of Neolithic after its rapid expansion in South Italy. The change between mostly Csa (South of Abruzzo) to Cfa (North of Abruzzo) might be the reason.\n5,700-5,400 BC, on both sides of the Ardriatic Sea (Italy and Croatia), linear gradient: maritime networks."
+  },
+  {
+    "objectID": "index.html#west-mediterranean-5600-bc",
+    "href": "index.html#west-mediterranean-5600-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "West Mediterranean (5,600 BC)",
+    "text": "West Mediterranean (5,600 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeapfrogs to Southern France and the Iberian Peninsula, with mostly settlements in (same) Csa climates, among others: Pont de Roque-Haute (idf 148, Southern France), Coves del Fem (idf 101, Northeastern Spain), Cabranosa (idf 31, South Portugal).\nFonbregoua in Cfb climate (Temperate, no dry season, warm summer) and Gazel in Cfa climate."
+  },
+  {
+    "objectID": "index.html#west-mediterranean-5300-bc",
+    "href": "index.html#west-mediterranean-5300-bc",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "West Mediterranean (5,300 BC)",
+    "text": "West Mediterranean (5,300 BC)\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5,900-5,300 BC, neolithisation of Southwestern Iberian Peninsula (Portugal).\nCatalonia area: diversity of climates that slowdown the spread of the Neolithic (acclimatization): Csa, Cfa, Cfb.\nValencia area, two main climates of Early Neolithic (Csa and BSk) favoring a faster diffusion.\nPioneer sites in Csb climate (Temperate, dry summer, warm summer) between 5,600 and 5,300 BC: Balma Margineda (idf 24, Andorra), Abri des Castelli (idf 3, Corsica) and, later, a cluster in the upper Ebro Basin: Tumul del Padro (idf 168), etc."
+  },
+  {
+    "objectID": "index.html#end-of-the-mediterranean-neolithisation",
+    "href": "index.html#end-of-the-mediterranean-neolithisation",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "End of the Mediterranean Neolithisation",
+    "text": "End of the Mediterranean Neolithisation"
+  },
+  {
+    "objectID": "index.html#climate-evolution",
+    "href": "index.html#climate-evolution",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Climate evolution",
+    "text": "Climate evolution\n\n\n\n\n\n\n\n\nLate foragers: Drop of the inhabited cold climates from 11k BP to 7k BP. In 9k BP newly occupied occupied Cold, dry summer, cold summer, possibly corresponding to the higher mountain range (Atlas, Alps, Pyrenees, etc.)\nEarly Farmers: 11k and 10k 2 main climates, continuous area: Fertile Crescent. Arid climates increases in 9k: arid margins (oasis). 8k and 7k: neolithisation of cold and temperated areas (Bulgaria, Southern Germany, etc.)\nComparison: LM occupied a larger diversity of ecozones. EF replace HG in cold climate over 4,000 years"
+  },
+  {
+    "objectID": "index.html#climates-occupied-by-the-early-farmers",
+    "href": "index.html#climates-occupied-by-the-early-farmers",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Climates occupied by the Early Farmers",
+    "text": "Climates occupied by the Early Farmers\n\nOverviewPioneer Neolithic sites\n\n\n\n\n\n\n\n\n\n\n\nca 10,000-9,500 BC, Near East BSk (Temperate, dry summer, warm summer), Csa (Temperate, dry summer, hot summer) and, more rarely, Dsa (Cold, dry summer, hot summer) climates.\n\nca 9,000-7,500 BC, Near East BWh climate (Arid, desert, hot), ie: arid margins. \n\nca 8,000-7,500 BC, Near East (South Levant), BSh (Arid, steppe, hot), and BWk (Arid, desert, cold).\n\nca 6,500-6,000 BC, Balkans (between North and South), Cfa climate (Temperate, no dry season, hot summer).\n\nca 6,100-6,000 BC, Balkans, Dfb (Cold, no dry season, warm summer) = Proto-Sesklo Culture.\n\nca 6,100-6,000 BC, Northern Balkans and Central Europe, Dfa (Cold, no dry season, hot summer), outside the studied area.\n\nca 5,500-5,300 BC, Western Mediterranean, Csb climate (Temperate, dry summer, warm summer)"
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Climates during the spread of the Neolithic in the Central and Western Mediterranean",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nBeyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. Scientific data, 7(1), 236.\nBrami, M. N. (2015). A graphical simulation of the 2,000-year lag in Neolithic occupation between Central Anatolia and the Aegean basin. Archaeological and Anthropological Sciences, 7, 319-327.\nReingruber, A. (2011). Early Neolithic settlement patterns and exchange networks in the Aegean. Documenta Praehistorica, 38, 291-306.\nKrauß, R., Marinova, E., De Brue, H., & Weninger, B. (2018). The rapid spread of early farming from the Aegean into the Balkans via the Sub-Mediterranean-Aegean Vegetation Zone. Quaternary International, 496, 24-41. https://doi.org/10.1016/j.quaint.2017.01.019\nIvanova, M., De Cupere, B., Ethier, J., & Marinova, E. (2018). Pioneer farming in southeast Europe during the early sixth millennium BC: Climate-related adaptations in the exploitation of plants and animals. PLoS One, 13(5), e0197225. https://doi.org/10.1371/journal.pone.0197225\nDidier Binder, Lucia Angeli, Louise Gomart, Thomas Huet, Roberto Maggi, Claire Manen, …, (2022). Le complexe de la Céramique Imprimée en Méditerranée centrale et nord-occidentale : une synthèse chronoculturelle (VIIe et VIe millénaires AEC). In: Céramiques imprimées de Méditerranée occidentale (VIe millénaire AEC) : données, approches et enjeux nouveaux. Actes de la séance de la Société préhistorique française de Nice (mars 2019), D. Binder and C. Manen (eds), Paris, Société préhistorique française.\nMazzucco, N., Mineo, M., Gibaja, J.F. (2023). La Marmotta site in the framework of the Early Mediterranean Neolithic. In: The Submerged Site of La Marmotta. Oxbow Books, Rome, Italy. Oxford.\nAmmerman, A. J., & Cavalli-Sforza, L. L. (1971)[^2]. Measuring the rate of spread of early farming in Europe. Man, 674-688.\nFort, J. (2022). The spread of agriculture: quantitative laws in prehistory?. In Simulating Transitions to Agriculture in Prehistory (pp. 17-28). Cham: Springer International Publishing.\nBetti, L., Beyer, R. M., Jones, E. R., Eriksson, A., Tassi, F., Siska, V., … & Manica, A. (2020). Climate shaped how Neolithic farmers and European hunter-gatherers interacted after a major slowdown from 6,100 BCE to 4,500 BCE. Nature Human Behaviour, 4(10), 1004-1010.\nBinder, D., Angeli, L., Gomart, L., Huet, T., Maggi, R., Manen, C., … & Tagliacozzo, A. (2019, March). L’Impresso-cardial du nord-ouest et ses rapports avec la «zone-source»: une synthèse chrono-culturelle. In Céramiques imprimées de Méditerranée occidentale. Matières premières, productions, usages."
+  }
+]
