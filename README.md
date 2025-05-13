@@ -143,6 +143,31 @@ write.table(df.c14, "C:/Rprojects/neonet/R/app-dev/c14_dataset_med_x_atl.tsv",
             row.names = FALSE)
 ```
 
+#### Dataset
+
+```R
+source("R/neo_map.R")
+per <- 'EN'
+tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "red", ";'>", per, "</span>")
+gg.map <- neo_map(df.c14 = df_filtered,
+                  selected.per = per,
+                  breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
+                  dates.size = 1,
+                  title = tit,
+                  roi = NA, dates.within.roi = FALSE)
+```
+
+Gives:
+
+<p align="center">
+<br>
+  <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-asd/img/_map_data_EN.png"
+" width="700">
+  <br>
+    <em>EN dates</em>
+</p>
+
+
 #### Data report
 
 Calculate basic statistics

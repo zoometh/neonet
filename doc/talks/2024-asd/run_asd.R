@@ -171,8 +171,8 @@ neo_dbs_info_date_src(db = ad$sourcedb,
 
 # general map
 source("R/neo_map.R")
-per <- 'LM'
-tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "blue", ";'>", per, "</span>")
+per <- 'EN'
+tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "red", ";'>", per, "</span>")
 gg.map <- neo_map(df.c14 = df_filtered,
                   selected.per = per,
                   breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
