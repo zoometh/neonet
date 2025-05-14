@@ -64,7 +64,7 @@ Data: radiocarbon dates and palaeoclimatic data.
 <span style="color:#0000CF; font-size: 20px;">Early Mesolithic (EM)</span><br>
 <span style="color:#1D1DFF; font-size: 20px;">Middle Mesolithic (MM)</span><br>
 <span style="color:#3737FF; font-size: 25px;"><b>Late Mesolithic (LM)</b></span><br>
-<span style="color:#FF1B1B; font-size: 25px;"><b>Early Neolithic (EN)</b></span><br>
+<span style="color:#FF1B1B; font-size: 25px;"><b><u>Early Neolithic (EN)</u></b></span><br>
 <span style="color:#FF8D1B; font-size: 20px;">Middle Neolithic (MN)</span><br>
 <span style="color:#FFC04D; font-size: 20px;">Late Neolithic (LN)</span><br>
 :::
@@ -224,12 +224,12 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
 
 ### Medians
 
-<small>Most recent <span style="color: blue;">LM</span> and most ancient <span style="color: red;">EN</span> date weighted medians (w-median) by site.</small>
+Most ancient <span style="color: red;">EN</span> date weighted medians (w-median) by site.
 
 ::: columns
 
 ::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Baume de Montclus-Beta-253161-spd.png" width="550">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/_date_pendimoun_EN.png" width="550">
 :::
 
 ::: {.column width="50%"}

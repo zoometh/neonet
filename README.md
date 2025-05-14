@@ -390,7 +390,17 @@ Gives:
     <em>Calibrate various dates seriated on their weighted median (w-median)</em>
 </p>
 
+A subset on a site (Pendimoun)
 
+```R
+source("R/neo_calib_plot.R")
+source("R/neo_calib_plot.R")
+df_filtered_ww_pendimoun <- df_filtered[df_filtered$SiteName == 'Pendimoun', ]
+# rename columns
+df_filtered_ww_pendimoun$site <- df_filtered_ww_pendimoun$SiteName
+df_filtered_ww_pendimoun$labcode <- df_filtered_ww_pendimoun$LabCode
+neo_calib_plot(df.c14 = df_filtered_ww_pendimoun)
+```
 
 #### SPD plot
 

@@ -227,6 +227,7 @@ neo_calib_plot_multi <- function(x,
         if(is.na(label.text)){
           # print(min(unlist(YLIMs)))
           label.anchor <- xlim[1] # 00
+          # print(colnames(x$metadata))
           new.label <- paste0(x$metadata$DateID[i], 
                               " - ", x$metadata$SiteName[i],
                               " [", x$metadata$LabCode[i], "]")
