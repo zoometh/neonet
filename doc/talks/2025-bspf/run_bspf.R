@@ -243,11 +243,19 @@ neo_dbs_info_date_src(db = ad$sourcedb,
 
 # general map
 source("R/neo_map.R")
-per <- 'LM'
-tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "blue", ";'>", per, "</span>")
-gg.map <- neo_map(df.c14 = df_filtered,
+per <- 'EN'
+tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "red", ";'>", per, "</span>")
+source("R/neo_subset_roi.R")
+df_filtered_ww <- neo_subset_roi(df.c14 = df_filtered, where = c(-10, 35, 19, 45))
+source("R/neo_subset_when.R")
+df_filtered_ww <- neo_subset_when(df.c14 = df_filtered_ww, period = "EN",
+                            top.date = TRUE,
+                            col.median = "median",
+                            col.period = "Period",
+                            verbose = TRUE)
+gg.map <- neo_map(df.c14 = df_filtered_ww,
                   selected.per = per,
-                  breaks_values = c(-10000, -9000, -8000, -7000, -6500, -6000, -5500, -5000, -4500),
+                  breaks_values = c(-6000, -5900, -5800, -5700, -5600, -5500, -5400, -5300, -5200, -5100, -5000),
                   dates.size = 1,
                   title = tit,
                   roi = NA, dates.within.roi = FALSE)
