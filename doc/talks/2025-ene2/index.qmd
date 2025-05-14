@@ -347,7 +347,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ```{r, message=FALSE}
 df <- "data-isochr-EN-6100-BC-MedWestEst-koppen_8k"
 img <- "isochr-EN-6100-BC-MedWestEst-koppen_8k"
-root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/"
 ```
 
 ::: {.panel-tabset}
