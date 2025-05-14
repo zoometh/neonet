@@ -66,10 +66,10 @@ neo_subset_when <- function(df.c14 = NA,
         dplyr::slice_max(median)
     }
     if(verbose){
-      print(paste0("    Dataset before filtering on the oldes/youngest date by site: ", nrow(df.dates)))
+      print(paste0("    Dataset before filtering on the oldest/youngest date by site: ", nrow(df.dates)))
     }
     if(verbose){
-      print(paste0("    Dataset after filtering on the oldes/youngest date by site: ", nrow(df.dates3)))
+      print(paste0("    Dataset after filtering on the oldest/youngest date by site: ", nrow(df.dates3)))
     }
     df.dates <- df.dates3
   }

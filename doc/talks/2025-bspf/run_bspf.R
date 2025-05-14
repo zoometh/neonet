@@ -244,7 +244,7 @@ neo_dbs_info_date_src(db = ad$sourcedb,
 # general map
 source("R/neo_map.R")
 per <- 'EN'
-tit <- paste0("Radiocarbon dates for the ", "<span style='color: ", "red", ";'>", per, "</span>")
+tit <- paste0("Earliest radiocarbon dates (w-medians) for the ", "<span style='color: ", "red", ";'>", per, "</span>")
 source("R/neo_subset_roi.R")
 df_filtered_ww <- neo_subset_roi(df.c14 = df_filtered, where = c(-10, 35, 19, 45))
 source("R/neo_subset_when.R")
