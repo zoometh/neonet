@@ -216,7 +216,11 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
 
 ### Base
 
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-ene25/img/_map_data_EN.png" style="width: 650px;horizontal-align: middle;"/>
+<center>
+
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/_map_data_EN.png" style="width: 750px;horizontal-align: middle;"/>
+
+</center>
 
 ### Medians
 
