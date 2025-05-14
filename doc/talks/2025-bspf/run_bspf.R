@@ -259,7 +259,7 @@ gg.map <- neo_map(df.c14 = df_filtered_ww,
                   dates.size = 1,
                   title = tit,
                   roi = NA, dates.within.roi = FALSE)
-ggplot2::ggsave(paste0(root.path, "img/_map_data_", per, ".png"), gg.map, width = 8, height = 6)
+ggplot2::ggsave(paste0(root.path, "img/_map_data_", per, ".png"), gg.map, width = 10, height = 6)
 
 # SPD
 source("R/neo_spd.R")
