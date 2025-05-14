@@ -6,7 +6,7 @@
 
 # root.path <- "C:/Rprojects/neonet/doc/talks/2025-bspf/"
 root <- "C:/Users/TH282424/Rprojects/neonet/"
-root.path <- paste0(root, "doc/talks/2025-ene25/")
+root.path <- paste0(root, "doc/talks/2025-ene2/")
 present <- 1950
 when <- c(-9000, -3000)
 col.c14baz <- c("sourcedb", "site", "labnr", "c14age", "c14std", "period", "culture", "lon", "lat")
@@ -136,4 +136,7 @@ source("R/neo_calib_plot.R")
 df_filtered_ww_pendimoun <- df_filtered[df_filtered$SiteName == 'Pendimoun', ]
 df_filtered_ww_pendimoun$site <- df_filtered_ww_pendimoun$SiteName
 df_filtered_ww_pendimoun$labcode <- df_filtered_ww_pendimoun$LabCode
-neo_calib_plot(df.c14 = df_filtered_ww_pendimoun)
+fileOut <- paste0(root.path, "img/_date_pendimoun_", "EN", ".png")
+png(fileOut, width = 30, height = 20, units = "cm",res = 150)
+neo_calib_plot(df.c14 = df_filtered_ww_pendimoun, )
+dev.off()

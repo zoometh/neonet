@@ -224,19 +224,19 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
 
 ### Medians
 
-Most ancient <span style="color: red;">EN</span> date weighted medians (w-median) by site.
 
 ::: columns
 
-::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/_date_pendimoun_EN.png" width="550">
+::: {.column width="25%"}
+Most ancient <span style="color: red;">EN</span> date weighted medians (w-median) by site.
 :::
 
-::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/aDate-Franchthi Cave-P-1525.png-spd.png" width="550">
+::: {.column width="75%"}
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/_date_pendimoun_EN.png" width="600">
 :::
 
 :::
+
 
 ::: notes
 - For a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)
@@ -314,7 +314,7 @@ Aw <- A & !Af & Pdry < 100 - MAP / 25
 </small>
 
 <small>
-function [neoent::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R)
+function [neonet::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R)
 </small>
 
 
@@ -345,8 +345,8 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 ## 6100-6000 BC
 
 ```{r, message=FALSE}
-df <- "data-isochr-EN-6000-BC-MedWest-koppen_8k"
-img <- "isochr-EN-6000-BC-MedWestEst-koppen_8k"
+df <- "data-isochr-EN-6100-BC-MedWestEst-koppen_8k"
+img <- "isochr-EN-6100-BC-MedWestEst-koppen_8k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
 ```
 
@@ -412,7 +412,7 @@ knitr::include_graphics(map)
 ## Climate changes btw 6,000 and 5,000 BC  
 
 
-```{r echo=FALSE, out.width='70%'}
+```{r echo=FALSE, out.width='50%'}
 map <- paste0(root, "_sankey_changes.png")
 knitr::include_graphics(map)
 ```
@@ -420,7 +420,7 @@ knitr::include_graphics(map)
 
 ## <span style="color: red;">EN</span> climate occupations 6000-5000 BC 
 
-```{r echo=FALSE, out.width='100%'}
+```{r echo=FALSE, out.width='75%'}
 map <- paste0(root, "_stacked_time_bin.png")
 knitr::include_graphics(map)
 ```
