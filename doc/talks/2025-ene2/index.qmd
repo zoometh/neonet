@@ -413,6 +413,7 @@ knitr::include_graphics(map)
 
 
 ```{r echo=FALSE, out.width='50%'}
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
 map <- paste0(root, "_sankey_changes.png")
 knitr::include_graphics(map)
 ```
