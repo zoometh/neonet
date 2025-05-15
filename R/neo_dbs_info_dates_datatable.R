@@ -4,7 +4,8 @@
 #'
 #' @param df.c14 A df (URL) with medians calculated and KCC climates belonging to one KCC period (ex: 8ky BP). For example: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-kcc.tsv"
 #' @param kcc_df A dataframe for the long legend.
-#' @param field.mapping Will map equivalent fieldnames to expected fieldnames. Default: TRUE. 
+#' @param fields Selected fields. 
+#' @param order.by A field to sort the df
 #' @param verbose if TRUE (default) then display different messages.
 #'
 #' @return A datatable (DT)
@@ -19,6 +20,7 @@
 neo_dbs_info_dates_datatable <- function(df.c14 = NA,
                                          kcc_df = "https://raw.githubusercontent.com/zoometh/neonet/master/inst/extdata/koppen.tsv",
                                          fields = c("idf", "site", "median", "period", "code", "labcode", "sourcedb", "color"),
+                                         order.by = NA,
                                          field.mapping = TRUE,
                                          font.size = "12pt",
                                          verbose = TRUE){
@@ -79,5 +81,8 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
         unique(climate_df$color)   # Matching those values to the same background color
       )
     )
+  if(!is.na(order.by)){
+    dt.out[order(-rank(order.by))]
+  }
   return(dt.out)
 }

@@ -72,7 +72,9 @@ Data: radiocarbon dates and palaeoclimatic data.
 :::
 
 
-### Alig<sup>t</sup>
+### Align<sup>t</sup>
+
+<small><span style="color: red;">EN</span> alignments</small>
 
 ::: {.column width="70%"}
 
@@ -82,20 +84,21 @@ library(DT)
 library(dplyr)
 ref_table_per = "https://raw.githubusercontent.com/zoometh/neonet/refs/heads/main/inst/extdata/ref_table_per-readonly.tsv"
 df.to.rm <- read.csv2(ref_table_per, sep = "\t", header = TRUE)
-df.to.rm %>% 
-DT::datatable(
-width = "100%",
-rownames = FALSE,
-options=list(
-lengthMenu = list(c(5, 10, 50, -1), 
-c('5', '10', '50', 'All')),
-paging = T,
-initComplete = htmlwidgets::JS(
-"function(settings, json) {",
-paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
-"}")
-) 
-)
+df.to.rm.en <- df.to.rm[df.to.rm$class == "en", ]
+df.to.rm.en %>% 
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(5, 10, 50, -1), 
+                        c('5', '10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
+        "}")
+    ) 
+  )
 #, options = list(width = "700px", pageLength = 10))
 ```
 <small>[ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/inst/extdata/ref_table_per.xlsx)</small>
@@ -117,7 +120,7 @@ paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
 <td><span style="color:#3737FF"><b>LM - Late Mesolithic</b></span></td>
 </tr>
 <tr>
-<td><span style="color:#FF1B1B"><b>EN - Early Neolithic</b></span></td>
+<td><span style="color:#FF1B1B"><b><u>EN - Early Neolithic</u></b></span></td>
 </tr>
 <tr>
 <td><span style="color:#FF8D1B">MN - Middle Neolithic</span></td>
@@ -135,7 +138,7 @@ paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
 - Using 
 :::
 
-### Outlier
+### Outliers
 
 
 ```{r, message=FALSE}
@@ -144,19 +147,19 @@ library(dplyr)
 c14.to.remove = "https://raw.githubusercontent.com/zoometh/neonet/main/inst/extdata/c14_aberrant_dates.tsv"
 df.to.rm <- read.csv2(c14.to.remove, sep = "\t", header = TRUE)
 df.to.rm %>% 
-DT::datatable(
-width = "100%",
-rownames = FALSE,
-options=list(
-lengthMenu = list(c(5, 10, 50, -1), 
-c('5', '10', '50', 'All')),
-paging = T,
-initComplete = htmlwidgets::JS(
-"function(settings, json) {",
-paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
-"}")
-) 
-)
+  DT::datatable(
+    width = "100%",
+    rownames = FALSE,
+    options=list(
+      lengthMenu = list(c(5, 10, 50, -1), 
+                        c('5', '10', '50', 'All')),
+      paging = T,
+      initComplete = htmlwidgets::JS(
+        "function(settings, json) {",
+        paste0("$(this.api().table().container()).css({'font-size': '", "12pt", "'});"),
+        "}")
+    ) 
+  )
 #, options = list(width = "700px", pageLength = 10))
 ```
 <small>[c14_aberrant_dates.tsv](https://github.com/zoometh/neonet/blob/main/inst/extdata/c14_aberrant_dates.tsv)</small>
@@ -203,7 +206,7 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
 :::
 
 ::: {.column width="50%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/method_github_issues_sitenames.png" width="500">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/method_github_issues_sitenames.png" width="400">
 
 :::
 
@@ -228,7 +231,7 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
 ::: columns
 
 ::: {.column width="25%"}
-Most ancient <span style="color: red;">EN</span> date weighted medians (w-median) by site.
+Most ancient <span style="color: red;">EN</span> date weighted medians (w-medians) by site.
 :::
 
 ::: {.column width="75%"}
@@ -245,93 +248,41 @@ Most ancient <span style="color: red;">EN</span> date weighted medians (w-median
 
 :::
 
-
-## Climates data and model
-
-
-::: {.panel-tabset}
-
-
-### Variables
+## Köppen climate classes
 
 ::: columns
 
 ::: {.column width="33%"}
 <!-- Mid-Holocene (c. 6,000 BP)<br> -->
-<small>Mean annual temperature (ºC)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-tavg.png" width="250px">
+
+**Data**
+<br>
+<small>- Mean annual temperature (ºC)</small><br>
+<small>- Annual precipitation (mm year <sup>-1</sup>)</small><br>
+<small>- Biome (pollen-based)</small><br>
+<br>
+<br>
+<small>Beyer et *al.* 2020[^1]</small>
 :::
 
 ::: {.column width="33%"}
-<small>Annual precipitation (mm year <sup>-1</sup>)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-prec.png" width="250px">
+**IT**
+<br>
+<img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 80px;vertical-align: middle;"/><small> [pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim)<br></small>
+
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 80px;vertical-align: middle;"/><small> [neonet::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R)</small>
+
+
 :::
 
 ::: {.column width="33%"}
-<small>Biome (pollen-based)</small><br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/Beyer20-midhol-biome.png" width="250px">
-:::
-
-
-:::
-
-<small> Beyer et *al.* 2020[^1]</small>
-
-
-### Methods
-
-Köppen climate classification
-
-::: columns
-
-::: {.column width="40%"}
-<img src="https://raw.githubusercontent.com/zoometh/thomashuet/master/img/app-github.png" style="height: 70px;vertical-align: middle;"/><img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 80px;vertical-align: middle;"/>
-<small>function [pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim)<br></small>
-
-```{.r}
-A <- Thot >= 18 & !B
-Af <- A & Pdry >= 60
-Am <- A & !Af & Pdry >= 100 - MAP / 25
-Aw <- A & !Af & Pdry < 100 - MAP / 25
-```
-
-
-
-:::
-
-::: {.column width="50%"}
-
-<small>
-
-| code | climate | colors (classes) | 
-| -----|---------|--------|
-| A*   | Tropical  | ![#0000FF](https://placehold.co/15x15/0000FF/0000FF.png) ![#0078FF](https://placehold.co/15x15/0078FF/0078FF.png) ![#46AAF](https://placehold.co/15x15/46AAF/46AAF.png) | 
-| B*   | Arid  | ![#FF0000](https://placehold.co/15x15/FF0000/FF0000.png) ![#FF9696](https://placehold.co/15x15/FF9696/FF9696.png) ![#F5A500](https://placehold.co/15x15/F5A500/F5A500.png) ![#FFDC64](https://placehold.co/15x15/FFDC64/FFDC64.png) | 
-| C*   | Temperate  | ![#FFFF00](https://placehold.co/15x15/FFFF00/FFFF00.png) ![#C8C800](https://placehold.co/15x15/C8C800/C8C800.png) ![#969600](https://placehold.co/15x15/969600/969600.png) ![#96FF96](https://placehold.co/15x15/96FF96/96FF96.png) ![#64C864](https://placehold.co/15x15/64C864/64C864.png) ![#329632](https://placehold.co/15x15/329632/329632.png) ![#C8FF50](https://placehold.co/15x15/C8FF50/C8FF50.png) ![#64FF50](https://placehold.co/15x15/64FF50/64FF50.png) ![#32C800](https://placehold.co/15x15/32C800/32C800.png) | 
-| D*   | Cold  | ![#FF00FF](https://placehold.co/15x15/FF00FF/FF00FF.png) ![#C800C8](https://placehold.co/15x15/C800C8/C800C8.png) ![#963296](https://placehold.co/15x15/963296/963296.png) ![#966496](https://placehold.co/15x15/966496/966496.png) ![#AAAF](https://placehold.co/15x15/AAAF/AAAF.png) ![#5A78DC](https://placehold.co/15x15/5A78DC/5A78DC.png) ![#4B50B4](https://placehold.co/15x15/4B50B4/4B50B4.png) ![#320087](https://placehold.co/15x15/320087/320087.png) ![#00FFFF](https://placehold.co/15x15/00FFFF/00FFFF.png) ![#37C8FF](https://placehold.co/15x15/37C8FF/37C8FF.png) ![#007D7D](https://placehold.co/15x15/007D7D/007D7D.png) ![#00465F](https://placehold.co/15x15/00465F/00465F.png) |
-| E*   | Polar  | ![#B2B2B2](https://placehold.co/15x15/B2B2B2/B2B2B2.png) ![#666666](https://placehold.co/15x15/666666/666666.png) |
-
-</small>
-
-<small>
-function [neonet::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R)
-</small>
-
-
+**OUTPUT**
+<br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="500">
 :::
 
 :::
 
-:::
-
-[^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
-
-
-::: notes
-- *pastclim* R package to recreate the Koppen Climate classification (KCC) for past periods, currently from 8,000 BC to 5,000 cal BC (expressed here in cal BP)
-- KCC based on average temperature and precipitation patterns, dividing them into five main types: tropical, dry, temperate, continental, and polar. Each type is further subdivided based on seasonal precipitation and temperature patterns (30 classes).
-- The pastclim KCC current resolution is 30" = 0.5 degrees = c. 50 km. It uses the Beyer *et al.* 2020 dataset.
-:::
 
 
 
@@ -354,10 +305,9 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-
 
 ### Dates
 
-
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
@@ -367,12 +317,12 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 
 ```{r, message=FALSE}
 data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
-neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE)
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), order.by = "median")
 ```
 :::
 
@@ -407,24 +357,352 @@ knitr::include_graphics(map)
 :::
 
 
+## 5800 BC
+
+```{r, message=FALSE}
+df <- "data-isochr-EN-5800-BC-MedWest-koppen_8k"
+img <- "isochr-EN-5800-BC-MedWest-koppen_8k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
+```
+
+::: {.panel-tabset}
+
+### Dates
+
+::: columns
+
+::: {.column width="60%"}
+
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+
+::: {.column width="40%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), order.by = "median")
+```
+:::
+
+:::
+
+### Observations
+
+
+::: columns
+
+::: {.column width="50%"}
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
+* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+
+## 5600 BC
+
+```{r, message=FALSE}
+df <- "data-isochr-EN-5600-BC-MedWest-koppen_8k"
+img <- "isochr-EN-5600-BC-MedWest-koppen_8k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
+```
+
+::: {.panel-tabset}
+
+### Dates
+
+::: columns
+
+::: {.column width="60%"}
+
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+
+::: {.column width="40%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), order.by = "median")
+```
+:::
+
+:::
+
+### Observations
+
+
+::: columns
+
+::: {.column width="50%"}
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
+* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+
+## 5400 BC
+
+```{r, message=FALSE}
+df <- "data-isochr-EN-5400-BC-MedWest-koppen_7k"
+img <- "isochr-EN-5400-BC-MedWest-koppen_7k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
+```
+
+::: {.panel-tabset}
+
+### Dates
+
+::: columns
+
+::: {.column width="60%"}
+
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+
+::: {.column width="40%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), order.by = "median")
+```
+:::
+
+:::
+
+### Observations
+
+
+::: columns
+
+::: {.column width="50%"}
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
+* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+
+## 5200 BC
+
+```{r, message=FALSE}
+df <- "data-isochr-EN-5200-BC-MedWest-koppen_7k"
+img <- "isochr-EN-5200-BC-MedWest-koppen_7k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
+```
+
+::: {.panel-tabset}
+
+### Dates
+
+::: columns
+
+::: {.column width="60%"}
+
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+
+::: {.column width="40%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), order.by = "median")
+```
+:::
+
+:::
+
+### Observations
+
+
+::: columns
+
+::: {.column width="50%"}
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
+* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
+
+## 5000 BC
+
+```{r, message=FALSE}
+df <- "data-isochr-EN-5000-BC-MedWest-koppen_7k"
+img <- "isochr-EN-5000-BC-MedWest-koppen_7k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
+```
+
+::: {.panel-tabset}
+
+### Dates
+
+::: columns
+
+::: {.column width="60%"}
+
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+
+::: {.column width="40%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), order.by = "median")
+```
+:::
+
+:::
+
+### Observations
+
+
+::: columns
+
+::: {.column width="50%"}
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+:::
+
+
+::: {.column width="50%"}
+
+<p><small>
+
+* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
+* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+
+</small></p>
+
+:::
+
+:::
+
+:::
+
 # Synthesis {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
-## Climate changes btw 6,000 and 5,000 BC  
+## Climate changes and <span style="color: red;">EN</span> occupations (6000-5000 BC)
 
 
-```{r echo=FALSE, out.width='50%'}
-root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
+::: columns
+
+::: {.column width="30%"}
+
+```{r echo=FALSE, out.width='30%'}
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/"
 map <- paste0(root, "_sankey_changes.png")
 knitr::include_graphics(map)
 ```
 
+:::
 
-## <span style="color: red;">EN</span> climate occupations 6000-5000 BC 
+::: {.column width="70%"}
 
 ```{r echo=FALSE, out.width='75%'}
 map <- paste0(root, "_stacked_time_bin.png")
 knitr::include_graphics(map)
 ```
+:::
+
+:::
+
 
 # Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/method_github_issues_dates.png"}
 

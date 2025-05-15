@@ -402,6 +402,8 @@ df_filtered_ww_pendimoun$labcode <- df_filtered_ww_pendimoun$LabCode
 neo_calib_plot(df.c14 = df_filtered_ww_pendimoun)
 ```
 
+
+
 #### SPD plot
 
 Plot the summed probabilty densities (SPD) of the two datasets, once `df.c14` calculated. The function `neo_spd()` calls `neo_spdplot()`. The latter has been adapted from `rcarbon::plot.stackCalSPD.R`, to fetch NeoNet default period colors.
