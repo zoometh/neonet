@@ -1,6 +1,6 @@
 ---
 title: "Climates during the spread of the Neolithic"
-subtitle: "Central and Western Mediterranean"
+subtitle: "in Central and Western Mediterranean, 6000-5000 BC"
 author:
   - name: Thomas Huet
     affiliation: 
@@ -678,14 +678,15 @@ knitr::include_graphics(map)
 
 # Synthesis {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2-50perc.png"}
 
-## Climate changes and <span style="color: red;">EN</span> occupations (6000-5000 BC)
+## Climate changes and <span style="color: red;">EN</span> occupations
 
 
 ::: columns
 
 ::: {.column width="30%"}
 
-```{r echo=FALSE, out.width='30%'}
+<center><small>Entire area</small></center>
+```{r echo=FALSE, out.width='100%'}
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/"
 map <- paste0(root, "_sankey_changes.png")
 knitr::include_graphics(map)
@@ -694,8 +695,9 @@ knitr::include_graphics(map)
 :::
 
 ::: {.column width="70%"}
-
-```{r echo=FALSE, out.width='75%'}
+<center><small><span style="color: red;">EN</span> occupations</small></center>
+```{r echo=FALSE, out.width='100%'}
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-bspf/img/"
 map <- paste0(root, "_stacked_time_bin.png")
 knitr::include_graphics(map)
 ```
@@ -704,7 +706,7 @@ knitr::include_graphics(map)
 :::
 
 
-# Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/method_github_issues_dates.png"}
+## Thank you {background-image="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/chatgpt_neo_1.png"}
 
 <https://github.com/zoometh/neonet>
 
