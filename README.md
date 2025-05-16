@@ -726,7 +726,7 @@ Gives:
     <em>KCC occupied during the EN between 7,000 and 6,000 BC (9 ka and 8 ka BP) with counts of dates belonging to these time slices</em>
 </p>
 
-To do the same, not sliced on KCC (koppen_8k, koppen_9k, ...) but time span, use the neo_kcc_plotbar_time_intervals() function. For example on the time span 6100-5000 BC (koppen_8k, koppen_7k maps), each 100 years
+To do the same, not sliced on KCC (koppen_8k, koppen_9k, ...) but time span, use the `neo_kcc_plotbar_time_intervals()` function. For example on the time span 6100-5000 BC (koppen_8k, koppen_7k maps), using the function `neo_subset_when()`, each 100 years, and on a selected area using the function `neo_subset_roi()`.
 
 ```R
 source("R/neo_subset_roi.R")
