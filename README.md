@@ -932,14 +932,16 @@ There are mainy IT-based projects dealing with radiocarbon dates, such as the co
 
 ## Communication
 
-* Big Historical Data Conference
+* 2024, Big Historical Data Conference
   - Shiny server (with the app embeded): http://shinyserver.cfs.unipi.it:3838/neonet/bhdc
   - GitHub (without the app embeded): https://zoometh.github.io/neonet/doc/talks/2023-bhdc
 * Neonet workshop
   - GitHub: https://zoometh.github.io/neonet/doc/talks/2024-neonet-ws/pres
-* Oxford Seminar Series
+* 2024, Oxford Seminar Series
   - GitHub: https://zoometh.github.io/neonet/doc/talks/2024-oxford/pres
-* SIMEP
+* 2024, SIMEP
   - GitHub: https://zoometh.github.io/neonet/doc/talks/2024-simep/pres
-* ASD-CSIC
+* 2024, ASD-CSIC
   - GitHub: https://zoometh.github.io/neonet/doc/talks/2024-asd/pres
+* 2025, ENE2025
+  - GitHub: https://zoometh.github.io/neonet/doc/talks/2025-ene2/pres
