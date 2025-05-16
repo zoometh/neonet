@@ -502,9 +502,9 @@ inter.map
 <p align="center">
 <br>
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map.png"
-" width="300">
+" width="400">
   <img alt="img-name" src="https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/img/isochrones-barriere-Italy-EN-inter-map-ex.png"
-" width="300">
+" width="400">
   <br>
     <em>Weighted medians (w-median) interpolated</em>
 </p>
@@ -735,7 +735,7 @@ source("R/neo_kcc_extract.R")
 source("R/neo_kcc_plotbar_time_intervals.R")
 
 when <- c(6100, 5000)
-where <- c(-10, 35, 19, 45) # Central Western Mediterranean
+where <- c(-10, 35, 19, 45) # Central Western Mediterranean (xmin, xmax, ymin, ymax)
 df_filtered_space <- neo_subset_roi(df_filtered, where = where)
 df_filtered_space_time <- neo_subset_when(df.c14 = df_filtered_space, 
                                           when = when, 
