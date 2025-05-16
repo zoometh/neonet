@@ -12,9 +12,14 @@
 #' 
 #'
 #' @examples
-#'
+#' 
+#' # Simple
 #' dt.out <- neo_dbs_info_dates_datatable()
 #' dt.out
+#' 
+#' # Sorted
+#' neo_dbs_info_dates_datatable(df.c14 = data, 
+#'                              order.by = "median")
 #'
 #' @export
 neo_dbs_info_dates_datatable <- function(df.c14 = NA,
@@ -37,6 +42,9 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
     climate_df <- sf::st_drop_geometry(df.c14)
   }
   if(field.mapping){
+    if(verbose){
+      print(paste0("Map fields (shorting names)"))
+    }
     cn <- colnames(climate_df)
     if(!("idf" %in% cn)){climate_df$idf <- rownames(climate_df)}
     if(!("ID" %in% cn)){climate_df$ID <- rownames(climate_df)}
@@ -58,12 +66,33 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
   # climate_df <- climate_df[, c("idf", "site", "median", "period", "code", "sourcedb", "color")]
   # Identify the index of the 'color' column (for JavaScript, this needs 0-based indexing)
   color_col_index <- which(colnames(climate_df) == "color") - 1
+  if(!is.na(order.by)){
+    if(verbose){
+      print(paste0("Sort the df on ", order.by))
+    }
+    climate_df <- climate_df[order(climate_df[[order.by]]), ]
+  }
+  # dt.out <- climate_df %>%
+  #   DT::datatable(
+  #     width = "100%",
+  #     rownames = FALSE,
+  #     options = list(
+  #       lengthMenu = list(c(6, 10, 50, -1),
+  #                         c('6', '10', '50', 'All')),
+  #       paging = TRUE,
+  #       columnDefs = list(list(visible = FALSE, targets = color_col_index)),  # Hide the 'color' column
+  #       initComplete = htmlwidgets::JS(
+  #         "function(settings, json) {",
+  #         paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
+  #         "}")
+  #     )
+  #   ) %>%
   dt.out <- climate_df %>%
     DT::datatable(
       width = "100%",
       rownames = FALSE,
       options = list(
-        lengthMenu = list(c(6, 10, 50, -1), 
+        lengthMenu = list(c(6, 10, 50, -1),
                           c('6', '10', '50', 'All')),
         paging = TRUE,
         columnDefs = list(list(visible = FALSE, targets = color_col_index)),  # Hide the 'color' column
@@ -72,7 +101,7 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
           paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
           "}")
       )
-    ) %>% 
+    ) %>%
     DT::formatStyle(
       'color',  # The column used to determine the color
       target = 'row',  # Apply the color to the entire row
@@ -81,8 +110,7 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
         unique(climate_df$color)   # Matching those values to the same background color
       )
     )
-  if(!is.na(order.by)){
-    dt.out[order(-rank(order.by))]
-  }
+  # return(dt.out[order("median")])
   return(dt.out)
 }
+

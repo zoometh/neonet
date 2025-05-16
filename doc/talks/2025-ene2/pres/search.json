@@ -4,14 +4,14 @@
     "href": "index.html#radiocarbon-data",
     "title": "Climates during the spread of the Neolithic",
     "section": "Radiocarbon data",
-    "text": "Radiocarbon data\n\nSourcesAligntOutliersLocatoBaseMedians\n\n\n\n\n\n\n\n\nEarly Mesolithic (EM) Middle Mesolithic (MM) Late Mesolithic (LM) Early Neolithic (EN) Middle Neolithic (MN) Late Neolithic (LN)\n\n\n\nEN alignments\n\n\n\n\n\n\n\nref_table_per.xlsx\n\n\n\n\n\nEM - Early Mesolithic\n\n\n\n\nMM - Middle Mesolithic\n\n\n\n\nLM - Late Mesolithic\n\n\n\n\nEN - Early Neolithic\n\n\n\n\nMN - Middle Neolithic\n\n\n\n\nLN - Late Neolithic\n\n\n\n\n\n8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.\nmapping table with period and culture coming from different datasest to be mapped to the Neonet main classes (10 classes, among which 4 are undefined and period transition).\nUsing\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nc14_corrected_sitenames.geojson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMost ancient EN date weighted medians (w-medians) by site.\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
+    "text": "Radiocarbon data\n\nSourcesAligntOutliersLocatoBaseMedians\n\n\n\n\n\n\n\n\nEarly Mesolithic (EM) Middle Mesolithic (MM) Late Mesolithic (LM) Early Neolithic (EN) Middle Neolithic (MN) Late Neolithic (LN)\n\n\n\n\n\n\n\n\n\nref_table_per.xlsx\n\n\n8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.\nmapping table with period and culture coming from different datasest to be mapped to the Neonet main classes (10 classes, among which 4 are undefined and period transition).\nUsing\n\n\n\n\n\n\n\n\n\n\nc14_aberrant_dates.tsv\n\n\nWith R functions coming from the C14bazaar R package and curated with the NeoNet R series of functions, we are gathering some 10,000 radiocarbon dates coming from 8 different datasets and databases.\nWe map these dates to the Neonet periods (here on the left class).\nThen we remove duplicated dates and discard outliers (currently in process).\nSome 4,000 dates are now available for the study.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nc14_corrected_sitenames.geojson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMost ancient EN date weighted medians (w-medians) by site.\n\n\n\n\n\nFor a given site, we select either the most recent LM date (ex: Monte Frignone) or simetrically the most ancient EN date (ex: Le Baratin)\nExtract on the radiocarbon date weighted median from the Summed probability density (SPD)"
   },
   {
     "objectID": "index.html#köppen-climate-classes",
     "href": "index.html#köppen-climate-classes",
     "title": "Climates during the spread of the Neolithic",
     "section": "Köppen climate classes",
-    "text": "Köppen climate classes\n\n\n\nData  - Mean annual temperature (ºC) - Annual precipitation (mm year -1) - Biome (pollen-based)   Beyer et al. 2020[^1]\n\nIT   pastclim::koeppen_geiger()\n neonet::neo_kss_create()\n\nOUTPUT"
+    "text": "Köppen climate classes\n\n\n\n\nData\n\n - Mean annual temperature (ºC) - Annual precipitation (mm year -1) - Biome (pollen-based)   Beyer et al. 20201\n\n\nIT\n\n    pastclim::koeppen_geiger()  \n   neonet::neo_kss_create()  \n\n\nOutput  …  …"
   },
   {
     "objectID": "index.html#bc",
@@ -68,5 +68,12 @@
     "title": "Climates during the spread of the Neolithic",
     "section": "Thank you",
     "text": "Thank you\nhttps://github.com/zoometh/neonet\n\n\nContribution: mapping table (archaeologists), interpolation methods (mathematician), aggregating data from other sources (aDNA, etc.), etc."
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Climates during the spread of the Neolithic",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nBeyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. Scientific data, 7(1), 236."
   }
 ]

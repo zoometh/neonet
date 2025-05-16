@@ -74,11 +74,6 @@ Data: radiocarbon dates and palaeoclimatic data.
 
 ### Align<sup>t</sup>
 
-<small><span style="color: red;">EN</span> alignments</small>
-
-::: {.column width="70%"}
-
-
 ```{r, message=FALSE}
 library(DT)
 library(dplyr)
@@ -87,11 +82,11 @@ df.to.rm <- read.csv2(ref_table_per, sep = "\t", header = TRUE)
 df.to.rm.en <- df.to.rm[df.to.rm$class == "en", ]
 df.to.rm.en %>% 
   DT::datatable(
-    width = "100%",
+    width = "80%",
     rownames = FALSE,
     options=list(
-      lengthMenu = list(c(5, 10, 50, -1), 
-                        c('5', '10', '50', 'All')),
+      lengthMenu = list(c(8, 50, -1), 
+                        c('8', '50', 'All')),
       paging = T,
       initComplete = htmlwidgets::JS(
         "function(settings, json) {",
@@ -102,35 +97,6 @@ df.to.rm.en %>%
 #, options = list(width = "700px", pageLength = 10))
 ```
 <small>[ref_table_per.xlsx](https://github.com/zoometh/neonet/blob/main/inst/extdata/ref_table_per.xlsx)</small>
-
-:::
-
-::: {.column width="30%"}
-
-<!-- Neonet classes -->
-
-<table style="font-size: 25px;">
-<tr>
-<td><span style="color:#0000CF">EM - Early Mesolithic</span></td>
-</tr>
-<tr>
-<td><span style="color:#1D1DFF">MM - Middle Mesolithic</span></td>
-</tr>
-<tr>
-<td><span style="color:#3737FF"><b>LM - Late Mesolithic</b></span></td>
-</tr>
-<tr>
-<td><span style="color:#FF1B1B"><b><u>EN - Early Neolithic</u></b></span></td>
-</tr>
-<tr>
-<td><span style="color:#FF8D1B">MN - Middle Neolithic</span></td>
-</tr>
-<tr>
-<td><span style="color:#FFC04D">LN - Late Neolithic</span></td>
-</tr>
-</table>
-
-:::
 
 ::: notes
 - 8 different databases and datasets. Among which 2 are the Neonet datasets. We collect using the c14bazAAR and curated with NeoNet functions.
@@ -185,6 +151,13 @@ library(dplyr)
 # df <- st_read(paste0(dirIn, "neonet-data-2023-10-22-select-aera.geojson"), quiet = T)
 sitenames <- "https://raw.githubusercontent.com/zoometh/neonet/master/inst/extdata/c14_corrected_sitenames.geojson"
 df <- sf::st_read(sitenames, quiet = T)
+# Define bounding box as an sf object
+bbox <- sf::st_as_sfc(sf::st_bbox(c(xmin = -10, 
+                                    xmax = 19, 
+                                    ymin = 35, 
+                                    ymax = 45), 
+                                  crs = sf::st_crs(df)))
+df <- df[sf::st_intersects(df, bbox, sparse = FALSE), ]
 df.altern <- subset(df, !is.na(AlternativeNames))
 df.altern$popup_content <- apply(sf::st_drop_geometry(df.altern), 1, function(row) {
   paste0("<b>SiteName:</b> ", row["SiteName"], "<br>",
@@ -195,7 +168,7 @@ leaflet::leaflet(df.altern, width = "650px", height = "400px") %>%
   leaflet::addCircleMarkers(
     data = df.altern,
     popup = ~popup_content,  # Use the dynamically generated popup content
-    radius = 3, 
+    radius = 2, 
     color = "blue"
   )
 ```
@@ -235,7 +208,7 @@ Most ancient <span style="color: red;">EN</span> date weighted medians (w-median
 :::
 
 ::: {.column width="75%"}
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/_date_pendimoun_EN.png" width="600">
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/_date_pendimoun_EN.png" width="650">
 :::
 
 :::
@@ -255,34 +228,47 @@ Most ancient <span style="color: red;">EN</span> date weighted medians (w-median
 ::: {.column width="33%"}
 <!-- Mid-Holocene (c. 6,000 BP)<br> -->
 
-**Data**
+<center>Data</center>
 <br>
-<small>- Mean annual temperature (ºC)</small><br>
-<small>- Annual precipitation (mm year <sup>-1</sup>)</small><br>
-<small>- Biome (pollen-based)</small><br>
+<small>- Mean annual **temperature** (ºC)</small><br>
+<small>- Annual **precipitation** (mm year <sup>-1</sup>)</small><br>
+<small>- **Biome** (pollen-based)</small><br>
 <br>
 <br>
 <small>Beyer et *al.* 2020[^1]</small>
 :::
 
 ::: {.column width="33%"}
-**IT**
+<center>IT</center>
 <br>
-<img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 80px;vertical-align: middle;"/><small> [pastclim::koeppen_geiger()](https://github.com/EvolEcolGroup/pastclim)<br></small>
+<small>
+  <span style="display: inline-flex; align-items: center;">
+    <img src="https://raw.githubusercontent.com/EvolEcolGroup/pastclim/master/man/figures/logo.png" style="height: 80px; margin-right: 8px;"/>
+    <a href="https://github.com/EvolEcolGroup/pastclim" style="text-decoration: none;">pastclim::koeppen_geiger()</a>
+  </span>
+</small>
 
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 80px;vertical-align: middle;"/><small> [neonet::neo_kss_create()](https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R)</small>
-
+<small>
+  <span style="display: inline-flex; align-items: center;">
+    <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 80px; margin-right: 8px;"/>
+    <a href="(https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R" style="text-decoration: none;">neonet::neo_kss_create()</a>
+  </span>
+</small>
 
 :::
 
 ::: {.column width="33%"}
-**OUTPUT**
+<center>Output
 <br>
-<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="500">
+<small>...</small><br>
+<img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/kcc_maps_by_ky.jpg" width="450"><br>
+<small>...</small>
+</center>
 :::
 
 :::
 
+[^1]: Beyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. *Scientific data*, 7(1), 236.
 
 
 
@@ -333,7 +319,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "
 
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
 knitr::include_graphics(map)
@@ -341,7 +327,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 
 <p><small>
 
@@ -371,7 +357,7 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-
 
 ::: columns
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
@@ -381,7 +367,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 
 ```{r, message=FALSE}
 data <- paste0(root, df, ".tsv")
@@ -397,7 +383,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "
 
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
 knitr::include_graphics(map)
@@ -405,7 +391,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 
 <p><small>
 
@@ -435,7 +421,7 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-
 
 ::: columns
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
@@ -445,7 +431,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 
 ```{r, message=FALSE}
 data <- paste0(root, df, ".tsv")
@@ -461,7 +447,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "
 
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
 knitr::include_graphics(map)
@@ -469,7 +455,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 
 <p><small>
 
@@ -499,7 +485,7 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-
 
 ::: columns
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
@@ -509,7 +495,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 
 ```{r, message=FALSE}
 data <- paste0(root, df, ".tsv")
@@ -525,7 +511,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "
 
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
 knitr::include_graphics(map)
@@ -533,7 +519,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 
 <p><small>
 
@@ -563,7 +549,7 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-
 
 ::: columns
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
@@ -573,7 +559,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 
 ```{r, message=FALSE}
 data <- paste0(root, df, ".tsv")
@@ -589,7 +575,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "
 
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
 knitr::include_graphics(map)
@@ -597,7 +583,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 
 <p><small>
 
@@ -627,7 +613,7 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-
 
 ::: columns
 
-::: {.column width="60%"}
+::: {.column width="65%"}
 
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
@@ -637,7 +623,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="40%"}
+::: {.column width="35%"}
 
 ```{r, message=FALSE}
 data <- paste0(root, df, ".tsv")
@@ -653,7 +639,7 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "
 
 ::: columns
 
-::: {.column width="50%"}
+::: {.column width="65%"}
 ```{r echo=FALSE, out.width='100%'}
 map <- paste0(root, img, ".png")
 knitr::include_graphics(map)
@@ -661,7 +647,7 @@ knitr::include_graphics(map)
 :::
 
 
-::: {.column width="50%"}
+::: {.column width="35%"}
 
 <p><small>
 
