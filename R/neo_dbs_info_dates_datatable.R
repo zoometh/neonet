@@ -87,29 +87,47 @@ neo_dbs_info_dates_datatable <- function(df.c14 = NA,
   #         "}")
   #     )
   #   ) %>%
-  dt.out <- climate_df %>%
-    DT::datatable(
-      width = "100%",
-      rownames = FALSE,
-      options = list(
-        lengthMenu = list(c(6, 10, 50, -1),
-                          c('6', '10', '50', 'All')),
-        paging = TRUE,
-        columnDefs = list(list(visible = FALSE, targets = color_col_index)),  # Hide the 'color' column
-        initComplete = htmlwidgets::JS(
-          "function(settings, json) {",
-          paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
-          "}")
+  if("color" %in% colnames(climate_df)){
+    dt.out <- climate_df %>%
+      DT::datatable(
+        width = "100%",
+        rownames = FALSE,
+        options = list(
+          lengthMenu = list(c(6, 10, 50, -1),
+                            c('6', '10', '50', 'All')),
+          paging = TRUE,
+          columnDefs = list(list(visible = FALSE, targets = color_col_index)),  # Hide the 'color' column
+          initComplete = htmlwidgets::JS(
+            "function(settings, json) {",
+            paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
+            "}")
+        )
+      ) %>%
+      DT::formatStyle(
+        'color',  # The column used to determine the color
+        target = 'row',  # Apply the color to the entire row
+        backgroundColor = DT::styleEqual(
+          unique(climate_df$color),  # Unique color values in your 'color' column
+          unique(climate_df$color)   # Matching those values to the same background color
+        )
       )
-    ) %>%
-    DT::formatStyle(
-      'color',  # The column used to determine the color
-      target = 'row',  # Apply the color to the entire row
-      backgroundColor = DT::styleEqual(
-        unique(climate_df$color),  # Unique color values in your 'color' column
-        unique(climate_df$color)   # Matching those values to the same background color
+  } else {
+    dt.out <- climate_df %>%
+      DT::datatable(
+        width = "100%",
+        rownames = FALSE,
+        options = list(
+          lengthMenu = list(c(6, 10, 50, -1),
+                            c('6', '10', '50', 'All')),
+          paging = TRUE,
+          columnDefs = list(list(visible = FALSE, targets = color_col_index)),  # Hide the 'color' column
+          initComplete = htmlwidgets::JS(
+            "function(settings, json) {",
+            paste0("$(this.api().table().container()).css({'font-size': '", font.size, "'});"),
+            "}")
+        )
       )
-    )
+  }
   # return(dt.out[order("median")])
   return(dt.out)
 }

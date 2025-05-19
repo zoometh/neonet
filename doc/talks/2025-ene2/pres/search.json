@@ -14,6 +14,13 @@
     "text": "Köppen climate classes\n\n\n\n\nData\n\n - Mean annual temperature (ºC) - Annual precipitation (mm year -1) - Biome (pollen-based)   Beyer et al. 20201\n\n\nIT\n\n    pastclim::koeppen_geiger()  \n   neonet::neo_kcc_create()  \n\n\nOutput  …  …"
   },
   {
+    "objectID": "index.html#background-studies",
+    "href": "index.html#background-studies",
+    "title": "Climates during the spread of the Neolithic",
+    "section": "Background studies",
+    "text": "Background studies\n\nClimatesSitesObservations\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRapid expansion in the Southern Balkans (Csa and BSk ).\nNorthern Balkans expansion required adapting agriculture and stockbreeding systems to colder climates (Dfa, Dfb)\nSlowdown of Neolithic expansion. Early northern occupations, such as Porodin (idf 26).\nConfirms: Krauß et al. 20182, Ivanova et al. 20183."
+  },
+  {
     "objectID": "index.html#bc",
     "href": "index.html#bc",
     "title": "Climates during the spread of the Neolithic",
@@ -74,6 +81,6 @@
     "href": "index.html#footnotes",
     "title": "Climates during the spread of the Neolithic",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nBeyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. Scientific data, 7(1), 236."
+    "text": "Footnotes\n\n\nBeyer, R. M., Krapp, M., & Manica, A. (2020). High-resolution terrestrial climate, bioclimate and vegetation for the last 120,000 years. Scientific data, 7(1), 236.\nKrauß, R., Marinova, E., De Brue, H., & Weninger, B. (2018). The rapid spread of early farming from the Aegean into the Balkans via the Sub-Mediterranean-Aegean Vegetation Zone. Quaternary International, 496, 24-41. https://doi.org/10.1016/j.quaint.2017.01.019\nIvanova, M., De Cupere, B., Ethier, J., & Marinova, E. (2018). Pioneer farming in southeast Europe during the early sixth millennium BC: Climate-related adaptations in the exploitation of plants and animals. PLoS One, 13(5), e0197225. https://doi.org/10.1371/journal.pone.0197225"
   }
 ]
