@@ -636,8 +636,10 @@ To subset a specific area of a KCC map, select a KCC map (ex: 'koppen_7k') and a
 
 ```R
 source("R/neo_kcc_crop.R")
-map.select <- neo_kcc_crop(kcc = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.tif",
-                           roi = "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-midi-france.geojson")
+kcc <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/data/clim/koppen_7k.tif"
+roi <- "https://raw.githubusercontent.com/zoometh/neonet/main/doc/talks/2024-simep/roi-midi-france.geojson"
+map.select <- neo_kcc_crop(kcc = kcc,
+                           roi = roi)
 terra::plot(map.select)
 ```
 

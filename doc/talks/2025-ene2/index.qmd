@@ -61,12 +61,20 @@ Data: radiocarbon dates and palaeoclimatic data.
 :::
 
 ::: {.column width="40%"}
-<span style="color:#0000CF; font-size: 20px;">Early Mesolithic (EM)</span><br>
+<small>
+  <span style="display: inline-flex; align-items: center;">
+    <img src="https://raw.githubusercontent.com/ropensci/c14bazAAR/master/man/figures/logo.png" style="height: 80px; margin-right: 8px;"/>
+    <a href="https://github.com/ropensci/c14bazAAR/blob/main/R/get_c14data.R" style="text-decoration: none;">c14bazAAR::get_c14data()</a>
+  </span>
+</small>
+
+
+<span style="color:#0000CF; font-size: 15px;">Early Mesolithic (EM)</span><br>
 <span style="color:#1D1DFF; font-size: 20px;">Middle Mesolithic (MM)</span><br>
 <span style="color:#3737FF; font-size: 25px;"><b>Late Mesolithic (LM)</b></span><br>
 <span style="color:#FF1B1B; font-size: 25px;"><b><u>Early Neolithic (EN)</u></b></span><br>
 <span style="color:#FF8D1B; font-size: 20px;">Middle Neolithic (MN)</span><br>
-<span style="color:#FFC04D; font-size: 20px;">Late Neolithic (LN)</span><br>
+<span style="color:#FFC04D; font-size: 15px;">Late Neolithic (LN)</span><br>
 :::
 
 :::
@@ -251,7 +259,7 @@ Most ancient <span style="color: red;">EN</span> date weighted medians (w-median
 <small>
   <span style="display: inline-flex; align-items: center;">
     <img src="https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/logo_nn_pkg.png" style="height: 80px; margin-right: 8px;"/>
-    <a href="(https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R" style="text-decoration: none;">neonet::neo_kss_create()</a>
+    <a href="https://github.com/zoometh/neonet/blob/main/R/neo_kcc_create.R" style="text-decoration: none;">neonet::neo_kcc_create()</a>
   </span>
 </small>
 
@@ -395,8 +403,9 @@ knitr::include_graphics(map)
 
 <p><small>
 
-* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
-* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+* From 5900 BC the isochrone is drawn in the Adriatic between Dalmatia and southern Italy
+* A large majority of sites are in <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) climates.
+* Leapfrog neolithisation: <span style="color:#C8FF50;">Pollera</span> (idf <b>214</b>), <span style="color:#FFFF00;">Peiro Signado</span> (idf <b>206</b>).
 
 </small></p>
 
@@ -459,8 +468,12 @@ knitr::include_graphics(map)
 
 <p><small>
 
-* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
-* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+* Lot of missing climate data due to the map resolution (= coastal sites).
+* Despite a large majority <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) climates, new occurrences of <span style="color:#C8FF50;">Cfa</span> (*Temperate, no dry season, hot summer*) sites.
+* Densification of sites in Southern Italy = painting and art (// Balkans)
+* The establishment on the island of Giglio Le Secche[obs] is to be linked to Pont-de-Roque-Haute[obs].
+* Cardial Basi-Filiestru-Pienza (BFP)
+* Leapfrog neolithisation is obvious: <span style="color:#FFFF00;">Bonica</span> (idf <b>28</b>), Cova de les Cendres (idf <b>206</b>), <span style="color:#FFFF00;">Vale Pincel I</span> (idf <b>276</b>), etc.
 
 </small></p>
 
@@ -523,8 +536,9 @@ knitr::include_graphics(map)
 
 <p><small>
 
-* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
-* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+* The Corsican-Sardinian area connects with a strengthening of sites in the South of France (Sardinian-Languedoc area).
+* Distribution of the WIT impressa in Southern Italy, Adriatic, Southern France, Mediterranean Spain
+
 
 </small></p>
 
@@ -587,8 +601,7 @@ knitr::include_graphics(map)
 
 <p><small>
 
-* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
-* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+* For the first time in Italy, all new Neolithic sites are in temperate climate classes (Cfa, Cfb) and none in Csa climates. This shows a complete adaptation of the agro-pastoral economy to the more temperate climates of central Adriatic and northern Italy.
 
 </small></p>
 
@@ -651,8 +664,7 @@ knitr::include_graphics(map)
 
 <p><small>
 
-* Lorem Ipsum <span style="color:#FFFF00;">Csa</span> (*Temperate, dry summer, hot summer*) and <span style="color:#FFDC64;">BSk</span> (*Temperate, dry summer, warm summer*) climates.
-* Early settlement: <span style="color:#FFFF00;">Lorem Ipsum</span> (idf <b>Lorem Ipsum</b>).
+* In France, the isochrone now crosses the height of the Puy Mary volcano (Dfb). In France, the isochrone separates the Mediterranean biogeographic zone (neolithized) from the continental biogeographic area to the north.
 
 </small></p>
 
@@ -672,7 +684,7 @@ knitr::include_graphics(map)
 ::: {.column width="30%"}
 
 <center><small>Entire area</small></center>
-```{r echo=FALSE, out.width='100%'}
+```{r echo=FALSE, out.width='90%'}
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-ene2/img/"
 map <- paste0(root, "_sankey_changes.png")
 knitr::include_graphics(map)
