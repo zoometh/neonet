@@ -45,7 +45,7 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 
-## 6100-6000 BC
+## 9100-9000 BC
 
 ```{r, message=FALSE}
 df <- "data-isochr-EN-9000-BC-Cyprus-koppen_11k"
@@ -67,7 +67,6 @@ knitr::include_graphics(map)
 ```
 
 :::
-
 
 ::: {.column width="35%"}
 

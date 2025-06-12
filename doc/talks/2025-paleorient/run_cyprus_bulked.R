@@ -1,5 +1,5 @@
 # to run after run_cyprus.R
-
+root <- "C:/Users/TH282424/Rprojects/neonet/"
 my_list <- list(
   # EN
   list("Cyprus", c(-9000), c(26, 32, 37, 39), "koppen_11k.tif", "EN"),
@@ -21,11 +21,11 @@ for(i in seq(1, length(my_list))){
   obj.case.out <- paste0(root.path, "img/")
   kcc.file.path <- paste0(root, "doc/data/clim/", my_list[[i]][[4]])
   # to reduce the number of displayed dates
-  lbl.dates.interval <- c(my_list[[i]][[2]], my_list[[i]][[2]]-99)
+  lbl.dates.interval <- c(my_list[[i]][[2]], my_list[[i]][[2]]-199)
   source("R/neo_isochr.R")
   isochr <- neo_isochr(df.c14 = df_filtered, 
                        isochr.subset =  my_list[[i]][[2]], #"None", #c(-5600), # , # c(-5600), # - 5500 TODO
-                       isochr.subset.sup = my_list[[i]][[2]] - 100,
+                       isochr.subset.sup = my_list[[i]][[2]] - 200,
                        selected.per = my_list[[i]][[5]],
                        # largest.isochr = TRUE,
                        where = my_list[[i]][[3]], #Italia.where, # where.roi,
