@@ -6,7 +6,7 @@ author:
     affiliation: 
       - id: cnrs
         name: <span style="font-size:16pt">CNRS</span>
-  - name: <u>Niccolò Mazzucco</u>
+  - name: Niccolò Mazzucco
     affiliation: 
       - id: up
         name: <span style="font-size:16pt">Università di Pisa</span>
@@ -45,11 +45,12 @@ Radiocarbon dates are still being revised, and many of them need to be verified.
 :::
 
 
-## 9100-9000 BC
+## 9000 BC
 
 ```{r, message=FALSE}
-df <- "data-isochr-EN-9000-BC-Cyprus-koppen_11k"
-img <- "isochr-EN-9000-BC-Cyprus-koppen_11k"
+date.inf <- "9000" ; kop <- "11k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
 ```
 
@@ -57,7 +58,7 @@ root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-
 
 ::: {.column width="55%"}
 
-```{r echo=FALSE, out.height='100%'}
+```{r echo=FALSE, out.width='75%'}
 map <- paste0(root, img, ".png")
 knitr::include_graphics(map)
 ```
@@ -76,3 +77,354 @@ neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "
 :::
 
 
+## 8800 BC
+
+```{r, message=FALSE}
+date.inf <- "8800" ; kop <- "11k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+## 8600 BC
+
+```{r, message=FALSE}
+date.inf <- "8600" ; kop <- "11k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+## 8400 BC
+
+```{r, message=FALSE}
+date.inf <- "8400" ; kop <- "10k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+## 8200 BC
+
+```{r, message=FALSE}
+date.inf <- "8200" ; kop <- "10k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+## 8000 BC
+
+```{r, message=FALSE}
+date.inf <- "8000" ; kop <- "10k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+## 8000 BC
+
+```{r, message=FALSE}
+date.inf <- "8000" ; kop <- "10k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+## 7800 BC
+
+```{r, message=FALSE}
+date.inf <- "7800" ; kop <- "10k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+## 7600 BC
+
+```{r, message=FALSE}
+date.inf <- "7600" ; kop <- "10k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+
+## 7400 BC
+
+```{r, message=FALSE}
+date.inf <- "7400" ; kop <- "9k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+## 7200 BC
+
+```{r, message=FALSE}
+date.inf <- "7200" ; kop <- "9k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
+
+
+## 7000 BC
+
+```{r, message=FALSE}
+date.inf <- "7000" ; kop <- "9k"
+df <- paste0("data-isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+img <- paste0("isochr-EN-", date.inf, "-BC-Cyprus-koppen_", kop)
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: columns
+
+::: {.column width="55%"}
+
+```{r echo=FALSE, out.width='75%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
+```
+:::
+
+:::
