@@ -18,6 +18,7 @@
 #' @param lbl.dates show the sites identifiers (default: TRUE)
 #' @param lbl.date.field will use the selected field. Default 'idf', created on the flight if missing.
 #' @param lbl.time.interv label isochrone.
+#' @param lbl.dates.interval subset dates to be labeled (ex: c(-7000, -7099)). Default: FALSE
 #' @param size.date size of the date label (default: 2)
 #' @param map.longest.size the longest size of the output map (height or width) in cm. The smallest size will be calculated from it. Only useful if if export = TRUE. Default: 15
 #' @param verbose if TRUE (default) then display different messages.

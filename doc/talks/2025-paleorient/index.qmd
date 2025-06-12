@@ -1,0 +1,84 @@
+---
+title: "Climates during the spread of the Neolithic"
+subtitle: "in Cyprus"
+author:
+  - name: Thomas Huet
+    affiliation: 
+      - id: cnrs
+        name: <span style="font-size:16pt">CNRS</span>
+  - name: <u>Niccolò Mazzucco</u>
+    affiliation: 
+      - id: up
+        name: <span style="font-size:16pt">Università di Pisa</span>
+title-slide-attributes:
+    data-background-image: "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2024-simep/img/bck-img-2.png"
+    data-background-size: "110%"
+    data-background-opacity: "0.3"
+format:
+  revealjs: 
+    css: https://zoometh.github.io/thomashuet/css/quarto.css
+    controls: true
+    auto-stretch: false
+    code-fold: false
+    code-summary: "<small>Code</small>"
+    slide-number: true
+    chalkboard:
+      theme: "whiteboard"
+      color: ['rgba(255, 0, 0, 0.3)'] # red
+    scrollable: true
+    preview-links: auto
+    reference-location: document
+    footnotes-hover: true
+    # self-contained: true
+    # embed-resources: true
+    # logo: https://raw.githubusercontent.com/zoometh/neonet/master/doc/img/neonet.png
+    footer: "Huet & Mazzucco"
+    margin: 0
+    width: 1200
+---
+
+
+# Spread of the Neolithic
+
+::: notes
+Radiocarbon dates are still being revised, and many of them need to be verified. First modeling
+:::
+
+
+## 6100-6000 BC
+
+```{r, message=FALSE}
+df <- "data-isochr-EN-9000-BC-Cyprus-koppen_11k"
+img <- "isochr-EN-9000-BC-Cyprus-koppen_11k"
+root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
+```
+
+::: {.panel-tabset}
+
+### Dates
+
+::: columns
+
+::: {.column width="65%"}
+
+```{r echo=FALSE, out.width='100%'}
+map <- paste0(root, img, ".png")
+knitr::include_graphics(map)
+```
+
+:::
+
+
+::: {.column width="35%"}
+
+```{r, message=FALSE}
+data <- paste0(root, df, ".tsv")
+source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), order.by = "median")
+```
+:::
+
+:::
+
+:::
+
