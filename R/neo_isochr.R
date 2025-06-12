@@ -389,8 +389,8 @@ neo_isochr <- function(df.c14 = NA, # "https://raw.githubusercontent.com/zoometh
                    "isochr. on earliest w-medians of ", nrow(df), " dates | ")
     if(!any(!is.na(lbl.dates.interval))){
       capt <- paste0(capt, " ", n.dates.display, " dates older than isochr. ", 
-                     isochrs.lbl, " BC", " (displayed) | ",
-                     "labels on dates between ", abs(date.youngest), "-", abs(date.oldest)," BC \n")
+                     isochrs.lbl, " BC", " (displayed) \n",
+                     "labels on dates between ", abs(date.youngest), "-", abs(date.oldest)," BC | ")
     } else {
       capt <- paste0(capt, " ", n.dates.display, " dates older than isochr. ", 
                      isochrs.lbl, " BC", " (displayed)\n")

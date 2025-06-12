@@ -51,7 +51,7 @@ for(i in seq(1, length(my_list))){
                        # lbl.date.field = "median",
                        lbl.dates.size = 4,
                        lbl.time.interv = TRUE)
-  ggplot2::ggsave(paste0(obj.case.out, obj.case.name, ".png"), isochr$map, width = 10, height = 6)
+  ggplot2::ggsave(paste0(obj.case.out, obj.case.name, ".png"), isochr$map, width = 8, height = 8)
   ggplot2::ggsave(paste0(obj.case.out, "legend-", obj.case.name, ".png"), isochr$legend, width = 5)
   date.youngest <- lbl.dates.interval[1]
   date.oldest <- lbl.dates.interval[2]

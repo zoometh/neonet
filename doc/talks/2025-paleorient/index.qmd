@@ -53,31 +53,26 @@ img <- "isochr-EN-9000-BC-Cyprus-koppen_11k"
 root <- "https://raw.githubusercontent.com/zoometh/neonet/master/doc/talks/2025-paleorient/img/"
 ```
 
-::: {.panel-tabset}
-
-### Dates
-
 ::: columns
 
-::: {.column width="65%"}
+::: {.column width="55%"}
 
-```{r echo=FALSE, out.width='100%'}
+```{r echo=FALSE, out.height='100%'}
 map <- paste0(root, img, ".png")
 knitr::include_graphics(map)
 ```
 
 :::
 
-::: {.column width="35%"}
+::: {.column width="45%"}
 
 ```{r, message=FALSE}
 data <- paste0(root, df, ".tsv")
 source(paste0(here::here(), "/R/neo_dbs_info_dates_datatable.R"))
-neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), order.by = "median")
+neo_dbs_info_dates_datatable(df.c14 = data, verbose = FALSE, fields = c("idf", "site", "labcode", "median", "code", "color"), font.size = 14, order.by = "median")
 ```
 :::
 
 :::
 
-:::
 
