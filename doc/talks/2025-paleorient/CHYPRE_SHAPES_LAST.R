@@ -33,7 +33,7 @@ fig.half.h <- 9
 fig.half.w <- 12
 
 library(openxlsx)
-path.data <- "D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE"
+path.data <- "yourpath/"
 df.coords <- read.xlsx(paste0(path.data, "/COORD.xlsx"))
 jpgs <- paste0(path.data, "/img")  # Image folder
 lf <- list.files(jpgs, full.names = TRUE)  # Store images to list
@@ -451,7 +451,7 @@ cat("Saved X-separated overlay image to:", combined_out_file, "\n")
 #########################################################################################
 
 # Path to your Excel file containing the median chronology
-chrono_file <- "D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/data.xlsx"
+chrono_file <- "yourpath/data.xlsx"
 
 # Read the Excel file
 df_chrono <- read.xlsx(chrono_file)
@@ -539,7 +539,7 @@ pca2 <- ggplot(shape_pca_coords, aes(x = PC1, y = PC2, color = factor(Combined_C
   theme_minimal()
 
 # Save the bar chart to a JPEG file.
-jpeg("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/6_pca2.jpeg",
+jpeg("yourpath/out/6_pca2.jpeg",
      width = 14, height = 10, units = "in", res = 300)
 print(pca2)  # This line ensures the bar_chart is drawn on the device.
 dev.off()
@@ -761,7 +761,7 @@ bar_chart2 <- ggplot(df_joined, aes(x = MEDIAN, fill = factor(Combined_Cluster))
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 # Open the device
-jpeg("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/9_bar_chart2.jpeg",
+jpeg("yourpath/out/9_bar_chart2.jpeg",
      width = 14, height = 8, units = "in", res = 300)
 
 # Print the ggplot object
@@ -933,7 +933,7 @@ bar_chart2 <- ggplot(df_joined, aes(x = MEDIAN, fill = factor(Combined_Cluster_R
 print(bar_chart2)
 
 # Optionally, save bar_chart2:
-jpeg("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/11_bar_chart3.jpeg",
+jpeg("yourpath/out/11_bar_chart3.jpeg",
      width = 14, height = 8, units = "in", res = 300)
 print(bar_chart2)
 dev.off()
@@ -1124,7 +1124,7 @@ combined_cluster_summary <- df_joined %>%
 # 31. Merge with carpological data
 # =====================================================
 
-df_carpological <- read.xlsx("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/carpo.xlsx")
+df_carpological <- read.xlsx("yourpath/carpo.xlsx")
 
 combined_data <- cluster_summary %>%
   left_join(df_carpological, by = "PHASE")
@@ -1201,7 +1201,7 @@ p_clusters2 <- ggplot(long_clusters2, aes(x = MEDIAN.x, y = Percentage, color = 
 
 
 df_joined$MEDIAN <- as.numeric(as.character(df_joined$MEDIAN))
-df_carpological <- read.xlsx("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/carpo.xlsx")
+df_carpological <- read.xlsx("yourpath/carpo.xlsx")
 
 combined_data <- cluster_summary %>%
   left_join(df_carpological, by = "PHASE")
@@ -1241,7 +1241,7 @@ ggsave("species_presence_plot.jpeg", plot = carpo, width = 8, height = 6, units 
 
 # 4. Save the plot in the out4 folder.
 # Make sure to adjust the path accordingly.
-ggsave(filename = "D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/species_presence_plot.jpeg", 
+ggsave(filename = "yourpath/out/species_presence_plot.jpeg", 
        plot = carpo, 
        width = 8, height = 6, units = "in", dpi = 300)
 
@@ -1315,7 +1315,7 @@ final_plot_stacked <- p_clusters2 / p_diversity +
 
 # Display and save the stacked plot.
 print(final_plot_stacked)
-ggsave("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/final_combined_plot_stacked.jpeg",
+ggsave("yourpath/out/final_combined_plot_stacked.jpeg",
        final_plot_stacked, width = 14, height = 5, units = "in", dpi = 300)
 
 
@@ -1330,7 +1330,7 @@ p_combined <- p_clusters2 +
 
 # Display and save the overlaid plot.
 print(p_combined)
-ggsave("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/final_combined_plot_overlayed.jpeg",
+ggsave("yourpath/out/final_combined_plot_overlayed.jpeg",
        p_combined, width = 14, height = 3, units = "in", dpi = 300)
 
 
@@ -1404,7 +1404,7 @@ final_plot_stacked <- p_clusters2 / p_diversity +
 
 print(final_plot_stacked)
 
-ggsave("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/final_combined_plot_stacked.jpeg",
+ggsave("yourpath/out/final_combined_plot_stacked.jpeg",
        final_plot_stacked, width = 14, height = 5, units = "in", dpi = 300)
 
 # Option B: Overlaid in a Single Plot
@@ -1417,7 +1417,7 @@ p_combined <- p_clusters2 +
 
 print(p_combined)
 
-ggsave("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/final_combined_plot_overlayed.jpeg",
+ggsave("yourpath/out/final_combined_plot_overlayed.jpeg",
        p_combined, width = 14, height = 5, units = "in", dpi = 300)
 
 # Optionally, print the aggregated diversity data to confirm all phases are included.
@@ -1435,7 +1435,7 @@ p_combined <- p_clusters2 +
 
 print(p_combined)
 
-ggsave("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/final_combined_plot_overlayed_def.jpeg",
+ggsave("yourpath/out/final_combined_plot_overlayed_def.jpeg",
        p_combined, width = 14, height = 4.5, units = "in", dpi = 300)
 
 # Optionally, print the aggregated diversity data to confirm all phases are included.
@@ -1557,7 +1557,7 @@ p <- ggplot(df_combined, aes(x = MEDIAN, y = TOTAL_SIZE)) +
 print(p)
 
 # Save the plot to your specified output folder
-ggsave("D:/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out4/cubic_regression_insert_size.png",
+ggsave("yourpath/out/cubic_regression_insert_size.png",
        plot = p, width = 10, height = 6, dpi = 300)
 
 
