@@ -1,0 +1,9 @@
+"PHASE","n","median_length_mm","q1_mm","q3_mm","min_mm","max_mm"
+"Cypro-PPNA",31,47.5,40.2,58.2,28.5,124
+"Cypro-EPPNB-A",17,63.2,43.2,72.5,23,129
+"Cypro-EPPNB-B",10,28.8,26.3,29.9,22.3,55
+"Cypro-EPPNB-C",8,35,32.6,39.9,26.2,45.5
+"Cypro-MPPNB",8,44.1,38.1,53.8,15.5,69
+"Cypro-LPPNB",9,52.5,42.5,56.3,32.5,71
+"Cypro Aceramic Neolithic-1",15,54.5,41.5,58.5,38.8,76
+"Cypro Aceramic Neolithic-2",15,48,39.8,52.2,28.5,80.1
