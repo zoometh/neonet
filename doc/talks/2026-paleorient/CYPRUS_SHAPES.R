@@ -990,7 +990,7 @@ phase_n <- df_length_plot %>%
 
 # Descriptive plot: boxplots show the median and interquartile range;
 # coloured points represent individual inserts and their cluster assignment.
-figure_11 <- ggplot(df_length_plot, aes(x = PHASE, y = LENGTH)) +
+figure_10 <- ggplot(df_length_plot, aes(x = PHASE, y = LENGTH)) +
   geom_boxplot(
     width = 0.65,
     fill = "grey95",
@@ -1027,11 +1027,11 @@ figure_11 <- ggplot(df_length_plot, aes(x = PHASE, y = LENGTH)) +
     legend.position = "right"
   )
 
-print(figure_11)
+print(figure_10)
 
 ggsave(
   file.path(output_folder, "12_insert_length_by_phase.png"),
-  figure_11,
+  figure_10,
   width = 12,
   height = 7,
   units = "in",
