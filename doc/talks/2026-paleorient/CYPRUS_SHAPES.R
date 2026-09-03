@@ -101,10 +101,6 @@ sickles <- Out(coo) %>%
 # 3 🔹 CHECK VALID SHAPES
 #########################
 
-library(Momocs)   
-# Ensure a consistent number of points per shape
-sickles <- coo_interpolate(sickles, n = 80)
-
 # Define a validity check function for a Momocs shape.
 # We assume that a valid shape should be a numeric matrix with exactly 2 columns (x and y)
 # and with at least 5 rows (points), and without any NA values.
@@ -518,7 +514,7 @@ pca2 <- ggplot(shape_pca_coords, aes(x = PC1, y = PC2, color = factor(Combined_C
   theme_minimal()
 
 # Save the bar chart to a JPEG file.
-jpeg("C:/Users/nicco/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out/6_pca2.jpeg",
+jpeg(file.path(output_folder, "06_pca_with_thickness.jpg"),
      width = 14, height = 10, units = "in", res = 300)
 print(pca2)  # This line ensures the bar_chart is drawn on the device.
 dev.off()
@@ -831,7 +827,7 @@ bar_chart2 <- ggplot(df_joined, aes(x = MEDIAN, fill = factor(Combined_Cluster_R
 print(bar_chart2)
 
 # Optionally, save bar_chart2:
-jpeg("C:/Users/nicco/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out/11_bar_chart3.jpeg",
+jpeg(file.path(output_folder, "11_cluster_proportions_by_phase.jpg"),
      width = 14, height = 8, units = "in", res = 300)
 print(bar_chart2)
 dev.off()
@@ -1034,7 +1030,7 @@ figure_11 <- ggplot(df_length_plot, aes(x = PHASE, y = LENGTH)) +
 print(figure_11)
 
 ggsave(
-  file.path(output_folder, "11_insert_length_by_phase.png"),
+  file.path(output_folder, "12_insert_length_by_phase.png"),
   figure_11,
   width = 12,
   height = 7,
