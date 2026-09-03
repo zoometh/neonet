@@ -28,7 +28,51 @@ fig.half.h <- 9
 fig.half.w <- 12
 
 library(openxlsx)
-path.data <- normalizePath(".", mustWork = TRUE)
+
+script_file <- function() {
+  command_args <- commandArgs(trailingOnly = FALSE)
+  file_argument <- grep("^--file=", command_args, value = TRUE)
+  
+  if (length(file_argument) == 1L) {
+    return(normalizePath(
+      sub("^--file=", "", file_argument),
+      mustWork = TRUE
+    ))
+  }
+  
+  if (requireNamespace("rstudioapi", quietly = TRUE)) {
+    source_path <- rstudioapi::getSourceEditorContext()$path
+    
+    if (nzchar(source_path)) {
+      return(normalizePath(source_path, mustWork = TRUE))
+    }
+  }
+  
+  stop(
+    "Cannot determine the script location. Open the saved script in RStudio or run it with Rscript."
+  )
+}
+
+path.data <- dirname(script_file())
+jpgs <- file.path(path.data, "img")
+chrono_file <- file.path(path.data, "data.xlsx")
+output_folder <- file.path(path.data, "out")
+
+if (!dir.exists(output_folder)) {
+  dir.create(output_folder, recursive = TRUE)
+}
+
+lf <- sort(list.files(
+  jpgs,
+  pattern = "\\.jpe?g$",
+  full.names = TRUE,
+  ignore.case = TRUE
+))
+
+if (length(lf) == 0L) {
+  stop("No JPEG outline files were found in: ", jpgs)
+}
+
 jpgs <- file.path(path.data, "img")
 lf <- list.files(jpgs, full.names = TRUE)  # Store images to list
 lf <- sort(list.files(jpgs, full.names = TRUE))
@@ -46,7 +90,6 @@ if (sampling) {
 
 library(Momocs)
 coo <- import_jpg(lf)
-
 
 #########################
 # 2 🔹 OUTLINE PROCESSING
@@ -1020,7 +1063,7 @@ figure_11 <- ggplot(df_length_plot, aes(x = PHASE, y = LENGTH)) +
 print(figure_11)
 
 ggsave(
-  file.path(output_folder, "12_insert_length_by_phase.png"),
+  file.path(output_folder, "11_insert_length_by_phase.png"),
   figure_11,
   width = 12,
   height = 7,
