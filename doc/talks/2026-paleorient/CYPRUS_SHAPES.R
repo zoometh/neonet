@@ -73,10 +73,6 @@ if (length(lf) == 0L) {
   stop("No JPEG outline files were found in: ", jpgs)
 }
 
-jpgs <- file.path(path.data, "img")
-lf <- list.files(jpgs, full.names = TRUE)  # Store images to list
-lf <- sort(list.files(jpgs, full.names = TRUE))
-
 # Define output folder exists
 output_folder <- file.path(path.data, "out")
 if (!dir.exists(output_folder)) {
@@ -91,6 +87,7 @@ if (sampling) {
 library(Momocs)
 coo <- import_jpg(lf)
 
+
 #########################
 # 2 🔹 OUTLINE PROCESSING
 #########################
@@ -98,32 +95,6 @@ coo <- import_jpg(lf)
 sickles <- Out(coo) %>%
   coo_interpolate(n = 80) %>%
   coo_center()
-
-# Apply smoothing to remove pixel noise to each shape
-library(Momocs)   
-shapes_con_errore <- c()
-
-# Cicliamo su tutti i nomi (e indici) dei contorni in sickles$coo
-for (i in seq_along(sickles$coo)) {
-  nome_shape <- names(sickles$coo)[i]
-  
-  # Estraiamo un oggetto Out che contiene solo il singolo contorno i-esimo
-  # In Momocs, subsetting di un Out con sickles[i] restituisce un Out di lunghezza 1
-  singolo_out <- sickles[i]
-  
-  # Proviamo a chiamare coo_smooth su questo singolo contorno
-  risultato <- try(Momocs::coo_smooth(singolo_out, n = 1), silent = TRUE)
-  
-  # Se si verifica un errore, lo registriamo in shapes_con_errore
-  if (inherits(risultato, "try-error")) {
-    shapes_con_errore <- c(shapes_con_errore, nome_shape)
-    message("Errore su shape: ", nome_shape)
-  }
-}
-
-# Alla fine, 'shapes_con_errore' conterrà i nomi di tutte le sagome che hanno fallito il smoothing.
-cat("Shape problematici trovati:", length(shapes_con_errore), "\n")
-print(shapes_con_errore)
 
 
 #########################
