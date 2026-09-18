@@ -14,10 +14,11 @@ library(ggplot2)
 library(Momocs)
 
 #########################
-# 1 🔹 LOAD DATA AND OUTLINES
+# 1 🔹 LOAD DATA AND SHAPES
 #########################
 
 set.seed(123)
+sf::sf_use_s2(FALSE)
 
 sampling <- FALSE
 elbow.sickles <- TRUE
@@ -28,50 +29,19 @@ fig.half.h <- 9
 fig.half.w <- 12
 
 library(openxlsx)
-
-script_file <- function() {
-  command_args <- commandArgs(trailingOnly = FALSE)
-  file_argument <- grep("^--file=", command_args, value = TRUE)
-  
-  if (length(file_argument) == 1L) {
-    return(normalizePath(
-      sub("^--file=", "", file_argument),
-      mustWork = TRUE
-    ))
-  }
-  
-  if (requireNamespace("rstudioapi", quietly = TRUE)) {
-    source_path <- rstudioapi::getSourceEditorContext()$path
-    
-    if (nzchar(source_path)) {
-      return(normalizePath(source_path, mustWork = TRUE))
-    }
-  }
-  
-  stop(
-    "Cannot determine the script location. Open the saved script in RStudio or run it with Rscript."
-  )
-}
-
-path.data <- dirname(script_file())
+path.data <- normalizePath(".", mustWork = TRUE)
 jpgs <- file.path(path.data, "img")
-chrono_file <- file.path(path.data, "data.xlsx")
-output_folder <- file.path(path.data, "out")
-
-if (!dir.exists(output_folder)) {
-  dir.create(output_folder, recursive = TRUE)
+if (!dir.exists(jpgs)) {
+  stop("Image directory not found: ", jpgs,
+       ". Set the working directory to the project folder containing img/ and data.xlsx.")
 }
-
-lf <- sort(list.files(
-  jpgs,
-  pattern = "\\.jpe?g$",
-  full.names = TRUE,
-  ignore.case = TRUE
-))
-
+lf <- sort(list.files(jpgs, pattern = "\\.jpe?g$", full.names = TRUE,
+                      ignore.case = TRUE))
 if (length(lf) == 0L) {
-  stop("No JPEG outline files were found in: ", jpgs)
+  stop("No JPEG outline images found in: ", jpgs,
+       ". Check the project directory and image filenames before continuing.")
 }
+message("Loading ", length(lf), " outline images from: ", jpgs)
 
 # Define output folder exists
 output_folder <- file.path(path.data, "out")
@@ -86,20 +56,53 @@ if (sampling) {
 
 library(Momocs)
 coo <- import_jpg(lf)
+if (length(coo) == 0L) {
+  stop("No outlines were imported. Check the JPEG files in: ", jpgs)
+}
 
 
 #########################
-# 2 🔹 OUTLINE PROCESSING
+# 2 🔹 SMOOTH SHAPES
 #########################
 
 sickles <- Out(coo) %>%
   coo_interpolate(n = 80) %>%
   coo_center()
 
+# Apply smoothing to remove pixel noise to each shape
+library(Momocs)   
+shapes_con_errore <- c()
+
+# Cicliamo su tutti i nomi (e indici) dei contorni in sickles$coo
+for (i in seq_along(sickles$coo)) {
+  nome_shape <- names(sickles$coo)[i]
+  
+  # Estraiamo un oggetto Out che contiene solo il singolo contorno i-esimo
+  # In Momocs, subsetting di un Out con sickles[i] restituisce un Out di lunghezza 1
+  singolo_out <- sickles[i]
+  
+  # Proviamo a chiamare coo_smooth su questo singolo contorno
+  risultato <- try(Momocs::coo_smooth(singolo_out, n = 1), silent = TRUE)
+  
+  # Se si verifica un errore, lo registriamo in shapes_con_errore
+  if (inherits(risultato, "try-error")) {
+    shapes_con_errore <- c(shapes_con_errore, nome_shape)
+    message("Errore su shape: ", nome_shape)
+  }
+}
+
+# Alla fine, 'shapes_con_errore' conterrà i nomi di tutte le sagome che hanno fallito il smoothing.
+cat("Shape problematici trovati:", length(shapes_con_errore), "\n")
+print(shapes_con_errore)
+
 
 #########################
 # 3 🔹 CHECK VALID SHAPES
 #########################
+
+library(Momocs)   
+# Ensure a consistent number of points per shape
+sickles <- coo_interpolate(sickles, n = 80)
 
 # Define a validity check function for a Momocs shape.
 # We assume that a valid shape should be a numeric matrix with exactly 2 columns (x and y)
@@ -174,36 +177,46 @@ df.colors <- data.frame(site = sites.uni, cols = site.colors)
 # Merge colors with shape data
 df.obj.col <- merge(df.obj, df.colors, by = "site", all.x = TRUE)
 
-# Ensure colors are assigned correctly
-shape.colors <- df.obj.col$cols
+# Match by specimen name because merge() may reorder the rows.
+shape.colors <- df.obj.col$cols[match(names(sickles$coo), df.obj.col$num)]
 
 
 ###########################
 # 6 🔹 PANEL PLOT
 ###########################
 
-panel.out <- file.path(output_folder, "01_panel.jpg")
+n_shapes <- length(sickles$coo)
+if (n_shapes == 0L) {
+  stop("sickles$coo is empty. Check getwd(), jpgs and length(lf), then rerun Sections 1-5.")
+}
+if (!all(vapply(sickles$coo, is_valid_shape, logical(1)))) {
+  stop("One or more outlines are invalid. Check the diagnostics in Section 3.")
+}
+if (length(shape.colors) != n_shapes || anyNA(shape.colors)) {
+  stop("Site colours do not match the imported outlines. Rerun Section 5.")
+}
 
-jpeg(
-  panel.out,
-  height = fig.full.h,
-  width = fig.full.w,
-  units = "cm",
-  res = 600
+# Supply a finite grid explicitly; 113 outlines use an 11 x 11 grid.
+panel_cols <- ceiling(sqrt(n_shapes))
+panel_rows <- ceiling(n_shapes / panel_cols)
+
+panel.out <- file.path(output_folder, "1_panel.jpg")
+grDevices::jpeg(panel.out, height = fig.full.h, width = fig.full.w,
+                units = "cm", res = 600)
+tryCatch(
+  Momocs::panel(
+    sickles,
+    dim = c(panel_rows, panel_cols),
+    names = TRUE,
+    cols = shape.colors,
+    borders = shape.colors,
+    cex.names = 0.2,
+    main = "Shapes Panel Colored by Site",
+    cex.main = 0.8
+  ),
+  finally = grDevices::dev.off()
 )
 
-panel(
-  sickles,
-  names = TRUE,
-  cols = shape.colors,
-  borders = shape.colors,
-  cex.names = 0.2,
-  main = "Shapes Panel Colored by Site",
-  cex.main = 0.8,
-  dim = c(10, 12)
-)
-
-dev.off()
 
 ###########################
 # 7 🔹 STANDARDIZED STACKS
@@ -514,7 +527,7 @@ pca2 <- ggplot(shape_pca_coords, aes(x = PC1, y = PC2, color = factor(Combined_C
   theme_minimal()
 
 # Save the bar chart to a JPEG file.
-jpeg(file.path(output_folder, "06_pca_with_thickness.jpg"),
+jpeg("C:/Users/nicco/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out/6_pca2.jpeg",
      width = 14, height = 10, units = "in", res = 300)
 print(pca2)  # This line ensures the bar_chart is drawn on the device.
 dev.off()
@@ -827,7 +840,7 @@ bar_chart2 <- ggplot(df_joined, aes(x = MEDIAN, fill = factor(Combined_Cluster_R
 print(bar_chart2)
 
 # Optionally, save bar_chart2:
-jpeg(file.path(output_folder, "11_cluster_proportions_by_phase.jpg"),
+jpeg("C:/Users/nicco/OneDrive - University of Pisa/RESEARCH/SHAPES CHYPRE/out/11_bar_chart3.jpeg",
      width = 14, height = 8, units = "in", res = 300)
 print(bar_chart2)
 dev.off()
@@ -964,11 +977,24 @@ cat("✅ Saved X-separated *mean shapes* overlay image to:", combined_out_file, 
 
 
 #################################################################################################################
-# 26🔹 DESCRIPTIVE DISTRIBUTION OF INSERT LENGTH BY CHRONOLOGICAL PHASE
+# 26🔹 DESCRIPTIVE DISTRIBUTION OF INSERT LENGTH BY CHRONOLOGICAL PHASE (FIGURE 10)
 #################################################################################################################
 
 library(dplyr)
 library(ggplot2)
+
+# Display phase names using the periodisation adopted in the manuscript.
+# The source PHASE values define the groups; this mapping supplies axis labels.
+figure10_phase_labels <- c(
+  "Cypro-PPNA" = "Cypro-PPNA",
+  "Cypro-EPPNB-A" = "Cypro-EPPNB-A",
+  "Cypro-EPPNB-B" = "Cypro-MPPNB-B",
+  "Cypro-EPPNB-C" = "Cypro-MPPNB-C",
+  "Cypro-MPPNB" = "Cypro-LPPNB-M",
+  "Cypro-LPPNB" = "Cypro-LPPNB-L",
+  "Cypro Aceramic Neolithic-1" = "AC-E",
+  "Cypro Aceramic Neolithic-2" = "AC-L"
+)
 
 # Establish the chronological order of the eight phases.
 phase_order <- df_joined %>%
@@ -1015,6 +1041,13 @@ figure_10 <- ggplot(df_length_plot, aes(x = PHASE, y = LENGTH)) +
     palette = "Set1",
     name = "Morphometric cluster"
   ) +
+  scale_x_discrete(labels = function(x) {
+    phase_labels <- unname(figure10_phase_labels[as.character(x)])
+    # Preserve labels already corrected in the input spreadsheet.
+    use_original <- is.na(phase_labels)
+    phase_labels[use_original] <- as.character(x)[use_original]
+    phase_labels
+  }) +
   labs(
     x = "Chronological phase",
     y = "Insert length (mm)"
@@ -1059,4 +1092,154 @@ write.csv(
   row.names = FALSE
 )
 
-sessionInfo()
+
+################################################################################
+# 27 CHECK FIGURES 8 AND 10 AND EXPORT EXACT CLUSTER PERCENTAGES
+################################################################################
+
+# Figure 8 groups by MEDIAN; Figure 10 groups by PHASE and excludes missing
+# lengths/phases/clusters. Check the correspondence and the actual plot data.
+# This section uses existing assignments and does not rerun clustering.
+figure8_specimens <- bar_chart2$data %>%
+  dplyr::transmute(
+    Shape_Name = as.character(Shape_Name),
+    PHASE = as.character(PHASE),
+    MEDIAN = as.character(MEDIAN),
+    Cluster = as.character(Combined_Cluster_Renamed)
+  )
+figure10_specimens <- figure_10$data %>%
+  dplyr::transmute(
+    Shape_Name = as.character(Shape_Name),
+    PHASE = as.character(PHASE),
+    MEDIAN = as.character(MEDIAN),
+    Cluster = as.character(Cluster)
+  )
+
+if (anyNA(figure8_specimens) || anyNA(figure10_specimens) ||
+    any(figure8_specimens$Shape_Name == "") ||
+    any(figure10_specimens$Shape_Name == "") ||
+    anyDuplicated(figure8_specimens$Shape_Name) > 0L ||
+    anyDuplicated(figure10_specimens$Shape_Name) > 0L) {
+  stop("Check missing identifiers/assignments or duplicated specimens in the figure data.")
+}
+
+specimen_check <- dplyr::full_join(
+  figure8_specimens, figure10_specimens,
+  by = "Shape_Name", suffix = c("_figure8", "_figure10")
+) %>%
+  dplyr::mutate(
+    assignments_match = dplyr::coalesce(
+      PHASE_figure8 == PHASE_figure10 &
+        MEDIAN_figure8 == MEDIAN_figure10 &
+        Cluster_figure8 == Cluster_figure10,
+      FALSE
+    )
+  )
+
+write.csv(
+  specimen_check,
+  file.path(output_folder, "figure8_figure10_specimen_check.csv"),
+  row.names = FALSE
+)
+
+phase_lookup <- df_joined %>%
+  dplyr::transmute(
+    PHASE = as.character(PHASE),
+    MEDIAN = as.character(MEDIAN)
+  ) %>%
+  dplyr::distinct()
+
+if (anyNA(phase_lookup) ||
+    anyDuplicated(phase_lookup$PHASE) > 0L ||
+    anyDuplicated(phase_lookup$MEDIAN) > 0L) {
+  stop("PHASE and MEDIAN must have a one-to-one correspondence for Figures 8 and 10.")
+}
+
+# Read the data stored in each ggplot object, rather than estimating counts
+# from coloured areas or overlapping points in the exported images.
+figure8_counts <- bar_chart2$data %>%
+  dplyr::transmute(
+    MEDIAN = as.character(MEDIAN),
+    Cluster = as.character(Combined_Cluster_Renamed)
+  ) %>%
+  dplyr::count(MEDIAN, Cluster, name = "n_figure8") %>%
+  tidyr::complete(
+    MEDIAN = phase_lookup$MEDIAN,
+    Cluster = as.character(1:4),
+    fill = list(n_figure8 = 0L)
+  )
+
+figure10_counts <- figure_10$data %>%
+  dplyr::transmute(
+    MEDIAN = as.character(MEDIAN),
+    Cluster = as.character(Cluster)
+  ) %>%
+  dplyr::count(MEDIAN, Cluster, name = "n_figure10") %>%
+  tidyr::complete(
+    MEDIAN = phase_lookup$MEDIAN,
+    Cluster = as.character(1:4),
+    fill = list(n_figure10 = 0L)
+  )
+
+figure_cluster_check <- dplyr::full_join(
+  figure8_counts, figure10_counts,
+  by = c("MEDIAN", "Cluster")
+) %>%
+  dplyr::mutate(
+    n_figure8 = dplyr::coalesce(n_figure8, 0L),
+    n_figure10 = dplyr::coalesce(n_figure10, 0L),
+    counts_match = n_figure8 == n_figure10
+  ) %>%
+  dplyr::left_join(phase_lookup, by = "MEDIAN") %>%
+  dplyr::mutate(
+    manuscript_phase = unname(figure10_phase_labels[PHASE]),
+    manuscript_phase = dplyr::coalesce(manuscript_phase, PHASE)
+  ) %>%
+  dplyr::arrange(as.numeric(MEDIAN), as.integer(Cluster))
+
+write.csv(
+  figure_cluster_check,
+  file.path(output_folder, "figure8_figure10_cluster_check.csv"),
+  row.names = FALSE
+)
+
+if (!all(specimen_check$assignments_match) ||
+    !all(figure_cluster_check$counts_match)) {
+  print(dplyr::filter(specimen_check, !assignments_match))
+  print(dplyr::filter(figure_cluster_check, !counts_match))
+  stop(paste(
+    "Figures 8 and 10 differ in specimen membership, assignments or counts.",
+    "Check missing lengths or phase/cluster assignments and the exported check tables."
+  ))
+}
+
+message("Figures 8 and 10 have identical specimens, assignments and cluster counts.")
+
+cluster_percentages_by_phase <- figure_cluster_check %>%
+  dplyr::group_by(MEDIAN, manuscript_phase) %>%
+  dplyr::mutate(
+    phase_n = sum(n_figure8),
+    percentage = round(100 * n_figure8 / phase_n, 2)
+  ) %>%
+  dplyr::ungroup() %>%
+  dplyr::transmute(
+    PHASE = manuscript_phase,
+    MEDIAN,
+    Cluster,
+    n = n_figure8,
+    phase_n,
+    percentage
+  )
+
+print(cluster_percentages_by_phase, n = Inf)
+write.csv(
+  cluster_percentages_by_phase,
+  file.path(output_folder, "cluster_percentages_by_phase.csv"),
+  row.names = FALSE
+)
+
+# Overall totals can also be checked against the cluster sizes in the Results.
+cluster_totals <- cluster_percentages_by_phase %>%
+  dplyr::group_by(Cluster) %>%
+  dplyr::summarise(n = sum(n), .groups = "drop")
+print(cluster_totals)
